@@ -1,0 +1,77 @@
+name = OpenSanMateo Platform
+description = Platform Profile for San Mateo County
+core = 7.x
+version = 1.x
+
+base[] = openpublic
+
+; Core
+
+dependencies[] = block
+dependencies[] = contextual
+dependencies[] = dashboard
+dependencies[] = help
+dependencies[] = image
+dependencies[] = list
+dependencies[] = menu
+dependencies[] = number
+dependencies[] = options
+dependencies[] = path
+dependencies[] = taxonomy
+dependencies[] = syslog
+dependencies[] = shortcut
+dependencies[] = toolbar
+dependencies[] = field
+dependencies[] = field_ui
+dependencies[] = file
+dependencies[] = rdf
+
+
+; Contrib
+
+dependencies[] = libraries
+dependencies[] = redirect
+dependencies[] = metatag
+dependencies[] = backup_migrate
+dependencies[] = entity_boxes
+dependencies[] = field_collection
+dependencies[] = views_bulk_operations
+dependencies[] = filefield_sources
+dependencies[] = addressfield
+dependencies[] = workbench
+dependencies[] = workbench_moderation
+dependencies[] = revision_scheduler
+dependencies[] = video_embed_field
+dependencies[] = better_exposed_filters
+dependencies[] = calendar
+dependencies[] = flexslider
+dependencies[] = embeddable
+dependencies[] = addressfield_staticmap
+dependencies[] = context_entity_field
+dependencies[] = nodequeue
+dependencies[] = imce_tools
+dependencies[] = imce_mkdir
+dependencies[] = password_policy2
+dependencies[] = lock_session
+dependencies[] = menu_block
+dependencies[] = special_menu_items
+dependencies[] = nice_menus
+dependencies[] = textformatter
+dependencies[] = site_map
+dependencies[] = acquia_connector
+dependencies[] = rules
+dependencies[] = maxlength
+dependencies[] = globalredirect
+dependencies[] = custom_pagers
+dependencies[] = context_http_headers
+dependencies[] = fieldcollection_sort
+dependencies[] = node_reference_set_trail_formatter
+dependencies[] = pathauto_persist
+dependencies[] = print
+dependencies[] = role_delegation
+dependencies[] = navigation404
+
+;DEVELOPMENT ONLY
+
+dependencies[] = dblog
+dependencies[] = devel

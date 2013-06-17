@@ -1,0 +1,23 @@
+<?php
+
+require_once ("profiles/openpublic/openpublic.install");
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ */
+function sanmateo_install() {
+  openpublic_install();
+  sanmateo_set_default_theme();
+}
+
+/**
+* Set the default theme
+*/
+function sanmateo_set_default_theme () {
+  /*
+  theme_enable(array("sanmateo"));
+  variable_set('theme_default', 'sanmateo');
+  */
+}
