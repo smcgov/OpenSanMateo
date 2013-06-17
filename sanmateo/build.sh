@@ -106,14 +106,7 @@ if [ "$TYPE" = 'acquia' ]; then
     cd docroot
     
     # Add directory-based sites as symlinks so we can use the same codebase
-    ln -s . annualreport
-    ln -s . egap
-    ln -s . gib
-    ln -s . vocationalrehab
-    ln -s . warmsprings
-    ln -s . interactive
-    ln -s . data-sharing-services
-    ln -s . application-development
+    #ln -s . site-dir
     
     cd ..
     sed -i.bak "/^ *RewriteEngine on/r $ABS_CALLPATH/build/htaccess_deny_drupal_text_files.txt" docroot/.htaccess
@@ -155,8 +148,6 @@ else
   DRUPAL=`cd $TARGET; pwd`
   ln -s $ABS_CALLPATH/profiles/sanmateo $DRUPAL/profiles/sanmateo
   cp $ABS_CALLPATH/build/flag.ico $DRUPAL/misc/favicon.ico
-  cd $DRUPAL && ln -s . annualreport
-  cd $DRUPAL && ln -s . egap
   if [ "$2" = "link" ]; then
     cd $DRUPAL/sites/default && ln -s ../../../settings.php && ln -s ../../../files
   fi
