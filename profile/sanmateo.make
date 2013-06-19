@@ -207,7 +207,7 @@ projects[expire][patch][] = http://drupal.org/files/expire-removemenuhack-145133
 
 projects[rules][type] = module
 projects[rules][subdir] = contrib
-projects[rules][version] = 2.1
+projects[rules][version] = 2.3
 
 projects[maxlength][type] = module
 projects[maxlength][subdir] = contrib
