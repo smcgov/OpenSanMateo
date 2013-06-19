@@ -87,7 +87,7 @@ if [ "$TYPE" = 'acquia' ]; then
     drush make $DRUSH_OPTS $ABS_CALLPATH/$MAKEFILE docroot
   fi
 
-  ln -s ../../sanmateo/profiles/sanmateo $PROFILE_DIR/sanmateo
+  ln -s ../../profile/ $PROFILE_DIR/profile
   cp $ABS_CALLPATH/build/flag.ico docroot/misc/favicon.ico
 
   if [ $NOMAKE -eq 0 ]; then
@@ -116,7 +116,7 @@ if [ "$TYPE" = 'acquia' ]; then
     sed -i.bak "s/^ *<IfModule mod_headers.c>/&\\n    Header append Vary Authorization env=AH_NON_PRODUCTION/" docroot/.htaccess
     rm docroot/.htaccess.bak
     cat $ABS_CALLPATH/build/htaccess_register_ie_mime_types.txt >> docroot/.htaccess
-    cp $ABS_CALLPATH/build/google58ce90b3ca3c2b88.html docroot/
+    #cp $ABS_CALLPATH/build/google58ce90b3ca3c2b88.html docroot/
     #add in password protection to
     echo AuthType Basic >> docroot/.htaccess
     echo AuthName \"Access Restricted\" >> docroot/.htaccess
@@ -146,7 +146,7 @@ else
   drush make $DRUSH_OPTS $CALLPATH/$MAKEFILE $TARGET
   echo $TARGET
   DRUPAL=`cd $TARGET; pwd`
-  ln -s $ABS_CALLPATH/profiles/sanmateo $DRUPAL/profiles/sanmateo
+  ln -s $ABS_CALLPATH $DRUPAL/profiles/sanmateo
   cp $ABS_CALLPATH/build/flag.ico $DRUPAL/misc/favicon.ico
   if [ "$2" = "link" ]; then
     cd $DRUPAL/sites/default && ln -s ../../../settings.php && ln -s ../../../files
