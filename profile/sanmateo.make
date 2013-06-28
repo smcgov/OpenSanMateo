@@ -13,8 +13,8 @@ projects[drupal][patch][] = http://drupal.org/files/issues/autocomplete_popup_po
 projects[openpublic][type] = profile
 projects[openpublic][download][type] = git
 projects[openpublic][download][url] = http://git.drupal.org/project/openpublic.git
-projects[openpublic][download][revision] = 7.x-1.0-beta17
-projects[openpublic][patch][] = http://drupal.org/files/1461934-remove-openpublic-comment-install-dependency-4.patch
+projects[openpublic][download][revision] = appify_services
+;projects[openpublic][patch][] = http://drupal.org/files/1461934-remove-openpublic-comment-install-dependency-4.patch
 projects[openpublic][patch][] = http://georgia.gov/sites/default/files/PATCHES/sprint-11-opic-1.0-beta-16-boxes-homepage-ajax-fix.patch
 projects[openpublic][patch][] = http://georgia.gov/sites/default/files/PATCHES/sprint-ziphius-opic-boxes-cancel-validation-fix-1758970-01.patch
 ; update colorbox

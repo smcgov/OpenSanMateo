@@ -8,7 +8,7 @@ function sanmateo_apps_servers_info() {
    'openpublic' => array(
      'title' => 'OpenPublic',
      'description' => "Apps for the Openpublic distribution",
-     'manifest' => 'http://appserver.openpublicapp.com/app/query',
+     'manifest' => 'http://appserver.openpublicapp.com/app/query/opensanmateo',
      'profile' => 'openpublic',
      'profile_version' => '7.x-1.0-beta5',
      'server_name' => $_SERVER['SERVER_NAME'],
@@ -27,10 +27,10 @@ function sanmateo_install_tasks($install_state) {
   // Remove undesired app profile install tasks
   foreach ($tasks as $key => $data) {
     if ('apps_install_verify' == $key || preg_match('/^apps_profile_/', $key)) {
-      unset($tasks[$key]);
+ //     unset($tasks[$key]);
     }
   }
-
+/*
   // Add our own profile tasks here
   $tasks['sanmateo_enable_modules'] = array(
     'function' => '_sanmateo_enable_modules',
@@ -63,7 +63,7 @@ function sanmateo_install_tasks($install_state) {
     'type' => 'normal',
     'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
   );
-
+*/
   //datatables  
   return $tasks;
 }
