@@ -283,3 +283,8 @@ projects[metatag][subdir] = facetapi
 
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.4.16.zip
+
+
+projects[search_api][subdir] = contrib
+projects[facetapi][subdir] = contrib
+projects[search_api_solr][subdir] = contrib

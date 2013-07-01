@@ -60,7 +60,6 @@ dependencies[] = twitter_pull
 dependencies[] = conditional_styles
 dependencies[] = field_group
 dependencies[] = recaptcha
-dependencies[] = password_policy
 dependencies[] = comment_notify
 dependencies[] = googleanalytics
 dependencies[] = boxes
