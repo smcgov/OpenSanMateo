@@ -276,5 +276,10 @@ projects[content_access][subdir] = contrib
 projects[content_access][version] = 1.2-beta1
 projects[content_access][patch][] = http://drupal.org/files/add_view_own_unpublished_content_setting-1225520-5.patch
 
+
+projects[metatag][subdir] = search_api
+projects[metatag][subdir] = search_api_solr
+projects[metatag][subdir] = facetapi
+
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.4.16.zip

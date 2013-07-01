@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OpenSanMateo Search feature.
+ */
+
+include_once 'opensanmateo_search.features.inc';
