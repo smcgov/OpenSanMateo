@@ -20,22 +20,23 @@ function opensanmateo_search_default_search_api_index() {
       "cron_limit" : "50",
       "fields" : {
         "type" : { "type" : "string" },
-        "title" : { "type" : "text", "boost" : "5.0" },
+        "title" : { "type" : "string", "boost" : "5.0" },
         "url" : { "type" : "uri" },
         "search_api_language" : { "type" : "string" }
       },
       "data_alter_callbacks" : {
+        "site_index" : { "status" : 0, "weight" : "-50", "settings" : [] },
         "search_api_alter_bundle_filter" : {
           "status" : 0,
           "weight" : "-10",
           "settings" : { "default" : "1", "bundles" : [] }
         },
-        "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
+        "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] }
+        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } }
       },
       "processors" : {
         "search_api_case_ignore" : {
@@ -92,9 +93,9 @@ function opensanmateo_search_default_search_api_server() {
     "class" : "search_api_solr_service",
     "options" : {
       "scheme" : "http",
-      "host" : "localhost",
-      "port" : "8983",
-      "path" : "\\/solr",
+      "host" : "solrdev.p2devcloud.com",
+      "port" : "8080",
+      "path" : "\\/solr-sanmateo.p2devcloud.com",
       "http_user" : "",
       "http_pass" : "",
       "excerpt" : 0,

@@ -9,6 +9,6 @@ dependencies[] = search_api
 dependencies[] = search_api_facetapi
 dependencies[] = search_api_solr
 dependencies[] = search_api_views
-features[features_api][] = api:1
+features[features_api][] = api:2
 features[search_api_index][] = san_mateo_content_index
 features[search_api_server][] = san_mateo_solr_server
