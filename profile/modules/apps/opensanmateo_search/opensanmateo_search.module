@@ -5,3 +5,19 @@
  */
 
 include_once 'opensanmateo_search.features.inc';
+
+/**
+ * Implements hook_search_api_query_alter().
+ * 
+ * Restricts the search results to the content types selected in the app
+ */
+function opensanmateo_search_search_api_query_alter($query) {
+  $types = array_filter(variable_get('opesanmateo_search_content_types_to_index', array()));
+  $exclude_types = array_diff(array_map(function($i) {return $i->type;}, node_type_get_types()), $types);
+  
+  $filter = $query->createFilter('AND');
+  foreach ($exclude_types as $type) {
+    $filter->condition('type', $type, '<>');
+  }
+  $query->filter($filter);
+}
