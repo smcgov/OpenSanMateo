@@ -22,21 +22,41 @@ function opensanmateo_search_default_search_api_index() {
         "type" : { "type" : "string" },
         "title" : { "type" : "string", "boost" : "5.0" },
         "url" : { "type" : "uri" },
-        "search_api_language" : { "type" : "string" }
+        "field_release_date" : { "type" : "date" },
+        "search_api_language" : { "type" : "string" },
+        "search_api_aggregation_1" : { "type" : "text" },
+        "search_api_aggregation_3" : { "type" : "text" }
       },
       "data_alter_callbacks" : {
-        "site_index" : { "status" : 0, "weight" : "-50", "settings" : [] },
         "search_api_alter_bundle_filter" : {
           "status" : 0,
           "weight" : "-10",
           "settings" : { "default" : "1", "bundles" : [] }
         },
-        "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } }
+        "search_api_alter_add_aggregation" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "fields" : {
+              "search_api_aggregation_1" : {
+                "name" : "Aggregated Teaser",
+                "type" : "fulltext",
+                "fields" : [ "field_summary", "field_blog_teaser" ],
+                "description" : "A Fulltext aggregation of the following fields: Summary, Teaser."
+              },
+              "search_api_aggregation_3" : {
+                "name" : "Aggregated Author",
+                "type" : "fulltext",
+                "fields" : [ "author", "field_photo_author", "field_blog_author" ],
+                "description" : "A Fulltext aggregation of the following fields: Author, author, Author."
+              }
+            }
+          }
+        }
       },
       "processors" : {
         "search_api_case_ignore" : {
@@ -57,11 +77,7 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_tokenizer" : {
           "status" : 0,
           "weight" : "20",
-          "settings" : {
-            "fields" : { "title" : true },
-            "spaces" : "[^[:alnum:]]",
-            "ignorable" : "[\\u0027]"
-          }
+          "settings" : { "fields" : [], "spaces" : "[^[:alnum:]]", "ignorable" : "[\\u0027]" }
         },
         "search_api_stopwords" : {
           "status" : 0,
