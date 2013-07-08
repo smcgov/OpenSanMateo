@@ -23,6 +23,8 @@ function opensanmateo_search_default_search_api_index() {
         "title" : { "type" : "string", "boost" : "5.0" },
         "url" : { "type" : "uri" },
         "search_api_language" : { "type" : "string" },
+        "search_api_aggregation_1" : { "type" : "text" },
+        "search_api_aggregation_3" : { "type" : "text" },
         "search_api_site_hash" : { "type" : "uri" }
       },
       "data_alter_callbacks" : {
@@ -36,7 +38,25 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_aggregation" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "fields" : {
+              "search_api_aggregation_1" : {
+                "name" : "Aggregated Teaser",
+                "type" : "fulltext",
+                "fields" : [ "field_summary" ],
+                "description" : "A Fulltext aggregation of the following fields: Summary."
+              },
+              "search_api_aggregation_3" : {
+                "name" : "Aggregated Author",
+                "type" : "fulltext",
+                "fields" : [ "author", "field_photo_author" ],
+                "description" : "A Fulltext aggregation of the following fields: Author, author."
+              }
+            }
+          }
+        },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } }
       },
       "processors" : {

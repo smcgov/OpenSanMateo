@@ -28,7 +28,6 @@ function opensanmateo_search_app_configure_form() {
  * implements pseudo hook appname_app_Status
  */
 function opensanmateo_search_status() {
-
   //setup the status table
   $status = array(
     'title' =>'Status',
@@ -46,7 +45,7 @@ function opensanmateo_search_status() {
       'severity' =>    REQUIREMENT_OK, //REQUIREMENT_OK REQUIREMENT_INFO, REQUIREMENT_ERROR
     );
   if (($server->status & ENTITY_OVERRIDDEN) == ENTITY_OVERRIDDEN) {
-    $status['items']['server']['description'] = t("The solr Server settings are not in the default state this could make thing not work properly");
+    $status['items']['server']['description'] = t("The SOLR Server settings are not in the default state, this could prevent search from functioning properly.");
     $status['items']['server']['severity'] = REQUIREMENT_WARNING;
     $status['items']['server']['action'][] = l("Revert", "admin/config/search/search_api/server/san_mateo_solr_server/delete",  array('query' => drupal_get_destination()));
 
