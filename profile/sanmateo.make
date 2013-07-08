@@ -14,11 +14,10 @@ projects[openpublic][type] = profile
 projects[openpublic][download][type] = git
 projects[openpublic][download][url] = http://git.drupal.org/project/openpublic.git
 projects[openpublic][download][revision] = appify_services
-;projects[openpublic][patch][] = http://drupal.org/files/1461934-remove-openpublic-comment-install-dependency-4.patch
 projects[openpublic][patch][] = http://georgia.gov/sites/default/files/PATCHES/sprint-11-opic-1.0-beta-16-boxes-homepage-ajax-fix.patch
 projects[openpublic][patch][] = http://georgia.gov/sites/default/files/PATCHES/sprint-ziphius-opic-boxes-cancel-validation-fix-1758970-01.patch
 ; update colorbox
-projects[openpublic][patch][] = http://drupalcode.org/project/openpublic.git/patch/975da73ccf25546ec3704ddee5a31b30dc486434
+;projects[openpublic][patch][] = http://drupalcode.org/project/openpublic.git/patch/975da73ccf25546ec3704ddee5a31b30dc486434
 
 projects[redirect][type] = module
 projects[redirect][subdir] = contrib
@@ -277,9 +276,14 @@ projects[content_access][version] = 1.2-beta1
 projects[content_access][patch][] = http://drupal.org/files/add_view_own_unpublished_content_setting-1225520-5.patch
 
 
-projects[metatag][subdir] = search_api
-projects[metatag][subdir] = search_api_solr
-projects[metatag][subdir] = facetapi
+projects[search_api][subdir] = contrib
+projects[search_api_site][type] = module
+projects[search_api_site][subdir] = contrib
+projects[search_api_site][download][type] = git
+projects[search_api_site][download][url] = http://git.drupal.org/sandbox/e2thex/2033065.git 
+projects[search_api_solr][subdir] = contrib
+projects[search_api_solr][patch][] =  http://drupal.org/files/1776534.patch
+projects[facetapi][subdir] = facetapi
 
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.4.16.zip

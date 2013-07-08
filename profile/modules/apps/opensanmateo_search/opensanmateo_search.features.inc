@@ -22,10 +22,11 @@ function opensanmateo_search_default_search_api_index() {
         "type" : { "type" : "string" },
         "title" : { "type" : "string", "boost" : "5.0" },
         "url" : { "type" : "uri" },
-        "search_api_language" : { "type" : "string" }
+        "search_api_language" : { "type" : "string" },
+        "search_api_site_hash" : { "type" : "uri" }
       },
       "data_alter_callbacks" : {
-        "site_index" : { "status" : 0, "weight" : "-50", "settings" : [] },
+        "site_index" : { "status" : 1, "weight" : "-50", "settings" : [] },
         "search_api_alter_bundle_filter" : {
           "status" : 0,
           "weight" : "-10",
@@ -57,11 +58,7 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_tokenizer" : {
           "status" : 0,
           "weight" : "20",
-          "settings" : {
-            "fields" : { "title" : true },
-            "spaces" : "[^[:alnum:]]",
-            "ignorable" : "[\\u0027]"
-          }
+          "settings" : { "fields" : [], "spaces" : "[^[:alnum:]]", "ignorable" : "[\\u0027]" }
         },
         "search_api_stopwords" : {
           "status" : 0,
