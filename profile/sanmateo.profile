@@ -24,10 +24,14 @@ function sanmateo_install_tasks($install_state) {
   // Load default task list for OpenPublic distro
   $tasks = openpublic_install_tasks($install_state);
 
-  // Remove undesired app profile install tasks
-  foreach ($tasks as $key => $data) {
-    if ('apps_install_verify' == $key || preg_match('/^apps_profile_/', $key)) {
- //     unset($tasks[$key]);
+  // Remove undesired OPIC install tasks
+  $skip_tasks = array(
+    'apps_install_verify',
+    'apps_profile_apps_select_form_openpublic',
+  );
+  foreach ($skip_tasks as $task) {
+    if (isset($tasks[$task])) {
+      unset($tasks[$task]);
     }
   }
 /*
@@ -64,13 +68,13 @@ function sanmateo_install_tasks($install_state) {
     'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
   );
 */
-  //datatables  
+  //datatables
   return $tasks;
 }
 
 /**
  * Implements callback for profile install task 'sanmateo_enable_modules'
- * 
+ *
  * Responsible for enabling any problem modules that couldn't be installed via the .info file
  */
 function _sanmateo_enable_modules() {
