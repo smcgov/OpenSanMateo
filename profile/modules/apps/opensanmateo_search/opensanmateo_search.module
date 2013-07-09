@@ -11,6 +11,7 @@ include_once 'opensanmateo_search.features.inc';
  * 
  * Restricts the search results to the content types selected in the app
  */
+/*
 function opensanmateo_search_search_api_query_alter($query) {
   $types = array_filter(variable_get('opesanmateo_search_content_types_to_index', array()));
   $exclude_types = array_diff(array_map(function($i) {return $i->type;}, node_type_get_types()), $types);
@@ -20,4 +21,16 @@ function opensanmateo_search_search_api_query_alter($query) {
     $filter->condition('type', $type, '<>');
   }
   $query->filter($filter);
+}
+*/
+function opensanmateo_search_search_api_index_items_alter(array &$items, SearchApiIndex $index) {
+  $types = array_filter(variable_get('opesanmateo_search_content_types_to_index', array()));
+  foreach($items as $id => $item) {
+    if (!in_array($item->type, $types)) {
+      unset($items[$id]);
+    }
+    dpm($item->title);
+    dpm($item->search_api_site_hash);
+  }
+  
 }
