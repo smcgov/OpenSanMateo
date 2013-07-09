@@ -280,6 +280,7 @@ projects[search_api][subdir] = contrib
 projects[search_api_site][type] = module
 projects[search_api_site][subdir] = contrib
 projects[search_api_site][download][type] = git
+projects[search_api_site][download][branch] = 7.x-1.x
 projects[search_api_site][download][url] = http://git.drupal.org/sandbox/e2thex/2033065.git 
 projects[search_api_solr][subdir] = contrib
 projects[search_api_solr][patch][] =  http://drupal.org/files/1776534.patch
