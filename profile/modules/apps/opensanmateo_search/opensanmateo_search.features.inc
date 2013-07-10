@@ -50,7 +50,8 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
         "search_api_aggregation_3" : { "type" : "text" },
-        "search_api_site_hash" : { "type" : "uri" }
+        "search_api_site_hash" : { "type" : "uri" },
+        "body:value" : { "type" : "text" }
       },
       "data_alter_callbacks" : {
         "site_index" : { "status" : 1, "weight" : "-50", "settings" : [] },
@@ -76,8 +77,14 @@ function opensanmateo_search_default_search_api_index() {
               "search_api_aggregation_3" : {
                 "name" : "Aggregated Author",
                 "type" : "fulltext",
-                "fields" : [ "author", "field_photo_author" ],
-                "description" : "A Fulltext aggregation of the following fields: Author, author."
+                "fields" : [ "author", "field_photo_author", "field_document_author" ],
+                "description" : "A Fulltext aggregation of the following fields: Author, author, Author."
+              },
+              "search_api_aggregation_2" : {
+                "name" : "Aggregated Thumbnail",
+                "type" : "fulltext",
+                "fields" : [ "field_thumbnail_image:file", "field_editors_choice_thumbnail:file" ],
+                "description" : "A Fulltext aggregation of the following fields: Thumbnail Image \\u00bb The image file., Thumbnail \\u00bb The image file.."
               }
             }
           }
@@ -114,6 +121,11 @@ function opensanmateo_search_default_search_api_index() {
             "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
           }
         }
+      },
+      "additional fields" : {
+        "field_editors_choice_summary" : "field_editors_choice_summary",
+        "field_thumbnail_image" : "field_thumbnail_image",
+        "field_editors_choice_thumbnail" : "field_editors_choice_thumbnail"
       }
     },
     "enabled" : "1",

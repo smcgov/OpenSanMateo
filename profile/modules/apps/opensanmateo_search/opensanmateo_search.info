@@ -7,9 +7,8 @@ dependencies[] = ctools
 dependencies[] = entity
 dependencies[] = facetapi
 dependencies[] = page_manager
-dependencies[] = panels_mini
-; I think that this might not be need but am putting in inplace so that are search page is nice
 dependencies[] = panels_ipe
+dependencies[] = panels_mini
 dependencies[] = search_api
 dependencies[] = search_api_facetapi
 dependencies[] = search_api_site
