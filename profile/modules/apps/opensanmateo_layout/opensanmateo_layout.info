@@ -1,0 +1,11 @@
+name = OpenSanMateo Layout
+description = Allows for fun layouts
+core = 7.x
+package = OpenSanMateo
+php = 5.2.4
+dependencies[] = ctools
+dependencies[] = panelizer
+features[ctools][] = panelizer:panelizer:1
+features[features_api][] = api:2
+;We have the default for site page here would be better if this was configurable and we might need to add that
+features[panelizer_defaults][] = node:site_page:default
