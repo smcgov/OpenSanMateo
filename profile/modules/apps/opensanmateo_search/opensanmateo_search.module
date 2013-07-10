@@ -29,8 +29,6 @@ function opensanmateo_search_search_api_index_items_alter(array &$items, SearchA
     if (!in_array($item->type, $types)) {
       unset($items[$id]);
     }
-    dpm($item->title);
-    dpm($item->search_api_site_hash);
   }
   
 }

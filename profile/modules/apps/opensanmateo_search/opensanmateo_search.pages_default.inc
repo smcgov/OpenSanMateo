@@ -16,7 +16,10 @@ function opensanmateo_search_default_page_manager_pages() {
   $page->admin_title = 'Search Panel';
   $page->admin_description = '';
   $page->path = 'search';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array();
   $page->conf = array(
