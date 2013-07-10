@@ -60,11 +60,27 @@ function opensanmateo_search_status() {
       'description' => t("The content Server settings are currently Default"),
       'severity' =>    REQUIREMENT_OK, //REQUIREMENT_OK REQUIREMENT_INFO, REQUIREMENT_ERROR
     );
+  
+
   if (($index->status & ENTITY_OVERRIDDEN) == ENTITY_OVERRIDDEN) {
     $status['items']['index']['description'] = t("The content Server settings are not in the default state this could make thing not work properly");
     $status['items']['index']['severity'] = REQUIREMENT_WARNING;
     $status['items']['index']['action'][] = l("Revert", "admin/config/search/search_api/index/san_mateo_content_index/delete",  array('query' => drupal_get_destination()));
 
+  }
+  $istatus = search_api_index_status($index);
+  $percentage = (int) (100 * $istatus['indexed'] / $istatus['total']);
+  $status['items']['index_status'] = array(
+    'title' => 'Content Index Status',
+    'action'=> array(l("Index/re-index Items", "admin/config/search/search_api/index/san_mateo_content_index/status",  array('query' => drupal_get_destination()))),
+    'description' => t('About @percentage% of all items have been indexed in their latest version (@indexed / @total).', array('@indexed' => $istatus['indexed'], '@total' => $istatus['total'], '@percentage' => $percentage)),
+    'severity' =>    REQUIREMENT_OK, //REQUIREMENT_OK REQUIREMENT_INFO, REQUIREMENT_ERROR
+  );
+  if ($percentage == 0) {
+    $status['items']['index_status']['severity'] = REQUIREMENT_ERROR;
+  }
+  elseif ($percentage <100) {
+    $status['items']['index_status']['severity'] = REQUIREMENT_WARNING;
   }
 
 
