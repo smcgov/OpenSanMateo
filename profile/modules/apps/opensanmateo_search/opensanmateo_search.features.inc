@@ -47,9 +47,11 @@ function opensanmateo_search_default_search_api_index() {
         "type" : { "type" : "string" },
         "title" : { "type" : "text", "boost" : "5.0" },
         "url" : { "type" : "uri" },
+        "field_release_date" : { "type" : "date" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
         "search_api_aggregation_3" : { "type" : "text" },
+        "search_api_aggregation_2" : { "type" : "text" },
         "search_api_site_hash" : { "type" : "uri" },
         "body:value" : { "type" : "text" }
       },
@@ -121,11 +123,6 @@ function opensanmateo_search_default_search_api_index() {
             "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
           }
         }
-      },
-      "additional fields" : {
-        "field_editors_choice_summary" : "field_editors_choice_summary",
-        "field_thumbnail_image" : "field_thumbnail_image",
-        "field_editors_choice_thumbnail" : "field_editors_choice_thumbnail"
       }
     },
     "enabled" : "1",
