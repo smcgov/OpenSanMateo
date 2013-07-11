@@ -69,7 +69,7 @@ function opensanmateo_search_status() {
 
   }
   $istatus = search_api_index_status($index);
-  $percentage = (int) (100 * $istatus['indexed'] / $istatus['total']);
+  $percentage = ($istatus['total']) ? (int) (100 * $istatus['indexed'] / $istatus['total']) : 0;
   $status['items']['index_status'] = array(
     'title' => 'Content Index Status',
     'action'=> array(l("Index/re-index Items", "admin/config/search/search_api/index/san_mateo_content_index/status",  array('query' => drupal_get_destination()))),
