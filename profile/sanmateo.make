@@ -292,6 +292,8 @@ projects[search_api_solr][subdir] = contrib
 projects[search_api_solr][version] = 1.0
 projects[search_api_solr][patch][] =  http://drupal.org/files/1776534.patch
 
+project[panelizer][subdir] = contrib
+
 projects[facetapi][type] = module
 projects[facetapi][subdir] = contrib
 projects[facetapi][version] = 1.3
