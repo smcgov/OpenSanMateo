@@ -93,7 +93,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['filters']['search_api_site_hash']['id'] = 'search_api_site_hash';
   $handler->display->display_options['filters']['search_api_site_hash']['table'] = 'search_api_index_san_mateo_content_index';
   $handler->display->display_options['filters']['search_api_site_hash']['field'] = 'search_api_site_hash';
-  $handler->display->display_options['filters']['search_api_site_hash']['value'] = '0';
+  $handler->display->display_options['filters']['search_api_site_hash']['value'] = '2';
   $handler->display->display_options['filters']['search_api_site_hash']['group'] = 1;
   $handler->display->display_options['filters']['search_api_site_hash']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_site_hash']['expose']['operator_id'] = '';
@@ -105,8 +105,6 @@ function opensanmateo_search_views_default_views() {
     2 => '2',
     1 => 0,
     3 => 0,
-    5 => 0,
-    4 => 0,
   );
 
   /* Display: List w/search */
@@ -117,7 +115,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['filters']['search_api_site_hash']['id'] = 'search_api_site_hash';
   $handler->display->display_options['filters']['search_api_site_hash']['table'] = 'search_api_index_san_mateo_content_index';
   $handler->display->display_options['filters']['search_api_site_hash']['field'] = 'search_api_site_hash';
-  $handler->display->display_options['filters']['search_api_site_hash']['value'] = '0';
+  $handler->display->display_options['filters']['search_api_site_hash']['value'] = '2';
   $handler->display->display_options['filters']['search_api_site_hash']['group'] = 1;
   $handler->display->display_options['filters']['search_api_site_hash']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_site_hash']['expose']['operator_id'] = '';
@@ -129,8 +127,6 @@ function opensanmateo_search_views_default_views() {
     2 => '2',
     1 => 0,
     3 => 0,
-    5 => 0,
-    4 => 0,
   );
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
@@ -153,10 +149,6 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['inherit_panels_path'] = '1';
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page_1');
-  $handler->display->display_options['path'] = 'search';
-
   /* Display: List by Type */
   $handler = $view->new_display('panel_pane', 'List by Type', 'panel_pane_2');
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
@@ -165,7 +157,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['filters']['search_api_site_hash']['id'] = 'search_api_site_hash';
   $handler->display->display_options['filters']['search_api_site_hash']['table'] = 'search_api_index_san_mateo_content_index';
   $handler->display->display_options['filters']['search_api_site_hash']['field'] = 'search_api_site_hash';
-  $handler->display->display_options['filters']['search_api_site_hash']['value'] = '0';
+  $handler->display->display_options['filters']['search_api_site_hash']['value'] = '2';
   $handler->display->display_options['filters']['search_api_site_hash']['group'] = 1;
   $handler->display->display_options['filters']['search_api_site_hash']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_site_hash']['expose']['operator_id'] = '';
@@ -177,8 +169,6 @@ function opensanmateo_search_views_default_views() {
     2 => '2',
     1 => 0,
     3 => 0,
-    5 => 0,
-    4 => 0,
   );
   /* Filter criterion: Indexed Node: Content type */
   $handler->display->display_options['filters']['type']['id'] = 'type';

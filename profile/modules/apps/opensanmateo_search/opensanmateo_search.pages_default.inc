@@ -79,8 +79,8 @@ function opensanmateo_search_default_page_manager_pages() {
     $pane = new stdClass();
     $pane->pid = 'new-2';
     $pane->panel = 'right';
-    $pane->type = 'panels_mini';
-    $pane->subtype = 'search_facets';
+    $pane->type = 'block';
+    $pane->subtype = 'facetapi-eJnwn0zvJ81BsmakaB3TVH0KPXvG5tJy';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -88,9 +88,7 @@ function opensanmateo_search_default_page_manager_pages() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
+    $pane->style = array();
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
