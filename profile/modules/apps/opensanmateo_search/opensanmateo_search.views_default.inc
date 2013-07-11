@@ -96,6 +96,12 @@ function opensanmateo_search_views_default_views() {
     'multiple_to' => '',
     'show_repeat_rule' => 'show',
   );
+  /* Sort criterion: Indexed Node: Release Date */
+  $handler->display->display_options['sorts']['field_release_date']['id'] = 'field_release_date';
+  $handler->display->display_options['sorts']['field_release_date']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['sorts']['field_release_date']['field'] = 'field_release_date';
+  $handler->display->display_options['sorts']['field_release_date']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_release_date']['expose']['label'] = 'Release Date';
   /* Filter criterion: Indexed Node: Site Hash */
   $handler->display->display_options['filters']['search_api_site_hash']['id'] = 'search_api_site_hash';
   $handler->display->display_options['filters']['search_api_site_hash']['table'] = 'search_api_index_san_mateo_content_index';
@@ -198,7 +204,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['filters']['type']['expose']['reduce'] = 0;
   $handler->display->display_options['pane_category']['name'] = 'Lists';
   $handler->display->display_options['pane_category']['weight'] = '0';
-  $handler->display->display_options['allow']['use_pager'] = 'use_pager';
+  $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
   $handler->display->display_options['allow']['offset'] = 0;
   $handler->display->display_options['allow']['link_to_view'] = 0;
