@@ -27,7 +27,7 @@ function sanmateo_install_tasks($install_state) {
   // Remove undesired OPIC install tasks
   $skip_tasks = array(
     'apps_install_verify',
-    'apps_profile_apps_select_form_openpublic',
+  //  'apps_profile_apps_select_form_openpublic',
   );
   foreach ($skip_tasks as $task) {
     if (isset($tasks[$task])) {
