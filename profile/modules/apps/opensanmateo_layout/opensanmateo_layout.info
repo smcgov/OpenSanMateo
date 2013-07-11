@@ -5,7 +5,10 @@ package = OpenSanMateo
 php = 5.2.4
 dependencies[] = ctools
 dependencies[] = panelizer
+dependencies[] = strongarm
 features[ctools][] = panelizer:panelizer:1
+features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-;We have the default for site page here would be better if this was configurable and we might need to add that
 features[panelizer_defaults][] = node:site_page:default
+features[panelizer_defaults][] = node:site_page:default:default
+features[variable][] = panelizer_defaults_node_site_page
