@@ -276,20 +276,25 @@ projects[content_access][version] = 1.2-beta1
 projects[content_access][patch][] = http://drupal.org/files/add_view_own_unpublished_content_setting-1225520-5.patch
 
 
+projects[search_api][type] = module
 projects[search_api][subdir] = contrib
+projects[search_api][version] = 1.7
+projects[search_api][patch][] = https://drupal.org/files/search_api-url-arg-multivalue-2040111-01.patch
+
 projects[search_api_site][type] = module
 projects[search_api_site][subdir] = contrib
 projects[search_api_site][download][type] = git
 projects[search_api_site][download][branch] = 7.x-1.x
 projects[search_api_site][download][url] = http://git.drupal.org/sandbox/e2thex/2033065.git 
+
+projects[search_api_solr][type] = module
 projects[search_api_solr][subdir] = contrib
+projects[search_api_solr][version] = 1.0
 projects[search_api_solr][patch][] =  http://drupal.org/files/1776534.patch
-projects[facetapi][subdir] = facetapi
+
+projects[facetapi][type] = module
+projects[facetapi][subdir] = contrib
+projects[facetapi][version] = 1.3
 
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.4.16.zip
-
-
-projects[search_api][subdir] = contrib
-projects[facetapi][subdir] = contrib
-projects[search_api_solr][subdir] = contrib
