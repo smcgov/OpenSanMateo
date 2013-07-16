@@ -21,7 +21,11 @@ function opensanmateo_search_app_configure_form() {
     '#options' => array_map(function($i) {return $i->name;}, node_type_get_types()),
     '#default_value' => variable_get('opesanmateo_search_content_types_to_index', array())
   );
+  $form['#submit'][] = 'opensanmateo_search_app_configure_form_submit';
   return system_settings_form($form);
+}
+function opensanmateo_search_app_configure_form_submit($form,$form_state) {
+  features_template_revert();
 }
 
 /**

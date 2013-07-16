@@ -287,6 +287,13 @@ projects[search_api_site][download][type] = git
 projects[search_api_site][download][branch] = 7.x-1.x
 projects[search_api_site][download][url] = http://git.drupal.org/sandbox/e2thex/2033065.git 
 
+projects[features_template][type] = module
+projects[features_template][subdir] = contrib
+projects[features_template][download][type] = git
+projects[features_template][download][branch] = 7.x-1.x
+projects[features_template][download][url] = http://git.drupal.org/sandbox/e2thex/2042669.git
+
+projects[search_api_solr][type] = module
 projects[search_api_solr][type] = module
 projects[search_api_solr][subdir] = contrib
 projects[search_api_solr][version] = 1.0
