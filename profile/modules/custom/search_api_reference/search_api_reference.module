@@ -1,0 +1,566 @@
+<?php
+/**
+ * @file
+ *
+ * Defines a field type for referencing a Search API result item.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function search_api_reference_menu() {
+  $items['search_api_reference/autocomplete/%/%/%'] = array(
+    'page callback' => '_search_api_reference_autocomplete',
+    'page arguments' => array(2, 3, 4),
+    'access callback' => 'reference_autocomplete_access',
+    'access arguments' => array(2, 3, 4),
+    'type' => MENU_CALLBACK,
+  );
+
+  // TODO - remove before going into production
+  $items['search_api_reference/dev'] = array(
+    'title' => 'Dev Test - search_api_reference',
+    'page callback' => '_search_api_reference_dev',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Temp dev output page for testing various internal functions
+ * TODO - remove before going into production
+ */
+function _search_api_reference_dev() {
+  $output = '';
+
+/*
+  $views = _search_api_reference_views();
+  foreach ($views as $key => $display) {
+    list($name, $display_id) = explode(':', $key);
+    $view = views_get_view($name);
+    dpm($view); continue;
+    if ($view) {
+      $view->set_arguments(explode(',', '1, 2, 3'));
+      $view->execute($display_id);
+      $results = $view->result;
+      dpm($results);
+    }
+  }
+*/
+
+  $view = views_get_view('search_api_view');
+  $view->set_arguments(array('http://esummerfield.sanmateo.p2devcloud.com/site-page/jkkjk+http://esummerfield.sanmateo.p2devcloud.com/site-page/bob-here'));
+  $view->execute();
+  dpm($view->result);
+
+/*
+  module_load_include('inc', 'views', 'includes/handlers');
+  $handler = views_break_phrase_string('http://esummerfield.sanmateo.p2devcloud.com/site-page/jkkjk+http://esummerfield.sanmateo.p2devcloud.com/site-page/bob-here');
+  dpm($handler);
+*/
+
+  return $output;
+}
+
+/**
+ * Implements hook_field_info().
+ */
+function search_api_reference_field_info() {
+  return array(
+    'search_api_reference' => array(
+      'label'             => t('Search API reference'),
+      'description'       => t('This field stores the ID of a related Search API result item'),
+      'settings'          => array(
+        'view' => array(
+          'view_name' => '',
+          'display_name' => '',
+          'args' => array(),
+        ),
+      ),
+      'default_widget'    => 'search_api_reference_autocomplete',
+      'default_formatter' => 'search_api_reference_views',
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_settings_form().
+ */
+function search_api_reference_field_settings_form($field, $instance, $has_data) {
+  $settings = $field['settings'];
+
+  $form = array();
+  if (module_exists('views')) {
+    $view_settings = $settings['view'];
+
+    $form['view'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Views - Items that can be referenced'),
+      '#collapsible' => FALSE,
+      '#collapsed' => FALSE,
+      '#description' => t('The list of Search API result items that can be referenced are provided by a view (Views module) created from a Search API index (search_api_views)'),
+      '#element_validate' => array('_search_api_reference_view_settings_validate'),
+    );
+
+    $views_options = _search_api_reference_views();
+    if ($views_options) {
+      $views_options = array('' => '<' . t('none') . '>') + $views_options;
+      $default = empty($view_settings['view_name']) ? '' : $view_settings['view_name'] . ':' .$view_settings['display_name'];
+      $form['view']['view_and_display'] = array(
+        '#type' => 'select',
+        '#title' => t('View used to select the search result items'),
+        '#options' => $views_options,
+        '#default_value' => $default,
+        '#description' => t('Choose the view and display that select the search result items that can be referenced.<br />Only views created from a Search API index are eligible.'),
+      );
+
+      $default = implode(', ', $view_settings['args']);
+      $form['view']['args'] = array(
+        '#type' => 'textfield',
+        '#title' => t('View arguments'),
+        '#default_value' => $default,
+        '#required' => FALSE,
+        '#description' => t('Provide a comma separated list of arguments to pass to the view.'),
+      );
+    }
+    else {
+      $form['view']['no_views_help'] = array(
+        '#prefix' => '<p>',
+        '#markup' => t('No eligible view was found.'),
+        '#suffix' => '</p>',
+      );
+    }
+  }
+  else {
+    $form['view']['no_views_help'] = array(
+      '#prefix' => '<p>',
+      '#markup' => t('Views module is not enabled, no views available.'),
+      '#suffix' => '</p>',
+    );
+  }
+
+  return $form;
+}
+
+/**
+ * Validate callback for the 'view settings' fieldset.
+ *
+ * Puts back the various form values in the expected shape.
+ */
+function _search_api_reference_view_settings_validate($element, &$form_state, $form) {
+  // Split view name and display name from the 'view_and_display' value.
+  if (!empty($element['view_and_display']['#value'])) {
+    list($view, $display) = explode(':', $element['view_and_display']['#value']);
+  }
+  else {
+    $view = '';
+    $display = '';
+  }
+
+  // Explode the 'args' string into an actual array. Beware, explode() turns an
+  // empty string into an array with one empty string. We'll need an empty array
+  // instead.
+  $args_string = trim($element['args']['#value']);
+  $args = ($args_string === '') ? array() : array_map('trim', explode(',', $args_string));
+
+  $value = array('view_name' => $view, 'display_name' => $display, 'args' => $args);
+  form_set_value($element, $value, $form_state);
+}
+
+/**
+ * Implements hook_field_validate().
+ */
+function search_api_reference_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+}
+
+/**
+ * Implements hook_field_prepare_view().
+ */
+function search_api_reference_field_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items) {
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function search_api_reference_field_is_empty($item, $field) {
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function search_api_reference_field_formatter_info() {
+  return array(
+    'search_api_reference_views' => array(
+      'label'             => t('Search API View'),
+      'description'       => t('Leverages a Search API View to display items'),
+      'field types'       => array('search_api_reference'),
+      'settings'          => array(
+        'view' => array(
+          'view_name' => '',
+          'display_name' => '',
+          'args' => array(),
+        ),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function search_api_reference_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {  $settings = $field['settings'];
+  $display = $instance['display'][$view_mode];
+  $view_settings = $display['settings'];
+
+  $element = array();
+  if (module_exists('views')) {
+    $element['view'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Views - Items that can be referenced'),
+      '#collapsible' => FALSE,
+      '#collapsed' => FALSE,
+      '#description' => t('The Search API result items can be rendered by a view (Views module) created from a Search API index (search_api_views)'),
+      '#element_validate' => array('_search_api_reference_view_settings_validate'),
+    );
+
+    $views_options = _search_api_reference_views();
+    if ($views_options) {
+      $views_options = array('' => '<' . t('none') . '>') + $views_options;
+      $default = empty($view_settings['view_name']) ? '' : $view_settings['view_name'] . ':' .$view_settings['display_name'];
+      $element['view']['view_and_display'] = array(
+        '#type' => 'select',
+        '#title' => t('View used to render the search result items'),
+        '#options' => $views_options,
+        '#default_value' => $default,
+        '#description' => t('Choose the view and display that will be used to render the search result items.<br />Only views created from a Search API index are eligible.'),
+      );
+
+      $default = implode(', ', $view_settings['args']);
+      $element['view']['args'] = array(
+        '#type' => 'textfield',
+        '#title' => t('View arguments'),
+        '#default_value' => $default,
+        '#required' => FALSE,
+        '#description' => t('Provide a comma separated list of arguments to pass to the view.'),
+      );
+    }
+    else {
+      $element['view']['no_views_help'] = array(
+        '#prefix' => '<p>',
+        '#markup' => t('No eligible view was found.'),
+        '#suffix' => '</p>',
+      );
+    }
+  }
+  else {
+    $element['view']['no_views_help'] = array(
+      '#prefix' => '<p>',
+      '#markup' => t('Views module is not enabled, no views available.'),
+      '#suffix' => '</p>',
+    );
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function search_api_reference_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $summary = '';
+
+  if ('search_api_reference_views' == $display['type']) {
+    $summary = t('View: @view_name:@display_name', array('@view_name' => $settings['view']['view_name'], '@display_name' => $settings['view']['display_name']));
+  }
+
+  return $summary;
+}
+
+/**
+ * Implements hook_field_formatter_prepare_view().
+ *
+ * Preload all nodes referenced by items using 'full entity' formatters.
+ */
+function search_api_reference_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function search_api_reference_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+}
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function search_api_reference_field_widget_info() {
+  return array(
+    'search_api_reference_autocomplete' => array(
+      'label'       => t('Autocomplete text field'),
+      'description' => t('Display the list of referenceable Search API items as a textfield with autocomplete behaviour.'),
+      'field types' => array('search_api_reference'),
+      'settings'    => array(
+        'autocomplete_match' => 'contains',
+        'size' => 60,
+        'autocomplete_path' => 'search_api_reference/autocomplete',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_widget_settings_form().
+ */
+function search_api_reference_field_widget_settings_form($field, $instance) {
+  $widget   = $instance['widget'];
+  $defaults = field_info_widget_settings($widget['type']);
+  $settings = array_merge($defaults, $widget['settings']);
+
+  $form = array();
+  if ($widget['type'] == 'search_api_reference_autocomplete') {
+    $form['autocomplete_match'] = array(
+      '#type'             => 'select',
+      '#title'            => t('Autocomplete matching'),
+      '#default_value'    => $settings['autocomplete_match'],
+      '#options'          => array(
+        'starts_with'     => t('Starts with'),
+        'contains'        => t('Contains'),
+      ),
+      '#description'      => t('Select the method used to collect autocomplete suggestions. Note that <em>Contains</em> can cause performance issues on large search indexes.'),
+    );
+    $form['size'] = array(
+      '#type'             => 'textfield',
+      '#title'            => t('Size of textfield'),
+      '#default_value'    => $settings['size'],
+      '#element_validate' => array('_element_validate_integer_positive'),
+      '#required'         => TRUE,
+    );
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function search_api_reference_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  switch ($instance['widget']['type']) {
+    case 'search_api_reference_autocomplete':
+      $element += array(
+        '#type' => 'textfield',
+        '#default_value' => NULL,//isset($items[$delta]['nid']) ? $items[$delta]['nid'] : NULL,
+        '#autocomplete_path' => $instance['widget']['settings']['autocomplete_path'] . '/' . $instance['entity_type'] . '/' . $instance['bundle'] . '/' . $field['field_name'],
+        '#size' => $instance['widget']['settings']['size'],
+        '#maxlength' => NULL,
+        '#element_validate' => array('_search_api_reference_autocomplete_validate'),
+        '#value_callback' => '_search_api_reference_autocomplete_value',
+      );
+      //dpm($element);
+      break;
+  }
+
+  return array('nid' => $element);
+}
+
+/**
+ * Value callback for a search_api_reference autocomplete element.
+ *
+ * Replace the node nid with a node title.
+ */
+function _search_api_reference_autocomplete_value($element, $input = FALSE, $form_state) {
+}
+
+/**
+ * Validation callback for a search_api_reference autocomplete element.
+ */
+function _search_api_reference_autocomplete_validate($element, &$form_state, $form) {
+  $field = field_widget_field($element, $form_state);
+  $instance = field_widget_instance($element, $form_state);
+
+  $value = $element['#value'];
+}
+
+/**
+ * Implements hook_field_widget_error().
+ */
+function search_api_reference_field_widget_error($element, $error, $form, &$form_state) {
+  form_error($element['item_key'], $error['message']);
+}
+
+/**
+ * Menu callback for the autocomplete results.
+ */
+function _search_api_reference_autocomplete($entity_type, $bundle, $field_name, $string = '') {
+  $field = field_info_field($field_name);
+  $instance = field_info_instance($entity_type, $field_name, $bundle);
+
+  $options = array(
+    'string' => $string,
+    'match' => $instance['widget']['settings']['autocomplete_match'],
+    'limit' => 10,
+  );
+  $references = _search_api_reference_potential_references($field, $options);
+  //print_r($references); exit();
+
+  $matches = array();
+  foreach ($references as $id => $row) {
+    if (!empty($row['title'][0])) {
+      $title = $row['title'][0];
+      // Markup is fine in autocompletion results (might happen when rendered
+      // through Views) but we want to remove hyperlinks.
+      $suggestion = $title;//preg_replace('/<a href="([^<]*)">([^<]*)<\/a>/', '$2', $row['rendered']);
+      // Add a class wrapper for a few required CSS overrides.
+      $matches[$title . " [id:$id]"] = '<div class="reference-autocomplete">' . $suggestion . '</div>';
+    }
+  }
+
+  drupal_json_output($matches);
+}
+
+/**
+ * Retrieves an array of candidate referenceable items.
+ *
+ * Copied from node_reference.module and modified to not rely on nodes.
+ *
+ * This info is used in various places (allowed values, autocomplete
+ * results, input validation...). Some of them only need the nids,
+ * others nid + titles, others yet nid + titles + rendered row (for
+ * display in widgets).
+ *
+ * The array we return contains all the potentially needed information,
+ * and lets consumers use the parts they actually need.
+ *
+ * @param $field
+ *   The field definition.
+ * @param $options
+ *   An array of options to limit the scope of the returned list. The following
+ *   key/value pairs are accepted:
+ *   - string: string to filter titles on (used by autocomplete).
+ *   - match: operator to match the above string against, can be any of:
+ *     'contains', 'equals', 'starts_with'. Defaults to 'contains'.
+ *   - ids: array of specific item keys to lookup.
+ *   - limit: maximum size of the the result set. Defaults to 0 (no limit).
+ *
+ * @return
+ *   An array of valid nodes in the form:
+ *   array(
+ *     item_key => array(
+ *       'title' => The result title,
+ *       'rendered' => The text to display in widgets (can be HTML)
+ *     ),
+ *     ...
+ *   )
+ */
+function _search_api_reference_potential_references($field, $options = array()) {
+  // Fill in default options.
+  $options += array(
+    'string' => '',
+    'match' => 'contains',
+    'ids' => array(),
+    'limit' => 0,
+  );
+
+  $results = &drupal_static(__FUNCTION__, array());
+
+  // Create unique id for static cache.
+  $cid = $field['field_name'] . ':' . $options['match'] . ':'
+    . ($options['string'] !== '' ? $options['string'] : implode('-', $options['ids']))
+    . ':' . $options['limit'];
+  if (!isset($results[$cid])) {
+    $references = FALSE;
+    if (module_exists('views') && !empty($field['settings']['view']['view_name'])) {
+      $settings = $field['settings']['view'];
+      $options['title_field'] = 'title';
+      $references = _search_api_reference_potential_references_view($settings['view_name'], $settings['display_name'], $settings['args'], $options);
+    }
+
+    // Store the results.
+    $results[$cid] = $references;
+  }
+
+  return $results[$cid];
+}
+
+/**
+ * Retrieves an array of candidate referenceable entities, defined by a view.
+ *
+ * Copied from references.module and modified to not be tied to entity types.
+ *
+ * @param $view_name
+ *   The name of the view.
+ * @param $display_name
+ *   The name of the view's display. This has to be a 'References' display.
+ * @param $args
+ *   The array of arguments ("contextual filters") for the view.
+ * @param $options
+ *   Array of options to limit the scope of the returned list. This parameter
+ *   is similar to the $options parameter for
+ *   node_reference_potential_references(). An additional key is required:
+ *   - title_field: the name of the column holding entities 'titles' within the
+ *     entity base table.
+ *
+ * @return
+ *   An array of entities, in the format expected by
+ *   node_reference_potential_references().
+ *
+ * @see node_reference_potential_references()
+ * @see _node_reference_potential_references_views()
+ */
+function _search_api_reference_potential_references_view($view_name, $display_name, $args = array(), $options) {
+  // Check that the view is valid and the display still exists.
+  $view = views_get_view($view_name);
+  if (!$view || !isset($view->display[$display_name])) {
+    return FALSE;
+  }
+
+  // If we have no access to the View an empty result should be returned to
+  // avoid triggering the fallback results.
+  if  (!$view->access(array($display_name))) {
+    return array();
+  }
+
+  $view->set_display($display_name);
+
+  // Limit result set size.
+  $limit = !empty($options['limit']) ? $options['limit'] : 0;
+  $view->display_handler->set_option('pager', array('type' => 'some', 'options' => array('items_per_page' => $limit)));
+
+  // Make sure the query is not cached
+  $view->is_cacheable = FALSE;
+
+  // Get the results.
+  $args[] = $options['string'];
+  $view->set_arguments($args);
+  $view->execute($display_name);
+  $results = array();
+  foreach ($view->result as $row) {
+    $results[$row->entity] = $row->_entity_properties;
+  }
+
+  return $results;
+}
+
+/**
+ * Util method for retrieving list of search_api views we could possibly use
+ */
+function _search_api_reference_views() {
+  $views = views_get_enabled_views();
+  $options = array();
+
+  foreach ($views as $view) {
+    $views_data = views_fetch_data($view->base_table);
+    // Specifically pick out search_api views
+    if (isset($views_data['table']['base']['query class']) && 'search_api_views_query' == $views_data['table']['base']['query class']) {
+      foreach ($view->display as $display_id => $display) {
+        // Single out references displays
+        $options[$view->name . ':' . $display_id] = $view->human_name .' - ' . $display->display_title;
+      }
+    }
+  }
+
+  return $options;
+}
