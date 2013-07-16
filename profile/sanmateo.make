@@ -63,6 +63,10 @@ projects[addressfield][subdir] = contrib
 projects[addressfield][version] = 1.0-beta2
 projects[addressfield][patch][] = http://drupal.org/files/1263316%281%29.patch
 
+projects[office_hours][type] = module
+projects[office_hours][subdir] = contrib
+projects[office_hours][version] = 1.3
+
 projects[workbench][type] = module
 projects[workbench][subdir] = contrib
 projects[workbench][version] = 1.2

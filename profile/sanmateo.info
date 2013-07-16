@@ -70,7 +70,8 @@ dependencies[] = delta
 dependencies[] = delta_ui
 dependencies[] = context_condition_admin_theme
 dependencies[] = libraries
-
+dependencies[] = addressfield
+dependencies[] = office_hours
 
 dependencies[] = phase2_profile
 ;dependencies[] = openpublic_breaking_news
@@ -93,7 +94,7 @@ dependencies[] = openpublic_accessibility
 
 
 ; OpenSanMateo
-
+dependencies[] = opensanmateo_location
 
 
 ;DEVELOPMENT ONLY
