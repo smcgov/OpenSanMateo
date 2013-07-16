@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the search_api_reference module.
+ */
+
+/**
+ * Implements hook_field_schema().
+ */
+function search_api_reference_field_schema($field) {
+  $columns = array(
+    'item_key' => array(
+      'description' => 'Search API index-specific item key',
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => TRUE,
+      'default' => '',
+    ),
+    'item_index' => array(
+      'description' => 'Search API index',
+      'type' => 'int',
+      'unsigned' => TRUE,
+      'not null' => TRUE,
+    ),
+  );
+
+  return array(
+    'columns' => $columns,
+    'indexes' => array('item_key' => array('item_key')),
+  );
+}
