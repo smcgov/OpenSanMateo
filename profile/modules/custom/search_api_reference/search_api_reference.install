@@ -10,23 +10,17 @@
  */
 function search_api_reference_field_schema($field) {
   $columns = array(
-    'item_key' => array(
-      'description' => 'Search API index-specific item key',
+    'search_item_key' => array(
+      'description' => 'Search API item key',
       'type' => 'varchar',
       'length' => 255,
       'not null' => TRUE,
       'default' => '',
     ),
-    'item_index' => array(
-      'description' => 'Search API index',
-      'type' => 'int',
-      'unsigned' => TRUE,
-      'not null' => TRUE,
-    ),
   );
 
   return array(
     'columns' => $columns,
-    'indexes' => array('item_key' => array('item_key')),
+    'indexes' => array('search_item_key' => array('search_item_key')),
   );
 }
