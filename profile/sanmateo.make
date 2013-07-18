@@ -276,6 +276,7 @@ projects[search_api][type] = module
 projects[search_api][subdir] = contrib
 projects[search_api][version] = 1.7
 projects[search_api][patch][] = https://drupal.org/files/search_api-url-arg-multivalue-2040111-01.patch
+projects[search_api][patch][] = https://drupal.org/files/search_api_views-add-search-api-id-2045365-01.patch
 
 projects[search_api_site][type] = module
 projects[search_api_site][subdir] = contrib
@@ -287,6 +288,7 @@ projects[search_api_solr][type] = module
 projects[search_api_solr][subdir] = contrib
 projects[search_api_solr][version] = 1.0
 projects[search_api_solr][patch][] =  http://drupal.org/files/1776534.patch
+projects[search_api_solr][patch][] =  https://drupal.org/files/search_api_solr-search-api-id-fix-2045355-01.patch
 
 projects[panelizer][type] = module
 projects[panelizer][subdir] = contrib
