@@ -72,6 +72,10 @@ dependencies[] = context_condition_admin_theme
 dependencies[] = libraries
 dependencies[] = addressfield
 dependencies[] = office_hours
+dependencies[] = oauth
+dependencies[] = twitter
+dependencies[] = twitter_pull
+dependencies[] = twitter_pull_pane
 
 dependencies[] = phase2_profile
 ;dependencies[] = openpublic_breaking_news
