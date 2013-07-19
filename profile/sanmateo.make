@@ -307,5 +307,23 @@ projects[facetapi][type] = module
 projects[facetapi][subdir] = contrib
 projects[facetapi][version] = 1.3
 
+projects[oauth][type] = module
+projects[oauth][subdir] = contrib
+projects[oauth][version] = 3.1
+
+projects[twitter][type] = module
+projects[twitter][subdir] = contrib
+projects[twitter][version] = 5.8
+
+projects[twitter_pull][type] = module
+projects[twitter_pull][subdir] = contrib
+projects[twitter_pull][version] = 2.0-alpha1
+
+projects[twitter_pull_pane][type] = module
+projects[twitter_pull_pane][subdir] = contrib
+projects[twitter_pull_pane][download][type] = git
+projects[twitter_pull_pane][download][branch] = master
+projects[twitter_pull_pane][download][url] = http://git.drupal.org/sandbox/pontusnilsson/1371892.git
+
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.4.16.zip
