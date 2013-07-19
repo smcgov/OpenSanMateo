@@ -10,7 +10,7 @@
  */
 function search_api_reference_field_schema($field) {
   $columns = array(
-    'search_item_key' => array(
+    'search_api_id' => array(
       'description' => 'Search API item key',
       'type' => 'varchar',
       'length' => 255,
