@@ -82,21 +82,13 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['type']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['type']['format_name'] = 1;
-  /* Field: Indexed Node: Release Date */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_release_date']['id'] = 'field_release_date';
   $handler->display->display_options['fields']['field_release_date']['table'] = 'search_api_index_san_mateo_content_index';
   $handler->display->display_options['fields']['field_release_date']['field'] = 'field_release_date';
   $handler->display->display_options['fields']['field_release_date']['label'] = '';
   $handler->display->display_options['fields']['field_release_date']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_release_date']['settings'] = array(
-    'format_type' => 'long',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_repeat_rule' => 'show',
-  );
-  /* Sort criterion: Indexed Node: Release Date */
+  /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['field_release_date']['id'] = 'field_release_date';
   $handler->display->display_options['sorts']['field_release_date']['table'] = 'search_api_index_san_mateo_content_index';
   $handler->display->display_options['sorts']['field_release_date']['field'] = 'field_release_date';
