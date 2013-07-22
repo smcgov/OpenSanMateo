@@ -18,7 +18,15 @@ function opensanmateo_search_features_template_info() {
       'field' => 'field_do_not_index',
       'plugin' => 'field_instance',
       'deleted' => !$present,
-      'template' => 'opensanmateo_search_field_default_field_instances_template'
+      'template' => 'opensanmateo_search_field_default_field_instances_dni_template'
+    );
+    $data[] = array(
+      'entity_type' => 'node',
+      'bundle_type' => $content_type,
+      'field' => 'field_quicj_search',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'opensanmateo_search_field_default_field_instances_qs_template'
     );
   }
   return $data;
@@ -27,7 +35,7 @@ function opensanmateo_search_features_template_info() {
 /**
  * Implements hook_field_default_field_instances_template().
  */
-function opensanmateo_search_field_default_field_instances_template() {
+function opensanmateo_search_field_default_field_instances_dni_template() {
   $field_instances = array();
 
   // Exported field_instance: 'node-site_page-field_do_not_index'
