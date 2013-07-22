@@ -327,5 +327,9 @@ projects[twitter_pull_pane][download][type] = git
 projects[twitter_pull_pane][download][branch] = master
 projects[twitter_pull_pane][download][url] = http://git.drupal.org/sandbox/pontusnilsson/1371892.git
 
+projects[sharethis][type] = module
+projects[sharethis][subdir] = contrib
+projects[sharethis][version] = 2.5
+
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.4.16.zip
