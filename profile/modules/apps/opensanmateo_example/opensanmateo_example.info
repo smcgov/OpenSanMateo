@@ -1,5 +1,5 @@
-name = OpenSanMateo Search
-description = Allows for Search accross the sanmateo platform
+name = OpenSanMateo Example
+description = Example App
 core = 7.x
 package = OpenSanMateo
 php = 5.2.4

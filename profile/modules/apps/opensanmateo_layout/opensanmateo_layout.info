@@ -5,6 +5,7 @@ package = OpenSanMateo
 php = 5.2.4
 dependencies[] = ctools
 dependencies[] = panelizer
+dependencies[] = panels_ipe
 dependencies[] = strongarm
 features[ctools][] = panelizer:panelizer:1
 features[ctools][] = strongarm:strongarm:1
