@@ -58,21 +58,36 @@ function opensanmateo_search_status() {
 
   //set up the content index status item
   $index = search_api_index_load('san_mateo_content_index');
+  $qs_index = search_api_index_load('san_mateo_quick_search_index');
   $status['items']['index'] = array(
       #'severity' =>    REQUIREMENT_WARNING, //REQUIREMENT_OK REQUIREMENT_INFO, REQUIREMENT_ERROR
-      'title' => 'Content Index',
-      'action' => array(l("Edit", "admin/config/search/search_api/index/san_mateo_content_index/edit",  array('query'  => drupal_get_destination()))),
-      'description' => t("The content Server settings are currently Default"),
+      'title' => 'Default State of Indexes',
+      'action' => array(
+        l("Edit Content Index", "admin/config/search/search_api/index/san_mateo_content_index/edit",  array('query'  => drupal_get_destination())),
+        l("Edit Quick Search Index", "admin/config/search/search_api/index/san_mateo_quick_search_index/edit",  array('query'  => drupal_get_destination()))
+      ),
+      'description' => t("All Indexes are Default"),
       'severity' =>    REQUIREMENT_OK, //REQUIREMENT_OK REQUIREMENT_INFO, REQUIREMENT_ERROR
     );
   
 
   if (($index->status & ENTITY_OVERRIDDEN) == ENTITY_OVERRIDDEN) {
-    $status['items']['index']['description'] = t("The content Server settings are not in the default state this could make thing not work properly");
+    $status['items']['index']['descriptions']['content'] = t("The content Server settings are not in the default state this could make thing not work properly");
     $status['items']['index']['severity'] = REQUIREMENT_WARNING;
-    $status['items']['index']['action'][] = l("Revert", "admin/config/search/search_api/index/san_mateo_content_index/delete",  array('query' => drupal_get_destination()));
+    $status['items']['index']['action'][] = l("Revert Content Index", "admin/config/search/search_api/index/san_mateo_content_index/delete",  array('query' => drupal_get_destination()));
 
   }
+  if (($qs_index->status & ENTITY_OVERRIDDEN) == ENTITY_OVERRIDDEN) {
+    $status['items']['index']['descriptions']['qs'] = t("The content Server settings are not in the default state this could make thing not work properly");
+    $status['items']['index']['severity'] = REQUIREMENT_WARNING;
+    $status['items']['index']['action'][] = l("Revert Quick Search Index", "admin/config/search/search_api/index/san_mateo_quick_search_index/delete",  array('query' => drupal_get_destination()));
+
+  }
+  if(isset($status['items']['index']['descriptions'])) {
+    $status['items']['index']['description'] = implode("<br />", $status['items']['index']['descriptions']);
+  
+  }
+
   $istatus = search_api_index_status($index);
   $percentage = ($istatus['total']) ? (int) (100 * $istatus['indexed'] / $istatus['total']) : 0;
   $status['items']['index_status'] = array(
@@ -87,6 +102,25 @@ function opensanmateo_search_status() {
   elseif ($percentage <100) {
     $status['items']['index_status']['severity'] = REQUIREMENT_WARNING;
   }
+
+  $istatus = search_api_index_status($qs_index);
+  $percentage = ($istatus['total']) ? (int) (100 * $istatus['indexed'] / $istatus['total']) : 0;
+  $status['items']['qs_index_status'] = array(
+    'title' => 'Quick Search Index Status',
+    'action'=> array(l("Index/re-index Items", "admin/config/search/search_api/index/san_mateo_quick_search_index/status",  array('query' => drupal_get_destination()))),
+    'description' => t('About @percentage% of all items have been indexed in their latest version (@indexed / @total).', array('@indexed' => $istatus['indexed'], '@total' => $istatus['total'], '@percentage' => $percentage)),
+    'severity' =>    REQUIREMENT_OK, //REQUIREMENT_OK REQUIREMENT_INFO, REQUIREMENT_ERROR
+  );
+  if ($percentage == 0) {
+    $status['items']['qs_index_status']['severity'] = REQUIREMENT_ERROR;
+  }
+  elseif ($percentage <100) {
+    $status['items']['qs_index_status']['severity'] = REQUIREMENT_WARNING;
+  }
+
+
+
+
 
 
   return $status;
