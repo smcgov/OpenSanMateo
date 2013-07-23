@@ -293,6 +293,12 @@ projects[features_template][download][type] = git
 projects[features_template][download][branch] = 7.x-1.x
 projects[features_template][download][url] = http://git.drupal.org/sandbox/e2thex/2042669.git
 
+projects[quick_search][type] = module
+projects[quick_search][subdir] = contrib
+projects[quick_search][download][type] = git
+projects[quick_search][download][branch] = 7.x-1.x
+projects[quick_search][download][url] = http://git.drupal.org/sandbox/jec006/1524412.git
+
 projects[search_api_solr][type] = module
 projects[search_api_solr][type] = module
 projects[search_api_solr][subdir] = contrib
@@ -317,15 +323,19 @@ projects[twitter][version] = 5.8
 
 projects[twitter_pull][type] = module
 projects[twitter_pull][subdir] = contrib
-projects[entity_boxes][download][type] = git
-projects[entity_boxes][download][url] = http://git.drupal.org/project/twitter_pull.git
-projects[entity_boxes][download][revision] = 156a667778ee95a7ebddd52dfd05009444188dfc
+projects[twitter_pull][download][type] = git
+projects[twitter_pull][download][url] = http://git.drupal.org/project/twitter_pull.git
+projects[twitter_pull][download][revision] = 156a667778ee95a7ebddd52dfd05009444188dfc
 
 projects[twitter_pull_pane][type] = module
 projects[twitter_pull_pane][subdir] = contrib
 projects[twitter_pull_pane][download][type] = git
 projects[twitter_pull_pane][download][branch] = master
 projects[twitter_pull_pane][download][url] = http://git.drupal.org/sandbox/pontusnilsson/1371892.git
+
+projects[sharethis][type] = module
+projects[sharethis][subdir] = contrib
+projects[sharethis][version] = 2.5
 
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.4.16.zip
