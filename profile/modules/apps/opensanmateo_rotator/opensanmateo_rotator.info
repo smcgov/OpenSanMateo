@@ -3,3 +3,7 @@ description = App that provides a rotator/carousel pane for San Mateo.
 core = 7.x
 package = OpenSanMateo
 php = 5.2.4
+dependencies[] = ctools
+dependencies[] = flexslider
+dependencies[] = flexslider_views
+dependencies[] = libraries
