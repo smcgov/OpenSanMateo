@@ -6,6 +6,24 @@
  */
 
 /**
+ * Implements hook_install
+ */
+function search_api_reference_install() {
+  if (db_table_exists('cache_views')) {
+    cache_clear_all(NULL, 'cache_views', TRUE);
+  }
+}
+
+/**
+ * Implements hook_uninstall
+ */
+function search_api_reference_uninstall() {
+  if (db_table_exists('cache_views')) {
+    cache_clear_all(NULL, 'cache_views', TRUE);
+  }
+}
+
+/**
  * Implements hook_field_schema().
  */
 function search_api_reference_field_schema($field) {
