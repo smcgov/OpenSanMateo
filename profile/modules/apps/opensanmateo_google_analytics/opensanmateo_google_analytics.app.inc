@@ -34,9 +34,9 @@ function opensanmateo_google_analytics_status() {
   //set up the solr server status item
   $status['items']['google_analytics'] = array(
     'title' => 'Google Analytics web property ID',
-    'action' => array(l("View analytics", "path/to/thing/to/do",  array('query'  => drupal_get_destination()))),
+    'action' => array(l("View analytics", "http://www.google.com/analytics", array('attributes' => array('target' => '_blank')))),
     'description' => t("Google Analytics ID has been set."),
-    'severity' =>    REQUIREMENT_OK, //REQUIREMENT_OK REQUIREMENT_INFO,REQUIREMENT_WARNING, REQUIREMENT_ERROR
+    'severity' => REQUIREMENT_OK, //REQUIREMENT_OK REQUIREMENT_INFO,REQUIREMENT_WARNING, REQUIREMENT_ERROR
   );
   $id = variable_get('googleanalytics_account', 'UA-');
   if ($id == 'UA-' || empty($id)) {
