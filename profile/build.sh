@@ -43,7 +43,7 @@ if [ "$1" = "--acquia" ]; then
   NOMAKE=0
   GIT_REPO='git@bitbucket.org:phase2tech/sanmateo.git'
 else
-  DRUSH_OPTS='--working-copy'
+  #DRUSH_OPTS='--working-copy'
   TARGET=$1
 fi
 
@@ -144,6 +144,7 @@ if [ "$TYPE" = 'acquia' ]; then
 else
   # Do the build
   drush make $DRUSH_OPTS $CALLPATH/$MAKEFILE $TARGET
+  echo "drush make $DRUSH_OPTS $CALLPATH/$MAKEFILE $TARGET"
   echo $TARGET
   DRUPAL=`cd $TARGET; pwd`
   ln -s $ABS_CALLPATH $DRUPAL/profiles/sanmateo
