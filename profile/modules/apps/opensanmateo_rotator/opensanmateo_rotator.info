@@ -7,3 +7,5 @@ dependencies[] = ctools
 dependencies[] = flexslider
 dependencies[] = flexslider_views
 dependencies[] = libraries
+dependencies[] = link
+features[features_api][] = api:2
