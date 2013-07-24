@@ -55,8 +55,8 @@ projects[filefield_sources][version] = 1.7
 
 projects[libraries][type] = module
 projects[libraries][subdir] = contrib
-projects[libraries][version] = 1.0
-projects[libraries][patch][] = http://drupal.org/files/libraries-profile_inheritance-1783598-2.patch
+projects[libraries][version] = 2.1
+projects[libraries][patch][] = http://drupal.org/files/libraries-profile_inheritance-1783598-4.patch
 
 projects[addressfield][type] = module
 projects[addressfield][subdir] = contrib
@@ -103,10 +103,7 @@ projects[calendar][patch][] = http://drupal.org/files/calendar-granularity-14452
 
 projects[flexslider][type] = module
 projects[flexslider][subdir] = contrib
-projects[flexslider][version] = 1.x-dev
-projects[flexslider][download][type] = git
-projects[flexslider][download][url] = http://git.drupal.org/project/flexslider.git
-projects[flexslider][download][revision] = 78daf7a3e465f4c3fdfaee2e7574ab5eec45109b
+projects[flexslider][version] = 2.0-alpha1
 
 projects[embeddable][type] = module
 projects[embeddable][subdir] = contrib

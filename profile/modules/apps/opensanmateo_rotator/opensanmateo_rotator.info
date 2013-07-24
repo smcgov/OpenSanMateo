@@ -1,0 +1,5 @@
+name = OpenSanMateo Rotator
+description = App that provides a rotator/carousel pane for San Mateo.
+core = 7.x
+package = OpenSanMateo
+php = 5.2.4
