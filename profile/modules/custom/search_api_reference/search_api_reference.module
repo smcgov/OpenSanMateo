@@ -17,51 +17,7 @@ function search_api_reference_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  // TODO - remove before going into production
-  $items['search_api_reference/dev'] = array(
-    'title' => 'Dev Test - search_api_reference',
-    'page callback' => '_search_api_reference_dev',
-    'access arguments' => array('administer site configuration'),
-    'type' => MENU_NORMAL_ITEM,
-  );
-
   return $items;
-}
-
-/**
- * Temp dev output page for testing various internal functions
- * TODO - remove before going into production
- */
-function _search_api_reference_dev() {
-  $output = '';
-
-/*
-  $views = _search_api_reference_views();
-  foreach ($views as $key => $display) {
-    list($name, $display_id) = explode(':', $key);
-    $view = views_get_view($name);
-    dpm($view); continue;
-    if ($view) {
-      $view->set_arguments(explode(',', '1, 2, 3'));
-      $view->execute($display_id);
-      $results = $view->result;
-      dpm($results);
-    }
-  }
-*/
-
-  $view = views_get_view('search_api_view');
-  $view->set_arguments(array('http://esummerfield.sanmateo.p2devcloud.com/site-page/jkkjk+http://esummerfield.sanmateo.p2devcloud.com/site-page/bob-here'));
-  $view->execute();
-  dpm($view->result);
-
-/*
-  module_load_include('inc', 'views', 'includes/handlers');
-  $handler = views_break_phrase_string('http://esummerfield.sanmateo.p2devcloud.com/site-page/jkkjk+http://esummerfield.sanmateo.p2devcloud.com/site-page/bob-here');
-  dpm($handler);
-*/
-
-  return $output;
 }
 
 /**
@@ -404,11 +360,12 @@ function _search_api_reference_autocomplete($entity_type, $bundle, $field_name, 
     'limit' => 10,
   );
   $references = _search_api_reference_potential_references($field, $options);
-  //print_r($references); exit();
+  //echo '<pre>' . print_r($references, TRUE) . '</pre>'; exit();
 
   $matches = array();
-  foreach ($references as $id => $row) {
+  foreach ($references as $row) {
     if (!empty($row['title'][0])) {
+      $id = $row['search_api_solr_id'];
       $title = $row['title'][0];
       // Markup is fine in autocompletion results (might happen when rendered
       // through Views) but we want to remove hyperlinks.
@@ -563,4 +520,40 @@ function _search_api_reference_views() {
   }
 
   return $options;
+}
+
+/**
+ * Implements hook_views_data_alter
+ *
+ * Leveraged to add the search_api_id field to the View results
+ */
+function search_api_reference_views_data_alter(&$data) {
+  foreach (search_api_index_load_multiple(FALSE) as $index) {
+    // Fill in base data.
+    $key = 'search_api_index_' . $index->machine_name;
+    if (isset($data[$key])) {
+      //dpm($data[$key]);
+      $data[$key]['search_api_solr_id'] = array(
+        'group' => t('Search'),
+        'title' => t('Solr item ID'),
+        'help' => t('The search result item ID from Solr.'),
+        'field' => array(
+          'type' => 'text',
+          'handler' => 'entity_views_handler_field_text',
+        ),
+        'argument' => array(
+          'handler' => 'SearchApiViewsHandlerArgument',
+        ),
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_search_api_solr_field_mapping_alter
+ *
+ * Leveraged to correctly map the Solr item ID field to something we can use in Views
+ */
+function search_api_reference_search_api_solr_field_mapping_alter(SearchApiIndex $index, array &$fields) {
+  $fields['search_api_solr_id'] = 'id';
 }
