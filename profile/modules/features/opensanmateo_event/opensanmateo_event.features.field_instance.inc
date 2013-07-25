@@ -264,45 +264,6 @@ function opensanmateo_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_quick_search'
-  $field_instances['node-event-field_quick_search'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_quick_search',
-    'label' => 'Quick Search',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 8,
-    ),
-  );
-
   // Exported field_instance: 'node-event-field_thumbnail_image'
   $field_instances['node-event-field_thumbnail_image'] = array(
     'bundle' => 'event',
@@ -367,7 +328,6 @@ function opensanmateo_event_field_default_field_instances() {
   t('Event Type');
   t('Files');
   t('Main Image');
-  t('Quick Search');
 
   return $field_instances;
 }
