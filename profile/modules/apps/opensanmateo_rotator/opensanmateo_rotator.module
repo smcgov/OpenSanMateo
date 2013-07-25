@@ -1,0 +1,20 @@
+<?php
+/**
+ * @file
+ * Code for the OpenSanMateo Rotator feature.
+ */
+
+include_once 'opensanmateo_rotator.features.inc';
+
+/**
+ * Implements hook_entity_info_alter()
+ * 
+ * Defines a new bundle type for the rotator pane
+ */
+function opensanmateo_rotator_entity_info_alter(&$entity_info) {
+  $entity_info['fieldable_panels_pane']['bundles']['rotator_panels_pane'] = $entity_info['fieldable_panels_pane']['bundles']['fieldable_panels_pane'];
+  $entity_info['fieldable_panels_pane']['bundles']['rotator_panels_pane']['label'] = 'Rotator Pane';
+  $entity_info['fieldable_panels_pane']['bundles']['rotator_panels_pane']['admin']['path'] = 'admin/structure/fieldable-panels-panes/manage/%rotator_panels_panes_type';
+  $entity_info['fieldable_panels_pane']['bundles']['rotator_panels_pane']['admin']['real path'] = 'admin/structure/fieldable-panels-panes/manage/rotator-panels-pane';
+}
+
