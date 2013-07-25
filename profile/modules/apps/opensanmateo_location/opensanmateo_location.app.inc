@@ -25,7 +25,7 @@ function opensanmateo_location_app_configure_form() {
   return $form;
 }
 function opensanmateo_location_app_configure_form_submit($form,$form_state) {
-  #features_template_revert();
+  features_template_revert();
 }
 
 /**

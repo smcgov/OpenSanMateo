@@ -5,3 +5,25 @@
  */
 
 include_once 'opensanmateo_location.features.inc';
+include_once 'opensanmateo_location.location_address.inc';
+
+/**
+ * implements hook_features_template_info()
+ */
+function opensanmateo_location_features_template_info() {
+  $content_types = variable_get('opensanmateo_location_content_types_with_location', array());
+  $data = array();
+  foreach($content_types as $content_type => $present) {
+    $data[] = array(
+      'entity_type' => 'node',
+      'bundle_type' => $content_type,
+      'field' => 'location_address',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'open_sanmateo_location_field_default_field_instances_template'
+    );
+  }
+  return $data;
+}
+
+
