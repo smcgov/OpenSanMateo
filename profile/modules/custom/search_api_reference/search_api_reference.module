@@ -141,6 +141,8 @@ function search_api_reference_field_prepare_view($entity_type, $entities, $field
  * Implements hook_field_is_empty().
  */
 function search_api_reference_field_is_empty($item, $field) {
+  return !$item['search_item_key'];
+
 }
 
 /**
@@ -166,7 +168,8 @@ function search_api_reference_field_formatter_info() {
 /**
  * Implements hook_field_formatter_settings_form().
  */
-function search_api_reference_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {  $settings = $field['settings'];
+function search_api_reference_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {  
+  $settings = $field['settings'];
   $display = $instance['display'][$view_mode];
   $view_settings = $display['settings'];
 
@@ -192,15 +195,17 @@ function search_api_reference_field_formatter_settings_form($field, $instance, $
         '#default_value' => $default,
         '#description' => t('Choose the view and display that will be used to render the search result items.<br />Only views created from a Search API index are eligible.'),
       );
-
+      /*
+       * we are not currently using this 
       $default = implode(', ', $view_settings['args']);
       $element['view']['args'] = array(
         '#type' => 'textfield',
-        '#title' => t('View arguments'),
+        '#title' => t('Aditional View arguments'),
         '#default_value' => $default,
         '#required' => FALSE,
         '#description' => t('Provide a comma separated list of arguments to pass to the view.'),
       );
+      */
     }
     else {
       $element['view']['no_views_help'] = array(
@@ -249,6 +254,28 @@ function search_api_reference_field_formatter_prepare_view($entity_type, $entiti
  * Implements hook_field_formatter_view().
  */
 function search_api_reference_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $field_data = $entity->{$field['field_name']};
+  if(isset($field_data[$langcode])) {
+    $items = $field_data[$langcode];
+    $nids = implode("+", array_map(create_function('$v', ' return search_api_reference_extract_key($v["search_item_key"]);'), $items));
+    $settings = $display['settings'];
+    $view_name = $display['settings']['view']['view_name'];
+    $view_display_name = $display['settings']['view']['display_name'];
+    $entity_info = entity_get_info($entity_type);        
+    $element[0]['#markup'] = views_embed_view($view_name, $view_display_name, $nids, $entity->{$entity_info['entity keys']['id']});
+  }
+
+  return $element;
+}
+
+/**
+ * a function to extract the key from the title and key that we store
+ *
+ * @see search_api_reference_field_formatter_view for use
+ */
+function search_api_reference_extract_key($value) {
+  return preg_replace("/.*\[id:(.*)\].*/", '$1', $value);
 }
 
 /**
@@ -308,18 +335,17 @@ function search_api_reference_field_widget_form(&$form, &$form_state, $field, $i
     case 'search_api_reference_autocomplete':
       $element += array(
         '#type' => 'textfield',
-        '#default_value' => NULL,//isset($items[$delta]['nid']) ? $items[$delta]['nid'] : NULL,
+        '#default_value' => isset($items[$delta]['search_item_key']) ? $items[$delta]['search_item_key'] : NULL,
         '#autocomplete_path' => $instance['widget']['settings']['autocomplete_path'] . '/' . $instance['entity_type'] . '/' . $instance['bundle'] . '/' . $field['field_name'],
         '#size' => $instance['widget']['settings']['size'],
         '#maxlength' => NULL,
         '#element_validate' => array('_search_api_reference_autocomplete_validate'),
         '#value_callback' => '_search_api_reference_autocomplete_value',
       );
-      //dpm($element);
       break;
   }
 
-  return array('nid' => $element);
+  return array('search_item_key' => $element);
 }
 
 /**
@@ -365,7 +391,7 @@ function _search_api_reference_autocomplete($entity_type, $bundle, $field_name, 
   $matches = array();
   foreach ($references as $row) {
     if (!empty($row['title'][0])) {
-      $id = $row['search_api_solr_id'];
+      $id = $row['search_api_site_id'];
       $title = $row['title'][0];
       // Markup is fine in autocompletion results (might happen when rendered
       // through Views) but we want to remove hyperlinks.
@@ -520,40 +546,4 @@ function _search_api_reference_views() {
   }
 
   return $options;
-}
-
-/**
- * Implements hook_views_data_alter
- *
- * Leveraged to add the search_api_id field to the View results
- */
-function search_api_reference_views_data_alter(&$data) {
-  foreach (search_api_index_load_multiple(FALSE) as $index) {
-    // Fill in base data.
-    $key = 'search_api_index_' . $index->machine_name;
-    if (isset($data[$key])) {
-      //dpm($data[$key]);
-      $data[$key]['search_api_solr_id'] = array(
-        'group' => t('Search'),
-        'title' => t('Solr item ID'),
-        'help' => t('The search result item ID from Solr.'),
-        'field' => array(
-          'type' => 'text',
-          'handler' => 'entity_views_handler_field_text',
-        ),
-        'argument' => array(
-          'handler' => 'SearchApiViewsHandlerArgument',
-        ),
-      );
-    }
-  }
-}
-
-/**
- * Implements hook_search_api_solr_field_mapping_alter
- *
- * Leveraged to correctly map the Solr item ID field to something we can use in Views
- */
-function search_api_reference_search_api_solr_field_mapping_alter(SearchApiIndex $index, array &$fields) {
-  $fields['search_api_solr_id'] = 'id';
 }

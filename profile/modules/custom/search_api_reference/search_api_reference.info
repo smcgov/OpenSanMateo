@@ -7,4 +7,5 @@ core = 7.x
 dependencies[] = views
 dependencies[] = search_api
 dependencies[] = search_api_views
+dependencies[] = search_api_site
 dependencies[] = references
