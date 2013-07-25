@@ -53,6 +53,7 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_aggregation_3" : { "type" : "text" },
         "search_api_aggregation_2" : { "type" : "text" },
         "search_api_site_hash" : { "type" : "uri" },
+        "search_api_site_id" : { "type" : "string" },
         "body:value" : { "type" : "text" }
       },
       "data_alter_callbacks" : {

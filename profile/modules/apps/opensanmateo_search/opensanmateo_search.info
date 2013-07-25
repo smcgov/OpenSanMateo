@@ -32,4 +32,5 @@ features[panels_mini][] = search_facets
 features[search_api_index][] = san_mateo_content_index
 features[search_api_index][] = san_mateo_quick_search_index
 features[search_api_server][] = san_mateo_solr_server
+features[views_view][] = opensanmateo_lookup
 features[views_view][] = opensanmateo_search

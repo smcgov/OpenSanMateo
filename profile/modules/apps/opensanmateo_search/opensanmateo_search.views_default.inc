@@ -11,6 +11,39 @@ function opensanmateo_search_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'opensanmateo_lookup';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'search_api_index_san_mateo_content_index';
+  $view->human_name = 'OpenSanMateo Lookup';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Indexed Node: Node ID */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  /* Field: Indexed Node: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_entity'] = 0;
+  $export['opensanmateo_lookup'] = $view;
+
+  $view = new view();
   $view->name = 'opensanmateo_search';
   $view->description = '';
   $view->tag = 'default';
@@ -215,6 +248,20 @@ function opensanmateo_search_views_default_views() {
       'field_release_date' => '',
     ),
   );
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Indexed Node: Site item id */
+  $handler->display->display_options['arguments']['search_api_site_id']['id'] = 'search_api_site_id';
+  $handler->display->display_options['arguments']['search_api_site_id']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['arguments']['search_api_site_id']['field'] = 'search_api_site_id';
+  $handler->display->display_options['arguments']['search_api_site_id']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['search_api_site_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['search_api_site_id']['break_phrase'] = 1;
+  $handler->display->display_options['arguments']['search_api_site_id']['not'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
   $export['opensanmateo_search'] = $view;
 
   return $export;
