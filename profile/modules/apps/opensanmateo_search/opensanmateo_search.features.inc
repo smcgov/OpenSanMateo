@@ -52,9 +52,14 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_aggregation_1" : { "type" : "text" },
         "search_api_aggregation_3" : { "type" : "text" },
         "search_api_aggregation_2" : { "type" : "text" },
+        "search_api_aggregation_4" : { "type" : "string" },
+        "search_api_aggregation_5" : { "type" : "string" },
+        "search_api_aggregation_6" : { "type" : "string" },
         "search_api_site_hash" : { "type" : "uri" },
         "search_api_site_id" : { "type" : "string" },
-        "body:value" : { "type" : "text" }
+        "body:value" : { "type" : "text" },
+        "field_address:locality" : { "type" : "text" },
+        "field_location_address:field_address:locality" : { "type" : "list\\u003Ctext\\u003E" }
       },
       "data_alter_callbacks" : {
         "site_index" : { "status" : 1, "weight" : "-50", "settings" : [] },
@@ -88,6 +93,42 @@ function opensanmateo_search_default_search_api_index() {
                 "type" : "fulltext",
                 "fields" : [ "field_thumbnail_image:file", "field_editors_choice_thumbnail:file" ],
                 "description" : "A Fulltext aggregation of the following fields: Thumbnail Image \\u00bb The image file., Thumbnail \\u00bb The image file.."
+              },
+              "search_api_aggregation_4" : {
+                "name" : "Aggregated State",
+                "type" : "first",
+                "fields" : [
+                  "field_address:administrative_area",
+                  "field_location_address:field_address:administrative_area"
+                ],
+                "description" : "A First aggregation of the following fields: Address \\u00bb Administrative area (i.e. State \\/ Province), Address \\u00bb Address \\u00bb Administrative area (i.e. State \\/ Province)."
+              },
+              "search_api_aggregation_5" : {
+                "name" : "Aggregated Postal",
+                "type" : "fulltext",
+                "fields" : [
+                  "field_address:postal_code",
+                  "field_location_address:field_address:postal_code"
+                ],
+                "description" : "A Fulltext aggregation of the following fields: Address \\u00bb Postal code, Address \\u00bb Address \\u00bb Postal code."
+              },
+              "search_api_aggregation_6" : {
+                "name" : "Aggregated Thoroughfare",
+                "type" : "first",
+                "fields" : [
+                  "field_address:thoroughfare",
+                  "field_location_address:field_address:thoroughfare"
+                ],
+                "description" : "A First aggregation of the following fields: Address \\u00bb Thoroughfare (i.e. Street address), Address \\u00bb Address \\u00bb Thoroughfare (i.e. Street address)."
+              },
+              "search_api_aggregation_7" : {
+                "name" : "City",
+                "type" : "first",
+                "fields" : [
+                  "field_address:locality",
+                  "field_location_address:field_address:locality"
+                ],
+                "description" : "A First aggregation of the following fields: Address \\u00bb Locality (i.e. City), Address \\u00bb Address \\u00bb Locality (i.e. City)."
               }
             }
           }
