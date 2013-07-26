@@ -23,7 +23,7 @@ function opensanmateo_search_features_template_info() {
     $data[] = array(
       'entity_type' => 'node',
       'bundle_type' => $content_type,
-      'field' => 'field_quicj_search',
+      'field' => 'field_quick_search',
       'plugin' => 'field_instance',
       'deleted' => !$present,
       'template' => 'opensanmateo_search_field_default_field_instances_qs_template'

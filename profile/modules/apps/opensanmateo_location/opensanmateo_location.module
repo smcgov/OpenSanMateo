@@ -17,7 +17,7 @@ function opensanmateo_location_features_template_info() {
     $data[] = array(
       'entity_type' => 'node',
       'bundle_type' => $content_type,
-      'field' => 'location_address',
+      'field' => 'field_location_address',
       'plugin' => 'field_instance',
       'deleted' => !$present,
       'template' => 'open_sanmateo_location_field_default_field_instances_template'
