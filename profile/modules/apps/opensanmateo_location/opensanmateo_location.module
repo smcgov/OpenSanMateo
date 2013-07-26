@@ -26,4 +26,52 @@ function opensanmateo_location_features_template_info() {
   return $data;
 }
 
+/**
+ * implements hook_field_widget_form_alter(&$element, &$form_state, $context)
+ */
+function opensanmateo_location_field_widget_form_alter(&$element, &$form_state, $context) {
+  if (isset($element['#field_name'])  && ($element['#field_name']  == 'field_location_address')) {
+    $element['#attached']['js'][] = drupal_get_path("module", "opensanmateo_location") . "/opensanmateo_location.js";
+  }
+}
 
+/**
+ * implements hook_menu()
+ *
+ * we are adding a menu callback for our ajax call to look up an address
+ *
+ * @see opensanmateo_location.js
+ */
+function opensanmateo_location_menu() {
+  $items['opensanmateo_location/ajax/%'] = array(
+    'page callback' => 'opensanmateo_location_address_lookup',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+    'access arguments' => array(2, 3, 4),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * menu call back that find the address from a search reference
+ */
+function opensanmateo_location_address_lookup($location) {
+  $id = search_api_reference_extract_key($location);
+  $view = views_get_view('opensanmateo_search');
+  $view->set_display('block_2');
+  $view->set_arguments(array($id));
+  $view->pre_execute();
+  $view->execute();
+  foreach($view->result as $result) {
+    $item = $result->_entity_properties;
+    $rtn[] = array(
+      'state' => $item['search_api_aggregation_4'],
+      'zip' => $item['search_api_aggregation_5'],
+      'street' => $item['search_api_aggregation_6'],
+      'city' => $item['search_api_aggregation_7'],
+    );
+  }
+  $address = isset($rtn[0]) ? $rtn[0] : stdClass();
+  drupal_json_output($address);
+}
