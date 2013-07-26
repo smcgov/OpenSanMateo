@@ -18,3 +18,54 @@ function opensanmateo_rotator_entity_info_alter(&$entity_info) {
   $entity_info['fieldable_panels_pane']['bundles']['rotator_panels_pane']['admin']['real path'] = 'admin/structure/fieldable-panels-panes/manage/rotator-panels-pane';
 }
 
+/**
+ * Implementation of template_preprocess_field().
+ */
+function opensanmateo_rotator_preprocess_field(&$vars, $hook) {
+  if ($vars['element']['#field_name'] != 'field_coll_rotator_item') {
+    return;
+  }
+
+  foreach ($vars['element']['#items'] as $index => $item) {
+    $value = $item['value'];
+    $slide = $vars['items'][$index]['entity']['field_collection_item'][$value]; 
+    $link = NULL;
+    
+    // give a value for the entity id visible in $items
+    $vars['items'][$index]['#eid'] = $value;
+
+    // Fetch link
+    if (isset($slide['field_rotator_link_url'])) {
+      $link = $slide['field_rotator_link_url']['#items'][0]['url'];
+    }
+    if (isset($slide['field_rotator_link_node'])) {
+      $link = $slide['field_rotator_link_node'][0]['#markup'];
+    }
+    // give a value for the entity id visible in $items
+    $vars['items'][$index]['#eid'] = $value;
+
+    if (!empty($link)) {
+      // this seems like semi-cheating - but there doesn't seem to be a more drupally way to do this     
+      $l = l('|', $link);
+      $parts = explode('|', $l);
+
+      // wrap the entirety of the content in our link
+      $vars['items'][$index]['#prefix'] = $parts[0];
+      $vars['items'][$index]['#suffix'] = $parts[1];
+
+      // hide the links
+      hide($vars['items'][$index]['entity']['field_collection_item'][$value]['field_rotator_link_url']);
+      hide($vars['items'][$index]['entity']['field_collection_item'][$value]['field_rotator_link_node']);
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_panels_pane().
+ */
+function opensanmateo_rotator_preprocess_panels_pane(&$vars) {
+  if ($vars['pane']->type == 'fieldable_panels_pane') {
+    flexslider_add();
+    drupal_add_js(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.js');
+  }
+}

@@ -104,6 +104,7 @@ projects[calendar][patch][] = http://drupal.org/files/calendar-granularity-14452
 projects[flexslider][type] = module
 projects[flexslider][subdir] = contrib
 projects[flexslider][version] = 2.0-alpha1
+projects[flexslider][patch][] = https://drupal.org/files/flexslider-check-if-settings-flexslider-is-defined-1946988-4.patch
 
 projects[embeddable][type] = module
 projects[embeddable][subdir] = contrib
@@ -149,7 +150,7 @@ projects[lock_session][patch][] = http://drupal.org/files/lock-session-dateinter
 
 libraries[flexslider][download][type] = git
 libraries[flexslider][download][url] = https://github.com/woothemes/FlexSlider.git
-libraries[flexslider][download][revision] = 6f95db1174ea3b7df2badca2b1e3e4c1c22aa3f0
+libraries[flexslider][download][revision] = a4647edaf7d44a32b1d568cef570128b8d28403b
 
 libraries[ckeditor][download][type] = get
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.3/ckeditor_3.6.3.tar.gz
