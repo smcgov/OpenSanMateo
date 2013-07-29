@@ -43,29 +43,6 @@ function opensanmateo_location_field_default_field_bases() {
     'type' => 'addressfield',
   );
 
-  // Exported field_base: 'field_hours'
-  $field_bases['field_hours'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_hours',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'office_hours',
-    'settings' => array(
-      'cardinality' => 5,
-      'granularity' => 30,
-      'hoursformat' => 1,
-      'limitend' => '',
-      'limitstart' => '',
-      'valhrs' => 0,
-    ),
-    'translatable' => 0,
-    'type' => 'office_hours',
-  );
-
   // Exported field_base: 'field_location'
   $field_bases['field_location'] = array(
     'active' => 1,

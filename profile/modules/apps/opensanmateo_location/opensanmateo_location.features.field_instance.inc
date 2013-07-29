@@ -255,62 +255,6 @@ function opensanmateo_location_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-location-field_hours'
-  $field_instances['node-location-field_hours'] = array(
-    'bundle' => 'location',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Business hours of the location, when applicable.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'office_hours',
-        'settings' => array(
-          'closedformat' => 'Closed',
-          'compress' => FALSE,
-          'current_status' => array(
-            'closed_text' => 'Currently closed',
-            'open_text' => 'Currently open!',
-            'position' => 'hide',
-          ),
-          'date_first_day' => 0,
-          'daysformat' => 'long',
-          'grouped' => FALSE,
-          'hoursformat' => 0,
-          'separator_day_hours' => ': ',
-          'separator_days' => '<br />',
-          'separator_grouped_days' => ' - ',
-          'separator_hours_hours' => '-',
-          'separator_more_hours' => ', ',
-          'showclosed' => 'all',
-          'timezone_field' => '',
-        ),
-        'type' => 'office_hours',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hours',
-    'label' => 'Hours',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'office_hours',
-      'settings' => array(),
-      'type' => 'office_hours',
-      'weight' => 2,
-    ),
-  );
-
   // Exported field_instance: 'node-location-field_quick_search'
   $field_instances['node-location-field_quick_search'] = array(
     'bundle' => 'location',
