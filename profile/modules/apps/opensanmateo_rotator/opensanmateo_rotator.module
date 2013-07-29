@@ -73,6 +73,10 @@ function opensanmateo_rotator_preprocess_panels_pane(&$vars) {
       $type = reset($type);
       $type = $type['value'];
     }
+    else {
+      $type = 'none';
+    }
+    
     flexslider_add();
     drupal_add_js(array('OpenSanMateoRotator' => array('type' => $type)), 'setting');
     drupal_add_css(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.css');
