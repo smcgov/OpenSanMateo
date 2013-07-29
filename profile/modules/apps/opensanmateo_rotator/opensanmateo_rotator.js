@@ -1,13 +1,24 @@
 (function ($) {
-  Drupal.behaviors.flexsliderbox = { 
+  Drupal.behaviors.flexsliderbox = {
     attach: function(context, settings) {
+      $('.field-collection-container').addClass('flexslider');
+      $('.field-name-field-coll-rotator-item > .field-items').addClass('slides');
+      
+      // Add thumbnail data only if we have a rotator
+      if (Drupal.settings.OpenSanMateoRotator.type == 'rotator') {
+        $('.field-name-field-coll-rotator-item > .field-items > .field-item').each(function(i) { 
+          var img = $(this).find('img').attr('src');
+          $(this).attr('data-thumb', img);
+        });
+      }
+      
       $('.field-collection-container').flexslider({
         selector: '.field-name-field-coll-rotator-item > .field-items > .field-item',
-        //animation: "slide",
-        
-      });
-      
+        controlNav: 'thumbnails',
+        pauseOnHover: true,
+        slideshow: false,
+        slideshowSpeed: 4000,
+      });      
     }
   };
-  console.info('urgh');
 })(jQuery);
