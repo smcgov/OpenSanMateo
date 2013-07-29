@@ -1,0 +1,33 @@
+# This file is included into .htaccess at the appropriate section
+# in Drupal's .htaccess file (right after the RewriteEngine on
+# directive. It must be included there because the file not found
+# handling here must take action before the normal file not found
+# handling otherwise Drupal will try to take over the 404 handling
+# for static sites
+#
+# To add a new static site, create a sites directory just like
+# you were creating a normal Drupal site and then add lines below
+# for the domain to transform it to look in the site's files/html
+# directory. Note that each static site needs to have a 404.php
+# file to allow for correct 404 handling. Sites with multiple domain
+# names should either have code added to redirect the user to the
+# correct domain
+#
+# RewriteCond %{HTTP_HOST} ^alternate.domain$ [NC]
+# RewriteRule ^/(.*)$ http://official.domain/$1 [L,R]
+# Or, if the alternate domain is desired, set up the alternate domain
+# sites folder but symlink sites/alternate.domain/files/html to
+# sites/official.domain/files/html
+#
+# For www.domain variants, just capture the non www portion of the
+# domain below.
+#
+# Each domain match added should contain [NC,OR] except the very
+# last RewriteCond line before the RewriteRule.
+#
+
+# Catch our subdirectory cases where infinite symlink recursion can yield odd (but legit) URLs
+# that make the GSA spider lose its mind
+#RewriteCond %{REQUEST_URI} ^/dir((/dir)+)(.*)$
+#RewriteRule ^.*$ /dir%3 [R=301,L]
+

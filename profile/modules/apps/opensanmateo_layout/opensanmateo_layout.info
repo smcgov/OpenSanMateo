@@ -1,0 +1,15 @@
+name = OpenSanMateo Layout
+description = Allows for fun layouts
+core = 7.x
+package = OpenSanMateo
+php = 5.2.4
+dependencies[] = ctools
+dependencies[] = panelizer
+dependencies[] = panels_ipe
+dependencies[] = strongarm
+features[ctools][] = panelizer:panelizer:1
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[panelizer_defaults][] = node:site_page:default
+features[panelizer_defaults][] = node:site_page:default:default
+features[variable][] = panelizer_defaults_node_site_page

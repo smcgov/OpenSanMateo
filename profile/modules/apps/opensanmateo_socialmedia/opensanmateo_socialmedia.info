@@ -1,0 +1,8 @@
+name = OpenSanMateo Social Media
+description = App for social media sharing capabilities using ShareThis.
+core = 7.x
+package = OpenSanMateo
+php = 5.2.4
+dependencies[] = ctools
+dependencies[] = sharethis
+features[features_api][] = api:2

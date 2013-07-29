@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the search_api_reference module.
+ */
+
+/**
+ * Implements hook_install
+ */
+function search_api_reference_install() {
+  if (db_table_exists('cache_views')) {
+    cache_clear_all(NULL, 'cache_views', TRUE);
+  }
+}
+
+/**
+ * Implements hook_uninstall
+ */
+function search_api_reference_uninstall() {
+  if (db_table_exists('cache_views')) {
+    cache_clear_all(NULL, 'cache_views', TRUE);
+  }
+}
+
+/**
+ * Implements hook_field_schema().
+ */
+function search_api_reference_field_schema($field) {
+  $columns = array(
+    'search_item_key' => array(
+      'description' => 'Search API item key',
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => TRUE,
+      'default' => '',
+    ),
+  );
+
+  return array(
+    'columns' => $columns,
+    'indexes' => array('search_item_key' => array('search_item_key')),
+  );
+}

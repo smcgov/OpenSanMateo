@@ -1,0 +1,11 @@
+name = Search API Reference
+description = Defines a field type for referencing Search API result items from Search API Views
+package = Fields
+core = 7.x
+
+; Yes, I realize dependency chaining would suss out the base modules, but they're here to minimize trial-error
+dependencies[] = views
+dependencies[] = search_api
+dependencies[] = search_api_views
+dependencies[] = search_api_site
+dependencies[] = references

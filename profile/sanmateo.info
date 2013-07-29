@@ -1,0 +1,107 @@
+name = OpenSanMateo Platform
+description = Platform Profile for San Mateo County
+core = 7.x
+version = 1.x
+
+base[] = openpublic
+
+; Core
+
+dependencies[] = block
+dependencies[] = contextual
+dependencies[] = dashboard
+dependencies[] = help
+dependencies[] = image
+dependencies[] = list
+dependencies[] = menu
+dependencies[] = number
+dependencies[] = options
+dependencies[] = path
+dependencies[] = taxonomy
+dependencies[] = syslog
+dependencies[] = shortcut
+dependencies[] = toolbar
+dependencies[] = field
+dependencies[] = field_ui
+dependencies[] = file
+dependencies[] = rdf
+
+
+; Contrib
+
+dependencies[] = apps
+dependencies[] = node_reference
+dependencies[] = nodeblock
+dependencies[] = context
+dependencies[] = context_ui
+dependencies[] = ctools
+dependencies[] = views_content
+dependencies[] = date
+dependencies[] = diff
+dependencies[] = entity
+dependencies[] = features
+dependencies[] = features_override
+dependencies[] = follow
+dependencies[] = node_reference
+;dependencies[] = nodequeue
+dependencies[] = pathauto
+dependencies[] = strongarm
+dependencies[] = token
+dependencies[] = imce
+dependencies[] = views
+dependencies[] = views_ui
+dependencies[] = xmlsitemap
+dependencies[] = wysiwyg
+dependencies[] = imce_wysiwyg
+dependencies[] = securepages
+dependencies[] = entitycache
+dependencies[] = addthis
+dependencies[] = twitter_pull
+dependencies[] = conditional_styles
+dependencies[] = field_group
+dependencies[] = recaptcha
+dependencies[] = comment_notify
+dependencies[] = googleanalytics
+dependencies[] = boxes
+dependencies[] = context_field
+dependencies[] = entity_autocomplete
+dependencies[] = views_boxes
+dependencies[] = delta
+dependencies[] = delta_ui
+dependencies[] = context_condition_admin_theme
+dependencies[] = libraries
+dependencies[] = addressfield
+dependencies[] = oauth_common
+dependencies[] = twitter
+dependencies[] = twitter_pull
+dependencies[] = twitter_pull_pane
+
+dependencies[] = phase2_profile
+;dependencies[] = openpublic_breaking_news
+dependencies[] = openpublic_comments
+dependencies[] = openpublic_base_fields
+;dependencies[] = openpublic_defaults
+;dependencies[] = openpublic_home_page_feature
+dependencies[] = openpublic_most_popular
+dependencies[] = openpublic_person
+dependencies[] = openpublic_site_page
+dependencies[] = openpublic_webform
+;dependencies[] = openpublic_editors_choice
+dependencies[] = openpublic_captcha
+dependencies[] = openpublic_media_room
+dependencies[] = openpublic_menu
+dependencies[] = openpublic_menu_utility
+dependencies[] = openpublic_menu_footer
+;dependencies[] = openpublic_pages
+dependencies[] = openpublic_accessibility
+
+
+; OpenSanMateo
+dependencies[] = opensanmateo_location
+
+
+;DEVELOPMENT ONLY
+
+dependencies[] = dblog
+dependencies[] = dblog
+dependencies[] = devel
