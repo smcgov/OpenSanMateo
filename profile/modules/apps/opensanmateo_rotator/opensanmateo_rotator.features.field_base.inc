@@ -202,8 +202,8 @@ function opensanmateo_rotator_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'rotator' => 'rotator',
-        'carousel' => 'carousel',
+        'rotator' => 'rotator (has thumbnails)',
+        'carousel' => 'carousel (no thumbnails)',
       ),
       'allowed_values_function' => '',
     ),
