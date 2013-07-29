@@ -71,7 +71,6 @@ dependencies[] = delta_ui
 dependencies[] = context_condition_admin_theme
 dependencies[] = libraries
 dependencies[] = addressfield
-dependencies[] = office_hours
 dependencies[] = oauth_common
 dependencies[] = twitter
 dependencies[] = twitter_pull
