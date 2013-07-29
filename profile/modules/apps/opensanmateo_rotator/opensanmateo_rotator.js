@@ -3,6 +3,8 @@
     attach: function(context, settings) {
       $('.field-collection-container').addClass('flexslider');
       $('.field-name-field-coll-rotator-item > .field-items').addClass('slides');
+      $('.field-name-field-rotator-caption').addClass('flex-caption');
+      $('.field-name-field-rotator-description').addClass('flex-caption');
       
       // Add thumbnail data only if we have a rotator
       if (Drupal.settings.OpenSanMateoRotator.type == 'rotator') {
@@ -18,7 +20,7 @@
         pauseOnHover: true,
         slideshow: false,
         slideshowSpeed: 4000,
-      });      
+      });
     }
   };
 })(jQuery);
