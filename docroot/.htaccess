@@ -211,7 +211,7 @@ AuthName "Access Restricted"
 # since staging and dev are on the same machine, this path will be available
 # for both the staging and dev tiers and since that is the only place we are
 # password protecting that is acceptable
-AuthUserFile /mnt/files/sanmateo/.htpasswd
+AuthUserFile /mnt/files/sanmateodev/.htpasswd
 Require valid-user
 SetEnvIf AH_SITE_ENVIRONMENT prod SANMATEO_ALLOW_ACCESS=1
 Deny from All

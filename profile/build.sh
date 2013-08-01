@@ -127,7 +127,7 @@ if [ "$TYPE" = 'acquia' ]; then
     echo "# since staging and dev are on the same machine, this path will be available" >> docroot/.htaccess
     echo "# for both the staging and dev tiers and since that is the only place we are" >> docroot/.htaccess
     echo "# password protecting that is acceptable" >> docroot/.htaccess
-    echo AuthUserFile /mnt/files/sanmateo/.htpasswd >> docroot/.htaccess
+    echo AuthUserFile /mnt/files/sanmateodev/.htpasswd >> docroot/.htaccess
     echo Require valid-user >> docroot/.htaccess
     echo SetEnvIf AH_SITE_ENVIRONMENT prod SANMATEO_ALLOW_ACCESS=1 >> docroot/.htaccess
     echo Deny from All >> docroot/.htaccess
