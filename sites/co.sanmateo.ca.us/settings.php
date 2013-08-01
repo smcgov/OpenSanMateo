@@ -560,3 +560,6 @@ if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/sanmateo/sanmateo-settings.inc');
 }
 
+// Set private filesystem for this site
+$conf['file_private_path'] = pathinfo(__FILE__, PATHINFO_DIRNAME) . '/files-private';
+
