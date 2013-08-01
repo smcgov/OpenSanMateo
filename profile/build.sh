@@ -87,7 +87,7 @@ if [ "$TYPE" = 'acquia' ]; then
     drush make $DRUSH_OPTS $ABS_CALLPATH/$MAKEFILE docroot
   fi
 
-  ln -s ../../profile/ $PROFILE_DIR/profile
+  ln -s ../../profile/ $PROFILE_DIR/sanmateo
   cp $ABS_CALLPATH/build/flag.ico docroot/misc/favicon.ico
 
   if [ $NOMAKE -eq 0 ]; then
@@ -106,7 +106,7 @@ if [ "$TYPE" = 'acquia' ]; then
     # Copy new sites/* into persistent sites folder, remove built folder and link to persistent one
     cp -r sites/* ../sites
     rm -rf sites
-    ln -s sites ../sites
+    ln -s ../sites sites
 
     
     # Add directory-based sites as symlinks so we can use the same codebase
