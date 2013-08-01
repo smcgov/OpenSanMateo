@@ -1,0 +1,4 @@
+name = "OpenPublic Accessibility"
+description = "OpenPublic Accessibility"
+core = 7.x
+files[] = openpublic_accessibility.module

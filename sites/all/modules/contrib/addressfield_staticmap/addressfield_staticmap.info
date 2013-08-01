@@ -1,0 +1,6 @@
+name = Address Field Static Map Block 
+description = Provides a Google Static Map block based on the current node's address field. 
+core = 7.x
+
+dependencies[] = addressfield
+dependencies[] = block

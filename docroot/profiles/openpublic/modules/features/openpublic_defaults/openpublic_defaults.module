@@ -1,0 +1,4 @@
+<?php
+include_once('openpublic_defaults.theme.inc');
+include_once('openpublic_defaults.api.inc');
+// Drupal needs this blank file.

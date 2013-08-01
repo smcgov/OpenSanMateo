@@ -1,0 +1,6 @@
+name = Text formatter
+description = "A field formatter for rendering values as HTML or comma-separated lists."
+core = 7.x
+package = Fields
+
+dependencies[] = field

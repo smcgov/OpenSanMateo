@@ -1,0 +1,4 @@
+name = "Field Collection Sort"
+description = "Provides limitted sorting capabilities to field collection items"
+core = "7.x"
+package = "Fields"

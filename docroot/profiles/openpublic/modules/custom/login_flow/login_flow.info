@@ -1,0 +1,5 @@
+name = Login Flow
+description = Modifies the Login Sequence to have two steps and a temporary ban
+core = 7.x
+files[] = login_flow.module
+

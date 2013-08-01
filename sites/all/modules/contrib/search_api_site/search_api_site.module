@@ -1,0 +1,75 @@
+<?php
+function search_api_site_hash() {
+  if (!($hash = variable_get('apachesolr_site_hash', FALSE))) {
+    global $base_url;
+    // Set a random 6 digit base-36 number as the hash.
+    $hash = substr(base_convert(sha1(uniqid($base_url, TRUE)), 16, 36), 0, 6);
+    variable_set('apachesolr_site_hash', $hash);
+  }
+  return $hash;
+}
+
+function search_api_site_search_api_alter_callback_info() {
+  $callbacks['site_index'] = array(
+    'name' => t('Index Site Hash'),
+    'description' => t('Include a field for indexing a hash of the site.  Also include the hash in the id of the item to be indexed'),
+    'class' => 'SearchApiSiteAddHash',
+  'weight' => 101,
+  );
+  return $callbacks;
+}
+
+
+function search_api_site_views_data_alter(&$data) {
+  foreach (search_api_index_load_multiple(FALSE) as $index) {
+    // Fill in base data.
+    $key = 'search_api_index_' . $index->machine_name;
+    if (isset($data[$key]['search_api_site_hash'])) {
+      $data[$key]['search_api_site_hash']['filter']['handler'] = 'SearchApiSiteViewsHandler';
+    }
+  }
+}
+
+/**
+ * Search API data alteration callback that adds an URL field for all items.
+ */
+class SearchApiSiteAddHash extends SearchApiAbstractAlterCallback {
+
+  public function alterItems(array &$items) {
+    $new_items = array();
+    foreach ($items as $id => &$item) {
+      $item->search_api_site_hash = search_api_site_hash();
+      $item->search_api_id = search_api_site_hash() . $id;
+      $new_items[search_api_site_hash() . $id] = $item;
+    }
+    #$items = $new_items;
+  }
+
+  public function propertyInfo() {
+    return array(
+      'search_api_site_hash' => array(
+        'label' => t('Site Hash'),
+        'description' => t('I Hash of the site which can then be used to limit results'),
+        'type' => 'uri',
+      ),
+      'search_api_site_id' => array(
+        'label' => t('Site item id'),
+        'description' => t('a unique id for the item'),
+        'type' => 'uri',
+      ),
+    );
+  }
+
+}
+
+/**
+ * implements hook_search_api_index_items_alter
+ *
+ * we do not know the index id in the allCallback object so we need to jump in here and add the value for the id
+ */
+function search_api_site_search_api_index_items_alter(array &$items, SearchApiIndex $index) {
+  foreach ($items as $id => $item) {
+    $hash = search_api_site_hash();
+    $item->search_api_site_id = "{$index->machine_name}-{$id}-{$hash}";
+  }
+}

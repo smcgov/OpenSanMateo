@@ -1,0 +1,4 @@
+name = embeddable
+core = 7.x
+dependencies[] = context
+dependencies[] = entity_autocomplete

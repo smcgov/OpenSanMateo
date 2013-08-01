@@ -1,0 +1,177 @@
+<?php
+/**
+ * @file
+ * imce_dir_man.module provides functions for managing configuration
+ * determining what the imce_dir_man_path() function. This function can
+ * be used as php code in the directory setting of an IMCE profile to 
+ * allow for per user configuration of directory restrictions
+ */
+
+/**
+ * hook menu
+ */
+function imce_dir_man_menu() {
+  $menu['admin/config/media/imce_dir_man'] = array(
+    'title' => 'IMCE User Directory Access Manager',
+    'description' => 'Administer directory restrictions for IMCE',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('imce_dir_man_form'),
+    'access arguments' => array('administer site settings'),
+  );
+  return $menu;
+}
+
+/**
+ * generates admin form for managing user directory restrictions
+ */
+function imce_dir_man_form() {
+  $query = db_select('imce_dir_man', 'i');
+  $query->join('users', 'u', 'u.uid = i.uid');
+  $res = $query->fields('i', array('uid', 'dir'))
+    ->fields('u', array('name'))
+    ->orderBy('name')
+    ->execute();
+
+  $weight = 1;
+  foreach ($res as $row) {
+    $form[$row->uid] = array(
+      '#title' => t('User @name', array('@name' => $row->name)),
+      '#type' => 'fieldset',
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+      '#tree' => TRUE,
+      '#weight' => $weight++,
+    );
+    $form[$row->uid]['del'] = array(
+      '#title' => t('Remove restrictions'),
+      '#description' => t('Deletes restrictions set for this user'),
+      '#type' => 'checkbox',
+      '#weight' => 10,
+    );
+    $form[$row->uid]['dir'] = array(
+      '#title' => t('Directory'),
+      '#description' => t('Directory to restrict user to relative to site file upload root, comma separate to specify multiple directories, a/b/c restricts a user to !root/a/b/c', array('!root' => variable_get('file_public_path', conf_path() . '/files'))),
+      '#type' => 'textfield',
+      '#size' => '100',
+      '#maxsize' => '255',
+      '#default_value' => $row->dir,
+      '#weight' => 20,
+    );
+  }
+
+  $form['new_user'] = array(
+    '#title' => t('Add restriction for new user'),
+    '#type' => 'fieldset',
+    '#tree' => TRUE,
+    '#weight' => $weight++,
+  );
+  $form['new_user']['name'] = array(
+    '#title' => t('User'),
+    '#type' => 'textfield',
+    '#size' => '100',
+    '#maxsize' => '255',
+    '#weight' => 10,
+  );
+  $form['new_user']['dir'] = array(
+    '#title' => t('Directory'),
+    '#type' => 'textfield',
+    '#description' => t('Directory to restrict user to relative to site file upload root, comma separate to specify multiple directories, a/b/c restricts a user to sites/default/files/a/b/c'),
+    '#size' => '100',
+    '#maxsize' => '255',
+    '#weight' => 20,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Save',
+    '#weight' => $weight,
+  );
+  $form['#submit'] = array('imce_dir_man_form_submit');
+  $form['#validate'] = array('imce_dir_man_form_validate');
+
+  return $form;
+}
+
+/**
+ * Validate restriction form (imce_dir_man_form) settings
+ */
+function imce_dir_man_form_validate($form, &$form_state) {
+  foreach ($form_state['values'] as $uid => $data) {
+    $data['dir'] = trim($data['dir'], ',');
+    if ($data['dir'] == '' && (isset($data['del']) && $data['del'] != 1) && $data['name'] != '') {
+      form_set_error($uid . '][dir', t('Invalid directory restriction (blank or contains only commas)'));
+    }
+    else if ($uid == 'new_user' && $data['name'] != '') {
+      $uid = db_select('users', 'u')
+        ->fields('u', array('uid'))
+        ->condition('name', $data['name'])
+        ->execute()
+        ->fetchCol();
+      if (!$uid) {
+        form_set_error($uid . '][name', t('Invalid user'));
+      }
+      else {
+        $uid = db_select('imce_dir_man', 'i')
+          ->fields('i', array('uid'))
+          ->condition('uid', $uid[0])
+          ->execute()
+          ->fetchCol();
+        if ($uid) {
+          form_set_error($uid . '][name', t('User @name already has restriction configured, please update their entry to make modifications', array('@name' => $data['name'])));
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Save configured restriction settings adding new settings, 
+ * updating or deleting existing settings
+ */
+function imce_dir_man_form_submit($form, &$form_state) {
+  $rec = new stdclass();
+
+  foreach ($form_state['values'] as $uid => $data) {
+    $rec->dir = trim($data['dir'], ',');
+    $rec->uid = $uid;
+
+    if ($uid == 'new_user' && $data['name'] != '' && $data['dir'] != '') {
+      $uid = db_select('users', 'u')
+        ->fields('u', array('uid'))
+        ->condition('name', $data['name'])
+        ->execute()
+        ->fetchCol();
+
+      if ($uid) {
+        $rec->uid = $uid[0];
+        drupal_write_record('imce_dir_man', $rec);
+      }
+    }
+    else if (isset($data['del']) && $data['del']) {
+      db_delete('imce_dir_man')->condition('uid', $uid)->execute();
+    }
+    else {
+      drupal_write_record('imce_dir_man', $rec, array('uid'));
+    }
+  }
+}
+
+/**
+ * returns an array representing a user's currently accessible file directories
+ * used by the imce uploader
+ * If a user has not been restricted in the configuration, . (all directories)
+ * is returned
+ */
+function imce_dir_man_path() {
+  global $user;
+  $dir = db_select('imce_dir_man', 'i')
+    ->fields('i', array('dir'))
+    ->condition('uid', $user->uid)
+    ->execute()
+    ->fetchCol();
+
+  if (!$dir || !$dir[0]) {
+    $dir[0] = '.';
+  }
+  return preg_split('/,/', $dir[0]);
+}

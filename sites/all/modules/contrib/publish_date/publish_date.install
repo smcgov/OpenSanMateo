@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function publish_date_install() {
+  db_update('system')
+    ->fields(array('weight' => 9999))
+    ->condition('name', 'publish_date')
+    ->execute();
+}

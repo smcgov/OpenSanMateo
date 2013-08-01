@@ -1,0 +1,159 @@
+<?php
+
+/**
+ * Implements hook_textformatter_field_info().
+ */
+function textformatter_contrib_textformatter_field_info() {
+  $info = array();
+
+  if (module_exists('entityreference')) {
+    $info['entityreference'] = array(
+      'fields' => array('entityreference'),
+      'callback' => 'textformatter_contrib_entityreference_field_create_list',
+    );
+  }
+
+  if (module_exists('link')) {
+    $info['link'] = array(
+      'fields' => array('link_field'),
+      'callback' => 'textformatter_contrib_link_field_create_list',
+    );
+  }
+
+  if (module_exists('node_reference')) {
+    $info['node_reference'] = array(
+      'fields' => array('node_reference'),
+      'callback' => 'textformatter_contrib_node_reference_field_create_list',
+    );
+  }
+
+  return $info;
+}
+
+/**
+ * Entity reference field listing callback.
+ */
+function textformatter_contrib_entityreference_field_create_list($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $entity_type = $field['settings']['target_type'];
+  $list_items = $target_ids = array();
+
+  // Get an array of entity ids.
+  foreach ($items as $delta => $item) {
+    $target_ids[] = $item['target_id'];
+  }
+
+  // Load them all.
+  if ($target_ids) {
+    $target_entities = entity_load($entity_type, $target_ids);
+  }
+
+  // Create a list item for each entity.
+  foreach ($target_entities as $id => $entity) {
+    // Only add entities to the list that the user will have access to.
+    if (isset($item['target_id']) && entity_access('view', $entity_type, $entity)) {
+      $label = entity_label($entity_type, $entity);
+      $uri = entity_uri($entity_type, $entity);
+      $list_items[$id] = l($label, $uri['path']);
+    }
+  }
+
+  return $list_items;
+}
+
+/**
+ * Link field listing callback.
+ */
+function textformatter_contrib_link_field_create_list($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $list_items = array();
+
+  foreach ($items as $delta => $item) {
+    $contrib_settings = $display['settings']['textformatter_contrib'];
+
+    $link_display = (isset($contrib_settings['link_field_display_type']) && !empty($contrib_settings['link_field_display_type']))
+      ? $contrib_settings['link_field_display_type'] : 'link_default';
+
+    $list_items[] = theme('link_formatter_'. $link_display, array('element' => $item, 'field' => $instance));
+  }
+
+  return $list_items;
+}
+
+/**
+ * Entity reference field listing callback.
+ */
+function textformatter_contrib_node_reference_field_create_list($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $list_items = $target_ids = array();
+
+  $field_index = key($field['indexes']);
+  $item_entity_info = _textformatter_contrib_get_entity_from_key($field_index);
+  $item_entity_type = $item_entity_info['entity_name'];
+
+  $ids = array_map('current', $items);
+
+  $item_entities = entity_load($item_entity_type, $ids);
+  $contrib_settings = $display['settings']['textformatter_contrib'];
+
+  $list_items = array();
+  foreach ($items as $delta => $item) {
+    if (isset($item[$field_index]) && $item['access']) {
+      $item_entity_item = $item_entities[$item[$field_index]];
+      $item_label = entity_label($entity_type, $item_entity_item);
+      if ($contrib_settings['node_reference_add_link']) {
+        $item_entity_uri = entity_uri($item_entity_type, $item_entity_item);
+        $list_items[] = l($item_label, $item_entity_uri['path']);
+      } else {
+        if (isset($item_entity_item->{$item_entity_info['entity keys']['label']})) {
+          $list_items[] = $item_label;
+        }
+      }
+    }
+  }
+
+  return $list_items;
+}
+
+/**
+ * Implements hook_textformatter_field_formatter_settings_form_alter().
+ */
+function textformatter_contrib_textformatter_field_formatter_settings_form_alter(&$form, &$form_state, $context) {
+  $field = $context['field'];
+
+  if ($field['type'] == 'link_field') {
+    $view_mode = $context['view_mode'];
+    $settings = $context['instance']['display'][$view_mode]['settings'];
+    $link_info = is_callable('link_field_formatter_info') ? link_field_formatter_info() : array();
+
+    $form['textformatter_contrib']['link_field_display_type'] = array(
+      '#type' => 'select',
+      '#title' => t("Link field formatting type"),
+      '#description' => t("Select the type of link field to show in the list."),
+      '#options' => drupal_map_assoc(array_keys($link_info)),
+      '#default_value' => isset($settings['textformatter_contrib']['link_field_display_type']) ? $settings['textformatter_contrib']['link_field_display_type'] : '',
+    );
+  }
+  if ($field['type'] == 'node_reference') {
+    $view_mode = $context['view_mode'];
+    $settings = $context['instance']['display'][$view_mode]['settings'];
+
+    $form['textformatter_contrib']['node_reference_add_link'] = array(
+      '#type' => 'checkbox',
+      '#title' => t("Items with link"),
+      '#description' => t("Generate item list with links to the node page"),
+      '#default_value' => isset($settings['textformatter_contrib']['node_reference_add_link']) ? $settings['textformatter_contrib']['node_reference_add_link'] : TRUE,
+    );
+  }
+}
+
+function _textformatter_contrib_get_entity_from_key($key) {
+  $entities = &drupal_static(__FUNCTION__);
+  if (is_array($entities) && array_key_exists($key, $entities)) {
+    return $entities[$key];
+  }
+  foreach (entity_get_info() as $entity_name => $entity_info) {
+    if ($entity_info['entity keys']['id'] == $key) {
+      $entity_info['entity_name'] = $entity_name;
+      $entities[$key] = $entity_info;
+      return $entities[$key];
+    }
+  }
+}

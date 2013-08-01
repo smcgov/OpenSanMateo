@@ -1,0 +1,13 @@
+#imce-search-results div {
+  font-weight: bold;
+  margin: 1em;
+}
+
+#imce-search-results div a {
+  color: #69c;
+}
+
+#imce-search-results div.loading {
+  background: url('loading.gif') no-repeat top left;
+  padding-left: 20px;
+}

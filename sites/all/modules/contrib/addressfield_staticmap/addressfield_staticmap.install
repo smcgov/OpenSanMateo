@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file
+ * uninstall function for the address field static map module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ * 
+ * Deletes variables set and used by Address Field Static Map.
+ * 
+ */
+function addressfield_staticmap_uninstall() {
+  $result = db_query("SELECT name from {variable} WHERE name like 'addressfield_staticmap_%'");
+  foreach ($result as $record) {
+    variable_del($record->name);
+  }
+}

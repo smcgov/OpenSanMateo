@@ -1,0 +1,7 @@
+name = Twitter pull pane
+description = Provides a panels pane that displays tweets from twitter using Twitter pull
+dependencies[] = ctools
+dependencies[] = panels
+dependencies[] = page_manager
+dependencies[] = twitter_pull
+core = 7.x

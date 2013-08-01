@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Implements hook_schema()
+ */
+function imce_dir_man_schema() {
+  $schema['imce_dir_man'] = array(
+    'fields' => array(
+      'uid' => array('type' => 'int', 'not null' => TRUE, 'description' => "User's {users}.uid."),
+      'dir' => array('type' => 'varchar', 'not null' => TRUE, 'length' => '255', 'description' => 'Directory path restriction relative to site root'),
+    ),
+    'primary key' => array('uid', 'dir'),
+  );
+  return $schema;
+}

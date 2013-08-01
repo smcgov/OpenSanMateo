@@ -1,0 +1,45 @@
+<?php
+
+function webform_deter_schema() {
+  $schema['webform_deter_pattern'] = array(
+    'description' => t('Patterns to check form elements against and warn if any match'),
+    'export' => array(
+      'key' => 'machine_name',
+      'key name' => 'Machine name',
+      'admin_title' => 'name',
+      'admin_description' => 'description',
+      'identifier' => 'pattern',
+      'default_hook' => 'default_webform_deter_pattern',
+      'api' => array(
+        'owner' => 'webform_deter',
+        'api' => 'default_webform_deter_pattern',  // Base name for api include files.
+        'minimum_version' => 1,
+        'current_version' => 1,
+      ),
+    ),
+    'fields' => array(
+      'machine_name' => array(
+        'type' => 'varchar',
+        'length' => '50',
+        'description' => 'Unique ID for patterns. Used to identify them programmatically.',
+      ),
+      'name' => array(
+        'type' => 'varchar',
+        'length' => '50',
+        'description' => 'Human readable name for this pattern.',
+      ),
+      'pattern' => array(
+        'type' => 'varchar',
+        'length' => '50',
+        'description' => 'The regex pattern to apply during checks',
+      ),
+      'description' => array(
+        'type' => 'varchar',
+        'length' => '255',
+        'description' => 'Description of what this pattern is checking for',
+      ),
+    ),
+    'primary key' => array('machine_name'),
+  );
+  return $schema;
+}

@@ -1,0 +1,5 @@
+name = Suspend Session
+description = Enforces locking mechanism for Password Policy 2
+core = 7.x
+files[] = suspend_session.module
+dependencies[] = password_policy2

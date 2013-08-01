@@ -1,0 +1,244 @@
+<?php
+
+/**
+ * Implementation of hook_permission()
+ */
+function addressfield_staticmap_permission() {
+  return array(
+    'administer addressfield staticmap' => array(
+      'title' => t('Administer Address Field Static Map'),
+      'description' => t('Change Google Static Map and other settings for this block.')
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_menu() 
+ */
+function addressfield_staticmap_menu() {
+  $items['admin/config/system/addressfield_staticmap'] = array(
+    'title' => 'Address Field Static Map Block',
+    'description' => 'Configure settings for the address field static map block.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('addressfield_staticmap_admin_form'),
+    'file' => 'addressfield_staticmap.admin.inc',
+    'access arguments' => array('administer addressfield staticmap'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_block_info()
+ */
+function addressfield_staticmap_block_info() {
+  $blocks['addressfield_staticmap'] = array(
+    'info' => t('Address Field Static Map'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  $blocks['addressfield_staticmap_alt'] = array(
+    'info' => t('Address Field Static Map (alternate)'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view()
+ */
+function addressfield_staticmap_block_view($delta = '') {
+  $block = array();
+  
+  $deltas = array('addressfield_staticmap', 'addressfield_staticmap_alt');
+  if (!in_array($delta, $deltas)) {
+    return $block;
+  }
+  $index = array_search($delta, $deltas);
+  
+  // Check if the address field name is configured
+  $field_names = variable_get('addressfield_staticmap_field_names', '');
+  
+  if (empty($field_names) || !array_filter($field_names)) {  
+    return $block;
+  }
+  
+  $node = menu_get_object();
+  if (empty($node)) {
+    return $block;
+  }
+  
+  $block['subject'] = t('Address Field Static Map');
+  $block['content'] = '';
+  
+  // Do this for each of the enabled address fields
+  foreach ($field_names as $field_name) {
+    $fields = field_get_items('node', $node, $field_name, $node->language);
+    if (empty($fields)) {
+      continue;
+    }
+    
+    // Set up some default arguments for addressfield_generate() 
+    $handlers = array('address' => 'address');
+    $context = array('mode' => 'render');
+    
+    // Fetch configuration variables
+    $api = variable_get('addressfield_staticmap_api_' . $index, 'google_maps');
+    
+    // Configure base settings
+    $settings = array(
+      'zoom' => variable_get('addressfield_staticmap_gmap_zoom_' . $index, 14),
+      'size' => variable_get('addressfield_staticmap_gmap_size_' . $index, '400x400'),
+      'maptype' => $maptype = variable_get('addressfield_staticmap_gmap_type_' . $index, 'roadmap'),
+      'index' => $index,
+    );
+    
+    foreach ($fields as $id => $data) {
+      $data_cleaned = array_filter($data);
+      // If only the country is set, skip this (for some reason the country value
+      // becomes mandatory if you limit the list)
+      if (isset($data_cleaned['country']) && sizeof($data_cleaned) <= 1) {
+        continue;
+      }
+      
+      $address = drupal_render(addressfield_generate($data, $handlers, $context));
+      // Add some white space so that the address can still be parsed by Google Map's API
+      $address = preg_replace('/(<\/[^>]+?>)(<[^>\/][^>]*?>)/', '$1 $2', $address);
+      $address = urlencode(strip_tags($address));
+      
+      // Use Google Maps
+      if ($api == 'google_maps') {
+        $settings['icon_url'] = variable_get('addressfield_staticmap_gmap_icon_url_' . $index, '');
+        $settings['icon_url'] = empty($settings['icon_url']) ? 'color:green' : 'icon:' . $settings['icon_url'];
+        $block['content'] .= _addressfield_static_map_render_google_maps_image($address, $settings);
+      }
+      elseif ($api == 'google_maps_api') {
+        $settings['icon_url'] = variable_get('addressfield_staticmap_gmap_icon_url_' . $index, '');
+        $settings['icon_url'] = empty($settings['icon_url']) ? 'color:green' : 'icon:' . $settings['icon_url'];
+        $block['content'] .= _addressfield_static_map_render_google_maps($address, $settings, $node);
+      }
+      // Use Mapquest
+      elseif ($api == 'mapquest') {
+        $settings['api_key'] = variable_get('addressfield_staticmap_api_key', '');
+        $block['content'] .= _addressfield_static_map_render_mapquest_image($address, $settings);
+      }
+    }
+  }
+  return $block;
+
+}
+
+/**
+ * Implements hook_theme().
+ * 
+ * Provides theming function used when a regular Google Map is rendered with
+ * a static image fallback.
+ */
+function addressfield_staticmap_theme() {
+  return array(
+    'addressfield_staticmap_google_map' => array(
+      'variables' => array('address' => NULL, 'settings' => NULL, 'image' => NULL, 'kml_paths' => NULL),
+      'template' => 'addressfield-staticmap-google-map',
+    ),
+    'addressfield_staticmap_static_map' => array(
+      'variables' => array('address' => NULL, 'settings' => NULL),
+      'template' => 'addressfield-staticmap-static-map',
+    ),
+  );
+}
+
+/**
+ * Render static Google Map image for a specific address
+ */
+function _addressfield_static_map_render_google_maps_image($address, $settings) {
+  $settings['staticmap_url'] = "http://maps.googleapis.com/maps/api/staticmap?center=" . $address . "&zoom=" . $settings['zoom'] . 
+    "&size=" . $settings['size'] . "&maptype=" . $settings['maptype'] . "&sensor=false&markers=" . 
+    $settings['icon_url'] . "%7C" . $address;
+  
+  // Google Maps link
+  $link = "http://maps.google.com/maps?q=" . $address;
+  $index = $settings['index'];
+  $target = variable_get('addressfield_staticmap_gmap_link_target_' . $index, '');
+  
+  // Add 'Get Directions' text link
+  if (variable_get('addressfield_staticmap_directions_link_' . $index)) {
+    $link_text = check_plain(variable_get('addressfield_staticmap_directions_text_' . $index, 'Get Directions'));
+    $settings['directions'] = l($link_text, $link, array('attributes' => array('title' => $link_text, 'target' => $target)));
+  }
+  
+  // Link to actual Google map
+  if (variable_get('addressfield_staticmap_gmap_link_' . $index, FALSE)) {
+    $settings['target'] = empty($target) ? '' : ' target="' . $target . '"';
+    $settings['link'] = $link;
+  }
+  
+  $render = theme('addressfield_staticmap_static_map', array(
+    'address' => $address,
+    'settings' => $settings,
+  ));
+  return $render;
+}
+
+/**
+ * Render regular Google Map for a specific address
+ */
+function _addressfield_static_map_render_google_maps($address, $settings, $node) {
+  drupal_add_js('http://maps.googleapis.com/maps/api/js?sensor=false', 'external');
+  drupal_add_css(drupal_get_path('module', 'addressfield_staticmap') . '/addressfield_staticmap.css');
+  $image = _addressfield_static_map_render_google_maps_image($address, $settings);
+  $kml_paths = array();
+    
+  // Additional processing to attach optional KML file(s)
+  $kml_field_names = array_filter(variable_get('addressfield_staticmap_field_kml', array()));
+  if (!empty($kml_field_names)) {
+    
+    foreach ($kml_field_names as $kml_field) {
+      $kml_field = explode('|', $kml_field);
+      
+      // Check to see if the valid field settings are for this bundle  
+      if ($node->type != $kml_field[0]) {
+        continue;
+      }
+      $kml_files = field_get_items('node', $node, $kml_field[1], $node->language);
+      if (empty($kml_files)) {
+        continue;
+      }
+      foreach ($kml_files as $kml_file) {
+        $kml_paths[] = file_create_url($kml_file['uri']);
+      }
+    }
+  }
+  
+  $render = theme('addressfield_staticmap_google_map', array(
+    'address' => urldecode($address),
+    'settings' => $settings,
+    'image' => $image,
+    'kml_paths' => $kml_paths, 
+  ));
+  return $render;
+  
+}
+
+/**
+ * Render static Mapquest image for a specific address
+ */
+function _addressfield_static_map_render_mapquest_image($address, $settings) {
+  $settings['size'] = str_replace('x', ',', $settings['size']);
+  
+  // Codes for map types are not the same, alter them
+  $map_types = array(
+    'roadmap' => 'map',
+    'satellite' => 'sat',
+    'hybrid' => 'hyb',
+    'terrain' => 'map',
+  );
+  $settings['maptype'] = $map_types[$settings['maptype']];
+  
+  $staticmap_url = "http://www.mapquestapi.com/staticmap/v3/getplacemap?key=" . $settings['api_key'] . 
+    "&location=" . $address . "&size=" . $settings['size'] . "&type=" . $settings['maptype'] . "&zoom=" . $settings['zoom'] .
+    "&imagetype=jpeg&showicon=green-1";
+  
+  $image = '<img src="' . $staticmap_url . '">';
+  
+  return $image;
+}

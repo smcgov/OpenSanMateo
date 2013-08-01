@@ -1,0 +1,12 @@
+core = "7.x"
+description = "Add a field formatter for node reference that will alter menus to show the refered node as a parent"
+name = "Node Reference View Formatter"
+package = "View"
+dependencies[] = "node_reference"
+
+; Information added by drupal.org packaging script on 2012-05-07
+version = "7.x-1.0-alpha1"
+core = "7.x"
+project = "node_reference_set_trail_formatter"
+datestamp = "1336415465"
+

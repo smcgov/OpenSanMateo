@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * registered callback for imce
+ */
+function imce_file_path_content(&$imce) {
+  drupal_add_css(drupal_get_path('module', 'imce_file_path') . '/imce_file_path.css');
+  drupal_add_js(drupal_get_path('module', 'imce_file_path') . '/imce_file_path.js');
+}

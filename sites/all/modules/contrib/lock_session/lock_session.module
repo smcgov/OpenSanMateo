@@ -1,0 +1,256 @@
+<?php
+/**
+ * @file lock_session.module
+ * TODO: Enter file description here.
+ */
+
+//define the default lockout time.
+define("lock_session_limit", 1800);
+
+
+function hook_permission() {
+  return array(
+    'administer lock session' => array(
+      'title' => t('Administer Lock Session'), 
+      'description' => t('Perform administration tasks for Lock Session.'),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_menu().
+ */
+function lock_session_menu() { 
+  // This is the minimum information you can provide for a menu item.
+  $items['admin/lock_session/login'] = array(
+    'title' => 'Session Lock',
+    'page callback' => 'lock_session_login',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['admin/lock_session/cocurrent'] = array(
+    'title' => 'Too Many Sessions',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array("lock_session_cocurrent_form"),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * lock_session_lock()
+ *
+ * Lock the current session
+ */
+function lock_session_lock($for = NULL) {
+  $_SESSION['lock_session_locked'] = TRUE;
+  if (isset($for)) {
+    $_SESSION['lock_session_locked_for'][$for] = TRUE;
+  }
+}
+
+function lock_session_redirect($redirect = NULL) {
+  $path = &$_SESSION[__FUNCTION__];
+  if (isset($redirect)) {
+    $path = $redirect;
+  }
+  elseif (!isset($path)) {
+    $path = 'admin/lock_session/login';
+  }
+  return $path;
+}
+/*
+ * lock_session_message()
+ *
+ * used for setting and getting message for after a goto
+ *
+ * PARAM msg: a string to pass to drupal set message if FALSE we set return to NULL
+ * RETURN the saved message string or NULL if it is not set
+ */
+function lock_session_message($msg = NULL) {
+  $message = &$_SESSION[__FUNCTION__];
+  if (isset($msg)) {
+    if (!$msg) {
+      $message = NULL;
+    }
+    else {
+      $message = $msg;
+    }
+  }
+  
+  return $message;
+}
+/*
+ * lock_session_message_set()
+ */
+function lock_session_message_set() {
+  $set = &drupal_static(__FUNCTION__);
+  if (!isset($set) && ($message = lock_session_message()) && ($message !== NULL)) {
+    $set = TRUE;
+    drupal_set_message($message);
+  }
+}
+
+/**
+ * lock_session_unlock()
+ *
+ * Unlock the current session
+ */
+function lock_session_unlock($for = NULL) {
+  if (isset($for)) {
+    unset($_SESSION['lock_session_locked_for'][$for]);
+  }
+  else {
+    $_SESSION['lock_session_locked_for'] = array();
+  }
+  if (empty($_SESSION['lock_session_locked_for'])) {
+    $_SESSION['lock_session_locked'] = FALSE;
+    lock_session_message(FALSE);
+  }
+}
+
+/**
+ * lock_session_locked()
+ *
+ * Check to see if the current session is locked
+ */
+function lock_session_locked($for = NULL) {
+  if (isset($for)) {
+  return isset($_SESSION['lock_session_locked_for'][$for]) && $_SESSION['lock_session_locked_for'][$for];
+  }
+  return isset($_SESSION['lock_session_locked']) && $_SESSION['lock_session_locked'];
+}
+
+/**
+ * lock_session_login()
+ *
+ * page callback
+ * Maybe this can go away if we have the page use the drupal_get_form function
+ */
+function lock_session_login() {
+  return drupal_get_form("lock_session_unlock_form");
+}
+
+/**
+ * lock_session_unlock_form()
+ *
+ * a drupal form that asks the user to reenter their password to unlock the session
+ */
+function lock_session_unlock_form($form, $form_state) {
+  if (empty($form_state['input'])) {
+    lock_session_message_set();
+  }
+  global $user;
+  $form['user'] = array(
+    '#type' => 'textfield',
+    '#title' => t('User'),
+    '#disabled' => TRUE,
+    '#value' => format_username($user),
+  );
+  $form['password'] = array(
+    '#type' => 'password',
+    '#title' => t('Password'),
+    '#description' => t('Your account has been locked due to inactivity.  Please, reenter your password to unlock.')
+  );
+  $form['unlock'] = array(
+    '#type' => 'submit',
+    '#value' => t('Unlock'),
+  );
+  $form['logout'] = array(
+    '#type' => 'submit',
+    '#value' => t('Logout'),
+  );
+  $form['change_user'] = array(
+    '#type' => 'submit',
+    '#value' => t('Log in as Different User'),
+  );
+  $form['#submit'][] = 'lock_session_unlock_form_submit';
+  $form['#validate'][] = 'lock_session_unlock_form_validate';
+  return $form;
+}
+/*
+ *
+ * a drupal form that asks the user to reenter their password to unlock the session
+ */
+function lock_session_cocurrent_form($form, $form_state) {
+  if (empty($form_state['input'])) {
+    lock_session_message_set();
+  }
+  $form['try_again'] = array(
+    '#type' => 'submit',
+    '#value' => t('Try Again'),
+  );
+  $form['logout'] = array(
+    '#type' => 'submit',
+    '#value' => t('Logout'),
+  );
+  $form['change_user'] = array(
+    '#type' => 'submit',
+    '#value' => t('Log in as Different User'),
+  );
+  $form['#submit'][] = 'lock_session_unlock_form_submit';
+  return $form;
+
+}
+
+/**
+ * lock_session_unlock_form_validate()
+ * 
+ * validation function for lock_session_unlock_form.  Validates that the password is correct if
+ * the unlock action was selected.
+ */
+function lock_session_unlock_form_validate(&$form, &$form_state) {
+  global $user;
+   switch ($form_state['triggering_element']['#id']) {
+    case 'edit-unlock':
+      require_once DRUPAL_ROOT . '/' . variable_get('password_inc', 'includes/password.inc');
+      if (!user_check_password($form_state['values']['password'], $user)) {
+        form_error($form['password'], t("Password is incorrect"));
+      }
+    break;
+  }
+}
+
+/**
+ * lock_session_unlock_form_submit()
+ * 
+ * submit function for lock_session_unlock_form. 
+ */
+function lock_session_unlock_form_submit(&$form, &$form_state) {
+  global $user;
+  switch ($form_state['triggering_element']['#id']) {
+    //insure that the password is correct and then unlock the session and return to the return page.
+    case 'edit-unlock':
+      require_once DRUPAL_ROOT . '/' . variable_get('password_inc', 'includes/password.inc');
+      if (user_check_password($form_state['values']['password'], $user)) {
+        lock_session_unlock('timeout');
+        drupal_goto($_SESSION['lock_session_GET']['q']);
+      }
+      else {
+        form_error($form['password'], t("Password is incorrect"));
+      }
+    break;
+    case 'edit-try-again':
+      lock_session_unlock("cocurrent");
+      $_GET['destination'] = $_SESSION['lock_session_GET']['q'];
+    break;
+    //set the desitnation to the login screen and then fall throw to logout
+    case 'edit-change-user':
+      $_GET['destination'] = 'user/login';
+    //logout the user
+    case 'edit-logout':
+      module_load_include('pages.inc', 'user', 'user');
+      user_logout();
+    break;
+
+  } 
+}
+
+function lock_session_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'password_policy2') {
+   return "plugins/$plugin";
+  }
+}

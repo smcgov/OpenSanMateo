@@ -1,0 +1,15 @@
+.drupal-embed {
+  border-left: solid #aaa 34px;
+  position:relative;
+  min-height: 50px;
+  background: #eee;
+  cursor: pointer;
+}
+.drupal-embed-icon {
+  background : url('images/icon-embed.png') no-repeat ;
+  width:35px;
+  height : 25px;
+  position: absolute;
+  left:-34px;
+  top: -3px;
+}

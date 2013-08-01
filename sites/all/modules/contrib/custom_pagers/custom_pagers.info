@@ -1,0 +1,8 @@
+name = Custom Pagers
+core = 7.x
+description = Allows administrators to define custom pagers for navigation in lists of nodes.
+package = Other
+
+files[] = views/custom_pagers.views.inc
+files[] = views/custom_pagers_plugin_display_simple.inc
+files[] = views/custom_pagers_plugin_style_php_array.inc

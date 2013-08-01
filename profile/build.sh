@@ -41,7 +41,7 @@ if [ "$1" = "--acquia" ]; then
   TARGET="$ABS_CALLPATH/../"
   BRANCH=$3
   NOMAKE=0
-  GIT_REPO='git@bitbucket.org:phase2tech/sanmateo.git'
+  GIT_REPO='sanmateo@svn-2314.prod.hosting.acquia.com:sanmateo.git'
 else
   #DRUSH_OPTS='--working-copy'
   TARGET=$1
@@ -93,17 +93,21 @@ if [ "$TYPE" = 'acquia' ]; then
   if [ $NOMAKE -eq 0 ]; then
     # remove git ignore placed by make
     rm -rf docroot/.gitignore
+    cd docroot
 
     # restore acquia sites folders except sites/all
-    mv docroot/sites/all keep-the-new-sites-all
-    git checkout HEAD docroot/sites
-    rm -rf docroot/sites/all/modules/contrib
-    rm -rf docroot/sites/all/libraries
-    rm -rf docroot/sites/all/themes
-    cp -r keep-the-new-sites-all/* docroot/sites/all
-    rm -rf keep-the-new-sites-all
+#    mv docroot/sites/all keep-the-new-sites-all
+#    git checkout HEAD docroot/sites
+#    rm -rf docroot/sites/all/modules/contrib
+#    rm -rf docroot/sites/all/libraries
+#    rm -rf docroot/sites/all/themes
+#    cp -r keep-the-new-sites-all/* docroot/sites/all
+#    rm -rf keep-the-new-sites-all
+    # Copy new sites/* into persistent sites folder, remove built folder and link to persistent one
+    cp -r sites/* ../sites
+    rm -rf sites
+    ln -s sites ../sites
 
-    cd docroot
     
     # Add directory-based sites as symlinks so we can use the same codebase
     #ln -s . site-dir

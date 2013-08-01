@@ -1,0 +1,142 @@
+<?php
+/**
+ *  @file - Provides limiting interface based sorting capabilities for field collection items,
+ *  also provides an api for adding further capabilities.
+ */
+
+/**
+ * Implements hook_field_attach_form()
+ * Add our form for sorting to the field_collection form
+ */
+function fieldcollection_sort_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+  $fields = field_info_instances($entity_type, $form['#bundle']);
+  foreach($fields as $name => $field) {
+    if ($field['widget']['type'] == 'field_collection_embed') {
+      
+      fieldcollection_sort_add_sort($form[$name], $name, $langcode);
+      //todo figure out which field collection's sort was clicked
+      if (!empty($form_state['values']['op']) && $form_state['values']['op'] == 'Sort' && 
+              !empty($form_state['values'][$name]['sort_form']['field'])) {
+
+        $sort_field = $form_state['values'][$name]['sort_form']['field'];
+        $type = $form_state['values'][$name]['sort_form']['type'];
+        $dir = $form_state['values'][$name]['sort_form']['sort'];
+
+        $tochange = &$form[$name];
+        fieldcollection_sort_sort($tochange, $form_state['values'][$name], $sort_field, $type, $dir, $langcode);
+
+      }
+
+    }
+  }
+
+}
+
+function fieldcollection_sort_add_sort(&$field, $name, $langcode) {
+  $field_options = field_info_instances('field_collection_item', $name);
+  $options = array();
+  foreach ($field_options as $name => $item) {
+    $options[$name] = $item['label'];
+  }
+
+  $field['sort_form'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#title' => t('Sort Items'),
+    'field' => array(
+      '#type' => 'select',
+      '#title' => t('Sort Field'),
+      '#description' => t('The field to sort the items by'),
+      '#options' => $options,
+      
+    ),
+    'type' => array(
+      '#type' => 'select',
+      '#title' => t('Comparison Type'),
+      '#description' => t('How to compare the items'),
+      '#options' => array(
+        'fieldcollection_sort_comp' => t('String'),
+        'fieldcollection_sort_datecomp' => t('Date'),
+      ),
+    ),
+    'sort' => array(
+      '#type' => 'select',
+      '#title' => t('Sort Direction'),
+      '#description' => t('Which direction to sort the items.'),
+      '#options' => array(
+        0 => 'desc',
+        1 => 'asc',
+      ),
+    ),
+    'submit' => array(
+      '#type' => 'submit',
+      '#value' => t('Sort'),
+      '#executes_submit_callback' => FALSE,
+    ),
+    '#weight' => -10,
+  );
+
+  return $field;
+}
+
+function fieldcollection_sort_sort(&$form_item, $field, $sort_field, $sort_type, $dir, $langcode) {
+  $sortable = array();
+  $info = field_info_field($sort_field);
+
+  foreach ($field[$langcode] as $key => $item) {
+    if (!empty($item[$sort_field][$langcode])) {
+      switch ($info['type']) {
+        case 'link_field':
+          $value = empty($item[$sort_field][$langcode][0]['title']) ? '' : $item[$sort_field][$langcode][0]['title'];
+          break;
+
+        case 'node_reference':
+          $node = node_load($item[$sort_field][$langcode][0]['nid']);
+          $value = !empty($node->title) ? $node->title : '';
+          break;
+
+        default:
+          $value = empty($item[$sort_field][$langcode][0]['value']) ? '' : strip_tags($item[$sort_field][$langcode][0]['value']);
+      }
+      $sortable[] = array(
+        'key' => $key,
+        'value' => $value,
+      );
+    }
+  }
+
+  usort($sortable, $sort_type);
+
+  foreach ($sortable as $weight => $item) {
+    $weight = $dir ? $weight : -$weight;
+    $form_item[$langcode][$item['key']]['_weight']['#value'] = $weight;
+  }
+  drupal_set_message('Collection items have been sorted.');
+}
+
+function fieldcollection_sort_comp($a, $b) {
+  if ($b['value'] == '') {
+    return 1;
+  }
+  else if ($a['value'] == '') {
+    return -1;
+  }
+  return strcasecmp($a['value'], $b['value']);
+}
+
+function fieldcollection_sort_datecomp($a, $b) {
+  $d1 = strtotime($a['value']);
+  $d2 = strtotime($b['value']);
+  if (!$d1) {
+    return -1;
+  }
+  else if (!$d2) {
+    return 1;
+  }
+  if ($d1 != $d2) {
+    return $d1 > $d2 ? 1 : -1;
+  }
+  else {
+    return 0;
+  }
+}

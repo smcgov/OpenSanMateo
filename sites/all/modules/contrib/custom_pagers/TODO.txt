@@ -1,0 +1,6 @@
+
+* CTools import/export support
+* Allow pagers to be rearranged on the CCK field management page
+* Make Views a hard dependency, prune uneeded options.
+* Add a Views cache handler that invalidates on specific node-type updates
+  so that custom pagers can be easily cached inside of Views.

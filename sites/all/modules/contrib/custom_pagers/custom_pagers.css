@@ -1,0 +1,25 @@
+ul.custom-pager {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+ul.custom-pager li {
+  margin: 0;
+  padding: 0;
+  display: block;
+  float: left;
+  width: auto;
+  list-style-type: none;
+  list-style-image: none;
+  background: none;
+  white-space: nowrap;
+}
+
+ul.custom-pager li.previous {
+  margin-right: 5px;
+}
+
+ul.custom-pager li.next {
+  margin-left: 5px;
+}

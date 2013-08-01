@@ -1,0 +1,9 @@
+name = OpenPublic Filters
+description = Provides filter permissions for OpenPublic
+core = 7.x
+package = OpenPublic
+php = 5.2.4
+dependencies[] = features
+features[features_api][] = api:1
+features[user_permission][] = use text format filtered_html
+features[user_permission][] = use text format full_html

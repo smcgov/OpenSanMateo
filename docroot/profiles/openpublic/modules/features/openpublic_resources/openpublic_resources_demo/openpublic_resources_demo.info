@@ -1,0 +1,10 @@
+name = OpenPublic Resources Demo
+description = Demo Content for Resources
+core = 7.x
+package = OpenPublic Demo Content
+dependencies[] = defaultcontent
+features[content][] = resources_education
+features[content][] = resources_legislation
+features[features_api][] = api:1
+features_exclude[dependencies][defaultcontent] = defaultcontent
+project path = /tmp

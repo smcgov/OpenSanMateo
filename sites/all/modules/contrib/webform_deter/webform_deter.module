@@ -1,0 +1,139 @@
+<?php
+
+define('WEBFORM_DETER_DEFAULT_MESSAGE', 'It appears that you may have sensitive information in your submission. Please do not submit information like social security numbers, dates of birth, etc using this form. If there is no sensitive information in your submission click OK to continue. Otherwise, click Cancel to have the opportunity to remove this information and then resubmit.');
+/**
+ * Implements hook_node_view to add validation javascript to pages containing webforms
+ */
+function webform_deter_node_view($node, $view_mode, $language) {
+  if ($node->type == 'webform') {
+    $patterns = ctools_export_crud_load_all('webform_deter_pattern', FALSE);
+    $check = array();
+    foreach ($patterns as $pattern) {
+      if (empty($pattern->disabled)) {
+        $check[$pattern->machine_name] = $pattern->pattern;
+      }
+    }
+    if (!empty($check)) {
+      drupal_add_js(array('webform_deter' => array('patterns' => $check, 'message' => variable_get('webform_deter_message', WEBFORM_DETER_DEFAULT_MESSAGE))), 'setting');
+      drupal_add_js(drupal_get_path('module', 'webform_deter') . '/js/webform_deter.js');
+    }
+  }
+}
+
+/**
+* Implementation of hook_ctools_plugin_directory().
+*/
+function webform_deter_ctools_plugin_directory($owner, $plugin_type) {
+  // Load the export_ui plugin.
+  if ($plugin_type == 'export_ui') {
+    return 'plugins/export_ui';
+  }
+}
+
+/**
+ * Implements hook_permission
+ */
+function webform_deter_permission() {
+  $permissions = array();
+  $permissions['administer webform_deter'] = array(
+    'title' => 'Administer Webform Deter',
+    'description' => 'Administer patterns and caution message for the webform deter module'
+  );  
+  return $permissions;
+}
+
+/**
+ * Implements hook_menu
+ */
+function webform_deter_menu() {
+  $items = array();
+  $items['admin/structure/webform_deter/settings'] = array(
+    'title' => 'Settings',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer webform_deter'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('webform_deter_settings'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 3,
+  );  
+  $items['admin/structure/webform_deter/test'] = array(
+    'title' => 'Test',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer webform_deter'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('webform_deter_test'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 3,
+  );  
+  return $items;
+}
+
+/**
+ * Form for webform deter settings
+ */
+function webform_deter_settings($form, &$form_state) {
+  $form['webform_deter_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Message'),
+    '#description' => t('The message shown to users when a deter pattern matches.'),
+    '#default_value' => variable_get('webform_deter_message', WEBFORM_DETER_DEFAULT_MESSAGE),
+  );
+  $form = system_settings_form($form);
+  return $form;
+}
+
+/**
+ * Form for webform deter test
+ */
+function webform_deter_test($form, &$form_state) {
+
+  // trigger addition of js and add in debug setting
+  $node = new stdclass();
+  $node->type = 'webform';
+  webform_deter_node_view($node, NULL, NULL);
+  drupal_add_js(array('webform_deter' => array('debug' => 'webform-deter-debug')), 'setting');
+
+  $options = array ('one' => 'one', 'two' => 'two', 'three' => 'three');
+
+  $form['#attributes'] = array('class' => 'webform-deter-debug');
+  $form['message'] = array(
+    '#type' => 'markup',
+    '#markup' => 'Use this form to test out configured patterns in a debugging mode so you can see which match. Multiple inputs and types are provided to simulate a real form. Patterns are only checked against text input fields. Debugging will appear in the following area when you hit submit <div class="form-item"><label>Webform Debug Info</label><div id="webform-deter-debug"></div></div>',
+  );
+  $form['text_one'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Text One'),
+  );
+  $form['select_one'] = array(
+    '#type' => 'select',
+    '#title' => t('Select One'),
+    '#options' => $options,
+  );
+  $form['text_two'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Text Two'),
+  );
+  $form['text_three'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Text Three'),
+  );
+  $form['radio_one'] = array(
+    '#type' => 'radios',
+    '#title' => t('Radio One'),
+    '#options' => $options,
+  );
+  $form['text_four'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Text Two'),
+  );
+  $form['checkboxes_one'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Checkboxes One'),
+    '#options' => $options,
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save'),
+  );
+  return $form;
+}

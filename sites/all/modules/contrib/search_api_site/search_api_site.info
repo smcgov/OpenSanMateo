@@ -1,0 +1,5 @@
+name = Search API Site
+description = Allow a for a site hash to be indexed. adds a facet for "this site only" and allows filters on for this site.
+core = 7.x
+dependencies[] = search_api
+files[] = includes/handler_filter_site.inc 

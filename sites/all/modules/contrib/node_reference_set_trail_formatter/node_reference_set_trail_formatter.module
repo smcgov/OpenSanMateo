@@ -1,0 +1,114 @@
+<?php
+// $Id$
+/*
+ * implementation of hook_field_formatter_info()
+ *
+ * creating new formatter for node_references that will set the active path for menus
+ */
+function node_reference_set_trail_formatter_field_formatter_info() {
+  $info = array();
+  $info['node_reference_set_trail'] = array(
+    'label' => 'Set Active Trail',
+    'field types' => array('node_reference'),
+    'settings' => array('menu' => '', 'set_breadcrumbs' => false),
+  );
+  return $info;
+}
+/*
+ * implementation of hook_field_formatter_settings_from()
+ *
+ * find all menus and also give option to set the breadcrumbs
+ */
+function node_reference_set_trail_formatter_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $menus = menu_get_menus();
+  $form['menu'] = array(
+    '#type' => 'checkboxes',
+    '#title' => 'Menu',
+    '#options' => $menus,
+    '#default_value' => $settings['menu']
+  );
+  $form['sb_wrapper'] = array(
+    '#title' => 'Set Breadcrumbs',
+    '#type' => 'fieldset',
+  );
+  $form['set_breadcrumbs'] = array(
+      '#type' => 'checkbox',
+      '#title' => 'Set Breadcrumbs?',
+      '#default_value' => $settings['set_breadcrumbs']
+  );
+  return $form;
+}
+
+/*
+ * implemantation of hook_field_formatter_settings_summary()
+ *
+ */
+function node_reference_set_trail_formatter_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $menus = menu_get_menus();
+  $items = array();
+  foreach($settings['menu'] as $menu) {
+   
+    if($title = $menus[$menu]) {
+      $items[] = $title;
+    }
+  }
+  $bc = $settings['set_breadcrumbs'] ? "Yes":"No";
+  $markup = "Menu: ". implode(", ", $items) ."<br />Set BreadCrumbs: $bc";
+  return $markup;
+}
+
+/*
+ * implemantation of hook_field_formatter_view()
+ *
+ * run throw the menu and set the active path for the items we have
+ */
+function node_reference_set_trail_formatter_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  switch ($display['type']) {
+    case 'node_reference_set_trail':
+      $settings = $display['settings'];
+      foreach($items as $item) {
+        foreach($settings['menu'] as $menu) {
+          if($menu) {
+            $nid = $item['nid'];
+            menu_tree_set_path($menu, "node/$nid");
+            //if we need to set the bread crumbs we run thru the active trail
+            //and add to the bread crumbs
+            if($settings['set_breadcrumbs']) {
+              
+              $full_tree = menu_tree_page_data($menu, NULL, TRUE);
+              $bc = drupal_get_breadcrumb();
+              $bc = array(array_pop($bc));  //get home
+              $tree = array_pop($full_tree);
+
+              // lets find the first branch that is active
+              while($tree && !$tree['link']['in_active_trail']) {
+                $tree = array_pop($full_tree);
+              }
+
+              //descend the branch adding items to the breadcrumbs until we are out of active trails
+              $tree = array($tree);
+              while($tree) {
+                $item = array_pop($tree);
+                if($item['link']['in_active_trail']) {
+                  $bc[] = l($item['link']['title'], $item['link']['href'], $item['link']['localized_options']);
+                  $tree = $item['below'];
+                }
+              }
+              drupal_set_breadcrumb($bc);
+            }
+          }
+        }
+      }
+
+      return $element;
+      break;
+  }
+}
+

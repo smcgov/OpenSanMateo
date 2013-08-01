@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function phase2_blog_install() {
+  variable_set('pathauto_node_blog_entry_pattern', 'blog/[node:created:custom:Y-m-d]/[node:title]');
+}

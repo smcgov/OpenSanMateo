@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * hook_enable - let imce know we have custom content
+ */
+function imce_search_enable() {
+  $funcs = variable_get('imce_custom_content', array());
+  $funcs['imce_search_content'] = 1;
+  variable_set('imce_custom_content', $funcs);
+}
+
+/**
+ * hook_disable - remove our custom content registration with imce
+ */
+function imce_search_disable() {
+  $funcs = variable_get('imce_custom_content', array());
+  unset($funcs['imce_search_content']);
+  variable_set('imce_custom_content', $funcs);
+}

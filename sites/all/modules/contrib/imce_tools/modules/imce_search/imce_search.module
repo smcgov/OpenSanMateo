@@ -1,0 +1,83 @@
+<?php //$Id$
+
+/**
+ * hook_menu implementation, defines imce_swfupload path for handling file 
+ * uploads
+ */
+function imce_search_menu() {
+  $menu['imce_search_callback'] = array(
+    'title' => 'IMCE Search Callback',
+    'type' => MENU_CALLBACK,
+    'page callback' => 'imce_search_callback',
+    'access callback' => 'imce_access',
+  );
+  return $menu;
+}
+
+function imce_search_callback() {
+  $path_parts = explode('/', $_GET['q']);
+  array_shift($path_parts); // get rid of callback dir
+  $case_insensitive = array_shift($path_parts);
+  $file_string = array_pop($path_parts);
+  $dir_base = join('/', $path_parts);
+  $query_args = array();
+  if ($file_string) {
+    $query = db_select('file_managed', 'f', array('target' => 'slave'));
+    $query->fields('f', array('uri'));
+    if ($case_insensitive) {
+      $query->where('LOWER(f.filename) LIKE (:fname)', array(':fname' => '%' . drupal_strtolower($file_string) . '%'));
+    }
+    else {
+      $query->condition('f.filename', '%' . $file_string . '%', 'LIKE');
+    }
+    if ($dir_base) {
+      $query->condition('uri',  '%//%' . $dir_base . '%' , 'LIKE');
+    }
+    $suggestions['search'] = 'Searched ' . ($dir_base ? check_plain($dir_base) . ' and sub' : ' all ') . 'directories for ' . check_plain($file_string);
+    $suggestions['files'] = array();
+    $res = $query->execute();
+    foreach ($res as $row) {
+      $suggestions['files'][] = file_uri_target($row->uri);
+    }
+  }
+  else {
+    $suggestions['search'] = 'Invalid search criteria, please specify a search';
+    $suggestions['files'] = array();
+  }
+  echo drupal_json_encode($suggestions);
+  exit;
+}
+
+function imce_search_form($form, &$form_state) {
+  $form['imce-search-term'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Search'),
+    '#description' => t('Search for files in current directory an subdirectories'),
+    '#size' => 25,
+  );
+  $form['imce-search-case'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Case insensitive'),
+    '#description' => t('This option may have no effect depending on your database configuration'),
+    '#default_value' => 0,
+  );
+  $form['imce-search-button'] = array(
+    '#type' => 'button',
+    '#value' => t('Search'),
+  );
+  $form['imce-search-results'] = array(
+    '#markup' => '<div id="imce-search-results"><div></div><ul></ul></div>',
+  );
+  return ($form);
+}
+
+/**
+ * provide form content to imce, registered function for callback
+ */
+function imce_search_content(&$imce) {
+  drupal_add_css(drupal_get_path('module', 'imce_search') . '/imce_search.css');
+  drupal_add_js(drupal_get_path('module', 'imce_search') . '/imce_search.js');
+  $form = drupal_get_form('imce_search_form');
+  return drupal_render($form);
+}
+

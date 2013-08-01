@@ -1,0 +1,359 @@
+<?php
+/**
+ * @file
+ * Allows administrators to define context-sensitive previous/next pagers for any node type.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function custom_pagers_menu() {
+  $items = array();
+
+  $access = user_access('administer custom pagers');
+  $items['admin/structure/custom_pagers'] = array(
+    'title' => 'Custom pagers',
+    'description' => 'Add custom pagers for content types.',
+    'page callback' => 'custom_pagers_page',
+    'access arguments' => array('administer custom pagers'),
+    'file' => 'custom_pagers.admin.inc',
+  );
+
+  $items['admin/structure/custom_pagers/add'] = array(
+    'path' => 'admin/structure/custom_pagers/add',
+    'title' => 'Add custom pager',
+    'type' => MENU_CALLBACK,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('custom_pagers_form'),
+    'access arguments' => array('administer custom pagers'),
+    'file' => 'custom_pagers.admin.inc',
+  );
+
+  $items['admin/structure/custom_pagers/edit'] = array(
+    'title' => 'Edit custom pager',
+    'type' => MENU_CALLBACK,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('custom_pagers_form', 4),
+    'access arguments' => array('administer custom pagers'),
+    'file' => 'custom_pagers.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission()
+ */
+function custom_pagers_permission() {
+  return array(
+    'administer custom pagers' => array(
+      'title' => t('administer custom pagers'),
+      'description' => t('TODO Add a description for \'administer custom pagers\''),
+    ),
+    'use php in custom pagers' => array(
+      'title' => t('use php in custom pagers'),
+      'description' => t('TODO Add a description for \'use php in custom pagers\''),
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme()
+ */
+function custom_pagers_theme() {
+  return array(
+    'custom_pager' => array(
+      'variables' => array(
+        'nav_array' => NULL,
+        'node' => NULL,
+        'pager' => NULL,
+        'position' => 'bottom',
+      ),
+      'template' => 'custom-pager',
+    ),
+  );
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function custom_pagers_node_view($node, $view_mode = 'full') {
+  // We want to make sure we don't try to output when print.module is active.
+  // It's a bit of special casing but it doesn't do much harm.
+  if (node_is_page($node) && empty($node->printing)) {
+    $node->custom_pagers = _custom_pagers_load_all_pagers();
+    foreach ($node->custom_pagers as $pager) {
+      if ($pager->position != 'block' && _custom_pagers_visibility($pager, $node)) {
+        $nav_array = custom_pager_build_nav($pager, $node);
+        if ($nav_array['current_index'] != -1) {
+          switch ($pager->position) {
+            case 'top':
+              $node->content['custom_pager_top'][$pager->pid] = array(
+                '#markup' => theme('custom_pager', array(
+                  'nav_array' => $nav_array,
+                  'node' => $node,
+                  'pager' => $pager,
+                  'position' => 'top')
+                )
+              );
+              break;
+            case 'bottom':
+              $node->content['custom_pager_bottom'][$pager->pid] = array(
+                '#markup' => theme('custom_pager', array(
+                  'nav_array' => $nav_array,
+                  'node' => $node,
+                  'pager' => $pager,
+                  'position' => 'bottom')
+                )
+              );
+              break;
+            case 'both':
+              $node->content['custom_pager_top'][$pager->pid] = array(
+                '#markup' => theme('custom_pager', array(
+                  'nav_array' => $nav_array,
+                  'node' => $node,
+                  'pager' => $pager,
+                  'position' => 'top')
+                )
+              );
+              $node->content['custom_pager_bottom'][$pager->pid] = array(
+                '#markup' => theme('custom_pager', array(
+                  'nav_array' => $nav_array,
+                  'node' => $node,
+                  'pager' => $pager,
+                  'position' => 'bottom')
+                )
+              );
+              break;
+          }
+        }
+      }
+    }
+    if (isset($node->content['custom_pager_top'])) {
+      $node->content['custom_pager_top']['#weight'] = -100;
+    }
+    if (isset($node->content['custom_pager_bottom'])) {
+      $node->content['custom_pager_bottom']['#weight'] = 100;
+    }
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function custom_pagers_block_info() {
+  $blocks = array();
+  $pagers = _custom_pagers_load_all_pagers();
+  foreach ($pagers as $pager) {
+    if ($pager->position == 'block') {
+      $blocks[$pager->pid]['info'] = $pager->title;
+    }
+  }
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ * Generates a block with a pager for the current node.
+ */
+function custom_pagers_block_view($delta = '') {
+  if (arg(0) == 'node' && $node = menu_get_object()) {
+    $pagers = _custom_pagers_load_all_pagers();
+    if ($pager = $pagers[$delta]) {
+      if ($pager->position == 'block' && _custom_pagers_visibility($pager, $node)) {
+        $nav_array = custom_pager_build_nav($pager, $node);
+        if ($nav_array['current_index'] != -1) {
+          if (module_exists('token')) {
+            $block['subject'] = token_replace($pager->title, array('node' => $node));
+          }
+          else {
+            $block['subject'] = $pager->title;
+          }
+          $block['content'] = theme('custom_pager', array('nav_array' => $nav_array, 'node' => $node, 'pager' => $pager, 'position' => 'block'));
+          return $block;
+        }
+      }
+    }
+  }
+}
+
+function _custom_pagers_load_pager($pid) {
+  $sql = 'SELECT * FROM {custom_pager} WHERE pid = %d';
+  $result = db_query('SELECT * FROM {custom_pager} WHERE pid = :pid', array(':pid' => $pid));
+  $pager = $result->fetchObject();
+  return $pager;
+}
+
+function _custom_pagers_load_all_pagers($refresh = FALSE) {
+  static $pagers;
+  if ($refresh || !isset($pagers)) {
+    $sql = 'SELECT * FROM {custom_pager}';
+    $result = db_query($sql);
+
+    $pagers = array();
+    foreach ($result as $pager) {
+      $pager->node_type = explode(',', $pager->node_type);
+      $pagers[$pager->pid] = $pager;
+    }
+  }
+  return $pagers;
+}
+
+function _custom_pagers_save_pager($pager = NULL) {
+  if (isset($pager->pid)) {
+    drupal_write_record('custom_pager', $pager, array('pid'));
+  }
+  else {
+    drupal_write_record('custom_pager', $pager);
+  }
+  cache_clear_all('custom_pagers_', 'cache', TRUE);
+}
+
+function _custom_pagers_delete_pager($pid) {
+  db_delete('custom_pager')->condition('pid', $pid)->execute();
+}
+
+function _custom_pagers_visibility($pager, $node) {
+  if (!empty($pager->visibility_php)) {
+    // Use PHP code to generate the list.
+    ob_start();
+    $result = eval(trim($pager->visibility_php));
+    ob_end_clean();
+    return ($result == TRUE);
+  }
+  elseif (!empty($pager->node_type)) {
+    return in_array($node->type, $pager->node_type);
+  }
+  return FALSE;
+}
+
+function custom_pager_build_nav($pager, $node) {
+  static $pager_cache;
+  $list = array();
+
+  // Let's build it from scratch!
+  if (empty($list)) {
+    // If the pager uses PHP, execute the PHP and run with the list.
+    // Otherwise, use a view to get a list of node ids.
+    if (!empty($pager->list_php)) {
+      // Use PHP code to generate the list.
+      ob_start();
+      $result = eval(trim($pager->list_php));
+      if (is_array($result)) {
+        $list = $result;
+      }
+      ob_end_clean();
+    }
+    elseif ($results = custom_pagers_get_list_from_view($pager, $node)) {
+      $list = $results;
+    }
+
+    if ($pager->reverse_list) {
+      $list = array_reverse($list);
+    }
+  }
+
+  if (!empty($list)) {
+    return pager_entries_by_val($node->nid, $list);
+  }
+  return FALSE;
+}
+
+// Helper functions to pull proper entries from a list of nids.
+function pager_entries_by_val($value, $list) {
+
+  $list = array_values($list);
+  foreach ($list as $k => $v) {
+    if ($v == $value) {
+      $key = $k;
+    }
+  }
+  if (!isset($key)) {
+    $key = -1;
+  }
+  return pager_entries_by_key($key, $list);
+}
+
+function pager_entries_by_key($key, $list, $increment = 1) {
+  $list = array_values($list);
+  $nav = array(
+    'first' => $list[0],
+    'prev' => $list[max($key - $increment, 0)],
+    'next' => $list[min($key + $increment, (count($list) - 1))],
+    'last' => $list[count($list) - 1],
+    'full_list' => $list,
+  );
+
+  foreach ($nav as $k => $v) {
+    if ($nav[$k] == $list[$key]) {
+      $nav[$k] = NULL;
+    }
+  }
+
+  $nav['current_index'] = $key;
+  return $nav;
+}
+
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
+function custom_pagers_get_list_from_view($pager, $node) {
+  if ($view = views_get_view($pager->view)) {
+    $display = $view->add_display('custom_pagers_simple');
+
+    $view->set_display($display);
+    $view->display_handler->set_option('style_plugin', 'custom_pagers_php_array');
+
+    // Get arguments for the view.
+    if (!empty($pager->args)) {
+      $args = explode("\n", $pager->args);
+      foreach($args as &$arg) {
+        $arg = token_replace(trim($arg), array('node' => $node));
+      }
+    }
+    else {
+      $args = array();
+    }
+
+    // Remove the number-of-items-per-page restriction, as it will mess up
+    // our counts.
+    $view->set_items_per_page(0);
+
+    // Get the results.
+    $result = $view->execute_display($display, $args);
+
+  }
+  else {
+    $result = FALSE;
+  }
+  return $result;
+}
+
+function template_preprocess_custom_pager(&$vars) {
+  drupal_add_css(drupal_get_path('module', 'custom_pagers') . '/custom_pagers.css');
+  $node = $vars['node'];
+  $pager = $vars['pager'];
+  $nav = $vars['nav_array'];
+
+  $vars['previous'] = !empty($nav['prev']) ? l('‹ ' . t('previous'), 'node/' . $nav['prev']) : '';
+  $vars['key'] = t('@count of @count_total', array('@count' => ($nav['current_index'] + 1), '@count_total' => count($nav['full_list'])));
+  $vars['next'] =  !empty($nav['next']) ? l(t('next') . ' ›', 'node/' . $nav['next']) : '';
+
+  $vars['theme_hook_suggestions'][] = "custom-pager-{$vars['position']}";
+  $vars['theme_hook_suggestions'][] = "custom-pager-$node->type";
+  $vars['theme_hook_suggestions'][] = "custom-pager-$node->type-{$vars['position']}";
+  $vars['theme_hook_suggestions'][] = "custom-pager-$pager->pid";
+  $vars['theme_hook_suggestions'][] = "custom-pager-$pager->pid-{$vars['position']}";
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function custom_pagers_views_api() {
+  return array(
+    'api' => 2,
+    'path' => drupal_get_path('module', 'custom_pagers') . '/views',
+  );
+}

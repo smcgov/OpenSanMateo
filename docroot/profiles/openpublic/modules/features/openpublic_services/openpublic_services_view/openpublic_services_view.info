@@ -1,0 +1,15 @@
+name = OpenPublic Services View
+description = Service content view
+core = 7.x
+package = OpenPublic
+php = 5.2.4
+version = 7.x-1.0
+project = openpublic_services_view
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = openpublic_services
+dependencies[] = text
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = services

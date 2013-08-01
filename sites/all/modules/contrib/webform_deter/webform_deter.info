@@ -1,0 +1,6 @@
+name = Webform Deter
+description = Applies clientside validation checks to webform fields and warns the user when sensitive information may be contained in data being submitted
+core = 7.x
+package = Other
+
+dependencies[] = ctools
