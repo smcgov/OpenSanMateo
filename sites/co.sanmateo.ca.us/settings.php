@@ -562,5 +562,5 @@ if (file_exists('/var/www/site-php')) {
 
 // Set private filesystem for this site
 $path_parts = explode('/', pathinfo(__FILE__, PATHINFO_DIRNAME));
-$conf['file_private_path'] = "/mnt/files/{$path_parts[3]}/sites/[$path_parts[5]}/files-private";
+$conf['file_private_path'] = "/mnt/files/{$path_parts[4]}/sites/{$path_parts[6]}/files-private";
 
