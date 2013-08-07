@@ -1,4 +1,5 @@
 name = OpenSanMateo Event
+description = App that provides an Event content type for San Mateo
 core = 7.x
 package = OpenSanMateo
 php = 5.2.4
