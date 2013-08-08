@@ -7,13 +7,6 @@ function opensanmateo_location_apps_app_info() {
 }
 
 function opensanmateo_location_app_configure_form() {
-  $form = array(
-    'opensanmateo_location_thing' => array(
-      '#title' => t('Thing'),
-      '#type' => 'textfield',
-      '#default_value' => variable_get('opensanmateo_location_thing', '')
-    ),
-  ); 
   $form['opensanmateo_location_content_types_with_location'] = array(
     '#title' => t('Content with Location'),
     '#type' => 'checkboxes',
