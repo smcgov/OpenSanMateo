@@ -404,6 +404,7 @@ function opensanmateo_location_field_default_field_instances() {
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
+      'image_field_caption' => 0,
       'max_filesize' => '',
       'max_resolution' => '',
       'min_resolution' => '',
@@ -429,7 +430,6 @@ function opensanmateo_location_field_default_field_instances() {
   t('Business hours of the location, when applicable.');
   t('Can be used to enter a description of the location, special instructions for obtaining access to the location, directions, where to park, etc.');
   t('Files');
-  t('Hours');
   t('Hours (text)');
   t('Location');
   t('Location Type');

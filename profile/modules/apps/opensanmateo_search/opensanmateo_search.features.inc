@@ -47,6 +47,8 @@ function opensanmateo_search_default_search_api_index() {
         "type" : { "type" : "string" },
         "title" : { "type" : "text", "boost" : "5.0" },
         "url" : { "type" : "uri" },
+        "field_event_calendar" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_event_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_release_date" : { "type" : "date" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
@@ -60,6 +62,8 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_site_id" : { "type" : "string" },
         "body:value" : { "type" : "text" },
         "field_address:locality" : { "type" : "text" },
+        "field_event_date:value" : { "type" : "date" },
+        "field_event_date:value2" : { "type" : "date" },
         "field_location_address:field_address:locality" : { "type" : "list\\u003Ctext\\u003E" }
       },
       "data_alter_callbacks" : {
