@@ -3,3 +3,9 @@ docroot/files
 docroot/sites/*/files
 docroot/sites/*/private
 
+.shiva/
+drupal/
+files/
+html
+logs/
+settings.local.inc
