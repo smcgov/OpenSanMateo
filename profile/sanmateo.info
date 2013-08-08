@@ -76,6 +76,7 @@ dependencies[] = twitter
 dependencies[] = twitter_pull
 dependencies[] = twitter_pull_pane
 
+; OpenPublic
 dependencies[] = phase2_profile
 ;dependencies[] = openpublic_breaking_news
 dependencies[] = openpublic_comments
@@ -88,7 +89,7 @@ dependencies[] = openpublic_site_page
 dependencies[] = openpublic_webform
 ;dependencies[] = openpublic_editors_choice
 dependencies[] = openpublic_captcha
-dependencies[] = openpublic_media_room
+;dependencies[] = openpublic_media_room
 dependencies[] = openpublic_menu
 dependencies[] = openpublic_menu_utility
 dependencies[] = openpublic_menu_footer
