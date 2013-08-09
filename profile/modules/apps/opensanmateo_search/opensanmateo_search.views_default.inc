@@ -439,6 +439,23 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['filters']['field_event_date_value2']['widget_type'] = 'date_popup';
   $handler->display->display_options['pane_category']['name'] = 'Lists';
   $handler->display->display_options['pane_category']['weight'] = '0';
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 0;
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['exposed_form_configure'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $handler->display->display_options['exposed_form_overrides'] = array(
+    'filters' => array(
+      'search_api_site_hash' => '',
+      'field_event_date_value' => '',
+      'field_event_date_value2' => '',
+    ),
+  );
   $handler->display->display_options['inherit_panels_path'] = '1';
   $export['opensanmateo_search'] = $view;
 
