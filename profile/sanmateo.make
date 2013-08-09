@@ -85,7 +85,7 @@ projects[revision_scheduler][patch][] = http://drupal.org/files/revision_schedul
 
 projects[video_embed_field][type] = module
 projects[video_embed_field][subdir] = contrib
-projects[video_embed_field][version] = 2.0-beta4
+projects[video_embed_field][version] = 2.0-beta5
 
 projects[better_exposed_filters][type] = module
 projects[better_exposed_filters][subdir] = contrib
