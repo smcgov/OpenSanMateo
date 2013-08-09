@@ -5,6 +5,7 @@ package = OpenSanMateo
 php = 5.2.4
 dependencies[] = ctools
 dependencies[] = features
+dependencies[] = fieldable_panels_panes
 dependencies[] = field_collection
 dependencies[] = flexslider
 dependencies[] = flexslider_views

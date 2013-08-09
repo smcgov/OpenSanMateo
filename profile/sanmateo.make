@@ -311,6 +311,10 @@ projects[oauth][type] = module
 projects[oauth][subdir] = contrib
 projects[oauth][version] = 3.1
 
+projects[fieldable_panels_panes][type] = module
+projects[fieldable_panels_panes][subdir] = contrib
+projects[fieldable_panels_panes][version] = 1.4
+
 projects[twitter][type] = module
 projects[twitter][subdir] = contrib
 projects[twitter][version] = 5.8
