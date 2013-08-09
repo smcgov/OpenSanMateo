@@ -335,6 +335,10 @@ projects[sharethis][type] = module
 projects[sharethis][subdir] = contrib
 projects[sharethis][version] = 2.5
 
+projects[addtocal][type] = module
+projects[addtocal][subdir] = contrib
+projects[addtocal][version] = 1.0-beta3
+
 projects[image_field_caption][type] = module
 projects[image_field_caption][subdir] = contrib
 projects[image_field_caption][version] = 2.0

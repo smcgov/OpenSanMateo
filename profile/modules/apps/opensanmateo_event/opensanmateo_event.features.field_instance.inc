@@ -139,15 +139,18 @@ function opensanmateo_event_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'date',
+        'module' => 'addtocal',
         'settings' => array(
+          'description_field' => 'body',
           'format_type' => 'long',
           'fromto' => 'both',
+          'location_field' => -1,
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'past_events' => 0,
         ),
-        'type' => 'date_default',
+        'type' => 'addtocal_view',
         'weight' => 1,
       ),
       'teaser' => array(
