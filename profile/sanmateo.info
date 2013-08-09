@@ -26,7 +26,6 @@ dependencies[] = field_ui
 dependencies[] = file
 dependencies[] = rdf
 
-
 ; Contrib
 
 dependencies[] = apps
@@ -75,8 +74,10 @@ dependencies[] = oauth_common
 dependencies[] = twitter
 dependencies[] = twitter_pull
 dependencies[] = twitter_pull_pane
+dependencies[] = video_embed_field
 
 ; OpenPublic
+
 dependencies[] = phase2_profile
 ;dependencies[] = openpublic_breaking_news
 dependencies[] = openpublic_comments
@@ -96,10 +97,9 @@ dependencies[] = openpublic_menu_footer
 ;dependencies[] = openpublic_pages
 dependencies[] = openpublic_accessibility
 
-
 ; OpenSanMateo
-dependencies[] = opensanmateo_location
 
+dependencies[] = opensanmateo_location
 
 ;DEVELOPMENT ONLY
 
