@@ -7,6 +7,7 @@ dependencies[] = ctools
 dependencies[] = features
 dependencies[] = features_template
 dependencies[] = file
+dependencies[] = flexslider_fields
 dependencies[] = image
 dependencies[] = openpublic_base_fields
 dependencies[] = openpublic_site_page
