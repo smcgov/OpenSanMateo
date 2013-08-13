@@ -5,28 +5,24 @@
  */
 
 /**
- * Implements hook_field_default_field_instances_template().
+ * Implements hook_field_default_field_instances().
  */
-function opensanmateo_search_field_default_field_instances_dni_template() {
+function opensanmateo_search_field_default_field_instances_sub_type_template() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-site_page-field_do_not_index'
-  $field_instances['node-site_page-field_do_not_index'] = array(
+  // Exported field_instance: 'node-site_page-field_sub_type'
+  $field_instances['node-site_page-field_sub_type'] = array(
     'bundle' => 'site_page',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 10,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -36,8 +32,8 @@ function opensanmateo_search_field_default_field_instances_dni_template() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_do_not_index',
-    'label' => 'Do Not Index',
+    'field_name' => 'field_sub_type',
+    'label' => 'Sub Type',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -45,17 +41,15 @@ function opensanmateo_search_field_default_field_instances_dni_template() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 31,
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 34,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Do Not Index');
+  t('Sub Type');
 
   return $field_instances;
 }
