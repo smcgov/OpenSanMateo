@@ -446,14 +446,14 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['allow']['more_link'] = 0;
   $handler->display->display_options['allow']['path_override'] = 0;
   $handler->display->display_options['allow']['title_override'] = 0;
-  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['exposed_form'] = 'exposed_form';
   $handler->display->display_options['allow']['exposed_form_configure'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
   $handler->display->display_options['exposed_form_overrides'] = array(
     'filters' => array(
-      'search_api_site_hash' => '',
-      'field_event_date_value' => '',
-      'field_event_date_value2' => '',
+      'search_api_site_hash' => 'exposed',
+      'field_event_date_value' => 'exposed',
+      'field_event_date_value2' => 'exposed',
     ),
   );
   $handler->display->display_options['inherit_panels_path'] = '1';
