@@ -21,7 +21,7 @@ function opensanmateo_search_field_default_field_instances() {
         'label' => 'above',
         'module' => 'field_views',
         'settings' => array(
-          'view' => 'opensanmateo_search block_3',
+          'view' => 'opensanmateo_search block_4',
         ),
         'type' => 'field_views_formatter',
         'weight' => 0,

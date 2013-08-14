@@ -442,7 +442,6 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['arguments']['field_subject_name']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_subject_name']['default_argument_type'] = 'php';
   $handler->display->display_options['arguments']['field_subject_name']['default_argument_options']['code'] = '$term = taxonomy_term_load($view->args[0]);
-dpm($term);
 return $term->name;';
   $handler->display->display_options['arguments']['field_subject_name']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_subject_name']['break_phrase'] = 0;
@@ -466,7 +465,6 @@ return $term->name;';
   $handler->display->display_options['arguments']['field_sub_type_name']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_sub_type_name']['default_argument_type'] = 'php';
   $handler->display->display_options['arguments']['field_sub_type_name']['default_argument_options']['code'] = '$term = taxonomy_term_load($view->args[0]);
-dpm($term);
 return $term->name;';
   $handler->display->display_options['arguments']['field_sub_type_name']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_sub_type_name']['break_phrase'] = 0;
