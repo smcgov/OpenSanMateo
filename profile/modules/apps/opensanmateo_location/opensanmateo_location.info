@@ -41,6 +41,7 @@ features[field_instance][] = node-location-field_text_hours
 features[field_instance][] = node-location-field_thumbnail_image
 features[node][] = location
 features[taxonomy][] = location_type
+features[user_permission][] = edit quick search tags
 features[variable][] = comment_anonymous_location
 features[variable][] = comment_default_mode_location
 features[variable][] = comment_default_per_page_location

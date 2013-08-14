@@ -75,3 +75,31 @@ function opensanmateo_location_address_lookup($location) {
   $address = isset($rtn[0]) ? $rtn[0] : stdClass();
   drupal_json_output($address);
 }
+
+/**
+ * Implements hook_permission().
+ * 
+ * Defines the 'edit quick search tags' permission
+ */
+function opensanmateo_location_permission() {
+  return array(
+    'edit quick search tags' => array(
+      'title' => t('Edit Quick Search Tags'),
+      'description' => t('Edit Quick Search tags on the Location content type.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_alter().
+ * 
+ * Disables the Quick Search tags field if the permission isn't set.
+ */
+function opensanmateo_location_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id != 'location_node_form' || !isset($form['field_quick_search'])) {
+    return;
+  }
+  if (!user_access('edit quick search tags')) {
+    $form['field_quick_search']['#disabled'] = TRUE;
+  }
+}
