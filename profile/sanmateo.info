@@ -100,6 +100,7 @@ dependencies[] = openpublic_accessibility
 ; OpenSanMateo
 
 dependencies[] = opensanmateo_location
+dependencies[] = opensanmateo_roles
 
 ;DEVELOPMENT ONLY
 
