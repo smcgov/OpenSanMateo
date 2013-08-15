@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the OpenSanMateo Roles feature.
  */
+
+include_once 'opensanmateo_roles.module.inc';
