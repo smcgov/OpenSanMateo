@@ -343,5 +343,15 @@ projects[image_field_caption][type] = module
 projects[image_field_caption][subdir] = contrib
 projects[image_field_caption][version] = 2.0
 
+projects[picture][type] = module
+projects[picture][subdir] = contrib
+projects[picture][download][type] = git
+projects[picture][download][url] = http://git.drupal.org/project/picture.git
+projects[picture][download][revision] = 3d9fe6c4b5fc5e48fcee225853cd32b6e5f61242
+
+projects[breakpoints][type] = module
+projects[breakpoints][subdir] = contrib
+projects[breakpoints][version] = 1.1
+
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.4.16.zip

@@ -75,6 +75,8 @@ dependencies[] = twitter
 dependencies[] = twitter_pull
 dependencies[] = twitter_pull_pane
 dependencies[] = video_embed_field
+dependencies[] = breakpoints
+dependencies[] = picture
 
 ; OpenPublic
 
