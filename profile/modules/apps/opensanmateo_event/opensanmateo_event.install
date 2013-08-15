@@ -1,0 +1,35 @@
+<?php
+/**
+ * @file
+ *
+ * Contains install/update hooks for module
+ */
+
+/**
+ * Implements hook_install
+ */
+function opensanmateo_event_install() {
+  // Initialize permissions pertaining to this module
+  $perms = array(
+    'event creator' => array(
+      'create event content',
+      'edit own event content',
+      'edit any event content',
+    ),
+    'site manager' => array(
+      'create event content',
+      'edit own event content',
+      'edit any event content',
+      'delete own event content',
+      'delete any event content',
+    ),
+    'editor' => array(
+      'create event content',
+      'edit own event content',
+      'edit any event content',
+      'delete own event content',
+      'delete any event content',
+    ),
+  );
+  opensanmateo_roles_set_perms($perms);
+}
