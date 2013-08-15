@@ -343,5 +343,9 @@ projects[image_field_caption][type] = module
 projects[image_field_caption][subdir] = contrib
 projects[image_field_caption][version] = 2.0
 
+projects[publishcontent][type] = module
+projects[publishcontent][subdir] = contrib
+projects[publishcontent][version] = 1.2
+
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.4.16.zip
