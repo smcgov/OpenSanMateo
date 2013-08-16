@@ -1,0 +1,8 @@
+name = OpenSanMateo Responsive Images
+description = This app allows site builders to specify which image fields to make responsive
+core = 7.x
+package = OpenSanMateo
+php = 5.2.4
+
+dependencies[] = breakpoints
+dependencies[] = picture

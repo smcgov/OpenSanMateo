@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OpenSanMateo Responsive Images feature.
+ */
+
+include_once 'opensanmateo_resp_images.module.inc';
