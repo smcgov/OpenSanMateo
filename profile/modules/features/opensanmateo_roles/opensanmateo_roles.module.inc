@@ -14,6 +14,11 @@
 function opensanmateo_roles_add_perms(&$form, $cfg_perms) {
   // Create new element tree to contain the perms portion of the form
   $form['app_config_perms'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Permissions'),
+    '#description' => t("These are the system permissions that control this app's behavior"),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
     '#theme' => 'user_admin_permissions',
     '#tree' => TRUE,
   );

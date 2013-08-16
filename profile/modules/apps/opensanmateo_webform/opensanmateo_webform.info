@@ -1,0 +1,12 @@
+name = OpenSanMateo Webform
+description = Provides a management dashboard for Webforms
+core = 7.x
+package = OpenSanMateo
+version = 7.x-1.0-alpha
+project = opensanmateo_webform
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = opensanmateo_webform
+features_exclude[dependencies][ctools] = ctools
+project path = profiles/sanmateo/modules/apps
