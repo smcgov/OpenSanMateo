@@ -88,20 +88,3 @@ function opensanmateo_roles_submit_perms($form, &$form_state) {
   }
   unset($form_state['values']['app_config_perms']);
 }
-
-/**
- * Util function for app/module/feature install hooks to set default perms once
- *
- * @param perms   Array keyed by role name, with array of perms to grant as the value
- */
-function opensanmateo_roles_set_perms($perms) {
-  // Pull roles, flip array to be name => rid
-  $roles = array_flip(user_roles());
-
-  // Iterate over roles and add permissions
-  foreach ($perms as $role => $perms) {
-    if (isset($roles[$role])) {
-      user_role_change_permissions($roles[$role], array_fill_keys($perms, TRUE));
-    }
-  }
-}
