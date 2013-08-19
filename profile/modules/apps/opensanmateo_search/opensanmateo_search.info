@@ -21,6 +21,7 @@ dependencies[] = search_api_views
 dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = views
+dependencies[] = field_views
 dependencies[] = views_content
 dependencies[] = taxonomy_view_mode
 features[ctools][] = facetapi:facetapi_defaults:1
