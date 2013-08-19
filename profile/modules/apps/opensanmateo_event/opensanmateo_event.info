@@ -14,6 +14,7 @@ dependencies[] = openpublic_base_fields
 dependencies[] = openpublic_site_page
 dependencies[] = opensanmateo_location
 dependencies[] = opensanmateo_search
+dependencies[] = search_api_reference
 dependencies[] = strongarm
 dependencies[] = text
 dependencies[] = views

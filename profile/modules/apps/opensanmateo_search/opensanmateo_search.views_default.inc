@@ -53,6 +53,18 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'location' => 'location',
   );
+
+  /* Display: Events */
+  $handler = $view->new_display('block', 'Events', 'block_2');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Indexed Node: Content type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'event' => 'event',
+  );
   $export['opensanmateo_lookup'] = $view;
 
   $view = new view();

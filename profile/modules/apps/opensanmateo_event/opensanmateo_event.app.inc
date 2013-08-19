@@ -19,5 +19,19 @@ function opensanmateo_event_app_configure_form() {
   );
   opensanmateo_roles_add_perms($form, $perms);
 
-  return system_settings_form($form);
+  // Add content type selectors to add field_event to
+  $form['opensanmateo_event_content_types_with_event'] = array(
+    '#title' => t('Content with Event'),
+    '#type' => 'checkboxes',
+    '#options' => array_map(function($i) {return $i->name;}, node_type_get_types()),
+    '#default_value' => variable_get('opensanmateo_event_content_types_with_event', array())
+  );
+
+  $form = system_settings_form($form);
+  $form['#submit'][] = 'opensanmateo_event_app_configure_form_submit';
+  return $form;
+}
+
+function opensanmateo_event_app_configure_form_submit($form,$form_state) {
+  features_template_revert();
 }

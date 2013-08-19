@@ -5,4 +5,5 @@
  */
 
 include_once 'opensanmateo_event.features.inc';
+include_once 'opensanmateo_event.field_event.inc';
 include_once 'opensanmateo_event.module.inc';
