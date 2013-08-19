@@ -67,7 +67,7 @@ function opensanmateo_search_default_search_api_index() {
         "field_address:locality" : { "type" : "text" },
         "field_event_date:value" : { "type" : "date" },
         "field_event_date:value2" : { "type" : "date" },
-        "field_location_address:field_address:locality" : { "type" : "list\\u003Ctext\\u003E" }
+        "field_location_address:field_address:locality" : { "type" : "list\\u003Ctext\\u003E" },
         "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_sub_type:name" : { "type" : "text" },
         "field_address:locality" : { "type" : "text" }
