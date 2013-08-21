@@ -52,7 +52,7 @@ function opensanmateo_search_app_configure_form_submit($form,$form_state) {
 
   foreach($vocabs as $name) {
     if($base = variable_get('opensanmateo_taxonomy_sync_master_is', FALSE)) {
-      variable_set(TAXONOMY_SYNC_CLIENT_PREFIX . $name, "http://$base/list/$name");
+      variable_set(TAXONOMY_SYNC_CLIENT_PREFIX . $name, "http://$base/taxonomy-sync/list/$name");
     }
     else {
       variable_del(TAXONOMY_SYNC_CLIENT_PREFIX . $name);

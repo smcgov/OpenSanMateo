@@ -118,8 +118,7 @@ function taxonomy_sync_get_master($name, $return_false = FALSE) {
  * 
  * Try syncing all of the vocabularies
  */
-function taxonomy_sync_init() {
-
+function taxonomy_sync_cron() {
   taxonomy_sync_sync();
 }
 
@@ -133,6 +132,7 @@ function taxonomy_sync_sync() {
   foreach($vocs as $name => $voc) {
     try {
       $url = taxonomy_sync_get_master($name);
+      watchdog(TAXONOMY_SYNC_WATCHDOG, "$name - $url");
       $data = taxonomy_sync_pull_data($url);
       taxonomy_sync_sync_vocabulary($data, $name);
     }
@@ -180,7 +180,7 @@ function taxonomy_sync_pull_data($url) {
     throw new TaxonomySyncMissingVocabulary("Master $url nodes not provide vocabulary $name");
   }
   else {
-    throw new TaxonomySyncRequestFail($resp->code);
+    throw new TaxonomySyncRequestFail(t('the @url failed with code @code', array('@url'=>$url, '@code' => $resp->code)) );
   }
 }
 
@@ -285,7 +285,9 @@ class TaxonomySyncData{
       $query = db_select(TAXONOMY_SYNC_TABLE, 't');
       $query->fields('t',array(TAXONOMY_SYNC_COL_MASTER_TID, TAXONOMY_SYNC_COL_LOCAL_TID));
       $query->condition(TAXONOMY_SYNC_COL_MASTER_TID, $this->get_master_ids(), 'IN');
+      $query->condition(TAXONOMY_SYNC_COL_LOCAL_VID, $this->vid, '=');
       $existing = $query->execute()->fetchAllKeyed();
+      
       $this->inserts = array_diff($this->get_master_ids(), array_keys($existing));
     }
     return $this->inserts;
@@ -295,10 +297,12 @@ class TaxonomySyncData{
    * return array of Local tids for deletion
    */
   protected function get_delete_ids() {
+    return;
     if (!$this->deletes){
       $query = db_select(TAXONOMY_SYNC_TABLE, 't');
       $query->fields('t', array(TAXONOMY_SYNC_COL_LOCAL_TID, TAXONOMY_SYNC_COL_LOCAL_TID));
       $query->condition(TAXONOMY_SYNC_COL_MASTER_TID, $this->get_master_ids(), 'NOT IN');
+      $query->condition(TAXONOMY_SYNC_COL_LOCAL_VID, $this->vid, '=');
       $this->deletes = $query->execute()->fetchAllKeyed();
     }
     return $this->deletes;
@@ -348,7 +352,6 @@ class TaxonomySyncData{
         $this->merge_term($this->get_master_term($master_id), taxonomy_term_load($local_tid));
       }
       catch (TaxonomoySyncFailedMerge $e) {
-        dpm($e->getMessage(), __FUNCTION__);
         watchdog_exception(TAXONOMY_SYNC_WATCHDOG, $e);
       }
     }
@@ -391,7 +394,6 @@ class TaxonomySyncData{
         $this->merge_term($this->get_master_term($master_id), taxonomy_term_load($local_tid));
       }
       catch (TaxonomoySyncFailedMerge $e) {
-        dpm($e->getMessage(), __FUNCTION__);
         watchdog_exception(TAXONOMY_SYNC_WATCHDOG, $e);
       }
     }
@@ -478,10 +480,8 @@ class TaxonomySyncData{
     if (!empty($master_parents)) {
       try {
         $term->parent = $this->get_local_tid($master_parents[0]);
-        dpm($term);
       }
       catch (TaxonomySyncNoLocal $e) {
-        dpm($term);
         $this->add_missing_parent($master_tid);
       }
     }
@@ -493,7 +493,6 @@ class TaxonomySyncData{
       TAXONOMY_SYNC_COL_LOCAL_TID => $term->tid,
       TAXONOMY_SYNC_COL_LAST_UPDATE_HASH => $master_term->TAXONOMY_SYNC_COL_LAST_UPDATE_HASH,
     );
-    dpm(array($term, $record));
     if (SAVED_NEW == $result) {
       drupal_write_record(TAXONOMY_SYNC_TABLE, $record);
       unset($this->cache_tid_map[$master_tid]);
@@ -534,14 +533,12 @@ function taxonomy_sync_form_taxonomy_form_vocabulary_alter(&$form) {
 
   );
   $form['#submit'][] = 'taxonomy_sync_form_taxonomy_form_vocabulary_sumbit';
-  dpm($form);
 }
 
 /**
  * the submit handler add in  taxonomy_sync_form_taxonomy_form_vocabulary_alter()
  */
 function taxonomy_sync_form_taxonomy_form_vocabulary_sumbit($form, $form_state)  {
-  dpm($form_state);
   $name = $form['#vocabulary']->machine_name;
   variable_set(TAXONOMY_SYNC_MASTER_PREFIX . $name, $form_state['values'][TAXONOMY_SYNC_MASTER_PREFIX . $name]);
   variable_set(TAXONOMY_SYNC_CLIENT_PREFIX . $name, $form_state['values'][TAXONOMY_SYNC_CLIENT_PREFIX . $name]);
