@@ -24,6 +24,7 @@ dependencies[] = views
 dependencies[] = field_views
 dependencies[] = views_content
 dependencies[] = taxonomy_view_mode
+dependencies[] = taxonomy_sync
 features[ctools][] = facetapi:facetapi_defaults:1
 features[ctools][] = page_manager:pages_default:1
 features[ctools][] = panels_mini:panels_default:1
