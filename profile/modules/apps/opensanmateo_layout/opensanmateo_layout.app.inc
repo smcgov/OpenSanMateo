@@ -7,6 +7,7 @@ function opensanmateo_layout_apps_app_info() {
 }
 
 function opensanmateo_layout_app_configure_form() {
+  
   $form = array(
     'opensanmateo_layout_thing' => array(
       '#title' => t('Thing'),
@@ -14,12 +15,7 @@ function opensanmateo_layout_app_configure_form() {
       '#default_value' => variable_get('opensanmateo_layout_thing', '')
     ),
   );
-  $form['opesanmateo_layout_content_types_to_panelize'] = array(
-    '#title' => t('Content to Index'),
-    '#type' => 'checkboxes',
-    '#options' => array_map(function($i) {return $i->name;}, node_type_get_types()),
-    '#default_value' => variable_get('opesanmateo_layout_content_types_to_panelize', array())
-  );
+  
   return system_settings_form($form);
 }
 
@@ -35,18 +31,41 @@ function opensanmateo_layout_status() {
   );
 
   //set up the solr server status item
-  $status['items']['server'] = array(
-    'title' => 'Example status',
-    'action' => array(l("Do something", "path/to/thing/to/do",  array('query'  => drupal_get_destination()))),
-    'description' => t("Tell us about the the current state"),
-    'severity' =>    REQUIREMENT_OK, //REQUIREMENT_OK REQUIREMENT_INFO,REQUIREMENT_WARNING, REQUIREMENT_ERROR
+  $status['items']['master_site'] = array(
+    'title' => 'Master Site',
+    'action' => array(l("Change this setting", "admin/config/system/distributed_blocks",  array('query'  => drupal_get_destination()))),
+    'description' => t("This is the master site (certain blocks may be exposed)."),
+    'severity' =>    REQUIREMENT_INFO, //REQUIREMENT_OK REQUIREMENT_INFO,REQUIREMENT_WARNING, REQUIREMENT_ERROR
   );
-  if ("some test on the status"==FALSE) {
-    $status['items']['server']['description'] = t("change the desc");
-    $status['items']['server']['severity'] = REQUIREMENT_WARNING;
-    $status['items']['server']['action'][] = l("different thing to do", "path/to/different/thing/to/do",  array('query' => drupal_get_destination()));
-
+  
+  if (variable_get('distributed_blocks_expose', FALSE) == FALSE) {
+    $status['items']['master_site']['description'] = t("This is not a master site (no blocks are exposed).");
   }
-
+  else {
+    // This is only something we worry about on the master site
+    $status['items']['banner_block'] = array(
+      'title' => 'Banner Block',
+      'action' => array(l("Change the block's contents", "admin/structure/block/manage/opensanmateo_layout/opensanmateo_layout_banner/configure",  array('query'  => drupal_get_destination()))),
+      'description' => t("The banner block has content."),
+      'severity' =>    REQUIREMENT_OK, //REQUIREMENT_OK REQUIREMENT_INFO,REQUIREMENT_WARNING, REQUIREMENT_ERROR
+    );
+    if (variable_get('opensanmateo_layout_banner_content', '') == '') {
+      $status['items']['banner_block']['description'] = t('The banner has no content.');
+      $status['items']['banner_block']['severity'] = REQUIREMENT_WARNING;
+    }
+    $status['items']['banner_block_exposed'] = array(
+      'title' => 'Banner Block Exposed',
+      'action' => '',
+      'description' => t("The banner block is exposed."),
+      'severity' =>    REQUIREMENT_OK, //REQUIREMENT_OK REQUIREMENT_INFO,REQUIREMENT_WARNING, REQUIREMENT_ERROR
+    );
+    $exposed_blocks = variable_get('distributed_blocks_exposed_blocks', array());
+    
+    if (empty($exposed_blocks) || empty($exposed_blocks['opensanmateo_layout|opensanmateo_layout_banner|Shared Banner'])) {
+      $status['items']['banner_block_exposed']['description'] = t('The banner block is not exposed.');
+      $status['items']['banner_block_exposed']['severity'] = REQUIREMENT_ERROR;
+      $status['items']['banner_block_exposed']['action'] = array(l("Change this setting", "admin/config/system/distributed_blocks",  array('query'  => drupal_get_destination())));
+    }
+  }
   return $status;
 }

@@ -10,3 +10,52 @@ include_once 'opensanmateo_layout.features.inc';
  * Code for the OpenSanMateo Example feature.
  */
 
+/**
+ * Implements hook_block_info().
+ */
+function opensanmateo_layout_block_info() {
+  $blocks['opensanmateo_layout_banner'] = array(
+    'info' => t('Shared Banner'),
+    'cache' => DRUPAL_CACHE_GLOBAL
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function opensanmateo_layout_block_configure($delta = '') {
+  $form = array();
+  if ($delta == 'opensanmateo_layout_banner') {
+    $form['banner_content'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Banner block content'),
+      '#description' => t('The contents of the block we\'re going to share across our sites.'),
+      '#default_value' => variable_get('opensanmateo_layout_banner_content', ''),
+    );
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function opensanmateo_layout_block_save($delta = '', $edit = array()) {
+  if ($delta == 'opensanmateo_layout_banner') {
+    variable_set('opensanmateo_layout_banner_content', $edit['banner_content']);
+  }
+  return;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function opensanmateo_layout_block_view($delta = '') {
+  switch ($delta) {
+    case 'opensanmateo_layout_banner':
+      $block['content'] = variable_get('opensanmateo_layout_banner_content', '');
+      break;
+  }
+  return $block;
+}

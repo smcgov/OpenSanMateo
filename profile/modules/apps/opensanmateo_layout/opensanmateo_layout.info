@@ -4,6 +4,7 @@ core = 7.x
 package = OpenSanMateo
 php = 5.2.4
 dependencies[] = ctools
+dependencies[] = distributed_blocks
 dependencies[] = panelizer
 dependencies[] = panels_ipe
 dependencies[] = strongarm
