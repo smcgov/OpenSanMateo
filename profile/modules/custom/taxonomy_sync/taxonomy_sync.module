@@ -92,7 +92,7 @@ function taxonomy_sync_get_tree($name) {
      return $tree;
    }
    else {
-    throw TaxonomySyncMissingVocabulary("No vocabulary $name");
+    throw new TaxonomySyncMissingVocabulary("No vocabulary $name");
    }
 }
 
@@ -103,277 +103,86 @@ function taxonomy_sync_get_tree($name) {
  * PARAM name: machine name of a vocabulary
  * RETURN bool
  */
-function taxonomy_sync_get_master($name) {
+function taxonomy_sync_get_master($name, $return_false = FALSE) {
   $url = variable_get(TAXONOMY_SYNC_CLIENT_PREFIX . $name, FALSE);
   if($url) { 
     return $url;
   }
   else {
-    throw TaxonomySyncNoServer("No Master for $name");
+    throw new TaxonomySyncNoServer("No Master for $name");
   }
 }
+
+/**
+ * implements hook_cron
+ * 
+ * Try syncing all of the vocabularies
+ */
 function taxonomy_sync_init() {
-  $json = '{"name":"subject","tree":[{"tid":"20","vid":"2","name":"asubject2","description":"","format":"filtered_html","weight":"1","depth":0,"parents":["0"]},{"tid":"4","vid":"2","name":"subject2-asub1","description":"","format":"filtered_html","weight":"0","depth":1,"parents":["3"]},{"tid":"1","vid":"2","name":"subject1","description":null,"format":null,"weight":"2","depth":0,"parents":["0"]}],"error":false,"error message":""}';
-  $data = drupal_json_decode($json, FALSE);
-  #taxonomy_sync_sync($data['tree'], 'subject');
 
+  taxonomy_sync_sync();
 }
-/**
- * sync a vocabularies terms
- */
-function taxonomy_sync_sync($data, $vocabulary) {
-  $sync = new TaxonomySyncData($data, $vocabulary);
-  $sync->process();
-}
-function taxonomy_sync_pull_data($vocabulary) {
-
-  $json = '{"name":"subject","tree":[{"tid":"20","vid":"2","name":"asubject2","description":"","format":"filtered_html","weight":"1","depth":0,"parents":["0"]},{"tid":"4","vid":"2","name":"subject2-asub1","description":"","format":"filtered_html","weight":"0","depth":1,"parents":["3"]},{"tid":"1","vid":"2","name":"subject1","description":null,"format":null,"weight":"2","depth":0,"parents":["0"]}],"error":false,"error message":""}';
-  $data = drupal_json_decode($json, FALSE);
-  $sync = new TaxonomySyncData($data['tree'], 'subject');
-  $sync->process_inserts();
-  $sync->process_updates();
-  $sync->process_deletes();
-
-  return;
-  $url = FALSE;
-  try {
-    $url = $taxonomy_sync_get_master($name);
-  }
-  catch(TaxonomySyncNoServer $e) {
-    throw $e;
-  }
-  // Now execute it
-  $resp = drupal_http_request(taxonomy_sync_master_endpoint($url, $name));
-  if (200 == $resp->code) {
-    // Decode JSON and make sure we have a valid response
-    $resp_array = drupal_json_decode($resp->data);
-    if ($resp_array) {
-      if ($resp_array['status']) {
-        $master_terms = $resp_array['terms'];
-        _taxonomy_sync_merge_terms($vid, $master_terms);
-      }
-      else {
-        watchdog(TAXONOMY_SYNC_WATCHDOG, 'Request failed on master site with the message "@msg"', array('@msg' => $resp_array['msg']), WATCHDOG_WARNING);
-      }
-    }
-    else {
-      watchdog(TAXONOMY_SYNC_WATCHDOG, 'Failed to decode JSON data retrieved from master', NULL, WATCHDOG_WARNING);
-    }
-  }
-  else if (403 == $resp->code) {
-    throw TaxonomySyncMissingVocabulary("Master $url nodes not provide vocabulary $name");
-  }
-  else {
-    throw TaxonomySyncRequestFail($resp->code);
-  }
-}
-
-function taxonomy_sync_master_endpoint($url, $name, $op='list') {
-  return "$url/taxonomy-sync/$op/$name";
-}
-
 
 /**
- * Implementation of hook_cron
+ * THis function sync all vocabularys
  *
- * We're using this on the client side to pull from the master and merge into
- * the target vocabulary.
+ * It catch all exceptions and logs them to watch dog
  */
-function taxonomy_sync_cron_defunct() {
-  // Pull our config vars
-  $is_master = variable_get(TAXONOMY_SYNC_MASTER, FALSE);
-  $vid = variable_get(TAXONOMY_SYNC_VOCAB, -1);
-  $base_url = variable_get(TAXONOMY_SYNC_MASTER_URL, NULL);
-
-  // Make sure we're defined as a client, return if not
-  if ($is_master) {
-    return;
-  }
-
-  // Check for valid config info
-  if (empty($base_url)) {
-    watchdog(TAXONOMY_SYNC_WATCHDOG, 'Base URL for master site not configured; unable to retrieve term list', NULL, WATCHDOG_WARNING);
-    return;
-  }
-  $master_url = url($base_url . '/' . TAXONOMY_SYNC_CALLBACK_URL);
-
-  if ($vid < 0) {
-    watchdog(TAXONOMY_SYNC_WATCHDOG, 'Vocabulary not configured on client site', NULL, WATCHDOG_WARNING);
-    return;
-  }
-
-  // Log this request
-  watchdog(TAXONOMY_SYNC_WATCHDOG, 'Term list requested from %master_url', array('%master_url' => $master_url), WATCHDOG_INFO);
-
-  // Now execute it
-  $resp = drupal_http_request($master_url);
-  if (200 == $resp->code) {
-    // Decode JSON and make sure we have a valid response
-    $resp_array = drupal_json_decode($resp->data);
-    if ($resp_array) {
-      if ($resp_array['status']) {
-        $master_terms = $resp_array['terms'];
-        _taxonomy_sync_merge_terms($vid, $master_terms);
-      }
-      else {
-        watchdog(TAXONOMY_SYNC_WATCHDOG, 'Request failed on master site with the message "@msg"', array('@msg' => $resp_array['msg']), WATCHDOG_WARNING);
-      }
-    }
-    else {
-      watchdog(TAXONOMY_SYNC_WATCHDOG, 'Failed to decode JSON data retrieved from master', NULL, WATCHDOG_WARNING);
-    }
-  }
-  else {
-    watchdog(TAXONOMY_SYNC_WATCHDOG, 'Request failed, returned HTTP status code @code', array('@code' => $resp->code), WATCHDOG_WARNING);
-  }
-}
-
-/**
- * _taxonomy_sync_merge_terms
- *
- * Function to merge terms from master site into target vocabulary.
- */
-function _taxonomy_sync_merge_terms($vid, $master_terms) {
-  // Get access to our stats variable
-  $stats = &drupal_static(TAXONOMY_SYNC_STATS);
-  $stats[TAXONOMY_SYNC_INSERT] = 0;
-  $stats[TAXONOMY_SYNC_UPDATE] = 0;
-  $stats[TAXONOMY_SYNC_DELETE] = 0;
-  $stats[TAXONOMY_SYNC_UNCHANGED] = 0;
-
-  // Load term sync history from our local table
-  $local_terms = array();
-  try {
-    $query = db_select(TAXONOMY_SYNC_TABLE)
-      ->fields(TAXONOMY_SYNC_TABLE)
-      ->condition(TAXONOMY_SYNC_COL_LOCAL_VID, $vid);
-    $result = $query->execute();
-    $local_terms = $result->fetchAllAssoc(TAXONOMY_SYNC_COL_MASTER_TID, PDO::FETCH_ASSOC);
-  }
-  catch (Exception $e) {
-    watchdog_exception(TAXONOMY_SYNC_WATCHDOG, $e);
-  }
-
-  // Now loop over our master terms looking for add and update operations
-  foreach ($master_terms as $master_tid => $master_term) {
-    // Construct our hash used to help weed out unchanged items
-    $master_term[TAXONOMY_SYNC_COL_LAST_UPDATE_HASH] = md5(serialize($master_term));
-
-    // Test for add operation
-    if (!isset($local_terms[$master_tid])) {
-      _taxonomy_sync_merge_term($vid, $master_term, $local_terms);
-    }
-
-    // Otherwise, it's an update operation if the hash doesn't match our last update
-    elseif ($master_term[TAXONOMY_SYNC_COL_LAST_UPDATE_HASH] != $local_terms[$master_tid][TAXONOMY_SYNC_COL_LAST_UPDATE_HASH]) {
-      _taxonomy_sync_merge_term($vid, $master_term, $local_terms, $local_terms[$master_tid][TAXONOMY_SYNC_COL_LOCAL_TID]);
-    }
-
-    // Otherwise this is an existing term that appears to have no changes on the master site
-    else {
-      ++$stats[TAXONOMY_SYNC_UNCHANGED];
-    }
-  }
-
-  // Now check for deleted terms
-  foreach ($local_terms as $master_tid => $local_term) {
-    if (!isset($master_terms[$master_tid])) {
-      _taxonomy_sync_delete_term($local_term);
-    }
-  }
-
-  // Generate watchdog summary output
-  watchdog(TAXONOMY_SYNC_WATCHDOG, 'Merge complete: @ins inserted, @up updated, @del deleted, @unch unchanged', array(
-    '@ins' => $stats[TAXONOMY_SYNC_INSERT],
-    '@up' => $stats[TAXONOMY_SYNC_UPDATE],
-    '@del' => $stats[TAXONOMY_SYNC_DELETE],
-    '@unch' => $stats[TAXONOMY_SYNC_UNCHANGED],
-  ));
-}
-
-/**
- * _taxonomy_sync_merge_term
- *
- * Called to add or update a new term to the given vocabulary and log it in the local sync table
- */
-function _taxonomy_sync_merge_term($vid, $master_term, &$local_terms, $local_tid = NULL) {
-  // Get access to our stats variable
-  $stats = &drupal_static(TAXONOMY_SYNC_STATS);
-
-  // Extract and unset parents array from term; not being honored by term save code
-  $master_parents = $master_term['parents'];
-  unset($master_term['parents']);
-
-  // Cast to object, modify using local info, set some reasonable defaults
-  $term = (object) $master_term;
-  $term->vid = $vid;
-  $term->tid = $local_tid;
-  $term->parent = 0;
-
-  // Sync master term's first parent tid up to local tid, or 0 if no parent
-  if (!empty($master_parents)) {
-    $term->parent = (isset($local_terms[$master_parents[0]])) ? $local_terms[$master_parents[0]][TAXONOMY_SYNC_COL_LOCAL_TID] : 0;
-  }
-
-  // Save out term
-  $result = taxonomy_term_save($term);
-  if (SAVED_NEW == $result) {
-    //watchdog(TAXONOMY_SYNC_WATCHDOG, __FUNCTION__ . ': Added: <br/><pre>' . print_r(array('term' => $term, 'master' => $master_term), TRUE) . '</pre>', NULL, WATCHDOG_DEBUG);
-    // Update local terms
-    $local_terms[$master_term['tid']] = array(
-      TAXONOMY_SYNC_COL_MASTER_TID => $master_term['tid'],
-      TAXONOMY_SYNC_COL_LOCAL_VID => $vid,
-      TAXONOMY_SYNC_COL_LOCAL_TID => $term->tid,
-      TAXONOMY_SYNC_COL_LAST_UPDATE_HASH => $master_term[TAXONOMY_SYNC_COL_LAST_UPDATE_HASH],
-    );
-
-    // Update our sync table
-    drupal_write_record(TAXONOMY_SYNC_TABLE, $local_terms[$master_term['tid']]);
-    ++$stats[TAXONOMY_SYNC_INSERT];
-  }
-  elseif (SAVED_UPDATED == $result) {
-    //watchdog(TAXONOMY_SYNC_WATCHDOG, __FUNCTION__ . ': Updated: <br/><pre>' . print_r($term, TRUE) . '</pre>', NULL, WATCHDOG_DEBUG);
-    // If successfully updated, update our sync table
-    $record = array(
-      TAXONOMY_SYNC_COL_LAST_UPDATE_HASH => $master_term[TAXONOMY_SYNC_COL_LAST_UPDATE_HASH],
-      TAXONOMY_SYNC_COL_LOCAL_TID => $term->tid,
-    );
-    drupal_write_record(TAXONOMY_SYNC_TABLE, $record, TAXONOMY_SYNC_COL_LOCAL_TID);
-    ++$stats[TAXONOMY_SYNC_UPDATE];
-  }
-  else {
-    watchdog(TAXONOMY_SYNC_WATCHDOG, 'Failed to store term %name with master tid @tid in vocabulary @vid', array('%name' => $term->name, '@tid' => $master_term['tid'], '@vid' => $vid), WATCHDOG_WARNING);
-  }
-}
-
-/**
- * _taxonomy_sync_delete_term
- *
- * Method to remove a term from the target vocabulary and the sync tables
- */
-function _taxonomy_sync_delete_term($local_sync) {
-  // Get access to our stats variable
-  $stats = &drupal_static(TAXONOMY_SYNC_STATS);
-
-  $tid = $local_sync[TAXONOMY_SYNC_COL_LOCAL_TID];
-  $result = taxonomy_term_delete($tid);
-  if (SAVED_DELETED == $result) {
-    // If successfully deleted, update our sync table
+function taxonomy_sync_sync() {
+  $vocs = taxonomy_vocabulary_get_names();
+  foreach($vocs as $name => $voc) {
     try {
-      $query = db_delete(TAXONOMY_SYNC_TABLE)
-        ->condition(TAXONOMY_SYNC_COL_LOCAL_TID, $tid)
-        ->execute();
+      $url = taxonomy_sync_get_master($name);
+      $data = taxonomy_sync_pull_data($url);
+      taxonomy_sync_sync_vocabulary($data, $name);
+    }
+    catch (TaxonomySyncNoServer $e) {
     }
     catch (Exception $e) {
       watchdog_exception(TAXONOMY_SYNC_WATCHDOG, $e);
     }
-    ++$stats[TAXONOMY_SYNC_DELETE];
   }
-  else {
-    watchdog(TAXONOMY_SYNC_WATCHDOG, 'Failed to delete term @ltid with master tid @mtid in vocabulary @vid', array('@ltid' => $tid, '@mtid' => $local_sync[TAXONOMY_SYNC_COL_MASTER_TID], '@vid' => $vid), WATCHDOG_WARNING);
-  }
+
 }
 
+/**
+ * sync a vocabularies terms
+ */
+function taxonomy_sync_sync_vocabulary($data, $vocabulary) {
+  $sync = new TaxonomySyncData($data, $vocabulary);
+  $sync->process();
+}
+
+/**
+ * Try and pull data for a url
+ * PARAM url: the url for the master vocab
+ * RETURN: a Tree from a remote site
+ * THROWS: TaxonomySyncRequestFail, TaxonomySyncMissingVocabulary
+ */
+function taxonomy_sync_pull_data($url) {
+  $resp = drupal_http_request($url);
+  if (200 == $resp->code) {
+    // Decode JSON and make sure we have a valid response
+    $resp_array = drupal_json_decode($resp->data);
+    if($resp_array) {
+      if ($resp_array['error']) {
+        throw new TaxonomySyncRequestFail($resp_array['error_message']);
+      }
+      else {
+        return $resp_array['tree'];
+      }
+    }
+    else {
+      throw new TaxonomySyncRequestFail(format_string('Failed to decode JSON data retrieved from master @url', array('@url'=> $url)));
+    }
+  }
+  else if (403 == $resp->code) {
+    throw new TaxonomySyncMissingVocabulary("Master $url nodes not provide vocabulary $name");
+  }
+  else {
+    throw new TaxonomySyncRequestFail($resp->code);
+  }
+}
 
 /**
  * A class for handling the sync of Data from a a master to a slave 
@@ -411,7 +220,7 @@ class TaxonomySyncData{
         $this->vid = $voc->vid;
       }
       else {
-        throw TaxonomySyncMissingVocabulary("No vocabulary $name");
+        throw new TaxonomySyncMissingVocabulary("No vocabulary $name");
       }
     }
 
@@ -699,63 +508,10 @@ class TaxonomySyncData{
 }
 
 /**
- * Menu callback to generate list of terms for client request
+ * implements hook_form_taxonomy_form_vocablary_alter()
+ *
+ * Add taxonomy sync fields to vocablary form
  */
-/*
-function taxonomy_sync_list_defunct() {
-  // Pull our config vars
-  $is_master = variable_get(TAXONOMY_SYNC_MASTER, FALSE);
-  $vid = variable_get(TAXONOMY_SYNC_VOCAB, -1);
-  $client_ip = $_SERVER["REMOTE_ADDR"];
-
-  // Make sure we're defined as a master, report if not
-  if (!$is_master) {
-    watchdog(TAXONOMY_SYNC_WATCHDOG, 'Term list requested from non-master site by client @client_ip', array('@client_ip' => $client_ip), WATCHDOG_WARNING);
-    return MENU_NOT_FOUND;
-
-
-  // Log this request
-  watchdog(TAXONOMY_SYNC_WATCHDOG, 'Term list requested for vid @vid by client @client_ip', array('@vid' => $vid, '@client_ip' => $client_ip), WATCHDOG_INFO);
-
-  // Build default return array
-  $retval = array(
-    'status' => TRUE,
-    'terms' => array(),
-    'msg' => '',
-  );
-
-  // Check config var for vocabulary id
-  if ($vid < 0) {
-    $retval['status'] = FALSE;
-    $retval['msg'] = t('Vocabulary not configured on master site');
-    $retval['terms'] = array();
-  }
-  else {
-    // Query for full vocabulary "tree" and build response array
-    $tree = taxonomy_get_tree($vid);
-    if (!count($tree)) {
-      watchdog(TAXONOMY_SYNC_WATCHDOG, 'Vocabulary requested is empty', NULL, WATCHDOG_WARNING);
-    }
-    else {
-      foreach ($tree as $child) {
-        $retval['terms'][$child->tid] = $child;
-      }
-    }
-  }
-
-  // Log any errors
-  if (!$retval['status']) {
-    watchdog(TAXONOMY_SYNC_WATCHDOG, $retval['msg'], NULL, WATCHDOG_WARNING);
-  }
-
-  // Construct JSON and return
-  drupal_json_output($retval);
-  exit;
-}
-}
-
-*/
-
 function taxonomy_sync_form_taxonomy_form_vocabulary_alter(&$form) {
   $name = $form['#vocabulary']->machine_name;
   $form['taxonomy_sync'] = array(
@@ -770,12 +526,23 @@ function taxonomy_sync_form_taxonomy_form_vocabulary_alter(&$form) {
     '#title' => t("Is a Master Vocabulary"),
 
   );
+  $form['taxonomy_sync'][TAXONOMY_SYNC_CLIENT_PREFIX . $name] = array(
+    '#type' => 'textfield',
+    '#description' => t('If this vocaulary is a client then the url for the master should be place here (You can find the url on the taxonomy edit screen of the master site'),
+    '#default_value' =>  variable_get(TAXONOMY_SYNC_CLIENT_PREFIX . $name, FALSE),
+    '#title' => t("URI of Master site"),
+
+  );
   $form['#submit'][] = 'taxonomy_sync_form_taxonomy_form_vocabulary_sumbit';
   dpm($form);
 }
 
+/**
+ * the submit handler add in  taxonomy_sync_form_taxonomy_form_vocabulary_alter()
+ */
 function taxonomy_sync_form_taxonomy_form_vocabulary_sumbit($form, $form_state)  {
   dpm($form_state);
   $name = $form['#vocabulary']->machine_name;
   variable_set(TAXONOMY_SYNC_MASTER_PREFIX . $name, $form_state['values'][TAXONOMY_SYNC_MASTER_PREFIX . $name]);
+  variable_set(TAXONOMY_SYNC_CLIENT_PREFIX . $name, $form_state['values'][TAXONOMY_SYNC_CLIENT_PREFIX . $name]);
 }
