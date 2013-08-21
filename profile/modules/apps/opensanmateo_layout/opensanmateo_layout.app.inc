@@ -1,4 +1,5 @@
 <?php
+
 function opensanmateo_layout_apps_app_info() {
   return array(
     'configure form' => 'opensanmateo_layout_app_configure_form', // This form will be render on the app config pag
@@ -7,15 +8,7 @@ function opensanmateo_layout_apps_app_info() {
 }
 
 function opensanmateo_layout_app_configure_form() {
-  
-  $form = array(
-    'opensanmateo_layout_thing' => array(
-      '#title' => t('Thing'),
-      '#type' => 'textfield',
-      '#default_value' => variable_get('opensanmateo_layout_thing', '')
-    ),
-  );
-  
+  $form = array();
   return system_settings_form($form);
 }
 
