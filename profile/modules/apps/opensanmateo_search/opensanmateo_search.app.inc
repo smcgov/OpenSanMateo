@@ -59,7 +59,7 @@ function opensanmateo_search_app_configure_form_submit($form,$form_state) {
     }
 
     //set the master status
-    variable_set(TAXONOMY_SYNC_MASTER_PREFIX . $name,  variable_get('opensanmateo_taxonomy_sync_is_mater', FALSE));
+    variable_set(TAXONOMY_SYNC_MASTER_PREFIX . $name,  variable_get('opensanmateo_taxonomy_sync_is_master', FALSE));
   }
 }
 
