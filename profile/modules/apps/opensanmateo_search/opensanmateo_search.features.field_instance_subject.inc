@@ -5,28 +5,24 @@
  */
 
 /**
- * Implements hook_field_default_field_instances_template().
+ * Implements hook_field_default_field_instances().
  */
-function opensanmateo_search_field_default_field_instances_dni_template() {
+function opensanmateo_search_field_default_field_instances_subject_template() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-site_page-field_do_not_index'
-  $field_instances['node-site_page-field_do_not_index'] = array(
+  // Exported field_instance: 'node-site_page-field_subject'
+  $field_instances['node-site_page-field_subject'] = array(
     'bundle' => 'site_page',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 10,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -36,26 +32,27 @@ function opensanmateo_search_field_default_field_instances_dni_template() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_do_not_index',
-    'label' => 'Do Not Index',
+    'field_name' => 'field_subject',
+    'label' => 'Subject',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'options',
+      'active' => 0,
+      'module' => 'taxonomy',
       'settings' => array(
-        'display_label' => 1,
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
       ),
-      'type' => 'options_onoff',
-      'weight' => 31,
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 33,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Do Not Index');
+  t('Subject');
 
   return $field_instances;
 }

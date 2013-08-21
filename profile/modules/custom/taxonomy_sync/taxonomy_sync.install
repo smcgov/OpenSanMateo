@@ -1,0 +1,74 @@
+<?php
+/**
+ * @file
+ *
+ * Install and uninstall hooks for module
+ */
+
+require_once('taxonomy_sync.constants.inc');
+
+/*////////////////////////////////////////////////////////////////////////////
+ *
+ * Drupal hook implementations
+ *
+////////////////////////////////////////////////////////////////////////////*/
+
+/**
+ * Implementation of hook_schema()
+ */
+function taxonomy_sync_schema() {
+  $schema = array();
+
+  $schema[TAXONOMY_SYNC_TABLE] = array(
+    'description' => 'Table mapping master terms to local terms',
+    'fields' => array(
+      TAXONOMY_SYNC_COL_MASTER_TID => array(
+        'description' => 'The TID for a term from the master site',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      TAXONOMY_SYNC_COL_LOCAL_VID => array(
+        'description' => 'The VID for the term on the local site',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      TAXONOMY_SYNC_COL_LOCAL_TID => array(
+        'description' => 'The TID for the matching term on the local site',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      TAXONOMY_SYNC_COL_LAST_UPDATE_HASH => array(
+        'description' => 'The hash of the master data from the last insert/update for this term',
+        'type' => 'char',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'indexes' => array(
+      'idx_mtid' => array(TAXONOMY_SYNC_COL_MASTER_TID),
+      'idx_ltid' => array(TAXONOMY_SYNC_COL_LOCAL_TID),
+    ),
+    'unique keys' => array(
+      'key_' . TAXONOMY_SYNC_COL_LOCAL_TID => array(TAXONOMY_SYNC_COL_LOCAL_TID),
+    ),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implementation of hook_uninstall()
+ */
+function taxonomy_sync_uninstall() {
+  // Delete all variables managed by this module
+  variable_del(TAXONOMY_SYNC_MASTER);
+  variable_del(TAXONOMY_SYNC_MASTER_URL);
+  variable_del(TAXONOMY_SYNC_VOCAB);
+}

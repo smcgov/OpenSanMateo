@@ -21,12 +21,46 @@ function opensanmateo_search_app_configure_form() {
     '#options' => array_map(function($i) {return $i->name;}, node_type_get_types()),
     '#default_value' => variable_get('opesanmateo_search_content_types_to_index', array())
   );
+  $form['taxonomy_sync'] = array(
+    '#type' => 'fieldset',
+    '#title' => 'Taxonomy Sync',
+  );
+  $form['taxonomy_sync']['opensanmateo_taxonomy_sync_is_master'] = array(
+    '#type' => 'checkbox',
+    '#description' => t('Is this the master site for Taxonomies?'),
+    '#default_value' =>  variable_get('opensanmateo_taxonomy_sync_is_master', FALSE),
+    '#title' => t("Is This the master site"),
+
+  );
+  $form['taxonomy_sync']['opensanmateo_taxonomy_sync_master_is'] = array(
+    '#type' => 'textfield',
+    '#description' => t('If this site is not the master what is the master site (e.g. sanmateo.gov)'),
+    '#default_value' =>  variable_get('opensanmateo_taxonomy_sync_master_is', FALSE),
+    '#title' => t("URI of Master site"),
+  );
+
   $form = system_settings_form($form);
   $form['#submit'][] = 'opensanmateo_search_app_configure_form_submit';
   return $form;
 }
 function opensanmateo_search_app_configure_form_submit($form,$form_state) {
   features_template_revert();
+  $vocabs = array(
+    'subject',
+    'sub_type'
+  );
+
+  foreach($vocabs as $name) {
+    if($base = variable_get('opensanmateo_taxonomy_sync_master_is', FALSE)) {
+      variable_set(TAXONOMY_SYNC_CLIENT_PREFIX . $name, "http://$base/taxonomy-sync/list/$name");
+    }
+    else {
+      variable_del(TAXONOMY_SYNC_CLIENT_PREFIX . $name);
+    }
+
+    //set the master status
+    variable_set(TAXONOMY_SYNC_MASTER_PREFIX . $name,  variable_get('opensanmateo_taxonomy_sync_is_master', FALSE));
+  }
 }
 
 /**

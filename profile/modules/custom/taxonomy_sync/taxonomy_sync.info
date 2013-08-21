@@ -1,0 +1,8 @@
+name = GTA Terms Synchronization
+description = Manages synchronization of vocabularies between sites
+core = 7.x
+package = GTA
+
+files[] = taxonomy_sync.module
+
+dependencies[] = taxonomy

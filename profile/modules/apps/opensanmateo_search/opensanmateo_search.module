@@ -7,6 +7,8 @@
 include_once 'opensanmateo_search.features.inc';
 include_once 'opensanmateo_search.features.field_instance_do_not_index.inc';
 include_once 'opensanmateo_search.features.field_instance_qs.inc';
+include_once 'opensanmateo_search.features.field_instance_subject.inc';
+include_once 'opensanmateo_search.features.field_instance_sub_type.inc';
 
 /**
  * Implements hook_search_api_query_alter().
@@ -75,3 +77,48 @@ function quick_search_form_views_exposed_form_alter(&$form, &$form_state, $form_
     $form['search_api_views_fulltext']['#pre_render'][] = 'quick_search_process_search';
     $form['search_api_views_fulltext']['#attributes']['quick_search_callback'] = 'opensanmateo_search_qs_callback';
 }
+
+/**
+ * implements hook_features_template_info()
+ */
+function opensanmateo_search_features_template_info() {
+  $content_types = variable_get('opesanmateo_search_content_types_to_index', array());
+  $data = array();
+  foreach($content_types as $content_type => $present) {
+    $data[] = array(
+      'entity_type' => 'node',
+      'bundle_type' => $content_type,
+      'field' => 'field_do_not_index',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'opensanmateo_search_field_default_field_instances_dni_template'
+    );
+    $data[] = array(
+      'entity_type' => 'node',
+      'bundle_type' => $content_type,
+      'field' => 'field_quick_search',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'opensanmateo_search_field_default_field_instances_qs_template'
+    );
+    $data[] = array(
+      'entity_type' => 'node',
+      'bundle_type' => $content_type,
+      'field' => 'field_subject',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'opensanmateo_search_field_default_field_instances_subject_template'
+    );
+    $data[] = array(
+      'entity_type' => 'node',
+      'bundle_type' => $content_type,
+      'field' => 'field_sub_type',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'opensanmateo_search_field_default_field_instances_sub_type_template'
+    );
+  }
+  return $data;
+}
+
+

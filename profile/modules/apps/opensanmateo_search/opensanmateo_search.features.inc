@@ -49,6 +49,9 @@ function opensanmateo_search_default_search_api_index() {
         "url" : { "type" : "uri" },
         "field_event_calendar" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_event_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_quick_search" : { "type" : "list\\u003Ctext\\u003E", "boost" : "5.0" },
+        "field_subject" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_sub_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_release_date" : { "type" : "date" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
@@ -64,7 +67,10 @@ function opensanmateo_search_default_search_api_index() {
         "field_address:locality" : { "type" : "text" },
         "field_event_date:value" : { "type" : "date" },
         "field_event_date:value2" : { "type" : "date" },
-        "field_location_address:field_address:locality" : { "type" : "list\\u003Ctext\\u003E" }
+        "field_location_address:field_address:locality" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_sub_type:name" : { "type" : "text" },
+        "field_address:locality" : { "type" : "text" }
       },
       "data_alter_callbacks" : {
         "site_index" : { "status" : 1, "weight" : "-50", "settings" : [] },
@@ -134,6 +140,12 @@ function opensanmateo_search_default_search_api_index() {
                   "field_location_address:field_address:locality"
                 ],
                 "description" : "A First aggregation of the following fields: Address \\u00bb Locality (i.e. City), Address \\u00bb Address \\u00bb Locality (i.e. City)."
+              },
+              "search_api_aggregation_8" : {
+                "name" : "Terms",
+                "type" : "fulltext",
+                "fields" : [ "field_subject:name", "field_sub_type:name" ],
+                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name."
               }
             }
           }
@@ -189,6 +201,8 @@ function opensanmateo_search_default_search_api_index() {
         "title" : { "type" : "string" },
         "url" : { "type" : "uri" },
         "field_quick_search" : { "type" : "list\\u003Ctext\\u003E", "boost" : "21.0" },
+        "field_subject" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_sub_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "search_api_language" : { "type" : "string" }
       },
       "data_alter_callbacks" : {
