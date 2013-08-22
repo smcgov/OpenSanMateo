@@ -18,7 +18,7 @@ function opensanmateo_roles_add_perms(&$form, $cfg_perms) {
     '#title' => t('Permissions'),
     '#description' => t("These are the system permissions that control this app's behavior"),
     '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
+    '#collapsed' => TRUE,
     '#theme' => 'user_admin_permissions',
     '#tree' => TRUE,
   );
@@ -43,6 +43,10 @@ function opensanmateo_roles_add_perms(&$form, $cfg_perms) {
 
   // Iterate over our desired perms and add them to the form
   foreach ($cfg_perms as $perm) {
+    // This is here to catch cases of fat-fingering or perms that have gone away for some reason (i.e. some associated but not dependency module has been disabled)
+    if (!isset($permissions[$perm])) {
+      continue;
+    }
     $perm_item = $permissions[$perm];
 
     // Fill in default values for the permission.
