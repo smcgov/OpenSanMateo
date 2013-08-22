@@ -1,0 +1,19 @@
+<?php
+/**
+ * @file
+ * Code for the OpenSanMateo Shared Content feature.
+ */
+
+include_once 'opensanmateo_shared_content.features.inc';
+
+/**
+ * Implements hook_entity_info_alter()
+ * 
+ * Defines a new bundle type for the Curated list pane
+ */
+function opensanmateo_shared_content_entity_info_alter(&$entity_info) {
+  $entity_info['fieldable_panels_pane']['bundles']['curated_list_pane'] = $entity_info['fieldable_panels_pane']['bundles']['fieldable_panels_pane'];
+  $entity_info['fieldable_panels_pane']['bundles']['curated_list_pane']['label'] = 'Curated List Pane';
+  $entity_info['fieldable_panels_pane']['bundles']['curated_list_pane']['admin']['path'] = 'admin/structure/fieldable-panels-panes/manage/%curated_list_pane_type';
+  $entity_info['fieldable_panels_pane']['bundles']['curated_list_pane']['admin']['real path'] = 'admin/structure/fieldable-panels-panes/manage/curated-list-pane';
+}

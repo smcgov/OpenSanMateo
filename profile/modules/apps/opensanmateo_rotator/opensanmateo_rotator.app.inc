@@ -8,13 +8,7 @@ function opensanmateo_rotator_apps_app_info() {
 }
 
 function opensanmateo_rotator_app_configure_form() {
-  $form = array(
-    'opensanmateo_rotator_thing' => array(
-      '#title' => t('Thing'),
-      '#type' => 'textfield',
-      '#default_value' => variable_get('opensanmateo_rotator_thing', '')
-    ),
-  );
+  $form = array();
   return system_settings_form($form);
 }
 
