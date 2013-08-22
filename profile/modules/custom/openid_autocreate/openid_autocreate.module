@@ -1,0 +1,74 @@
+<?php
+/**
+ * @file
+ */
+
+/**
+ * implements hook_form_user_register_form_alter()
+ *
+ * Addes a submit to the end of the registation form
+ */
+function openid_autocreate_form_user_register_form_alter(&$form) {
+  $form['#submit'][] = 'openid_autocreate_form_user_register_form_submit';
+  #print_r($form);
+}
+
+/**
+ * submit handler for reguster form
+ */
+function openid_autocreate_form_user_register_form_submit($form, &$form_state) {
+  $form_state['uid'] = $form_state['user']->uid;
+  user_login_submit(array(), $form_state);
+  $form_state['redirect'] = '';
+};
+
+/**
+ * implements hook_user_presave
+ */
+function openid_autocreate_user_presave(&$edit, &$account, $cat) {
+  if($roles = openid_autocreate_get_roles($edit['openid_claimed_id'])) {
+    $edit['status'] = 1;
+    $edit['login'] = time();
+    $edit['roles'] = $roles;
+  print_r($edit);
+  #exit;
+  }
+}
+
+/**
+ * function to extract which regex are for which roles
+ *
+ * PARAM name: the name of the role
+ * RETURN: an array of the regex that are attached to a role
+ *
+ */
+function openid_autocreate_regex_get($name) {
+  return variable_get("openid_autocreate_regex_$name", array());
+}
+
+function openid_autocreate_regex_set($name, $regexs) {
+  return variable_set("openid_autocreate_regex_$name", $regexs);
+}
+/**
+ * Get roles that should be attached to a openid user
+ * 
+ * PARAM claimed_id: an openid string
+ * RETURN: a array of role ids to bool
+ */
+function openid_autocreate_get_roles($claimed_id) {
+  $roles = array();
+  foreach(user_roles() as $rid => $name) {
+    $role = FALSE;
+    foreach(openid_autocreate_regex_get($name) as $regex) {
+      $role = $role ? $role : preg_match($regex, $claimed_id);
+    }
+    $roles[$rid] = $role;
+
+  }
+  return $roles;
+}
+function openid_autocreate_init() {
+  #$claimed_id = 'http://esummerfield.master.sanmateo.p2devcloud.com/user/4/identity';
+  #dpm(openid_autocreate_get_roles($claimed_id));
+  #openid_autocreate_regex_set('administrator', array("/esummerfield.master/"));
+}
