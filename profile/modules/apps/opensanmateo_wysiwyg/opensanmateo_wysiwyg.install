@@ -1,0 +1,16 @@
+<?php
+/**
+ * @file
+ * Contains the install/uninstall hooks for the module
+ */
+
+/**
+ * Implements hook_install
+ */
+function opensanmateo_wysiwyg_install() {
+  // Disable the unused, core-provided format(s)
+  $fmt = filter_format_load('filtered_html');
+  if ($fmt) {
+    filter_format_disable($fmt);
+  }
+}
