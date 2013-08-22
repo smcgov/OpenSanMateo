@@ -64,7 +64,7 @@ function opensanmateo_rotator_preprocess_field(&$vars, $hook) {
  * Implements template_preprocess_panels_pane().
  */
 function opensanmateo_rotator_preprocess_panels_pane(&$vars) {
-  if ($vars['pane']->type == 'fieldable_panels_pane' &&
+  if ($vars['pane']->type == 'fieldable_panels_pane' && isset($vars['content']['field_coll_rotator_item']) &&
       $vars['content']['field_coll_rotator_item']['#bundle'] == 'rotator_panels_pane') {
       
     // Determine the type (Carousel or rotator)
