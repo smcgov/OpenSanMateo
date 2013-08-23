@@ -13,7 +13,7 @@ function opensanmateo_shared_users_sanmateo_master_is_set($base) {
 /**
  * implements hook_sanmateo_master_is_set
  */
-function opensanmateo_shared_users_sanmateo_master_is_set($is_master) {
+function opensanmateo_shared_users_sanmateo_is_master_set($is_master) {
   if($is_master) {
     module_enable(array('openid_provider'));
   }
