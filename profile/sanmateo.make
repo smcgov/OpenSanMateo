@@ -364,5 +364,10 @@ projects[distributed_blocks][version] = 1.0-beta3
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.4.16.zip
 
+projects[field_views][type] = module
 projects[field_views][subdir] = contrib
+projects[field_views][version] = 1.0-alpha1
+
+projects[taxonomy_view_mode][type] = module
 projects[taxonomy_view_mode][subdir] = contrib
+projects[taxonomy_view_mode][version] = 1.0-alpha1
