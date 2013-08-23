@@ -52,10 +52,21 @@ function opensanmateo_layout_status() {
       'description' => t("The banner block is exposed."),
       'severity' =>    REQUIREMENT_OK, //REQUIREMENT_OK REQUIREMENT_INFO,REQUIREMENT_WARNING, REQUIREMENT_ERROR
     );
+    $status['items']['platform_menu_exposed'] = array(
+      'title' => 'Platform Menu Block Exposed',
+      'action' => '',
+      'description' => t("The platform menu block is exposed. !edit_link", array('!edit_link' => l(t('Edit the menu links'), 'admin/structure/menu/manage/menu-platform-menu'))),
+      'severity' =>    REQUIREMENT_OK, //REQUIREMENT_OK REQUIREMENT_INFO,REQUIREMENT_WARNING, REQUIREMENT_ERROR
+    );
     $exposed_blocks = variable_get('distributed_blocks_exposed_blocks', array());
-    
+
     if (empty($exposed_blocks) || empty($exposed_blocks['opensanmateo_layout|opensanmateo_layout_banner|Shared Banner'])) {
       $status['items']['banner_block_exposed']['description'] = t('The banner block is not exposed.');
+      $status['items']['banner_block_exposed']['severity'] = REQUIREMENT_ERROR;
+      $status['items']['banner_block_exposed']['action'] = array(l("Change this setting", "admin/config/system/distributed_blocks",  array('query'  => drupal_get_destination())));
+    }
+    if (empty($exposed_blocks) || empty($exposed_blocks['menu|menu-platform-menu|Platform Menu'])) {
+      $status['items']['banner_block_exposed']['description'] = t('The platform menu block is not exposed.');
       $status['items']['banner_block_exposed']['severity'] = REQUIREMENT_ERROR;
       $status['items']['banner_block_exposed']['action'] = array(l("Change this setting", "admin/config/system/distributed_blocks",  array('query'  => drupal_get_destination())));
     }
