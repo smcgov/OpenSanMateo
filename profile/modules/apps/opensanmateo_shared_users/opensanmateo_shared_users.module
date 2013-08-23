@@ -1,1 +1,23 @@
 <?php
+/**
+ * implements hook_sanmateo_master_is_set
+ */
+function opensanmateo_shared_users_sanmateo_master_is_set($base) {
+  if ($base) {
+    openid_autocreate_regex_set('administrator', array("/^https?:\/\/$base/"));
+  }
+  else {
+    openid_autocreate_regex_set('administrator', array());
+  }
+}
+/**
+ * implements hook_sanmateo_master_is_set
+ */
+function opensanmateo_shared_users_sanmateo_master_is_set($is_master) {
+  if($is_master) {
+    module_enable(array('openid_provider'));
+  }
+  else {
+    module_disable(array('openid_provider'));
+  }
+}

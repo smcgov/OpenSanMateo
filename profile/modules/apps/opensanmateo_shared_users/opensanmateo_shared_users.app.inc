@@ -38,17 +38,6 @@ function opensanmateo_shared_users_app_configure_form() {
  * We set the correct regex for the openid_autocreate module
  */
 function opensanmateo_shared_users_app_configure_form_submit($form,$form_state) {
-  if ($base =  variable_get('opensanmateo_shared_users_master_is', FALSE)) {
-    openid_autocreate_regex_set('administrator', array("/^https?:\/\/$base/"));
-  }
-  else {
-    openid_autocreate_regex_set('administrator', array());
-  }
-
-  if(variable_get('opensanmateo_shared_users_is_master', FALSE)) {
-    module_enable(array('openid_provider'));
-  }
-  else {
-    module_disable(array('openid_provider'));
-  }
+  sanmateo_set_is_master(variable_get('opensanmateo_shared_is_master', FALSE));
+  sanmateo_set_master_is(variable_get('opensanmateo_shared_users_master_is', FALSE));
 }

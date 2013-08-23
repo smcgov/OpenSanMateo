@@ -110,3 +110,13 @@ function _sanmateo_imce_overwrite(){
     variable_set('imce_settings_replace', '1');
   }
 }
+
+
+function sanmateo_set_is_master($is_master) {
+  variable_set("sanmateo_is_master", $is_master);
+  module_invoke_all("sanmateo_is_master_set", $is_master);
+}
+function sanmateo_set_master_is($master) {
+  variable_set("sanmateo_is_master", $master);
+  module_invoke_all("sanmateo_master_is_set", $master);
+}
