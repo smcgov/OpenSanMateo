@@ -366,3 +366,5 @@ libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archi
 
 projects[field_views][subdir] = contrib
 projects[taxonomy_view_mode][subdir] = contrib
+projects[xrds_simple][subdir] = contrib
+projects[openid_provider][subdir] = contrib

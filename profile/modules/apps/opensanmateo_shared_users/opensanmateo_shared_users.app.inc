@@ -39,9 +39,16 @@ function opensanmateo_shared_users_app_configure_form() {
  */
 function opensanmateo_shared_users_app_configure_form_submit($form,$form_state) {
   if ($base =  variable_get('opensanmateo_shared_users_master_is', FALSE)) {
-    openid_autocreate_regex_set('administrator', array("/^https?:\/\/$base/")t);
+    openid_autocreate_regex_set('administrator', array("/^https?:\/\/$base/"));
   }
   else {
     openid_autocreate_regex_set('administrator', array());
+  }
+
+  if(variable_get('opensanmateo_shared_users_is_master', FALSE)) {
+    module_enable(array('openid_provider'));
+  }
+  else {
+    module_disable(array('openid_provider'));
   }
 }
