@@ -112,11 +112,19 @@ function _sanmateo_imce_overwrite(){
 }
 
 
-function sanmateo_set_is_master($is_master) {
-  variable_set("sanmateo_is_master", $is_master);
+function sanmateo_is_master($is_master = NULL) {
+  if(isset($is_master)) {
+    variable_set("sanmateo_is_master", $is_master);
+  }
+  $is_master = variable_get("sanmateo_is_master", FALSE);
   module_invoke_all("sanmateo_is_master_set", $is_master);
+  return $is_master;
 }
-function sanmateo_set_master_is($master) {
-  variable_set("sanmateo_is_master", $master);
+
+function sanmateo_master_is($master = NULL) {
+  if(isset($master)) {
+    variable_set("sanmateo_master_is", $master);
+  }
+  $master = variable_get("sanmateo_master_is", $master);
   module_invoke_all("sanmateo_master_is_set", $master);
 }

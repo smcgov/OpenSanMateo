@@ -38,6 +38,6 @@ function opensanmateo_devel_app_configure_form() {
  * We set the correct regex for the openid_autocreate module
  */
 function opensanmateo_devel_app_configure_form_submit($form,$form_state) {
-  sanmateo_set_is_master(variable_get('opensanmateo_devel_is_master', FALSE));
-  sanmateo_set_master_is(variable_get('opensanmateo_devel_master_is', FALSE));
+  sanmateo_is_master(variable_get('opensanmateo_devel_is_master', FALSE));
+  sanmateo_master_is(variable_get('opensanmateo_devel_master_is', FALSE));
 }
