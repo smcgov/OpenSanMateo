@@ -39,7 +39,12 @@ function opensanmateo_rotator_preprocess_field(&$vars, $hook) {
       $link = $slide['field_rotator_link_url']['#items'][0]['url'];
     }
     if (isset($slide['field_rotator_link_node'])) {
-      $link = $slide['field_rotator_link_node'][0]['#markup'];
+      if (isset($slide['field_rotator_link_node'][0]['#markup'])) {
+        $link = $slide['field_rotator_link_node'][0]['#markup'];
+      }
+      else {
+        $link = $slide['field_rotator_link_node'][0]['#href'];
+      }
     }
     // give a value for the entity id visible in $items
     $vars['items'][$index]['#eid'] = $value;

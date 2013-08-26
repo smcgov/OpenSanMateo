@@ -359,7 +359,7 @@ projects[breakpoints][version] = 1.1
 
 projects[distributed_blocks][type] = module
 projects[distributed_blocks][subdir] = contrib
-projects[distributed_blocks][version] = 1.0-beta3
+projects[distributed_blocks][version] = 1.0-beta4
 
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.4.16.zip
