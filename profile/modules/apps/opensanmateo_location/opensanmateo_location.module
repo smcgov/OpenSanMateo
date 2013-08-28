@@ -96,7 +96,7 @@ function opensanmateo_location_permission() {
  * Disables the Quick Search tags field if the permission isn't set.
  */
 function opensanmateo_location_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id != 'location_node_form' || !isset($form['field_quick_search'])) {
+  if (!isset($form['field_quick_search'])) {
     return;
   }
   if (!user_access('edit quick search tags')) {

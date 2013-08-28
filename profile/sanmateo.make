@@ -359,12 +359,17 @@ projects[breakpoints][version] = 1.1
 
 projects[distributed_blocks][type] = module
 projects[distributed_blocks][subdir] = contrib
-projects[distributed_blocks][version] = 1.0-beta3
+projects[distributed_blocks][version] = 1.0-beta4
 
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.4.16.zip
 
+projects[field_views][type] = module
 projects[field_views][subdir] = contrib
+projects[field_views][version] = 1.0-alpha1
+
+projects[taxonomy_view_mode][type] = module
 projects[taxonomy_view_mode][subdir] = contrib
 projects[xrds_simple][subdir] = contrib
 projects[openid_provider][subdir] = contrib
+projects[taxonomy_view_mode][version] = 1.0-alpha1

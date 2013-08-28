@@ -59,3 +59,17 @@ function opensanmateo_layout_block_view($delta = '') {
   }
   return $block;
 }
+
+/**
+ * Implements template_process_panels_add_content_modal().
+ * 
+ * We are removing some categories from the IPE modal window.
+ */
+function opensanmateo_layout_preprocess_panels_add_content_modal(&$vars) { 
+  foreach ($vars['categories_array'] as $key => $category_name) {
+    if (in_array(strip_tags($category_name),
+      array('Activity', 'Boxes', 'Comment', 'Node (tokens)', 'Node', 'Page elements'))) {
+        unset($vars['categories_array'][$key]);
+      }
+  }
+}
