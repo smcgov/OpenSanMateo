@@ -39,7 +39,12 @@ function opensanmateo_rotator_preprocess_field(&$vars, $hook) {
       $link = $slide['field_rotator_link_url']['#items'][0]['url'];
     }
     if (isset($slide['field_rotator_link_node'])) {
-      $link = $slide['field_rotator_link_node'][0]['#markup'];
+      if (isset($slide['field_rotator_link_node'][0]['#markup'])) {
+        $link = $slide['field_rotator_link_node'][0]['#markup'];
+      }
+      else {
+        $link = $slide['field_rotator_link_node'][0]['#href'];
+      }
     }
     // give a value for the entity id visible in $items
     $vars['items'][$index]['#eid'] = $value;
@@ -77,9 +82,12 @@ function opensanmateo_rotator_preprocess_panels_pane(&$vars) {
       $type = 'none';
     }
     
-    flexslider_add();
-    drupal_add_js(array('OpenSanMateoRotator' => array('type' => $type)), 'setting');
-    drupal_add_css(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.css');
-    drupal_add_js(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.js');
+    if ($type != 'list') {
+      flexslider_add();
+      drupal_add_js(array('OpenSanMateoRotator' => array('type' => $type)), 'setting');
+      drupal_add_css(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.css');
+      drupal_add_js(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.js');
+    }
+    
   }
 }
