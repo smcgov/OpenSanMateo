@@ -1,0 +1,29 @@
+
+// Side Navigation 
+// ======================================================================== //
+
+.side-nav-heading {
+	font-variant: small-caps;
+	font-size: 1.25em;
+	color: $labelcolor;
+}
+
+.sidenav {
+	padding-left: 2em;
+}
+
+.side-nav ul {
+	list-style-type: none;
+}
+
+.side-nav li ul {
+	list-style-type: none;
+	line-height: 1em;
+	padding: .5em 0;
+	margin-left: 0;
+}
+.side-nav li ul li {
+	padding-bottom: .5em;
+	padding-left: 0;
+	margin-left: .5em;
+}

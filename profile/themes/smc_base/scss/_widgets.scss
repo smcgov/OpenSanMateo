@@ -1,0 +1,115 @@
+// Search
+// ======================================================================== //
+
+#search {
+	padding: emCalc(5px) 0;
+	display: block;
+	form {
+		display: inline;
+	}
+	input {
+		display: inline;
+		width: 130px;
+	}
+}
+
+#searchresults {
+	form {
+		display: inline;
+	}
+	input {
+		display: inline;
+		width: 85%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	#search {
+		padding: emCalc(30px) 0;
+	}
+}
+
+// Press Releases
+// ======================================================================== //
+
+.location {
+		font-weight: bolder;
+		color: #898989;		
+	}
+.location:after {
+		content:" -- ";
+}
+
+
+// Events
+// ======================================================================== //
+
+#calendarpicker {
+	white-space: pre;
+	font-family: monospace;
+	font-size: emCalc(16px);
+	line-height: emCalc(16px);
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	li {
+		padding: 0 auto;
+		margin: 0 auto;
+	}
+	.activeday {
+		color: $linkcolor;
+		font-weight: bolder;
+	}
+}
+
+
+// Associated Files - Documents, Services, Events
+// ======================================================================== //
+
+.associated {
+	margin-bottom: 30px;
+	border-top: 1px solid $rulecolor;
+	a {
+		display: block;
+		line-height: 2em;
+		padding: 2px 0;
+		border-bottom: 1px solid $rulecolor;
+		.file {
+			color: white;
+			font-size: .8em;
+			background: #d7d7d7;
+			padding: 3px;
+			margin-right: 1em;
+		}
+		.size {
+			float: right;
+			color: #c3c3c3;
+		}
+ 		.absolute {
+			float: right;
+		}
+	}
+}
+
+// How Do I Box
+// ======================================================================== //
+
+
+
+// Custom Promos
+// ======================================================================== //
+
+
+// Ephemera
+// ======================================================================== //
+
+.smallprint { // for Google Maps
+	display: block;
+	padding: 10px 0 30px 0;
+	font-size: .7em;
+}
+
+
+
+
+
