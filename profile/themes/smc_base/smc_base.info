@@ -14,6 +14,7 @@ stylesheets[all][] = css/smc_base.css
 
 scripts[] = js/foundation/modernizr.foundation.js
 scripts[] = js/showHide.js
+scripts[] = js/jquery.flexnav.js
 scripts[] = js/smc_base.js
 
 regions[header] = Header

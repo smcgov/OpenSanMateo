@@ -19,3 +19,36 @@ function smc_base_process_page(&$variables) {
     $variables['site_slogan'] = filter_xss_admin(variable_get('site_slogan', ''));
   }
 }
+
+function smc_base_preprocess_block(&$variables) {
+  $block = $variables['block'];
+  
+  switch ($block->bid) {
+    case 'menu_block-sanmateo-primary-menu':
+      
+      $variables['classes_array'][] = 'primary';
+      $variables['classes_array'][] = 'main-nav';
+      
+      //krumo($variables);
+      
+      
+    break;
+  }
+  
+}
+
+function smc_base_menu_link__menu_block__sanmateo_primary_menu($variables) {
+  $element = $variables['element'];
+  //dsm($element);
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+function smc_base_menu_tree__menu_block__sanmateo_primary_menu($variables) {
+  return '<ul class="flexnav group">' . $variables['tree'] . '</ul>';
+}

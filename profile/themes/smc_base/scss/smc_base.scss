@@ -3,6 +3,18 @@ body {
   //padding: 50px;
 }
 
+.krumo-root strong {
+  display: inline !important;
+}
+
+ul li.leaf,
+ul li.expanded {
+  list-style-type: none;
+  list-style-image: none;
+  padding: 0;
+  margin: 0;
+}
+
 #toolbar {
   strong {
     display: inline;
@@ -27,4 +39,10 @@ body {
     }
   }
 
+}
+
+nav.main-nav {
+  border-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
 }

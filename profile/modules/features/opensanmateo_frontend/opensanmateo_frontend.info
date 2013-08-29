@@ -1,0 +1,11 @@
+name = OpenSanMateo Frontend
+description = Frontend feature for any functionality that must live outside the theme layer. 
+core = 7.x
+package = OpenSanMateo
+version = 7.x-1.0
+project = opensanmateo_frontend
+dependencies[] = context
+dependencies[] = menu_block
+features[context][] = smc_mainmenu
+features[ctools][] = context:context:3
+features[features_api][] = api:2
