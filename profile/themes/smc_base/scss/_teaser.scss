@@ -1,0 +1,75 @@
+// Teasers
+// ======================================================================== //
+
+.teaser { // for content listsings, probably more accurate to say "teaser view"
+	clear: left;
+	padding-top: .5em;
+	min-height: 200px;
+	border-top: 1px solid $rulecolor;
+	.summary {
+		padding-bottom: .5em;
+		margin-bottom: 0;
+	}
+
+}
+
+.teaser:last-of-type {
+	border-bottom: 1px solid $rulecolor;
+	margin-bottom: 60px;
+}
+
+.readmore {
+	margin-top: 0;
+	padding-top: 0;
+	text-align: right;
+	character-spacing: 1px;
+}
+
+// InfoBlock Items
+// ======================================================================== //
+
+.fieldlabel {
+	font-variant: small-caps;
+	color: $labelcolor;
+}
+.address .city, 
+.address .state, 
+.address .zip, {
+	display: inline;
+}
+.address, 
+.url, 
+.phone, 
+.time,
+.contact, 
+.controls {
+	float: left;
+	padding-left: emCalc(20px);
+	padding-bottom: emCalc(20px);
+	line-height: 125%;
+}
+.contact p {
+	padding-bottom: 0;
+	margin-bottom: 0;
+	line-height: 125%;
+}
+.infoblock + .summary,
+.infoblock + .body {
+	clear: left;
+}
+
+// Byline Styles
+// ======================================================================== //
+
+.byline { // used both in slab, above, and on detail pages
+	line-height: 125%;
+	.author {
+		font-weight: bolder;				
+	}
+	.type {
+		color: $linkcolor;		
+	}
+	.date {
+		font-face: small-caps;		
+	}
+}

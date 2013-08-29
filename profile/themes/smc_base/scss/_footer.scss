@@ -1,0 +1,30 @@
+.footer {
+    background-color: #444444;
+    color: white;
+    font-size: .8em;
+    margin-top: emCalc(60px);
+}
+
+#brandmenu {
+	padding-top: emCalc(15px);
+	ul {
+		list-style-type: none;
+		li {
+			display: block;
+			clear: left;
+			padding: emCalc(15px);
+		}
+	}
+}
+
+/* Used to alter styles for screens at least 768px wide. This is where the grid changes. */
+@media only screen and (min-width: 768px) {
+	#brandmenu {
+		ul {
+			li {
+				display: inline;
+				padding-right: emCalc(30px);
+			}
+		}
+	}
+} 
