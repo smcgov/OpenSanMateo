@@ -1,0 +1,3 @@
+name = OpenId AutoCreate
+core = 7.x
+dependencies[] = openid

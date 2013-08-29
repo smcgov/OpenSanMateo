@@ -2,9 +2,10 @@
 
   Drupal.behaviors.openSanmateoLocation = {
     attach: function (context, settings) {
-      button = $("<a class = 'osm_loc_update'>Update Address</a>");
+      button = $('<a href="#" class="osm_loc_update">Update Address</a>');
       $('.field-name-field-location', context).after(button);
-      $('.osm_loc_update').click(function() {
+      $('.osm_loc_update').click(function(evt) {
+        evt.preventDefault();
         value = $(this).prev().find("input").val();
         b = $(this);
         $.get(

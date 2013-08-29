@@ -1,0 +1,3 @@
+name = Open San Mateo Shared Users
+core = 7.x
+dependencies[] = openid_autocreate
