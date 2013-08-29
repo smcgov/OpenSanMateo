@@ -1,6 +1,16 @@
 body {
   background: #EEEEEE; }
 
+.krumo-root strong {
+  display: inline !important; }
+
+ul li.leaf,
+ul li.expanded {
+  list-style-type: none;
+  list-style-image: none;
+  padding: 0;
+  margin: 0; }
+
 #toolbar strong {
   display: inline; }
 #toolbar #toolbar-home,
@@ -14,3 +24,8 @@ body {
   #toolbar div.toolbar-menu a.toggle {
     bottom: 0;
     right: 5px; }
+
+nav.main-nav {
+  border-top: 0;
+  margin-bottom: 0;
+  padding-top: 0; }
