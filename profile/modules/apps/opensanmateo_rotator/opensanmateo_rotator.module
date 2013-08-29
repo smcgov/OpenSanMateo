@@ -30,10 +30,17 @@ function opensanmateo_rotator_preprocess_field(&$vars, $hook) {
     $value = $item['value'];
     $slide = $vars['items'][$index]['entity']['field_collection_item'][$value]; 
     $link = NULL;
-    
+
     // give a value for the entity id visible in $items
     $vars['items'][$index]['#eid'] = $value;
 
+    // Move description into the caption
+    if (isset($slide['field_rotator_description']) && isset($slide['field_rotator_caption'])) {
+      $slide['field_rotator_caption'][0]['#markup'] .= '<div class="description">' . $slide['field_rotator_description'][0]['#markup'] . '</div>';
+      unset($slide['field_rotator_description'][0]['#markup']);
+      $vars['items'][$index]['entity']['field_collection_item'][$value] = $slide;
+    }
+    
     // Fetch link
     if (isset($slide['field_rotator_link_url'])) {
       $link = $slide['field_rotator_link_url']['#items'][0]['url'];
@@ -88,6 +95,5 @@ function opensanmateo_rotator_preprocess_panels_pane(&$vars) {
       drupal_add_css(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.css');
       drupal_add_js(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.js');
     }
-    
   }
 }

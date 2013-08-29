@@ -2,7 +2,14 @@
   display: none;
 }
 
-.field-collection-view .flex-caption {
+.field-collection-view .field-name-field-rotator-caption.flex-caption {
+    position:absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.field-collection-view .field-name-field-rotator-caption.flex-caption {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);  
   color: white;
   padding: 2%;
@@ -12,10 +19,13 @@
   width: 96%;  
 }
 
+.field-collection-view .field-collection-item-field-coll-rotator-item .content {
+  position: relative;
+}
 .field-collection-view .field-name-field-rotator-caption.flex-caption {
   font-size: 26px;
 }
-.field-collection-view .field-name-field-rotator-description.flex-caption {
+.field-collection-view .field-name-field-rotator-caption.flex-caption .description{
   font-size: 16px;
 }
 
