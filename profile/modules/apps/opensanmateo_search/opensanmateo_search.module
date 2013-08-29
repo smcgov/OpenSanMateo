@@ -28,16 +28,15 @@ function opensanmateo_search_search_api_query_alter($query) {
 }
 */
 function opensanmateo_search_search_api_index_items_alter(array &$items, SearchApiIndex $index) {
-  $types = array_filter(variable_get('opesanmateo_search_content_types_to_index', array()));
+  $types = array_filter(variable_get('opensanmateo_search_content_types_to_not_index', array()));
   foreach($items as $id => $item) {
-    if (!in_array($item->type, $types)) {
+    if (in_array($item->type, $types)) {
       unset($items[$id]);
     }
-    elseif ($item->field_do_not_index[$item->language][0]['value']){
+    elseif ($item->field_do_not_index[$item->language][0]['value']) {
       unset($items[$id]);
     }
   }
-  
 }
 
 /**
@@ -82,7 +81,7 @@ function quick_search_form_views_exposed_form_alter(&$form, &$form_state, $form_
  * implements hook_features_template_info()
  */
 function opensanmateo_search_features_template_info() {
-  $content_types = variable_get('opesanmateo_search_content_types_to_index', array());
+  $content_types = variable_get('opensanmateo_search_content_types_to_not_index', array());
   $data = array();
   foreach($content_types as $content_type => $present) {
     $data[] = array(

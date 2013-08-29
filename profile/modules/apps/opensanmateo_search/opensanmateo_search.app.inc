@@ -15,11 +15,11 @@ function opensanmateo_search_app_configure_form() {
     ),
   );
 
-  $form['opesanmateo_search_content_types_to_index'] = array(
-    '#title' => t('Content to Index'),
+  $form['opensanmateo_search_content_types_to_not_index'] = array(
+    '#title' => t('Content to exclude from Index'),
     '#type' => 'checkboxes',
     '#options' => array_map(function($i) {return $i->name;}, node_type_get_types()),
-    '#default_value' => variable_get('opesanmateo_search_content_types_to_index', array())
+    '#default_value' => variable_get('opensanmateo_search_content_types_to_not_index', array())
   );
   $form['taxonomy_sync'] = array(
     '#type' => 'fieldset',

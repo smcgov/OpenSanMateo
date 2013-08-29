@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Implements hook_update_N()
+ */
+function opensanmateo_search_update_7000() {
+  $to_index = variable_get('opesanmateo_search_content_types_to_index', array());
+  $not_index = array();
+  
+  foreach ($to_index as $id => $setting) {
+    $not_index[$id] = (empty($setting)) ? $id : 0;
+  }
+  
+  variable_set('opensanmateo_search_content_types_to_not_index', $not_index);
+  return t('The content types to not index have been set.');
+}
