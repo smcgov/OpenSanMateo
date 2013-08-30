@@ -78,7 +78,7 @@ function opensanmateo_rotator_preprocess_field(&$vars, $hook) {
 function opensanmateo_rotator_preprocess_panels_pane(&$vars) {
   if ($vars['pane']->type == 'fieldable_panels_pane' && isset($vars['content']['field_coll_rotator_item']) &&
       $vars['content']['field_coll_rotator_item']['#bundle'] == 'rotator_panels_pane') {
-      
+    
     // Determine the type (Carousel or rotator)
     $type = field_get_items('fieldable_panels_pane', $vars['content']['field_coll_rotator_item']['#object'], 'field_rotator_type');
     if ($type) {
@@ -89,9 +89,10 @@ function opensanmateo_rotator_preprocess_panels_pane(&$vars) {
       $type = 'none';
     }
     
+    drupal_add_js(array('OpenSanMateoRotator' => array(array('type' => $type))), 'setting');
+        
     if ($type != 'list') {
       flexslider_add();
-      drupal_add_js(array('OpenSanMateoRotator' => array('type' => $type)), 'setting');
       drupal_add_css(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.css');
       drupal_add_js(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.js');
     }
