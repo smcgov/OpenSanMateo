@@ -23,18 +23,55 @@ function smc_base_process_page(&$variables) {
 function smc_base_preprocess_block(&$variables) {
   $block = $variables['block'];
   
+  // removes the "generic" block class to blocks as it is used elsewhere for a specific style
+  // the class will be applied more specifically later
+  if ($variables['classes_array'][0] == "block") {
+    unset($variables['classes_array'][0]);
+  }
+  //krumo($block->bid);
   switch ($block->bid) {
     case 'menu_block-sanmateo-primary-menu':
       
       $variables['classes_array'][] = 'primary';
       $variables['classes_array'][] = 'main-nav';
-      
-      //krumo($variables);
-      
-      
+
+    break;
+    
+    case 'distributed_blocks-d_b|opensanmateo_layout_banner':
+      //dsm($block);
+      //dsm($variables);
+    break;
+    
+    case 'distributed_blocks-d_b|menu-platform-menu':
+      //dsm($variables);
     break;
   }
   
+}
+function smc_base_block_view_alter(&$data, $block) {
+  
+  
+  // Check we get the right menu block (side bar)
+  if ($block->bid == 'menu_block-sanmateo-primary-menu') {
+    //dsm($data);
+    
+    // create a "home" link as the first link in the main menu.
+    $keys = array_keys($data['content']['#content']);
+    $data['content']['#content'][$keys[0]]['#prefix'] = '<li class="home">' . l('', '<front>') . '</li>';
+    
+    $links = $data['content']['#content'];
+    foreach ($links as $key => $link) {
+      if (isset($links[$key]['#below']) && (count($links[$key]['#below']) >= 1)) {
+        //dsm('submenu detected.');
+        //dsm($links[$key]);
+        $data['content']['#content'][$key]['#below']['#theme_wrappers'][0][0] = 'menu_tree__menu_block__sanmateo_primary_menu_submenu';
+      }
+    }
+  }
+}
+function smc_base_process_menu_tree(&$variables) {
+  //dsm($variables);
+  //$variables['tree'] = $variables['tree']['#children'];
 }
 
 function smc_base_menu_link__menu_block__sanmateo_primary_menu($variables) {
@@ -50,5 +87,11 @@ function smc_base_menu_link__menu_block__sanmateo_primary_menu($variables) {
 }
 
 function smc_base_menu_tree__menu_block__sanmateo_primary_menu($variables) {
+  // <li class="home">'. l('', '<front>') .'</li>
   return '<ul class="flexnav group">' . $variables['tree'] . '</ul>';
+}
+
+function smc_base_menu_tree__menu_block__sanmateo_primary_menu_submenu($variables) {
+  // <li class="home">'. l('', '<front>') .'</li>
+  return '<ul class="">' . $variables['tree'] . '</ul>';
 }

@@ -10,7 +10,7 @@
  */
  
 ?>
-<div id="wrapper page-wrapper group">
+<div id="wrapper" class="wrapper page-wrapper group">
     <div id="dept-switch">
     	<a class="close show_hide icon-close" href="" rel="#dept-switch"></a>
     	<h2>Departments</h2>
@@ -70,15 +70,15 @@
     		</div>
 
     <?php print render($page['header']); ?>
-
+    <?php if ($messages): ?>
+      <div id="messages"><div class="section clearfix">
+        <?php print $messages; ?>
+      </div></div> <!-- /.section, /#messages -->
+    <?php endif; ?>
     </div><!-- / inner -->
   </header> <!-- /.section, /#header -->
 
-  <?php if ($messages): ?>
-    <div id="messages"><div class="section clearfix">
-      <?php print $messages; ?>
-    </div></div> <!-- /.section, /#messages -->
-  <?php endif; ?>
+  
 
   <div id="main-wrapper" class="body clearfix">
     <div id="main" class="main-body group clearfix">
@@ -98,7 +98,7 @@
       <?php endif; ?>
       <?php print render($title_suffix); ?>
       <?php if ($tabs): ?>
-        <div class="tabs">
+        <div class="tabs clearfix">
           <?php print render($tabs); ?>
         </div>
       <?php endif; ?>
