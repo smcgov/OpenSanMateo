@@ -20,6 +20,10 @@ function opensanmateo_search_ctools_plugin_api() {
   if ($module == "panels_mini" && $api == "panels_default") {
     return array("version" => "1");
   }
+  list($module, $api) = func_get_args();
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
 }
 
 /**
@@ -178,6 +182,80 @@ function opensanmateo_search_default_search_api_index() {
           "weight" : "30",
           "settings" : {
             "fields" : { "title" : true },
+            "file" : "",
+            "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
+          }
+        }
+      }
+    },
+    "enabled" : "1",
+    "read_only" : "0",
+    "rdf_mapping" : []
+  }');
+  $items['san_mateo_file_index'] = entity_import('search_api_index', '{
+    "name" : "San Mateo File Index",
+    "machine_name" : "san_mateo_file_index",
+    "description" : null,
+    "server" : "san_mateo_solr_server",
+    "item_type" : "file",
+    "options" : {
+      "index_directly" : 1,
+      "cron_limit" : "50",
+      "fields" : {
+        "fid" : { "type" : "integer" },
+        "name" : { "type" : "string" },
+        "mime" : { "type" : "string" },
+        "url" : { "type" : "string" },
+        "field_summary" : { "type" : "text" },
+        "field_file_image_alt_text" : { "type" : "text" },
+        "field_file_image_title_text" : { "type" : "text" },
+        "search_api_language" : { "type" : "string" },
+        "search_api_site_hash" : { "type" : "string" },
+        "search_api_site_id" : { "type" : "string" },
+        "field_taxonomy_issues:name" : { "type" : "list\\u003Cstring\\u003E" }
+      },
+      "data_alter_callbacks" : {
+        "site_index" : { "status" : 1, "weight" : "-50", "settings" : [] },
+        "search_api_alter_bundle_filter" : {
+          "status" : 0,
+          "weight" : "-10",
+          "settings" : { "default" : "1", "bundles" : [] }
+        },
+        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
+        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "teaser" } }
+      },
+      "processors" : {
+        "search_api_case_ignore" : {
+          "status" : 0,
+          "weight" : "0",
+          "settings" : { "fields" : { "field_summary" : true } }
+        },
+        "search_api_html_filter" : {
+          "status" : 0,
+          "weight" : "10",
+          "settings" : {
+            "fields" : { "field_summary" : true },
+            "title" : 0,
+            "alt" : 1,
+            "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
+          }
+        },
+        "search_api_tokenizer" : {
+          "status" : 0,
+          "weight" : "20",
+          "settings" : {
+            "fields" : { "field_summary" : true },
+            "spaces" : "[^[:alnum:]]",
+            "ignorable" : "[\\u0027]"
+          }
+        },
+        "search_api_stopwords" : {
+          "status" : 0,
+          "weight" : "30",
+          "settings" : {
+            "fields" : { "field_summary" : true },
             "file" : "",
             "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
           }
