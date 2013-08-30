@@ -1,0 +1,9 @@
+.osm_ff_remote_source_preview {
+  width:100px;
+  height: 100px;
+  float:left;
+  padding-right: 10px;
+}
+.view-opensanmateo-media-browser .views-field-url {
+  display:none;
+}
