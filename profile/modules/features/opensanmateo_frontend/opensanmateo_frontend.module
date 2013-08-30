@@ -20,8 +20,12 @@ function opensanmateo_frontend_menu_block_blocks() {
       'level'       => 1,
       'follow'      => 0,
       'depth'       => 2,
-      'expanded'    => 0,
+      'expanded'    => 1,
       'sort'        => 0,
     ),
   );
+}
+
+function opensanmateo_frontend_menu_alter(&$items) {
+  //dsm($items);
 }
