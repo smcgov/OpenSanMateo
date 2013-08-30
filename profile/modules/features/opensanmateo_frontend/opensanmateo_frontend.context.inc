@@ -36,12 +36,11 @@ function opensanmateo_frontend_context_default_contexts() {
     ),
   );
   $context->condition_mode = 0;
-  
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Places Main Menu');
   t('opensanmateo');
-
   $export['smc_mainmenu'] = $context;
 
   return $export;
