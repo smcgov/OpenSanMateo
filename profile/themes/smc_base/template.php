@@ -65,9 +65,13 @@ function smc_base_block_view_alter(&$data, $block) {
     //dsm($data);
     
     // create a "home" link as the first link in the main menu.
-    $keys = array_keys($data['content']['#content']);
-    $data['content']['#content'][$keys[0]]['#prefix'] = '<li class="home">' . l('', '<front>') . '</li>';
     
+    
+    $keys = array_keys($data['content']['#content']);    
+    if (isset($data['content']['#content'][$keys[0]])) {
+      $data['content']['#content'][$keys[0]]['#prefix'] = '<li class="home">' . l('', '<front>') . '</li>';  
+    }
+
     $links = $data['content']['#content'];
     foreach ($links as $key => $link) {
       if (isset($links[$key]['#below']) && (count($links[$key]['#below']) >= 1)) {
