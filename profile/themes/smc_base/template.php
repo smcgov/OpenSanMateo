@@ -31,7 +31,11 @@ function smc_base_preprocess_block(&$variables) {
   if ($variables['classes_array'][0] == "block") {
     unset($variables['classes_array'][0]);
   }
-  //krumo($block->bid);
+  
+  if (!isset($block->bid)) {
+    return;
+  }
+  
   switch ($block->bid) {
     case 'menu_block-sanmateo-primary-menu':
       
@@ -99,4 +103,4 @@ function smc_base_menu_tree__menu_block__sanmateo_primary_menu($variables) {
 function smc_base_menu_tree__menu_block__sanmateo_primary_menu_submenu($variables) {
   // <li class="home">'. l('', '<front>') .'</li>
   return '<ul class="">' . $variables['tree'] . '</ul>';
-}
+} 
