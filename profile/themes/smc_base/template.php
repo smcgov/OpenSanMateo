@@ -1,6 +1,5 @@
 <?php
 
-
 function smc_base_css_alter(&$css) {
   //krumo($css);
 }
@@ -17,6 +16,10 @@ function smc_base_process_page(&$variables) {
   if ($variables['hide_site_slogan']) {
     // If toggle_site_slogan is FALSE, the site_slogan will be empty, so we rebuild it.
     $variables['site_slogan'] = filter_xss_admin(variable_get('site_slogan', ''));
+  }
+  if (!module_exists('opensanmateo_frontend')) {
+    $link = l('OpenSanMateo Frontend', 'admin/structure/features');
+    drupal_set_message('In order for the San Mateo County base theme to operate properly, please enable the <strong>' . $link . '</strong> feature module.', 'warning');
   }
 }
 
@@ -49,8 +52,10 @@ function smc_base_preprocess_block(&$variables) {
   
 }
 function smc_base_block_view_alter(&$data, $block) {
-  
-  
+  if (!isset($block->bid)) {
+    return;
+  }
+  //dsm($block->bid);
   // Check we get the right menu block (side bar)
   if ($block->bid == 'menu_block-sanmateo-primary-menu') {
     //dsm($data);

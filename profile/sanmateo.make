@@ -373,3 +373,7 @@ projects[taxonomy_view_mode][subdir] = contrib
 projects[xrds_simple][subdir] = contrib
 projects[openid_provider][subdir] = contrib
 projects[taxonomy_view_mode][version] = 1.0-alpha1
+
+projects[jquery_update][type] = module
+projects[jquery_update][subdir] = contrib
+projects[jquery_update][version] = 2.3

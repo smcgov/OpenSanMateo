@@ -78,6 +78,7 @@ dependencies[] = video_embed_field
 dependencies[] = publishcontent
 dependencies[] = breakpoints
 dependencies[] = picture
+dependencies[] = jquery_update
 
 ; OpenPublic
 
@@ -115,6 +116,7 @@ dependencies[] = opensanmateo_search
 ;dependencies[] = opensanmateo_socialmedia
 ;dependencies[] = opensanmateo_webform
 dependencies[] = opensanmateo_wysiwyg
+dependencies[] = opensanmateo_frontend
 
 ;DEVELOPMENT ONLY
 

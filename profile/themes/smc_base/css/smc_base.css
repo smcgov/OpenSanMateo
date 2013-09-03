@@ -8,6 +8,9 @@ ul li.expanded {
   padding: 0;
   margin: 0; }
 
+.messages strong {
+  display: inline; }
+
 #toolbar strong {
   display: inline; }
 #toolbar #toolbar-home,
