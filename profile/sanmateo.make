@@ -370,8 +370,8 @@ projects[field_views][version] = 1.0-alpha1
 
 projects[taxonomy_view_mode][type] = module
 projects[taxonomy_view_mode][subdir] = contrib
+projects[taxonomy_view_mode][version] = 1.0-alpha1
 projects[xrds_simple][subdir] = contrib
 projects[openid_provider][subdir] = contrib
-projects[filefield_source][subdir] = contrib
+projects[filefield_sources][subdir] = contrib
 projects[remote_stream_wrapper][subdir] = contrib
-projects[taxonomy_view_mode][version] = 1.0-alpha1
