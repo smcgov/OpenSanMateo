@@ -384,3 +384,4 @@ projects[jquery_update][version] = 2.3
 projects[timeperiod][type] = module
 projects[timeperiod][subdir] = contrib
 projects[timeperiod][version] = 1.0-beta1
+projects[file_entity][subdir] = contrib

@@ -31,10 +31,16 @@ function opensanmateo_search_search_api_index_items_alter(array &$items, SearchA
   if ($index->item_type == 'file') {
     $types = array_filter(variable_get('opensanmateo_search_file_types_to_index', array()));
     foreach($items as $id => $item) {
+      if ($id ==174) {
+        dpm($item);
+      }
+      $lang= 'und';
+      //TODO: It seems that files do not have language this might not always be the case and this might need 
+      //change
       if (!in_array($item->type, $types)) {
         unset($items[$id]);
       }
-      elseif ($item->field_do_not_index[$item->language][0]['value']) {
+      elseif (!$item->field_share[$lang][0]['value']) {
         unset($items[$id]);
       }
     }
