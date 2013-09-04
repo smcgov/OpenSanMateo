@@ -1,0 +1,70 @@
+<?php
+/**
+ * @file
+ * Code for the OpenSanMateo Content Review feature.
+ */
+
+include_once 'opensanmateo_contentreview.features.inc';
+/**
+ * @file
+ * Code for the OpenSanMateo Example feature.
+ */
+require_once 'opensanmateo_contentreview.review_fields.inc';
+
+/**
+ * Implements hook_features_template_info().
+ */
+function opensanmateo_contentreview_features_template_info() {
+  $content_types = variable_get('opensanmateo_contentreview_enabled_types', array());
+  $data = array();
+
+  if (!empty($content_types)) {
+    foreach($content_types as $content_type => $present) {
+      $data[] = array(
+        'entity_type' => 'node',
+        'bundle_type' => $content_type,
+        'field' => 'field_review_interval',
+        'plugin' => 'field_instance',
+        'deleted' => !$present,
+        'template' => 'opensanmateo_contentreview_field_default_field_interval_instances_template'
+      );
+
+      $data[] = array(
+        'entity_type' => 'node',
+        'bundle_type' => $content_type,
+        'field' => 'field_next_review',
+        'plugin' => 'field_instance',
+        'deleted' => !$present,
+        'template' => 'opensanmateo_contentreview_field_default_field_review_instances_template',
+      );
+    }
+  }
+
+  return $data;
+}
+
+/**
+ * Implements hook_form_BASE_FORM_alter().
+ */
+function opensanmateo_contentreview_form_node_form_alter(&$form, &$form_state, $form_id) {
+  // Set the next review field to be hidden, we only want to control this programatically.
+  if (!empty($form['field_next_review'])) {
+    $form['field_next_review']['#access'] = FALSE;
+  }
+}
+
+
+/**
+ * Implements hook_node_presave().
+ */
+function opensanmateo_contentreview_node_presave($node) {
+  // Update the next review field if we have a review interval set.
+  if (!empty($node->field_next_review) && !empty($node->field_review_interval)) {
+    $interval = field_get_items('node', $node, 'field_review_interval');
+    $updated = !empty($node->changed) ? $node->changed : time();
+
+    if (!empty($interval[0]['value'])) {
+      $node->field_next_review[$node->language][0]['value'] = $interval[0]['value'] + $updated;
+    }
+  }
+}

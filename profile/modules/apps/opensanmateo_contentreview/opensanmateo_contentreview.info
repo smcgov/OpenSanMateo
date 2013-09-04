@@ -1,0 +1,16 @@
+name = OpenSanMateo Content Review
+description = Provides periodic content review functionality.
+core = 7.x
+package = OpenSanMateo
+php = 5.2.4
+dependencies[] = date
+dependencies[] = features
+dependencies[] = number
+dependencies[] = timeperiod
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[field_base][] = field_next_review
+features[field_base][] = field_review_interval
+features[views_view][] = needs_review
+features_exclude[dependencies][ctools] = ctools
