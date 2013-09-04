@@ -20,7 +20,6 @@ function osm_ff_remote_source_filefield_sources_info() {
     'value' => 'osm_ff_remote_source_value',
     'weight' => 3,
   );
-  dpm($source);
   return $source;
 }
 
