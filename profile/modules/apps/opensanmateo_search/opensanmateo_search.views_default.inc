@@ -121,19 +121,19 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['name']['element_type'] = 'strong';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_entity'] = 0;
-  /* Field: Subject: Name (indexed) */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_taxonomy_issues_name']['id'] = 'field_taxonomy_issues_name';
   $handler->display->display_options['fields']['field_taxonomy_issues_name']['table'] = 'search_api_index_san_mateo_file_index';
   $handler->display->display_options['fields']['field_taxonomy_issues_name']['field'] = 'field_taxonomy_issues_name';
   $handler->display->display_options['fields']['field_taxonomy_issues_name']['label'] = '';
   $handler->display->display_options['fields']['field_taxonomy_issues_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_taxonomy_issues_name']['link_to_entity'] = 0;
-  /* Field: Indexed File: Summary */
-  $handler->display->display_options['fields']['field_summary']['id'] = 'field_summary';
-  $handler->display->display_options['fields']['field_summary']['table'] = 'search_api_index_san_mateo_file_index';
-  $handler->display->display_options['fields']['field_summary']['field'] = 'field_summary';
-  $handler->display->display_options['fields']['field_summary']['label'] = '';
-  $handler->display->display_options['fields']['field_summary']['element_label_colon'] = FALSE;
+  /* Field: Indexed File: Description */
+  $handler->display->display_options['fields']['search_api_aggregation_1']['id'] = 'search_api_aggregation_1';
+  $handler->display->display_options['fields']['search_api_aggregation_1']['table'] = 'search_api_index_san_mateo_file_index';
+  $handler->display->display_options['fields']['search_api_aggregation_1']['field'] = 'search_api_aggregation_1';
+  $handler->display->display_options['fields']['search_api_aggregation_1']['label'] = '';
+  $handler->display->display_options['fields']['search_api_aggregation_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['search_api_aggregation_1']['link_to_entity'] = 0;
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_san_mateo_file_index';
