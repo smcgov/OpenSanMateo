@@ -9,3 +9,4 @@ files/
 html
 logs/
 settings.local.inc
+.DS_Store
