@@ -279,7 +279,7 @@ projects[search_api_site][type] = module
 projects[search_api_site][subdir] = contrib
 projects[search_api_site][download][type] = git
 projects[search_api_site][download][branch] = 7.x-1.x
-projects[search_api_site][download][url] = http://git.drupal.org/sandbox/e2thex/2033065.git 
+projects[search_api_site][download][url] = http://git.drupal.org/sandbox/e2thex/2033065.git
 
 projects[features_template][type] = module
 projects[features_template][subdir] = contrib
@@ -377,3 +377,8 @@ projects[taxonomy_view_mode][version] = 1.0-alpha1
 projects[jquery_update][type] = module
 projects[jquery_update][subdir] = contrib
 projects[jquery_update][version] = 2.3
+
+
+projects[timeperiod][type] = module
+projects[timeperiod][subdir] = contrib
+projects[timeperiod][version] = 1.0-beta1
