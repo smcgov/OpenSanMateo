@@ -6,7 +6,7 @@ Drupal.behaviors.osm_ff_remote_source = {
 
     $('.filefield-source-osmremotefile td').click(function() {
       val = $(this).find('.views-field-url').text().trim();
-      $(this).parents('.view-opensanmateo-media-browser').next().find('input.form-text').val(val);
+      $(this).parents('.field-prefix').next().val(val);
     });
   }
 };
