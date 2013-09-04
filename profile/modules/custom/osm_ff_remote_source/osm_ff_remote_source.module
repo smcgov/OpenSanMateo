@@ -140,9 +140,12 @@ function osm_ff_remote_source_value($element, &$item) {
 }
 
 function osm_ff_remote_source_preprocess_views_view_fields(&$vars) {
+  $uuid = uniqid();
   $url = $vars['row']->_entity_properties['url'];
   $vars['fields']['nothing']->content = theme('image', array(
     'path' => $url,
     'attributes' => array('class' => 'osm_ff_remote_source_preview'),
   ));
+  //TODO revist a way to make each file unq with out braking the widget validation
+  #$vars['fields']['url']->content = $url . "#" . $uuid;
 }

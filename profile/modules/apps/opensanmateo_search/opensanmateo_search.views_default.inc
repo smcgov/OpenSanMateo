@@ -103,6 +103,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['url']['table'] = 'search_api_index_san_mateo_file_index';
   $handler->display->display_options['fields']['url']['field'] = 'url';
   $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['url']['label'] = '';
   /* Field: Preview */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
