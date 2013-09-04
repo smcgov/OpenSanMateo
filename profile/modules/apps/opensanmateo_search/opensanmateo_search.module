@@ -6,6 +6,8 @@
 
 include_once 'opensanmateo_search.features.inc';
 include_once 'opensanmateo_search.features.field_instance_do_not_index.inc';
+include_once 'opensanmateo_search.features.field_instance_share.inc';
+include_once 'opensanmateo_search.features.field_instance_summary.inc';
 include_once 'opensanmateo_search.features.field_instance_qs.inc';
 include_once 'opensanmateo_search.features.field_instance_subject.inc';
 include_once 'opensanmateo_search.features.field_instance_sub_type.inc';
@@ -100,15 +102,16 @@ function quick_search_form_views_exposed_form_alter(&$form, &$form_state, $form_
  * implements hook_features_template_info()
  */
 function opensanmateo_search_features_template_info() {
+  $all_content_types = array_map(function($i) {return $i->name;}, node_type_get_types());
   $content_types = variable_get('opensanmateo_search_content_types_to_not_index', array());
   $data = array();
-  foreach($content_types as $content_type => $present) {
+  foreach($all_content_types as $content_type) {
     $data[] = array(
       'entity_type' => 'node',
       'bundle_type' => $content_type,
       'field' => 'field_do_not_index',
       'plugin' => 'field_instance',
-      'deleted' => !$present,
+      'deleted' => !$content_types[$content_type],
       'template' => 'opensanmateo_search_field_default_field_instances_dni_template'
     );
     $data[] = array(
@@ -134,6 +137,25 @@ function opensanmateo_search_features_template_info() {
       'plugin' => 'field_instance',
       'deleted' => !$present,
       'template' => 'opensanmateo_search_field_default_field_instances_sub_type_template'
+    );
+  }
+  $file_types = variable_get('opensanmateo_search_file_types_to_index', array());
+  foreach($file_types as $file_type => $present) {
+    $data[] = array(
+      'entity_type' => 'file',
+      'bundle_type' => $file_type,
+      'field' => 'field_summmary',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'opensanmateo_search_field_default_field_instances_summary_template'
+    );
+    $data[] = array(
+      'entity_type' => 'file',
+      'bundle_type' => $file_type,
+      'field' => 'field_share',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'opensanmateo_search_field_default_field_instances_share_template'
     );
   }
   return $data;
