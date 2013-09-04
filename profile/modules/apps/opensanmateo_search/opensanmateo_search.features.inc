@@ -208,9 +208,11 @@ function opensanmateo_search_default_search_api_index() {
         "url" : { "type" : "string" },
         "field_summary" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
+        "search_api_aggregation_1" : { "type" : "text" },
+        "search_api_aggregation_2" : { "type" : "text" },
         "search_api_site_hash" : { "type" : "string" },
         "search_api_site_id" : { "type" : "string" },
-        "search_api_aggregation_1" : { "type" : "text" }
+        "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" }
       },
       "data_alter_callbacks" : {
         "site_index" : { "status" : 1, "weight" : "-50", "settings" : [] },
@@ -219,20 +221,28 @@ function opensanmateo_search_default_search_api_index() {
           "weight" : "-10",
           "settings" : { "default" : "1", "bundles" : [] }
         },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "teaser" } },
+        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_aggregation" : {
           "status" : 1,
           "weight" : "0",
-          "settings" : { "fields" : { "search_api_aggregation_1" : {
+          "settings" : { "fields" : {
+              "search_api_aggregation_1" : {
                 "name" : "Description",
                 "type" : "fulltext",
                 "fields" : [ "field_summary" ],
                 "description" : "A Fulltext aggregation of the following fields: Summary."
+              },
+              "search_api_aggregation_2" : {
+                "name" : "Subject",
+                "type" : "fulltext",
+                "fields" : [ "field_subject:name" ],
+                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name."
               }
             }
           }
         },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "teaser" } }
       },
       "processors" : {
         "search_api_case_ignore" : {
