@@ -102,7 +102,7 @@ function quick_search_form_views_exposed_form_alter(&$form, &$form_state, $form_
  * implements hook_features_template_info()
  */
 function opensanmateo_search_features_template_info() {
-  $all_content_types = array_map(function($i) {return $i->name;}, node_type_get_types());
+  $all_content_types = array_map(function($i) {return $i->type;}, node_type_get_types());
   $content_types = variable_get('opensanmateo_search_content_types_to_not_index', array());
   $data = array();
   foreach($all_content_types as $content_type) {
@@ -119,7 +119,7 @@ function opensanmateo_search_features_template_info() {
       'bundle_type' => $content_type,
       'field' => 'field_quick_search',
       'plugin' => 'field_instance',
-      'deleted' => !$present,
+      'deleted' => !$content_types[$content_type],
       'template' => 'opensanmateo_search_field_default_field_instances_qs_template'
     );
     $data[] = array(
@@ -127,7 +127,7 @@ function opensanmateo_search_features_template_info() {
       'bundle_type' => $content_type,
       'field' => 'field_subject',
       'plugin' => 'field_instance',
-      'deleted' => !$present,
+      'deleted' => !$content_types[$content_type],
       'template' => 'opensanmateo_search_field_default_field_instances_subject_template'
     );
     $data[] = array(
@@ -135,11 +135,12 @@ function opensanmateo_search_features_template_info() {
       'bundle_type' => $content_type,
       'field' => 'field_sub_type',
       'plugin' => 'field_instance',
-      'deleted' => !$present,
+      'deleted' => !$content_types[$content_type],
       'template' => 'opensanmateo_search_field_default_field_instances_sub_type_template'
     );
   }
   $file_types = variable_get('opensanmateo_search_file_types_to_index', array());
+  dpm($file_types);
   foreach($file_types as $file_type => $present) {
     $data[] = array(
       'entity_type' => 'file',
