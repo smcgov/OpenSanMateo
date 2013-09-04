@@ -108,7 +108,7 @@ function opensanmateo_search_features_template_info() {
       'bundle_type' => $content_type,
       'field' => 'field_do_not_index',
       'plugin' => 'field_instance',
-      'deleted' => !$content_types[$content_type],
+      'deleted' => isset($content_types[$content_type]) &&  $content_types[$content_type],
       'template' => 'opensanmateo_search_field_default_field_instances_dni_template'
     );
     $data[] = array(
@@ -116,7 +116,7 @@ function opensanmateo_search_features_template_info() {
       'bundle_type' => $content_type,
       'field' => 'field_quick_search',
       'plugin' => 'field_instance',
-      'deleted' => !$content_types[$content_type],
+      'deleted' => isset($content_types[$content_type]) &&  $content_types[$content_type],
       'template' => 'opensanmateo_search_field_default_field_instances_qs_template'
     );
     $data[] = array(
@@ -124,7 +124,7 @@ function opensanmateo_search_features_template_info() {
       'bundle_type' => $content_type,
       'field' => 'field_subject',
       'plugin' => 'field_instance',
-      'deleted' => !$content_types[$content_type],
+      'deleted' => isset($content_types[$content_type]) &&  $content_types[$content_type],
       'template' => 'opensanmateo_search_field_default_field_instances_subject_template'
     );
     $data[] = array(
@@ -132,7 +132,7 @@ function opensanmateo_search_features_template_info() {
       'bundle_type' => $content_type,
       'field' => 'field_sub_type',
       'plugin' => 'field_instance',
-      'deleted' => !$content_types[$content_type],
+      'deleted' => isset($content_types[$content_type]) &&  $content_types[$content_type],
       'template' => 'opensanmateo_search_field_default_field_instances_sub_type_template'
     );
   }
