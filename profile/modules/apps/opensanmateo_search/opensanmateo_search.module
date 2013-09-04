@@ -91,6 +91,9 @@ function opensanmateo_search_qs_callback($search) {
  *  Here we set a quick search callback on our search field
  */
 function quick_search_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+  if($form_state['view']->name == 'opensanmateo_media_browser') {
+    return;
+  }
     $form['search_api_views_fulltext']['#pre_render'][] = 'quick_search_process_search';
     $form['search_api_views_fulltext']['#attributes']['quick_search_callback'] = 'opensanmateo_search_qs_callback';
 }
@@ -203,7 +206,7 @@ function opensanmateo_search_shared_file_process($element, &$form_state, $form) 
     //'#filefield_sources_hint_text' => FILEFIELD_SOURCE_REMOTE_HINT_TEXT,
   );
   $element['opensanmateo_search_shared_file']['view'] = array(
-    '#markup' =>  views_embed_view('opensanmateo_media_browser', 'page'),
+    '#markup' =>  views_embed_view('opensanmateo_media_browser', 'page'). 'baseball',
   );
   $element['opensanmateo_search_shared_file']['uri'] = array(
     '#type' => 'textfield',

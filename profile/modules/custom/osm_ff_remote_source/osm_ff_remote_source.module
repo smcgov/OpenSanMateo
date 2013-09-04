@@ -41,6 +41,10 @@ function theme_osm_ff_remote_source_element($variables) {
   $element = $variables['element'];
 
   $element['url']['#field_suffix'] = drupal_render($element['select']);
+  $view = views_get_view('opensanmateo_media_browser');
+  $view->pager['use_pager'] = TRUE;
+  $view->use_ajax = TRUE;
+  $element['url']['#field_prefix'] = $view->preview();
   return '<div class="filefield-source filefield-source-osmremotefile clear-block">' . drupal_render($element['url']) . '</div>';
 
 }
@@ -56,7 +60,7 @@ function osm_ff_remote_source_a_process($element, &$form_state, $form) {
     '#filefield_source' => TRUE, // Required for proper theming.
     '#filefield_sources_hint_text' => REMOTE_FILE_SOURCE_HINT_TEXT,
   );
-  $block = module_invoke('facetapi', 'block_view', 'COoqrVXtxDxjj9JgG6e4StR2OpjySAmz');
+
   $element['filefield_remotefile']['url'] = array(
     '#type' => 'textfield',
     '#maxlength' => NULL,
@@ -64,7 +68,7 @@ function osm_ff_remote_source_a_process($element, &$form_state, $form) {
       'js'=> array( drupal_get_path('module', 'osm_ff_remote_source') . '/osm_ff_remote_source.js'),
       'css'=> array( drupal_get_path('module', 'osm_ff_remote_source') . '/osm_ff_remote_source.css')
     ),
-    '#prefix' => views_embed_view('opensanmateo_media_browser', 'page') . $block['content'],
+    #'#prefix' => views_embed_view('opensanmateo_media_browser', 'page'),
   );
 
   $element['filefield_remotefile']['select'] = array(
