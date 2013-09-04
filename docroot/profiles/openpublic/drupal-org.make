@@ -94,7 +94,7 @@ projects[views_boxes][subdir] = contrib
 projects[views_boxes][version] = 1.0-beta8
 
 projects[tao][version] = 3.x-dev
-projects[tao][download][revision] = f06452b031685db36bcd795a23e66282558bf7f0
+projects[tao][download][revision] = ef5e0b8a13fa6fe3c25b6d90fee3fd8c8b8b0630
 projects[tao][download][type] = git
 projects[tao][download][url] = http://git.drupal.org/project/tao.git
 projects[rubik][version] = 4.0-beta8

@@ -1,0 +1,484 @@
+<?php
+
+/**
+ * @file
+ * OpenID 2.0 Provider implementation for Drupal.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function openid_provider_menu() {
+  $items['admin/config/services/openid-provider'] = array(
+    'title' => 'OpenID Provider',
+    'description' => 'Configure settings for the OpenID Provider.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('openid_provider_admin_settings'),
+    'access arguments' => array('administer openid provider'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['openid/provider'] = array(
+    'title' => 'OpenID login',
+    'page callback' => 'openid_provider_endpoint',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'file' => 'openid_provider.pages.inc'
+  );
+  $items['openid/provider/send'] = array(
+    'title' => 'OpenID login',
+    'page callback' => 'openid_provider_send',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'file' => 'openid_provider.pages.inc'
+  );
+  $items['openid/provider/continue'] = array(
+    'title' => 'OpenID login',
+    'page callback' => 'openid_provider_continue',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'file' => 'openid_provider.pages.inc'
+  );
+  $items[openid_provider_user_path('%user')] = array(
+    'title' => 'OpenID Page',
+    'page callback' => 'openid_provider_page',
+    'page arguments' => array(1),
+    'description' => 'Menu callback with full access so no forbiddens are given from server requests',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'file' => 'openid_provider.pages.inc'
+  );
+  $items['user/%user/openid-sites'] = array(
+    'title' => 'OpenID sites',
+    'page callback' => 'openid_provider_sites',
+    'page arguments' => array(1),
+    'access callback' => 'openid_provider_sites_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'openid_provider.pages.inc'
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function openid_provider_permission() {
+  return array(
+    'manage own openid sites' => array(
+      'title' => t('manage own openid sites'),
+    ),
+    'administer openid provider' => array(
+      'title' => t('administer openid provider'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function openid_provider_theme($existing, $type, $theme, $path) {
+  return array(
+    'openid_provider_sites' => array(
+      'render element' => 'form'
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_init().
+ *
+ * Add appropriate HTML headers for XRDS and Link discovery.
+ */
+function openid_provider_init() {
+  // Not all OpenID clients may be smart enough to do XRDS.
+  drupal_add_html_head_link(array('rel' => 'openid2.provider', 'href' => openid_provider_url('openid/provider')));
+  drupal_add_html_head_link(array('rel' => 'openid.server', 'href' => openid_provider_url('openid/provider')));
+}
+
+/**
+ * Menu access callback. Only allow access to current user and administrators.
+ */
+function openid_provider_sites_access($account) {
+  global $user;
+  return (($account->uid == $user->uid) && user_access('manage own openid sites')) || user_access('administer openid provider');
+}
+
+/**
+ * Update the URL aliases for an individual user account.
+ *
+ * @param $account
+ *   A user account object.
+ * @param $op
+ *   Operation being performed on the account ('insert', 'update' or
+ *   'bulkupdate').
+ */
+function openid_provider_user_update_alias(stdClass $account, $op) {
+  if (module_exists('pathauto')) {
+    module_load_include('inc', 'pathauto');
+    $url = pathauto_create_alias('openid_provider', $op, openid_provider_user_path($account->uid), array('user' => $account));
+    cache_clear_all($url, 'cache_page', FALSE);
+    return $url;
+  }
+}
+
+/**
+ * Update the URL aliases for multiple user accounts.
+ *
+ * @param $uids
+ *   An array of user account IDs.
+ * @param $op
+ *   Operation being performed on the accounts ('insert', 'update' or
+ *   'bulkupdate').
+ */
+function openid_provider_user_update_alias_multiple(array $uids, $op) {
+  $accounts = user_load_multiple($uids);
+  foreach ($accounts as $account) openid_provider_user_update_alias($account, $op);
+}
+
+/**
+ * Implements hook_user_insert().
+ */
+function openid_provider_user_insert(&$edit, $account, $category) {
+  $url = openid_provider_user_path($account->uid);
+  cache_clear_all($url, 'cache_page', FALSE);
+  openid_provider_user_update_alias($account, 'insert');
+}
+
+/**
+ * Implements hook_user_update().
+ */
+function openid_provider_user_update(&$edit, $account, $category) {
+  $url = openid_provider_user_path($account->uid);
+  cache_clear_all($url, 'cache_page', FALSE);
+  openid_provider_user_update_alias($account, 'update');
+}
+
+
+/**
+ * Implements hook_user_delete().
+ */
+function openid_provider_user_delete($account) {
+  if (module_exists('pathauto')) {
+    pathauto_path_delete_all(openid_provider_user_path($account->uid));
+  }
+}
+
+/**
+ * Implements hook_user_operations().
+ */
+function openid_provider_user_operations() {
+  $operations['openid_provider_update_alias'] = array(
+    'label' => t('Update OpenId alias'),
+    'callback' => 'openid_provider_user_update_alias_multiple',
+    'callback arguments' => array('bulkupdate')
+  );
+  return $operations;
+}
+
+/**
+ * Implements hook_user_view().
+ */
+function openid_provider_user_view($account, $view_mode) {
+  global $user;
+  if ($user->uid == $account->uid) {
+    $account->content['openid'] = array(
+      '#title' => t('OpenID'),
+      '#weight' => 10,
+    );
+    $account->content['openid']['identity'] = array(
+      '#type' => 'user_profile_item',
+      '#title' => t('Identity'),
+      '#markup' => t('You may login to other OpenID enabled sites using %url', array('%url' => openid_provider_url(openid_provider_user_path($account->uid)))),
+      '#class' => 'openid',
+    );
+  }
+}
+
+/**
+ * Implements hook_pathauto() for OpenID Provider aliases().
+ */
+function openid_provider_pathauto($op) {
+  switch ($op) {
+    case 'settings':
+      $settings->module = 'openid_provider';
+      $settings->token_type = 'user';
+      $settings->groupheader = t('OpenID Provider settings');
+      $settings->patterndescr = t('Pattern for OpenID provider identity paths');
+      $settings->patterndefault = t('users/[user:name]/openid');
+      $settings->batch_update_callback = 'openid_provider_bulk_update_batch_process';
+      //$settings->batch_file = drupal_get_path('module', 'openid_provider') . '/openid_provider.module';
+      return $settings;
+    default:
+      break;
+  }
+}
+
+/**
+ * Batch processing callback; Generate aliases for users.
+ */
+function openid_provider_bulk_update_batch_process(&$context) {
+  if (!isset($context['sandbox']['current'])) {
+    $context['sandbox']['count'] = 0;
+    $context['sandbox']['current'] = 0;
+  }
+
+  $query = db_select('users', 'u');
+  $query->leftJoin('url_alias', 'ua', "CONCAT('user/',u.uid,'/identity') = ua.source");
+  $query->addField('u', 'uid');
+  $query->isNull('ua.source');
+  $query->condition('u.uid', $context['sandbox']['current'], '>');
+  $query->orderBy('u.uid');
+  $query->addTag('openid_provider_bulk_update');
+  $query->addMetaData('entity', 'user');
+
+  // Get the total amount of items to process.
+  if (!isset($context['sandbox']['total'])) {
+    $context['sandbox']['total'] = $query->countQuery()->execute()->fetchField();
+
+    // If there are no nodes to update, then stop immediately.
+    if (!$context['sandbox']['total']) {
+      $context['finished'] = 1;
+      return;
+    }
+  }
+
+  $query->range(0, 25);
+  $uids = $query->execute()->fetchCol();
+
+  openid_provider_user_update_alias_multiple($uids, 'bulkupdate');
+  $context['sandbox']['count'] += count($uids);
+  $context['sandbox']['current'] = max($uids);
+  $context['message'] = t('Updated OpenId alias for user @uid.', array('@uid' => end($uids)));
+
+  if ($context['sandbox']['count'] != $context['sandbox']['total']) {
+    $context['finished'] = $context['sandbox']['count'] / $context['sandbox']['total'];
+  }
+}
+
+/**
+ * Implementation of hook_cron().
+ *
+ * Cleanup expired associations.
+ */
+function openid_provider_cron() {
+  db_delete('openid_provider_association')
+    ->where('(created + expires_in) < :time', array(':time' => REQUEST_TIME))
+    ->execute();
+}
+
+/**
+ * Return the absolute url to the path, without any language modifications.
+ */
+function openid_provider_url($path) {
+  // Prevent any language modifications to the url by generating and using a
+  // fake language object.
+  $language = new stdClass();
+  $language->language = '';
+  $language->prefix = '';
+  return url($path, array(
+    'absolute' => TRUE,
+    'language' => $language,
+  ));
+}
+
+/**
+ * Return the local OpenID URL for this user id
+ */
+function openid_provider_user_path($uid) {
+  if (is_object($uid)) {
+    $uid = $uid->uid;
+  }
+  return sprintf('user/%s/identity', $uid);
+}
+
+/**
+ * Settings form.
+ */
+function openid_provider_admin_settings($form, &$form_state) {
+  $form = array();
+  $form['openid_provider_assoc_expires_in'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Associations expire in this many seconds'),
+    '#default_value' => variable_get('openid_provider_assoc_expires_in', '3600'),
+    '#size' => 10,
+    '#maxlength' => 10,
+    '#description' => t('This timeout is necessary to ensure proper security of your identities. If an attacker sniffing the network gets a hold of the SHA1 hash and is somehow able to bruteforce it, he can perform a man in the middle attack and access the target site. Since brute force attacks take a long time, this timeout ensures this attack is impracticable. !readmore', array('!readmore' => l(t('More information about this issue.'), 'http://openid.net/pipermail/security/2007-February/000237.html'))),
+  );
+  $form['openid_provider_debugging'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable debugging'),
+    '#description' => t('This will enable debugging of this module to the watchdog.'),
+    '#default_value' => variable_get('openid_provider_debugging', false),
+  );
+  $form['sitelist'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Sites management'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $form['sitelist']['openid_provider_sites_auto_release'] = array(
+    '#type' => 'radios',
+    '#title' => t('Automatically login without confirmation page'),
+    '#options' => array(
+      'all' => 'Anonymous sites (unrecommended)',
+      'whitelist' => 'Whitelist only',
+      'none' => 'Always ask',
+    ),
+    '#default_value' => variable_get('openid_provider_sites_auto_release', 'none'),
+    '#description' => t('Select "Whitelist only" to allow trusted partner sites logged in automatically. Select "Anonymous sites" is unrecommended due to its violating the standard for user to be asked before logged in into unregistered sites.'),
+  );
+  $form['sitelist']['openid_provider_whitelist_only'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Disable anonymous sites'),
+    '#default_value' => variable_get('openid_provider_whitelist_only', FALSE),
+    '#description' => t('Only allow sites on the whitelist to login using the OpenID provider.'),
+  );
+  $form['sitelist']['openid_provider_whitelist'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Whitelist'),
+    '#default_value' => @implode(PHP_EOL, variable_get('openid_provider_whitelist', array())),
+    '#description' => t('Sites on this list can be logged in through the OpenID provider. Enter one site per line with the full URL e.g. <em>http://www.example.com/</em>.'),
+  );
+  $form['sitelist']['openid_provider_blacklist'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Blacklist'),
+    '#default_value' => @implode(PHP_EOL, variable_get('openid_provider_blacklist', array())),
+    '#description' => t('Sites on this list will be completely forbidden to login through the OpenID provider. Enter one site per line with the full URL e.g. <em>http://www.example.com/</em>. The blacklist has precendence over the whitelist, that is: sites also on the whitelist will be considered blacklisted.'),
+  );
+  return system_settings_form($form);
+}
+
+/**
+ * Split the newline separated list of whitelisted and blacklisted sites into an array.
+ */
+function openid_provider_admin_settings_validate($form, &$form_state) {
+  $sites = array();
+  if (!empty($form_state['values']['openid_provider_whitelist'])) {
+    $sites = preg_split( '/\r\n|\r|\n/', $form_state['values']['openid_provider_whitelist']);
+  }
+  $form_state['values']['openid_provider_whitelist'] = $sites;
+
+  $sites = array();
+  if (!empty($form_state['values']['openid_provider_blacklist'])) {
+    $sites = preg_split( '/\r\n|\r|\n/', $form_state['values']['openid_provider_blacklist']);
+  }
+  $form_state['values']['openid_provider_blacklist'] = $sites;
+}
+
+/**
+ * Implements of hook_xrds().
+ *
+ * Return a XRDS for this server to discover it based on the root url
+ */
+function openid_provider_xrds($account = NULL) {
+  module_load_include('inc', 'openid');
+
+  if ($account) {
+    $types = array(OPENID_NS_2_0 .'/signon');
+  }
+  else {
+    $types = array(OPENID_NS_2_0 .'/server');
+  }
+
+  $data = array(
+    'Type' => $types,
+    'URI' => array(openid_provider_url('openid/provider')),
+  );
+  if ($account && $account->uid) {
+    $data['LocalID'] = array(openid_provider_url(openid_provider_user_path($account->uid)));
+  }
+
+  $xrds['openid_provider'] = array(
+    'services' => array(
+      array('priority' => 10,
+            'data' => $data
+      )
+    )
+  );
+
+  return $xrds;
+}
+
+/**
+ * Main OpenID Provider form
+ */
+function openid_provider_form($form, &$form_state, $response = array(), $realm = NULL) {
+  global $user;
+
+  // Use form_state to store the $response and $realm values
+  if (count($response)) {
+    $form_state['storage']['response'] = $response;
+  }
+  else {
+    $response = $form_state['storage']['response'];
+  }
+ 
+  if ($realm) {
+    $form_state['storage']['realm'] = $realm;
+  }
+  else {
+    $realm = $form_state['storage']['realm'];
+  }
+
+  $form = array();
+
+  // Force FAPI to cache this form so that $form_state['storage'] is available
+  // in submit handler.
+  $form_state['cache'] = TRUE;
+  $form['#action'] = url('openid/provider/send');
+
+  $form['intro'] = array(
+    '#type' => 'markup',
+    '#markup' => '<p>' . t('You are being logged into %site, would you like to continue?', array('%site' => $realm)) . '</p>',
+  );
+  $form['submit_once'] = array(
+    '#type' => 'submit',
+    '#value' => t('Yes; just this once'),
+  );
+  $form['submit_always'] = array(
+    '#type' => 'submit',
+    '#value' => t('Yes; always'),
+    '#submit' => array('openid_provider_form_submit_always')
+  );
+  $form['cancel'] = array(
+    '#type' => 'submit',
+    '#value' => t('Cancel'),
+    '#submit' => array('openid_provider_form_submit_cancel')
+  );
+
+  return $form;
+}
+
+/**
+ * Once submit handler
+ */
+function openid_provider_form_submit(&$form, $form_state, $auto_release = FALSE) {
+  global $user;
+
+  module_load_include('inc', 'openid');
+  module_load_include('inc', 'openid_provider');
+
+  $response = _openid_provider_sign($form_state['storage']['response']);
+  _openid_provider_rp_save($user->uid, $form_state['storage']['realm'], $auto_release);
+  openid_redirect_http($response['openid.return_to'], $response);
+}
+
+/**
+ * Always submit handler
+ */
+function openid_provider_form_submit_always(&$form, $form_state) {
+  return openid_provider_form_submit($form, $form_state, TRUE);
+}
+
+/**
+ * Cancel submit handler
+ */
+function openid_provider_form_submit_cancel(&$form, $form_state) {
+  module_load_include('inc', 'openid_provider');
+  module_load_include('inc', 'openid');
+
+  $return_to = $form_state['storage']['response']['openid.return_to'];
+  $response = openid_provider_cancel_authentication_response($form_state['openid.mode']);
+  openid_redirect($return_to, $response);
+}

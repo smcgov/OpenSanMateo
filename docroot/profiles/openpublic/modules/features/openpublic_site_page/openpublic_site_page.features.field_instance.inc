@@ -193,9 +193,9 @@ function openpublic_site_page_field_default_field_instances() {
     'label' => 'Files',
     'required' => 0,
     'settings' => array(
-      'description_field' => 1,
+      'description_field' => 0,
       'file_directory' => '',
-      'file_extensions' => 'pdf doc docx xls xlsx csv txt rtf html zip flv jpg jpeg png gif ppt pptx vsd',
+      'file_extensions' => 'doc docx xls xlsx ppt pptx pdf txt',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),

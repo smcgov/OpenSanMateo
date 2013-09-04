@@ -1,0 +1,20 @@
+<?php
+/**
+ * @file
+ * uninstall function for the distributed blocks module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ * 
+ * Deletes variables set and used by Distributed Blocks.
+ * 
+ */
+function distributed_blocks_uninstall() {
+  
+  $result = db_query("SELECT name from {variable} WHERE name like 'distributed_blocks_%'");
+  foreach ($result as $record) {
+    variable_del($record->name);
+  }
+  
+}

@@ -1,0 +1,266 @@
+<?php
+
+/**
+ * Implementation of hook_permission()
+ */
+function distributed_blocks_permission() {
+  return array(
+    'administer distributed blocks' => array(
+      'title' => t('Administer Distributed Blocks'),
+      'description' => t('Change master/client settings for this module.')
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_menu() 
+ */
+function distributed_blocks_menu() {
+  $items['admin/config/system/distributed_blocks'] = array(
+    'title' => 'Distributed Blocks',
+    'description' => 'Configure settings for distributing blocks across sites.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('distributed_blocks_admin_form'),
+    'file' => 'distributed_blocks.admin.inc',
+    'access arguments' => array('administer distributed blocks'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['distributed_blocks/render/%'] = array(
+    'title' => 'Render block HTML',
+    'page callback' => 'distributed_blocks_render_block',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['distributed_blocks/list'] = array(
+    'title' => 'Return a list of available blocks',
+    'page callback' => 'distributed_blocks_list_blocks',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Callback used to generate block HTML.
+ */
+function distributed_blocks_render_block($block_id) {
+  // Do not expose any blocks
+  $expose = variable_get('distributed_blocks_expose', FALSE);
+  if (!$expose) {
+    echo "DISABLED";
+    return;
+  }
+  
+  // Check against blocks that are exposed
+  $exposed_blocks = variable_get('distributed_blocks_exposed_blocks', array());
+  
+  if (empty($exposed_blocks[$block_id])) {
+    echo 'NOT_FOUND';
+    return;
+  }
+  
+  // The id is provided in MODULE|DELTA|BLOCK TITLE format
+  $block_id = explode('|', $block_id);
+  $block = module_invoke($block_id[0], 'block_view', $block_id[1]);
+  
+  // Force absolute URLs in exposed blocks
+  if (variable_get('distributed_blocks_force_absolute_links', FALSE)) {
+    $block['content'] = str_replace(' href="/', ' href="http://' . $_SERVER['HTTP_HOST'] . '/', $block['content']);
+  }
+  print render($block['content']);  
+}
+
+/**
+ * Callback that returns a list of available blocks from this site in JSON format.
+ */
+function distributed_blocks_list_blocks() {
+  $exposed_blocks = variable_get('distributed_blocks_exposed_blocks', '');
+  // Just list the exposed blocks
+  foreach ($exposed_blocks as $id => $value) {
+    if (!$value) {
+      unset($exposed_blocks[$id]);
+    }
+  }
+  if (empty($exposed_blocks)) {
+    $exposed_blocks = 'NO_EXPOSED_BLOCKS';
+  }
+  drupal_json_output($exposed_blocks);
+}
+
+/**
+ * Fetches distributed blocks from the master site and stores them on the client site.
+ * The $result array is used to return the status and message so that they can be displayed
+ * in different contexts (cron call, manual call, drush).
+ */
+function distributed_blocks_fetch_blocks() {
+  $fetched_blocks = variable_get('distributed_blocks_fetched_blocks', array());
+  
+  $result = array(
+    'status' => FALSE,
+    'message' => '',
+  );
+  
+  $master_url = variable_get('distributed_blocks_master_url', '');
+  if (!$master_url) {
+    $result['message'] = t('Request failed, master site is not configured.');
+    return $result;
+  }
+  
+  $count = 0;
+  foreach ($fetched_blocks as $block) {
+    // the drupal_encode_path had to be added, so much for url() doing it 
+    $url = url($master_url . '/distributed_blocks/render/' . drupal_encode_path($block));
+    
+    $response = drupal_http_request($url);
+    if ($response->code != 200) {
+      $result['message'] = t('Request failed, returned HTTP status code @code. Please check that your master site has Distributed Blocks enabled.', array('@code' => $response->code));
+      return $result;
+    }
+    if ($response->data == 'NOT_FOUND') {
+      $result['message'] = t('Block not exposed or found on master site. Argument used: @block', array('@block' => $block));
+      return $result;
+    }
+    if ($response->data == 'DISABLED') {
+      $result['message'] = t('All blocks disabled on this site. Argument used: @block', array('@block' => $block));
+      return $result;
+    }
+
+    // Truncate the label here
+    $block_id = explode('|', $block);
+    $block_id = "d_b" . '|' . $block_id[1];
+    
+    // delta can only be 32 chars 
+    if (strlen($block_id) > 32) {
+      $block_id = substr($block_id, 0, 32);
+    }
+    variable_set('distributed_blocks_content_' . $block_id, $response->data);    
+    $count++;
+  }
+  
+  // Success
+  $result['message'] = t('@count block(s) fetched successfully.', array('@count' => $count));
+  $result['status'] = TRUE;
+  return $result;
+}
+
+/**
+ * Implements hook_block_info().
+ * 
+ * Programmatically instantiates blocks from cached fetched stuff.
+ */
+function distributed_blocks_block_info() {
+  $blocks = array();
+  $fetched_blocks = variable_get('distributed_blocks_fetched_blocks', array());
+  
+  foreach ($fetched_blocks as $block) {
+    $block = explode('|', $block);
+    
+    $delta = 'd_b|' . $block[1];
+    // delta can only be 32 chars 
+    if (strlen($delta) > 32) {
+      $delta = substr($delta, 0, 32);
+    }
+    
+    $blocks[$delta] = array(
+      'info' => 'Distributed Block - ' . $block[2],
+      'cache' => DRUPAL_CACHE_GLOBAL
+    );
+  }
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ * 
+ * Programmatically instantiates blocks from cached fetched stuff.
+ */
+function distributed_blocks_block_view($delta = '') {
+  static $blocks = array();
+  $block = array();
+  
+  // Using static caching approach since we don't want to repeat this
+  // if we have multiple distributed blocks on the same page
+  if (empty($blocks)) {
+    $fetched_blocks = variable_get('distributed_blocks_fetched_blocks', array());
+    
+    // Reformating needed to get rid of label
+    foreach ($fetched_blocks as $block) {
+      $block = explode('|', $block);
+      
+      $delta_id = 'd_b|' . $block[1];
+      // delta can only be 32 chars 
+      if (strlen($delta_id) > 32) {
+        $delta_id = substr($delta, 0, 32);
+      }
+      
+      $blocks[$delta_id] = $block[2];
+    }
+  }
+  
+  // if this delta matches one of our distributed blocks, spawn it
+  if (isset($blocks[$delta])) {
+    $content = variable_get('distributed_blocks_content_' . $delta, '');
+    $block = array(
+      'subject' => 'Distributed Block - ' . $blocks[$delta],
+      'content' => $content,
+    );
+  }
+  
+  return $block;  
+}
+
+/**
+ * Implements hook_cron().
+ * 
+ * Periodic block fetching from master site.
+ */
+function distributed_blocks_cron() {
+  $freq = variable_get('distributed_blocks_update_freq', 0);
+  
+  // Never update if this value is set
+  if (!$freq) {
+    return;
+  }
+  
+  // Sync with cron, so run this now
+  if ($freq >= 1)  {
+     
+    if ($freq > 1) {
+      $last_run = variable_get('distributed_blocks_last', NULL);
+      
+      // below threshold, don't run this
+      if (isset($last_run) && REQUEST_TIME < $last_run + $freq) {
+        return;
+      }
+    }
+    
+    // Fetch blocks
+    $res = distributed_blocks_fetch_blocks();
+    if ($res['status']) {
+      variable_set('distributed_blocks_last', REQUEST_TIME);
+      watchdog('distributed_blocks', $res['message'], NULL, WATCHDOG_INFO);
+    }
+    else {
+      watchdog('distributed_blocks', $res['message'], NULL, WATCHDOG_WARNING);
+    }
+    return;
+  }
+}
+
+/**
+ * Utility function that returns all blocks available on this site as an options array.
+ */
+function _distributed_blocks_get_all_blocks() {
+  global $theme_key;
+  static $options = array();
+  
+  if (empty($options)) {
+    $blocks = _block_rehash($theme_key);
+    foreach ($blocks as $block) {
+      $options[$block['module'] . '|' . $block['delta'] . '|' . $block['info']] = $block['info'] . ' (' . $block['delta'] . ')';
+    }
+  }
+  return $options;
+}

@@ -1,0 +1,272 @@
+<?php
+
+/**
+ * @file
+ * Defines time period widgets and formatter.
+ */
+
+/**
+ * Implements hook_element_info().
+ */
+function timeperiod_element_info() {
+  // A duration form element which represents the duration in seconds.
+  $types['timeperiod_select'] = array(
+    '#input' => TRUE,
+    '#tree' => TRUE,
+    '#default_value' => 0,
+    '#value_callback' => 'timeperiod_element_value',
+    '#process' => array('timeperiod_element_process', 'ajax_process_form'),
+    '#after_build' => array('timeperiod_element_after_build'),
+    '#pre_render' => array('form_pre_render_conditional_form_element'),
+    // Controls the available units. Array keys are the units, see
+    // timeperiod_element_units(). The values control the number of available
+    // values per unit, taking steps in the configured size starting from 0.
+    '#units' => array(
+      '3600' => array('max' => 23, 'step size' => 1),
+      '60' => array('max' => 55, 'step size' => 5),
+    ),
+  );
+  return $types;
+}
+
+/**
+ * FAPI process callback for the timeperiod element type.
+ */
+function timeperiod_element_process($element, &$form_state) {
+  // Put the child elements in a container-inline div.
+  $element['#field_prefix'] = isset($element['#field_prefix']) ? $element['#field_prefix'] : '';
+  $element['#field_prefix'] = '<div class="timeperiod-element container-inline">' . $element['#field_prefix'];
+  $element['#field_suffix'] = isset($element['#field_suffix']) ? $element['#field_suffix'] : '';
+  $element['#field_suffix'] .= '</div>';
+
+  $value = isset($element['#default_value']) ? $element['#default_value'] : 0;
+  $unit_labels = timeperiod_element_units();
+  foreach ($element['#units'] as $unit => $info) {
+
+    $element[$unit] = array(
+      '#type' => 'select',
+      '#options' => drupal_map_assoc(range(0, $info['max'], $info['step size'])),
+      '#default_value' => (int) ($value / $unit),
+      '#field_suffix' => $unit_labels[$unit],
+    );
+    $value -= $element[$unit]['#default_value'] * $unit;
+  }
+  return $element;
+}
+
+/**
+ * Defines possible duration multiplier.
+ */
+function timeperiod_element_units() {
+  return array(
+    '86400' => t('days', array(), array('context' => 'timeperiod')),
+    '3600' => t('hours', array(), array('context' => 'timeperiod')),
+    '60' => t('minutes', array(), array('context' => 'timeperiod')),
+    '1' => t('seconds', array(), array('context' => 'timeperiod')),
+  );
+}
+
+/**
+ * Helper function to determine the value for a rules duration form
+ * element.
+ */
+function timeperiod_element_value($element, $input = FALSE) {
+  // This runs before child elements are processed, so we cannot calculate the
+  // value here. But we have to make sure the value is an array, so the form
+  // API is able to process the children to set their values in the array. Thus
+  // once the form API has finished processing the element, the value is an
+  // array containing the child element values. Then finally the after build
+  // callback converts it back to the numeric value and sets that.
+  return array();
+}
+
+/**
+ * FAPI after build callback for the time period form element to fix the form value.
+ */
+function timeperiod_element_after_build($element, &$form_state) {
+  $element['#value'] = 0;
+  foreach ($element['#units'] as $unit => $max) {
+    $element['#value'] += $unit * $element[$unit]['#value'];
+  }
+  form_set_value($element, $element['#value'], $form_state);
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function timeperiod_field_widget_info() {
+  return array(
+    'timeperiod_select' => array(
+      'label' => t('Time period (select)'),
+      'field types' => array('number_integer'),
+      'settings' => array('units' => array(
+        '3600' => array('max' => 23, 'step size' => 1),
+        '60' => array('max' => 55, 'step size' => 5),
+      )),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function timeperiod_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+
+  $element += array(
+    '#type' => 'timeperiod_select',
+    '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : '',
+  );
+
+  // Apply unit settings.
+  foreach ($instance['widget']['settings']['units'] as $unit => $info) {
+    if ($info['max'] > 0) {
+      $element['#units'][$unit] = $info;
+    }
+  }
+
+  // Add prefix and suffix.
+  if (!empty($instance['settings']['prefix'])) {
+    $prefixes = explode('|', $instance['settings']['prefix']);
+    $element['#field_prefix'] = field_filter_xss(array_pop($prefixes));
+  }
+  if (!empty($instance['settings']['suffix'])) {
+    $suffixes = explode('|', $instance['settings']['suffix']);
+    $element['#field_suffix'] = field_filter_xss(array_pop($suffixes));
+  }
+
+  return array('value' => $element);
+}
+
+/**
+ * Implements hook_field_widget_error().
+ */
+function timeperiod_field_widget_error($element, $error, $form, &$form_state) {
+  form_error($element['value'], $error['message']);
+}
+
+/**
+ * Implements hook_field_widget_settings_form().
+ */
+function timeperiod_field_widget_settings_form($field, $instance) {
+  $widget = $instance['widget'];
+  $settings = $widget['settings'];
+
+  $form['units'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Available units'),
+    '#description' => t('Configure the available values per unit, applying the step size starting from 0 until the maxium is reached. Setting the maximum value to "0" completely disables a unit.'),
+    '#tree' => TRUE,
+    '#weight' => 10,
+  );
+  foreach (timeperiod_element_units() as $unit => $label) {
+    $form['units'][$unit]['max'] = array(
+      '#type' => 'textfield',
+      '#title' => t('@unit maximum value', array('@unit' => drupal_ucfirst($label))),
+      '#default_value' => isset($settings['units'][$unit]['max']) ? $settings['units'][$unit]['max'] : 0,
+      '#required' => TRUE,
+      '#size' => 2,
+      '#element_validate' => array('timeperiod_element_validate_integer_positive_or_zero'),
+    );
+    $form['units'][$unit]['step size'] = array(
+      '#type' => 'textfield',
+      '#title' => t('@unit step size', array('@unit' => drupal_ucfirst($label))),
+      '#default_value' => isset($settings['units'][$unit]['step size']) ? $settings['units'][$unit]['step size'] : 1,
+      '#required' => TRUE,
+      '#size' => 2,
+      '#element_validate' => array('element_validate_integer_positive'),
+    );
+  }
+  return $form;
+}
+
+/**
+ * Helper form element validator: integer >= 0.
+ */
+function timeperiod_element_validate_integer_positive_or_zero($element, &$form_state) {
+  $value = $element['#value'];
+  if ($value !== '' && (!is_numeric($value) || intval($value) != $value || $value < 0)) {
+    form_error($element, t('%name must be a positive integer or zero.', array('%name' => $element['#title'])));
+  }
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function timeperiod_field_formatter_info() {
+  return array(
+    'timeperiod_default' => array(
+      'label' => t('Time period'),
+      'field types' => array('number_integer'),
+      'settings' =>  array(
+        'granularity' => 2,
+        'prefix_suffix' => TRUE,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function timeperiod_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $element['granularity'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Granularity.'),
+    '#default_value' => $settings['granularity'],
+    '#description' => t('The number of different units to display.'),
+  );
+  $element['prefix_suffix'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Display prefix and suffix.'),
+    '#default_value' => $settings['prefix_suffix'],
+  );
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function timeperiod_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $summary = array();
+  if ($display['type'] == 'timeperiod_default') {
+    $summary[] = format_interval(1234, $settings['granularity']);
+    if ($settings['prefix_suffix']) {
+      $summary[] = t('Display with prefix and suffix.');
+    }
+  }
+  return implode('<br />', $summary);
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function timeperiod_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings'];
+
+  switch ($display['type']) {
+
+    case 'timeperiod_default':
+      foreach ($items as $delta => $item) {
+        $output = format_interval($item['value'], $settings['granularity']);
+        // Prefix/Suffix handling taken from number_field_formatter_view(),
+        if ($settings['prefix_suffix']) {
+          $prefixes = isset($instance['settings']['prefix']) ? array_map('field_filter_xss', explode('|', $instance['settings']['prefix'])) : array('');
+          $suffixes = isset($instance['settings']['suffix']) ? array_map('field_filter_xss', explode('|', $instance['settings']['suffix'])) : array('');
+          $prefix = (count($prefixes) > 1) ? format_plural($item['value'], $prefixes[0], $prefixes[1]) : $prefixes[0];
+          $suffix = (count($suffixes) > 1) ? format_plural($item['value'], $suffixes[0], $suffixes[1]) : $suffixes[0];
+          $output = $prefix . $output . $suffix;
+        }
+        $element[$delta] = array('#markup' => $output);
+      }
+      break;
+  }
+  return $element;
+}

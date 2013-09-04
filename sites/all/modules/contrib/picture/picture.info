@@ -1,0 +1,8 @@
+name = Picture
+description = Picture element
+core = 7.x
+dependencies[] = image
+dependencies[] = breakpoints
+configure = admin/config/media/picture
+package = Picture
+stylesheets[all][] = picture_wysiwyg.css

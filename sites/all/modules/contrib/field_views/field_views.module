@@ -1,0 +1,181 @@
+<?php
+
+/**
+ * Implementation of hook_field_info()
+ */
+function field_views_field_info() {
+  return array(
+    'field_views' => array(
+      'label' => t('View'), 
+      'description' => t('This field allows for an embeded view'), 
+      'settings' => array('global_setting' => 255), 
+      'instance_settings' => array('local' => 0), 
+      'default_widget' => 'field_views',
+      'default_formatter' => 'field_views_formatter',
+      // might turn this on later
+      'no_ui' => FALSE,
+    ), 
+  );
+}
+
+/**
+ * Implements hook_field_instance_settings_form()
+ */
+function field_views_field_instance_settings_form($field, $instance) {
+  $settings = $instance['settings'];
+  $form = array();
+
+  return $form;
+}
+
+/**
+ * Implementation of hook_field_is_empty()
+ */
+function field_views_field_is_empty($item, $field) {
+  FALSE;
+}
+
+/**
+ * Implementation of hook_field_validate()
+ */
+function field_views_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors){
+  TRUE;
+}
+
+/**
+ * Implementation of hook_field_widget_info()
+ */
+function field_views_field_widget_info() {
+  return array(
+    'field_views' => array(
+      'label' => t('Views Field'),
+      'field types' => array('field_views'),
+      'settings' => array('widget_setting'=>'bob'),  
+      'behaviors' => array(
+         'multiple values' => FIELD_BEHAVIOR_DEFAULT, 
+         'default value' => FIELD_BEHAVIOR_DEFAULT,
+      ),
+    ),
+  );
+}
+
+/*
+ * implements hook_field_widget_form()
+ *
+ */
+function field_views_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  $form['#help'] = array(
+    'markup' => 'This field is read-only and you will not see any settings on edit form.  To choose the view to use edit the display settings',
+  );
+  return array();
+}
+
+
+/*
+ * implements hook_field_update()
+ */
+function field_views_field_update($entity_type, $entity, $field, $instance, $langcode, &$items) {
+  field_views_field_insert($entity_type, $entity, $field, $instance, $langcode, $items);
+}
+
+/*
+ * implements hook_field_insert()
+ *
+ * we set the related context name to context_field-ENTITYTYPE-ID
+ */
+function field_views_field_insert($entity_type, $entity, $field, $instance, $langcode, &$items) {
+  return;
+}
+
+/*
+ * implements hook_field_delete()
+ */
+function field_views_field_delete($entity_type, $entity, $field, $instance, $langcode, &$items) {
+}
+
+/*
+ * implements hook_field_formatter_info() {
+ */
+function field_views_field_formatter_info() {
+  return array(
+    'field_views_formatter' => array(
+      'label' => 'Display View',
+      'field types' => array('field_views'),
+      'settings' => array('view' => ''),
+    ),
+  );
+}
+
+/*
+ * implements hook_field_formatter_prepare_view()
+ *
+ * we have to make sure that the items are not empty or no elements from the formatter will be displayed
+ */
+function field_views_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
+  foreach($items as $key=>$value) {
+    if(!$value) {
+      $items[$key] = array("");
+    }
+  }
+}
+
+/*
+ * implements hook_field_formatter_view() {
+ *
+ * For the fommater we are setting the context saved in the field
+ * and returning an empty array
+ */
+
+function field_views_field_formatter_view($entity_type, &$entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $entity_info = entitY_get_info($entity_type);
+  $entity_id = $entity->{$entity_info['entity keys']['id']};
+  $settings = $display['settings'];
+  list($view_name, $view_display_name) = explode(" ", $settings['view']);
+  $element[0]['#markup'] = views_embed_view($view_name, $view_display_name, $entity_id);
+  return $element;
+
+}
+
+
+/*
+ * implementation of hook_field_formatter_settings_from()
+ *
+ * we find all views and displays and make a select field with them
+ */
+function field_views_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $options = array();
+  $views = views_get_all_views();
+  foreach ($views as $name => $view) {
+    foreach ($view->display as $display_name => $display) {
+      $options[$view->human_name]["$name $display_name"] = "{$view->human_name} -- " . $display->display_title . " ($display_name)";
+    }
+  }
+  $form['view'] = array(
+    '#type' => 'select',
+    '#title' => 'View',
+    '#options' => $options,
+    '#default_value' => $settings['view']
+  );
+  return $form;
+}
+/*
+ * implimantation of hook_field_formatter_settings_summary()
+ *
+ * we display the name of the view and display that has been selected
+ */
+function field_views_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  list($view_name, $display_name) = explode(" ", $settings['view']);
+  $view = views_get_view($view_name);
+  $display = $view->display[$display_name];
+  return "View: {$view->human_name} <BR />Display: " . $display->display_title . " ($display_name)";
+}
+
+
+
+

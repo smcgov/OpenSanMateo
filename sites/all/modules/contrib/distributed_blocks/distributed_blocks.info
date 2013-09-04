@@ -1,0 +1,12 @@
+name = Distributed Blocks
+description = Distributes blocks from a master site across client sites
+configure = admin/config/system/distributed_blocks
+core = 7.x
+
+dependencies[] = block
+; Information added by drupal.org packaging script on 2013-08-26
+version = "7.x-1.0-beta4"
+core = "7.x"
+project = "distributed_blocks"
+datestamp = "1377547659"
+

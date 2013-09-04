@@ -1,0 +1,12 @@
+name = Time period
+description = Defines time period widgets and formatters to be used with Integer fields.
+package = Field
+core = 7.x
+dependencies[] = field
+
+; Information added by drupal.org packaging script on 2012-02-08
+version = "7.x-1.0-beta1"
+core = "7.x"
+project = "timeperiod"
+datestamp = "1328723441"
+

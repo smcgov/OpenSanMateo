@@ -209,7 +209,11 @@ function tao_preprocess_fieldset(&$vars) {
     $vars['attributes']['class'][] = 'titled';
   }
   if (!empty($element['#id'])) {
-    $vars['attributes']['id'] = $element['#id'];
+    if (!empty($element["#attributes"]["id"])) {
+      $vars['attributes']['id'] = $element["#attributes"]["id"];
+    } else {
+      $vars['attributes']['id'] = $element['#id'];
+    }
   }
 
   $description = !empty($element['#description']) ? "<div class='description'>{$element['#description']}</div>" : '';
@@ -238,8 +242,8 @@ function tao_preprocess_field(&$vars) {
  * Override of theme('textarea').
  * Deprecate misc/textarea.js in favor of using the 'resize' CSS3 property.
  */
-function tao_textarea($variables) {
-  $element = $variables['element'];
+function tao_textarea($vars) {
+  $element = $vars['element'];
   $element['#attributes']['name'] = $element['#name'];
   $element['#attributes']['id'] = $element['#id'];
   $element['#attributes']['cols'] = $element['#cols'];
