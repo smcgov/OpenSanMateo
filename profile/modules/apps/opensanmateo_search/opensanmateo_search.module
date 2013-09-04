@@ -154,6 +154,14 @@ function opensanmateo_search_features_template_info() {
       'deleted' => !$present,
       'template' => 'opensanmateo_search_field_default_field_instances_share_template'
     );
+    $data[] = array(
+      'entity_type' => 'node',
+      'bundle_type' => $file_type,
+      'field' => 'field_subject',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'opensanmateo_search_field_default_field_instances_subject_template'
+    );
   }
   return $data;
 }
