@@ -117,6 +117,7 @@ dependencies[] = opensanmateo_search
 ;dependencies[] = opensanmateo_webform
 dependencies[] = opensanmateo_wysiwyg
 dependencies[] = opensanmateo_frontend
+dependencies[] = opensanmateo_contentreview
 
 ;DEVELOPMENT ONLY
 
