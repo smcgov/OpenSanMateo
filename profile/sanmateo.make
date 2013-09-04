@@ -375,3 +375,4 @@ projects[xrds_simple][subdir] = contrib
 projects[openid_provider][subdir] = contrib
 projects[filefield_sources][subdir] = contrib
 projects[remote_stream_wrapper][subdir] = contrib
+projects[file_entity][subdir] = contrib
