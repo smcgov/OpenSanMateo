@@ -207,12 +207,10 @@ function opensanmateo_search_default_search_api_index() {
         "mime" : { "type" : "string" },
         "url" : { "type" : "string" },
         "field_summary" : { "type" : "text" },
-        "field_file_image_alt_text" : { "type" : "text" },
-        "field_file_image_title_text" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
         "search_api_site_hash" : { "type" : "string" },
         "search_api_site_id" : { "type" : "string" },
-        "field_taxonomy_issues:name" : { "type" : "list\\u003Cstring\\u003E" }
+        "search_api_aggregation_1" : { "type" : "text" }
       },
       "data_alter_callbacks" : {
         "site_index" : { "status" : 1, "weight" : "-50", "settings" : [] },
@@ -221,10 +219,20 @@ function opensanmateo_search_default_search_api_index() {
           "weight" : "-10",
           "settings" : { "default" : "1", "bundles" : [] }
         },
-        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "teaser" } }
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "teaser" } },
+        "search_api_alter_add_aggregation" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "fields" : { "search_api_aggregation_1" : {
+                "name" : "Description",
+                "type" : "fulltext",
+                "fields" : [ "field_summary" ],
+                "description" : "A Fulltext aggregation of the following fields: Summary."
+              }
+            }
+          }
+        },
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
         "search_api_case_ignore" : {
