@@ -244,3 +244,14 @@ function opensanmateo_search_theme() {
  );
 }
 
+
+/**
+ * Implements hook_field_widget_properties_alter()
+ *
+ * we want to turn on the remote file setting for image fields
+ */
+function opensanmateo_search_field_widget_properties_alter(&$widget, $context) {
+  if($widget['type'] == 'image_image') {
+    $widget['settings']['filefield_sources']['filefield_sources']['osmremotefile'] = 'osmremotefile';
+  }
+}
