@@ -1,7 +1,9 @@
 <?php
+
+
 function opensanmateo_workflow_apps_app_info() {
   return array(
-    //'configure form' => 'opensanmateo_example_app_configure_form', // This form will be render on the app config pag
-    //'status callback' => 'opensanmateo_example_status',
+    //'configure form' => 'workbench_moderation_admin_check_role_form',
+    //sharethis_configuration_form
   );
 }
