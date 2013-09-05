@@ -400,23 +400,8 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['filters']['field_event_date_value_1']['id'] = 'field_event_date_value_1';
   $handler->display->display_options['filters']['field_event_date_value_1']['table'] = 'search_api_index_san_mateo_content_index';
   $handler->display->display_options['filters']['field_event_date_value_1']['field'] = 'field_event_date_value';
-  $handler->display->display_options['filters']['field_event_date_value_1']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_event_date_value_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['operator_id'] = 'field_event_date_value_1_op';
-  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['label'] = 'Start date (if set, no events before this date will be shown)';
-  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['description'] = 'If this value is set, no events before this date will be listed.';
-  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['operator'] = 'field_event_date_value_1_op';
-  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['identifier'] = 'field_event_date_value_1';
-  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    6 => 0,
-    5 => 0,
-    7 => 0,
-  );
-  $handler->display->display_options['filters']['field_event_date_value_1']['widget_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_event_date_value_1']['operator'] = '>';
+  $handler->display->display_options['filters']['field_event_date_value_1']['value'] = 'now';
   $handler->display->display_options['pane_category']['name'] = 'Lists';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
