@@ -20,6 +20,10 @@ function opensanmateo_search_ctools_plugin_api() {
   if ($module == "panels_mini" && $api == "panels_default") {
     return array("version" => "1");
   }
+  list($module, $api) = func_get_args();
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
 }
 
 /**
@@ -47,11 +51,9 @@ function opensanmateo_search_default_search_api_index() {
         "type" : { "type" : "string" },
         "title" : { "type" : "text", "boost" : "5.0" },
         "url" : { "type" : "uri" },
+        "field_quick_search" : { "type" : "list\\u003Ctext\\u003E", "boost" : "5.0" },
         "field_event_calendar" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_event_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
-        "field_quick_search" : { "type" : "list\\u003Ctext\\u003E", "boost" : "5.0" },
-        "field_subject" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_sub_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_release_date" : { "type" : "date" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
@@ -67,10 +69,7 @@ function opensanmateo_search_default_search_api_index() {
         "field_address:locality" : { "type" : "text" },
         "field_event_date:value" : { "type" : "date" },
         "field_event_date:value2" : { "type" : "date" },
-        "field_location_address:field_address:locality" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_sub_type:name" : { "type" : "text" },
-        "field_address:locality" : { "type" : "text" }
+        "field_location_address:field_address:locality" : { "type" : "list\\u003Ctext\\u003E" }
       },
       "data_alter_callbacks" : {
         "site_index" : { "status" : 1, "weight" : "-50", "settings" : [] },
@@ -201,8 +200,6 @@ function opensanmateo_search_default_search_api_index() {
         "title" : { "type" : "string" },
         "url" : { "type" : "uri" },
         "field_quick_search" : { "type" : "list\\u003Ctext\\u003E", "boost" : "21.0" },
-        "field_subject" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_sub_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "search_api_language" : { "type" : "string" }
       },
       "data_alter_callbacks" : {
