@@ -93,8 +93,8 @@ function opensanmateo_search_default_search_api_index() {
               "search_api_aggregation_1" : {
                 "name" : "Aggregated Teaser",
                 "type" : "fulltext",
-                "fields" : [ "field_summary" ],
-                "description" : "A Fulltext aggregation of the following fields: Summary."
+                "fields" : [ "field_summary", "field_blog_teaser", "body:summary" ],
+                "description" : "A Fulltext aggregation of the following fields: Summary, Teaser, The main body text \\u00bb Summary."
               },
               "search_api_aggregation_3" : {
                 "name" : "Aggregated Author",
