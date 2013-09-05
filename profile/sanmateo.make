@@ -375,6 +375,7 @@ projects[xrds_simple][subdir] = contrib
 projects[openid_provider][subdir] = contrib
 projects[filefield_sources][subdir] = contrib
 projects[remote_stream_wrapper][subdir] = contrib
+projects[remote_stream_wrapper][patch][] = http://drupal.org/files/broken-image-style-7.20-1926434-0.patch
 
 projects[jquery_update][type] = module
 projects[jquery_update][subdir] = contrib
