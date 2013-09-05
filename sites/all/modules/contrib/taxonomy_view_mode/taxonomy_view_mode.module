@@ -1,0 +1,58 @@
+<?php
+
+function taxonomy_view_mode_menu_alter(&$items) {
+  $items['taxonomy/term/%taxonomy_term'] = array(
+    'title' => 'Taxonomy term', 
+    'title callback' => 'taxonomy_term_title', 
+    'title arguments' => array(2), 
+    'page callback' => 'taxonomy_view_mode_term_page', 
+    'page arguments' => array(2), 
+    'access arguments' => array('access content'), 
+    //'file' => 'taxonomy.pages.inc',
+  );
+  //print_r($items);
+
+
+}
+
+function taxonomy_view_mode_term_page($term) {
+  global $language;
+  if (($mode = variable_get("taxonomy_view_mode_{$term->vocabulary_machine_name}", FALSE)) ||
+      ($mode = variable_get("taxonomy_view_mode_any", FALSE))) {
+    return taxonomy_term_view($term, $mode, $language);
+  }
+  else {
+    module_load_include("inc","taxonomy", "taxonomy.pages");
+    return taxonomy_term_page($term);
+  }
+}
+
+
+function taxonomy_view_mode_form_taxonomy_form_vocabulary_alter(&$form, &$form_state) {
+  
+  $vocab_name = $form['#vocabulary']->machine_name;
+  $key = "taxonomy_view_mode_$vocab_name";
+  $info = entity_get_info('taxonomy_term');
+  debug($info['view modes']);
+  $options = array(0=>'Use Standard Drupal Display');
+  foreach($info['view modes'] as $mode_key=> $mode) {
+    $options[$mode_key] = $mode['label'];
+  }
+
+  $form[$key] = array(
+    '#type' => 'select',
+    '#title' => 'Display Mode to use when displaying a Term Page',
+    '#options' => $options,
+    '#default_value' => variable_get($key, 0),
+  );
+  $form['#submit'][] = 'taxonomy_view_mode_form_taxonomy_form_vocabulary_submit';
+  
+  //debug($form);
+}
+function taxonomy_view_mode_form_taxonomy_form_vocabulary_submit($form, &$form_state) {
+  $vocab_name = $form['#vocabulary']->machine_name;
+  $key = "taxonomy_view_mode_$vocab_name";
+  variable_set($key, $form_state['values'][$key]);
+}
+
+

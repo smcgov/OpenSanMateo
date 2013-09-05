@@ -50,9 +50,12 @@ features[search_api_index][] = san_mateo_quick_search_index
 features[search_api_server][] = san_mateo_solr_server
 features[taxonomy][] = sub_type
 features[taxonomy][] = subject
+<<<<<<< HEAD
 features[variable][] = image_allow_insecure_derivatives
 features[variable][] = taxonomy_view_mode_sub_type
 features[variable][] = taxonomy_view_mode_subject
+=======
+>>>>>>> master
 features[views_view][] = opensanmateo_lookup
 features[views_view][] = opensanmateo_media_browser
 features[views_view][] = opensanmateo_search

@@ -1,0 +1,107 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the openid_provider module.
+ */
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function openid_provider_uninstall() {
+  // Remove tables.
+  variable_del('openid_provider_debugging');
+  variable_del('openid_provider_assoc_expires_in');
+}
+
+/**
+ * Implements hook_schema().
+ */
+function openid_provider_schema() {
+  $schema['openid_provider_relying_party'] = array(
+    'description' => 'Tracks relying parties a give user has authenticated.',
+    'fields' => array(
+      'rpid' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The {users}.uid that has authenticated this relying party.',
+      ),
+      'realm' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The OpenID realm of the authenticated relying party.',
+      ),
+      'first_time' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Timestamp of the first time this relying party was accessed.',
+      ),
+      'last_time' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Timestamp of the most recent access',
+      ),
+      'auto_release' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Whether or not to automatically release this relying party.',
+      ),
+    ),
+    'indexes' => array('uid' => array('uid')),
+    'primary key' => array('rpid'),
+  );
+
+  $schema['openid_provider_association'] = array(
+    'description' => 'Stores current associaitons with relying parties.',
+    'fields' => array(
+      'assoc_handle' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'assoc_type' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'session_type' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'mac_key' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'created' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'expires_in' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('assoc_handle'),
+  );
+
+  return $schema;
+}

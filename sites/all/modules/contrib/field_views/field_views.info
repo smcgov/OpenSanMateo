@@ -1,0 +1,10 @@
+name = Field Views
+description = "Provides a Field that as a formatter to display a  View"
+core = 7.x
+
+; Information added by drupal.org packaging script on 2012-01-23
+version = "7.x-1.0-alpha1"
+core = "7.x"
+project = "field_views"
+datestamp = "1327347044"
+
