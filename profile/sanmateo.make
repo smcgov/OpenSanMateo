@@ -380,9 +380,12 @@ projects[field_views][version] = 1.0-alpha1
 
 projects[taxonomy_view_mode][type] = module
 projects[taxonomy_view_mode][subdir] = contrib
+projects[taxonomy_view_mode][version] = 1.0-alpha1
 projects[xrds_simple][subdir] = contrib
 projects[openid_provider][subdir] = contrib
-projects[taxonomy_view_mode][version] = 1.0-alpha1
+projects[filefield_sources][subdir] = contrib
+projects[remote_stream_wrapper][subdir] = contrib
+projects[remote_stream_wrapper][patch][] = http://drupal.org/files/broken-image-style-7.20-1926434-0.patch
 
 projects[jquery_update][type] = module
 projects[jquery_update][subdir] = contrib
@@ -392,3 +395,4 @@ projects[jquery_update][version] = 2.3
 projects[timeperiod][type] = module
 projects[timeperiod][subdir] = contrib
 projects[timeperiod][version] = 1.0-beta1
+projects[file_entity][subdir] = contrib

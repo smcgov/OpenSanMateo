@@ -6,6 +6,8 @@
 
 include_once 'opensanmateo_search.features.inc';
 include_once 'opensanmateo_search.features.field_instance_do_not_index.inc';
+include_once 'opensanmateo_search.features.field_instance_share.inc';
+include_once 'opensanmateo_search.features.field_instance_summary.inc';
 include_once 'opensanmateo_search.features.field_instance_qs.inc';
 include_once 'opensanmateo_search.features.field_instance_subject.inc';
 include_once 'opensanmateo_search.features.field_instance_sub_type.inc';
@@ -28,13 +30,29 @@ function opensanmateo_search_search_api_query_alter($query) {
 }
 */
 function opensanmateo_search_search_api_index_items_alter(array &$items, SearchApiIndex $index) {
-  $types = array_filter(variable_get('opensanmateo_search_content_types_to_not_index', array()));
-  foreach($items as $id => $item) {
-    if (in_array($item->type, $types)) {
-      unset($items[$id]);
+  if ($index->item_type == 'file') {
+    $types = array_filter(variable_get('opensanmateo_search_file_types_to_index', array()));
+    foreach($items as $id => $item) {
+      $lang= 'und';
+      //TODO: It seems that files do not have language this might not always be the case and this might need 
+      //change
+      if (!in_array($item->type, $types)) {
+        unset($items[$id]);
+      }
+      elseif (!$item->field_share[$lang][0]['value']) {
+        unset($items[$id]);
+      }
     }
-    elseif ($item->field_do_not_index[$item->language][0]['value']) {
-      unset($items[$id]);
+  }
+  else {
+    $types = array_filter(variable_get('opensanmateo_search_content_types_to_not_index', array()));
+    foreach($items as $id => $item) {
+      if (in_array($item->type, $types)) {
+        unset($items[$id]);
+      }
+      elseif ($item->field_do_not_index[$item->language][0]['value']) {
+        unset($items[$id]);
+      }
     }
   }
 }
@@ -73,6 +91,9 @@ function opensanmateo_search_qs_callback($search) {
  *  Here we set a quick search callback on our search field
  */
 function quick_search_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+  if($form_state['view']->name == 'opensanmateo_media_browser') {
+    return;
+  }
     $form['search_api_views_fulltext']['#pre_render'][] = 'quick_search_process_search';
     $form['search_api_views_fulltext']['#attributes']['quick_search_callback'] = 'opensanmateo_search_qs_callback';
 }
@@ -81,15 +102,16 @@ function quick_search_form_views_exposed_form_alter(&$form, &$form_state, $form_
  * implements hook_features_template_info()
  */
 function opensanmateo_search_features_template_info() {
+  $all_content_types = array_map(function($i) {return $i->type;}, node_type_get_types());
   $content_types = variable_get('opensanmateo_search_content_types_to_not_index', array());
   $data = array();
-  foreach($content_types as $content_type => $present) {
+  foreach($all_content_types as $content_type) {
     $data[] = array(
       'entity_type' => 'node',
       'bundle_type' => $content_type,
       'field' => 'field_do_not_index',
       'plugin' => 'field_instance',
-      'deleted' => !$present,
+      'deleted' => isset($content_types[$content_type]) &&  $content_types[$content_type],
       'template' => 'opensanmateo_search_field_default_field_instances_dni_template'
     );
     $data[] = array(
@@ -97,7 +119,7 @@ function opensanmateo_search_features_template_info() {
       'bundle_type' => $content_type,
       'field' => 'field_quick_search',
       'plugin' => 'field_instance',
-      'deleted' => !$present,
+      'deleted' => isset($content_types[$content_type]) &&  $content_types[$content_type],
       'template' => 'opensanmateo_search_field_default_field_instances_qs_template'
     );
     $data[] = array(
@@ -105,7 +127,7 @@ function opensanmateo_search_features_template_info() {
       'bundle_type' => $content_type,
       'field' => 'field_subject',
       'plugin' => 'field_instance',
-      'deleted' => !$present,
+      'deleted' => isset($content_types[$content_type]) &&  $content_types[$content_type],
       'template' => 'opensanmateo_search_field_default_field_instances_subject_template'
     );
     $data[] = array(
@@ -113,11 +135,134 @@ function opensanmateo_search_features_template_info() {
       'bundle_type' => $content_type,
       'field' => 'field_sub_type',
       'plugin' => 'field_instance',
-      'deleted' => !$present,
+      'deleted' => isset($content_types[$content_type]) &&  $content_types[$content_type],
       'template' => 'opensanmateo_search_field_default_field_instances_sub_type_template'
+    );
+  }
+  $file_types = variable_get('opensanmateo_search_file_types_to_index', array());
+  foreach($file_types as $file_type => $present) {
+    $data[] = array(
+      'entity_type' => 'file',
+      'bundle_type' => $file_type,
+      'field' => 'field_summmary',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'opensanmateo_search_field_default_field_instances_summary_template'
+    );
+    $data[] = array(
+      'entity_type' => 'file',
+      'bundle_type' => $file_type,
+      'field' => 'field_share',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'opensanmateo_search_field_default_field_instances_share_template'
+    );
+    $data[] = array(
+      'entity_type' => 'file',
+      'bundle_type' => $file_type,
+      'field' => 'field_subject',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'opensanmateo_search_field_default_field_instances_subject_template'
     );
   }
   return $data;
 }
 
+function opensanmateo_search_form_alter(&$form, $form_state) {
+}
 
+function opensanmateo_search_file_presave($file) {
+}
+
+function opensanmateo_search_filefield_sources_info() {
+  $sources = array();
+
+  // Provide a potential Flickr source to import Flickr photos.
+  $sources['opensanmateo_search'] = array(
+    'name' => t('Shared Files'),
+    'label' => t('SHared FIles'),
+    'description' => t('Select a file from Flickr.'),
+    // This callback function does all the heavy-work of creating a form element
+    // to choose a Flickr photo and populate a field. For an example, see
+    // filefield_source_remote_process().
+    'process' =>'opensanmateo_search_shared_file_process',
+    // This callback function then takes the value of that field and saves the
+    // file locally. For an example, see filefield_source_remote_value().
+    'value' =>'opensanmateo_search_shared_file_value',
+    'weight' => 3,
+    // This optional setting will ensure that your code is included when needed
+    // if your value, process, or other callbacks are located in a file other
+    // than your .module file.
+   # 'file' => 'include/mymodule.flickr_source.inc',
+  );
+  return $sources;
+}
+
+function opensanmateo_search_shared_file_process($element, &$form_state, $form) {
+  $element['opensanmateo_search_shared_file'] = array(
+    '#weight' => 100.5,
+    '#theme' => 'opensanmateo_search_source_remote_element'
+    //'#filefield_sources_hint_text' => FILEFIELD_SOURCE_REMOTE_HINT_TEXT,
+  );
+  $element['opensanmateo_search_shared_file']['view'] = array(
+    '#markup' =>  views_embed_view('opensanmateo_media_browser', 'page'). 'baseball',
+  );
+  $element['opensanmateo_search_shared_file']['uri'] = array(
+    '#type' => 'textfield',
+    '#title' => 'url',
+  );  
+  return $element;
+}
+
+function opensanmateo_search_shared_file_value($element, &$item) {
+/*
+  if (isset($item['opensanmateo_search_shared_file']['uri']) && strlen($item['opensanmateo_search_shared_file']['uri']) > 0 && valid_uri($item['opensanmateo_search_shared_file']['uri'])) { 
+  }
+*/  
+  if (isset($item['opensanmateo_search_shared_file']['uri']) && strlen($item['opensanmateo_search_shared_file']['uri']) > 0) { 
+    $extra = uniqid();
+    $uri = $item['opensanmateo_search_shared_file']['uri'];
+    $file = (object) array(
+      # 'uri' => "public://" . $row->_entity_properties['name'],
+      'uri' => $uri . "#$extra",
+      'type' => 'image',
+      'status' => 0,
+    );
+    file_save($file);
+    $item['fid'] = $file->fid;
+  }
+}
+
+function theme_opensanmateo_search_source_remote_element($variables) {
+  $element = $variables['element'];
+  $element['url']['#field_suffix'] = drupal_render($element['transfer']);
+  return '<div class="filefield-source filefield-source-opensanmateo clear-block">' . 
+  drupal_render($element['view']) . 
+  drupal_render($element['uri']) . 
+  '</div>';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function opensanmateo_search_theme() {
+  return array(
+    'opensanmateo_search_source_remote_element' => array(
+      'render element' => 'element',
+     # 'file' => 'sources/remote.inc',
+    ),
+ );
+}
+
+
+/**
+ * Implements hook_field_widget_properties_alter()
+ *
+ * we want to turn on the remote file setting for image fields
+ */
+function opensanmateo_search_field_widget_properties_alter(&$widget, $context) {
+  if($widget['type'] == 'image_image') {
+    $widget['settings']['filefield_sources']['filefield_sources']['osmremotefile'] = 'osmremotefile';
+  }
+}

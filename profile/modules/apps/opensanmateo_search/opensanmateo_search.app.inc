@@ -21,6 +21,13 @@ function opensanmateo_search_app_configure_form() {
     '#options' => array_map(function($i) {return $i->name;}, node_type_get_types()),
     '#default_value' => variable_get('opensanmateo_search_content_types_to_not_index', array())
   );
+  $types = array('image' => 'Image');
+  $form['opensanmateo_search_file_types_to_index'] = array(
+    '#title' => t('File Types to Index'),
+    '#type' => 'checkboxes',
+    '#options' => $types,
+    '#default_value' => variable_get('opensanmateo_search_file_types_to_index', array())
+  );
   $form['taxonomy_sync'] = array(
     '#type' => 'fieldset',
     '#title' => 'Taxonomy Sync',
