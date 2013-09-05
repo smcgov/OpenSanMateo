@@ -1,33 +1,28 @@
 /* Flexnav Base Styles */
 
-$nav_text: #222;
-$top_level: #a6a6a2;
-$second_level: #b2b2af;
+@import "compass/utilities";
+@import "compass/css3";
+
+$nav_text: #ef182e;
+$top_level: #ffffff;
+$second_level: rgba($primaryTeal, .1);
 $third_level: #bfbfbc;
 $fourth_level: #cbcbc9;
 
 .flexnav {
-	-webkit-transition: none;
-  -moz-transition: none;
-  -ms-transition: none;
-  transition: none;
-	-webkit-transform-style: preserve-3d; // stop webkit flicker
-  overflow: hidden;
+	@include pie-clearfix;
+	overflow: hidden;
 	margin: 0 auto;
 	width: 100%;
-  max-height: 0;
-  
-  &.opacity {
-    opacity: 0;
-  }
+	max-height: 0;
 	
 	&.show {
-		max-height: 2000px;
-    opacity: 1;
-		-webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
+		@include transition(.4s);
+		max-height: 1000px;
+		position: fixed;
+		background-color: rgba(255,255,255,.975);
+		padding-top: 60px;
+		top: 0;
 	}
 	&.one-page {
 		position: fixed;
@@ -36,10 +31,12 @@ $fourth_level: #cbcbc9;
 		max-width: 200px;
 	}
 	
+	ul {margin-left: 0;}
 	li {
 		font-size: 100%;
-		position: relative;
-		overflow: hidden;
+		position: relative;	
+		list-style-type: none;
+			
 	}
 	li a {
 		position: relative;
@@ -47,32 +44,27 @@ $fourth_level: #cbcbc9;
 		padding: .96em;
 		z-index: 2;
 		overflow: hidden;
-		color: $nav_text;
-		background: #a6a6a2;
+		color: white;
+		background: $primaryBlue;
 		border-bottom: 1px solid rgba(0,0,0,.15);
+		font-family: $reg;
 	}
 	li ul {
-		width: 100%;   
-		
-		li {
-			font-size: 100%;
-			position: relative;
-			overflow: hidden;		
-		}
+		width: 100%;
+		display: none;
 	}
-	li ul.show {
-    
-		li {
-			overflow: visible;
-		}
-	}	
-	
+	li ul li {
+		float: none;
+		width: 100%;			
+	}
 	li ul li a {
 		display: block;
-		background: $second_level;
+		background: $second_level;	
+		color: $primaryTeal;		
 	}
 	ul li ul li a {
 		background: $third_level;
+		
 	}
 	ul li ul li ul li a {
 		background: $fourth_level;
@@ -85,28 +77,39 @@ $fourth_level: #cbcbc9;
 		width: 50px;
 		height: 50px;
 		display: inline-block;
+/*
 		background: #acaca1;
-		background: rgba(0,0,0,.075);
+		background: rgba(0,0,0,.05);
+*/
 		text-align: center;
+		border-radius: 6px;
 		&:hover {
 			cursor: pointer;
 		}
 		.navicon {
 			position: relative;
-			top: 1.4em;
+			top: 1.25em;
 			font-size: 12px;
-			color: #666;
+			color: rgba(#fff, .5);
 		}
 	}
 }
 .menu-button {
-	position: relative;
-	display: block;
-	padding: 1em;
-	background: $top_level;
-	color: $nav_text;
-	cursor: pointer;
-	border-bottom: 1px solid rgba(0,0,0,.2);
+position: fixed;
+display: block;
+padding: .3em;
+background: white;
+color: white;
+cursor: pointer;
+border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+background-color: $primaryBlue;
+font-size: 1.7em;
+text-align: center;
+top: .56em;
+right: .4em;
+border-radius: 3px;
+z-index: 9999;
+box-shadow: 0px 3px 2px rgba(3, 108, 182, 0.1);
 	
 	&.one-page {
 		position: fixed;
@@ -122,7 +125,7 @@ $fourth_level: #cbcbc9;
 		top: 0;
 		right: 0;
 		width: 50px;
-		height: 50px;
+		height: 100%;
 		display: inline-block;
 		text-align: center;
 				
@@ -130,20 +133,20 @@ $fourth_level: #cbcbc9;
 			font-size: 16px;
 			position: relative;
 			top: 1em;
-			color: #666;
+			color: rgba(#fff, .5);
+			display: none;
 		}
 	}
 }
 
-@media all and (min-width: 800px) {
+@media all and (min-width: 768px) {
 	body.one-page {
 		padding-top: 70px;
 	}
 	.flexnav {
 		overflow: visible;
-		&.opacity {
-		  opacity: 1;
-		}
+		max-height: 1000px;
+				
 		&.one-page {
 			top: 0;
 			right: auto;
@@ -156,94 +159,31 @@ $fourth_level: #cbcbc9;
 			display: block;	
 			background-color: #a6a6a2;	
 			width: 20%;
-			overflow: visible;
-		}
-		li a {
-			border-left: 1px solid #acaca1;
-			border-bottom: none;
-		}
-		li > ul {
-			position: absolute; 
-			top: auto;
-			left: 0;
-			
-			li {
-				width: 100%;
-			}
-		}
-		li ul li > ul {
-			margin-left: 100%;
-			top: 0;
-		}
-		li ul li:hover > ul,
-		li ul li > ul.show {
-		}		
-		li ul li a {
-			border-bottom: none;
-		}
-		li ul.open {
-			display: block;
-			opacity: 1;
-			visibility: visible;
-			z-index: 1;
-			li {
-				overflow: visible;
-				max-height: 100px;
-			}	
-			ul.open {
-				margin-left: 100%;
-				top: 0;
-			}
-		}
-	}
-	.menu-button {
-		display: none;
-	}
-}
-
-.oldie {
-	body.one-page {
-		padding-top: 70px;
-	}
-	.flexnav {
-		overflow: visible;
-		&.one-page {
-			top: 0;
-			right: auto;
-			max-width: 1080px;
-		}
-		li {
-			position: relative;
-			list-style: none;
-			float: left;
-			display: block;	
-			background-color: #a6a6a2;	
-			width: 20%;
-			min-height: 50px;
-			overflow: visible;
 		}
 		li:hover > ul { 
+			visibility: visible;
+			opacity: 1;
+			height: auto;
 			display: block;
-			width: 100%;
-			overflow: visible;
-			li {
-				width: 100%;
-				float: none;
-			}
+			top: 3.1em;	
+			position: absolute;	
+		}
+		&.lg-screen li:hover > ul,
+		&.sm-screen li:hover > ul {
+			display: none;
 		}
 		li a {
 			border-left: 1px solid #acaca1;
-			border-bottom: none;
-			overflow: visible;	
+			border-bottom: none;		
 		}
 		li > ul {
-			background:#acaca1;
 			position: absolute; 
 			top: auto;
 			left: 0;
-			display: none;
-			z-index: 1;
-			overflow: visible;
+			opacity: 0;
+			visibility: hidden;
+			height: 1px;
+			z-index: 1;			
 		}
 		li ul li ul { 
 			top: 0;		
@@ -253,17 +193,13 @@ $fourth_level: #cbcbc9;
 		}
 		li ul.open {
 			display: block;
-			width: 100%;
-			overflow: visible;
-			li {
-				width: 100%;
-			}
+			opacity: 1;
+			visibility: visible;
+			height: auto;
+	
 			ul.open {
 				margin-left: 100%;
 				top: 0;
-  				display: block;
-				width: 100%;
-				overflow: visible;
 			}
 		}
 		ul li:hover ul {
@@ -273,8 +209,5 @@ $fourth_level: #cbcbc9;
 	}
 	.menu-button {
 		display: none;
-	}
-	&.ie7 .flexnav li {
-		width: 19.9%;
 	}
 }
