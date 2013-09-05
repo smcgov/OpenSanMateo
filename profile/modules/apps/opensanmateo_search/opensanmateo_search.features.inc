@@ -107,12 +107,12 @@ function opensanmateo_search_default_search_api_index() {
               },
               "search_api_aggregation_4" : {
                 "name" : "Aggregated State",
-                "type" : "first",
+                "type" : "fulltext",
                 "fields" : [
                   "field_address:administrative_area",
                   "field_location_address:field_address:administrative_area"
                 ],
-                "description" : "A First aggregation of the following fields: Address \\u00bb Administrative area (i.e. State \\/ Province), Address \\u00bb Address \\u00bb Administrative area (i.e. State \\/ Province)."
+                "description" : "A Fulltext aggregation of the following fields: Address \\u00bb Administrative area (i.e. State \\/ Province), Address \\u00bb Address \\u00bb Administrative area (i.e. State \\/ Province)."
               },
               "search_api_aggregation_5" : {
                 "name" : "Aggregated Postal",
@@ -125,21 +125,21 @@ function opensanmateo_search_default_search_api_index() {
               },
               "search_api_aggregation_6" : {
                 "name" : "Aggregated Thoroughfare",
-                "type" : "first",
+                "type" : "fulltext",
                 "fields" : [
                   "field_address:thoroughfare",
                   "field_location_address:field_address:thoroughfare"
                 ],
-                "description" : "A First aggregation of the following fields: Address \\u00bb Thoroughfare (i.e. Street address), Address \\u00bb Address \\u00bb Thoroughfare (i.e. Street address)."
+                "description" : "A Fulltext aggregation of the following fields: Address \\u00bb Thoroughfare (i.e. Street address), Address \\u00bb Address \\u00bb Thoroughfare (i.e. Street address)."
               },
               "search_api_aggregation_7" : {
                 "name" : "City",
-                "type" : "first",
+                "type" : "fulltext",
                 "fields" : [
                   "field_address:locality",
                   "field_location_address:field_address:locality"
                 ],
-                "description" : "A First aggregation of the following fields: Address \\u00bb Locality (i.e. City), Address \\u00bb Address \\u00bb Locality (i.e. City)."
+                "description" : "A Fulltext aggregation of the following fields: Address \\u00bb Locality (i.e. City), Address \\u00bb Address \\u00bb Locality (i.e. City)."
               },
               "search_api_aggregation_8" : {
                 "name" : "Terms",
