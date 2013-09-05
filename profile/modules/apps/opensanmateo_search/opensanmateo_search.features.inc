@@ -56,19 +56,23 @@ function opensanmateo_search_default_search_api_index() {
         "field_event_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_release_date" : { "type" : "date" },
         "search_api_language" : { "type" : "string" },
-        "search_api_aggregation_1" : { "type" : "text" },
-        "search_api_aggregation_3" : { "type" : "text" },
-        "search_api_aggregation_2" : { "type" : "text" },
+        "search_api_aggregation_1" : { "type" : "string" },
+        "search_api_aggregation_3" : { "type" : "string" },
+        "search_api_aggregation_2" : { "type" : "string" },
         "search_api_aggregation_4" : { "type" : "string" },
         "search_api_aggregation_5" : { "type" : "string" },
         "search_api_aggregation_6" : { "type" : "string" },
         "search_api_aggregation_7" : { "type" : "string" },
+        "search_api_aggregation_8" : { "type" : "string" },
+        "search_api_aggregation_9" : { "type" : "date" },
+        "search_api_aggregation_10" : { "type" : "date" },
         "search_api_site_hash" : { "type" : "uri" },
         "search_api_site_id" : { "type" : "string" },
         "body:value" : { "type" : "text" },
-        "field_address:locality" : { "type" : "text" },
+        "field_address:locality" : { "type" : "string" },
         "field_event_date:value" : { "type" : "date" },
         "field_event_date:value2" : { "type" : "date" },
+        "field_thumbnail_image:file:url" : { "type" : "string" },
         "field_location_address:field_address:locality" : { "type" : "list\\u003Ctext\\u003E" }
       },
       "data_alter_callbacks" : {
@@ -101,8 +105,8 @@ function opensanmateo_search_default_search_api_index() {
               "search_api_aggregation_2" : {
                 "name" : "Aggregated Thumbnail",
                 "type" : "fulltext",
-                "fields" : [ "field_thumbnail_image:file", "field_editors_choice_thumbnail:file" ],
-                "description" : "A Fulltext aggregation of the following fields: Thumbnail Image \\u00bb The image file., Thumbnail \\u00bb The image file.."
+                "fields" : [ "field_thumbnail_image:file:url" ],
+                "description" : "A Fulltext aggregation of the following fields: Thumbnail Image \\u00bb The image file. \\u00bb URL."
               },
               "search_api_aggregation_4" : {
                 "name" : "Aggregated State",
@@ -143,8 +147,20 @@ function opensanmateo_search_default_search_api_index() {
               "search_api_aggregation_8" : {
                 "name" : "Terms",
                 "type" : "fulltext",
-                "fields" : [ "field_subject:name", "field_sub_type:name" ],
-                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name."
+                "fields" : [ "nid" ],
+                "description" : "A Fulltext aggregation of the following fields: Node ID."
+              },
+              "search_api_aggregation_9" : {
+                "name" : "Aggregated Start Date",
+                "type" : "fulltext",
+                "fields" : [ "field_release_date", "field_event_date:value" ],
+                "description" : "A Fulltext aggregation of the following fields: Release Date, Date \\u00bb Start date."
+              },
+              "search_api_aggregation_10" : {
+                "name" : "Aggregated End Date",
+                "type" : "fulltext",
+                "fields" : [ "field_event_date:value2" ],
+                "description" : "A Fulltext aggregation of the following fields: Date \\u00bb End date."
               }
             }
           }
