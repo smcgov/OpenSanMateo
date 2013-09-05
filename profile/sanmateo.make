@@ -353,6 +353,16 @@ projects[picture][download][type] = git
 projects[picture][download][url] = http://git.drupal.org/project/picture.git
 projects[picture][download][revision] = 3d9fe6c4b5fc5e48fcee225853cd32b6e5f61242
 
+projects[workbench][type] = module
+projects[workbench][subdir] = contrib
+projects[workbench][version] = 1.2
+
+projects[workbench_moderation][type] = module
+projects[workbench_moderation][subdir] = contrib
+projects[workbench_moderation][download][type] = git
+projects[workbench_moderation][download][url] = http://git.drupal.org/project/picture.git
+projects[workbench_moderation][download][revision] = a90378de5b1aea2b095ff5613eea44f55947f514
+
 projects[breakpoints][type] = module
 projects[breakpoints][subdir] = contrib
 projects[breakpoints][version] = 1.1
