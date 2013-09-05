@@ -147,8 +147,8 @@ function opensanmateo_search_default_search_api_index() {
               "search_api_aggregation_8" : {
                 "name" : "Terms",
                 "type" : "fulltext",
-                "fields" : [ "nid" ],
-                "description" : "A Fulltext aggregation of the following fields: Node ID."
+                "fields" : [ "field_subject:name", "field_sub_type:name" ],
+                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name."
               },
               "search_api_aggregation_9" : {
                 "name" : "Aggregated Start Date",
