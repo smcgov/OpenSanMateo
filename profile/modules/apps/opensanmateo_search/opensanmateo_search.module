@@ -266,3 +266,35 @@ function opensanmateo_search_field_widget_properties_alter(&$widget, $context) {
     $widget['settings']['filefield_sources']['filefield_sources']['osmremotefile'] = 'osmremotefile';
   }
 }
+
+
+/**
+ * implements hook_sanmateo_master_is_set
+ */
+function opensanmateo_search_sanmateo_master_is_set($base) {
+  $vocabs = array(
+    'subject',
+    'sub_type'
+  );
+
+  foreach($vocabs as $name) {
+    if ($base) {
+      variable_set(TAXONOMY_SYNC_CLIENT_PREFIX . $name, "http://$base/taxonomy-sync/list/$name");
+    }
+    else {
+      variable_del(TAXONOMY_SYNC_CLIENT_PREFIX . $name);
+    }
+  }
+}
+/**
+ * implements hook_sanmateo_master_is_set
+ */
+function opensanmateo_search_sanmateo_is_master_set($is_master) {
+  $vocabs = array(
+    'subject',
+    'sub_type'
+  );
+  foreach($vocabs as $name) {
+    variable_set(TAXONOMY_SYNC_MASTER_PREFIX . $name,  $is_master);
+  }
+}
