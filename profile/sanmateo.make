@@ -306,6 +306,13 @@ projects[panelizer][version] = 3.1
 projects[facetapi][type] = module
 projects[facetapi][subdir] = contrib
 projects[facetapi][version] = 1.3
+projects[facetapi][patch][1393928] = https://drupal.org/files/limit-active-items-1393928-48.patch
+
+projects[facetapi_select][type] = module
+projects[facetapi_select][subdir] = contrib
+projects[facetapi_select][download][type] = git
+projects[facetapi_select][download][branch] = 7.x-1.x
+projects[facetapi_select][download][url] = http://git.drupal.org/sandbox/stevetweeddale/1776754.git
 
 projects[oauth][type] = module
 projects[oauth][subdir] = contrib

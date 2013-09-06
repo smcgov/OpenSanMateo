@@ -14,3 +14,10 @@ function opensanmateo_search_update_7000() {
   variable_set('opensanmateo_search_content_types_to_not_index', $not_index);
   return t('The content types to not index have been set.');
 }
+
+/**
+ * Enable facetapi_select module
+ */
+function opensanmateo_search_update_7001() {
+  module_enable(array('facetapi_select'));
+}
