@@ -6,6 +6,7 @@ php = 5.2.4
 dependencies[] = ctools
 dependencies[] = entity
 dependencies[] = facetapi
+dependencies[] = facetapi_select
 dependencies[] = features
 dependencies[] = features_template
 dependencies[] = field_views
