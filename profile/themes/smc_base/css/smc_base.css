@@ -11,7 +11,7 @@
   .flexslider ul.field-collection-view-links {
     display: none; }
 
-/* line 17, ../scss/elements/rotator-box.scss */
+/* line 21, ../scss/elements/rotator-box.scss */
 .pane-bundle-rotator-panels-pane {
   width: 100%;
   background-image: -webkit-linear-gradient(rgba(3, 108, 182, 0.05) 0%, rgba(3, 108, 182, 0) 50%, rgba(3, 108, 182, 0.025) 100%);
@@ -19,70 +19,89 @@
   margin: 0 auto 5%;
   border-radius: 3px;
   background-color: transparent; }
-  /* line 26, ../scss/elements/rotator-box.scss */
-  .pane-bundle-rotator-panels-pane #images {
-    padding: 0; }
-  /* line 28, ../scss/elements/rotator-box.scss */
+  /* line 31, ../scss/elements/rotator-box.scss */
+  .pane-bundle-rotator-panels-pane .field-collection-view {
+    position: relative; }
+    /* line 34, ../scss/elements/rotator-box.scss */
+    .pane-bundle-rotator-panels-pane .field-collection-view .content {
+      display: block; }
+  /* line 39, ../scss/elements/rotator-box.scss */
+  .pane-bundle-rotator-panels-pane .field-collection-view > a.rotator-wrap-link {
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 100%; }
+  /* line 45, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows {
     z-index: 10; }
-  /* line 30, ../scss/elements/rotator-box.scss */
+  /* line 47, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows a:after, .pane-bundle-rotator-panels-pane .flex-control-thumbs a:after, .pane-bundle-rotator-panels-pane .rs-slider li a:after {
     content: none; }
-  /* line 34, ../scss/elements/rotator-box.scss */
+  /* line 51, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows a {
     background-color: rgba(0, 0, 0, 0.8); }
-  /* line 38, ../scss/elements/rotator-box.scss */
+  /* line 55, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows a:hover {
     background-color: black; }
-  /* line 42, ../scss/elements/rotator-box.scss */
-  .pane-bundle-rotator-panels-pane .rs-caption {
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
-    background-color: rgba(85, 90, 90, 0.7);
+  /* line 59, ../scss/elements/rotator-box.scss */
+  .pane-bundle-rotator-panels-pane .flex-caption {
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%) !important;
+    background-color: rgba(85, 90, 90, 0.7) !important;
     padding: 1em 1em 1em;
-    position: absolute; }
-    /* line 48, ../scss/elements/rotator-box.scss */
-    .pane-bundle-rotator-panels-pane .rs-caption h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100% !important;
+    font-size: inherit !important; }
+    /* line 70, ../scss/elements/rotator-box.scss */
+    .pane-bundle-rotator-panels-pane .flex-caption h3 {
       text-transform: none;
       font-size: 2.5em;
       line-height: 1.1em;
       font-weight: normal;
       margin-bottom: 1%;
-      color: white; }
-  /* line 58, ../scss/elements/rotator-box.scss */
+      color: white;
+      text-shadow: none; }
+    /* line 81, ../scss/elements/rotator-box.scss */
+    .pane-bundle-rotator-panels-pane .flex-caption p {
+      color: #EEEEEE;
+      font-size: 1.3em;
+      line-height: 1.3em;
+      text-shadow: none; }
+      /* line 87, ../scss/elements/rotator-box.scss */
+      .pane-bundle-rotator-panels-pane .flex-caption p:last-child {
+        margin-bottom: 0; }
+  /* line 93, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-slider > li img {
     width: 100%; }
-  /* line 60, ../scss/elements/rotator-box.scss */
+  /* line 95, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs {
     margin-top: 10px !important;
     padding: 0 0.5em; }
-  /* line 65, ../scss/elements/rotator-box.scss */
+  /* line 100, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs li {
     border: 5px solid #eee;
     width: 22.75%;
     margin-left: 3%; }
-    /* line 70, ../scss/elements/rotator-box.scss */
+    /* line 105, ../scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .flex-control-thumbs li:first-child {
       margin-left: 0; }
-  /* line 75, ../scss/elements/rotator-box.scss */
+  /* line 110, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs li.active-item {
     border: 5px solid rgba(3, 108, 182, 0.2); }
-  /* line 79, ../scss/elements/rotator-box.scss */
+  /* line 114, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs li:hover {
     border: 5px solid #036cb6; }
-  /* line 83, ../scss/elements/rotator-box.scss */
-  .pane-bundle-rotator-panels-pane .rs-caption.rs-bottom > p {
-    color: #EEEEEE;
-    font-size: 1.3em;
-    line-height: 1.3em; }
-  /* line 89, ../scss/elements/rotator-box.scss */
+  /* line 122, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-caption.rs-bottom > a {
     color: white; }
-  /* line 93, ../scss/elements/rotator-box.scss */
+  /* line 126, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-prev {
     left: 0;
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px; }
-  /* line 99, ../scss/elements/rotator-box.scss */
+  /* line 132, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-next {
     right: 0;
     border-bottom-left-radius: 3px;

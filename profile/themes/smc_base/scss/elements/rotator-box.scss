@@ -12,6 +12,10 @@
   .flex-control-thumbs {
     //position: relative;
   }
+  .field-name-field-rotator-description {
+    // this seems to be empty anyway
+    //display: none;
+  }
 }
 
 .pane-bundle-rotator-panels-pane {
@@ -23,8 +27,21 @@
 	border-radius: 3px;
 	background-color: transparent;
 	
-	#images {padding: 0;}
-		
+	
+	.field-collection-view {
+  	position: relative;
+  	
+  	.content {
+    	display: block;
+  	}
+	}
+	
+	.field-collection-view > a.rotator-wrap-link {
+  	position: relative;
+  	display: block;
+  	height: 100%;
+  	width: 100%;
+	}
 	.rs-arrows {z-index: 10;}
 	
 	.rs-arrows a:after, .flex-control-thumbs a:after, .rs-slider li a:after {
@@ -39,21 +56,39 @@
 		background-color: rgba(0,0,0, 1.0);
 		}
 
-	.rs-caption {
-		background:-webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
-		background-color: rgba($primaryGray, .7);
+	.flex-caption {
+		background:-webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%) !important;
+		background-color: rgba($primaryGray, .7) !important;
 		padding: 1em 1em 1em;
 		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100% !important;
+		font-size: inherit !important;
 		
 		h3 {
 			text-transform: none;
 			font-size: 2.5em;
-		    line-height: 1.1em;
-		    font-weight: normal;
-		    margin-bottom: 1%;
-		    color: white;
-			}
+	    line-height: 1.1em;
+	    font-weight: normal;
+	    margin-bottom: 1%;
+	    color: white;
+	    text-shadow: none;
+	    
 		}
+			
+		p {
+    		color: #EEEEEE;
+        font-size: 1.3em;
+        line-height: 1.3em;
+        text-shadow: none;
+        
+      &:last-child {
+        margin-bottom: 0;
+      }
+		}
+	}
 
 .rs-slider > li img {width: 100%;}
 
@@ -81,9 +116,7 @@
 }
 
 .rs-caption.rs-bottom > p {
-    color: #EEEEEE;
-    font-size: 1.3em;
-    line-height: 1.3em;
+    
 	}
 
 .rs-caption.rs-bottom > a {color: white;}
