@@ -169,11 +169,17 @@ function opensanmateo_search_default_search_api_index() {
                 "fields" : [ "field_release_date", "field_event_date:value" ],
                 "description" : "A Fulltext aggregation of the following fields: Release Date, Date \\u00bb Start date."
               },
+              "search_api_aggregation_10" : {
+                "name" : "Aggregated End Date",
+                "type" : "fulltext",
+                "fields" : [ "field_event_date:value2" ],
+                "description" : "A Fulltext aggregation of the following fields: Date \\u00bb End date."
+              },
               "search_api_aggregation_11" : {
                 "name" : "Aggregated Sub Type",
                 "type" : "fulltext",
                 "fields" : [
-                  "field_sub_type:name",
+                  "field_sub_type:name"
                 ],
                 "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
               },
@@ -189,7 +195,7 @@ function opensanmateo_search_default_search_api_index() {
                 "name" : "Aggregated Calendar",
                 "type" : "fulltext",
                 "fields" : [
-                  "field_event_calendar:name",
+                  "field_event_calendar:name"
                 ],
                 "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
               },
@@ -197,15 +203,9 @@ function opensanmateo_search_default_search_api_index() {
                 "name" : "Aggregated Subject",
                 "type" : "fulltext",
                 "fields" : [
-                  "field_subject:name",
+                  "field_subject:name"
                 ],
                 "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
-              },
-              "search_api_aggregation_10" : {
-                "name" : "Aggregated End Date",
-                "type" : "fulltext",
-                "fields" : [ "field_event_date:value2" ],
-                "description" : "A Fulltext aggregation of the following fields: Date \\u00bb End date."
               }
             }
           }
