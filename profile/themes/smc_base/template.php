@@ -1,9 +1,5 @@
 <?php
 
-function smc_base_css_alter(&$css) {
-  //krumo($css);
-}
-
 function smc_base_process_page(&$variables) {
   // Always print the site name and slogan, but if they are toggled off, we'll
   // just hide them visually.
@@ -56,36 +52,31 @@ function smc_base_preprocess_block(&$variables) {
   
 }
 function smc_base_block_view_alter(&$data, $block) {
+  
+  // there seems to be an odd case where an empty block id comes up.
   if (!isset($block->bid)) {
     return;
   }
-  //dsm($block->bid);
+
   // Check we get the right menu block (side bar)
   if ($block->bid == 'menu_block-sanmateo-primary-menu') {
-    //dsm($data);
     
     // create a "home" link as the first link in the main menu.
-    
-    
     $keys = array_keys($data['content']['#content']);    
     if (isset($data['content']['#content'][$keys[0]])) {
       $data['content']['#content'][$keys[0]]['#prefix'] = '<li class="home">' . l('', '<front>') . '</li>';  
     }
 
+    // use a custom function to render the submenus
     $links = $data['content']['#content'];
     foreach ($links as $key => $link) {
       if (isset($links[$key]['#below']) && (count($links[$key]['#below']) >= 1)) {
-        //dsm('submenu detected.');
-        //dsm($links[$key]);
         $data['content']['#content'][$key]['#below']['#theme_wrappers'][0][0] = 'menu_tree__menu_block__sanmateo_primary_menu_submenu';
       }
     }
   }
 }
-function smc_base_process_menu_tree(&$variables) {
-  //dsm($variables);
-  //$variables['tree'] = $variables['tree']['#children'];
-}
+
 
 function smc_base_menu_link__menu_block__sanmateo_primary_menu($variables) {
   $element = $variables['element'];
@@ -100,11 +91,9 @@ function smc_base_menu_link__menu_block__sanmateo_primary_menu($variables) {
 }
 
 function smc_base_menu_tree__menu_block__sanmateo_primary_menu($variables) {
-  // <li class="home">'. l('', '<front>') .'</li>
   return '<ul class="flexnav group">' . $variables['tree'] . '</ul>';
 }
 
 function smc_base_menu_tree__menu_block__sanmateo_primary_menu_submenu($variables) {
-  // <li class="home">'. l('', '<front>') .'</li>
   return '<ul class="">' . $variables['tree'] . '</ul>';
 } 

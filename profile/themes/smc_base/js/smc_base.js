@@ -54,4 +54,40 @@ Drupal.smc = Drupal.smc || {};
 
     }
   };
+  
+  Drupal.behaviors.smcFlexsliderBlock = {
+    attach: function (context) {
+      
+      for (var i=0; i < Drupal.settings.OpenSanMateoRotator.length; i++) {        
+        $('.pane-bundle-rotator-panels-pane .field-collection-container').eq(i).addClass(Drupal.settings.OpenSanMateoRotator[i].type);
+        
+        var controlNav = true;
+        // Add thumbnail data only if we have a rotator
+        if (Drupal.settings.OpenSanMateoRotator[i].type == 'rotator') {
+          var controlNav = "thumbnails"; 
+          $('.rs-slider > li').each(function(i) { 
+            var img = $(this).find('img').attr('src');
+            $(this).attr('data-thumb', img);
+          });
+        }
+      }
+      
+      $('.rs-slider.rotator').flexslider({
+        selector: 'li.group',
+        controlNav: ".thumbnails",
+        pauseOnHover: true,
+        slideshow: false,
+        slideshowSpeed: 4000,
+      });
+      /*
+$('.field-collection-container.carousel').flexslider({
+        selector: '.field-name-field-coll-rotator-item > .field-items > .field-item',
+        controlNav: false,
+        pauseOnHover: true,
+        slideshow: false,
+        slideshowSpeed: 4000,
+      });
+*/
+    }
+  };
 })(jQuery);
