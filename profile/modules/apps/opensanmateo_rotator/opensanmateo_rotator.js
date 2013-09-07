@@ -26,6 +26,13 @@
         pauseOnHover: true,
         slideshow: false,
         slideshowSpeed: 4000,
+        start: function(slider){
+          slider.find('.flex-control-thumbs li:eq(0)').addClass('active-item');
+        },
+        before: function(slider){
+          slider.find('.flex-control-thumbs li').removeClass('active-item');
+          slider.find('.flex-control-thumbs li:eq(' + slider.animatingTo + ')').addClass('active-item');
+        },
       });
       $('.field-collection-container.carousel').flexslider({
         selector: '.field-name-field-coll-rotator-item > .field-items > .field-item',
