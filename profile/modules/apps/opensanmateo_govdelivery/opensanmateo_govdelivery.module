@@ -1,0 +1,276 @@
+<?php
+/**
+ * @file
+ * Code for the OpenSanMateo GovDelivery feature.
+ */
+include_once 'opensanmateo_govdelivery.field_topic_ref.inc';
+
+/**
+ * Implements hook_features_template_info
+ */
+function opensanmateo_govdelivery_features_template_info() {
+  $content_types = variable_get('opensanmateo_govdelivery_enabled_types', array());
+  $data = array();
+  foreach($content_types as $content_type => $present) {
+    $data[] = array(
+      'entity_type' => 'node',
+      'bundle_type' => $content_type,
+      'field' => 'field_govdelivery_topic_ref',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'opensanmateo_govdelivery_features_template_field_event'
+    );
+  }
+
+  $vocabs = variable_get('opensanmateo_govdelivery_enabled_vocabs', array());
+  foreach($vocabs as $vocab => $present) {
+    $data[] = array(
+      'entity_type' => 'taxonomy_term',
+      'bundle_type' => $vocab,
+      'field' => 'field_govdelivery_topic_ref',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'opensanmateo_govdelivery_features_template_field_event'
+    );
+  }
+
+  return $data;
+}
+
+/**
+ * Returns default variable values.
+ * @param  string $var
+ *   The variable name you would like the default value for.
+ *
+ * @return mixed
+ *  The variable you would like the value for, or an array of default variables if $var is not found.
+ */
+function opensanmateo_govdelivery_variable_defaults($var = NULL) {
+  $defaults = array(
+    'opensanmateo_govdelivery_base_url' => 'https://bbowman@phase2technology.com:Simplepassword1@stage-api.govdelivery.com',
+    'opensanmateo_govdelivery_email_topic' => t('Content has been recently updated'),
+    'opensanmateo_govdelivery_email_text' => 'A topic you are subscribed to has been recently updated',
+  );
+
+  return !empty($var) ? $defaults[$var] : $defaults;
+}
+
+
+/**
+ * Sync GovDelivery topics to the govdelivery_topics vocabulary.
+ */
+function opensanmateo_govdelivery_sync_topics() {
+  $vocab = taxonomy_vocabulary_machine_name_load('govdelivery_topics');
+  $topic_url = variable_get('opensanmateo_govdelivery_base_url', opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_base_url')) . '/api/account/CASMATEO/topics.xml';
+
+  // Grab existing terms so we can make sure we properly sync items.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'taxonomy_term');
+  $query->propertyCondition('vid', $vocab->vid);
+  $result = $query->execute();
+  $existing_terms = !empty($result['taxonomy_term']) ? taxonomy_term_load_multiple(array_keys($result['taxonomy_term'])) : array();
+
+
+  $request = drupal_http_request($topic_url, array(), 'GET');
+  if ($request->code == 200 && !empty($request->data)) {
+    @$topics = new SimpleXMLElement($request->data);
+
+    foreach ($topics->topic as $topic) {
+
+      if (!opensanmateo_govdelivery_find_term($existing_terms, (string) $topic->code)) {
+        $term = array(
+          'vid' => $vocab->vid,
+          'name' => (string) $topic->name,
+          'field_govdelivery_topic' => array(
+            'und' => array(
+              array('value' => (string) $topic->code),
+            ),
+          ),
+        );
+
+        taxonomy_term_save((object) $term);
+      }
+    }
+
+    // Prune old terms.
+    foreach ($existing_terms as $tid => $term) {
+      taxonomy_term_delete($tid);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function opensanmateo_govdelivery_node_update($node) {
+  opensanmateo_govdelivery_trigger_updates($node);
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function opensanmateo_govdelivery_node_insert($node) {
+  opensanmateo_govdelivery_trigger_updates($node);
+}
+
+/**
+ * Trigger updates for a specific node.
+ *
+ * @param object $node
+ *   The node to trigger updates for.
+ */
+function opensanmateo_govdelivery_trigger_updates($node) {
+  // @todo: better integration with workflow statuses?
+  if ($node->status == 1) {
+    // Send updates for referenced terms.
+    opensanmateo_govdelivery_find_topic_updates($node);
+
+    // Send updates for the GovDelivery vocabulary, if it exists.
+    if (!empty($node->field_govdelivery_topic_ref[$node->language][0]['tid'])) {
+      $tids = array();
+
+      foreach ($node->field_govdelivery_topic_ref[$node->language] as $index => $definition) {
+        $tids[] = $definition['tid'];
+      }
+
+      $terms = taxonomy_term_load_multiple($tids);
+      $term = reset($terms);
+      opensanmateo_govdelivery_send_update($node, $term);
+    }
+  }
+}
+
+/**
+ * Find and trigger updates based on taxonomy terms for the given node.
+ *
+ * @param object $node
+ *   The node to find updates for.
+ *
+ * @return none
+ */
+function opensanmateo_govdelivery_find_topic_updates($node) {
+  // Determine all active taxonomy reference fields attached to the node.
+  $fields_to_search = array();
+  $fields = field_info_field_map();
+  foreach ($fields as $field_name => $field) {
+    if ($field['type'] == 'taxonomy_term_reference' && !empty($field['bundles']['node'])) {
+      if (in_array($node->type, $field['bundles']['node'])) {
+        $fields_to_search[] = $field_name;
+      }
+    }
+  }
+
+  // Aggregate values from all taxonomy reference fields.
+  $field_values = array();
+  if (!empty($fields_to_search)) {
+    foreach ($fields_to_search as $field_name) {
+      $values = field_get_items('node', $node, $field_name);
+      if (!empty($values)) {
+        foreach ($values as $index => $value) {
+          if (!empty($value['tid'])) {
+            $field_values[] = $value['tid'];
+          }
+        }
+      }
+    }
+  }
+
+  // Determine if any referenced terms require GovDelivery updates.
+  $terms_requiring_update = array();
+  if (!empty($field_values)) {
+    $terms = taxonomy_term_load_multiple($field_values);
+    foreach ($terms as $tid => $term) {
+      if (!empty($term->field_govdelivery_topic_ref[LANGUAGE_NONE])) {
+        $terms_requiring_update[] = $term->field_govdelivery_topic_ref[LANGUAGE_NONE][0]['tid'];
+      }
+    }
+  }
+
+  // Send updates.
+  if (!empty($terms_requiring_update)) {
+    $terms = taxonomy_term_load_multiple($terms_requiring_update);
+    foreach ($terms as $tid => $term) {
+      opensanmateo_govdelivery_send_update($node, $term);
+    }
+  }
+}
+
+/**
+ * Send a topic update for GovDelivery.
+ *
+ * @param  object $node
+ *   The node to send the update for.
+ * @param  object $term
+ *   The taxonomy term to send the update for.
+ */
+function opensanmateo_govdelivery_send_update($node, $term) {
+  $send_url = variable_get('opensanmateo_govdelivery_base_url', opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_base_url')) . '/api/account/CASMATEO/bulletins/send_now';
+
+  $subject = variable_get('opensanmateo_govdelivery_email_topic', opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_email_topic'));
+  $subject = token_replace($subject, array('node' => $node, 'term' => $term));
+
+  $body = variable_get('opensanmateo_govdelivery_email_text', opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_email_text'));
+  $body = token_replace($body, array('node' => $node, 'term' => $term));
+
+  $post_params = array(
+    'bulletin[body]' => $body,
+    'bulletin[subject]' => $subject,
+    'bulletin[topics][][code]' => $term->field_govdelivery_topic[LANGUAGE_NONE][0]['value'],
+  );
+
+  $post_params = http_build_query($post_params);
+  $request = drupal_http_request($send_url, array('method' => 'POST', 'data' => $post_params));
+}
+
+/**
+ * Check to see if a given topic exists in an array of terms.
+ *
+ * @param  array $terms
+ *   The array of taxonomy terms to search.
+ * @param  string $code
+ *   The GovDelivery topic code to search for.
+ *
+ * @return bool
+ *   TRUE if found, FALSE otherwise.
+ */
+function opensanmateo_govdelivery_find_term(&$terms, $code) {
+  if (!empty($terms)) {
+    foreach ($terms as $tid => $term) {
+      if (!empty($term->field_govdelivery_topic[LANGUAGE_NONE][0]['value'])) {
+        if ($term->field_govdelivery_topic[LANGUAGE_NONE][0]['value'] == $code) {
+          unset($terms[$tid]);
+          return TRUE;
+        }
+      }
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Implements hook_cron().
+ */
+function opensanmateo_govdelivery_cron() {
+  opensanmateo_govdelivery_sync_topics();
+}
+
+/**
+ * Implements hook_modules_enabled().
+ *
+ * It's kind of strange that we initially import GovDelivery terms here,
+ * but we needed to wait for features to add the correct fields to our bundle
+ * and hook_modules_enabled happens late enough that we can safely save our
+ * entities.
+ */
+function opensanmateo_govdelivery_modules_enabled($modules) {
+  // check if fields exists, and if not, create them via features_revert
+  $instance = field_info_instance('taxonomy_term', 'field_govdelivery_topic', 'govdelivery_topics');
+  if (empty($instance)) {
+    features_revert(array('opensanmateo_govdelivery' => array('field_instance', 'field_base')));
+  }
+
+  if (in_array('opensanmateo_govdelivery', $modules)) {
+    opensanmateo_govdelivery_sync_topics();
+  }
+}
