@@ -14,7 +14,7 @@
  *   - $content['right']: Content in the right column.
  */
 ?>
-<div class="panel-display sm-three-column clearfix" <?php if (!empty($css_id)) { print "id=\"$css_id\""; } ?>>
+<div class="panel-display sm-three-column main-body group clearfix" <?php if (!empty($css_id)) { print "id=\"$css_id\""; } ?>>
   
   <div class="panel-panel panel-col-top">
     <div class="inside"><?php print $content['top']; ?></div>
@@ -32,7 +32,7 @@
     <div class="inside"><?php print $content['right']; ?></div>
   </div>
   
-  <div class="panel-panel panel-col-bottom">
+  <div class="panel-panel panel-col-bottom section news">
     <div class="inside"><?php print $content['bottom']; ?></div>
   </div>
 </div>
