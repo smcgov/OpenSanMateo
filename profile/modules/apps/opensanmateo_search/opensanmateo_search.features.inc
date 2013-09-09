@@ -69,6 +69,8 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_aggregation_12" : { "type" : "string" },
         "search_api_aggregation_13" : { "type" : "string" },
         "search_api_aggregation_14" : { "type" : "string" },
+        "search_api_aggregation_15" : { "type" : "string" },
+        "search_api_aggregation_16" : { "type" : "string" },
         "search_api_site_hash" : { "type" : "uri" },
         "search_api_site_id" : { "type" : "string" },
         "body:value" : { "type" : "text" },
@@ -79,7 +81,9 @@ function opensanmateo_search_default_search_api_index() {
         "field_event_date:value" : { "type" : "date" },
         "field_event_date:value2" : { "type" : "date" },
         "field_event_type:name" : { "type" : "text" },
-        "field_thumbnail_image:file:url" : { "type" : "string" }
+        "field_thumbnail_image:file:url" : { "type" : "string" },
+        "field_thumbnail_image:file:field_file_image_alt_text" : { "type" : "string" },
+        "field_thumbnail_image:file:field_file_image_title_text" : { "type" : "string" }
       },
       "data_alter_callbacks" : {
         "site_index" : { "status" : 1, "weight" : "-50", "settings" : [] },
@@ -196,6 +200,18 @@ function opensanmateo_search_default_search_api_index() {
                 "type" : "fulltext",
                 "fields" : [ "field_subject:name" ],
                 "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
+              },
+              "search_api_aggregation_15" : {
+                "name" : "Aggregated Thumbnail Title",
+                "type" : "fulltext",
+                "fields" : [ "field_thumbnail_image:file:field_file_image_title_text" ],
+                "description" : "A Fulltext aggregation of the following fields: Thumbnail Image \\u00bb The image file. \\u00bb URL."
+              },
+              "search_api_aggregation_16" : {
+                "name" : "Aggregated Thumbnail ALt",
+                "type" : "fulltext",
+                "fields" : [ "field_thumbnail_image:file:field_file_image_alt_text" ],
+                "description" : "A Fulltext aggregation of the following fields: Thumbnail Image \\u00bb The image file. \\u00bb URL."
               }
             }
           }

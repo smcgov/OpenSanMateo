@@ -274,6 +274,20 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_aggregation_2']['label'] = '';
   $handler->display->display_options['fields']['search_api_aggregation_2']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_aggregation_2']['link_to_entity'] = 0;
+  /* Field: Indexed Node: Aggregated Thumbnail */
+  $handler->display->display_options['fields']['search_api_aggregation_15']['id'] = 'search_api_aggregation_15';
+  $handler->display->display_options['fields']['search_api_aggregation_15']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['fields']['search_api_aggregation_15']['field'] = 'search_api_aggregation_15';
+  $handler->display->display_options['fields']['search_api_aggregation_15']['label'] = '';
+  $handler->display->display_options['fields']['search_api_aggregation_15']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['search_api_aggregation_15']['link_to_entity'] = 0;
+  /* Field: Indexed Node: Aggregated Thumbnail */
+  $handler->display->display_options['fields']['search_api_aggregation_16']['id'] = 'search_api_aggregation_16';
+  $handler->display->display_options['fields']['search_api_aggregation_16']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['fields']['search_api_aggregation_16']['field'] = 'search_api_aggregation_16';
+  $handler->display->display_options['fields']['search_api_aggregation_16']['label'] = '';
+  $handler->display->display_options['fields']['search_api_aggregation_16']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['search_api_aggregation_16']['link_to_entity'] = 0;
   /* Sort criterion: Indexed Node: Release Date */
   $handler->display->display_options['sorts']['field_release_date']['id'] = 'field_release_date';
   $handler->display->display_options['sorts']['field_release_date']['table'] = 'search_api_index_san_mateo_content_index';
