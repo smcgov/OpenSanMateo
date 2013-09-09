@@ -7,3 +7,36 @@
 include_once 'opensanmateo_event.features.inc';
 include_once 'opensanmateo_event.field_event.inc';
 include_once 'opensanmateo_event.module.inc';
+
+
+
+/**
+ * implements hook_sanmateo_master_is_set
+ */
+function opensanmateo_event_sanmateo_master_is_set($base) {
+  $vocabs = array(
+    'calendars',
+    'event_type'
+  );
+
+  foreach($vocabs as $name) {
+    if ($base) {
+      variable_set(TAXONOMY_SYNC_CLIENT_PREFIX . $name, "http://$base/taxonomy-sync/list/$name");
+    }
+    else {
+      variable_del(TAXONOMY_SYNC_CLIENT_PREFIX . $name);
+    }
+  }
+}
+/**
+ * implements hook_sanmateo_master_is_set
+ */
+function opensanmateo_event_sanmateo_is_master_set($is_master) {
+  $vocabs = array(
+    'calendars',
+    'event_type'
+  );
+  foreach($vocabs as $name) {
+    variable_set(TAXONOMY_SYNC_MASTER_PREFIX . $name,  $is_master);
+  }
+}

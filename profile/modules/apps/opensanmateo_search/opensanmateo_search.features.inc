@@ -54,7 +54,6 @@ function opensanmateo_search_default_search_api_index() {
         "field_quick_search" : { "type" : "list\\u003Ctext\\u003E", "boost" : "5.0" },
         "field_event_calendar" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_event_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
-        "field_release_date" : { "type" : "date" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "string" },
         "search_api_aggregation_3" : { "type" : "string" },
@@ -66,14 +65,21 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_aggregation_8" : { "type" : "string" },
         "search_api_aggregation_9" : { "type" : "date" },
         "search_api_aggregation_10" : { "type" : "date" },
+        "search_api_aggregation_11" : { "type" : "string" },
+        "search_api_aggregation_12" : { "type" : "string" },
+        "search_api_aggregation_13" : { "type" : "string" },
+        "search_api_aggregation_14" : { "type" : "string" },
         "search_api_site_hash" : { "type" : "uri" },
         "search_api_site_id" : { "type" : "string" },
         "body:value" : { "type" : "text" },
+        "field_sub_type:name" : { "type" : "text" },
+        "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_address:locality" : { "type" : "string" },
+        "field_event_calendar:name" : { "type" : "text" },
         "field_event_date:value" : { "type" : "date" },
         "field_event_date:value2" : { "type" : "date" },
-        "field_thumbnail_image:file:url" : { "type" : "string" },
-        "field_location_address:field_address:locality" : { "type" : "list\\u003Ctext\\u003E" }
+        "field_event_type:name" : { "type" : "text" },
+        "field_thumbnail_image:file:url" : { "type" : "string" }
       },
       "data_alter_callbacks" : {
         "site_index" : { "status" : 1, "weight" : "-50", "settings" : [] },
@@ -147,8 +153,13 @@ function opensanmateo_search_default_search_api_index() {
               "search_api_aggregation_8" : {
                 "name" : "Terms",
                 "type" : "fulltext",
-                "fields" : [ "field_subject:name", "field_sub_type:name" ],
-                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name."
+                "fields" : [
+                  "field_subject:name",
+                  "field_sub_type:name",
+                  "field_event_calendar:name",
+                  "field_event_type:name"
+                ],
+                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
               },
               "search_api_aggregation_9" : {
                 "name" : "Aggregated Start Date",
@@ -161,6 +172,30 @@ function opensanmateo_search_default_search_api_index() {
                 "type" : "fulltext",
                 "fields" : [ "field_event_date:value2" ],
                 "description" : "A Fulltext aggregation of the following fields: Date \\u00bb End date."
+              },
+              "search_api_aggregation_11" : {
+                "name" : "Aggregated Sub Type",
+                "type" : "fulltext",
+                "fields" : [ "field_sub_type:name" ],
+                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
+              },
+              "search_api_aggregation_12" : {
+                "name" : "Aggregated Event Type",
+                "type" : "fulltext",
+                "fields" : [ "field_event_type:name" ],
+                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
+              },
+              "search_api_aggregation_13" : {
+                "name" : "Aggregated Calendar",
+                "type" : "fulltext",
+                "fields" : [ "field_event_calendar:name" ],
+                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
+              },
+              "search_api_aggregation_14" : {
+                "name" : "Aggregated Subject",
+                "type" : "fulltext",
+                "fields" : [ "field_subject:name" ],
+                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
               }
             }
           }
