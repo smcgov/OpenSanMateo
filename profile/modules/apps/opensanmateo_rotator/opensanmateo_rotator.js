@@ -6,8 +6,10 @@
       $('.field-name-field-rotator-caption').addClass('flex-caption');
       $('.field-name-field-rotator-description').addClass('flex-caption');
       
-      for (var i=0; i < Drupal.settings.OpenSanMateoRotator.length; i++) {        
-        $('.pane-bundle-rotator-panels-pane .field-collection-container').eq(i).addClass(Drupal.settings.OpenSanMateoRotator[i].type);
+      for (var i=0; i < Drupal.settings.OpenSanMateoRotator.length; i++) {
+        var fpid = Drupal.settings.OpenSanMateoRotator[i].fpid;
+        var type = Drupal.settings.OpenSanMateoRotator[i].type;        
+        $('.pane-fpid-' + fpid + '.pane-bundle-rotator-panels-pane .field-collection-container').addClass(type);
         
         var controlNav = true;
         // Add thumbnail data only if we have a rotator

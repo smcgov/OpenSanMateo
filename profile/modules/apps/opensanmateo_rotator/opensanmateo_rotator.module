@@ -92,13 +92,14 @@ function opensanmateo_rotator_preprocess_panels_pane(&$vars) {
     else {
       $type = 'none';
     }
-    
-    drupal_add_js(array('OpenSanMateoRotator' => array(array('type' => $type))), 'setting');
+    $fpid = $vars['content']['field_coll_rotator_item']['#object']->fpid;    
+    drupal_add_js(array('OpenSanMateoRotator' => array(array('type' => $type, 'fpid' => $fpid))), 'setting');
         
     if ($type != 'list') {
       flexslider_add();
       drupal_add_css(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.css');
       drupal_add_js(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.js');
     }
+    
   }
 }
