@@ -33,11 +33,15 @@ function opensanmateo_rotator_preprocess_field(&$vars, $hook) {
 
     // give a value for the entity id visible in $items
     $vars['items'][$index]['#eid'] = $value;
-
+    
+    // wrap the caption in an h3
+    if (isset($slide['field_rotator_caption'])) {
+      $slide['field_rotator_caption'][0]['#markup'] = '<h3>' . $slide['field_rotator_caption'][0]['#markup'] . '</h3>';
+    }
     // Move description into the caption
     if (isset($slide['field_rotator_description']) && isset($slide['field_rotator_caption'])) {
-      $slide['field_rotator_caption'][0]['#markup'] .= '<div class="description">' . $slide['field_rotator_description'][0]['#markup'] . '</div>';
-      unset($slide['field_rotator_description'][0]['#markup']);
+      $slide['field_rotator_caption'][0]['#markup'] .= '<p>' . $slide['field_rotator_description'][0]['#markup'] . '</p>';
+      unset($slide['field_rotator_description']);
       $vars['items'][$index]['entity']['field_collection_item'][$value] = $slide;
     }
     
@@ -58,12 +62,12 @@ function opensanmateo_rotator_preprocess_field(&$vars, $hook) {
 
     if (!empty($link)) {
       // this seems like semi-cheating - but there doesn't seem to be a more drupally way to do this     
-      $l = l('|', $link);
+      $l = l('|', $link, array('attributes' => array('class' => array('rotator-wrap-link'))));
       $parts = explode('|', $l);
 
       // wrap the entirety of the content in our link
-      $vars['items'][$index]['#prefix'] = $parts[0];
-      $vars['items'][$index]['#suffix'] = $parts[1];
+      //$vars['items'][$index]['#prefix'] = $parts[0];
+      //$vars['items'][$index]['#suffix'] = $parts[1];
 
       // hide the links
       hide($vars['items'][$index]['entity']['field_collection_item'][$value]['field_rotator_link_url']);

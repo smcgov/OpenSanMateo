@@ -1,7 +1,11 @@
 // default variables
 @import "vars.scss";
+// cross-site alerts
+@import "elements/icons.scss";
 // rotator box/panels pane "block"
 @import "elements/rotator-box.scss";
+// cross-site alerts
+@import "elements/alerts.scss";
 
 body {
   //background: #EEEEEE;

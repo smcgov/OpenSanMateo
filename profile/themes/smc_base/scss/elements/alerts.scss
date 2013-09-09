@@ -1,0 +1,46 @@
+// default variables
+@import "vars.scss";
+
+#block-distributed-blocks-d-bopensanmateo-layout-banner {
+	background-color: $primaryBlue;
+	padding: 0;
+	display: block;
+	text-align: left;
+	border-bottom: 1px solid rgba($primaryBlue, .8);
+
+	.limiter {
+  	max-width: 1120px;
+  	margin: auto;
+  	position: relative;
+  	padding: 1em 1em 0.6em;
+	}
+	
+	.icon-feed {
+	  color: #074a87; 
+	  text-shadow: 0px 1px 1px rgba(white, .25); 
+	  float: left; 
+	  font-size: 2em; 
+	  width: auto; 
+	  margin-right: 2%; 
+	  margin-bottom: 0;
+	 }
+	
+	.alert-content {
+	  color: white; 
+	  margin-bottom: 0; 
+	  width: 80%;
+	  font-weight: bold; 
+	  font-size: .85em;
+	  float: left;
+	  padding-top: .6em; 
+	  z-index:3;
+	}
+	
+	.alert-content p { 		
+	  color: white; 
+	  margin-bottom: 0; 
+	  width: 100%; 
+	  font-weight: bold; 
+	  font-size: .85em;
+  }
+}
