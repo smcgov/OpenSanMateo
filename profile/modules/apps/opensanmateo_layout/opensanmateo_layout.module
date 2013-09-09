@@ -29,10 +29,11 @@ function opensanmateo_layout_block_configure($delta = '') {
   $form = array();
   if ($delta == 'opensanmateo_layout_banner') {
     $form['banner_content'] = array(
-      '#type' => 'textarea',
+      '#type' => 'text_format',
       '#title' => t('Banner block content'),
       '#description' => t('The contents of the block we\'re going to share across our sites.'),
       '#default_value' => variable_get('opensanmateo_layout_banner_content', ''),
+      '#format' => variable_get('opensanmateo_layout_banner_format', NULL),
     );
   }
   return $form;
@@ -43,7 +44,8 @@ function opensanmateo_layout_block_configure($delta = '') {
  */
 function opensanmateo_layout_block_save($delta = '', $edit = array()) {
   if ($delta == 'opensanmateo_layout_banner') {
-    variable_set('opensanmateo_layout_banner_content', $edit['banner_content']);
+    variable_set('opensanmateo_layout_banner_content', $edit['banner_content']['value']);
+    variable_set('opensanmateo_layout_banner_format', $edit['banner_content']['format']);
   }
   return;
 }
