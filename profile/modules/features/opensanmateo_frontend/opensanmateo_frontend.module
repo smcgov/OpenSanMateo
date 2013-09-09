@@ -26,6 +26,11 @@ function opensanmateo_frontend_menu_block_blocks() {
   );
 }
 
-function opensanmateo_frontend_menu_alter(&$items) {
-  //dsm($items);
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function opensanmateo_frontend_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'panels' && $plugin == 'layouts') {
+    return 'plugins/layouts';
+  }
 }
