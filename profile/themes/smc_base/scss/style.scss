@@ -24,38 +24,6 @@
 	-webkit-font-smoothing: antialiased;
 	}
 
-/* Use the following CSS code if you want to have a class per icon */
-/*
-Instead of a list of all class selectors,
-you can use the generic selector below, but it's slower:
-[class*="icon-"] {
-*/
-.icon-mag-glass-02, .icon-menu, .icon-arrow-down, .icon-home, .icon-arrow-down-iso, .icon-close, .icon-subnav, .menu-button, .icon-eye, .icon-filter, .icon-info, .icon-link, .icon-phone, .icon-location   {
-	font-family: "SanMateoIcon";
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	-webkit-font-smoothing: antialiased;
-	}
-.icon-mag-glass-02:before {content: "\e000";}
-.icon-menu:before, .touch-button, .menu-button{content: "\e001";}
-.icon-arrow-down:before {content: "\e002";}
-.icon-home:before {content: "\e003";}
-.icon-arrow-down-iso:before {content: "\e004";}
-.icon-close:before {content: "\e005";}
-.icon-subnav:before {content: "\e006";}
-.icon-eye:before {
-	content: "\e007";
-	padding-right: 0.5em;
-	}
-.icon-filter:before {content: "\e008";}
-.icon-info:before {content: "\e009";}
-.icon-link:before {content: "\e00a";}
-.icon-phone:before {content: "\e00b";}
-.icon-location:before {content: "\e00c";}
-
 body {
 	margin: auto;
 	color: $primaryGray;

@@ -11,6 +11,9 @@
  
 ?>
 <div id="wrapper" class="wrapper page-wrapper group">
+    <?php if ($page['highlighted']): ?>
+      <?php print render($page['highlighted']); ?>
+    <?php endif; ?>
     <div id="dept-switch">
     	<a class="close show_hide icon-close" href="" rel="#dept-switch"></a>
     	<h2>Departments</h2>
@@ -88,7 +91,7 @@
     <?php endif; ?>
 
     <div id="content" class="column"><div class="section">
-      <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
+      
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
