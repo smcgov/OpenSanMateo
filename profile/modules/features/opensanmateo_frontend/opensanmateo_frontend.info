@@ -5,7 +5,10 @@ package = OpenSanMateo
 php = 5.2.4
 version = 7.x-1.0
 project = opensanmateo_frontend
+files[] = opensanmateo_frontend.module
+
 dependencies[] = context
+dependencies[] = panels
 dependencies[] = ctools
 dependencies[] = jquery_update
 dependencies[] = menu_block
