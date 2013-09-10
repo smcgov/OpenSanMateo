@@ -331,3 +331,18 @@ footer {
 /* line 140, ../scss/smc_base.scss */
 #footer-wrapper .section {
   margin-bottom: 0; }
+
+/* line 146, ../scss/smc_base.scss */
+#panels-layout-category-San-Mateo-Layouts-wrapper {
+  padding-left: 0; }
+  /* line 150, ../scss/smc_base.scss */
+  #panels-layout-category-San-Mateo-Layouts-wrapper #panels-layout-category-San-Mateo-Layouts .layout-link {
+    width: 25%;
+    height: auto; }
+    /* line 154, ../scss/smc_base.scss */
+    #panels-layout-category-San-Mateo-Layouts-wrapper #panels-layout-category-San-Mateo-Layouts .layout-link a {
+      display: block;
+      height: 100%; }
+    /* line 158, ../scss/smc_base.scss */
+    #panels-layout-category-San-Mateo-Layouts-wrapper #panels-layout-category-San-Mateo-Layouts .layout-link img {
+      margin-bottom: 5px; }
