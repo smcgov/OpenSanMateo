@@ -19,40 +19,53 @@ function smc_base_process_page(&$variables) {
   }
 }
 
+/**
+ * Implements hook_preprocess_flexslider().
+ */
+function smc_base_preprocess_flexslider(&$variables) {
+  if (!empty($variables['items'])) {
+    foreach ($variables['items'] as $index => &$item) {
+      if (!empty($item['item']['image_field_caption'])) {
+        $item['caption'] = check_markup($item['item']['image_field_caption']['value'], $item['item']['image_field_caption']['format']);
+      }
+    }
+  }
+}
+
 function smc_base_preprocess_block(&$variables) {
   $block = $variables['block'];
-  
+
   // removes the "generic" block class to blocks as it is used elsewhere for a specific style
   // the class will be applied more specifically later
   if ($variables['classes_array'][0] == "block") {
     unset($variables['classes_array'][0]);
   }
-  
+
   if (!isset($block->bid)) {
     return;
   }
-  
+
   switch ($block->bid) {
     case 'menu_block-sanmateo-primary-menu':
-      
+
       $variables['classes_array'][] = 'primary';
       $variables['classes_array'][] = 'main-nav';
 
     break;
-    
+
     case 'distributed_blocks-d_b|opensanmateo_layout_banner':
       //dsm($block);
       //dsm($variables);
     break;
-    
+
     case 'distributed_blocks-d_b|menu-platform-menu':
       //dsm($variables);
     break;
   }
-  
+
 }
 function smc_base_block_view_alter(&$data, $block) {
-  
+
   // there seems to be an odd case where an empty block id comes up.
   if (!isset($block->bid)) {
     return;
@@ -60,11 +73,11 @@ function smc_base_block_view_alter(&$data, $block) {
 
   // Check we get the right menu block (side bar)
   if ($block->bid == 'menu_block-sanmateo-primary-menu') {
-    
+
     // create a "home" link as the first link in the main menu.
-    $keys = array_keys($data['content']['#content']);    
+    $keys = array_keys($data['content']['#content']);
     if (isset($data['content']['#content'][$keys[0]])) {
-      $data['content']['#content'][$keys[0]]['#prefix'] = '<li class="home">' . l('', '<front>') . '</li>';  
+      $data['content']['#content'][$keys[0]]['#prefix'] = '<li class="home">' . l('', '<front>') . '</li>';
     }
 
     // use a custom function to render the submenus
@@ -96,4 +109,4 @@ function smc_base_menu_tree__menu_block__sanmateo_primary_menu($variables) {
 
 function smc_base_menu_tree__menu_block__sanmateo_primary_menu_submenu($variables) {
   return '<ul class="">' . $variables['tree'] . '</ul>';
-} 
+}
