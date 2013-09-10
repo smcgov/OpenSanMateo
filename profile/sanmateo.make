@@ -400,6 +400,18 @@ projects[jquery_update][type] = module
 projects[jquery_update][subdir] = contrib
 projects[jquery_update][version] = 2.3
 
+projects[variable][type] = module
+projects[variable][subdir] = contrib
+projects[variable][version] = 1.1
+
+projects[i18n][type] = module
+projects[i18n][subdir] = contrib
+projects[i18n][version] = 1.7
+
+projects[openpublic_translation_content][type] = module
+projects[openpublic_translation_content][subdir] = apps
+projects[openpublic_translation_content][download][type] = get
+projects[openpublic_translation_content][download][url] = http://appserver.openpublicapp.com/sites/default/files/fserver/openpublic_translation_content.tar.gz
 
 projects[timeperiod][type] = module
 projects[timeperiod][subdir] = contrib
