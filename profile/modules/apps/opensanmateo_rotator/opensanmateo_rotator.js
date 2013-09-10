@@ -9,6 +9,12 @@
       for (var i=0; i < Drupal.settings.OpenSanMateoRotator.length; i++) {
         var fpid = Drupal.settings.OpenSanMateoRotator[i].fpid;
         var type = Drupal.settings.OpenSanMateoRotator[i].type;        
+        
+        // must change the class from carousel to something else. .carousel is used in the foundation css
+        if (type == 'carousel') {
+          type = 'carousel-rotator';
+        }
+        
         $('.pane-fpid-' + fpid + '.pane-bundle-rotator-panels-pane .field-collection-container').addClass(type);
         
         var controlNav = true;
@@ -36,7 +42,7 @@
           slider.find('.flex-control-thumbs li:eq(' + slider.animatingTo + ')').addClass('active-item');
         },
       });
-      $('.field-collection-container.carousel').flexslider({
+      $('.field-collection-container.carousel-rotator').flexslider({
         selector: '.field-name-field-coll-rotator-item > .field-items > .field-item',
         controlNav: false,
         pauseOnHover: true,

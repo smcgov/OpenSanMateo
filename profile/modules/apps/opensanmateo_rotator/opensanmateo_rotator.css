@@ -1,10 +1,10 @@
-.field-collection-container.carousel .field-name-field-coll-rotator-item > .field-items > .field-item,
+.field-collection-container.carousel-rotator .field-name-field-coll-rotator-item > .field-items > .field-item,
 .field-collection-container.rotator .field-name-field-coll-rotator-item > .field-items > .field-item {
   display: none;
 }
 
 .field-collection-container.rotator .field-collection-view .field-name-field-rotator-caption.flex-caption,
-.field-collection-container.carousel .field-collection-view .field-name-field-rotator-caption.flex-caption {
+.field-collection-container.carousel-rotator .field-collection-view .field-name-field-rotator-caption.flex-caption {
     position:absolute;
     left: 0;
     right: 0;
@@ -12,7 +12,7 @@
 }
 
 .field-collection-container.rotator .field-collection-view .field-name-field-rotator-caption.flex-caption,
-.field-collection-container.carousel .field-collection-view .field-name-field-rotator-caption.flex-caption {
+.field-collection-container.carousel-rotator .field-collection-view .field-name-field-rotator-caption.flex-caption {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);  
   color: white;
   padding: 2%;
@@ -23,15 +23,15 @@
 }
 
 .field-collection-container.rotator .field-collection-view .field-collection-item-field-coll-rotator-item .content,
-.field-collection-container.carousel .field-collection-view .field-collection-item-field-coll-rotator-item .content {
+.field-collection-container.carousel-rotator .field-collection-view .field-collection-item-field-coll-rotator-item .content {
   position: relative;
 }
 .field-collection-container.rotator .field-collection-view .field-name-field-rotator-caption.flex-caption,
-.field-collection-container.carousel .field-collection-view .field-name-field-rotator-caption.flex-caption {
+.field-collection-container.carousel-rotator .field-collection-view .field-name-field-rotator-caption.flex-caption {
   font-size: 26px;
 }
 .field-collection-container.rotator .field-collection-view .field-name-field-rotator-caption.flex-caption .description,
-.field-collection-container.carousel .field-collection-view .field-name-field-rotator-caption.flex-caption .description {
+.field-collection-container.carousel-rotator .field-collection-view .field-name-field-rotator-caption.flex-caption .description {
   font-size: 16px;
 }
 
