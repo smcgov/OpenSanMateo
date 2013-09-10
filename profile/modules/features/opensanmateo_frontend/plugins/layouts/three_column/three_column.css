@@ -6,6 +6,9 @@
 .panel-col-top,
 .panel-col-bottom {
   width: 100%;
+  display: block;
+  float: none;
+  clear: both;
 }
 
 .panel-3col .panel-col-first { 

@@ -14,7 +14,7 @@
  *   - $content['right']: Content in the right column.
  */
 ?>
-<div class="panel-display sm-three-column main-body group clearfix" <?php if (!empty($css_id)) { print "id=\"$css_id\""; } ?>>
+<div id="main" class="panel-display sm-three-column main-body group clearfix">
   
   <div class="panel-panel panel-col-top">
     <div class="inside"><?php print $content['top']; ?></div>

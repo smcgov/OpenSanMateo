@@ -14,7 +14,7 @@
     <?php if ($page['highlighted']): ?>
       <?php print render($page['highlighted']); ?>
     <?php endif; ?>
-    <div id="dept-switch">
+    <div id="dept-switch" class="clearfix">
     	<a class="close show_hide icon-close" href="" rel="#dept-switch"></a>
     	<h2>Departments</h2>
     	<ul class="group">
@@ -54,11 +54,11 @@
     
     
     
-  <header id="header" class="group">
+  <header id="header" class="group clearfix">
       <div class="inner">
     		<a class="dept-link show_hide icon-eye" rel="#dept-switch" href="">View All Departments</a>		
     		
-    		<div class="lockup group">
+    		<div class="lockup group clearfix">
     			<?php if ($site_name || $site_slogan): ?>
       			
       			<?php if ($site_name): ?>            
@@ -74,7 +74,7 @@
 
     <?php print render($page['header']); ?>
     <?php if ($messages): ?>
-      <div id="messages"><div class="section clearfix">
+      <div id="messages" class="clearfix"><div class="section clearfix">
         <?php print $messages; ?>
       </div></div> <!-- /.section, /#messages -->
     <?php endif; ?>
@@ -84,7 +84,6 @@
   
 
   <div id="main-wrapper" class="body clearfix">
-    <div id="main" class="main-body group clearfix">
 
     <?php if ($breadcrumb): ?>
       <div id="breadcrumb"><?php print $breadcrumb; ?></div>
@@ -115,7 +114,7 @@
       <?php print $feed_icons; ?>
 
     </div></div> <!-- /.section, /#content -->
-  </div></div> <!-- /#main, /#main-wrapper -->
+  </div> <!-- /#main-wrapper -->
 
   <div id="footer-wrapper"><div class="section">
 
