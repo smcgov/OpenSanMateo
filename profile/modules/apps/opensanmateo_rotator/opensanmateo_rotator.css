@@ -45,3 +45,8 @@
   padding: 0;
   border: none;
 }
+
+.pane-bundle-rotator-panels-pane .field-collection-container.list .flex-caption {
+  position: relative;
+  margin-bottom: 15px;
+}
