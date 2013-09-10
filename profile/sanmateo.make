@@ -99,7 +99,9 @@ projects[calendar][patch][] = http://drupal.org/files/calendar-granularity-14452
 
 projects[flexslider][type] = module
 projects[flexslider][subdir] = contrib
-projects[flexslider][version] = 2.0-alpha1
+projects[flexslider][download][type] = git
+projects[flexslider][download][url] = http://git.drupal.org/project/flexslider.git
+projects[flexslider][download][revision] = 068df89
 projects[flexslider][patch][] = https://drupal.org/files/flexslider-check-if-settings-flexslider-is-defined-1946988-4.patch
 
 projects[embeddable][type] = module
