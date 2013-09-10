@@ -55,44 +55,5 @@ Drupal.smc = Drupal.smc || {};
     }
   };
   
-  Drupal.behaviors.smcFlexsliderBlock = {
-    attach: function (context) {
 
-      if (Drupal.settings.OpenSanMateoRotator) {
-        for (var i=0; i < Drupal.settings.OpenSanMateoRotator.length; i++) {
-          var fpid = Drupal.settings.OpenSanMateoRotator[i].fpid;
-          var type = Drupal.settings.OpenSanMateoRotator[i].type;        
-          $('.pane-fpid-' + fpid + '.pane-bundle-rotator-panels-pane .field-collection-container').addClass(type);
-          
-          var controlNav = true;
-          // Add thumbnail data only if we have a rotator
-          if (Drupal.settings.OpenSanMateoRotator[i].type == 'rotator') {
-            var controlNav = "thumbnails"; 
-            $('.rs-slider > li').each(function(i) { 
-              var img = $(this).find('img').attr('src');
-              $(this).attr('data-thumb', img);
-            });
-          }
-        }
-        if (typeof flexslider == 'function') {
-        $('.rs-slider.rotator').flexslider({
-          selector: 'li.group',
-          controlNav: ".thumbnails",
-          pauseOnHover: true,
-          slideshow: false,
-          slideshowSpeed: 4000,
-        });
-        }
-      }
-      /*
-$('.field-collection-container.carousel').flexslider({
-        selector: '.field-name-field-coll-rotator-item > .field-items > .field-item',
-        controlNav: false,
-        pauseOnHover: true,
-        slideshow: false,
-        slideshowSpeed: 4000,
-      });
-*/
-    }
-  };
 })(jQuery);
