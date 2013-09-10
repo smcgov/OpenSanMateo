@@ -141,3 +141,23 @@ footer {
     margin-bottom: 0;
   }
 }
+
+// fixing the panels admin layout for our custom layouts
+#panels-layout-category-San-Mateo-Layouts-wrapper {
+  padding-left: 0;
+  
+  #panels-layout-category-San-Mateo-Layouts {
+    .layout-link {
+      width: 25%;
+      height: auto;
+      
+      a {
+        display: block;
+        height: 100%;
+      }
+      img {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
