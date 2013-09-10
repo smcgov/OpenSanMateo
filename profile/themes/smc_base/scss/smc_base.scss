@@ -158,6 +158,13 @@ footer {
       img {
         margin-bottom: 5px;
       }
+      
+      &.current-layout {
+        font-weight: bold;
+        img {
+          box-shadow: 3px 3px 6px rgba($primaryGray, 0.7); 
+        }
+      }
     }
   }
 }
