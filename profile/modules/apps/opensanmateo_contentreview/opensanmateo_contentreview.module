@@ -44,6 +44,42 @@ function opensanmateo_contentreview_features_template_info() {
 }
 
 /**
+ * Implements hook_field_widget_info().
+ */
+function opensanmateo_contentreview_field_widget_info() {
+  return array(
+    'strtotime_timeperiod_select' => array(
+      'label' => t('Time period (interval select)'),
+      'field types' => array('number_integer'),
+      'settings' => array(),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function opensanmateo_contentreview_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  $options = array(
+    0 => t('Never'),
+    604800 => t('1 week'),
+    1209600 => t('1 weeks'),
+    2592000 => t('1 month'),
+    7776000 => t('3 months'),
+    15552000 => t('6 months'),
+    31104000 => t('1 year'),
+  );
+
+  $element += array(
+    '#type' => 'select',
+    '#options' => $options,
+    '#default_value' => empty($items[$delta]['value']) ? 0 : $items[$delta]['value'],
+  );
+
+  return array('value' => $element);
+}
+
+/**
  * Implements hook_form_BASE_FORM_alter().
  */
 function opensanmateo_contentreview_form_node_form_alter(&$form, &$form_state, $form_id) {

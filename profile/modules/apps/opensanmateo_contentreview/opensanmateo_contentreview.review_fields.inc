@@ -107,28 +107,9 @@ function opensanmateo_contentreview_field_default_field_interval_instances_templ
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'timeperiod',
-      'settings' => array(
-        'units' => array(
-          1 => array(
-            'max' => 0,
-            'step size' => 1,
-          ),
-          60 => array(
-            'max' => 0,
-            'step size' => 5,
-          ),
-          3600 => array(
-            'max' => 23,
-            'step size' => 1,
-          ),
-          86400 => array(
-            'max' => 365,
-            'step size' => 1,
-          ),
-        ),
-      ),
-      'type' => 'timeperiod_select',
+      'module' => 'opensanmteo_contentreview',
+      'settings' => array(),
+      'type' => 'strtotime_timeperiod_select',
       'weight' => 35,
     ),
   );
