@@ -5,6 +5,11 @@
       $('.field-name-field-coll-rotator-item > .field-items').addClass('slides');
       $('.field-name-field-rotator-caption').addClass('flex-caption');
       $('.field-name-field-rotator-description').addClass('flex-caption');
+      $('.rotator-wrap-link').each(function(index) {
+        var link = $(this).attr('href');
+        $(this).next('.field-name-field-rotator-caption').wrap('<a href="' + link + '" />');
+      });
+      
       
       for (var i=0; i < Drupal.settings.OpenSanMateoRotator.length; i++) {
         var fpid = Drupal.settings.OpenSanMateoRotator[i].fpid;

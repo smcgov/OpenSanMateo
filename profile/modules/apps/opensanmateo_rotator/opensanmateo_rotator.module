@@ -59,16 +59,16 @@ function opensanmateo_rotator_preprocess_field(&$vars, $hook) {
     }
     // give a value for the entity id visible in $items
     $vars['items'][$index]['#eid'] = $value;
-
-    if (!empty($link)) {
+    
+    if (!empty($link)) {      
       // this seems like semi-cheating - but there doesn't seem to be a more drupally way to do this     
       $l = l('|', $link, array('attributes' => array('class' => array('rotator-wrap-link'))));
       $parts = explode('|', $l);
 
-      // wrap the entirety of the content in our link
-      //$vars['items'][$index]['#prefix'] = $parts[0];
-      //$vars['items'][$index]['#suffix'] = $parts[1];
-
+      // wrap the image in our link      
+      $vars['items'][$index]['entity']['field_collection_item'][$value]['field_rotator_image']['#prefix'] = $parts[0];
+      $vars['items'][$index]['entity']['field_collection_item'][$value]['field_rotator_image']['#suffix'] = $parts[1];
+      
       // hide the links
       hide($vars['items'][$index]['entity']['field_collection_item'][$value]['field_rotator_link_url']);
       hide($vars['items'][$index]['entity']['field_collection_item'][$value]['field_rotator_link_node']);

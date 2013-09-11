@@ -1,0 +1,8 @@
+div.menu-name-main-menu.menu-block-subnav-menu li {
+  display: none;
+}
+
+div.menu-name-main-menu.menu-block-subnav-menu li.active-trail,
+div.menu-name-main-menu.menu-block-subnav-menu li.active-trail li {
+  display: block;
+}

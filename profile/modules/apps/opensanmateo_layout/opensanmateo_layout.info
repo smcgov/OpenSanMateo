@@ -11,6 +11,7 @@ dependencies[] = strongarm
 features[ctools][] = panelizer:panelizer:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
+features[menu_custom][] = menu-department-menu
 features[menu_custom][] = menu-platform-menu
 features[panelizer_defaults][] = node:site_page:default
 features[panelizer_defaults][] = node:site_page:default:default
