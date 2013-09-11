@@ -94,7 +94,7 @@ function osm_ff_remote_source_a_process($element, &$form_state, $form) {
  * A #filefield_value_callback function.
  */
 function osm_ff_remote_source_value($element, &$item) {
-  if (isset($item['filefield_remotefile']['url']) && drupal_strlen($item['filefield_remotefile']['url']) > 0 && $item['filefield_remotefile']['url'] != REMOTE_FILE_SOURCE_HINT_TEXT) {    
+  if (isset($item['filefield_remotefile']['url']) && drupal_strlen($item['filefield_remotefile']['url']) > 0 && $item['filefield_remotefile']['url'] != REMOTE_FILE_SOURCE_HINT_TEXT) {
     $value = $item['filefield_remotefile']['url'];
     if (!valid_url($value, TRUE)) {
       form_error($element, t('Invalid Remote File URL.'));
@@ -113,7 +113,7 @@ function osm_ff_remote_source_value($element, &$item) {
         return;
       }
     }
-    
+
     try {
       $file = remote_stream_wrapper_file_load_by_uri($value);
       if (!$file) {
@@ -126,12 +126,12 @@ function osm_ff_remote_source_value($element, &$item) {
       form_set_error('url', $e->getMessage());
       return;
     }
-  
+
     if (empty($file->fid)) {
       form_set_error($element, t('Unable to add file from URL %file.', array('%file' => $value)));
       return;
     }
-    
+
     // Run all the normal validations, minus file size restrictions.
     if (isset($element['#upload_validators']['file_validate_size'])) {
       unset($element['#upload_validators']['file_validate_size']);
@@ -139,17 +139,29 @@ function osm_ff_remote_source_value($element, &$item) {
 
     if (filefield_sources_element_validate($element, (object) $file)) {
       $item = array_merge($item, (array) $file);
-    }    
+    }
   }
 }
 
 function osm_ff_remote_source_preprocess_views_view_fields(&$vars) {
   $uuid = uniqid();
-  $url = $vars['row']->_entity_properties['url'];
-  $vars['fields']['nothing']->content = theme('image', array(
-    'path' => $url,
-    'attributes' => array('class' => 'osm_ff_remote_source_preview'),
-  ));
+
+  // Add check since apparently $vars['row']->_entity_properties isn't always present; set reasonable default if missing
+  $url = !empty($vars['row']->_entity_properties['url']) ? $vars['row']->_entity_properties['url'] : '';
+  $vars['fields']['nothing'] = (object) array(
+    'content' => theme('image', array(
+      'path' => $url,
+      'attributes' => array('class' => 'osm_ff_remote_source_preview'),
+    )),
+
+    // Add these to prevent views-view-fields.tpl.php from losing its mind
+    'class' => '',            // The safe class id to use.
+    'inline' => FALSE,        // Whether or not the field should be inline.
+    'wrapper_prefix' => '',   // A complete wrapper containing the inline_html to use.
+    'wrapper_suffix' => '',   // The closing tag for the wrapper.
+    'label' => '',            // The wrap label text to use.
+    'label_html' => '',       // The full HTML of the label to use including
+  );
   //TODO revist a way to make each file unq with out braking the widget validation
   #$vars['fields']['url']->content = $url . "#" . $uuid;
 }
