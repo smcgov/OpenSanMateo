@@ -42,11 +42,34 @@ function theme_osm_ff_remote_source_element($variables) {
 
   $element['url']['#field_suffix'] = drupal_render($element['select']);
   $view = views_get_view('opensanmateo_media_browser');
-  $view->pager['use_pager'] = TRUE;
-  $view->use_ajax = TRUE;
-  $element['url']['#field_prefix'] = $view->preview();
+  $id = uniqid();
+  $element['url']['#field_prefix'] = "<div id='$id'></div>";
+  osm_ff_remote_source_forma("<div for='$id' class ='osm-ff-move'>" . views_embed_view('opensanmateo_media_browser', 'default') . "</div>") ;
   return '<div class="filefield-source filefield-source-osmremotefile clear-block">' . drupal_render($element['url']) . '</div>';
 
+}
+
+function osm_ff_remote_source_forma($form = NULL) {
+  static $forms;
+  $forms = is_array($forms) ? $forms : array();
+  #$forms =  &drupal_static(__FUNCTION__, array());
+  if($form) {
+    $forms[] = $form;
+  }
+  return implode('', $forms);
+
+}
+function osm_ff_remote_source_page_alter(&$page) {
+  $page['content']['#post_render'][] = 'osm_ff_remote_source_page_past';
+}
+function osm_ff_remote_source_page_past($page) {
+  return $page . osm_ff_remote_source_forma();
+}
+
+function osm_ff_remote_source_post_render($element) {
+  $view =  views_embed_view('opensanmateo_media_browser', 'default');
+  $view = preg_replace("/form/", "div", $view);
+  return $view . $element;
 }
 
 /**
