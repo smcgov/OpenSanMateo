@@ -143,7 +143,6 @@ projects[lock_session][subdir] = contrib
 projects[lock_session][download][type] = git
 projects[lock_session][download][url] = http://git.drupal.org/project/lock_session.git
 projects[lock_session][download][revision] = cc94f8c634b1d6f9a3f551c8e8b082f549b56370
-projects[lock_session][patch][] = http://drupal.org/files/lock-session-dateinterval-php-5.3-1514060-5.patch
 
 libraries[flexslider][download][type] = git
 libraries[flexslider][download][url] = https://github.com/woothemes/FlexSlider.git
