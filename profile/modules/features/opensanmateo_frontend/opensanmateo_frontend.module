@@ -23,6 +23,17 @@ function opensanmateo_frontend_menu_block_blocks() {
       'expanded'    => 1,
       'sort'        => 0,
     ),
+    'subnav-menu' => array(
+      'menu_name'   => 'main-menu',
+      'parent_mlid' => 0,
+      'title_link'  => 0,
+      'admin_title' => 'Sub-nav menu block',
+      'level'       => 1,
+      'follow'      => 0,
+      'depth'       => 0,
+      'expanded'    => 0,
+      'sort'        => 1,
+    ),
   );
 }
 
