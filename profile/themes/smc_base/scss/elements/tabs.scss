@@ -1,0 +1,62 @@
+// default variables
+@import "vars.scss";
+
+div.tabs {
+  
+  ul.tabs {
+    padding: 0;
+    margin: 0;
+    margin-top: 5px;
+    white-space: normal;
+    border: 0;
+    font-size: 12px;
+    
+    li {
+      display: block;
+      float: left;
+      margin: 0 5px 5px 0;
+      
+      a {
+        margin: 0;
+        display: block;
+        color: $primaryBlue;
+        text-decoration: none;
+        text-transform: lowercase;
+        background: #EEEEEE;
+        padding: 4px 8px;
+        border: 1px solid #CCC;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        
+        
+        
+        &:hover {
+          border: 1px solid $primaryTeal;
+          color: $primaryTeal;
+        }
+      }
+    }
+    li.active {
+      a {
+        color: $primaryTeal;
+        background: #DDDDDD;
+        border: 1px solid $primaryTeal;
+        
+        &:hover {
+          border: 1px solid $primaryTeal;
+          color: $primaryTeal;
+        }
+      }
+    }
+  }
+
+  ul.secondary {
+    font-size: 11px;
+    
+    li {
+      padding: 0;
+      border: 0;
+    }
+  }
+}

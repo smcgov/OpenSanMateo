@@ -2,6 +2,81 @@
 /* Fonts */
 /* Media Queries */
 /* Fonts */
+/* line 5, ../scss/elements/toolbar.scss */
+#toolbar strong {
+  display: inline; }
+/* line 10, ../scss/elements/toolbar.scss */
+#toolbar #toolbar-home,
+#toolbar #toolbar-user {
+  display: none; }
+/* line 15, ../scss/elements/toolbar.scss */
+#toolbar div.toolbar-menu {
+  padding: 0; }
+  /* line 17, ../scss/elements/toolbar.scss */
+  #toolbar div.toolbar-menu .toolbar-inner {
+    position: relative;
+    padding: 5px 35px 5px 0; }
+  /* line 22, ../scss/elements/toolbar.scss */
+  #toolbar div.toolbar-menu a.toggle {
+    bottom: 0;
+    right: 5px; }
+
+@media all and (min-width: 940px) {
+  /* line 33, ../scss/elements/toolbar.scss */
+  #toolbar #toolbar-home,
+  #toolbar #toolbar-user {
+    display: block; } }
+/* Media Queries */
+/* Fonts */
+/* line 6, ../scss/elements/tabs.scss */
+div.tabs ul.tabs {
+  padding: 0;
+  margin: 0;
+  margin-top: 5px;
+  white-space: normal;
+  border: 0;
+  font-size: 12px; }
+  /* line 14, ../scss/elements/tabs.scss */
+  div.tabs ul.tabs li {
+    display: block;
+    float: left;
+    margin: 0 5px 5px 0; }
+    /* line 19, ../scss/elements/tabs.scss */
+    div.tabs ul.tabs li a {
+      margin: 0;
+      display: block;
+      color: #036cb6;
+      text-decoration: none;
+      text-transform: lowercase;
+      background: #EEEEEE;
+      padding: 4px 8px;
+      border: 1px solid #CCC;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px; }
+      /* line 34, ../scss/elements/tabs.scss */
+      div.tabs ul.tabs li a:hover {
+        border: 1px solid #38939b;
+        color: #38939b; }
+  /* line 41, ../scss/elements/tabs.scss */
+  div.tabs ul.tabs li.active a {
+    color: #38939b;
+    background: #DDDDDD;
+    border: 1px solid #38939b; }
+    /* line 46, ../scss/elements/tabs.scss */
+    div.tabs ul.tabs li.active a:hover {
+      border: 1px solid #38939b;
+      color: #38939b; }
+/* line 54, ../scss/elements/tabs.scss */
+div.tabs ul.secondary {
+  font-size: 11px; }
+  /* line 57, ../scss/elements/tabs.scss */
+  div.tabs ul.secondary li {
+    padding: 0;
+    border: 0; }
+
+/* Media Queries */
+/* Fonts */
 /* Use the following CSS code if you want to have a class per icon */
 /*
 Instead of a list of all class selectors,
@@ -75,6 +150,72 @@ you can use the generic selector below, but it's slower:
 .icon-feed:before {
   content: "\e00d"; }
 
+/* Media Queries */
+/* Fonts */
+/* line 4, ../scss/elements/layout.scss */
+#main-wrapper {
+  padding: 0 1em; }
+
+/* line 8, ../scss/elements/layout.scss */
+.sidebar {
+  width: 100%;
+  margin-right: 2.5%; }
+
+/* line 13, ../scss/elements/layout.scss */
+.main-content {
+  padding-left: 0; }
+
+@media all and (min-width: 768px) {
+  /* line 20, ../scss/elements/layout.scss */
+  #main-wrapper, header .inner {
+    max-width: 1120px;
+    margin: auto; }
+
+  /* line 24, ../scss/elements/layout.scss */
+  .main-body {
+    padding: 0 0em;
+    margin-bottom: 5%; }
+
+  /* line 28, ../scss/elements/layout.scss */
+  .main-content {
+    width: 70%;
+    float: left;
+    padding-left: 0; }
+
+  /* line 34, ../scss/elements/layout.scss */
+  .sidebar {
+    width: 100%;
+    margin-bottom: 3%; }
+
+  /* line 39, ../scss/elements/layout.scss */
+  .secondary {
+    float: right;
+    width: 27%;
+    margin-left: 3%; } }
+@media all and (min-width: 940px) {
+  /* line 48, ../scss/elements/layout.scss */
+  .main-body {
+    padding: 0; }
+
+  /* line 52, ../scss/elements/layout.scss */
+  .main-content {
+    width: 58%;
+    float: left;
+    padding-left: 1em; }
+
+  /* line 58, ../scss/elements/layout.scss */
+  .sidebar {
+    float: left;
+    width: 17%;
+    margin-right: 2.5%;
+    margin-top: 0;
+    margin-bottom: 5%; }
+
+  /* line 66, ../scss/elements/layout.scss */
+  .secondary {
+    padding-right: 0em;
+    width: 20%;
+    margin-left: 2.5%; } }
 /* line 2, ../scss/elements/rotator-box.scss */
 .flexslider {
   box-shadow: none;
@@ -224,11 +365,11 @@ you can use the generic selector below, but it's slower:
     font-weight: bold;
     font-size: .85em; }
 
-/* line 15, ../scss/smc_base.scss */
+/* line 21, ../scss/smc_base.scss */
 .krumo-root strong {
   display: inline !important; }
 
-/* line 20, ../scss/smc_base.scss */
+/* line 26, ../scss/smc_base.scss */
 ul li.leaf,
 ul li.expanded {
   list-style-type: none;
@@ -236,119 +377,54 @@ ul li.expanded {
   padding: 0;
   margin: 0; }
 
-/* line 28, ../scss/smc_base.scss */
+/* line 34, ../scss/smc_base.scss */
 .messages strong {
   display: inline; }
 
-/* line 33, ../scss/smc_base.scss */
-#toolbar strong {
-  display: inline; }
-/* line 38, ../scss/smc_base.scss */
-#toolbar #toolbar-home,
-#toolbar #toolbar-user {
-  display: none; }
 /* line 43, ../scss/smc_base.scss */
-#toolbar div.toolbar-menu {
-  padding: 0; }
-  /* line 45, ../scss/smc_base.scss */
-  #toolbar div.toolbar-menu .toolbar-inner {
-    position: relative;
-    padding: 5px 35px 5px 0; }
-  /* line 50, ../scss/smc_base.scss */
-  #toolbar div.toolbar-menu a.toggle {
-    bottom: 0;
-    right: 5px; }
-
-/* line 60, ../scss/smc_base.scss */
-div.tabs ul.tabs {
-  padding: 0;
-  margin: 0;
-  margin-top: 5px;
-  white-space: normal;
-  border: 0;
-  font-size: 12px; }
-  /* line 68, ../scss/smc_base.scss */
-  div.tabs ul.tabs li {
-    display: block;
-    float: left;
-    margin: 0 5px 5px 0; }
-    /* line 73, ../scss/smc_base.scss */
-    div.tabs ul.tabs li a {
-      margin: 0;
-      display: block;
-      color: #999999;
-      text-decoration: none;
-      text-transform: lowercase;
-      background: #EEEEEE;
-      padding: 4px 8px;
-      border: 1px solid #CCC;
-      -moz-border-radius: 5px;
-      -webkit-border-radius: 5px;
-      border-radius: 5px; }
-      /* line 88, ../scss/smc_base.scss */
-      div.tabs ul.tabs li a:hover {
-        border: 1px solid #AAAAAA;
-        color: #777777; }
-  /* line 95, ../scss/smc_base.scss */
-  div.tabs ul.tabs li.active a {
-    color: #000000;
-    background: #DDDDDD; }
-    /* line 99, ../scss/smc_base.scss */
-    div.tabs ul.tabs li.active a:hover {
-      border: 1px solid #CCC;
-      color: #000000; }
-/* line 107, ../scss/smc_base.scss */
-div.tabs ul.secondary {
-  font-size: 11px; }
-  /* line 110, ../scss/smc_base.scss */
-  div.tabs ul.secondary li {
-    padding: 0;
-    border: 0; }
-
-/* line 118, ../scss/smc_base.scss */
 nav.main-nav {
   border-top: 0;
   margin-bottom: 0;
   padding-top: 0;
   z-index: 400 !important; }
 
-/* line 124, ../scss/smc_base.scss */
+/* line 49, ../scss/smc_base.scss */
 .flexslider {
   z-index: 1 !important; }
 
-/* line 127, ../scss/smc_base.scss */
+/* line 52, ../scss/smc_base.scss */
 header {
   z-index: 10; }
 
-/* line 131, ../scss/smc_base.scss */
+/* line 56, ../scss/smc_base.scss */
 div.body {
   z-index: 1; }
 
-/* line 135, ../scss/smc_base.scss */
+/* line 60, ../scss/smc_base.scss */
 footer {
   z-index: 10; }
 
-/* line 140, ../scss/smc_base.scss */
+/* line 65, ../scss/smc_base.scss */
 #footer-wrapper .section {
   margin-bottom: 0; }
 
-/* line 146, ../scss/smc_base.scss */
+/* line 71, ../scss/smc_base.scss */
 #panels-layout-category-San-Mateo-Layouts-wrapper {
   padding-left: 0; }
-  /* line 150, ../scss/smc_base.scss */
+  /* line 75, ../scss/smc_base.scss */
   #panels-layout-category-San-Mateo-Layouts-wrapper #panels-layout-category-San-Mateo-Layouts .layout-link {
     width: 25%;
     height: auto; }
-    /* line 154, ../scss/smc_base.scss */
+    /* line 79, ../scss/smc_base.scss */
     #panels-layout-category-San-Mateo-Layouts-wrapper #panels-layout-category-San-Mateo-Layouts .layout-link a {
       display: block;
       height: 100%; }
-    /* line 158, ../scss/smc_base.scss */
+    /* line 83, ../scss/smc_base.scss */
     #panels-layout-category-San-Mateo-Layouts-wrapper #panels-layout-category-San-Mateo-Layouts .layout-link img {
       margin-bottom: 5px; }
-    /* line 162, ../scss/smc_base.scss */
+    /* line 87, ../scss/smc_base.scss */
     #panels-layout-category-San-Mateo-Layouts-wrapper #panels-layout-category-San-Mateo-Layouts .layout-link.current-layout {
       font-weight: bold; }
-      /* line 164, ../scss/smc_base.scss */
+      /* line 89, ../scss/smc_base.scss */
       #panels-layout-category-San-Mateo-Layouts-wrapper #panels-layout-category-San-Mateo-Layouts .layout-link.current-layout img {
         box-shadow: 3px 3px 6px rgba(85, 90, 90, 0.7); }

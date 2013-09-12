@@ -16,23 +16,23 @@
 ?>
 <div id="main" class="panel-display sm-three-column main-body group clearfix">
   
-  <div class="panel-panel panel-col-top">
+  <div class="panel-panel panel-col-top clearfix">
     <div class="inside"><?php print $content['top']; ?></div>
   </div>
   
-  <div class="panel-panel panel-col-first sidebar">
+  <div class="panel-panel panel-col-first sidebar clearfix">
     <div class="inside"><?php print $content['left']; ?></div>
   </div>
 
-  <div class="panel-panel panel-col panel-col-middle main-content">
+  <div class="panel-panel panel-col panel-col-middle main-content clearfix">
     <div class="inside"><?php print $content['middle']; ?></div>
   </div>
 
-  <div class="panel-panel panel-col-last secondary group">
+  <div class="panel-panel panel-col-last secondary group clearfix">
     <div class="inside"><?php print $content['right']; ?></div>
   </div>
   
-  <div class="panel-panel panel-col-bottom section news">
+  <div class="panel-panel panel-col-bottom section news clearfix">
     <div class="inside"><?php print $content['bottom']; ?></div>
   </div>
 </div>
