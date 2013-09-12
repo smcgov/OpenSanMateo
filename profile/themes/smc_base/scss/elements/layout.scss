@@ -1,0 +1,71 @@
+// default variables
+@import "vars.scss";
+
+#main-wrapper {
+  padding: 0 1em;
+}
+
+.sidebar {
+  width: 100%;
+	margin-right: 2.5%;
+}
+
+.main-content {
+  padding-left: 0;
+}
+
+
+@media all and (min-width: $tablet) {
+  
+  #main-wrapper, header .inner {
+  	max-width: 1120px;
+  	margin: auto;
+  }
+  .main-body {
+    padding: 0 0em;
+  	margin-bottom: 5%;
+  }
+  .main-content {
+  	width: 70%;
+  	float: left;
+  	padding-left: 0;
+	}
+
+  .sidebar {
+  	width: 100%;
+    margin-bottom: 3%;
+	}
+
+  .secondary {
+  	float: right; 
+  	width: 27%;
+    margin-left: 3%;
+	}
+}
+
+@media all and (min-width: $desktop) {
+  
+  .main-body {
+    padding: 0;
+  }
+  
+  .main-content {
+  	width: 58%;
+  	float: left;
+  	padding-left: 1em;
+	}
+
+  .sidebar {
+  	float: left;
+  	width: 17%;
+  	margin-right: 2.5%;
+  	margin-top: 0;
+  	margin-bottom: 5%;
+	}
+
+  .secondary {
+  	padding-right: 0em;
+  	width: 20%;
+  	margin-left: 2.5%;
+	}
+}

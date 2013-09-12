@@ -1,7 +1,13 @@
 // default variables
 @import "vars.scss";
-// cross-site alerts
+// Drupal admin toolbar adjustments
+@import "elements/toolbar.scss";
+// Drupal admin tabs adjustments
+@import "elements/tabs.scss";
+// system (font) icons
 @import "elements/icons.scss";
+// sitewide layout and responsive
+@import "elements/layout.scss";
 // rotator box/panels pane "block"
 @import "elements/rotator-box.scss";
 // cross-site alerts
@@ -29,90 +35,9 @@ ul li.expanded {
     display: inline;
   }
 }
-#toolbar {
-  strong {
-    display: inline;
-  }
-  
-  #toolbar-home,
-  #toolbar-user {
-    display: none;
-  }
-  
-  
-  div.toolbar-menu {
-    padding: 0;
-    .toolbar-inner {
-      position: relative;
-      padding: 5px 35px 5px 0;
-    }
-    
-    a.toggle {
-      bottom: 0;
-      right: 5px;
-    }
-  }
 
-}
 
-div.tabs {
-  
-  ul.tabs {
-    padding: 0;
-    margin: 0;
-    margin-top: 5px;
-    white-space: normal;
-    border: 0;
-    font-size: 12px;
-    
-    li {
-      display: block;
-      float: left;
-      margin: 0 5px 5px 0;
-      
-      a {
-        margin: 0;
-        display: block;
-        color: #999999;
-        text-decoration: none;
-        text-transform: lowercase;
-        background: #EEEEEE;
-        padding: 4px 8px;
-        border: 1px solid #CCC;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
-        border-radius: 5px;
-        
-        
-        
-        &:hover {
-          border: 1px solid #AAAAAA;
-          color: #777777;
-        }
-      }
-    }
-    li.active {
-      a {
-        color: #000000;
-        background: #DDDDDD;
-        
-        &:hover {
-          border: 1px solid #CCC;
-          color: #000000;
-        }
-      }
-    }
-  }
 
-  ul.secondary {
-    font-size: 11px;
-    
-    li {
-      padding: 0;
-      border: 0;
-    }
-  }
-}
 
 
 nav.main-nav {
@@ -139,5 +64,32 @@ footer {
 #footer-wrapper {
   .section {
     margin-bottom: 0;
+  }
+}
+
+// fixing the panels admin layout for our custom layouts
+#panels-layout-category-San-Mateo-Layouts-wrapper {
+  padding-left: 0;
+  
+  #panels-layout-category-San-Mateo-Layouts {
+    .layout-link {
+      width: 25%;
+      height: auto;
+      
+      a {
+        display: block;
+        height: 100%;
+      }
+      img {
+        margin-bottom: 5px;
+      }
+      
+      &.current-layout {
+        font-weight: bold;
+        img {
+          box-shadow: 3px 3px 6px rgba($primaryGray, 0.7); 
+        }
+      }
+    }
   }
 }
