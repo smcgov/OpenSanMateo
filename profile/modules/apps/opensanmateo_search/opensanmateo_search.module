@@ -298,3 +298,103 @@ function opensanmateo_search_sanmateo_is_master_set($is_master) {
     variable_set(TAXONOMY_SYNC_MASTER_PREFIX . $name,  $is_master);
   }
 }
+
+function opensanmateo_search_facetapi_force_delta_mapping() {
+    foreach(explode("\n", variable_get('opensanmateo_search_term_facets', '')) as $name) {
+      $id = preg_replace("/ /", "", $name);
+      $rtn['search_api@san_mateo_content_index']['block'][] = $id;
+    }
+  return $rtn;
+}
+
+function opensanmateo_search_facetapi_searcher_info_alter(array &$searchers) {
+  foreach($searchers as &$searcher) {
+    $searcher['include default facets'] = TRUE;
+  }
+}
+/**
+ * Manage new facets
+ */
+function opensanmateo_search_facetapi_facet_info_alter(array &$facet_info, array $searcher_info) {
+  if(isset($facet_info['search_api_aggregation_8'])) {
+
+    foreach(explode("\n", variable_get('opensanmateo_search_term_facets', '')) as $name) {
+      $id = preg_replace("/ /", "", $name);
+      $facet_info[$id] = $facet_info['search_api_aggregation_8'];
+      $facet_info[$id]['label'] = $name;
+      $facet_info[$id]['enabled'] = TRUE;
+      $facet_info[$id]['name'] = $id;
+
+    }
+  }
+}
+
+/**
+* Implements hook_facetapi_filters().
+*/
+function opensanmateo_search_facetapi_filters() {
+  return array(
+    'child_terms' => array(
+      'handler' => array(
+        'label' => t('Exclude Capital Equipment'),
+        'class' => 'FacetapiFilterChildTerms',
+      ),
+    ),
+  );
+}
+
+
+/**
+* Plugin that filters taxonomy terms to be just the children of a particular term
+*/
+class FacetapiFilterChildTerms extends FacetapiFilter {
+
+  /**
+   * Filters facet items.
+   */
+  public function execute(array $build) {
+    $tid = $this->settings->settings['parent_term'];
+    $pterm = taxonomy_term_load($tid);
+    $tree = taxonomy_get_tree($pterm->vid, $pterm->tid);
+    foreach($tree as $term) {
+      $terms[] = $term->name;
+    }
+    foreach($build as $key => $item) {
+      if(!in_array($key, $terms)) {
+        unset($build[$key]);
+      }
+    }
+    return $build;
+  }
+  public function settingsForm(&$form, &$form_state) {
+    $vocs = taxonomy_get_vocabularies();
+    foreach($vocs as $id => $voc) {
+      $tree = taxonomy_get_tree($id);
+      $terms = array();
+      $current = array();
+      foreach($tree as $i => $term) {
+        $terms[$term->tid]['name'] = $term->name;
+        if($term->depth) {
+          $terms[$term->parents[0]]['count'] = isset($terms[$term->parents[0]]['count']) ? $terms[$term->parents[0]]['count'] + 1  : 1;
+        }
+      }
+      foreach($terms as $id => $term) {
+        if (isset($term['count'])) {
+          $terms[$id] = $term['name'] . " (" . $term['count'] . ")";
+        }
+        else {
+          unset($terms[$id]);
+        }
+      }
+      $options[$voc->name]= $terms;
+
+    }
+    $form['parent_term'] = array(
+      '#type' => 'select',
+      '#options' => $options,
+      '#title' => 'Parent Term'
+    );
+  }
+
+}
+

@@ -29,6 +29,13 @@ function opensanmateo_search_app_configure_form() {
     '#default_value' => variable_get('opensanmateo_search_file_types_to_index', array())
   );
 
+  $form['opensanmateo_search_term_facets'] = array(
+    '#type' => 'textarea',
+    '#default_value' => variable_get('opensanmateo_search_term_facets', ''),
+    '#title' => t('Term Facets'),
+    '#description' => t('Here one can create new term facets, please put the Administrative title of the facet one per line, then a block will be create for this facet'),
+  );
+
   $form = system_settings_form($form);
   $form['#submit'][] = 'opensanmateo_search_app_configure_form_submit';
   return $form;
