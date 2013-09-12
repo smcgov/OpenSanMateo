@@ -55,22 +55,22 @@ function opensanmateo_search_default_search_api_index() {
         "field_event_calendar" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_event_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "search_api_language" : { "type" : "string" },
-        "search_api_aggregation_1" : { "type" : "string" },
-        "search_api_aggregation_3" : { "type" : "string" },
-        "search_api_aggregation_2" : { "type" : "string" },
-        "search_api_aggregation_4" : { "type" : "string" },
-        "search_api_aggregation_5" : { "type" : "string" },
-        "search_api_aggregation_6" : { "type" : "string" },
-        "search_api_aggregation_7" : { "type" : "string" },
-        "search_api_aggregation_8" : { "type" : "string" },
-        "search_api_aggregation_9" : { "type" : "date" },
-        "search_api_aggregation_10" : { "type" : "date" },
-        "search_api_aggregation_11" : { "type" : "string" },
-        "search_api_aggregation_12" : { "type" : "string" },
-        "search_api_aggregation_13" : { "type" : "string" },
-        "search_api_aggregation_14" : { "type" : "string" },
-        "search_api_aggregation_15" : { "type" : "string" },
-        "search_api_aggregation_16" : { "type" : "string" },
+        "search_api_multi_aggregation_1" : { "type" : "string" },
+        "search_api_multi_aggregation_3" : { "type" : "string" },
+        "search_api_multi_aggregation_2" : { "type" : "string" },
+        "search_api_multi_aggregation_4" : { "type" : "string" },
+        "search_api_multi_aggregation_5" : { "type" : "string" },
+        "search_api_multi_aggregation_6" : { "type" : "string" },
+        "search_api_multi_aggregation_7" : { "type" : "string" },
+        "search_api_multi_aggregation_8" : { "type" : "string" },
+        "search_api_multi_aggregation_9" : { "type" : "date" },
+        "search_api_multi_aggregation_10" : { "type" : "date" },
+        "search_api_multi_aggregation_11" : { "type" : "string" },
+        "search_api_multi_aggregation_12" : { "type" : "string" },
+        "search_api_multi_aggregation_13" : { "type" : "string" },
+        "search_api_multi_aggregation_14" : { "type" : "string" },
+        "search_api_multi_aggregation_15" : { "type" : "string" },
+        "search_api_multi_aggregation_16" : { "type" : "string" },
         "search_api_site_hash" : { "type" : "uri" },
         "search_api_site_id" : { "type" : "string" },
         "body:value" : { "type" : "text" },
@@ -96,29 +96,29 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_aggregation" : {
+        "search_api_alter_add_multi_aggregation" : {
           "status" : 1,
           "weight" : "0",
           "settings" : { "fields" : {
-              "search_api_aggregation_1" : {
+              "search_api_multi_aggregation_1" : {
                 "name" : "Aggregated Teaser",
                 "type" : "fulltext",
                 "fields" : [ "field_summary", "field_blog_teaser", "body:summary" ],
                 "description" : "A Fulltext aggregation of the following fields: Summary, Teaser, The main body text \\u00bb Summary."
               },
-              "search_api_aggregation_3" : {
+              "search_api_multi_aggregation_3" : {
                 "name" : "Aggregated Author",
                 "type" : "fulltext",
                 "fields" : [ "author", "field_photo_author", "field_document_author" ],
                 "description" : "A Fulltext aggregation of the following fields: Author, author, Author."
               },
-              "search_api_aggregation_2" : {
+              "search_api_multi_aggregation_2" : {
                 "name" : "Aggregated Thumbnail",
                 "type" : "fulltext",
                 "fields" : [ "field_thumbnail_image:file:url" ],
                 "description" : "A Fulltext aggregation of the following fields: Thumbnail Image \\u00bb The image file. \\u00bb URL."
               },
-              "search_api_aggregation_4" : {
+              "search_api_multi_aggregation_4" : {
                 "name" : "Aggregated State",
                 "type" : "fulltext",
                 "fields" : [
@@ -127,7 +127,7 @@ function opensanmateo_search_default_search_api_index() {
                 ],
                 "description" : "A Fulltext aggregation of the following fields: Address \\u00bb Administrative area (i.e. State \\/ Province), Address \\u00bb Address \\u00bb Administrative area (i.e. State \\/ Province)."
               },
-              "search_api_aggregation_5" : {
+              "search_api_multi_aggregation_5" : {
                 "name" : "Aggregated Postal",
                 "type" : "fulltext",
                 "fields" : [
@@ -136,7 +136,7 @@ function opensanmateo_search_default_search_api_index() {
                 ],
                 "description" : "A Fulltext aggregation of the following fields: Address \\u00bb Postal code, Address \\u00bb Address \\u00bb Postal code."
               },
-              "search_api_aggregation_6" : {
+              "search_api_multi_aggregation_6" : {
                 "name" : "Aggregated Thoroughfare",
                 "type" : "fulltext",
                 "fields" : [
@@ -145,7 +145,7 @@ function opensanmateo_search_default_search_api_index() {
                 ],
                 "description" : "A Fulltext aggregation of the following fields: Address \\u00bb Thoroughfare (i.e. Street address), Address \\u00bb Address \\u00bb Thoroughfare (i.e. Street address)."
               },
-              "search_api_aggregation_7" : {
+              "search_api_multi_aggregation_7" : {
                 "name" : "City",
                 "type" : "fulltext",
                 "fields" : [
@@ -154,7 +154,7 @@ function opensanmateo_search_default_search_api_index() {
                 ],
                 "description" : "A Fulltext aggregation of the following fields: Address \\u00bb Locality (i.e. City), Address \\u00bb Address \\u00bb Locality (i.e. City)."
               },
-              "search_api_aggregation_8" : {
+              "search_api_multi_aggregation_8" : {
                 "name" : "Terms",
                 "type" : "fulltext",
                 "fields" : [
@@ -165,49 +165,49 @@ function opensanmateo_search_default_search_api_index() {
                 ],
                 "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
               },
-              "search_api_aggregation_9" : {
+              "search_api_multi_aggregation_9" : {
                 "name" : "Aggregated Start Date",
                 "type" : "fulltext",
                 "fields" : [ "field_release_date", "field_event_date:value" ],
                 "description" : "A Fulltext aggregation of the following fields: Release Date, Date \\u00bb Start date."
               },
-              "search_api_aggregation_10" : {
+              "search_api_multi_aggregation_10" : {
                 "name" : "Aggregated End Date",
                 "type" : "fulltext",
                 "fields" : [ "field_event_date:value2" ],
                 "description" : "A Fulltext aggregation of the following fields: Date \\u00bb End date."
               },
-              "search_api_aggregation_11" : {
+              "search_api_multi_aggregation_11" : {
                 "name" : "Aggregated Sub Type",
                 "type" : "fulltext",
                 "fields" : [ "field_sub_type:name" ],
                 "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
               },
-              "search_api_aggregation_12" : {
+              "search_api_multi_aggregation_12" : {
                 "name" : "Aggregated Event Type",
                 "type" : "fulltext",
                 "fields" : [ "field_event_type:name" ],
                 "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
               },
-              "search_api_aggregation_13" : {
+              "search_api_multi_aggregation_13" : {
                 "name" : "Aggregated Calendar",
                 "type" : "fulltext",
                 "fields" : [ "field_event_calendar:name" ],
                 "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
               },
-              "search_api_aggregation_14" : {
+              "search_api_multi_aggregation_14" : {
                 "name" : "Aggregated Subject",
                 "type" : "fulltext",
                 "fields" : [ "field_subject:name" ],
                 "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
               },
-              "search_api_aggregation_15" : {
+              "search_api_multi_aggregation_15" : {
                 "name" : "Aggregated Thumbnail Title",
                 "type" : "fulltext",
                 "fields" : [ "field_thumbnail_image:file:field_file_image_title_text" ],
                 "description" : "A Fulltext aggregation of the following fields: Thumbnail Image \\u00bb The image file. \\u00bb URL."
               },
-              "search_api_aggregation_16" : {
+              "search_api_multi_aggregation_16" : {
                 "name" : "Aggregated Thumbnail ALt",
                 "type" : "fulltext",
                 "fields" : [ "field_thumbnail_image:file:field_file_image_alt_text" ],
@@ -270,8 +270,8 @@ function opensanmateo_search_default_search_api_index() {
         "url" : { "type" : "string" },
         "field_summary" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
-        "search_api_aggregation_1" : { "type" : "text" },
-        "search_api_aggregation_2" : { "type" : "text" },
+        "search_api_multi_aggregation_1" : { "type" : "text" },
+        "search_api_multi_aggregation_2" : { "type" : "text" },
         "search_api_site_hash" : { "type" : "string" },
         "search_api_site_id" : { "type" : "string" },
         "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" }
@@ -284,17 +284,17 @@ function opensanmateo_search_default_search_api_index() {
           "settings" : { "default" : "1", "bundles" : [] }
         },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
-        "search_api_alter_add_aggregation" : {
+        "search_api_alter_add_multi_aggregation" : {
           "status" : 1,
           "weight" : "0",
           "settings" : { "fields" : {
-              "search_api_aggregation_1" : {
+              "search_api_multi_aggregation_1" : {
                 "name" : "Description",
                 "type" : "fulltext",
                 "fields" : [ "field_summary" ],
                 "description" : "A Fulltext aggregation of the following fields: Summary."
               },
-              "search_api_aggregation_2" : {
+              "search_api_multi_aggregation_2" : {
                 "name" : "Subject",
                 "type" : "fulltext",
                 "fields" : [ "field_subject:name" ],
@@ -372,7 +372,7 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_multi_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } }
       },
       "processors" : {

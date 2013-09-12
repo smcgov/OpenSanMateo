@@ -13,10 +13,10 @@ function opensanmateo_search_facetapi_default_facet_settings() {
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
-  $facet->name = 'search_api@san_mateo_content_index:block:search_api_aggregation_11';
+  $facet->name = 'search_api@san_mateo_content_index:block:search_api_multi_aggregation_11';
   $facet->searcher = 'search_api@san_mateo_content_index';
   $facet->realm = 'block';
-  $facet->facet = 'search_api_aggregation_11';
+  $facet->facet = 'search_api_multi_aggregation_11';
   $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
@@ -42,15 +42,15 @@ function opensanmateo_search_facetapi_default_facet_settings() {
     'nofollow' => 1,
     'show_expanded' => 0,
   );
-  $export['search_api@san_mateo_content_index:block:search_api_aggregation_11'] = $facet;
+  $export['search_api@san_mateo_content_index:block:search_api_multi_aggregation_11'] = $facet;
 
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
-  $facet->name = 'search_api@san_mateo_content_index:block:search_api_aggregation_12';
+  $facet->name = 'search_api@san_mateo_content_index:block:search_api_multi_aggregation_12';
   $facet->searcher = 'search_api@san_mateo_content_index';
   $facet->realm = 'block';
-  $facet->facet = 'search_api_aggregation_12';
+  $facet->facet = 'search_api_multi_aggregation_12';
   $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
@@ -76,15 +76,15 @@ function opensanmateo_search_facetapi_default_facet_settings() {
     'nofollow' => 1,
     'show_expanded' => 0,
   );
-  $export['search_api@san_mateo_content_index:block:search_api_aggregation_12'] = $facet;
+  $export['search_api@san_mateo_content_index:block:search_api_multi_aggregation_12'] = $facet;
 
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
-  $facet->name = 'search_api@san_mateo_content_index:block:search_api_aggregation_13';
+  $facet->name = 'search_api@san_mateo_content_index:block:search_api_multi_aggregation_13';
   $facet->searcher = 'search_api@san_mateo_content_index';
   $facet->realm = 'block';
-  $facet->facet = 'search_api_aggregation_13';
+  $facet->facet = 'search_api_multi_aggregation_13';
   $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
@@ -110,15 +110,15 @@ function opensanmateo_search_facetapi_default_facet_settings() {
     'nofollow' => 1,
     'show_expanded' => 0,
   );
-  $export['search_api@san_mateo_content_index:block:search_api_aggregation_13'] = $facet;
+  $export['search_api@san_mateo_content_index:block:search_api_multi_aggregation_13'] = $facet;
 
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
-  $facet->name = 'search_api@san_mateo_content_index:block:search_api_aggregation_14';
+  $facet->name = 'search_api@san_mateo_content_index:block:search_api_multi_aggregation_14';
   $facet->searcher = 'search_api@san_mateo_content_index';
   $facet->realm = 'block';
-  $facet->facet = 'search_api_aggregation_14';
+  $facet->facet = 'search_api_multi_aggregation_14';
   $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
@@ -144,7 +144,7 @@ function opensanmateo_search_facetapi_default_facet_settings() {
     'nofollow' => 1,
     'show_expanded' => 0,
   );
-  $export['search_api@san_mateo_content_index:block:search_api_aggregation_14'] = $facet;
+  $export['search_api@san_mateo_content_index:block:search_api_multi_aggregation_14'] = $facet;
 
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */

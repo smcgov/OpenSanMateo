@@ -316,11 +316,11 @@ function opensanmateo_search_facetapi_searcher_info_alter(array &$searchers) {
  * Manage new facets
  */
 function opensanmateo_search_facetapi_facet_info_alter(array &$facet_info, array $searcher_info) {
-  if(isset($facet_info['search_api_aggregation_8'])) {
+  if(isset($facet_info['search_api_multi_aggregation_8'])) {
 
     foreach(explode("\n", variable_get('opensanmateo_search_term_facets', '')) as $name) {
       $id = preg_replace("/ /", "", $name);
-      $facet_info[$id] = $facet_info['search_api_aggregation_8'];
+      $facet_info[$id] = $facet_info['search_api_multi_aggregation_8'];
       $facet_info[$id]['label'] = $name;
       $facet_info[$id]['enabled'] = TRUE;
       $facet_info[$id]['name'] = $id;
@@ -336,7 +336,7 @@ function opensanmateo_search_facetapi_filters() {
   return array(
     'child_terms' => array(
       'handler' => array(
-        'label' => t('Exclude Capital Equipment'),
+        'label' => t('Single Taxonomy Branch'),
         'class' => 'FacetapiFilterChildTerms',
       ),
     ),
