@@ -401,7 +401,11 @@ you can use the generic selector below, but it's slower:
     height: 80px;
     width: 80px;
     overflow: hidden; }
-  /* line 42, ../scss/elements/teaser.scss */
+    /* line 41, ../scss/elements/teaser.scss */
+    .universal-teaser .node-thumbnail img {
+      max-width: 100%;
+      height: auto; }
+  /* line 47, ../scss/elements/teaser.scss */
   .universal-teaser .node-teaser {
     display: block;
     margin-bottom: 5%;

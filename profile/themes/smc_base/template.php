@@ -129,6 +129,39 @@ function smc_base_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
   
   if ($view->name == 'opensanmateo_search') {
+    // Legend for (wonky) field names
+    // search_api_multi_aggregation_2   - thumbnail url
+    // search_api_multi_aggregation_15  - thumbnail title
+    // search_api_multi_aggregation_16  - thumbnail alt
+    
+    // build the real thumbnail from the data parts (2, 15, 16)
+    
+    if (isset($vars['fields']['search_api_multi_aggregation_2']->content)) {
+      $img = theme('image', array(
+        'path' => $vars['fields']['search_api_multi_aggregation_2']->content,
+        'title' => $vars['fields']['search_api_multi_aggregation_15']->content,
+        'alt' => $vars['fields']['search_api_multi_aggregation_16']->content,
+        'attributes' => array(
+          'class' => array(
+            'node-thumbnail-img',
+          ),
+        ),
+      ));
+      
+      // apply the image
+      $vars['fields']['search_api_multi_aggregation_2']->content = '<div class="node-thumbnail">' . $img . '</div>';  
+    }
+    else {
+      // then remove it completely
+      unset($vars['fields']['search_api_multi_aggregation_2']);  
+    }
+    
+    // unset the alt and title fields completely from displaying
+    unset($vars['fields']['search_api_multi_aggregation_15']);
+    unset($vars['fields']['search_api_multi_aggregation_16']);
+    //dsm($vars['fields']);
+    
+    
     
     $vars['fields']['title']->wrapper_prefix = '<header class="group clearfix">' . $vars['fields']['type']->wrapper_prefix;
     $vars['fields']['type']->wrapper_suffix = $vars['fields']['type']->wrapper_suffix . '</header>';
