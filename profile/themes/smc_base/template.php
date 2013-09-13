@@ -123,7 +123,6 @@ function smc_base_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
   
   if ($view->name == 'opensanmateo_search') {
-    //krumo($vars['fields']);
     
     $vars['fields']['title']->wrapper_prefix = '<header class="group clearfix">' . $vars['fields']['type']->wrapper_prefix;
     $vars['fields']['type']->wrapper_suffix = $vars['fields']['type']->wrapper_suffix . '</header>';
