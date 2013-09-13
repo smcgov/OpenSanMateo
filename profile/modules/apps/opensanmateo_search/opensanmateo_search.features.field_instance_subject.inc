@@ -40,12 +40,12 @@ function opensanmateo_search_field_default_field_instances_subject_template() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'taxonomy',
+      'module' => 'term_ref_autocomplete',
       'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
+        'autocomplete_path' => 'term_ref_autocomplete/autocomplete',
         'size' => 60,
       ),
-      'type' => 'taxonomy_autocomplete',
+      'type' => 'term_ref_autocomplete_widget',
       'weight' => 33,
     ),
   );
