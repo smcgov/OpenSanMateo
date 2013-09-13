@@ -370,6 +370,19 @@ you can use the generic selector below, but it's slower:
 /* line 7, ../scss/elements/teaser.scss */
 .universal-teaser .node-url {
   display: none; }
+/* line 11, ../scss/elements/teaser.scss */
+.universal-teaser header {
+  margin-bottom: 5%; }
+/* line 15, ../scss/elements/teaser.scss */
+.universal-teaser .node-type {
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 0; }
+/* line 20, ../scss/elements/teaser.scss */
+.universal-teaser .node-title {
+  float: left;
+  margin-top: 0;
+  width: 80%; }
 
 /* line 23, ../scss/smc_base.scss */
 .krumo-root strong {

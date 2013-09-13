@@ -6,12 +6,21 @@
   
   .node-url {
     display: none;
-  } 
+  }
+  
+  header {
+    margin-bottom: 5%;
+  }
+  
   .node-type {
-    
+    float: right;
+    margin-left: 10px;
+    margin-bottom: 0;
   } 
   .node-title {
-    
+    float: left;
+    margin-top: 0;
+    width: 80%;
   }
   .node-thumbnail {
     
