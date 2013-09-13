@@ -423,6 +423,6 @@ projects[timeperiod][type] = module
 projects[timeperiod][subdir] = contrib
 projects[timeperiod][version] = 1.0-beta1
 
-projects[defautlconfig][type] = module
-projects[defautlconfig][subdir] = contrib
-projects[defautlconfig][version] = 1.0-beta1
+projects[defaultconfig][type] = module
+projects[defaultconfig][subdir] = contrib
+projects[defaultconfig][version] = 1.0-alpha9
