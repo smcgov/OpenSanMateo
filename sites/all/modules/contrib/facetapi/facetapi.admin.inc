@@ -659,11 +659,12 @@ function facetapi_facet_display_form($form, &$form_state, FacetapiAdapter $adapt
   $form['#submit'][] = 'facetapi_facet_display_form_submit';
   $form['#validate'][] = 'facetapi_facet_display_form_validate';
 
-  // Allow the realm and adapter to alter the form.
+  // Allow the realm, adapter, and URL  to alter the form.
   if ($realm['settings callback']) {
     $realm['settings callback']($form, $form_state);
   }
   $adapter->settingsForm($form, $form_state);
+  $adapter->getUrlProcessor()->settingsForm($form, $form_state);
 
   return $form;
 }

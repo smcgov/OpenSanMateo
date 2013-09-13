@@ -1,0 +1,214 @@
+<?php
+/**
+ * @file
+ * Code for the OpenPublic Translation Content feature.
+ */
+
+include_once('openpublic_translation_content.features.inc');
+
+
+/*
+ * Implements hook_init().
+ */
+function openpublic_translation_content_init() {
+  openpublic_translation_content_enable_context(variable_get('openpublic_translation_enable_switcher', 1));
+}
+
+/**
+ * Implementation of hook_views_pre_view().
+ *
+ * Add in a language filter for the current language.
+ */
+function openpublic_translation_content_views_pre_view(&$view, $display_id) {
+  //do not add the filter for views that are to be excluded
+  $views_excluded = variable_get('openpublic_translation_content_excluded_views', array());
+  if (($view->base_table == 'node') && 
+      !(isset($views_excluded[$view->name]) && $views_excluded[$view->name]) ) {
+    $view->display['default']->handler->options['filters']['language']['id'] = 'language';
+    $view->display['default']->handler->options['filters']['language']['table'] = 'node';
+    $view->display['default']->handler->options['filters']['language']['field'] = 'language';
+    $view->display['default']->handler->options['filters']['language']['value'] = array(
+      '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+      LANGUAGE_NONE => LANGUAGE_NONE,
+    );
+    $view->display[$display_id]->handler->options['filters']['language']['id'] = 'language';
+    $view->display[$display_id]->handler->options['filters']['language']['table'] = 'node';
+    $view->display[$display_id]->handler->options['filters']['language']['field'] = 'language';
+    $view->display[$display_id]->handler->options['filters']['language']['value'] = array(
+      '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+      LANGUAGE_NONE => LANGUAGE_NONE,
+    );
+  }
+}
+
+
+/**
+ * Implements hook_requirements_api()
+ *
+ * Let openpublic know if we have more then one language setup
+ */
+function openpublic_translation_content_requirements_api() {
+  $langs = array();
+  foreach(language_list() as $code => $lang) {
+    $langs[$code] = $lang->name;
+  }
+  $lang_last = array_pop($langs);
+  $langs_string = empty($trans) ? $lang_last :
+    implode(" and ", array(implode(', ', $langs), $lang_last));
+  $tran = array(
+    'title'=> t('OpenPublic Translation content'),
+    'description' => t('For Openpublic Translation Cotent to have an effect there must be more then one language configured. This can be done on the !language_config_link.', array('!language_config_link'=> l('Language Configuration Page', 'admin/config/regional/language'))),
+    'value' => $langs_string,
+  );
+  if(empty($langs)) {
+    $tran['severity'] = REQUIREMENT_ERROR;
+    $tran['value'] = t("Only One language");
+  }
+  else {
+    $tran['severity'] = REQUIREMENT_OK;
+  }
+  return array("openpublic_translation_content", $tran);
+  
+
+}
+
+/**
+ * implements hook_menu()
+ */
+function openpublic_translation_content_menu() {
+  return array(
+    'admin/config/regional/convert-und' => array(
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('openpublic_translation_content_convert_und'),
+      'access arguments' => array('administer languages'),
+      'type' => MENU_CALLBACK,
+    ),
+    'admin/config/regional/convert-und-menu' => array(
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('openpublic_translation_content_convert_und_menu'),
+      'access arguments' => array('administer languages'),
+      'type' => MENU_CALLBACK,
+    ),
+  );
+
+}
+
+/**
+ * Form builder function for admin/config/regional/convert-und
+ *
+ * Convert all und to the current language and then return 
+ */
+function openpublic_translation_content_convert_und($form, &$form_state) {
+  global $language;
+  
+  return confirm_form($form, t('Are you sure you want to convert all unassigned content to %lang?', array('%lang' => $language->name)), drupal_get_destination());
+}
+
+function openpublic_translation_content_convert_und_submit($form, &$form_state) {
+  global $language;
+
+  // update nodes.
+  $nids = array();
+  $result = db_query("SELECT nid FROM {node} WHERE language='und'");
+  foreach ($result as $record) {
+    $nids[] = $record->nid;
+  }
+
+  if (count($nids)) {
+    module_load_include('inc', 'node', 'node.admin');
+    node_mass_update($nids, array('newlang' => $language->language));
+  }
+
+  $form_state['redirect'] = FALSE;
+}
+
+/**
+ * Form builder function for admin/config/regional/convert-und-menu
+ *
+ * Convert all und to the current language and then return 
+ */
+function openpublic_translation_content_convert_und_menu($form, &$form_state) {
+  global $language;
+  
+  return confirm_form($form, t('Are you sure you want to convert all unassigned menu items to %lang?', array('%lang' => $language->name)), drupal_get_destination());
+}
+
+function openpublic_translation_content_convert_und_menu_submit($form, &$form_state) {
+  global $language;
+
+ // Update menu languages.
+  $menu_updated = db_update('menu_custom')
+      ->fields(array(
+                   'i18n_mode' => I18N_MODE_MULTIPLE,
+                   'language' => $language->language,
+               ))
+      ->execute();
+  
+  $menu_item_updated = db_update('menu_links')
+      ->fields(array(
+                   'language' => $language->language,
+               ))
+      ->condition('language', 'und')
+      ->execute();
+}
+
+function openpublic_translation_content_multilingual_settings_changed() {
+  if (!function_exists('language_negotiation_info')) {
+    drupal_language_initialize();
+  }
+  $info = language_negotiation_info();
+  $enabled_providers = variable_get("language_negotiation_language", array());
+
+  if (count($enabled_providers) <= 1) {
+    $enabled_providers[LANGUAGE_NEGOTIATION_DEFAULT] = $info[LANGUAGE_NEGOTIATION_DEFAULT];
+    $enabled_providers['locale-url'] = $info['locale-url'];
+
+    // Add session switcher as a default if nothing else has been selected
+    language_negotiation_set('language', $enabled_providers);
+  }
+}
+
+/**
+ * When converting languages, we need to make sure that all fields get the new language
+ */
+function openpublic_translation_content_node_presave($node) {
+  if (isset($node->newlang) && field_has_translation_handler('node', 'locale')) {
+    $new_language = $node->newlang;
+    $previous_language = $node->language; 
+    
+    $node->language = $new_language;
+    
+    unset($node->languageassign_langcode);
+    
+    $available_languages = field_content_languages();
+    list(, , $bundle) = entity_extract_ids('node', $node);
+    
+    foreach (field_info_instances('node', $bundle) as $instance) {
+      $field_name = $instance['field_name'];
+      $field = field_info_field($field_name);
+
+      // Handle a possible language change: new language values are inserted,
+      // previous ones are deleted.
+      
+      if ($field['translatable'] && $previous_language != $new_language) {
+        $node->{$field_name}[$new_language] = $node->{$field_name}[$previous_language];
+        $node->{$field_name}[$previous_language] = array();
+      }
+    }    
+  }   
+}
+
+function openpublic_translation_content_enable_context($value) {
+  $context = context_load('language_switch');
+  if (isset($context->disabled) && $context->disabled && !$value) {
+    // no change - disabled
+  }
+  else if (!isset($context->disabled) && $value) {
+    // no change - enabled
+  }
+  else {
+    // changing value
+    ctools_export_set_object_status($context, !$value);
+    context_save($context);
+  }
+}

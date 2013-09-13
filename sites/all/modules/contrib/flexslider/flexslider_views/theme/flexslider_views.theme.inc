@@ -2,61 +2,41 @@
 
 /**
  * @file
- * Theme functions for FlexSlider Views integration
+ * Theme functions for FlexSlider Views
  *
  * @author Mathew Winstone <mwinstone@coldfrontlabs.ca>
  */
 
 /**
- * Defines theme_views_view_flexslider().
+ * Add a preprocessor to prepare data from FlexSlider Views
  */
-function theme_views_view_flexslider($vars) {
-  $items = array();
-  $view = $vars['view'];
-  $options = $vars['options'];
-  $optionset = flexslider_optionset_load($options['optionset']);
+function template_process_flexslider_views(&$vars) {
+  // Only run the preprocessor if it is a view
+  if (!empty($vars['view'])) {
+    // Prepare all data to be passed to theme_flexslider().
+    $items = array();
+    $view = $vars['view'];
+    $settings = array();
+    $settings['optionset'] = $vars['options']['optionset'];
 
-  $img_field_name = $vars['img_field_name'];
-  $img_field_field_name = 'field_' . $img_field_name;
+    $row_plugin = $view->style_plugin->row_plugin;
 
-  $row_plugin = $view->style_plugin->row_plugin;
-
-  foreach ($vars['rows'] as $id => $row) {
-    // Render the row into a slide
-    $view->row_index = $id;
-    $item['slide'] = $row_plugin->render($row);
-
-    // @todo rethink how to add alt/title tags to image fields. It's possible
-    // to have multiple image fields per slide, the alt/title tags to include
-    // on image fields should be tied to each field, not to the style plugin.
-    /*
-    if (isset($options['caption_field']) && !empty($options['caption_field'])) {
-      $data = $view->style_plugin->rendered_fields[$id][$options['caption_field']];
-      if (!empty($data)) {
-        $item['title'] = $data;
-      }
-    }
-    if (isset($options['text_field']) && !empty($options['text_field'])) {
-      $data = $view->style_plugin->rendered_fields[$id][$options['text_field']];
-      if (!empty($data)) {
-        $item['alt'] = $data;
-      }
-    }
-    //*/
-
-    // If an image field is set, use it to set a slide thumbnail
-    if (isset($row->_field_data[$view->base_field]['entity']->{$img_field_name}) and isset($row->{$img_field_field_name}[0]['raw']['uri'])) {
-      $item['thumb'] = image_style_url($optionset->imagestyle_thumbnail, $row->{$img_field_field_name}[0]['raw']['uri']);
-    }
-    else {
-      $item['thumb'] = '';
+    foreach ($vars['rows'] as $id => $row) {
+      // Render the row into a slide
+      $view->row_index = $id;
+      $item['slide'] = $row_plugin->render($row);
+      $item['caption'] = (isset($row->caption) && !empty($row->caption)) ? $row->caption : NULL;
+      $items[] = $item;
     }
 
-    $items[] = $item;
+    // Add the slide items to the variables
+    $vars['items'] = $items;
+
+    // Add the attributes
+    $settings['attributes']['id'] = $vars['options']['id'];
+
+    // Reset the options to the processed values
+    $vars['settings'] = $settings;
   }
-
-  return theme('flexslider', array(
-    'items' => $items,
-    'settings' => $options,
-  ));
+  return $vars;
 }

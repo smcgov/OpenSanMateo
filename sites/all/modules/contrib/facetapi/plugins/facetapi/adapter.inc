@@ -854,6 +854,9 @@ abstract class FacetapiAdapter {
       // Apply the adapter's default settings.
       $this->settings[$name]->settings += $this->getDefaultSettings();
 
+      // Apply the URL processor's default settings.
+      $this->settings[$name]->settings += $this->getUrlProcessor()->getDefaultSettings();
+
       // Applies each dependency plugin's default settings.
       foreach ($facet['dependency plugins'] as $id) {
         if ($is_new) {

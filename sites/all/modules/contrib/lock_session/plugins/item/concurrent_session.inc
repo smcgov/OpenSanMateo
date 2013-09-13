@@ -90,14 +90,12 @@ class LockSessionConcurrent extends PasswordPolicyItem {
   }
 
   static function interval_string_to_int($interval_string) {
-    $int = strtotime($interval_string, 0);
-
-    if($int === FALSE) {
-      // Let the user know we weren't able to parse the time string
-      drupal_set_message(t('Unable to parse time string, please use a string formated like 
-          ## [seconds|minutes|hours|days|years]'), 'error');
-    }
-
+    $interval = DateInterval::createFromDateString($interval_string);
+    $int = 
+      $interval->s +
+      $interval->i * 60 +
+      $interval->h * 60*60 +
+      $interval->d * 60*60*24;
     return $int;
   }
 

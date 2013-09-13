@@ -1,0 +1,14 @@
+name = Search API Multi Aggregate
+description = "Provides a data alteration callback for Search API."
+dependencies[] = search_api
+core = 7.x
+package = Search
+
+files[] = includes/callback_add_multi_aggregation.inc
+
+; Information added by drupal.org packaging script on 2013-07-29
+version = "7.x-1.1"
+core = "7.x"
+project = "searchapimultiaggregate"
+datestamp = "1375082181"
+
