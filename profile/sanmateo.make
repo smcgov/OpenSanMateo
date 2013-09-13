@@ -418,4 +418,7 @@ projects[openpublic_translation_content][download][url] = http://appserver.openp
 projects[timeperiod][type] = module
 projects[timeperiod][subdir] = contrib
 projects[timeperiod][version] = 1.0-beta1
-projects[file_entity][subdir] = contrib
+
+projects[defautlconfig][type] = module
+projects[defautlconfig][subdir] = contrib
+projects[defautlconfig][version] = 1.0-beta1
