@@ -406,7 +406,6 @@ you can use the generic selector below, but it's slower:
     display: block;
     margin-bottom: 5%;
     font-size: 1em;
-    width: 80%;
     line-height: 1.6em; }
 
 /* line 23, ../scss/smc_base.scss */
