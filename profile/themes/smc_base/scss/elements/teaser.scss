@@ -38,12 +38,16 @@
 		width: 80px;
 		overflow: hidden;
 		
+		img {
+  		max-width: 100%;
+  		height: auto;
+		}
+		
   }
   .node-teaser {
     display: block;
 		margin-bottom: 5%;
 		font-size: 1em;
-		width: 80%;
 		line-height: 1.6em;
   }
   .node-start-date {
