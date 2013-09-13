@@ -299,32 +299,34 @@ function opensanmateo_search_sanmateo_is_master_set($is_master) {
   }
 }
 
-function opensanmateo_search_facetapi_force_delta_mapping() {
-    foreach(explode("\n", variable_get('opensanmateo_search_term_facets', '')) as $name) {
-      $id = preg_replace("/ /", "", $name);
-      $rtn['search_api@san_mateo_content_index']['block'][] = $id;
-    }
-  return $rtn;
+
+/**
+ * helper function to parse out the different facet names and id for creating new facets
+ * @see opensanmateo_search_facetapi_facet_info_alter()
+ */
+function opensanmateo_search_get_term_facets() {
+  $facets = array();
+  foreach(explode("\n", variable_get('opensanmateo_search_term_facets', '')) as $name) {
+    $name = trim($name);
+    $id = preg_replace("/ /", "", $name);
+    $facets[$id] = $name;
+  }
+  return $facets;
 }
 
-function opensanmateo_search_facetapi_searcher_info_alter(array &$searchers) {
-  foreach($searchers as &$searcher) {
-    $searcher['include default facets'] = TRUE;
-  }
-}
 /**
  * Manage new facets
+ *
+ * We are adding facet that are copies of the Aggregated Terms Facet
+ *
  */
 function opensanmateo_search_facetapi_facet_info_alter(array &$facet_info, array $searcher_info) {
   if(isset($facet_info['search_api_multi_aggregation_8'])) {
-
-    foreach(explode("\n", variable_get('opensanmateo_search_term_facets', '')) as $name) {
-      $id = preg_replace("/ /", "", $name);
+    foreach(opensanmateo_search_get_term_facets() as $id => $name) {
       $facet_info[$id] = $facet_info['search_api_multi_aggregation_8'];
       $facet_info[$id]['label'] = $name;
       $facet_info[$id]['enabled'] = TRUE;
       $facet_info[$id]['name'] = $id;
-
     }
   }
 }

@@ -42,6 +42,14 @@ function opensanmateo_search_app_configure_form() {
 }
 function opensanmateo_search_app_configure_form_submit($form,$form_state) {
   features_template_revert();
+  foreach(opensanmateo_search_get_term_facets() as $id => $name) {
+    $adapter = facetapi_adapter_load('search_api@san_mateo_content_index');
+    $facet = facetapi_facet_load($id, 'search_api@san_mateo_content_index');
+    $realm = facetapi_realm_load('block');
+    facetapi_save_facet_status($adapter, $realm, $facet, 1, FALSE, FALSE);
+
+  }
+
 }
 
 /**
