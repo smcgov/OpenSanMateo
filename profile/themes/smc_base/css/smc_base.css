@@ -367,22 +367,47 @@ you can use the generic selector below, but it's slower:
 
 /* Media Queries */
 /* Fonts */
-/* line 7, ../scss/elements/teaser.scss */
-.universal-teaser .node-url {
-  display: none; }
-/* line 11, ../scss/elements/teaser.scss */
-.universal-teaser header {
-  margin-bottom: 5%; }
-/* line 15, ../scss/elements/teaser.scss */
-.universal-teaser .node-type {
-  float: right;
-  margin-left: 10px;
-  margin-bottom: 0; }
-/* line 20, ../scss/elements/teaser.scss */
-.universal-teaser .node-title {
-  float: left;
-  margin-top: 0;
-  width: 80%; }
+/* line 4, ../scss/elements/teaser.scss */
+.universal-teaser {
+  border-top: 1px solid rgba(3, 108, 182, 0.1);
+  padding: 1.5em 0; }
+  /* line 8, ../scss/elements/teaser.scss */
+  .universal-teaser .node-url {
+    display: none; }
+  /* line 12, ../scss/elements/teaser.scss */
+  .universal-teaser header {
+    margin-bottom: 5%; }
+  /* line 16, ../scss/elements/teaser.scss */
+  .universal-teaser .node-type {
+    float: right;
+    max-width: 20%;
+    font-size: .75em;
+    position: absolute;
+    right: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0; }
+  /* line 25, ../scss/elements/teaser.scss */
+  .universal-teaser .node-title {
+    float: left;
+    margin-top: 0;
+    width: 80%; }
+  /* line 30, ../scss/elements/teaser.scss */
+  .universal-teaser .node-thumbnail {
+    border: 5px solid rgba(3, 108, 182, 0.05);
+    float: left;
+    border-radius: 3px;
+    margin-bottom: 2%;
+    margin-right: 2%;
+    height: 80px;
+    width: 80px;
+    overflow: hidden; }
+  /* line 42, ../scss/elements/teaser.scss */
+  .universal-teaser .node-teaser {
+    display: block;
+    margin-bottom: 5%;
+    font-size: 1em;
+    width: 80%;
+    line-height: 1.6em; }
 
 /* line 23, ../scss/smc_base.scss */
 .krumo-root strong {

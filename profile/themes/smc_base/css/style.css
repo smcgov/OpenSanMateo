@@ -2550,114 +2550,109 @@ ul.info {
     padding: 0; }
     /* line 2390, ../scss/style.scss */
     .search-results .results > li header .meta {
-      border-radius: 3px;
-      position: relative;
-      font-size: .85em; }
-    /* line 2398, ../scss/style.scss */
+      				/*
+      border-radius: 3px; 
+      				position: relative; 
+      				font-size: .85em;
+      */ }
+    /* line 2400, ../scss/style.scss */
     .search-results .results > li li h5 {
       color: #38939b;
       font-weight: 100; }
-    /* line 2404, ../scss/style.scss */
+    /* line 2406, ../scss/style.scss */
     .search-results .results > li .thumb {
       margin-right: 2%;
       margin-bottom: 0; }
-    /* line 2409, ../scss/style.scss */
-    .search-results .results > li .content {
-      margin-bottom: 3%; }
-      /* line 2412, ../scss/style.scss */
-      .search-results .results > li .content p {
-        width: 80%;
-        font-size: 1em; }
 
-  /* line 2420, ../scss/style.scss */
+  /* line 2422, ../scss/style.scss */
   ul.info {
     margin-bottom: 3%; }
-    /* line 2423, ../scss/style.scss */
+    /* line 2425, ../scss/style.scss */
     ul.info > li {
       width: 32%;
       margin-right: 2%;
       font-size: 1em;
       margin-bottom: 0; }
-    /* line 2430, ../scss/style.scss */
+    /* line 2432, ../scss/style.scss */
     ul.info > li:last-child {
       width: 32%; }
 
-  /* line 2437, ../scss/style.scss */
+  /* line 2439, ../scss/style.scss */
   .search-large .search {
     position: relative;
     right: auto;
     top: auto;
     padding: 0; }
-    /* line 2443, ../scss/style.scss */
+    /* line 2445, ../scss/style.scss */
     .search-large .search input[type="search"] {
       padding: 1.75em 1.2em;
       font-size: 1em; }
-    /* line 2448, ../scss/style.scss */
+    /* line 2450, ../scss/style.scss */
     .search-large .search .btn {
       padding: .63em;
       font-size: 1.5em; } }
-/* line 2458, ../scss/style.scss */
+/* line 2460, ../scss/style.scss */
 .dept-home .main-body {
   padding: 0; }
-  /* line 2462, ../scss/style.scss */
+  /* line 2464, ../scss/style.scss */
   .dept-home .main-body .sidebar {
     margin-top: -3%; }
 
-/* line 2467, ../scss/style.scss */
+/* line 2469, ../scss/style.scss */
 #sub {
   display: block; }
 
 @media all and (min-width: 769px) {
-  /* line 2472, ../scss/style.scss */
+  /* line 2474, ../scss/style.scss */
   .filter-link, .main-body .close, .sub-link {
     display: none; }
 
-  /* line 2474, ../scss/style.scss */
+  /* line 2476, ../scss/style.scss */
   .event-filter, .search-filter {
     padding: .5em 1em 1em;
     background-color: rgba(3, 108, 182, 0.05);
     border: 1px solid rgba(3, 108, 182, 0.05);
     border-radius: 3px;
     display: block; }
-    /* line 2481, ../scss/style.scss */
+    /* line 2483, ../scss/style.scss */
     .event-filter h4, .search-filter h4 {
       display: block;
       font-weight: 100;
       color: #036cb6;
       margin-bottom: 13%; }
-    /* line 2488, ../scss/style.scss */
+    /* line 2490, ../scss/style.scss */
     .event-filter label, .search-filter label {
       margin-bottom: 3%;
       font-weight: bold;
       color: #555a5a; }
-    /* line 2494, ../scss/style.scss */
+    /* line 2496, ../scss/style.scss */
     .event-filter select, .search-filter select {
       margin-bottom: 16%; }
-    /* line 2498, ../scss/style.scss */
+    /* line 2500, ../scss/style.scss */
     .event-filter select:last-child, .search-filter select:last-child {
       margin-bottom: 0; }
-    /* line 2503, ../scss/style.scss */
+    /* line 2505, ../scss/style.scss */
     .event-filter ul li, .search-filter ul li {
       width: 100%;
       padding: 0 0 1.25em 0; }
-    /* line 2506, ../scss/style.scss */
+    /* line 2508, ../scss/style.scss */
     .event-filter .date-filter, .search-filter .date-filter {
       padding-top: 3%;
       margin: 0;
       width: 100%;
       padding-bottom: 0; }
-      /* line 2512, ../scss/style.scss */
+      /* line 2514, ../scss/style.scss */
       .event-filter .date-filter ul, .search-filter .date-filter ul {
         margin-bottom: 0;
         padding-bottom: 0; }
-      /* line 2514, ../scss/style.scss */
+      /* line 2516, ../scss/style.scss */
       .event-filter .date-filter label, .search-filter .date-filter label {
         margin-bottom: 2%;
         color: #555a5a; }
-      /* line 2519, ../scss/style.scss */
+      /* line 2521, ../scss/style.scss */
       .event-filter .date-filter li:first-child, .search-filter .date-filter li:first-child {
         padding-bottom: 1em; }
-      /* line 2522, ../scss/style.scss */
+      /* line 2524, ../scss/style.scss */
       .event-filter .date-filter li, .search-filter .date-filter li {
         float: left;
         width: 100%;
@@ -2665,19 +2660,19 @@ ul.info {
         margin-right: 0;
         padding-bottom: 0em; } }
 @media all and (min-width: 800px) {
-  /* line 2537, ../scss/style.scss */
+  /* line 2539, ../scss/style.scss */
   .primary li a {
     font-size: 1em; }
 
-  /* line 2541, ../scss/style.scss */
+  /* line 2543, ../scss/style.scss */
   .inner {
     padding-left: 1em;
     padding-right: 1em; }
 
-  /* line 2546, ../scss/style.scss */
+  /* line 2548, ../scss/style.scss */
   .main-body {
     padding: 0 1em; }
-    /* line 2549, ../scss/style.scss */
+    /* line 2551, ../scss/style.scss */
     .main-body header {
       margin-bottom: 3%; }
 
@@ -2687,10 +2682,10 @@ ul.info {
   	margin-right: 2.5%;
   }
   */
-  /* line 2561, ../scss/style.scss */
+  /* line 2563, ../scss/style.scss */
   .dept-home .main-body {
     padding: 0 1em; }
-    /* line 2565, ../scss/style.scss */
+    /* line 2567, ../scss/style.scss */
     .dept-home .main-body .sidebar {
       	/*
       width: 17%;
@@ -2698,33 +2693,33 @@ ul.info {
       	margin-top: 0;
       	margin-bottom: 5%;
       */ }
-      /* line 2573, ../scss/style.scss */
+      /* line 2575, ../scss/style.scss */
       .dept-home .main-body .sidebar div {
         margin-bottom: 15%; }
-      /* line 2574, ../scss/style.scss */
+      /* line 2576, ../scss/style.scss */
       .dept-home .main-body .sidebar h3 {
         border-top: 5px solid rgba(56, 147, 155, 0.1);
         padding-top: .5em; }
-      /* line 2576, ../scss/style.scss */
+      /* line 2578, ../scss/style.scss */
       .dept-home .main-body .sidebar .dept-promo {
         margin-top: 0%;
         margin-bottom: 0%;
         display: block;
         background-color: transparent;
         padding: 0; }
-        /* line 2583, ../scss/style.scss */
+        /* line 2585, ../scss/style.scss */
         .dept-home .main-body .sidebar .dept-promo .dept-logo {
           background-color: rgba(85, 90, 90, 0.05);
           width: 100%;
           margin: auto;
           padding: 1em;
           display: block; }
-          /* line 2589, ../scss/style.scss */
+          /* line 2591, ../scss/style.scss */
           .dept-home .main-body .sidebar .dept-promo .dept-logo img {
             width: 50%;
             display: block;
             margin: auto; }
-        /* line 2596, ../scss/style.scss */
+        /* line 2598, ../scss/style.scss */
         .dept-home .main-body .sidebar .dept-promo p {
           float: left;
           width: 100%;
@@ -2735,15 +2730,15 @@ ul.info {
           margin-bottom: 0;
           text-align: left;
           display: block; }
-          /* line 2606, ../scss/style.scss */
+          /* line 2608, ../scss/style.scss */
           .dept-home .main-body .sidebar .dept-promo p .amp {
             color: rgba(85, 90, 90, 0.5); }
 
-  /* line 2617, ../scss/style.scss */
+  /* line 2619, ../scss/style.scss */
   .main-content .hls h4 {
     line-height: 1.7em; }
 
-  /* line 2622, ../scss/style.scss */
+  /* line 2624, ../scss/style.scss */
   .secondary {
     	/*
     padding-right: 0em;
@@ -2751,12 +2746,12 @@ ul.info {
     	margin-left: 2.5%;
     */ }
 
-  /* line 2630, ../scss/style.scss */
+  /* line 2632, ../scss/style.scss */
   .page-title {
     font-size: 3em;
     padding-left: 0; }
 
-  /* line 2637, ../scss/style.scss */
+  /* line 2639, ../scss/style.scss */
   .event-teaser .event {
     float: left;
     width: 30%;
@@ -2766,71 +2761,71 @@ ul.info {
     background-color: white;
     border: 1px solid rgba(3, 108, 182, 0.1);
     /* 		h4, .meta {margin-top: 5%} */ }
-    /* line 2646, ../scss/style.scss */
+    /* line 2648, ../scss/style.scss */
     .event-teaser .event > div {
       padding: .5em 1em 0; }
-    /* line 2648, ../scss/style.scss */
+    /* line 2650, ../scss/style.scss */
     .event-teaser .event > div:first-child {
       padding: .75em 1em .5em; }
-    /* line 2650, ../scss/style.scss */
+    /* line 2652, ../scss/style.scss */
     .event-teaser .event h4 {
       width: 75%;
       margin-top: 0;
       padding-left: 0;
       margin-bottom: 0; }
-  /* line 2660, ../scss/style.scss */
+  /* line 2662, ../scss/style.scss */
   .event-teaser .event-details {
     width: 100%;
     margin: 2% 0 5%;
     border-top: 1px dashed rgba(56, 147, 155, 0.1);
     border-bottom: 1px dashed rgba(56, 147, 155, 0.1);
     padding: .75em 1em .5em; }
-    /* line 2667, ../scss/style.scss */
+    /* line 2669, ../scss/style.scss */
     .event-teaser .event-details p, .event-teaser .event-details dl {
       float: left;
       width: 50%;
       font-size: .75em; }
-    /* line 2673, ../scss/style.scss */
+    /* line 2675, ../scss/style.scss */
     .event-teaser .event-details .address, .event-teaser .event-details .time {
       padding: 0em 1em .5em 0;
       margin-bottom: 0;
       font-size: .75em; }
-  /* line 2680, ../scss/style.scss */
+  /* line 2682, ../scss/style.scss */
   .event-teaser img {
     width: 35%;
     border: 0;
     float: left;
     padding: 0 1em 1em 0; }
-  /* line 2687, ../scss/style.scss */
+  /* line 2689, ../scss/style.scss */
   .event-teaser .event-sum {
     clear: none;
     background-color: transparent;
     width: 100%;
     font-size: .75em;
     padding: .75em 1em 1em; }
-  /* line 2695, ../scss/style.scss */
+  /* line 2697, ../scss/style.scss */
   .event-teaser .event dt, .event-teaser .event strong {
     font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica;
     font-weight: 100;
     text-transform: uppercase; }
-  /* line 2701, ../scss/style.scss */
+  /* line 2703, ../scss/style.scss */
   .event-teaser dd {
     color: rgba(85, 90, 90, 0.85); }
 
-  /* line 2706, ../scss/style.scss */
+  /* line 2708, ../scss/style.scss */
   footer nav ul {
     width: 45%; }
 
-  /* line 2711, ../scss/style.scss */
+  /* line 2713, ../scss/style.scss */
   .search-filter ul, .event-filter ul {
     padding-bottom: .75em; }
-  /* line 2712, ../scss/style.scss */
+  /* line 2714, ../scss/style.scss */
   .search-filter select, .event-filter select {
     margin-bottom: 1.5em; } }
-/* line 2718, ../scss/style.scss */
+/* line 2720, ../scss/style.scss */
 .touch-button {
   display: none; }
 
-/* line 2719, ../scss/style.scss */
+/* line 2721, ../scss/style.scss */
 #mti_wfs_colophon {
   display: none !important; }

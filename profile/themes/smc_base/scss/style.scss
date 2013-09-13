@@ -2388,9 +2388,11 @@ padding: 0;
 		header {
 			
 			.meta {
-				border-radius: 3px; 
+				/*
+border-radius: 3px; 
 				position: relative; 
 				font-size: .85em;
+*/
 				}
 			}
 		
@@ -2407,11 +2409,11 @@ padding: 0;
 			}
 				
 		.content {
-			margin-bottom: 3%;
+			//margin-bottom: 3%;
 			
 			p {
-				width: 80%;
-				font-size: 1em;
+				//width: 80%;
+				//font-size: 1em;
 				}
 			}
 		}

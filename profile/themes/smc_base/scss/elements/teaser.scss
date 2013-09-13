@@ -2,7 +2,8 @@
 @import "vars.scss";
 
 .universal-teaser {
-  
+  border-top: 1px solid rgba($primaryBlue, .1); 
+  padding: 1.5em 0;
   
   .node-url {
     display: none;
@@ -14,8 +15,12 @@
   
   .node-type {
     float: right;
-    margin-left: 10px;
-    margin-bottom: 0;
+		max-width: 20%;
+		font-size: .75em;
+		position: absolute;
+		right: 0;
+		border-bottom-right-radius: 0;
+		border-top-right-radius: 0;
   } 
   .node-title {
     float: left;
@@ -23,10 +28,23 @@
     width: 80%;
   }
   .node-thumbnail {
-    
+    border: 5px solid rgba($primaryBlue, .05);
+		float: left; 
+		border-radius: 3px; 
+		margin-bottom: 2%;
+    margin-right: 2%;
+		
+		height: 80px;
+		width: 80px;
+		overflow: hidden;
+		
   }
   .node-teaser {
-    
+    display: block;
+		margin-bottom: 5%;
+		font-size: 1em;
+		width: 80%;
+		line-height: 1.6em;
   }
   .node-start-date {
     
