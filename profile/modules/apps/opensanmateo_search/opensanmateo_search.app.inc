@@ -29,12 +29,27 @@ function opensanmateo_search_app_configure_form() {
     '#default_value' => variable_get('opensanmateo_search_file_types_to_index', array())
   );
 
+  $form['opensanmateo_search_term_facets'] = array(
+    '#type' => 'textarea',
+    '#default_value' => variable_get('opensanmateo_search_term_facets', ''),
+    '#title' => t('Term Facets'),
+    '#description' => t('Here one can create new term facets, please put the Administrative title of the facet one per line, then a block will be create for this facet'),
+  );
+
   $form = system_settings_form($form);
   $form['#submit'][] = 'opensanmateo_search_app_configure_form_submit';
   return $form;
 }
 function opensanmateo_search_app_configure_form_submit($form,$form_state) {
   features_template_revert();
+  foreach(opensanmateo_search_get_term_facets() as $id => $name) {
+    $adapter = facetapi_adapter_load('search_api@san_mateo_content_index');
+    $facet = facetapi_facet_load($id, 'search_api@san_mateo_content_index');
+    $realm = facetapi_realm_load('block');
+    facetapi_save_facet_status($adapter, $realm, $facet, 1, FALSE, FALSE);
+
+  }
+
 }
 
 /**

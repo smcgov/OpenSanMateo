@@ -118,6 +118,7 @@ dependencies[] = opensanmateo_search
 dependencies[] = opensanmateo_wysiwyg
 dependencies[] = opensanmateo_frontend
 dependencies[] = opensanmateo_contentreview
+dependencies[] = opensanmateo_redirect
 
 ;DEVELOPMENT ONLY
 

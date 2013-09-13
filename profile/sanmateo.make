@@ -299,6 +299,10 @@ projects[search_api_solr][subdir] = contrib
 projects[search_api_solr][version] = 1.0
 projects[search_api_solr][patch][] =  http://drupal.org/files/1776534.patch
 
+projects[searchapimultiaggregate][type] = module
+projects[searchapimultiaggregate][subdir] = contrib
+projects[searchapimultiaggregate][version] = 1.1
+
 projects[panelizer][type] = module
 projects[panelizer][subdir] = contrib
 projects[panelizer][version] = 3.1
@@ -418,4 +422,7 @@ projects[openpublic_translation_content][download][url] = http://appserver.openp
 projects[timeperiod][type] = module
 projects[timeperiod][subdir] = contrib
 projects[timeperiod][version] = 1.0-beta1
-projects[file_entity][subdir] = contrib
+
+projects[defautlconfig][type] = module
+projects[defautlconfig][subdir] = contrib
+projects[defautlconfig][version] = 1.0-beta1
