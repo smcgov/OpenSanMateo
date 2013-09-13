@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * Implements hook_facetapi_widgets().
+ */
+function facetapi_select_facetapi_widgets() {
+  return array(
+    'facetapi_select_dropdowns' => array(
+      'handler' => array(
+        'label' => t('Select Field (Dropdowns)'),
+        'class' => 'FacetapiSelectDropdowns',
+        'query types' => array('term'),
+      ),
+    ),
+  );
+}
+
+/**
+ * Generates the select form from an array of options
+ */
+function facetapi_select_select_form($form, &$form_state, $vars) {
+  $form = array();
+
+  $form['#attributes'] = $vars['attributes'];
+  $form['#attached']['js'][] = drupal_get_path('module', 'facetapi_select') . '/js/facetapi_select.js';
+
+  $form['select_query'] = array(
+    '#type' => 'select',
+    '#options' => $vars['options'],
+    '#default_value' => request_uri(),
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Filter'),
+  );
+
+  if ($vars['settings']['auto-submit']) {
+    $form['submit']['#attributes']['class'][] = 'js-hide';
+  }
+
+  return $form;
+}
+
+/**
+ * Handle select block submit
+ */
+function facetapi_select_select_form_submit($form, &$form_state) {
+  $url = $form_state['values']['select_query'];
+  $url = drupal_parse_url($form_state['values']['select_query']);
+  $url['path'] = substr($url['path'], 1);
+  drupal_goto($url['path'], $url);
+}

@@ -79,7 +79,10 @@ function openpublic_resources_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_resource';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'moderation',
+    1 => 'revision',
+  );
   $export['node_options_resource'] = $strongarm;
 
   $strongarm = new stdClass();

@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Search API Multi Aggregate module.
+ *
+ * Add a data alteration callback for Search API.
+ */
+
+/**
+ * Implements hook_search_api_alter_callback_info().
+ */
+function searchapimultiaggregate_search_api_alter_callback_info() {
+  $description = "Gives you the ability to define additional fields, containing data from one or more other fields. The difference with 'Aggregated fields' is that those fields will be multi-valued.";
+
+  $callbacks['search_api_alter_add_multi_aggregation'] = array(
+    'name' => t('Aggregated fields (multi-valued)'),
+    'description' => t($description),
+    'class' => 'SearchApiAlterAddMultiAggregation',
+  );
+
+  return $callbacks;
+}

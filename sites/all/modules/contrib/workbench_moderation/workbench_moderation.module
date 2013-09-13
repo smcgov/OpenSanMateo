@@ -349,6 +349,13 @@ function workbench_moderation_admin_paths() {
   if (variable_get('node_admin_theme')) {
     $paths = array(
       'node/*/moderation' => TRUE,
+      'node/*/moderation/*/unpublish' => TRUE,
+      'node/*/moderation/*/change-state/*' => TRUE,
+      'node/*/moderation/view' => TRUE,
+      'node/*/moderation/diff' => TRUE,
+      'node/*/moderation/diff/list' => TRUE,
+      'node/*/moderation/diff/view' => TRUE,
+      'node/*/moderation/diff/view/*/*' => TRUE,
     );
     return $paths;
   }
@@ -844,12 +851,12 @@ function workbench_moderation_form_node_form_alter(&$form, $form_state) {
   );
 
   // Set a default revision log message.
-  $logged_name = (user_is_anonymous() ? variable_get('anonymous', t('Anonymous')) : $user->name);
+  $logged_name = (user_is_anonymous() ? variable_get('anonymous', t('Anonymous')) : format_username($user));
   if (!empty($form['#node']->nid)) {
-    $form['revision_information']['log']['#default_value'] = t('Edited by @user.', array('@user' => $logged_name));
+    $form['revision_information']['log']['#default_value'] = t('Edited by !user.', array('!user' => $logged_name));
   }
   else {
-    $form['revision_information']['log']['#default_value'] = t('Created by @user.', array('@user' => $logged_name));
+    $form['revision_information']['log']['#default_value'] = t('Created by !user.', array('!user' => $logged_name));
   }
 
   // Move the revision log into the publishing options to make things pretty.
@@ -1217,7 +1224,7 @@ function workbench_moderation_node_is_current($node) {
  *   state object has name, description, and weight properties.
  */
 function workbench_moderation_states() {
-  static $states;
+  $states = &drupal_static(__FUNCTION__);
   if (!isset($states)) {
     $states = db_select('workbench_moderation_states', 'states')
       ->fields('states', array('name', 'label', 'description', 'weight'))
@@ -1326,7 +1333,7 @@ function workbench_moderation_state_delete($state) {
  *   'from' states, then by the weight of the 'to' states.
  */
 function workbench_moderation_transitions() {
-  static $transitions;
+  $transitions = &drupal_static(__FUNCTION__);
   if (!isset($transitions)) {
     $query = db_select('workbench_moderation_transitions', 't')
       ->fields('t', array('from_name', 'to_name'));

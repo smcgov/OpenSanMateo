@@ -540,7 +540,6 @@ function views_content_views_panes_content_type_edit_form($form, &$form_state) {
         '#id' => 'views-exposed-pane',
       );
       if($exposed_form_overrides[$type][$key] == 'configureable') {
-        dpm($conf['exposed']);
         $form['exposed'][$id]['expose_to_visitor'] = array(
           '#type' => 'checkbox',
           '#title' => t('Expose to Visitor'),
