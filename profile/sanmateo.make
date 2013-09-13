@@ -426,3 +426,7 @@ projects[timeperiod][version] = 1.0-beta1
 projects[defaultconfig][type] = module
 projects[defaultconfig][subdir] = contrib
 projects[defaultconfig][version] = 1.0-alpha9
+
+projects[file_entity][type] = module
+projects[file_entity][subdir] = contrib
+projects[file_entity][version] = 2.0-alpha2
