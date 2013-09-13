@@ -110,3 +110,25 @@ function smc_base_menu_tree__menu_block__sanmateo_primary_menu($variables) {
 function smc_base_menu_tree__menu_block__sanmateo_primary_menu_submenu($variables) {
   return '<ul class="">' . $variables['tree'] . '</ul>';
 }
+
+function smc_base_preprocess_views_view(&$vars) {
+  $view = $vars['view'];
+  
+  if ($view->name == 'opensanmateo_search') {
+    //dsm($vars);  
+  }
+  
+}
+function smc_base_preprocess_views_view_fields(&$vars) { 
+  $view = $vars['view'];
+  
+  if ($view->name == 'opensanmateo_search') {
+    //krumo($vars['fields']);  
+  }
+}
+function smc_base_views_pre_render(&$view) {
+  //krumo($view);
+  if ($view->name == 'opensanmateo_search') {
+    //dsm($view);  
+  }
+}
