@@ -31,6 +31,13 @@ function opensanmateo_layout_status() {
     'severity' =>    REQUIREMENT_INFO, //REQUIREMENT_OK REQUIREMENT_INFO,REQUIREMENT_WARNING, REQUIREMENT_ERROR
   );
   
+  $status['items']['menu_position'] = array(
+    'title' => 'Menu Rules',
+    'action' => array(l("Administer menu position rules", "admin/structure/menu-position",  array('query'  => drupal_get_destination()))),
+    'description' => t("This is where you configure rules to determine which main menu items are considered active depending on subject or topic taxonomy."),
+    'severity' =>    REQUIREMENT_INFO,
+  );
+  
   if (variable_get('distributed_blocks_expose', FALSE) == FALSE) {
     $status['items']['master_site']['description'] = t("This is not a master site (no blocks are exposed).");
   }

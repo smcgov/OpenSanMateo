@@ -410,6 +410,10 @@ projects[i18n][type] = module
 projects[i18n][subdir] = contrib
 projects[i18n][version] = 1.7
 
+projects[menu_position][type] = module
+projects[menu_position][subdir] = contrib
+projects[menu_position][version] = 1.1
+
 projects[openpublic_translation_content][type] = module
 projects[openpublic_translation_content][subdir] = apps
 projects[openpublic_translation_content][download][type] = get
