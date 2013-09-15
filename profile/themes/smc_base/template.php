@@ -202,12 +202,16 @@ function smc_base_preprocess_views_view_fields(&$vars) {
 
 function smc_base_gimme_date($stamp) {
   // Date formatting and display
-  $dateformat = "M jS Y";
+  $dateformat1 = "M j";
+  $dateformat2 = "S";
+  $dateformat3 = "Y";
   $timeformat = "g:i a";
   $osdate = strtotime($stamp);
-  $sdate = format_date($osdate, 'custom', $dateformat);
+  $sdate1 = format_date($osdate, 'custom', $dateformat1);
+  $sdate2 = format_date($osdate, 'custom', $dateformat2);
+  $sdate3 = format_date($osdate, 'custom', $dateformat3);
   $stime = format_date($osdate, 'custom', $timeformat);
-  return $sdate . ' at ' . $stime;
+  return $sdate1 . '<sup>' . $sdate2 . '</sup> ' . $sdate3 . ' at ' . $stime;
 }
 function smc_base_views_pre_render(&$view) {
   //krumo($view);
