@@ -130,13 +130,23 @@ function smc_base_preprocess_views_view_fields(&$vars) {
   
   if ($view->name == 'opensanmateo_search') {
     // Legend for (wonky) field names
+    // There is a chance the variable names may need changed later, hence this fancy legend
+    // Module developers should be drawn and quartered 
+    // for this type of naming convention    
+    
+    // THUMBNAIL RELATED
     // search_api_multi_aggregation_2   - thumbnail url
     // search_api_multi_aggregation_15  - thumbnail title
     // search_api_multi_aggregation_16  - thumbnail alt
     
-    // build the real thumbnail from the data parts (2, 15, 16)
+    // DATE RELATED
+    // Preferend Date Format: ""
+    // search_api_multi_aggregation_9   - start date
+    // search_api_multi_aggregation_10  - end date
     
-    if (isset($vars['fields']['search_api_multi_aggregation_2']->content)) {
+    // build the real thumbnail from the data parts (2, 15, 16)
+    //dsm($vars['fields']['search_api_multi_aggregation_9']);
+    if (isset($vars['fields']['search_api_multi_aggregation_2']->content) && strlen($vars['fields']['search_api_multi_aggregation_2']->content) >= 1) {
       $img = theme('image', array(
         'path' => $vars['fields']['search_api_multi_aggregation_2']->content,
         'title' => $vars['fields']['search_api_multi_aggregation_15']->content,
@@ -159,13 +169,45 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     // unset the alt and title fields completely from displaying
     unset($vars['fields']['search_api_multi_aggregation_15']);
     unset($vars['fields']['search_api_multi_aggregation_16']);
-    //dsm($vars['fields']);
     
-    
-    
+    // Adjust the header (title and type) 
+    // It should be safe here to use prefix on one and suffix on the other because if
+    // one is missing (type or title), there are really big problems with the node anyway
     $vars['fields']['title']->wrapper_prefix = '<header class="group clearfix">' . $vars['fields']['type']->wrapper_prefix;
     $vars['fields']['type']->wrapper_suffix = $vars['fields']['type']->wrapper_suffix . '</header>';
+    
+    
+    
+    // start date
+    if (isset($vars['fields']['search_api_multi_aggregation_9']->content) && strlen($vars['fields']['search_api_multi_aggregation_9']->content) >= 1) {
+      $startdate = '<div class="node-start-date">' . smc_base_gimme_date($vars['fields']['search_api_multi_aggregation_9']->content) . '</div>';
+      $vars['fields']['search_api_multi_aggregation_9']->content = $startdate;
+    }
+    else {
+      // remove it then
+      unset($vars['fields']['search_api_multi_aggregation_9']);  
+    }
+    // end date
+    if (isset($vars['fields']['search_api_multi_aggregation_10']->content) && strlen($vars['fields']['search_api_multi_aggregation_10']->content) >= 1) {
+      
+      $enddate = '<div class="node-end-date">' . smc_base_gimme_date($vars['fields']['search_api_multi_aggregation_10']->content) . '</div>';
+      $vars['fields']['search_api_multi_aggregation_10']->content = $enddate;
+    }
+    else {
+      // remove it then
+      unset($vars['fields']['search_api_multi_aggregation_10']);
+    }
   }
+}
+
+function smc_base_gimme_date($stamp) {
+  // Date formatting and display
+  $dateformat = "M jS Y";
+  $timeformat = "g:i a";
+  $osdate = strtotime($stamp);
+  $sdate = format_date($osdate, 'custom', $dateformat);
+  $stime = format_date($osdate, 'custom', $timeformat);
+  return $sdate . ' at ' . $stime;
 }
 function smc_base_views_pre_render(&$view) {
   //krumo($view);
