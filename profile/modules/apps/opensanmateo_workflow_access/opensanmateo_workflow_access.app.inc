@@ -2,8 +2,14 @@
 
 function opensanmateo_workflow_access_apps_app_info() {
   return array(
+    'configure form' => 'opensanmateo_workflow_access_configure_form',
     'status callback' => 'opensanmateo_workflow_access_status',
   );
+}
+
+function opensanmateo_workflow_access_configure_form() {
+  $form = array();
+  return system_settings_form($form);
 }
 
 /**
@@ -47,7 +53,7 @@ function opensanmateo_workflow_access_status() {
     );
     $status['items']['sections'] = array(
       'title' => 'Sections',
-      'action' => array(l("Change editors for sections", "admin/config/workbench/sections",  array('query'  => drupal_get_destination()))),
+      'action' => array(l("Change editors for sections", "admin/config/workbench/access/sections",  array('query'  => drupal_get_destination()))),
       'description' => t("Administer your sections."),
       'severity' =>    REQUIREMENT_INFO,
     );
