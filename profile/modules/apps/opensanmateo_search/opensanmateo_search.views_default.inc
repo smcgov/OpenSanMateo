@@ -184,7 +184,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['row_class'] = 'universal-teaser clearfix';
+  $handler->display->display_options['style_options']['row_class'] = 'universal-teaser clearfix [type_1]';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -314,6 +314,15 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_16']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_16']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['search_api_multi_aggregation_16']['link_to_entity'] = 0;
+  /* Field: Indexed Node: Content type */
+  $handler->display->display_options['fields']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['fields']['type_1']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['fields']['type_1']['field'] = 'type';
+  $handler->display->display_options['fields']['type_1']['label'] = '';
+  $handler->display->display_options['fields']['type_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type_1']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['type_1']['format_name'] = 0;
   /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['field_release_date']['id'] = 'field_release_date';
   $handler->display->display_options['sorts']['field_release_date']['table'] = 'search_api_index_san_mateo_content_index';
@@ -625,9 +634,8 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['arguments']['search_api_site_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['search_api_site_id']['break_phrase'] = 1;
   $handler->display->display_options['arguments']['search_api_site_id']['not'] = 0;
-$handler->display->display_options['defaults']['filter_groups'] = FALSE;
-$handler->display->display_options['defaults']['filters'] = FALSE;
-
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
   $export['opensanmateo_search'] = $view;
 
   return $export;
