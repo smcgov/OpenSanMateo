@@ -5,12 +5,19 @@
   border-top: 1px solid rgba($primaryBlue, .1); 
   padding: 1.5em 0;
   
+  
+  
   .node-url {
     display: none;
   }
   
   header {
     margin-bottom: 5%;
+  }
+  
+  h5 {
+		color: $primaryTeal; 
+		font-weight: 100;
   }
   
   .node-type {
@@ -27,6 +34,14 @@
     margin-top: 0;
     width: 80%;
   }
+  
+  .node-teaser {
+    display: block;
+		margin-bottom: 3%;
+		font-size: 1em;
+		line-height: 1.6em;
+  }
+  
   .node-thumbnail {
     border: 5px solid rgba($primaryBlue, .05);
 		float: left; 
@@ -44,34 +59,43 @@
 		}
 		
   }
-  .node-teaser {
-    display: block;
-		margin-bottom: 5%;
-		font-size: 1em;
-		line-height: 1.6em;
-  }
+  
   .node-start-date {
     
   }
   .node-end-date {
     
   }
-  .node-location-street {
+  .node-location {
     
-  }
-  .node-location-city {
+    .location {
+      padding: 0;
+      margin: 0;
+    }
     
+    ul.adr {
+      margin: 0;
+      padding: 0;
+      
+      li {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        color: $primaryGray;
+      }
+    }  
   }
-  .node-location-state {
-    
-  }
-  .node-location-zip {
-    
-  }
+  
   .node-thumbnail-title {
     
   }
   .node-thumbnail-alt {
     
+  }
+  
+  // custom style(s) for event teaser
+  &.event {
+    padding-left: 1em;
+    padding-right: 1em;
   }
 }

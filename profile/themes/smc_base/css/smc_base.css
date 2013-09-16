@@ -371,13 +371,17 @@ you can use the generic selector below, but it's slower:
 .universal-teaser {
   border-top: 1px solid rgba(3, 108, 182, 0.1);
   padding: 1.5em 0; }
-  /* line 8, ../scss/elements/teaser.scss */
+  /* line 10, ../scss/elements/teaser.scss */
   .universal-teaser .node-url {
     display: none; }
-  /* line 12, ../scss/elements/teaser.scss */
+  /* line 14, ../scss/elements/teaser.scss */
   .universal-teaser header {
     margin-bottom: 5%; }
-  /* line 16, ../scss/elements/teaser.scss */
+  /* line 18, ../scss/elements/teaser.scss */
+  .universal-teaser h5 {
+    color: #38939b;
+    font-weight: 100; }
+  /* line 23, ../scss/elements/teaser.scss */
   .universal-teaser .node-type {
     float: right;
     max-width: 20%;
@@ -386,12 +390,18 @@ you can use the generic selector below, but it's slower:
     right: 0;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0; }
-  /* line 25, ../scss/elements/teaser.scss */
+  /* line 32, ../scss/elements/teaser.scss */
   .universal-teaser .node-title {
     float: left;
     margin-top: 0;
     width: 80%; }
-  /* line 30, ../scss/elements/teaser.scss */
+  /* line 38, ../scss/elements/teaser.scss */
+  .universal-teaser .node-teaser {
+    display: block;
+    margin-bottom: 3%;
+    font-size: 1em;
+    line-height: 1.6em; }
+  /* line 45, ../scss/elements/teaser.scss */
   .universal-teaser .node-thumbnail {
     border: 5px solid rgba(3, 108, 182, 0.05);
     float: left;
@@ -401,16 +411,28 @@ you can use the generic selector below, but it's slower:
     height: 80px;
     width: 80px;
     overflow: hidden; }
-    /* line 41, ../scss/elements/teaser.scss */
+    /* line 56, ../scss/elements/teaser.scss */
     .universal-teaser .node-thumbnail img {
       max-width: 100%;
       height: auto; }
-  /* line 47, ../scss/elements/teaser.scss */
-  .universal-teaser .node-teaser {
-    display: block;
-    margin-bottom: 5%;
-    font-size: 1em;
-    line-height: 1.6em; }
+  /* line 71, ../scss/elements/teaser.scss */
+  .universal-teaser .node-location .location {
+    padding: 0;
+    margin: 0; }
+  /* line 76, ../scss/elements/teaser.scss */
+  .universal-teaser .node-location ul.adr {
+    margin: 0;
+    padding: 0; }
+    /* line 80, ../scss/elements/teaser.scss */
+    .universal-teaser .node-location ul.adr li {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      color: #555a5a; }
+  /* line 97, ../scss/elements/teaser.scss */
+  .universal-teaser.event {
+    padding-left: 1em;
+    padding-right: 1em; }
 
 /* line 23, ../scss/smc_base.scss */
 .krumo-root strong {

@@ -121,7 +121,7 @@ function smc_base_preprocess_views_view(&$vars) {
   $view = $vars['view'];
   
   if ($view->name == 'opensanmateo_search') {
-    //dsm($vars);  
+    //krumo($vars);
   }
   
 }
@@ -134,6 +134,9 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     // Module developers should be drawn and quartered 
     // for this type of naming convention    
     
+    // TEASER
+    // search_api_multi_aggregation_1   - thumbnail url
+    
     // THUMBNAIL RELATED
     // search_api_multi_aggregation_2   - thumbnail url
     // search_api_multi_aggregation_15  - thumbnail title
@@ -143,6 +146,12 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     // Preferend Date Format: ""
     // search_api_multi_aggregation_9   - start date
     // search_api_multi_aggregation_10  - end date
+    
+    // LOCATION RELATED
+    // search_api_multi_aggregation_6   - street
+    // search_api_multi_aggregation_7   - city
+    // search_api_multi_aggregation_4   - state
+    // search_api_multi_aggregation_5   - zip
     
     // build the real thumbnail from the data parts (2, 15, 16)
     //dsm($vars['fields']['search_api_multi_aggregation_9']);
@@ -160,6 +169,12 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       
       // apply the image
       $vars['fields']['search_api_multi_aggregation_2']->content = '<div class="node-thumbnail">' . $img . '</div>';  
+      
+      
+      // now let's wrap the thumbnail and teaser into a single wrapper 
+      $vars['fields']['search_api_multi_aggregation_1']->content = $vars['fields']['search_api_multi_aggregation_2']->content . $vars['fields']['search_api_multi_aggregation_1']->content;
+      // since we've combined the two fields, unset the "original" thumbnail
+      unset($vars['fields']['search_api_multi_aggregation_2']);  
     }
     else {
       // then remove it completely
@@ -170,13 +185,16 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     unset($vars['fields']['search_api_multi_aggregation_15']);
     unset($vars['fields']['search_api_multi_aggregation_16']);
     
+    
+    
+    
+    
+    
     // Adjust the header (title and type) 
     // It should be safe here to use prefix on one and suffix on the other because if
     // one is missing (type or title), there are really big problems with the node anyway
     $vars['fields']['title']->wrapper_prefix = '<header class="group clearfix">' . $vars['fields']['type']->wrapper_prefix;
     $vars['fields']['type']->wrapper_suffix = $vars['fields']['type']->wrapper_suffix . '</header>';
-    
-    
     
     // start date
     if (isset($vars['fields']['search_api_multi_aggregation_9']->content) && strlen($vars['fields']['search_api_multi_aggregation_9']->content) >= 1) {
@@ -189,7 +207,6 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     }
     // end date
     if (isset($vars['fields']['search_api_multi_aggregation_10']->content) && strlen($vars['fields']['search_api_multi_aggregation_10']->content) >= 1) {
-      
       $enddate = '<div class="node-end-date">' . smc_base_gimme_date($vars['fields']['search_api_multi_aggregation_10']->content) . '</div>';
       $vars['fields']['search_api_multi_aggregation_10']->content = $enddate;
     }
@@ -197,15 +214,42 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       // remove it then
       unset($vars['fields']['search_api_multi_aggregation_10']);
     }
-  }
+    
+    // we need to ensure that in the panels pane these items are removed
+    // as the views rewrite groups them all into one field (street)
+    unset($vars['fields']['search_api_multi_aggregation_4']); // state
+    unset($vars['fields']['search_api_multi_aggregation_5']); // zip
+    unset($vars['fields']['search_api_multi_aggregation_7']); // city
+    
+    
+    
+    
+    
+    // let's group the "info" section into a logical array
+    /*
+$vars['fields']['info'] = array(
+      'address' => array(      
+        '#prefix' => '<div class="location address clearfix">',
+        '#suffix' => '</div>',
+        'street' => $vars['fields']['search_api_multi_aggregation_6'],
+        'city' => $vars['fields']['search_api_multi_aggregation_7'],
+        'state' => $vars['fields']['search_api_multi_aggregation_4'],
+        'zip' => $vars['fields']['search_api_multi_aggregation_5'],
+      ),
+    );
+    
+*/
+    
+    //krumo($vars['fields']);
+  } // end opensanmateo_search
 }
 
 function smc_base_gimme_date($stamp) {
   // Date formatting and display
-  $dateformat1 = "M j";
-  $dateformat2 = "S";
-  $dateformat3 = "Y";
-  $timeformat = "g:i a";
+  $dateformat1 = "M j";   // Aug 12
+  $dateformat2 = "S";     // th
+  $dateformat3 = "Y";     // 2013
+  $timeformat = "g:i a";  // 8:00 am
   $osdate = strtotime($stamp);
   $sdate1 = format_date($osdate, 'custom', $dateformat1);
   $sdate2 = format_date($osdate, 'custom', $dateformat2);

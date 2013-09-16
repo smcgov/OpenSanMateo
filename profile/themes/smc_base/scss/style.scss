@@ -1791,7 +1791,7 @@ ul.info {
 	display: block;
 	padding-bottom: 0;
 	
-	 > div {padding: 0em 1em 0;}
+	 //> div {padding: 0em 1em 0;}
 
 	dt, strong {color: $primaryTeal}
 	
@@ -2397,10 +2397,12 @@ border-radius: 3px;
 			}
 		
 		li {		
-			h5 {
+			/*
+h5 {
 				color: $primaryTeal; 
 				font-weight: 100;
 				}
+*/
 			}
 			
 		.thumb {
@@ -2645,9 +2647,9 @@ padding-right: 0em;
 	 	background-color: white;
 	 	border: 1px solid rgba(3, 108, 182, .1);
 	 	
-	 	> div {padding: .5em 1em 0;}
+	 	//> div {padding: .5em 1em 0;}
 	 	
-	 	> div:first-child {padding: .75em 1em .5em}
+	 	//> div:first-child {padding: .75em 1em .5em}
 		 
 		h4 {
 			width: 75%;
