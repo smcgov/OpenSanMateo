@@ -74,6 +74,10 @@ projects[workbench_moderation][download][url] = http://git.drupal.org/project/wo
 projects[workbench_moderation][download][revision] = 7.x-1.3
 projects[workbench_moderation][patch][] = http://drupal.org/files/workbench_moderation-unpublish-api-1781852-03.patch
 
+projects[workbench_access][type] = module
+projects[workbench_access][subdir] = contrib
+projects[workbench_access][version] = 1.2
+
 projects[revision_scheduler][type] = module
 projects[revision_scheduler][subdir] = contrib
 projects[revision_scheduler][version] = 1.x-dev

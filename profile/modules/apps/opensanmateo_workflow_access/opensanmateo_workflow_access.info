@@ -1,0 +1,8 @@
+name = OpenSanMateo Workflow Access
+description = Provides Workflow Access for San Mateo
+core = 7.x
+package = OpenSanMateo
+php = 5.2.4
+dependencies[] = opensanmateo_roles
+dependencies[] = workbench
+dependencies[] = workbench_moderation
