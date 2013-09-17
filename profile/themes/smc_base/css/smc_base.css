@@ -477,23 +477,30 @@ footer {
 #footer-wrapper .section {
   margin-bottom: 0; }
 
-/* line 73, ../scss/smc_base.scss */
+/*
 #panels-layout-category-San-Mateo-Layouts-wrapper {
-  padding-left: 0; }
-  /* line 77, ../scss/smc_base.scss */
-  #panels-layout-category-San-Mateo-Layouts-wrapper #panels-layout-category-San-Mateo-Layouts .layout-link {
-    width: 25%;
-    height: auto; }
-    /* line 81, ../scss/smc_base.scss */
-    #panels-layout-category-San-Mateo-Layouts-wrapper #panels-layout-category-San-Mateo-Layouts .layout-link a {
-      display: block;
-      height: 100%; }
-    /* line 85, ../scss/smc_base.scss */
-    #panels-layout-category-San-Mateo-Layouts-wrapper #panels-layout-category-San-Mateo-Layouts .layout-link img {
-      margin-bottom: 5px; }
-    /* line 89, ../scss/smc_base.scss */
-    #panels-layout-category-San-Mateo-Layouts-wrapper #panels-layout-category-San-Mateo-Layouts .layout-link.current-layout {
-      font-weight: bold; }
-      /* line 91, ../scss/smc_base.scss */
-      #panels-layout-category-San-Mateo-Layouts-wrapper #panels-layout-category-San-Mateo-Layouts .layout-link.current-layout img {
-        box-shadow: 3px 3px 6px rgba(85, 90, 90, 0.7); }
+  padding-left: 0;
+  
+  #panels-layout-category-San-Mateo-Layouts {
+    .layout-link {
+      width: 25%;
+      height: auto;
+      
+      a {
+        display: block;
+        height: 100%;
+      }
+      img {
+        margin-bottom: 5px;
+      }
+      
+      &.current-layout {
+        font-weight: bold;
+        img {
+          box-shadow: 3px 3px 6px rgba($primaryGray, 0.7); 
+        }
+      }
+    }
+  }
+}
+*/
