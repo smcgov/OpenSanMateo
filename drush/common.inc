@@ -6,6 +6,9 @@ function get_smc_sites($docroot) {
     '..',
     'all',
     'default',
+    'demo1',
+    'demo2',
+    'demo3',
   );
   $sites_root = $docroot . '/sites';
   $dirlist = scandir($sites_root);
