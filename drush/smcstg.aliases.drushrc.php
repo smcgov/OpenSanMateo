@@ -3,10 +3,10 @@
 include_once('common.inc');
 
 // Common alias values for this environment
-$smc_docroot = '/var/www/html/sanmateo.dev/docroot';
+$smc_docroot = '/var/www/html/sanmateo.test/docroot';
 $smc_remote_host = 'staging-5629.prod.hosting.acquia.com';
 $smc_remote_user = 'sanmateo';
-$smc_env = 'dev';
+$smc_env = 'staging';
 
 // We need to figure out which directory to scan based on what host we're running on
 $smc_localhost = php_uname('n');
@@ -29,7 +29,7 @@ foreach ($smc_sites as $site) {
 // Generate special case for demo sites
 for ($i = 1; $i <= 3; ++$i) {
   $aliases[$smc_env . ".demo{$i}"] = array(
-    'uri' => "demo{$i}.smcdev-acquia.fayze2.com",
+    'uri' => "demo{$i}.smcstg-acquia.fayze2.com",
     'root' => $smc_docroot,
     'remote-host' => $smc_remote_host,
     'remote-user' => $smc_remote_user,
