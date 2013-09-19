@@ -446,7 +446,7 @@ projects[google_translator][download][revision] = eedec5f00c62e3608410168820e66d
 
 projects[plupload][type] = module
 projects[plupload][subdir] = contrib
-projects[plupload][version] = 7.x-1.3
+projects[plupload][version] = 1.3
 
 projects[filefield_sources_plupload][type] = module
 projects[filefield_sources_plupload][subdir] = contrib
