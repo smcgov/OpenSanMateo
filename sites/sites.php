@@ -58,11 +58,15 @@
  * Map San Mateo sites to dev host
  * Acquia domains defines *.smcdev-acquia.fayze.com
  */
-$sites['sanmateo.smcdev-acquia.fayze2.com'] = 'co.sanmateo.ca.us';
+$sites['demo1.smcdev-acquia.fayze2.com'] = 'demo1';
+$sites['demo2.smcdev-acquia.fayze2.com'] = 'demo2';
+$sites['demo3.smcdev-acquia.fayze2.com'] = 'demo3';
 
 /*
  * Map San Mateo sites to staging host
  * Acquia domains defines *.smcstg-acquia.fayze.com
  */
-$sites['sanmateo.smcstg-acquia.fayze2.com'] = 'co.sanmateo.ca.us';
+$sites['demo1.smcstg-acquia.fayze2.com'] = 'demo1';
+$sites['demo2.smcstg-acquia.fayze2.com'] = 'demo2';
+$sites['demo3.smcstg-acquia.fayze2.com'] = 'demo3';
 

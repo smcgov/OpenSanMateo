@@ -74,6 +74,10 @@ projects[workbench_moderation][download][url] = http://git.drupal.org/project/wo
 projects[workbench_moderation][download][revision] = 7.x-1.3
 projects[workbench_moderation][patch][] = http://drupal.org/files/workbench_moderation-unpublish-api-1781852-03.patch
 
+projects[workbench_access][type] = module
+projects[workbench_access][subdir] = contrib
+projects[workbench_access][version] = 1.2
+
 projects[revision_scheduler][type] = module
 projects[revision_scheduler][subdir] = contrib
 projects[revision_scheduler][version] = 1.x-dev
@@ -273,7 +277,7 @@ projects[content_access][patch][] = http://drupal.org/files/add_view_own_unpubli
 projects[search_api][type] = module
 projects[search_api][subdir] = contrib
 projects[search_api][version] = 1.7
-projects[search_api][patch][] = https://drupal.org/files/search_api-url-arg-multivalue-2040111-01.patch
+projects[search_api][patch][] = http://drupal.org/files/search_api-url-arg-multivalue-2040111-01.patch
 
 projects[search_api_site][type] = module
 projects[search_api_site][subdir] = contrib
@@ -310,7 +314,7 @@ projects[panelizer][version] = 3.1
 projects[facetapi][type] = module
 projects[facetapi][subdir] = contrib
 projects[facetapi][version] = 1.3
-projects[facetapi][patch][1393928] = https://drupal.org/files/limit-active-items-1393928-48.patch
+projects[facetapi][patch][1393928] = http://drupal.org/files/limit-active-items-1393928-48.patch
 
 projects[facetapi_select][type] = module
 projects[facetapi_select][subdir] = contrib
@@ -430,3 +434,12 @@ projects[defaultconfig][version] = 1.0-alpha9
 projects[file_entity][type] = module
 projects[file_entity][subdir] = contrib
 projects[file_entity][version] = 2.0-alpha2
+
+projects[term_ref_autocomplete][subdir] = contrib
+projects[term_ref_autocomplete][version] = 1.0-alpha2
+
+projects[google_translator][type] = module
+projects[google_translator][subdir] = contrib
+projects[google_translator][download][type] = git
+projects[google_translator][download][url] = https://bitbucket.org/phase2tech/google_translator.git
+projects[google_translator][download][revision] = eedec5f00c62e3608410168820e66d5303660687

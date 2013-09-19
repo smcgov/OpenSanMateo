@@ -28,6 +28,8 @@ dependencies[] = taxonomy_view_mode
 dependencies[] = views
 dependencies[] = views_content
 dependencies[] = field_views
+dependencies[] = searchapimultiaggregate
+
 features[ctools][] = facetapi:facetapi_defaults:1
 features[ctools][] = page_manager:pages_default:1
 features[ctools][] = panels_mini:panels_default:1

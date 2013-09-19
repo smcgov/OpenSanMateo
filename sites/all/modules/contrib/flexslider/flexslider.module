@@ -4,6 +4,9 @@
  * A light-weight, customizable image gallery plugin for Drupal based on jQuery
  */
 
+define("FLEXSLIDER_VERSION", variable_get('flexslider_version', '2.0'));
+define("FLEXSLIDER_DEBUG", variable_get('flexslider_debug', FALSE));
+
 /**
  * Implements hook_libraries_info().
  */
@@ -57,8 +60,55 @@ function flexslider_libraries_info_alter(&$libraries) {
 }
 
 /**
+ * Implements hook_library().
+ *
+ * We also define FlexSlider through the core library callbacks
+ */
+function flexslider_library() {
+  $module_path = drupal_get_path('module', 'flexslider');
+  $library_path = libraries_get_path('flexslider');
+  
+  $libraries['flexslider'] = array(
+    'title' => 'FlexSlider',
+    'website' => 'http://flexslider.woothemes.com',
+    'version' => FLEXSLIDER_VERSION,
+    'js' => array(
+      $library_path . '/jquery.flexslider-min.js' => array(
+        'scope' => 'footer',
+      ),
+    ),
+    'css' => array(
+      $library_path . '/flexslider.css' => array(
+        'type' => 'file',
+        'media' => 'screen',
+      ),
+      $module_path . '/assets/css/flexslider_img.css' => array(
+        'type' => 'file',
+        'media' => 'screen',
+      ),
+    ),
+  );
+  return $libraries;
+}
+
+/**
+ * Implements hook_library_alter().
+ */
+function flexslider_library_alter(&$libraries, $module) {
+  // Enable debug mode
+  if (FLEXSLIDER_DEBUG) {
+    if ($module == 'flexslider' and isset($libraries['flexslider'])) {
+      $libraries['flexslider']['js'] = array(
+        libraries_get_path() . '/jquery.flexslider.js' => array(
+          'scope' => 'footer',
+        ),
+      );
+    }
+  }
+}
+
+/**
  * Implements hook_permission().
- * @author minorOffense <mwinstone@coldfrontlabs.ca>
  */
 function flexslider_permission() {
   return array(
@@ -108,18 +158,22 @@ function flexslider_help($path, $arg) {
  */
 function flexslider_theme() {
   return array(
-    // Container for nav elements (arrows)
+    // Flexslider container
     'flexslider' => array(
       'variables' => array('items' => array(), 'settings' => array()),
       'template' => 'theme/flexslider',
       'file' => 'theme/flexslider.theme.inc',
     ),
+    
+    // Slide container
     'flexslider_list' => array(
       'variables' => array('items' => array(), 'settings' => array()),
       'file' => 'theme/flexslider.theme.inc',
     ),
+    
+    // Slide item
     'flexslider_list_item' => array(
-      'variables' => array('item' => array(), 'settings' => array()),
+      'variables' => array('item' => array(), 'settings' => array(), 'caption' => ''),
       'file' => 'theme/flexslider.theme.inc',
     ),
   );
@@ -413,6 +467,8 @@ function _flexslider_optionset_defaults($key = NULL) {
     'pauseText' => t('Pause'),
     'playText' => t('Play'),
     'randomize' => FALSE,
+    'thumbCaptions' => FALSE,
+    'thumbCaptionsBoth' => FALSE,
     //'slidetostart' => 0, // integer value, not boolean --  replace by "startAt"
     'animationLoop' => TRUE,
     'pauseOnAction' => TRUE,
@@ -487,6 +543,8 @@ function _flexslider_typecast_optionset(&$options) {
         case 'directionNav':
         case 'pausePlay':
         case 'randomize':
+        case 'thumbCaptions':
+        case 'thumbCaptionsBoth':
         case 'animationLoop':
         case 'pauseOnAction':
         case 'pauseOnHover':

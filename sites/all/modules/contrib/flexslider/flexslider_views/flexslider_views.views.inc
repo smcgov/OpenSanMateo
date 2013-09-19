@@ -12,12 +12,12 @@
 function flexslider_views_views_plugins() {
   return array(
     'style' => array(
-      // Style plugin for the navigation.
+      // Style plugin for the FlexSlider.
       'flexslider' => array(
         'title' => t('FlexSlider'),
         'help' => t('Display the results in a FlexSlider widget.'),
         'handler' => 'flexslider_views_plugin_style_flexslider',
-        'theme' => 'views_view_flexslider',
+        'theme' => 'flexslider_views',
         'theme file' => 'flexslider_views.theme.inc',
         'theme path' => drupal_get_path('module', 'flexslider_views') . '/theme',
         'uses row plugin' => TRUE,

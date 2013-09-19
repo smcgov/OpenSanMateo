@@ -66,10 +66,10 @@ function opensanmateo_location_address_lookup($location) {
   foreach($view->result as $result) {
     $item = $result->_entity_properties;
     $rtn[] = array(
-      'state' => $item['search_api_aggregation_4'],
-      'zip' => $item['search_api_aggregation_5'],
-      'street' => $item['search_api_aggregation_6'],
-      'city' => $item['search_api_aggregation_7'],
+      'state' => $item['search_api_multi_aggregation_4'],
+      'zip' => $item['search_api_multi_aggregation_5'],
+      'street' => $item['search_api_multi_aggregation_6'],
+      'city' => $item['search_api_multi_aggregation_7'],
     );
   }
   $address = isset($rtn[0]) ? $rtn[0] : stdClass();
