@@ -25,8 +25,8 @@ else {
 }
 
 // Set Acquia Connector keys
-$conf['acquia_identifier'] = 'DEGK-36837';
-$conf['acquia_key'] = '5f90bbe305adff93b4ad6b1012e75183';
+//$conf['acquia_identifier'] = 'DEGK-36837';
+//$conf['acquia_key'] = '5f90bbe305adff93b4ad6b1012e75183';
 
 // Configure caching
 //$conf['cache_backends'][] = './sites/all/modules/contrib/memcache/memcache.inc';
