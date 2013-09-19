@@ -443,3 +443,17 @@ projects[google_translator][subdir] = contrib
 projects[google_translator][download][type] = git
 projects[google_translator][download][url] = https://bitbucket.org/phase2tech/google_translator.git
 projects[google_translator][download][revision] = eedec5f00c62e3608410168820e66d5303660687
+
+projects[plupload][type] = module
+projects[plupload][subdir] = contrib
+projects[plupload][version] = 7.x-1.3
+
+projects[filefield_sources_plupload][type] = module
+projects[filefield_sources_plupload][subdir] = contrib
+projects[filefield_sources_plupload][download][type] = git
+projects[filefield_sources_plupload][download][url] = http://git.drupal.org/project/filefield_sources_plupload.git
+projects[filefield_sources_plupload][download][revision] = 8945a60
+
+libraries[plupload][download][type] = get
+libraries[plupload][download][url] = http://plupload.com/downloads/plupload_1_5_7.zip
+libraries[plupload][destination] = libraries
