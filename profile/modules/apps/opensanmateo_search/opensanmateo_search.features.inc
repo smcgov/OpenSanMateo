@@ -220,6 +220,11 @@ function opensanmateo_search_default_search_api_index() {
                   "field_location_address:field_address:premise" 
                 ],
                 "description" : "A text aggregation of the following fields: Address \\u00bb Premise (i.e. Apartment \\/ Suite number)."
+              },
+              "search_api_multi_aggregation_18" : {
+                "name" : "aggregated Release Date",
+                "fields" : [ "field_release_date" ],
+                "description" : "A text aggregation of the following fields: Release Date."
               }
             }
           }
