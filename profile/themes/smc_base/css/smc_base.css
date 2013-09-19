@@ -498,42 +498,49 @@ you can use the generic selector below, but it's slower:
 
 /* Media Queries */
 /* Fonts */
-/* line 6, ../scss/elements/follow.scss */
-.follow-links a.follow-link {
-  float: left;
-  color: white;
-  background-color: #036cb6;
-  background-image: none;
-  text-indent: -9999em;
-  font-size: 1.5em;
-  padding: .5em;
-  border-radius: 3px;
-  display: block;
-  line-height: 1;
-  margin: 0 5% 5% 0; }
-/* line 20, ../scss/elements/follow.scss */
-.follow-links a.follow-link-facebook {
-  background-color: #3b5998; }
-/* line 23, ../scss/elements/follow.scss */
-.follow-links a.follow-link-twitter {
-  background-color: #55acee; }
-/* line 26, ../scss/elements/follow.scss */
-.follow-links a.follow-link-this-site {
-  background-color: #fd9a27; }
-/* line 29, ../scss/elements/follow.scss */
-.follow-links a.follow-link-flickr {
-  background-color: #fc2482; }
-/* line 32, ../scss/elements/follow.scss */
-.follow-links a.follow-link-vimeo {
-  background-color: #2ebae9; }
-/* line 35, ../scss/elements/follow.scss */
-.follow-links a.follow-link-youtube {
-  background-color: #cc171e; }
+/* line 4, ../scss/elements/follow.scss */
+.follow-links {
+  font-size: 1em;
+  line-height: 1em; }
+  /* line 8, ../scss/elements/follow.scss */
+  .follow-links a.follow-link {
+    float: left;
+    color: white;
+    height: auto;
+    background-color: #036cb6;
+    background-image: none;
+    font-size: 1.25em;
+    padding: .5em;
+    border-radius: 3px;
+    display: inline-block;
+    line-height: 1em;
+    margin: 0 5% 5% 0; }
+    /* line 22, ../scss/elements/follow.scss */
+    .follow-links a.follow-link .follow-link-text {
+      display: none; }
+  /* line 27, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-facebook {
+    background-color: #3b5998; }
+  /* line 30, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-twitter {
+    background-color: #55acee; }
+  /* line 33, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-this-site {
+    background-color: #fd9a27; }
+  /* line 36, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-flickr {
+    background-color: #fc2482; }
+  /* line 39, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-vimeo {
+    background-color: #2ebae9; }
+  /* line 42, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-youtube {
+    background-color: #cc171e; }
 
 @media all and (min-width: 768px) {
-  /* line 44, ../scss/elements/follow.scss */
+  /* line 51, ../scss/elements/follow.scss */
   .follow-links a.follow-link {
-    font-size: 1.25em;
+    font-size: 1em;
     padding: .5em; } }
 /* line 25, ../scss/smc_base.scss */
 .krumo-root strong {

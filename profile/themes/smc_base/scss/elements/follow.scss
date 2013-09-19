@@ -2,19 +2,26 @@
 @import "vars.scss";
 
 .follow-links {
+  font-size: 1em;
+  line-height: 1em;
   
   a.follow-link {
     float: left;
     color: white; 
+    height: auto;
     background-color: $primaryBlue; 
     background-image: none;
-    text-indent: -9999em;
-    font-size: 1.5em; 
+    font-size: 1.25em;
     padding: .5em; 
     border-radius: 3px; 
-    display: block; 
-    line-height: 1; 
+    display: inline-block; 
+    line-height: 1em; 
     margin: 0 5% 5% 0;
+    
+    // hide the normal text since we are showing a custom icon instead
+    .follow-link-text {
+      display: none;
+    }
   }
   
   a.follow-link-facebook {
@@ -42,7 +49,7 @@
   .follow-links {
   
     a.follow-link {
-      font-size: 1.25em; 
+      font-size: 1em; 
       padding: .5em; 
     }
   }

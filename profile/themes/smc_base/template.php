@@ -263,3 +263,23 @@ function smc_base_views_pre_render(&$view) {
     //dsm($view);  
   }
 }
+
+
+/**
+ * customize theme_follow_link to allow title text to be hidden
+ */
+function smc_base_follow_link($variables) {
+  $link = $variables['link'];
+  $link->options['html'] = true;
+  $title = '<span class="follow-link-text">' . $variables['title'] . '</span>';
+  $classes = array();
+  $classes[] = 'follow-link';
+  $classes[] = "follow-link-{$link->name}";
+  $classes[] = $link->uid ? 'follow-link-user' : 'follow-link-site';
+  $attributes = array(
+    'class' => $classes,
+    'title' => follow_link_title($link->uid) .' '. $title,
+  );
+  $link->options['attributes'] = $attributes;
+  return l($title, $link->path, $link->options) . "\n";
+}
