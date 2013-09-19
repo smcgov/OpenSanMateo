@@ -17,22 +17,35 @@
 <div id="main" class="panel-display sm-three-column main-body group clearfix">
   
   <div class="panel-panel panel-col-top clearfix">
-    <div class="inside"><?php print $content['top']; ?></div>
+    <div class="inside">
+      <?php print $content['top']; ?>
+    </div>
   </div>
   
   <div class="panel-panel panel-col-first sidebar clearfix">
-    <div class="inside"><?php print $content['left']; ?></div>
+    <div id="responsive-navigation" class="inside">
+      <?php print $content['nav']; ?>
+    </div>
+    <div class="inside left-sidebar">
+      <?php print $content['left']; ?>
+    </div>
   </div>
 
   <div class="panel-panel panel-col panel-col-middle main-content clearfix">
-    <div class="inside"><?php print $content['middle']; ?></div>
+    <div class="inside">
+      <?php print $content['middle']; ?>
+    </div>
   </div>
 
   <div class="panel-panel panel-col-last secondary group clearfix">
-    <div class="inside"><?php print $content['right']; ?></div>
+    <div class="inside">
+      <?php print $content['right']; ?>
+    </div>
   </div>
   
   <div class="panel-panel panel-col-bottom section news clearfix">
-    <div class="inside"><?php print $content['bottom']; ?></div>
+    <div class="inside">
+      <?php print $content['bottom']; ?>
+      </div>
   </div>
 </div>

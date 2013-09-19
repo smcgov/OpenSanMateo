@@ -3,9 +3,6 @@
 /**
  * implementation of hook_panels_layouts
  */
-//function smc_base_three_column_panels_layouts() {
-  // Plugin definition
-  //$items['three_column'] = array(
 $plugin = array(
   'title' => t('Three Column Layout'),
   'category' => t('San Mateo Layouts'),
@@ -17,30 +14,9 @@ $plugin = array(
   'regions' => array(
     'top' => t('Top'),
     'left' => t('Sidebar'),
+    'nav' => t('Navigation'),
     'middle' => t('Main'),
     'right' => t('Secondary'),
     'bottom' => t('Bottom'),
   ),
 );
-  
-  //return $items;
-//}
-
-
-/*
-// Plugin definition.
-$plugin = array(
-  'title' => t('Two column 30/70 stacked'),
-  'category' => t('Columns: 2'),
-  'icon' => 'twocol_30_70_stacked.png',
-  'theme' => 'twocol_30_70_stacked',
-  'css' => 'twocol_30_70_stacked.css',
-  'regions' => array(
-    'header' => t('Header'),
-    'top' => t('Top'),
-    'left' => t('Left'),
-    'right' => t('Right'),
-    'footer' => t('Footer'),
-  ),
-);
-*/
