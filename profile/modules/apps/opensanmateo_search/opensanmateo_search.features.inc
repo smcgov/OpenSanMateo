@@ -71,6 +71,7 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_multi_aggregation_14" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_multi_aggregation_15" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_multi_aggregation_16" : { "type" : "list\\u003Cstring\\u003E" },
+        "search_api_multi_aggregation_17" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_site_hash" : { "type" : "uri" },
         "search_api_site_id" : { "type" : "string" },
         "body:value" : { "type" : "text" },
@@ -214,7 +215,10 @@ function opensanmateo_search_default_search_api_index() {
               },
               "search_api_multi_aggregation_17" : {
                 "name" : "Aggregated Premise",
-                "fields" : [ "field_address:premise" ],
+                "fields" : [ 
+                  "field_address:premise",
+                  "field_location_address:field_address:premise" 
+                ],
                 "description" : "A text aggregation of the following fields: Address \\u00bb Premise (i.e. Apartment \\/ Suite number)."
               }
             }
