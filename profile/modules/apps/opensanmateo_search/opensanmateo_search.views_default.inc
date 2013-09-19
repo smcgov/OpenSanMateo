@@ -226,6 +226,13 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['type']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['type']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['type']['format_name'] = 1;
+  /* Field: Indexed Node: Aggregated Author */
+  $handler->display->display_options['fields']['search_api_multi_aggregation_3']['id'] = 'search_api_multi_aggregation_3';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_3']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_3']['field'] = 'search_api_multi_aggregation_3';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_3']['label'] = '';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_3']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['search_api_multi_aggregation_3']['link_to_entity'] = 0;
   /* Field: Indexed Node: Aggregated Thumbnail */
   $handler->display->display_options['fields']['search_api_multi_aggregation_2']['id'] = 'search_api_multi_aggregation_2';
   $handler->display->display_options['fields']['search_api_multi_aggregation_2']['table'] = 'search_api_index_san_mateo_content_index';
