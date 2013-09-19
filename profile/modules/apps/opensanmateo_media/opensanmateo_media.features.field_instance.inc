@@ -96,7 +96,7 @@ function opensanmateo_media_field_default_field_instances() {
             'imce' => 0,
             'opensanmateo_search' => 0,
             'osmremotefile' => 'osmremotefile',
-            'plupload' => 'plupload',
+            'plupload' => 0,
             'reference' => 0,
             'remote' => 0,
           ),
@@ -163,7 +163,16 @@ function opensanmateo_media_field_default_field_instances() {
       'module' => 'image',
       'settings' => array(
         'filefield_sources' => array(
-          'filefield_sources' => array(),
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'imce' => 0,
+            'opensanmateo_search' => 0,
+            'osmremotefile' => 'osmremotefile',
+            'plupload' => 'plupload',
+            'reference' => 0,
+            'remote' => 0,
+          ),
           'source_attach' => array(
             'absolute' => 0,
             'attach_mode' => 'move',
