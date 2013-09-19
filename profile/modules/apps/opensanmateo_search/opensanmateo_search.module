@@ -14,14 +14,14 @@ include_once 'opensanmateo_search.features.field_instance_sub_type.inc';
 
 /**
  * Implements hook_search_api_query_alter().
- * 
+ *
  * Restricts the search results to the content types selected in the app
  */
 /*
 function opensanmateo_search_search_api_query_alter($query) {
   $types = array_filter(variable_get('opesanmateo_search_content_types_to_index', array()));
   $exclude_types = array_diff(array_map(function($i) {return $i->type;}, node_type_get_types()), $types);
-  
+
   $filter = $query->createFilter('AND');
   foreach ($exclude_types as $type) {
     $filter->condition('type', $type, '<>');
@@ -34,7 +34,7 @@ function opensanmateo_search_search_api_index_items_alter(array &$items, SearchA
     $types = array_filter(variable_get('opensanmateo_search_file_types_to_index', array()));
     foreach($items as $id => $item) {
       $lang= 'und';
-      //TODO: It seems that files do not have language this might not always be the case and this might need 
+      //TODO: It seems that files do not have language this might not always be the case and this might need
       //change
       if (!in_array($item->type, $types)) {
         unset($items[$id]);
@@ -87,7 +87,7 @@ function opensanmateo_search_qs_callback($search) {
 
 /**
  *  Implementation of hook_form_alter().
- *  
+ *
  *  Here we set a quick search callback on our search field
  */
 function quick_search_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
@@ -211,16 +211,16 @@ function opensanmateo_search_shared_file_process($element, &$form_state, $form) 
   $element['opensanmateo_search_shared_file']['uri'] = array(
     '#type' => 'textfield',
     '#title' => 'url',
-  );  
+  );
   return $element;
 }
 
 function opensanmateo_search_shared_file_value($element, &$item) {
 /*
-  if (isset($item['opensanmateo_search_shared_file']['uri']) && strlen($item['opensanmateo_search_shared_file']['uri']) > 0 && valid_uri($item['opensanmateo_search_shared_file']['uri'])) { 
+  if (isset($item['opensanmateo_search_shared_file']['uri']) && strlen($item['opensanmateo_search_shared_file']['uri']) > 0 && valid_uri($item['opensanmateo_search_shared_file']['uri'])) {
   }
-*/  
-  if (isset($item['opensanmateo_search_shared_file']['uri']) && strlen($item['opensanmateo_search_shared_file']['uri']) > 0) { 
+*/
+  if (isset($item['opensanmateo_search_shared_file']['uri']) && strlen($item['opensanmateo_search_shared_file']['uri']) > 0) {
     $extra = uniqid();
     $uri = $item['opensanmateo_search_shared_file']['uri'];
     $file = (object) array(
@@ -237,9 +237,9 @@ function opensanmateo_search_shared_file_value($element, &$item) {
 function theme_opensanmateo_search_source_remote_element($variables) {
   $element = $variables['element'];
   $element['url']['#field_suffix'] = drupal_render($element['transfer']);
-  return '<div class="filefield-source filefield-source-opensanmateo clear-block">' . 
-  drupal_render($element['view']) . 
-  drupal_render($element['uri']) . 
+  return '<div class="filefield-source filefield-source-opensanmateo clear-block">' .
+  drupal_render($element['view']) .
+  drupal_render($element['uri']) .
   '</div>';
 }
 
@@ -400,3 +400,34 @@ class FacetapiFilterChildTerms extends FacetapiFilter {
 
 }
 
+/**
+ * Implements hook_search_api_alter_callback_info
+ */
+function opensanmateo_search_search_api_alter_callback_info() {
+  $callbacks['search_opensanmateo_image'] = array(
+    'name' => t('Image style URL for unified teaser'),
+    'description' => t('Provides an absolute image style URL for the thumbnail image'),
+    'class' => 'SearchApiRenderedImage',
+    'weight' => 999,
+  );
+
+  return $callbacks;
+}
+
+/**
+ * Search API data alteration callback that adds an URL field for all items.
+ */
+class SearchApiRenderedImage extends SearchApiAbstractAlterCallback {
+
+  public function alterItems(array &$items) {
+    //dpm($items); return;
+    foreach ($items as $id => &$item) {
+      // If we have a valid thumbnail field, render the first image as the unified teaser thumbnail
+      if (!empty($item->field_thumbnail_image[$item->language][0]['filename'])) {
+        $img_vars = &$item->field_thumbnail_image[$item->language][0];
+        $img_vars['uri'] = image_style_url('list-page-thumbnail', $img_vars['uri']);
+      }
+    }
+  }
+
+}
