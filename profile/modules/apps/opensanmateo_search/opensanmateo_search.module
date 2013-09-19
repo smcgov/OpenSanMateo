@@ -432,3 +432,34 @@ class FacetapiFilterChildTerms extends FacetapiFilter {
 
 }
 
+/**
+ * Implements hook_search_api_alter_callback_info
+ */
+function opensanmateo_search_search_api_alter_callback_info() {
+  $callbacks['search_opensanmateo_image'] = array(
+    'name' => t('Image style URL for unified teaser'),
+    'description' => t('Provides an absolute image style URL for the thumbnail image'),
+    'class' => 'SearchApiRenderedImage',
+    'weight' => 999,
+  );
+
+  return $callbacks;
+}
+
+/**
+ * Search API data alteration callback that adds an URL field for all items.
+ */
+class SearchApiRenderedImage extends SearchApiAbstractAlterCallback {
+
+  public function alterItems(array &$items) {
+    //dpm($items); return;
+    foreach ($items as $id => &$item) {
+      // If we have a valid thumbnail field, render the first image as the unified teaser thumbnail
+      if (!empty($item->field_thumbnail_image[$item->language][0]['filename'])) {
+        $img_vars = &$item->field_thumbnail_image[$item->language][0];
+        $img_vars['uri'] = image_style_url('list-page-thumbnail', $img_vars['uri']);
+      }
+    }
+  }
+
+}
