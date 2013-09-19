@@ -77,14 +77,52 @@ div.tabs ul.secondary {
 
 /* Media Queries */
 /* Fonts */
+@font-face {
+  font-family: "SanMateoIcon";
+  src: url("../fonts/SanMateoIcon.eot");
+  src: url("../fonts/SanMateoIcon.eot?#iefix") format("embedded-opentype"), url("../fonts/SanMateoIcon.woff") format("woff"), url("../fonts/SanMateoIcon.ttf") format("truetype"), url("../fonts/SanMateoIcon.svg#SanMateoIcon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+/* line 16, ../scss/elements/icons.scss */
+[data-icon]:before {
+  font-family: "SanMateoIcon";
+  content: attr(data-icon);
+  speak: none;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased; }
+
 /* Use the following CSS code if you want to have a class per icon */
 /*
 Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-/* line 10, ../scss/elements/icons.scss */
-.icon-mag-glass-02, .icon-menu, .icon-arrow-down, .icon-home, .icon-arrow-down-iso, .icon-close, .icon-subnav, .menu-button, .icon-eye, .icon-filter, .icon-info, .icon-link, .icon-phone, .icon-location, .icon-feed {
+/* line 52, ../scss/elements/icons.scss */
+.icon-mag-glass-02,
+.icon-menu,
+.icon-arrow-down,
+.icon-home,
+.icon-arrow-down-iso,
+.icon-close,
+.icon-subnav,
+.menu-button,
+.icon-eye,
+.icon-filter,
+.icon-info,
+.icon-link,
+.icon-phone,
+.icon-location,
+.icon-feed,
+.follow-link-facebook,
+.follow-link-twitter,
+.follow-link-flickr,
+.follow-link-vimeo,
+.follow-link-youtube,
+.follow-link-this-site {
   font-family: "SanMateoIcon";
   speak: none;
   font-style: normal;
@@ -93,62 +131,86 @@ you can use the generic selector below, but it's slower:
   text-transform: none;
   -webkit-font-smoothing: antialiased; }
 
-/* line 19, ../scss/elements/icons.scss */
+/* line 62, ../scss/elements/icons.scss */
 .icon-mag-glass-02:before {
   content: "\e000"; }
 
-/* line 20, ../scss/elements/icons.scss */
+/* line 63, ../scss/elements/icons.scss */
 .icon-menu:before, .touch-button, .menu-button {
   content: "\e001"; }
 
-/* line 21, ../scss/elements/icons.scss */
+/* line 64, ../scss/elements/icons.scss */
 .icon-arrow-down:before {
   content: "\e002"; }
 
-/* line 22, ../scss/elements/icons.scss */
+/* line 65, ../scss/elements/icons.scss */
 .icon-home:before {
   content: "\e003"; }
 
-/* line 23, ../scss/elements/icons.scss */
+/* line 66, ../scss/elements/icons.scss */
 .icon-arrow-down-iso:before {
   content: "\e004"; }
 
-/* line 24, ../scss/elements/icons.scss */
+/* line 67, ../scss/elements/icons.scss */
 .icon-close:before {
   content: "\e005"; }
 
-/* line 25, ../scss/elements/icons.scss */
+/* line 68, ../scss/elements/icons.scss */
 .icon-subnav:before {
   content: "\e006"; }
 
-/* line 26, ../scss/elements/icons.scss */
+/* line 69, ../scss/elements/icons.scss */
 .icon-eye:before {
   content: "\e007";
   padding-right: 0.5em; }
 
-/* line 30, ../scss/elements/icons.scss */
+/* line 73, ../scss/elements/icons.scss */
 .icon-filter:before {
   content: "\e008"; }
 
-/* line 31, ../scss/elements/icons.scss */
+/* line 74, ../scss/elements/icons.scss */
 .icon-info:before {
   content: "\e009"; }
 
-/* line 32, ../scss/elements/icons.scss */
+/* line 75, ../scss/elements/icons.scss */
 .icon-link:before {
   content: "\e00a"; }
 
-/* line 33, ../scss/elements/icons.scss */
+/* line 76, ../scss/elements/icons.scss */
 .icon-phone:before {
   content: "\e00b"; }
 
-/* line 34, ../scss/elements/icons.scss */
+/* line 77, ../scss/elements/icons.scss */
 .icon-location:before {
   content: "\e00c"; }
 
-/* line 35, ../scss/elements/icons.scss */
-.icon-feed:before {
+/* line 79, ../scss/elements/icons.scss */
+.follow-link-feed:before {
   content: "\e00d"; }
+
+/* line 82, ../scss/elements/icons.scss */
+.follow-link-facebook:before {
+  content: "\e00e"; }
+
+/* line 85, ../scss/elements/icons.scss */
+.follow-link-twitter:before {
+  content: "\e00f"; }
+
+/* line 88, ../scss/elements/icons.scss */
+.follow-link-flickr:before {
+  content: "\e010"; }
+
+/* line 91, ../scss/elements/icons.scss */
+.follow-link-vimeo:before {
+  content: "\e011"; }
+
+/* line 94, ../scss/elements/icons.scss */
+.follow-link-youtube:before {
+  content: "\e012"; }
+
+/* line 97, ../scss/elements/icons.scss */
+.follow-link-this-site:before {
+  content: "\e013"; }
 
 /* Media Queries */
 /* Fonts */
@@ -166,44 +228,44 @@ you can use the generic selector below, but it's slower:
   padding-left: 0; }
 
 @media all and (min-width: 768px) {
-  /* line 20, ../scss/elements/layout.scss */
+  /* line 21, ../scss/elements/layout.scss */
   #main-wrapper, header .inner {
     max-width: 1120px;
     margin: auto; }
 
-  /* line 24, ../scss/elements/layout.scss */
+  /* line 25, ../scss/elements/layout.scss */
   .main-body {
     padding: 0 0em;
     margin-bottom: 5%; }
 
-  /* line 28, ../scss/elements/layout.scss */
+  /* line 29, ../scss/elements/layout.scss */
   .main-content {
     width: 70%;
     float: left;
     padding-left: 0; }
 
-  /* line 34, ../scss/elements/layout.scss */
+  /* line 35, ../scss/elements/layout.scss */
   .sidebar {
     width: 100%;
     margin-bottom: 3%; }
 
-  /* line 39, ../scss/elements/layout.scss */
+  /* line 40, ../scss/elements/layout.scss */
   .secondary {
     float: right;
     width: 27%;
     margin-left: 3%; } }
 @media all and (min-width: 940px) {
-  /* line 48, ../scss/elements/layout.scss */
+  /* line 49, ../scss/elements/layout.scss */
   .main-body {
     padding: 0; }
 
-  /* line 52, ../scss/elements/layout.scss */
+  /* line 53, ../scss/elements/layout.scss */
   .main-content {
     width: 58%;
     float: left;
     padding-left: 1em; }
 
-  /* line 58, ../scss/elements/layout.scss */
+  /* line 59, ../scss/elements/layout.scss */
   .sidebar {
     float: left;
     width: 17%;
@@ -211,7 +273,7 @@ you can use the generic selector below, but it's slower:
     margin-top: 0;
     margin-bottom: 5%; }
 
-  /* line 66, ../scss/elements/layout.scss */
+  /* line 67, ../scss/elements/layout.scss */
   .secondary {
     padding-right: 0em;
     width: 20%;
@@ -434,11 +496,57 @@ you can use the generic selector below, but it's slower:
     padding-left: 1em;
     padding-right: 1em; }
 
-/* line 23, ../scss/smc_base.scss */
+/* Media Queries */
+/* Fonts */
+/* line 4, ../scss/elements/follow.scss */
+.follow-links {
+  font-size: 1em;
+  line-height: 1em; }
+  /* line 8, ../scss/elements/follow.scss */
+  .follow-links a.follow-link {
+    float: left;
+    color: white;
+    height: auto;
+    background-color: #036cb6;
+    background-image: none;
+    font-size: 1.25em;
+    padding: .5em;
+    border-radius: 3px;
+    display: inline-block;
+    line-height: 1em;
+    margin: 0 5% 5% 0; }
+    /* line 22, ../scss/elements/follow.scss */
+    .follow-links a.follow-link .follow-link-text {
+      display: none; }
+  /* line 27, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-facebook {
+    background-color: #3b5998; }
+  /* line 30, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-twitter {
+    background-color: #55acee; }
+  /* line 33, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-this-site {
+    background-color: #fd9a27; }
+  /* line 36, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-flickr {
+    background-color: #fc2482; }
+  /* line 39, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-vimeo {
+    background-color: #2ebae9; }
+  /* line 42, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-youtube {
+    background-color: #cc171e; }
+
+@media all and (min-width: 768px) {
+  /* line 51, ../scss/elements/follow.scss */
+  .follow-links a.follow-link {
+    font-size: 1em;
+    padding: .5em; } }
+/* line 25, ../scss/smc_base.scss */
 .krumo-root strong {
   display: inline !important; }
 
-/* line 28, ../scss/smc_base.scss */
+/* line 30, ../scss/smc_base.scss */
 ul li.leaf,
 ul li.expanded {
   list-style-type: none;
@@ -446,34 +554,34 @@ ul li.expanded {
   padding: 0;
   margin: 0; }
 
-/* line 36, ../scss/smc_base.scss */
+/* line 38, ../scss/smc_base.scss */
 .messages strong {
   display: inline; }
 
-/* line 45, ../scss/smc_base.scss */
+/* line 47, ../scss/smc_base.scss */
 nav.main-nav {
   border-top: 0;
   margin-bottom: 0;
   padding-top: 0;
   z-index: 400 !important; }
 
-/* line 51, ../scss/smc_base.scss */
+/* line 53, ../scss/smc_base.scss */
 .flexslider {
   z-index: 1 !important; }
 
-/* line 54, ../scss/smc_base.scss */
+/* line 56, ../scss/smc_base.scss */
 header {
   z-index: 10; }
 
-/* line 58, ../scss/smc_base.scss */
+/* line 60, ../scss/smc_base.scss */
 div.body {
   z-index: 1; }
 
-/* line 62, ../scss/smc_base.scss */
+/* line 64, ../scss/smc_base.scss */
 footer {
   z-index: 10; }
 
-/* line 67, ../scss/smc_base.scss */
+/* line 69, ../scss/smc_base.scss */
 #footer-wrapper .section {
   margin-bottom: 0; }
 

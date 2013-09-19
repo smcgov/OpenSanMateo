@@ -1,43 +1,35 @@
 
-.panel-3col { 
-/*  overflow: hidden;  */
-}
-
-.panel-col-top,
-.panel-col-bottom {
+.sm-three-column .panel-col-top,
+.sm-three-column .panel-col-bottom {
   width: 100%;
   display: block;
   float: none;
   clear: both;
 }
 
-.panel-3col .panel-col-first { 
+.sm-three-column .panel-col-first { 
   float: left; 
-  width: 25%; 
+  width: 17%; 
 }
 
-.panel-3col .panel-col-first .inside { 
-  margin: 0 .5em 1em 0;
+.sm-three-column .panel-col-first .inside { 
+  
 }
 
-.panel-3col .panel-col { 
+.sm-three-column .panel-col-middle { 
   float: left; 
-  width: 50%; 
+  width: 58%; 
 }
 
-.panel-3col .panel-col .inside { 
-  margin: 0 .5em 1em .5em;
+.sm-three-column .panel-col-last .inside { 
+  
 }
 
-.panel-3col .panel-col-last { 
+.sm-three-column .panel-col-last { 
   float: left; 
-  width: 25%; 
+  width: 20%; 
 }
 
-.panel-3col .panel-col-last .inside { 
-  margin: 0 0 1em .5em;
-}
-
-.panel-3col .panel-separator {
+.sm-three-column .panel-separator {
   margin: 0 0 1em 0;
 }
