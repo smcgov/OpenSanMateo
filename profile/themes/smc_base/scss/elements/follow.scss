@@ -1,0 +1,49 @@
+// default variables
+@import "vars.scss";
+
+.follow-links {
+  
+  a.follow-link {
+    float: left;
+    color: white; 
+    background-color: $primaryBlue; 
+    background-image: none;
+    text-indent: -9999em;
+    font-size: 1.5em; 
+    padding: .5em; 
+    border-radius: 3px; 
+    display: block; 
+    line-height: 1; 
+    margin: 0 5% 5% 0;
+  }
+  
+  a.follow-link-facebook {
+    background-color: #3b5998;
+  }
+  a.follow-link-twitter {
+    background-color: #55acee;
+  } 
+  a.follow-link-this-site {
+    background-color:#fd9a27;
+  }
+  a.follow-link-flickr {
+    background-color:#fc2482;
+  }
+  a.follow-link-vimeo {
+    background-color:#2ebae9;
+  }
+  a.follow-link-youtube {
+    background-color: #cc171e;
+  }
+}
+
+@media all and (min-width: $tablet) {
+  
+  .follow-links {
+  
+    a.follow-link {
+      font-size: 1.25em; 
+      padding: .5em; 
+    }
+  }
+}

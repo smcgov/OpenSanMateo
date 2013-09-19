@@ -1,13 +1,55 @@
 // default variables
 @import "vars.scss";
 
+@font-face {
+	font-family: "SanMateoIcon";
+	src:url('../fonts/SanMateoIcon.eot');
+	src:url('../fonts/SanMateoIcon.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/SanMateoIcon.woff') format('woff'),
+		url('../fonts/SanMateoIcon.ttf') format('truetype'),
+		url('../fonts/SanMateoIcon.svg#SanMateoIcon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+	
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: "SanMateoIcon";
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+	}
+
 /* Use the following CSS code if you want to have a class per icon */
 /*
 Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-mag-glass-02, .icon-menu, .icon-arrow-down, .icon-home, .icon-arrow-down-iso, .icon-close, .icon-subnav, .menu-button, .icon-eye, .icon-filter, .icon-info, .icon-link, .icon-phone, .icon-location, .icon-feed   {
+.icon-mag-glass-02, 
+.icon-menu, 
+.icon-arrow-down, 
+.icon-home, 
+.icon-arrow-down-iso, 
+.icon-close, 
+.icon-subnav, 
+.menu-button, 
+.icon-eye, 
+.icon-filter, 
+.icon-info, 
+.icon-link, 
+.icon-phone, 
+.icon-location, 
+.icon-feed, 
+.follow-link-facebook, 
+.follow-link-twitter, 
+.follow-link-flickr, 
+.follow-link-vimeo, 
+.follow-link-youtube, 
+.follow-link-this-site  {
 	font-family: "SanMateoIcon";
 	speak: none;
 	font-style: normal;
@@ -15,7 +57,8 @@ you can use the generic selector below, but it's slower:
 	font-variant: normal;
 	text-transform: none;
 	-webkit-font-smoothing: antialiased;
-	}
+}
+
 .icon-mag-glass-02:before {content: "\e000";}
 .icon-menu:before, .touch-button, .menu-button{content: "\e001";}
 .icon-arrow-down:before {content: "\e002";}
@@ -32,4 +75,25 @@ you can use the generic selector below, but it's slower:
 .icon-link:before {content: "\e00a";}
 .icon-phone:before {content: "\e00b";}
 .icon-location:before {content: "\e00c";}
-.icon-feed:before {content: "\e00d";}
+
+.follow-link-feed:before {
+  content: "\e00d";
+}
+.follow-link-facebook:before {
+	content: "\e00e";
+}
+.follow-link-twitter:before {
+	content: "\e00f";
+}
+.follow-link-flickr:before {
+	content: "\e010";
+}
+.follow-link-vimeo:before {
+	content: "\e011";
+}
+.follow-link-youtube:before {
+	content: "\e012";
+}
+.follow-link-this-site:before {
+	content: "\e013";
+}
