@@ -102,9 +102,8 @@ function opensanmateo_search_default_search_api_index() {
           "settings" : { "fields" : {
               "search_api_multi_aggregation_1" : {
                 "name" : "Aggregated Teaser",
-                "type" : "fulltext",
                 "fields" : [ "field_summary", "field_blog_teaser", "body:summary" ],
-                "description" : "A Fulltext aggregation of the following fields: Summary, Teaser, The main body text \\u00bb Summary."
+                "description" : "A text aggregation of the following fields: Summary, Teaser, The main body text \\u00bb Summary."
               },
               "search_api_multi_aggregation_3" : {
                 "name" : "Aggregated Author",
@@ -211,7 +210,12 @@ function opensanmateo_search_default_search_api_index() {
                 "name" : "Aggregated Thumbnail ALt",
                 "type" : "fulltext",
                 "fields" : [ "field_thumbnail_image:file:field_file_image_alt_text" ],
-                "description" : "A Fulltext aggregation of the following fields: Thumbnail Image \\u00bb The image file. \\u00bb URL."
+                "description" : "A text aggregation of the following fields: Thumbnail Image \\u00bb The image file. \\u00bb Alt Text."
+              },
+              "search_api_multi_aggregation_17" : {
+                "name" : "Aggregated Premise",
+                "fields" : [ "field_address:premise" ],
+                "description" : "A text aggregation of the following fields: Address \\u00bb Premise (i.e. Apartment \\/ Suite number)."
               }
             }
           }
