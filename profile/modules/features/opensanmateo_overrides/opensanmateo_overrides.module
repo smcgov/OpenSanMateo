@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OpenSanMateo Overrides feature.
+ */
+
+include_once 'opensanmateo_overrides.features.inc';
