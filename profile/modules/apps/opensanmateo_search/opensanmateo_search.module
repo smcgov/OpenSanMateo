@@ -14,14 +14,14 @@ include_once 'opensanmateo_search.features.field_instance_sub_type.inc';
 
 /**
  * Implements hook_search_api_query_alter().
- * 
+ *
  * Restricts the search results to the content types selected in the app
  */
 /*
 function opensanmateo_search_search_api_query_alter($query) {
   $types = array_filter(variable_get('opesanmateo_search_content_types_to_index', array()));
   $exclude_types = array_diff(array_map(function($i) {return $i->type;}, node_type_get_types()), $types);
-  
+
   $filter = $query->createFilter('AND');
   foreach ($exclude_types as $type) {
     $filter->condition('type', $type, '<>');
@@ -34,7 +34,7 @@ function opensanmateo_search_search_api_index_items_alter(array &$items, SearchA
     $types = array_filter(variable_get('opensanmateo_search_file_types_to_index', array()));
     foreach($items as $id => $item) {
       $lang= 'und';
-      //TODO: It seems that files do not have language this might not always be the case and this might need 
+      //TODO: It seems that files do not have language this might not always be the case and this might need
       //change
       if (!in_array($item->type, $types)) {
         unset($items[$id]);
@@ -87,7 +87,7 @@ function opensanmateo_search_qs_callback($search) {
 
 /**
  *  Implementation of hook_form_alter().
- *  
+ *
  *  Here we set a quick search callback on our search field
  */
 function quick_search_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
@@ -97,6 +97,29 @@ function quick_search_form_views_exposed_form_alter(&$form, &$form_state, $form_
     $form['search_api_views_fulltext']['#pre_render'][] = 'quick_search_process_search';
     $form['search_api_views_fulltext']['#attributes']['quick_search_callback'] = 'opensanmateo_search_qs_callback';
 }
+
+/**
+ * Implementation of template_preprocess_views_view_fields().
+ */
+function opensanmateo_search_preprocess_views_view_fields(&$vars) {
+  $view = $vars['view'];
+  if ($view->name == 'opensanmateo_search') {
+    if (!empty($vars['row']->_entity_properties['url'])) {
+      $types =  node_type_get_types();
+      // With our app based approach it's possible a content type might not
+      // exist on this install, so we'll fall back to a generic 'read more' link.
+      if (!empty($types[$vars['row']->_entity_properties['type']])) {
+        $link_text = t('Read the !type', array('!type' => $types[$vars['row']->_entity_properties['type']]->name));
+      }
+      else {
+        $link_text = t('Read More');
+      }
+
+      $vars['fields']['more_link'] = "<div class='read-more-wrapper'>" . l($link_text, $vars['row']->_entity_properties['url'], array('attributes' => array('class' => array('read-more')))) . "</div>";
+    }
+  }
+}
+
 
 /**
  * implements hook_features_template_info()
@@ -211,16 +234,16 @@ function opensanmateo_search_shared_file_process($element, &$form_state, $form) 
   $element['opensanmateo_search_shared_file']['uri'] = array(
     '#type' => 'textfield',
     '#title' => 'url',
-  );  
+  );
   return $element;
 }
 
 function opensanmateo_search_shared_file_value($element, &$item) {
 /*
-  if (isset($item['opensanmateo_search_shared_file']['uri']) && strlen($item['opensanmateo_search_shared_file']['uri']) > 0 && valid_uri($item['opensanmateo_search_shared_file']['uri'])) { 
+  if (isset($item['opensanmateo_search_shared_file']['uri']) && strlen($item['opensanmateo_search_shared_file']['uri']) > 0 && valid_uri($item['opensanmateo_search_shared_file']['uri'])) {
   }
-*/  
-  if (isset($item['opensanmateo_search_shared_file']['uri']) && strlen($item['opensanmateo_search_shared_file']['uri']) > 0) { 
+*/
+  if (isset($item['opensanmateo_search_shared_file']['uri']) && strlen($item['opensanmateo_search_shared_file']['uri']) > 0) {
     $extra = uniqid();
     $uri = $item['opensanmateo_search_shared_file']['uri'];
     $file = (object) array(
@@ -237,9 +260,9 @@ function opensanmateo_search_shared_file_value($element, &$item) {
 function theme_opensanmateo_search_source_remote_element($variables) {
   $element = $variables['element'];
   $element['url']['#field_suffix'] = drupal_render($element['transfer']);
-  return '<div class="filefield-source filefield-source-opensanmateo clear-block">' . 
-  drupal_render($element['view']) . 
-  drupal_render($element['uri']) . 
+  return '<div class="filefield-source filefield-source-opensanmateo clear-block">' .
+  drupal_render($element['view']) .
+  drupal_render($element['uri']) .
   '</div>';
 }
 
