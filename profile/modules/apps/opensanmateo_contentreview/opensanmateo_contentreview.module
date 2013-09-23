@@ -97,9 +97,10 @@ function opensanmateo_contentreview_node_presave($node) {
   if (!empty($node->field_next_review) && !empty($node->field_review_interval)) {
     $interval = field_get_items('node', $node, 'field_review_interval');
     $updated = !empty($node->changed) ? $node->changed : time();
-
+    
     if (!empty($interval[0]['value'])) {
-      $node->field_next_review[$node->language][0]['value'] = $interval[0]['value'] + $updated;
+      $field_language = field_language('node', $node, 'field_next_review');
+      $node->field_next_review[$field_language][0]['value'] = $interval[0]['value'] + $updated;
     }
   }
 }
