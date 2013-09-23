@@ -159,7 +159,7 @@ function opensanmateo_search_default_search_api_index() {
                   "field_subject:name",
                   "field_sub_type:name",
                   "field_event_calendar:name",
-                  "field_event_type:name"
+                  "field_event_type:name",
                   "field_topic:name"
                 ],
                 "description" : "A text aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
