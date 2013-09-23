@@ -61,9 +61,8 @@ function opensanmateo_contentreview_field_widget_info() {
  */
 function opensanmateo_contentreview_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
   $options = array(
-    0 => t('Never'),
     604800 => t('1 week'),
-    1209600 => t('1 weeks'),
+    1209600 => t('2 weeks'),
     2592000 => t('1 month'),
     7776000 => t('3 months'),
     15552000 => t('6 months'),
