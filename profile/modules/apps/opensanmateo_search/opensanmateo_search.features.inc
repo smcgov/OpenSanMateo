@@ -76,17 +76,18 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_site_hash" : { "type" : "uri" },
         "search_api_site_id" : { "type" : "string" },
         "body:value" : { "type" : "text" },
-        "field_sub_type:name" : { "type" : "text" },
         "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_sub_type:name" : { "type" : "text" },
         "field_topic:name" : { "type" : "string" },
-        "field_address:locality" : { "type" : "string" },
         "field_event_calendar:name" : { "type" : "text" },
         "field_event_date:value" : { "type" : "date" },
         "field_event_date:value2" : { "type" : "date" },
         "field_event_type:name" : { "type" : "text" },
+        "field_address:locality" : { "type" : "string" },
         "field_thumbnail_image:file:url" : { "type" : "string" },
         "field_thumbnail_image:file:field_file_image_alt_text" : { "type" : "string" },
-        "field_thumbnail_image:file:field_file_image_title_text" : { "type" : "string" }
+        "field_thumbnail_image:file:field_file_image_title_text" : { "type" : "string" },
+        "field_location_address:field_address:postal_code" : { "type" : "list\\u003Cstring\\u003E" }
       },
       "data_alter_callbacks" : {
         "site_index" : { "status" : 1, "weight" : "-50", "settings" : [] },
@@ -107,8 +108,8 @@ function opensanmateo_search_default_search_api_index() {
           "settings" : { "fields" : {
               "search_api_multi_aggregation_1" : {
                 "name" : "Aggregated Teaser",
-                "fields" : [ "field_summary", "field_blog_teaser", "body:summary" ],
-                "description" : "A text aggregation of the following fields: Summary, Teaser, The main body text \\u00bb Summary."
+                "fields" : [ "field_blog_teaser", "field_summary", "body:summary" ],
+                "description" : "A text aggregation of the following fields: Teaser, Summary, The main body text \\u00bb Summary."
               },
               "search_api_multi_aggregation_3" : {
                 "name" : "Aggregated Author",
@@ -122,33 +123,46 @@ function opensanmateo_search_default_search_api_index() {
               },
               "search_api_multi_aggregation_4" : {
                 "name" : "Aggregated State",
-                "fields" : [ "field_address:administrative_area" ],
-                "description" : "A text aggregation of the following fields: Address \\u00bb Administrative area (i.e. State \\/ Province)."
+                "fields" : [
+                  "field_address:administrative_area",
+                  "field_location_address:field_address:administrative_area"
+                ],
+                "description" : "A text aggregation of the following fields: Address \\u00bb Administrative area (i.e. State \\/ Province), Address \\u00bb Address \\u00bb Administrative area (i.e. State \\/ Province)."
               },
               "search_api_multi_aggregation_5" : {
                 "name" : "Aggregated Postal",
-                "fields" : [ "field_address:postal_code" ],
-                "description" : "A text aggregation of the following fields: Address \\u00bb Postal code."
+                "fields" : [
+                  "field_address:postal_code",
+                  "field_location_address:field_address:postal_code"
+                ],
+                "description" : "A text aggregation of the following fields: Address \\u00bb Postal code, Address \\u00bb Address \\u00bb Postal code."
               },
               "search_api_multi_aggregation_6" : {
                 "name" : "Aggregated Thoroughfare",
-                "fields" : [ "field_address:thoroughfare" ],
-                "description" : "A text aggregation of the following fields: Address \\u00bb Thoroughfare (i.e. Street address)."
+                "fields" : [
+                  "field_address:thoroughfare",
+                  "field_location_address:field_address:thoroughfare"
+                ],
+                "description" : "A text aggregation of the following fields: Address \\u00bb Thoroughfare (i.e. Street address), Address \\u00bb Address \\u00bb Thoroughfare (i.e. Street address)."
               },
               "search_api_multi_aggregation_7" : {
                 "name" : "City",
-                "fields" : [ "field_address:locality" ],
-                "description" : "A text aggregation of the following fields: Address \\u00bb Locality (i.e. City)."
+                "fields" : [
+                  "field_address:locality",
+                  "field_location_address:field_address:locality"
+                ],
+                "description" : "A text aggregation of the following fields: Address \\u00bb Locality (i.e. City), Address \\u00bb Address \\u00bb Locality (i.e. City)."
               },
               "search_api_multi_aggregation_8" : {
                 "name" : "Terms",
                 "fields" : [
-                  "field_sub_type:name",
                   "field_subject:name",
+                  "field_sub_type:name",
                   "field_event_calendar:name",
                   "field_event_type:name"
+                  "field_topic:name"
                 ],
-                "description" : "A text aggregation of the following fields: Sub Type \\u00bb Name, Subject \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
+                "description" : "A text aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
               },
               "search_api_multi_aggregation_9" : {
                 "name" : "Aggregated Start Date",
@@ -192,8 +206,11 @@ function opensanmateo_search_default_search_api_index() {
               },
               "search_api_multi_aggregation_17" : {
                 "name" : "Aggregated Premise",
-                "fields" : [ "field_address:premise" ],
-                "description" : "A text aggregation of the following fields: Address \\u00bb Premise (i.e. Apartment \\/ Suite number)."
+                "fields" : [
+                  "field_address:premise",
+                  "field_location_address:field_address:premise"
+                ],
+                "description" : "A text aggregation of the following fields: Address \\u00bb Premise (i.e. Apartment \\/ Suite number), Address \\u00bb Address \\u00bb Premise (i.e. Apartment \\/ Suite number)."
               },
               "search_api_multi_aggregation_18" : {
                 "name" : "aggregated Release Date",
