@@ -129,6 +129,8 @@ function smc_base_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
   
   if ($view->name == 'opensanmateo_search') {
+    
+    //krumo($vars['fields']);
     // Legend for (wonky) field names
     // There is a chance the variable names may need changed later, hence this fancy legend
     // Module developers should be drawn and quartered 
@@ -149,6 +151,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     
     // LOCATION RELATED
     // search_api_multi_aggregation_6   - street
+    // search_api_multi_aggregation_17  - street 2
     // search_api_multi_aggregation_7   - city
     // search_api_multi_aggregation_4   - state
     // search_api_multi_aggregation_5   - zip
@@ -217,30 +220,11 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     
     // we need to ensure that in the panels pane these items are removed
     // as the views rewrite groups them all into one field (street)
-    unset($vars['fields']['search_api_multi_aggregation_4']); // state
-    unset($vars['fields']['search_api_multi_aggregation_5']); // zip
-    unset($vars['fields']['search_api_multi_aggregation_7']); // city
+    //unset($vars['fields']['search_api_multi_aggregation_4']); // state
+    //unset($vars['fields']['search_api_multi_aggregation_5']); // zip
+    //unset($vars['fields']['search_api_multi_aggregation_7']); // city
     
     
-    
-    
-    
-    // let's group the "info" section into a logical array
-    /*
-$vars['fields']['info'] = array(
-      'address' => array(      
-        '#prefix' => '<div class="location address clearfix">',
-        '#suffix' => '</div>',
-        'street' => $vars['fields']['search_api_multi_aggregation_6'],
-        'city' => $vars['fields']['search_api_multi_aggregation_7'],
-        'state' => $vars['fields']['search_api_multi_aggregation_4'],
-        'zip' => $vars['fields']['search_api_multi_aggregation_5'],
-      ),
-    );
-    
-*/
-    
-    //krumo($vars['fields']);
   } // end opensanmateo_search
 }
 
