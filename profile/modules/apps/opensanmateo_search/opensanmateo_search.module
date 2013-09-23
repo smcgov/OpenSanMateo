@@ -451,15 +451,46 @@ function opensanmateo_search_search_api_alter_callback_info() {
  */
 class SearchApiRenderedImage extends SearchApiAbstractAlterCallback {
 
+  /**
+   * Implements SearchApiAlterCallbackInterface::configurationForm().
+   */
+  public function configurationForm() {
+    $form = array();
+
+    // Offer up image styles
+    $styles = image_styles();
+    $options = array();
+    foreach ($styles as $key => $style) {
+      $options[$key] = $style['name'];
+    }
+    asort($options);
+    $form['image_style'] = array(
+      '#type' => 'select',
+      '#title' => t('Select image style to apply to thumbnail image'),
+      '#multiple' => FALSE,
+      '#required' => FALSE,
+      '#empty_option' => t('- None -'),
+      '#options' => $options,
+      '#default_value' => !empty($this->options['image_style']) ? array($this->options['image_style']) : array(),
+    );
+
+    return $form;
+  }
+
+  /**
+   * Alter items before indexing
+   */
   public function alterItems(array &$items) {
     //dpm($items); return;
+    //dpm($this->options);
     foreach ($items as $id => &$item) {
       // If we have a valid thumbnail field, render the first image as the unified teaser thumbnail
-      if (!empty($item->field_thumbnail_image[$item->language][0]['filename'])) {
+      if (!empty($item->field_thumbnail_image[$item->language][0]['filename']) && !empty($this->options['image_style'])) {
         $img_vars = &$item->field_thumbnail_image[$item->language][0];
-        $img_vars['uri'] = image_style_url('list-page-thumbnail', $img_vars['uri']);
+        $img_vars['uri'] = image_style_url($this->options['image_style'], $img_vars['uri']);
       }
     }
+    //dpm($items);
   }
 
 }
