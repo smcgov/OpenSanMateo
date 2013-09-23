@@ -92,7 +92,7 @@ function opensanmateo_search_field_default_field_instances() {
         'label' => 'above',
         'module' => 'field_views',
         'settings' => array(
-          'view' => '',
+          'view' => 'opensanmateo_search block_5',
         ),
         'type' => 'field_views_formatter',
         'weight' => 0,

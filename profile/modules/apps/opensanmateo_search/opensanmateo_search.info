@@ -46,6 +46,7 @@ features[field_base][] = field_quick_search
 features[field_base][] = field_share
 features[field_base][] = field_sub_type
 features[field_base][] = field_subject
+features[field_base][] = field_topic
 features[field_base][] = field_view
 features[field_instance][] = taxonomy_term-sub_type-field_view
 features[field_instance][] = taxonomy_term-subject-field_view

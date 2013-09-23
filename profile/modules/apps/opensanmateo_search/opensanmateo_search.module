@@ -10,6 +10,7 @@ include_once 'opensanmateo_search.features.field_instance_share.inc';
 include_once 'opensanmateo_search.features.field_instance_summary.inc';
 include_once 'opensanmateo_search.features.field_instance_qs.inc';
 include_once 'opensanmateo_search.features.field_instance_subject.inc';
+include_once 'opensanmateo_search.features.field_instance_topic.inc';
 include_once 'opensanmateo_search.features.field_instance_sub_type.inc';
 
 /**
@@ -152,6 +153,14 @@ function opensanmateo_search_features_template_info() {
       'plugin' => 'field_instance',
       'deleted' => isset($content_types[$content_type]) &&  $content_types[$content_type],
       'template' => 'opensanmateo_search_field_default_field_instances_subject_template'
+    );
+    $data[] = array(
+      'entity_type' => 'node',
+      'bundle_type' => $content_type,
+      'field' => 'field_topic',
+      'plugin' => 'field_instance',
+      'deleted' => isset($content_types[$content_type]) &&  $content_types[$content_type],
+      'template' => 'opensanmateo_search_field_default_field_instances_topic_template'
     );
     $data[] = array(
       'entity_type' => 'node',

@@ -672,6 +672,29 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['arguments']['search_api_site_id']['not'] = 0;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
+
+  /* Display: Taxonomy Page:Topic */
+  $handler = $view->new_display('block', 'Taxonomy Page:Topic', 'block_5');
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Global: Null */
+  $handler->display->display_options['arguments']['null']['id'] = 'null';
+  $handler->display->display_options['arguments']['null']['table'] = 'views';
+  $handler->display->display_options['arguments']['null']['field'] = 'null';
+  $handler->display->display_options['arguments']['null']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: Topic: Name (indexed) */
+  $handler->display->display_options['arguments']['field_topic_name']['id'] = 'field_topic_name';
+  $handler->display->display_options['arguments']['field_topic_name']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['arguments']['field_topic_name']['field'] = 'field_topic_name';
+  $handler->display->display_options['arguments']['field_topic_name']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_topic_name']['default_argument_type'] = 'php';
+  $handler->display->display_options['arguments']['field_topic_name']['default_argument_options']['code'] = '$term = taxonomy_term_load($view->args[0]);
+      return $term->name;';
+  $handler->display->display_options['arguments']['field_topic_name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_topic_name']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_topic_name']['not'] = 0;
   $export['opensanmateo_search'] = $view;
 
   return $export;
