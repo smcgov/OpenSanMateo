@@ -220,10 +220,13 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     
     // we need to ensure that in the panels pane these items are removed
     // as the views rewrite groups them all into one field (street)
-    //unset($vars['fields']['search_api_multi_aggregation_4']); // state
-    //unset($vars['fields']['search_api_multi_aggregation_5']); // zip
-    //unset($vars['fields']['search_api_multi_aggregation_7']); // city
+    unset($vars['fields']['search_api_multi_aggregation_4']); // state
+    unset($vars['fields']['search_api_multi_aggregation_5']); // zip
+    unset($vars['fields']['search_api_multi_aggregation_7']); // city
+    unset($vars['fields']['search_api_multi_aggregation_17']); // street2
     
+    unset($vars['fields']['more_link']); // morelink
+    //krumo($vars['fields']);
     
   } // end opensanmateo_search
 }
