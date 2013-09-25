@@ -411,7 +411,7 @@ you can use the generic selector below, but it's slower:
     margin-bottom: 0; }
   /* line 28, ../scss/elements/alerts.scss */
   #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content {
-    color: white;
+    color: #FFFFFF;
     margin-bottom: 0;
     width: 80%;
     font-weight: bold;
@@ -419,13 +419,19 @@ you can use the generic selector below, but it's slower:
     float: left;
     padding-top: .6em;
     z-index: 3; }
-  /* line 39, ../scss/elements/alerts.scss */
-  #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content p {
-    color: white;
-    margin-bottom: 0;
-    width: 100%;
-    font-weight: bold;
-    font-size: .85em; }
+    /* line 38, ../scss/elements/alerts.scss */
+    #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content a {
+      color: #EEEEEE; }
+      /* line 41, ../scss/elements/alerts.scss */
+      #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content a:hover {
+        color: #FFFFFF; }
+    /* line 45, ../scss/elements/alerts.scss */
+    #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content p {
+      color: #FFFFFF;
+      margin-bottom: 0;
+      width: 100%;
+      font-weight: bold;
+      font-size: .85em; }
 
 /* Media Queries */
 /* Fonts */
