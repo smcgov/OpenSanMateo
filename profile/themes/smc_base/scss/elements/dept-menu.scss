@@ -5,7 +5,7 @@
   display: none;
 }
 
-@media all and (min-width: 768px) {
+@media all and (min-width: $tablet) {
 
   #dept-switch {
   	background-color: $primaryBlue;
