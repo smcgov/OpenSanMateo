@@ -219,6 +219,11 @@ function opensanmateo_search_default_search_api_index() {
               }
             }
           }
+        },
+        "search_opensanmateo_image" : {
+          "status" : 1,
+          "weight" : "999",
+          "settings" : { "image_style" : "list-page-thumbnail" }
         }
       },
       "processors" : {

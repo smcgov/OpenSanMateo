@@ -484,10 +484,11 @@ class SearchApiRenderedImage extends SearchApiAbstractAlterCallback {
     //dpm($items); return;
     //dpm($this->options);
     foreach ($items as $id => &$item) {
-      // If we have a valid thumbnail field, render the first image as the unified teaser thumbnail
+      // If we have a valid thumbnail field, use the first image as the styled teaser URL
       if (!empty($item->field_thumbnail_image[$item->language][0]['filename']) && !empty($this->options['image_style'])) {
-        $img_vars = &$item->field_thumbnail_image[$item->language][0];
-        $img_vars['uri'] = image_style_url($this->options['image_style'], $img_vars['uri']);
+        $style_url = image_style_url($this->options['image_style'], $item->field_thumbnail_image[$item->language][0]['uri']);
+        $raw_url = file_create_url($item->field_thumbnail_image[$item->language][0]['uri']);
+        $item->search_api_multi_aggregation_2[0] = str_replace($raw_url, $style_url, $item->search_api_multi_aggregation_2[0]);
       }
     }
     //dpm($items);
