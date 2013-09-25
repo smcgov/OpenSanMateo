@@ -59,16 +59,9 @@
     		<a class="dept-link show_hide icon-eye" rel="#dept-switch" href="">View All Departments</a>		
     		
     		<div class="lockup group clearfix">
-    			<?php if ($site_name || $site_slogan): ?>
-      			
-      			<?php if ($site_name): ?>            
-              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><h2 id="site-name" class="county-name"><?php print $site_name; ?></h2></a>
-              
-            <?php endif; ?>
-  
-            <?php if ($site_slogan): ?>
-              <a href="<?php print $front_page; ?>" title="<?php print $site_slogan; ?>"><h2 id="site-slogan" class="dept-name"><?php print $site_slogan; ?></h2></a>
-            <?php endif; ?>
+    			<?php if ($site_name): ?>
+      			<a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><h2 class="county-name">County<span class="tiny">of</span>San Mateo</h2></a>
+            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><h2 id="site-name" class="dept-name"><?php print $site_name; ?></h2></a>
     			<?php endif; ?>
     		</div>
 
