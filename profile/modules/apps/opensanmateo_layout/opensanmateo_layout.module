@@ -82,10 +82,19 @@ function opensanmateo_layout_block_view($delta = '') {
     case 'opensanmateo_layout_site_brand':
       $slogan = variable_get('site_slogan', '');
       $name = variable_get('site_name', '');
-      $logo = theme_get_setting('logo');
-      dpm($slogan);
-      dpm($logo);
-      $block['content'] = theme('opensanmateo_layout_site_brand', array('logo' => $logo, 'slogan' => $slogan, 'name' => $name));
+      
+      
+      $logo = theme('image', array(
+        'path' => theme_get_setting('logo'),
+        'alt' => 'Logo for ' . $name,
+        'attributes' => array(
+          'class' => array(
+            'logo-img',
+          ),
+        ),
+      ));
+      $linked_logo = l($logo, '<front>', array('html' => TRUE));
+      $block['content'] = theme('opensanmateo_layout_site_brand', array('logo' => $linked_logo, 'slogan' => $slogan, 'name' => $name));
   }
   return $block;
 }
