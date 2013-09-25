@@ -432,3 +432,66 @@ class FacetapiFilterChildTerms extends FacetapiFilter {
 
 }
 
+/**
+ * Implements hook_search_api_alter_callback_info
+ */
+function opensanmateo_search_search_api_alter_callback_info() {
+  $callbacks['search_opensanmateo_image'] = array(
+    'name' => t('Image style URL for unified teaser'),
+    'description' => t('Provides an absolute image style URL for the thumbnail image'),
+    'class' => 'SearchApiRenderedImage',
+    'weight' => 999,
+  );
+
+  return $callbacks;
+}
+
+/**
+ * Search API data alteration callback that adds an URL field for all items.
+ */
+class SearchApiRenderedImage extends SearchApiAbstractAlterCallback {
+
+  /**
+   * Implements SearchApiAlterCallbackInterface::configurationForm().
+   */
+  public function configurationForm() {
+    $form = array();
+
+    // Offer up image styles
+    $styles = image_styles();
+    $options = array();
+    foreach ($styles as $key => $style) {
+      $options[$key] = $style['name'];
+    }
+    asort($options);
+    $form['image_style'] = array(
+      '#type' => 'select',
+      '#title' => t('Select image style to apply to thumbnail image'),
+      '#multiple' => FALSE,
+      '#required' => FALSE,
+      '#empty_option' => t('- None -'),
+      '#options' => $options,
+      '#default_value' => !empty($this->options['image_style']) ? array($this->options['image_style']) : array(),
+    );
+
+    return $form;
+  }
+
+  /**
+   * Alter items before indexing
+   */
+  public function alterItems(array &$items) {
+    //dpm($items); return;
+    //dpm($this->options);
+    foreach ($items as $id => &$item) {
+      // If we have a valid thumbnail field, use the first image as the styled teaser URL
+      if (!empty($item->field_thumbnail_image[$item->language][0]['filename']) && !empty($this->options['image_style'])) {
+        $style_url = image_style_url($this->options['image_style'], $item->field_thumbnail_image[$item->language][0]['uri']);
+        $raw_url = file_create_url($item->field_thumbnail_image[$item->language][0]['uri']);
+        $item->search_api_multi_aggregation_2[0] = str_replace($raw_url, $style_url, $item->search_api_multi_aggregation_2[0]);
+      }
+    }
+    //dpm($items);
+  }
+
+}
