@@ -18,9 +18,7 @@ a {
 	color: $primaryBlue;
 	}
 
-#dept-switch {
-		display: none;
-		}
+
 
 .wrapper > header {
 	background-image: url(../images/uber-texture2.png), 
@@ -101,54 +99,6 @@ dl dd, dl dt {
 	text-align: center;
 	color: white;}
 
-.primary { color: navy;}
-
-.main {
-	bottom: 44px;
-	position: fixed;
-	background: rgba($primaryBlue, .95);
-	display: block;
-	width: 14%;
-	height: 9%;
-	margin: auto;
-	border-radius: 44px;
-	margin: 0 43%;
-	box-shadow: 0 3px 3px rgba($primaryGray, .3);}
-
-.main:active {
-	width: 100%;
-	height: auto;
-	border-radius: 0;}
-	
-.main nav li {
-	color: white;
-	text-align: left;
-	
-	a {
-	color: white;
-	padding: .25em .75em;
-	min-height: 44px;
-	font-size: .8em;
-	border-bottom: 1px solid #014c80;
-	display: block;
-	font-family: 'Trade Gothic W01 Roman';}
-
-	p {color: $primaryGray}
-	
-	}
-	
-.home {display: none;}
-
-.main nav li ul {
-	display: none;}
-
-.main.hideme.expander.expanded {
-    border-radius: 0 0 0 0;
-    height: 100%;
-    left: 0;
-    width: 100%;
-    margin: 0;
-    bottom: 0;}
 
 .sub {
 	background-color: white;
@@ -207,11 +157,6 @@ dl dd, dl dt {
 
 }
 
-.main .icon-menu {
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;line-height: 1.25em;
-}
 
 .content {display:none;}
 
@@ -1302,12 +1247,6 @@ ul.info {
 	.wrapper > header {margin-bottom: 5%}
 }
 
-@media only screen and (max-width: 767px) {
-
-	@import "flexnav";
-	.flexnav.show {z-index: 11;}
-}
-
 @media all and (min-width: 768px) {
 
   html, body {min-height: 100%;}
@@ -1434,51 +1373,6 @@ ul.info {
     position: relative;
 	}
 
-  #dept-switch {
-  	background-color: $primaryBlue;
-  	padding: 1em;
-  	display: none;
-  	
-  	.close {
-  		position: absolute; 
-  		top: 1%; 
-  		right: 3%; 
-  		color: white; 
-  		font-size: 1.5em;
-  		}
-  	
-  	.close:hover {color: rgba(#fff, .5)}
-  	
-  	h2 {
-  		color: rgba(#fff, .7);
-  		padding: 0 .25em .25em .25em; 
-  		text-transform: uppercase;
-  		}
-  	
-  	ul {
-  		-webkit-column-count: 4;
-  		-moz-column-count: 4;
-  		margin-bottom: 0;
-  		
-  		li {
-  			a {
-  				color: white;
-  				font-weight: bold;
-  				font-size: .8em;
-  				-webkit-transition: all 0.3s;
-  				-moz-transition: all 0.3s;
-  				transition: all 0.3s;
-  				padding: .25em .75em;
-  				display: inline-block;
-  				border-radius: 3px;
-  				position: relative;
-  				}
-  				
-  			a:hover {background-color: rgba(#fff, .1)}
-			}
-		}
-	}
-
   .hideme {opacity: 1.0}
 
   /* Header Logo/Headings */
@@ -1582,153 +1476,7 @@ ul.info {
   .search .btn:after {content: none;}
   /* End Header Search */
 
-  .icon-menu {display: none;}
-
-  .home {display: block}
-
-.primary {
-	border-radius: 3px;
-	width: 100%;
-	background-color: rgba($primaryTeal, .05);
-
-	
-	ul {
-		color: $primaryBlue;
-		}
-				
-		.home a:before {
-			content: "\e003";
-			font-family: 'SanMateoIcon';
-			text-indent: 0 !important;
-			}
-		
-		li {
-			float: left;
-			list-style-type: none;
-			position: relative;
-				
-		
-		a {
-			font-family: 'Trade Gothic W01 Roman', Helvetica Neue, Arial, Helvetica, sans-serif; 
-			font-size: .95em;
-			padding: 0.5em .9em;
-			display: block;
-			-webkit-transition: all 0.3s;
-			-moz-transition: all 0.3s;
-			transition: all 0.3s;
-			}
-			
-		a:hover {
-			background-color: rgba($primaryTeal, 1);
-			color: white;
-			border-radius: 3px;
-		}
-		
-		a.sub-nav:after {
-			content: "\e004";
-			font-family: 'SanMateoIcon';
-			font-size: .5em;
-			padding-left: 5px;
-			color: rgba($primaryTeal, .3);
-		}
-		
-		a.sub-nav:hover {
-			border-bottom-left-radius: 0px;
-			border-bottom-right-radius: 0px;
-		}
-		
-		a.sub-nav:hover:after {
-			color: rgba(#fff, .5);
-		}
-		
-		ul {
-			position: absolute;
-		    top: 40px;
-		    left: -20px;
-		    width: 300%;
-		 
-		    opacity: 0;
-		    background: rgba($primaryTeal, .9);
-		 
-		    -webkit-border-radius: 0 0 5px 5px;
-		    -moz-border-radius: 0 0 5px 5px;
-		    border-radius: 0 0 5px 5px;
-		 
-		    -webkit-transition: opacity .25s ease .1s;
-		    -moz-transition: opacity .25s ease .1s;
-		    -o-transition: opacity .25s ease .1s;
-		    -ms-transition: opacity .25s ease .1s;
-		    transition: opacity .25s ease .1s;
-		    
-		    li {
-			    height: 0;
-			    overflow: hidden;
-			    padding: 0;
-			    width: 100%;
-			    display: inline-table;
-			 
-			    -webkit-transition: height .25s ease .1s;
-			    -moz-transition: height .25s ease .1s;
-			    -o-transition: height .25s ease .1s;
-			    -ms-transition: height .25s ease .1s;
-			    transition: height .25s ease .1s;
-			    
-			    a {
-			    color: white;
-			    display: block;
-			    border-radius: 0;
-			    padding: .5em 1em;
-			    width: 100%;
-				}
-			}
-			
-			li:last-child a, li:last-child a:hover {
-				border-bottom-left-radius: 3px;
-				border-bottom-right-radius: 3px;
-			}
-		}
-			
-
-	}
-	
-	ul {margin-bottom: 0;}
-}
-		.primary li:hover > ul {
-			opacity: 1;}
-			
-		.primary li:hover > ul li {
-			height: 36px;
-			overflow: visible;
-			padding: 0;}
-
-.sub {
-	background-color: white;
-	border: 1px solid rgba($primaryBlue, .05);
-	border-radius: 3px;
-	font-family: $reg;
-	font-size: .85em;
-	border-top: 5px solid rgba($primaryBlue, .05);
-	
-	ul {margin: 0;padding: 0;
-	
-	li {margin: 0; padding: 0; list-style-type: none;
-		
-		a {display: block; padding: .75em .75em; border-bottom: 1px solid rgba($primaryBlue, .2);	-webkit-transition: all 0.3s;-moz-transition: all 0.3s; transition: all 0.3s;
-			}
-		a:hover {background-color: rgba($primaryBlue,.8); color: white;}
-		
-		}
-		.active {font-family: $bold;
-		
-			a {background-color: white; color: $primaryBlue;}
-			
-			ul li {
-			a {background-color: rgba($primaryTeal, .1); color: $primaryTeal; font-family: $reg; border-color: rgba($primaryTeal,.2)}
-			a:hover {background-color: rgba($primaryTeal, .2);}
-				}
-			}	
-		}
-	}
+  
 
 .content {
 	display: inline;
