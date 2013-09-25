@@ -14,7 +14,8 @@
     <?php if ($page['highlighted']): ?>
       <?php print render($page['highlighted']); ?>
     <?php endif; ?>
-    <div id="dept-switch" class="clearfix">
+    <!--
+<div id="dept-switch" class="clearfix">
     	<a class="close show_hide icon-close" href="" rel="#dept-switch"></a>
     	<h2>Departments</h2>
     	<ul class="group">
@@ -44,6 +45,7 @@
   			<li><a href="">Tax Collector / Treasurer / Revenue Services</a></li>
   		</ul>
     </div>
+-->
     
     
     

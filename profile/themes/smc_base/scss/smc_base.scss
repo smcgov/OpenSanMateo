@@ -16,10 +16,18 @@
 @import "elements/teaser.scss";
 // site follow links (pane)
 @import "elements/follow.scss";
+// shared department menu
+@import "elements/dept-menu.scss";
 
 body {
   //background: #EEEEEE;
   //padding: 50px;
+}
+
+.limiter {
+  margin: auto;
+  max-width: 1120px;
+  position: relative;
 }
 
 .krumo-root strong {

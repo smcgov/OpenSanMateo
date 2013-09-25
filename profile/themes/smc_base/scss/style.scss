@@ -18,9 +18,7 @@ a {
 	color: $primaryBlue;
 	}
 
-#dept-switch {
-		display: none;
-		}
+
 
 .wrapper > header {
 	background-image: url(../images/uber-texture2.png), 
@@ -1432,51 +1430,6 @@ ul.info {
   .inner {
 	  padding: .5em 1em 1.25em;
     position: relative;
-	}
-
-  #dept-switch {
-  	background-color: $primaryBlue;
-  	padding: 1em;
-  	display: none;
-  	
-  	.close {
-  		position: absolute; 
-  		top: 1%; 
-  		right: 3%; 
-  		color: white; 
-  		font-size: 1.5em;
-  		}
-  	
-  	.close:hover {color: rgba(#fff, .5)}
-  	
-  	h2 {
-  		color: rgba(#fff, .7);
-  		padding: 0 .25em .25em .25em; 
-  		text-transform: uppercase;
-  		}
-  	
-  	ul {
-  		-webkit-column-count: 4;
-  		-moz-column-count: 4;
-  		margin-bottom: 0;
-  		
-  		li {
-  			a {
-  				color: white;
-  				font-weight: bold;
-  				font-size: .8em;
-  				-webkit-transition: all 0.3s;
-  				-moz-transition: all 0.3s;
-  				transition: all 0.3s;
-  				padding: .25em .75em;
-  				display: inline-block;
-  				border-radius: 3px;
-  				position: relative;
-  				}
-  				
-  			a:hover {background-color: rgba(#fff, .1)}
-			}
-		}
 	}
 
   .hideme {opacity: 1.0}

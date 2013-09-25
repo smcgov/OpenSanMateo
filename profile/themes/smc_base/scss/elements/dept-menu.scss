@@ -1,0 +1,54 @@
+// default variables
+@import "vars.scss";
+
+#dept-switch {
+  display: none;
+}
+
+@media all and (min-width: 768px) {
+
+  #dept-switch {
+  	background-color: $primaryBlue;
+  	padding: 1em;
+  	display: none;
+  	
+  	.close {
+  		position: absolute; 
+  		top: 1%; 
+  		right: 3%; 
+  		color: white; 
+  		font-size: 1.5em;
+  		}
+  	
+  	.close:hover {color: rgba(#fff, .5)}
+  	
+  	h2 {
+  		color: rgba(#fff, .7);
+  		padding: 0 .25em .25em .25em; 
+  		text-transform: uppercase;
+  		}
+  	
+  	ul {
+  		-webkit-column-count: 4;
+  		-moz-column-count: 4;
+  		margin-bottom: 0;
+  		
+  		li {
+  			a {
+  				color: white;
+  				font-weight: bold;
+  				font-size: .8em;
+  				-webkit-transition: all 0.3s;
+  				-moz-transition: all 0.3s;
+  				transition: all 0.3s;
+  				padding: .25em .75em;
+  				display: inline-block;
+  				border-radius: 3px;
+  				position: relative;
+  				}
+  				
+  			a:hover {background-color: rgba(#fff, .1)}
+			}
+		}
+	}
+}
