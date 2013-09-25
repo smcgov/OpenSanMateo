@@ -1,3 +1,21 @@
+
+/* COPY/PASTE following lines to each new scss file
+
+// default variables
+@import "vars.scss";
+
+// All default/mobile styles will appear before the following media queries.
+
+@media all and (min-width: $tablet) {
+
+}
+
+@media all and (min-width: $desktop) {
+
+}
+
+*/
+
 $primaryBlue: #036cb6;
 $primaryTeal: #38939b;
 $primaryGray: #555a5a;
@@ -7,12 +25,14 @@ $altGreen: #8dc63f;
 $altOrange: #e98a41;
 $altRed: #852432;
 
-/* Media Queries */
-$mobile: 320px;
-$tablet: 768px;
-$desktop: 940px;
-
 /* Fonts */
 $light: "Trade Gothic W01 Light", Helvetica Neue, Arial, Helvetica;
 $reg: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica;
 $bold:"Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica;
+$lightOb: "TradeGothicW01-LightObl", Helvetica Neue, Arial, Helvetica;  
+
+/* Media Queries */
+$mobile: 320px;
+$mobile-only: 767px;
+$tablet: 768px;
+$desktop: 940px;
