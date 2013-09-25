@@ -771,38 +771,7 @@ width: 100%;
 		
 	div {margin-bottom: 15%}
 	h3 {border-top: 5px solid rgba($primaryTeal, .1); padding-top: .5em;}
-	
-	.dept-promo {
-		background-color: rgba($primaryGray, .05);
-		margin-top: -10%;
-		margin-bottom: 0%;
 
-		.dept-logo {
-			width: 70%;
-			margin: auto;
-			padding: .5em;
-			
-				img {
-					width: 20%;
-					display: block;
-					margin: 2% auto 0;
-					}
-				}
-		
-		p {
-			float: left; 
-			width: 100%; 
-			font-size: 1em; 
-			color: $primaryGray; 
-			font-family: $reg; 
-			padding: 0 1em 1em; 
-			margin-bottom: 0; 
-			text-align: center;
-				
-			.amp {color: rgba($primaryGray, .5);}
-			
-			}
-		}
 	}
 
 .btn {
@@ -2046,31 +2015,7 @@ width: 100%;
 		margin-bottom: 3%
 		}
 		
-	.dept-promo {
-		background-color: transparent;
-		margin-top: 0;
-		background-color: rgba($primaryGray, 0.03);
-		display: table;
-		padding: 0 1.5em;
-
-
-		.dept-logo {
-			display: table-cell;
-			width: 14%;
-			margin: 0 3% 0% 0%;
-			padding: 1em;
-		
-			img {width: 100%;}
-			
-			}
-			
-		p {
-			text-align: left;
-			width: 83%;
-			display: table-cell;
-			vertical-align: middle;
-			}
-		}
+	
 	}
 	
 .secondary {
@@ -2304,40 +2249,7 @@ width: 17%;
 	div {margin-bottom: 15%}
 	h3 {border-top: 5px solid rgba($primaryTeal, .1); padding-top: .5em;}
 	
-	.dept-promo {
-		margin-top: 0%;
-		margin-bottom: 0%;
-		display: block;
-		background-color: transparent;
-		padding: 0;
-
-		.dept-logo {
-			background-color: rgba($primaryGray, .05);
-			width: 100%;
-			margin: auto;
-			padding: 1em;
-			display: block;
-				img {
-					width: 50%;
-					display: block;
-					margin: auto;
-					}
-				}
-		
-		p {
-			float: left; 
-			width: 100%; 
-			font-size: 1em; 
-			color: $primaryGray; 
-			font-family: $reg; 
-			padding: 1em 0; 
-			margin-bottom: 0; 
-			text-align: left;
-			display: block;
-			.amp {color: rgba($primaryGray, .5);}
-			
-			}
-		}
+	
 	}
 
 }
