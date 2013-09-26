@@ -1,5 +1,9 @@
 // default variables
+@charset "UTF-8";
 @import "vars.scss";
+
+// WYSIWYG styles, and default HTML elements
+@import "elements/editor.scss";
 // Drupal admin toolbar adjustments
 @import "elements/toolbar.scss";
 // Drupal admin tabs adjustments
