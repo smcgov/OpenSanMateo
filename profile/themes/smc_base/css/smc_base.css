@@ -439,20 +439,20 @@ you can use the generic selector below, but it's slower:
 /* Fonts */
 /* Media Queries */
 /* line 4, ../scss/elements/alerts.scss */
-#block-distributed-blocks-d-bopensanmateo-layout-banner {
+#block-distributed-blocks-d-b-opensanmateo-layout-banner {
   background-color: #036cb6;
   padding: 0;
   display: block;
   text-align: left;
   border-bottom: 1px solid rgba(3, 108, 182, 0.8); }
   /* line 11, ../scss/elements/alerts.scss */
-  #block-distributed-blocks-d-bopensanmateo-layout-banner .limiter {
+  #block-distributed-blocks-d-b-opensanmateo-layout-banner .limiter {
     max-width: 1120px;
     margin: auto;
     position: relative;
     padding: 1em 1em 0.6em; }
   /* line 18, ../scss/elements/alerts.scss */
-  #block-distributed-blocks-d-bopensanmateo-layout-banner .icon-feed {
+  #block-distributed-blocks-d-b-opensanmateo-layout-banner .icon-feed {
     color: #074a87;
     text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.25);
     float: left;
@@ -461,7 +461,7 @@ you can use the generic selector below, but it's slower:
     margin-right: 2%;
     margin-bottom: 0; }
   /* line 28, ../scss/elements/alerts.scss */
-  #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content {
+  #block-distributed-blocks-d-b-opensanmateo-layout-banner .alert-content {
     color: #FFFFFF;
     margin-bottom: 0;
     width: 80%;
@@ -471,13 +471,13 @@ you can use the generic selector below, but it's slower:
     padding-top: .6em;
     z-index: 3; }
     /* line 38, ../scss/elements/alerts.scss */
-    #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content a {
+    #block-distributed-blocks-d-b-opensanmateo-layout-banner .alert-content a {
       color: #EEEEEE; }
       /* line 41, ../scss/elements/alerts.scss */
-      #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content a:hover {
+      #block-distributed-blocks-d-b-opensanmateo-layout-banner .alert-content a:hover {
         color: #FFFFFF; }
     /* line 45, ../scss/elements/alerts.scss */
-    #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content p {
+    #block-distributed-blocks-d-b-opensanmateo-layout-banner .alert-content p {
       color: #FFFFFF;
       margin-bottom: 0;
       width: 100%;
