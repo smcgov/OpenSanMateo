@@ -13,37 +13,62 @@
   */
 /* line 17, ../../scss/elements/editor.scss */
 body {
-  color: #555a5a; }
+  color: #555a5a;
+  font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
 
-/* line 21, ../../scss/elements/editor.scss */
+/* line 22, ../../scss/elements/editor.scss */
 a {
   color: #036cb6; }
 
-/* line 25, ../../scss/elements/editor.scss */
+/* line 26, ../../scss/elements/editor.scss */
+p {
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1.6em;
+  margin-bottom: 1.25em;
+  text-rendering: optimizelegibility; }
+
+/* line 34, ../../scss/elements/editor.scss */
+blockquote {
+  font-family: "TradeGothicW01-LightObl", "Helvetica Neue", Arial, Helvetica;
+  font-size: 2em;
+  color: #036cb6;
+  margin: 0 0 1.25em 0;
+  padding: 10px 20px;
+  padding-right: 0;
+  border-left: 1px solid #036cb6; }
+  /* line 43, ../../scss/elements/editor.scss */
+  blockquote p {
+    color: #036cb6; }
+  /* line 47, ../../scss/elements/editor.scss */
+  blockquote :last-child {
+    margin-bottom: 0; }
+
+/* line 52, ../../scss/elements/editor.scss */
 h2 {
   color: #38939b;
-  font-family: 'Trade Gothic W01 Light';
+  font-family: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica;
   font-size: 2em;
   margin: 0;
   line-height: 1.2em;
   font-weight: 100; }
 
-/* line 34, ../../scss/elements/editor.scss */
+/* line 61, ../../scss/elements/editor.scss */
 h3 {
   color: #38939b;
-  font-family: "Trade Gothic W01 Light", Helvetica Neue, Arial, Helvetica;
+  font-family: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica;
   text-transform: uppercase;
   margin-top: 0;
   font-weight: 100; }
 
-/* line 42, ../../scss/elements/editor.scss */
+/* line 69, ../../scss/elements/editor.scss */
 h4 {
   color: #036cb6;
-  font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica;
+  font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
   line-height: 1.3em;
   font-size: 1.25em; }
 
-/* line 49, ../../scss/elements/editor.scss */
+/* line 76, ../../scss/elements/editor.scss */
 h5 {
   color: #036cb6;
-  font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica; }
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }

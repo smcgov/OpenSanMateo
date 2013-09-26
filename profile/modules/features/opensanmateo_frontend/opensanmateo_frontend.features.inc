@@ -17,3 +17,14 @@ function opensanmateo_frontend_ctools_plugin_api() {
     return array("version" => "1");
   }
 }
+
+/**
+ * Implements hook_wysiwyg_default_profiles_alter().
+ */
+function opensanmateo_frontend_wysiwyg_default_profiles_alter(&$data) {
+  if (isset($data['full_html'])) {
+    $data['full_html']['settings']['block_formats'] = 'p,h2,h3,h4,h5,h6,div'; /* WAS: 'p,address,pre,h2,h3,h4,h5,h6,div' */
+    $data['full_html']['settings']['css_path'] = '%bprofiles/sanmateo/themes/smc_base/css/elements/editor.css'; /* WAS: '' */
+    $data['full_html']['settings']['css_setting'] = 'self'; /* WAS: 'theme' */
+  }
+}

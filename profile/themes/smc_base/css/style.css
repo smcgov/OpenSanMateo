@@ -80,7 +80,7 @@ dl dd, dl dt {
   background-color: white;
   border: 1px solid rgba(3, 108, 182, 0.05);
   border-radius: 3px;
-  font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica;
+  font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
   font-size: .85em;
   margin-bottom: 5%; }
   /* line 96, ../scss/style.scss */
@@ -106,7 +106,7 @@ dl dd, dl dt {
         color: white; }
     /* line 111, ../scss/style.scss */
     .sub ul .active {
-      font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica; }
+      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
       /* line 113, ../scss/style.scss */
       .sub ul .active a {
         background-color: #036cb6;
@@ -115,7 +115,7 @@ dl dd, dl dt {
       .sub ul .active ul li a {
         background-color: rgba(56, 147, 155, 0.1);
         color: #38939b;
-        font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica;
+        font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
         border-color: rgba(56, 147, 155, 0.2); }
       /* line 118, ../scss/style.scss */
       .sub ul .active ul li a:hover {
@@ -288,7 +288,7 @@ dl dd, dl dt {
     padding: .25em; }
   /* line 261, ../scss/style.scss */
   .event-filter h4, .search-filter h4 {
-    font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica;
+    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
     color: white;
     text-transform: uppercase;
     margin-bottom: 5%;
@@ -409,7 +409,7 @@ footer {
       font-size: .85em;
       font-weight: bold;
       padding-left: 5.5em;
-      font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica;
+      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
       font-weight: 300; }
   /* line 383, ../scss/style.scss */
   footer nav {
@@ -433,7 +433,7 @@ footer {
           padding: .5em 0;
           border-bottom: 1px solid #014c80;
           min-height: 44px;
-          font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica; }
+          font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
         /* line 406, ../scss/style.scss */
         footer nav ul li a:hover {
           color: rgba(255, 255, 255, 0.8); }
@@ -733,7 +733,7 @@ input:focus::-ms-input-placeholder {
   /* line 709, ../scss/style.scss */
   .hls h4 {
     color: white;
-    font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica;
+    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
     text-transform: uppercase;
     float: left;
     margin-bottom: 0; }
@@ -1245,7 +1245,7 @@ ul.info {
   /* line 1230, ../scss/style.scss */
   h3 {
     color: #38939b;
-    font-family: "Trade Gothic W01 Light", Helvetica Neue, Arial, Helvetica;
+    font-family: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica;
     text-transform: uppercase;
     margin-top: 0;
     font-weight: 100;
@@ -1254,12 +1254,12 @@ ul.info {
   /* line 1239, ../scss/style.scss */
   h4 {
     color: #036cb6;
-    font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica; }
+    font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
 
   /* line 1244, ../scss/style.scss */
   h5 {
     color: #036cb6;
-    font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica; }
+    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
 
   /* line 1251, ../scss/style.scss */
   a {
@@ -1567,7 +1567,7 @@ ul.info {
       margin-right: 0; }
     /* line 1542, ../scss/style.scss */
     .event-filter h4, .search-filter h4 {
-      font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica;
+      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
       color: white;
       text-transform: uppercase;
       margin-bottom: 3%;
@@ -1609,7 +1609,7 @@ ul.info {
         font-size: .85em;
         font-weight: bold;
         padding-left: 5.5em;
-        font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica;
+        font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
         font-weight: 300; }
     /* line 1597, ../scss/style.scss */
     footer nav {
@@ -1732,7 +1732,7 @@ ul.info {
     padding: .75em 0 1em 0; }
   /* line 1727, ../scss/style.scss */
   .event-teaser .event dt, .event-teaser .event strong {
-    font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica;
+    font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
     font-weight: 100;
     text-transform: uppercase; }
   /* line 1733, ../scss/style.scss */
@@ -1763,7 +1763,7 @@ ul.info {
     /* line 1762, ../scss/style.scss */
     .hls-light h4 {
       color: #036cb6;
-      font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica;
+      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
       text-transform: uppercase; }
 
   /* line 1771, ../scss/style.scss */
@@ -1781,7 +1781,7 @@ ul.info {
     /* line 1784, ../scss/style.scss */
     .main-content .hls h4 {
       color: white;
-      font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica;
+      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
       text-transform: uppercase;
       float: left;
       margin: 0;
@@ -2091,7 +2091,7 @@ ul.info {
     padding: .75em 1em 1em; }
   /* line 2158, ../scss/style.scss */
   .event-teaser .event dt, .event-teaser .event strong {
-    font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica;
+    font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
     font-weight: 100;
     text-transform: uppercase; }
   /* line 2164, ../scss/style.scss */
