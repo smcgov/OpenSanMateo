@@ -199,13 +199,21 @@
     color: #FFFFFF;  
     font-size: 1.25em;
     line-height: 1.3em;
+    
+    a {
+      color: #FFFFFF;
+      
+      &:hover {
+        color: #EEEEEE;
+      }
+    }
   }
   
   .field-name-field-rotator-image {
     margin-bottom: 2%;
   }
   .field-name-field-rotator-caption {
-    color: white;
+    color: #FFFFFF;
 		padding: 0 1em .5em;
 		font-size: .85em;
 		line-height: 1.6em;
@@ -214,6 +222,14 @@
     line-height: 1.6;
     margin-bottom: 1.25em;
     text-rendering: optimizelegibility;
+    
+    a {
+      color: #FFFFFF;
+      
+      &:hover {
+        color: #EEEEEE;
+      }
+    }
   }
   
   .field-name-field-rotator-link-url {
@@ -236,7 +252,7 @@
     }
     
     a:after {
-      content: " È";
+      content: ' \00BB';
     }
   }
 }

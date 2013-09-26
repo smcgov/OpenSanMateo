@@ -1236,12 +1236,18 @@ you can use the generic selector below, but it's slower:
     color: #FFFFFF;
     font-size: 1.25em;
     line-height: 1.3em; }
-  /* line 204, ../scss/elements/promo-boxes.scss */
+    /* line 203, ../scss/elements/promo-boxes.scss */
+    .pane-bundle-promo-panels-pane h2.pane-title a {
+      color: #FFFFFF; }
+      /* line 206, ../scss/elements/promo-boxes.scss */
+      .pane-bundle-promo-panels-pane h2.pane-title a:hover {
+        color: #EEEEEE; }
+  /* line 212, ../scss/elements/promo-boxes.scss */
   .pane-bundle-promo-panels-pane .field-name-field-rotator-image {
     margin-bottom: 2%; }
-  /* line 207, ../scss/elements/promo-boxes.scss */
+  /* line 215, ../scss/elements/promo-boxes.scss */
   .pane-bundle-promo-panels-pane .field-name-field-rotator-caption {
-    color: white;
+    color: #FFFFFF;
     padding: 0 1em .5em;
     font-size: .85em;
     line-height: 1.6em;
@@ -1250,7 +1256,13 @@ you can use the generic selector below, but it's slower:
     line-height: 1.6;
     margin-bottom: 1.25em;
     text-rendering: optimizelegibility; }
-  /* line 221, ../scss/elements/promo-boxes.scss */
+    /* line 226, ../scss/elements/promo-boxes.scss */
+    .pane-bundle-promo-panels-pane .field-name-field-rotator-caption a {
+      color: #FFFFFF; }
+      /* line 229, ../scss/elements/promo-boxes.scss */
+      .pane-bundle-promo-panels-pane .field-name-field-rotator-caption a:hover {
+        color: #EEEEEE; }
+  /* line 237, ../scss/elements/promo-boxes.scss */
   .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.3);
@@ -1261,27 +1273,27 @@ you can use the generic selector below, but it's slower:
     font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica;
     text-transform: uppercase;
     text-align: center; }
-  /* line 233, ../scss/elements/promo-boxes.scss */
+  /* line 249, ../scss/elements/promo-boxes.scss */
   .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover {
     background-color: rgba(255, 255, 255, 0.2);
     color: white; }
-  /* line 238, ../scss/elements/promo-boxes.scss */
+  /* line 254, ../scss/elements/promo-boxes.scss */
   .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after {
-    content: " È"; }
+    content: ' \00BB'; }
 
-/* line 244, ../scss/elements/promo-boxes.scss */
+/* line 260, ../scss/elements/promo-boxes.scss */
 .promo-pane-default {
   background-color: #38939b; }
 
-/* line 247, ../scss/elements/promo-boxes.scss */
+/* line 263, ../scss/elements/promo-boxes.scss */
 .promo-pane-green {
   background-color: #8dc63f; }
 
-/* line 250, ../scss/elements/promo-boxes.scss */
+/* line 266, ../scss/elements/promo-boxes.scss */
 .promo-pane-purple {
   background-color: #6b699e; }
 
-/* line 253, ../scss/elements/promo-boxes.scss */
+/* line 269, ../scss/elements/promo-boxes.scss */
 .promo-pane-orange {
   background-color: #e98a41; }
 
