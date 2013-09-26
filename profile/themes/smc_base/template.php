@@ -59,12 +59,12 @@ function smc_base_preprocess_block(&$variables) {
 
     break;
 
-    case 'distributed_blocks-d_b|opensanmateo_layout_banner':
+    case 'distributed_blocks-d_b--opensanmateo_layout_banner':
       //dsm($block);
       //dsm($variables);
     break;
 
-    case 'distributed_blocks-d_b|menu-platform-menu':
+    case 'distributed_blocks-d_b--menu-platform-menu':
       //dsm($variables);
     break;
   }
@@ -122,8 +122,18 @@ function smc_base_preprocess_views_view(&$vars) {
   
   if ($view->name == 'opensanmateo_search') {
     //krumo($vars);
+  }  
+}
+
+function smc_base_preprocess_panels_pane(&$vars) {  
+  if (isset($vars['content']['#bundle']) && $vars['content']['#bundle'] == 'promo_panels_pane') {
+    if (isset($vars['content']['field_promo_style'])) {
+      // assign a class we can use to style
+      $vars['classes_array'][] = 'promo-pane-' . $vars['content']['field_promo_style']['#items'][0]['value'];
+      // now remove the field
+      unset($vars['content']['field_promo_style']);
+    }
   }
-  
 }
 function smc_base_preprocess_views_view_fields(&$vars) { 
   $view = $vars['view'];

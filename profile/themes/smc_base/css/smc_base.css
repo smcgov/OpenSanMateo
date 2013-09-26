@@ -1,5 +1,56 @@
+@charset "UTF-8";
 /* Fonts */
 /* Media Queries */
+/* Fonts */
+/* Media Queries */
+/**
+  * This "editor" css file serves two purposes:
+  * -- First, it is used (/css/elements/editor.css) in the WYSIWYG editor 
+  * to provide default styling for BASIC HTML elements
+  *
+  * -- Second, it is ALSO included (/scss/elements/editor.scss) at the TOP of smc_base.scss 
+  * to provide the same defaults at the beginning of CSS rules.
+  *
+  * The file is compiled into the CSS format which updates the WYSIWYG version, and 
+  * the smc_base.scss should also be recompiled in order to apply changes to both locations
+  */
+/* line 17, ../scss/elements/editor.scss */
+body {
+  color: #555a5a; }
+
+/* line 21, ../scss/elements/editor.scss */
+a {
+  color: #036cb6; }
+
+/* line 25, ../scss/elements/editor.scss */
+h2 {
+  color: #38939b;
+  font-family: 'Trade Gothic W01 Light';
+  font-size: 2em;
+  margin: 0;
+  line-height: 1.2em;
+  font-weight: 100; }
+
+/* line 34, ../scss/elements/editor.scss */
+h3 {
+  color: #38939b;
+  font-family: "Trade Gothic W01 Light", Helvetica Neue, Arial, Helvetica;
+  text-transform: uppercase;
+  margin-top: 0;
+  font-weight: 100; }
+
+/* line 42, ../scss/elements/editor.scss */
+h4 {
+  color: #036cb6;
+  font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica;
+  line-height: 1.3em;
+  font-size: 1.25em; }
+
+/* line 49, ../scss/elements/editor.scss */
+h5 {
+  color: #036cb6;
+  font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica; }
+
 /* Fonts */
 /* Media Queries */
 /* line 5, ../scss/elements/toolbar.scss */
@@ -388,20 +439,20 @@ you can use the generic selector below, but it's slower:
 /* Fonts */
 /* Media Queries */
 /* line 4, ../scss/elements/alerts.scss */
-#block-distributed-blocks-d-bopensanmateo-layout-banner {
+#block-distributed-blocks-d-b-opensanmateo-layout-banner {
   background-color: #036cb6;
   padding: 0;
   display: block;
   text-align: left;
   border-bottom: 1px solid rgba(3, 108, 182, 0.8); }
   /* line 11, ../scss/elements/alerts.scss */
-  #block-distributed-blocks-d-bopensanmateo-layout-banner .limiter {
+  #block-distributed-blocks-d-b-opensanmateo-layout-banner .limiter {
     max-width: 1120px;
     margin: auto;
     position: relative;
     padding: 1em 1em 0.6em; }
   /* line 18, ../scss/elements/alerts.scss */
-  #block-distributed-blocks-d-bopensanmateo-layout-banner .icon-feed {
+  #block-distributed-blocks-d-b-opensanmateo-layout-banner .icon-feed {
     color: #074a87;
     text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.25);
     float: left;
@@ -410,7 +461,7 @@ you can use the generic selector below, but it's slower:
     margin-right: 2%;
     margin-bottom: 0; }
   /* line 28, ../scss/elements/alerts.scss */
-  #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content {
+  #block-distributed-blocks-d-b-opensanmateo-layout-banner .alert-content {
     color: #FFFFFF;
     margin-bottom: 0;
     width: 80%;
@@ -420,13 +471,13 @@ you can use the generic selector below, but it's slower:
     padding-top: .6em;
     z-index: 3; }
     /* line 38, ../scss/elements/alerts.scss */
-    #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content a {
+    #block-distributed-blocks-d-b-opensanmateo-layout-banner .alert-content a {
       color: #EEEEEE; }
       /* line 41, ../scss/elements/alerts.scss */
-      #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content a:hover {
+      #block-distributed-blocks-d-b-opensanmateo-layout-banner .alert-content a:hover {
         color: #FFFFFF; }
     /* line 45, ../scss/elements/alerts.scss */
-    #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content p {
+    #block-distributed-blocks-d-b-opensanmateo-layout-banner .alert-content p {
       color: #FFFFFF;
       margin-bottom: 0;
       width: 100%;
@@ -990,17 +1041,273 @@ you can use the generic selector below, but it's slower:
       /* line 101, ../scss/elements/dept-promo.scss */
       .dept-promo p .amp {
         color: rgba(85, 90, 90, 0.5); } }
-/* line 31, ../scss/smc_base.scss */
+/* Fonts */
+/* Media Queries */
+/*
+
+.btn-bar {
+	width: 100%;
+	background-color: rgba(255,255,255,.3);
+	display: block;
+	padding: 1em 0;
+	margin-bottom: 0;
+	color: white;
+	font-family: 'Trade Gothic W01 Bold';
+	text-transform: uppercase;
+	text-align: center;
+	
+	.blue {
+		background-color: rgba($primaryBlue, .3);
+		color: $primaryBlue;
+		}
+	}
+
+.btn-bar:hover {
+	background-color: rgba(255,255,255,.2);
+	color: white;
+}
+
+.btn-bar:after {
+  content: ' È';
+}
+
+.seamless {
+  padding: 0 0 0em;
+	
+	h4, h5 {
+		padding: .5em; 
+		margin-bottom: 0;
+		}
+	
+	h4 {background-color: white;}
+	h5 {color: white;}
+	
+	img {
+		width: 100%;
+		margin-bottom: 2%;
+		}
+
+	p {
+		color: white;
+		padding: 0 1em .5em;
+		font-size: .85em;
+		}
+
+	h5 span {
+		display: block;
+		color: #ccc;
+		}
+	}
+	
+	.spotlight {
+	background-color:#38939b;
+	border-radius: 3px;
+	}
+
+.spotlight.horz {
+
+	img {
+		float: left;
+		width: 50%;
+		margin-left: 1%;
+		}
+	
+	.content {
+		float: left;
+		width: 40%;
+		}
+
+}
+*/
+/*
+.seamless {padding: 0 0 0em;
+	
+	h4 {background-color: white;}
+
+	h5 {color: white;
+	
+		span {
+			color: rgba(255,255,255, .7);
+			display: block;
+			}
+		}
+		
+	h3, h4, h5 {
+		padding: .5em; 
+		margin-bottom: 0;
+		margin-top: 0;
+		}
+	
+	img {
+		width: 100%;
+		}
+		
+	p {
+		color: white;
+		padding: 0 1em .5em;
+		font-size: .85em;
+		}
+	}
+	
+	.spotlight {
+	background-color:#38939b;
+	border-radius: 3px;
+	}
+
+.spotlight.horz img {
+	float: left;
+	width: 50%;
+	margin-left: 1%;
+	}
+
+.spotlight.horz .content {
+	float: left;
+	width: 40%;
+	}
+
+.campaign {
+	background-color: #8dc63f;
+	border-radius: 3px;
+	
+	img {margin-bottom: 5%;}
+	
+	h4 {
+		color: white;
+		text-transform: uppercase;
+		font-weight: 300;
+		background-color: transparent;
+		}
+	
+	p {
+		color: #fafafa;
+		font-weight: bold;
+		font-size: .9em;
+		}
+		
+	.btn-bar {
+		width: 100%;
+		background-color: rgba(255,255,255,.3);
+		display: block;
+		padding: 1em 0;
+		margin-bottom: 0;
+		color: white;
+		font-family: 'Trade Gothic W01 Bold';
+		text-transform: uppercase;
+		text-align: center;
+		}
+	}
+
+.campaigns div:nth-child(2) {
+	background-color: #6b699e;
+	}
+
+.campaigns div:last-child {
+	margin-right: 0;
+	background-color: #e98a41;
+	}
+
+.btn-bar.blue {
+	background-color: rgba($primaryBlue, .1);
+	color: $primaryBlue;
+	padding: .5em 0;
+	}
+
+.btn-bar:hover {
+	background-color: rgba(255,255,255,.2);
+	color: white;
+	}
+
+.btn-bar.blue:hover {
+	background-color: rgba($primaryBlue, .2);
+	color: $primaryBlue;
+	}
+	
+.btn-bar:after {content: ' È';}
+*/
+/* line 190, ../scss/elements/promo-boxes.scss */
+.pane-bundle-promo-panels-pane {
+  padding: 0;
+  background-color: #38939b;
+  border-radius: 3px; }
+  /* line 196, ../scss/elements/promo-boxes.scss */
+  .pane-bundle-promo-panels-pane h2.pane-title {
+    padding: .5em;
+    margin-bottom: 0;
+    color: #FFFFFF;
+    font-size: 1.25em;
+    line-height: 1.3em; }
+    /* line 203, ../scss/elements/promo-boxes.scss */
+    .pane-bundle-promo-panels-pane h2.pane-title a {
+      color: #FFFFFF; }
+      /* line 206, ../scss/elements/promo-boxes.scss */
+      .pane-bundle-promo-panels-pane h2.pane-title a:hover {
+        color: #EEEEEE; }
+  /* line 212, ../scss/elements/promo-boxes.scss */
+  .pane-bundle-promo-panels-pane .field-name-field-rotator-image {
+    margin-bottom: 2%; }
+  /* line 215, ../scss/elements/promo-boxes.scss */
+  .pane-bundle-promo-panels-pane .field-name-field-rotator-caption {
+    color: #FFFFFF;
+    padding: 0 1em .5em;
+    font-size: .85em;
+    line-height: 1.6em;
+    font-weight: bold;
+    padding-left: 0.75em;
+    line-height: 1.6;
+    margin-bottom: 1.25em;
+    text-rendering: optimizelegibility; }
+    /* line 226, ../scss/elements/promo-boxes.scss */
+    .pane-bundle-promo-panels-pane .field-name-field-rotator-caption a {
+      color: #FFFFFF; }
+      /* line 229, ../scss/elements/promo-boxes.scss */
+      .pane-bundle-promo-panels-pane .field-name-field-rotator-caption a:hover {
+        color: #EEEEEE; }
+  /* line 237, ../scss/elements/promo-boxes.scss */
+  .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    display: block;
+    padding: 1em 0;
+    margin-bottom: 0;
+    color: white;
+    font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica;
+    text-transform: uppercase;
+    text-align: center; }
+  /* line 249, ../scss/elements/promo-boxes.scss */
+  .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white; }
+  /* line 254, ../scss/elements/promo-boxes.scss */
+  .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after {
+    content: ' \00BB'; }
+
+/* line 260, ../scss/elements/promo-boxes.scss */
+.promo-pane-default {
+  background-color: #38939b; }
+
+/* line 263, ../scss/elements/promo-boxes.scss */
+.promo-pane-green {
+  background-color: #8dc63f; }
+
+/* line 266, ../scss/elements/promo-boxes.scss */
+.promo-pane-purple {
+  background-color: #6b699e; }
+
+/* line 269, ../scss/elements/promo-boxes.scss */
+.promo-pane-orange {
+  background-color: #e98a41; }
+
+/* line 37, ../scss/smc_base.scss */
 .limiter {
   margin: auto;
   max-width: 1120px;
   position: relative; }
 
-/* line 37, ../scss/smc_base.scss */
+/* line 43, ../scss/smc_base.scss */
 .krumo-root strong {
   display: inline !important; }
 
-/* line 42, ../scss/smc_base.scss */
+/* line 48, ../scss/smc_base.scss */
 ul li.leaf,
 ul li.expanded {
   list-style-type: none;
@@ -1008,34 +1315,34 @@ ul li.expanded {
   padding: 0;
   margin: 0; }
 
-/* line 50, ../scss/smc_base.scss */
+/* line 56, ../scss/smc_base.scss */
 .messages strong {
   display: inline; }
 
-/* line 59, ../scss/smc_base.scss */
+/* line 65, ../scss/smc_base.scss */
 nav.main-nav {
   border-top: 0;
   margin-bottom: 0;
   padding-top: 0;
   z-index: 400 !important; }
 
-/* line 65, ../scss/smc_base.scss */
+/* line 71, ../scss/smc_base.scss */
 .flexslider {
   z-index: 1 !important; }
 
-/* line 68, ../scss/smc_base.scss */
+/* line 74, ../scss/smc_base.scss */
 header {
   z-index: 10; }
 
-/* line 72, ../scss/smc_base.scss */
+/* line 78, ../scss/smc_base.scss */
 div.body {
   z-index: 1; }
 
-/* line 76, ../scss/smc_base.scss */
+/* line 82, ../scss/smc_base.scss */
 footer {
   z-index: 10; }
 
-/* line 81, ../scss/smc_base.scss */
+/* line 87, ../scss/smc_base.scss */
 #footer-wrapper .section {
   margin-bottom: 0; }
 

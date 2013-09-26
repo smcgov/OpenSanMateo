@@ -1,5 +1,9 @@
 // default variables
+@charset "UTF-8";
 @import "vars.scss";
+
+// WYSIWYG styles, and default HTML elements
+@import "elements/editor.scss";
 // Drupal admin toolbar adjustments
 @import "elements/toolbar.scss";
 // Drupal admin tabs adjustments
@@ -22,6 +26,8 @@
 @import "elements/main-menu.scss";
 // department branding/promo block
 @import "elements/dept-promo.scss";
+// custom promo block(s)
+@import "elements/promo-boxes.scss";
 
 body {
   //background: #EEEEEE;

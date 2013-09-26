@@ -12,4 +12,8 @@ function opensanmateo_security_ctools_plugin_api() {
   if ($module == "password_policy2" && $api == "default_password_policy") {
     return array("version" => "1");
   }
+  list($module, $api) = func_get_args();
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
 }
