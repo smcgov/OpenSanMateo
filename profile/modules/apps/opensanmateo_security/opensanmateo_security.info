@@ -8,4 +8,4 @@ dependencies[] = lock_session
 dependencies[] = password_policy2
 features[ctools][] = password_policy2:default_password_policy:1
 features[features_api][] = api:2
-features[password_policy2][] = Expire 60 days
+features[password_policy2][] = SMC security policies
