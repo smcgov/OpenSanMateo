@@ -4,6 +4,7 @@ core = 7.x
 package = OpenSanMateo
 php = 5.2.4
 dependencies[] = addressfield
+dependencies[] = addressfield_staticmap
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = field_collection

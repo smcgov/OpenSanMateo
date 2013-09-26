@@ -118,7 +118,7 @@ projects[addressfield_staticmap][type] = module
 projects[addressfield_staticmap][subdir] = contrib
 projects[addressfield_staticmap][download][type] = git
 projects[addressfield_staticmap][download][url] = http://git.drupal.org/project/addressfield_staticmap.git
-projects[addressfield_staticmap][download][revision] = a7b499487d90fe34bad089a9ac9843fff34d468a
+projects[addressfield_staticmap][download][revision] = 3f33fd0d4e7c04bbe283617ef20e1bc41a80f059
 
 projects[context_entity_field][type] = module
 projects[context_entity_field][subdir] = contrib
