@@ -2,6 +2,7 @@ name = OpenSanMateo Security
 description = Password policy settings for OpenSanMateo
 core = 7.x
 package = OpenSanMateo
+php = 5.2.4
 dependencies[] = ctools
 dependencies[] = lock_session
 dependencies[] = password_policy2
