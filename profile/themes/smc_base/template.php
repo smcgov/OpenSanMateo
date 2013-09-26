@@ -59,12 +59,12 @@ function smc_base_preprocess_block(&$variables) {
 
     break;
 
-    case 'distributed_blocks-d_b|opensanmateo_layout_banner':
+    case 'distributed_blocks-d_b--opensanmateo_layout_banner':
       //dsm($block);
       //dsm($variables);
     break;
 
-    case 'distributed_blocks-d_b|menu-platform-menu':
+    case 'distributed_blocks-d_b--menu-platform-menu':
       //dsm($variables);
     break;
   }
