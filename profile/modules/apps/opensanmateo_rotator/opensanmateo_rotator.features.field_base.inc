@@ -29,6 +29,34 @@ function opensanmateo_rotator_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
+  // Exported field_base: 'field_promo_style'
+  $field_bases['field_promo_style'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_promo_style',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'default' => 'Default (Aqua)',
+        'green' => 'Green',
+        'purple' => 'Purple',
+        'orange' => 'Orange',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_rotator_caption'
   $field_bases['field_rotator_caption'] = array(
     'active' => 1,

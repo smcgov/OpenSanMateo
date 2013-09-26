@@ -220,6 +220,41 @@ function opensanmateo_rotator_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'fieldable_panels_pane-promo_panels_pane-field_promo_style'
+  $field_instances['fieldable_panels_pane-promo_panels_pane-field_promo_style'] = array(
+    'bundle' => 'promo_panels_pane',
+    'default_value' => array(
+      0 => array(
+        'value' => 'default',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'fieldable_panels_pane',
+    'field_name' => 'field_promo_style',
+    'label' => 'Promo Style',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'fieldable_panels_pane-promo_panels_pane-field_rotator_caption'
   $field_instances['fieldable_panels_pane-promo_panels_pane-field_rotator_caption'] = array(
     'bundle' => 'promo_panels_pane',
@@ -486,6 +521,7 @@ function opensanmateo_rotator_field_default_field_instances() {
   t('Description');
   t('Link (URL)');
   t('Link (node reference)');
+  t('Promo Style');
   t('Rotator Image');
   t('Rotator item');
   t('Rotator type');
