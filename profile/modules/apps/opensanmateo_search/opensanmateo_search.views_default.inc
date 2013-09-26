@@ -287,6 +287,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_7']['exclude'] = TRUE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_7']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_7']['element_wrapper_class'] = 'node-location-city';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_7']['list']['mode'] = 'first';
   $handler->display->display_options['fields']['search_api_multi_aggregation_7']['link_to_entity'] = 0;
   /* Field: Indexed Node: Aggregated State */
   $handler->display->display_options['fields']['search_api_multi_aggregation_4']['id'] = 'search_api_multi_aggregation_4';
@@ -296,6 +297,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_4']['exclude'] = TRUE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_4']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_4']['element_wrapper_class'] = 'node-location-state';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_4']['list']['mode'] = 'first';
   $handler->display->display_options['fields']['search_api_multi_aggregation_4']['link_to_entity'] = 0;
   /* Field: Indexed Node: Aggregated Postal */
   $handler->display->display_options['fields']['search_api_multi_aggregation_5']['id'] = 'search_api_multi_aggregation_5';
@@ -305,6 +307,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_5']['exclude'] = TRUE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_5']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_5']['element_wrapper_class'] = 'node-location-zip';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_5']['list']['mode'] = 'first';
   $handler->display->display_options['fields']['search_api_multi_aggregation_5']['link_to_entity'] = 0;
   /* Field: Indexed Node: Aggregated Premise */
   $handler->display->display_options['fields']['search_api_multi_aggregation_17']['id'] = 'search_api_multi_aggregation_17';
@@ -312,6 +315,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_17']['field'] = 'search_api_multi_aggregation_17';
   $handler->display->display_options['fields']['search_api_multi_aggregation_17']['label'] = '';
   $handler->display->display_options['fields']['search_api_multi_aggregation_17']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['search_api_multi_aggregation_17']['list']['mode'] = 'first';
   $handler->display->display_options['fields']['search_api_multi_aggregation_17']['link_to_entity'] = 0;
   /* Field: Indexed Node: Aggregated Thoroughfare */
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['id'] = 'search_api_multi_aggregation_6';
@@ -331,6 +335,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['element_wrapper_class'] = 'node-location clearfix';
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['search_api_multi_aggregation_6']['list']['mode'] = 'first';
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['link_to_entity'] = 0;
   /* Field: Indexed Node: Aggregated Thumbnail Title */
   $handler->display->display_options['fields']['search_api_multi_aggregation_15']['id'] = 'search_api_multi_aggregation_15';
@@ -359,6 +364,13 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['type_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['type_1']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['type_1']['format_name'] = 0;
+  /* Field: Indexed Node: Aggregated Author Url */
+  $handler->display->display_options['fields']['search_api_multi_aggregation_19']['id'] = 'search_api_multi_aggregation_19';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_19']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_19']['field'] = 'search_api_multi_aggregation_19';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_19']['label'] = '';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_19']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['search_api_multi_aggregation_19']['link_to_entity'] = 0;
   /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['field_release_date']['id'] = 'field_release_date';
   $handler->display->display_options['sorts']['field_release_date']['table'] = 'search_api_index_san_mateo_content_index';
