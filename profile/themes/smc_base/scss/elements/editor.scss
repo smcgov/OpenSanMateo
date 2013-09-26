@@ -16,15 +16,42 @@
  
 body {
   color: $primaryGray;
+  font-family: $reg;
 } 
 
 a {
 	color: $primaryBlue;
 }
 
+p {
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1.6em;
+  margin-bottom: 1.25em;
+  text-rendering: optimizelegibility;
+}
+
+blockquote {
+	font-family: $lightOb;
+	font-size: 2em;
+	color: $primaryBlue;
+	margin: 0 0 1.25em 0;
+	padding: 10px 20px;
+	padding-right: 0;
+  border-left: 1px solid $primaryBlue;
+  
+	p {
+    color: $primaryBlue;	
+	}
+	
+	:last-child {
+  	margin-bottom: 0;
+	}
+}
+
 h2 {
 	color: $primaryTeal;
-	font-family: 'Trade Gothic W01 Light';
+	font-family: $light;
 	font-size: 2em;
 	margin: 0;
 	line-height: 1.2em;
