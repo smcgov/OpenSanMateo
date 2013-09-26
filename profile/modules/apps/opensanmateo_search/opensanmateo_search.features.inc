@@ -75,15 +75,17 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_multi_aggregation_18" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_site_hash" : { "type" : "uri" },
         "search_api_site_id" : { "type" : "string" },
+        "author:name" : { "type" : "text" },
+        "author:url" : { "type" : "uri" },
         "body:value" : { "type" : "text" },
-        "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_sub_type:name" : { "type" : "text" },
+        "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_topic:name" : { "type" : "string" },
+        "field_address:locality" : { "type" : "string" },
         "field_event_calendar:name" : { "type" : "text" },
         "field_event_date:value" : { "type" : "date" },
         "field_event_date:value2" : { "type" : "date" },
         "field_event_type:name" : { "type" : "text" },
-        "field_address:locality" : { "type" : "string" },
         "field_thumbnail_image:file:url" : { "type" : "string" },
         "field_thumbnail_image:file:field_file_image_alt_text" : { "type" : "string" },
         "field_thumbnail_image:file:field_file_image_title_text" : { "type" : "string" },
@@ -91,6 +93,11 @@ function opensanmateo_search_default_search_api_index() {
       },
       "data_alter_callbacks" : {
         "site_index" : { "status" : 1, "weight" : "-50", "settings" : [] },
+        "search_opensanmateo_image" : {
+          "status" : 1,
+          "weight" : "-50",
+          "settings" : { "image_style" : "list-page-thumbnail" }
+        },
         "search_api_alter_bundle_filter" : {
           "status" : 0,
           "weight" : "-10",
@@ -99,8 +106,6 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_multi_aggregation" : {
           "status" : 1,
@@ -108,13 +113,13 @@ function opensanmateo_search_default_search_api_index() {
           "settings" : { "fields" : {
               "search_api_multi_aggregation_1" : {
                 "name" : "Aggregated Teaser",
-                "fields" : [ "field_blog_teaser", "field_summary", "body:summary" ],
-                "description" : "A text aggregation of the following fields: Teaser, Summary, The main body text \\u00bb Summary."
+                "fields" : [ "field_summary", "field_blog_teaser", "body:summary" ],
+                "description" : "A text aggregation of the following fields: Summary, Teaser, The main body text \\u00bb Summary."
               },
               "search_api_multi_aggregation_3" : {
                 "name" : "Aggregated Author",
-                "fields" : [ "author" ],
-                "description" : "A text aggregation of the following fields: Author."
+                "fields" : [ "author:name" ],
+                "description" : "A text aggregation of the following fields: Author \\u00bb Name."
               },
               "search_api_multi_aggregation_2" : {
                 "name" : "Aggregated Thumbnail",
@@ -156,13 +161,13 @@ function opensanmateo_search_default_search_api_index() {
               "search_api_multi_aggregation_8" : {
                 "name" : "Terms",
                 "fields" : [
-                  "field_subject:name",
                   "field_sub_type:name",
+                  "field_subject:name",
+                  "field_topic:name",
                   "field_event_calendar:name",
-                  "field_event_type:name",
-                  "field_topic:name"
+                  "field_event_type:name"
                 ],
-                "description" : "A text aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
+                "description" : "A text aggregation of the following fields: Sub Type \\u00bb Name, Subject \\u00bb Name, Topic \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
               },
               "search_api_multi_aggregation_9" : {
                 "name" : "Aggregated Start Date",
@@ -216,15 +221,17 @@ function opensanmateo_search_default_search_api_index() {
                 "name" : "aggregated Release Date",
                 "fields" : [ "field_release_date" ],
                 "description" : "A text aggregation of the following fields: Release Date."
+              },
+              "search_api_multi_aggregation_19" : {
+                "name" : "Aggregated Author Url",
+                "fields" : [ "author:url" ],
+                "description" : "A text aggregation of the following fields: Author \\u00bb URL."
               }
             }
           }
         },
-        "search_opensanmateo_image" : {
-          "status" : 1,
-          "weight" : "999",
-          "settings" : { "image_style" : "list-page-thumbnail" }
-        }
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
       },
       "processors" : {
         "search_api_case_ignore" : {
