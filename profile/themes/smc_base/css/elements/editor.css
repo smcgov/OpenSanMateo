@@ -1,0 +1,49 @@
+/* Fonts */
+/* Media Queries */
+/**
+  * This "editor" css file serves two purposes:
+  * -- First, it is used (/css/elements/editor.css) in the WYSIWYG editor 
+  * to provide default styling for BASIC HTML elements
+  *
+  * -- Second, it is ALSO included (/scss/elements/editor.scss) at the TOP of smc_base.scss 
+  * to provide the same defaults at the beginning of CSS rules.
+  *
+  * The file is compiled into the CSS format which updates the WYSIWYG version, and 
+  * the smc_base.scss should also be recompiled in order to apply changes to both locations
+  */
+/* line 17, ../../scss/elements/editor.scss */
+body {
+  color: #555a5a; }
+
+/* line 21, ../../scss/elements/editor.scss */
+a {
+  color: #036cb6; }
+
+/* line 25, ../../scss/elements/editor.scss */
+h2 {
+  color: #38939b;
+  font-family: 'Trade Gothic W01 Light';
+  font-size: 2em;
+  margin: 0;
+  line-height: 1.2em;
+  font-weight: 100; }
+
+/* line 34, ../../scss/elements/editor.scss */
+h3 {
+  color: #38939b;
+  font-family: "Trade Gothic W01 Light", Helvetica Neue, Arial, Helvetica;
+  text-transform: uppercase;
+  margin-top: 0;
+  font-weight: 100; }
+
+/* line 42, ../../scss/elements/editor.scss */
+h4 {
+  color: #036cb6;
+  font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica;
+  line-height: 1.3em;
+  font-size: 1.25em; }
+
+/* line 49, ../../scss/elements/editor.scss */
+h5 {
+  color: #036cb6;
+  font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica; }

@@ -107,8 +107,9 @@ function opensanmateo_rotator_preprocess_panels_pane(&$vars) {
     
   }
 
-  //if we have a promo pane we need to pull out the url and use it on the image and the link
-  if ($vars['content']['#bundle']  == 'promo_panels_pane') {
+  // if we have a promo pane we need to pull out the url and use it on the image and the link
+  // must check to see if it isset first as some panes have pre-rendered HTML for $vars['content']
+  if (isset($vars['content']['#bundle']) && $vars['content']['#bundle'] == 'promo_panels_pane') {
     $url = '';
     $url = isset($vars['content']['field_rotator_link_url'][0]['#element']['url']) ? $vars['content']['field_rotator_link_url'][0]['#element']['url'] : $url;
     $url = isset($vars['content']['field_rotator_link_node'][0]['#markup']) ? $vars['content']['field_rotator_link_node'][0]['#markup'] : $url;

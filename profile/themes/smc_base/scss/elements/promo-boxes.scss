@@ -1,0 +1,280 @@
+// default variables
+@import "vars.scss";
+
+/*
+
+.btn-bar {
+	width: 100%;
+	background-color: rgba(255,255,255,.3);
+	display: block;
+	padding: 1em 0;
+	margin-bottom: 0;
+	color: white;
+	font-family: 'Trade Gothic W01 Bold';
+	text-transform: uppercase;
+	text-align: center;
+	
+	.blue {
+		background-color: rgba($primaryBlue, .3);
+		color: $primaryBlue;
+		}
+	}
+
+.btn-bar:hover {
+	background-color: rgba(255,255,255,.2);
+	color: white;
+}
+
+.btn-bar:after {
+  content: ' È';
+}
+
+.seamless {
+  padding: 0 0 0em;
+	
+	h4, h5 {
+		padding: .5em; 
+		margin-bottom: 0;
+		}
+	
+	h4 {background-color: white;}
+	h5 {color: white;}
+	
+	img {
+		width: 100%;
+		margin-bottom: 2%;
+		}
+
+	p {
+		color: white;
+		padding: 0 1em .5em;
+		font-size: .85em;
+		}
+
+	h5 span {
+		display: block;
+		color: #ccc;
+		}
+	}
+	
+	.spotlight {
+	background-color:#38939b;
+	border-radius: 3px;
+	}
+
+.spotlight.horz {
+
+	img {
+		float: left;
+		width: 50%;
+		margin-left: 1%;
+		}
+	
+	.content {
+		float: left;
+		width: 40%;
+		}
+
+}
+*/
+
+
+// tablet
+
+/*
+.seamless {padding: 0 0 0em;
+	
+	h4 {background-color: white;}
+
+	h5 {color: white;
+	
+		span {
+			color: rgba(255,255,255, .7);
+			display: block;
+			}
+		}
+		
+	h3, h4, h5 {
+		padding: .5em; 
+		margin-bottom: 0;
+		margin-top: 0;
+		}
+	
+	img {
+		width: 100%;
+		}
+		
+	p {
+		color: white;
+		padding: 0 1em .5em;
+		font-size: .85em;
+		}
+	}
+	
+	.spotlight {
+	background-color:#38939b;
+	border-radius: 3px;
+	}
+
+.spotlight.horz img {
+	float: left;
+	width: 50%;
+	margin-left: 1%;
+	}
+
+.spotlight.horz .content {
+	float: left;
+	width: 40%;
+	}
+
+.campaign {
+	background-color: #8dc63f;
+	border-radius: 3px;
+	
+	img {margin-bottom: 5%;}
+	
+	h4 {
+		color: white;
+		text-transform: uppercase;
+		font-weight: 300;
+		background-color: transparent;
+		}
+	
+	p {
+		color: #fafafa;
+		font-weight: bold;
+		font-size: .9em;
+		}
+		
+	.btn-bar {
+		width: 100%;
+		background-color: rgba(255,255,255,.3);
+		display: block;
+		padding: 1em 0;
+		margin-bottom: 0;
+		color: white;
+		font-family: 'Trade Gothic W01 Bold';
+		text-transform: uppercase;
+		text-align: center;
+		}
+	}
+
+.campaigns div:nth-child(2) {
+	background-color: #6b699e;
+	}
+
+.campaigns div:last-child {
+	margin-right: 0;
+	background-color: #e98a41;
+	}
+
+.btn-bar.blue {
+	background-color: rgba($primaryBlue, .1);
+	color: $primaryBlue;
+	padding: .5em 0;
+	}
+
+.btn-bar:hover {
+	background-color: rgba(255,255,255,.2);
+	color: white;
+	}
+
+.btn-bar.blue:hover {
+	background-color: rgba($primaryBlue, .2);
+	color: $primaryBlue;
+	}
+	
+.btn-bar:after {content: ' È';}
+*/
+
+.pane-bundle-promo-panels-pane {
+  padding: 0; 
+  
+  background-color:#38939b;
+	border-radius: 3px;
+	
+  h2.pane-title {
+    padding: .5em; 
+		margin-bottom: 0;
+    color: #FFFFFF;  
+    font-size: 1.25em;
+    line-height: 1.3em;
+    
+    a {
+      color: #FFFFFF;
+      
+      &:hover {
+        color: #EEEEEE;
+      }
+    }
+  }
+  
+  .field-name-field-rotator-image {
+    margin-bottom: 2%;
+  }
+  .field-name-field-rotator-caption {
+    color: #FFFFFF;
+		padding: 0 1em .5em;
+		font-size: .85em;
+		line-height: 1.6em;
+		font-weight: bold;
+    padding-left: 0.75em;
+    line-height: 1.6;
+    margin-bottom: 1.25em;
+    text-rendering: optimizelegibility;
+    
+    a {
+      color: #FFFFFF;
+      
+      &:hover {
+        color: #EEEEEE;
+      }
+    }
+  }
+  
+  .field-name-field-rotator-link-url {
+    
+    a {
+      width: 100%;
+    	background-color: rgba(255,255,255,.3);
+    	display: block;
+    	padding: 1em 0;
+    	margin-bottom: 0;
+    	color: white;
+    	font-family: $bold;
+    	text-transform: uppercase;
+    	text-align: center;
+    }
+    
+    a:hover {
+    	background-color: rgba(255,255,255,.2);
+    	color: white;
+    }
+    
+    a:after {
+      content: ' \00BB';
+    }
+  }
+}
+
+.promo-pane-default {
+  background-color:#38939b;
+}
+.promo-pane-green {
+  background-color: #8dc63f;
+}
+.promo-pane-purple {
+  background-color: #6b699e;
+}
+.promo-pane-orange {
+  background-color: #e98a41;
+}
+
+@media all and (min-width: $tablet) {
+
+}
+
+@media all and (min-width: $desktop) {
+
+}
+
