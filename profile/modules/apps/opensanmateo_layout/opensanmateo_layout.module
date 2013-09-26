@@ -10,12 +10,33 @@ include_once 'opensanmateo_layout.features.inc';
  * Code for the OpenSanMateo Example feature.
  */
 
+
+/**
+ * Implments hook_theme()
+ */
+function opensanmateo_layout_theme() {
+  return array(
+    'opensanmateo_layout_site_brand' => array(
+      'template' => 'opensanmateo_layout_site_brand',
+      'variables' => array(
+        'logo' => NULL,
+        'slogan' => NULL,
+        'name' => NULL,
+      ),
+    )
+  );
+}
+
 /**
  * Implements hook_block_info().
  */
 function opensanmateo_layout_block_info() {
   $blocks['opensanmateo_layout_banner'] = array(
     'info' => t('Shared Banner'),
+    'cache' => DRUPAL_CACHE_GLOBAL
+  );
+  $blocks['opensanmateo_layout_site_brand'] = array(
+    'info' => t('Site Brand'),
     'cache' => DRUPAL_CACHE_GLOBAL
   );
   
@@ -58,6 +79,22 @@ function opensanmateo_layout_block_view($delta = '') {
     case 'opensanmateo_layout_banner':
       $block['content'] = variable_get('opensanmateo_layout_banner_content', '');
       break;
+    case 'opensanmateo_layout_site_brand':
+      $slogan = variable_get('site_slogan', '');
+      $name = variable_get('site_name', '');
+      
+      
+      $logo = theme('image', array(
+        'path' => theme_get_setting('logo'),
+        'alt' => 'Logo for ' . $name,
+        'attributes' => array(
+          'class' => array(
+            'logo-img',
+          ),
+        ),
+      ));
+      $linked_logo = l($logo, '<front>', array('html' => TRUE));
+      $block['content'] = theme('opensanmateo_layout_site_brand', array('logo' => $linked_logo, 'slogan' => $slogan, 'name' => $name));
   }
   return $block;
 }

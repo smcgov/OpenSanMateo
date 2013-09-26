@@ -1,7 +1,58 @@
-/* Media Queries */
+@charset "UTF-8";
 /* Fonts */
 /* Media Queries */
 /* Fonts */
+/* Media Queries */
+/**
+  * This "editor" css file serves two purposes:
+  * -- First, it is used (/css/elements/editor.css) in the WYSIWYG editor 
+  * to provide default styling for BASIC HTML elements
+  *
+  * -- Second, it is ALSO included (/scss/elements/editor.scss) at the TOP of smc_base.scss 
+  * to provide the same defaults at the beginning of CSS rules.
+  *
+  * The file is compiled into the CSS format which updates the WYSIWYG version, and 
+  * the smc_base.scss should also be recompiled in order to apply changes to both locations
+  */
+/* line 17, ../scss/elements/editor.scss */
+body {
+  color: #555a5a; }
+
+/* line 21, ../scss/elements/editor.scss */
+a {
+  color: #036cb6; }
+
+/* line 25, ../scss/elements/editor.scss */
+h2 {
+  color: #38939b;
+  font-family: 'Trade Gothic W01 Light';
+  font-size: 2em;
+  margin: 0;
+  line-height: 1.2em;
+  font-weight: 100; }
+
+/* line 34, ../scss/elements/editor.scss */
+h3 {
+  color: #38939b;
+  font-family: "Trade Gothic W01 Light", Helvetica Neue, Arial, Helvetica;
+  text-transform: uppercase;
+  margin-top: 0;
+  font-weight: 100; }
+
+/* line 42, ../scss/elements/editor.scss */
+h4 {
+  color: #036cb6;
+  font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica;
+  line-height: 1.3em;
+  font-size: 1.25em; }
+
+/* line 49, ../scss/elements/editor.scss */
+h5 {
+  color: #036cb6;
+  font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica; }
+
+/* Fonts */
+/* Media Queries */
 /* line 5, ../scss/elements/toolbar.scss */
 #toolbar strong {
   display: inline; }
@@ -21,13 +72,13 @@
     bottom: 0;
     right: 5px; }
 
-@media all and (min-width: 940px) {
+@media all and (min-width: 800px) {
   /* line 33, ../scss/elements/toolbar.scss */
   #toolbar #toolbar-home,
   #toolbar #toolbar-user {
     display: block; } }
-/* Media Queries */
 /* Fonts */
+/* Media Queries */
 /* line 6, ../scss/elements/tabs.scss */
 div.tabs ul.tabs {
   padding: 0;
@@ -75,16 +126,54 @@ div.tabs ul.secondary {
     padding: 0;
     border: 0; }
 
-/* Media Queries */
 /* Fonts */
+/* Media Queries */
+@font-face {
+  font-family: "SanMateoIcon";
+  src: url("../fonts/SanMateoIcon.eot");
+  src: url("../fonts/SanMateoIcon.eot?#iefix") format("embedded-opentype"), url("../fonts/SanMateoIcon.woff") format("woff"), url("../fonts/SanMateoIcon.ttf") format("truetype"), url("../fonts/SanMateoIcon.svg#SanMateoIcon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+/* line 16, ../scss/elements/icons.scss */
+[data-icon]:before {
+  font-family: "SanMateoIcon";
+  content: attr(data-icon);
+  speak: none;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased; }
+
 /* Use the following CSS code if you want to have a class per icon */
 /*
 Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-/* line 10, ../scss/elements/icons.scss */
-.icon-mag-glass-02, .icon-menu, .icon-arrow-down, .icon-home, .icon-arrow-down-iso, .icon-close, .icon-subnav, .menu-button, .icon-eye, .icon-filter, .icon-info, .icon-link, .icon-phone, .icon-location, .icon-feed {
+/* line 52, ../scss/elements/icons.scss */
+.icon-mag-glass-02,
+.icon-menu,
+.icon-arrow-down,
+.icon-home,
+.icon-arrow-down-iso,
+.icon-close,
+.icon-subnav,
+.menu-button,
+.icon-eye,
+.icon-filter,
+.icon-info,
+.icon-link,
+.icon-phone,
+.icon-location,
+.icon-feed,
+.follow-link-facebook,
+.follow-link-twitter,
+.follow-link-flickr,
+.follow-link-vimeo,
+.follow-link-youtube,
+.follow-link-this-site {
   font-family: "SanMateoIcon";
   speak: none;
   font-style: normal;
@@ -93,65 +182,89 @@ you can use the generic selector below, but it's slower:
   text-transform: none;
   -webkit-font-smoothing: antialiased; }
 
-/* line 19, ../scss/elements/icons.scss */
+/* line 62, ../scss/elements/icons.scss */
 .icon-mag-glass-02:before {
   content: "\e000"; }
 
-/* line 20, ../scss/elements/icons.scss */
+/* line 63, ../scss/elements/icons.scss */
 .icon-menu:before, .touch-button, .menu-button {
   content: "\e001"; }
 
-/* line 21, ../scss/elements/icons.scss */
+/* line 64, ../scss/elements/icons.scss */
 .icon-arrow-down:before {
   content: "\e002"; }
 
-/* line 22, ../scss/elements/icons.scss */
+/* line 65, ../scss/elements/icons.scss */
 .icon-home:before {
   content: "\e003"; }
 
-/* line 23, ../scss/elements/icons.scss */
+/* line 66, ../scss/elements/icons.scss */
 .icon-arrow-down-iso:before {
   content: "\e004"; }
 
-/* line 24, ../scss/elements/icons.scss */
+/* line 67, ../scss/elements/icons.scss */
 .icon-close:before {
   content: "\e005"; }
 
-/* line 25, ../scss/elements/icons.scss */
+/* line 68, ../scss/elements/icons.scss */
 .icon-subnav:before {
   content: "\e006"; }
 
-/* line 26, ../scss/elements/icons.scss */
+/* line 69, ../scss/elements/icons.scss */
 .icon-eye:before {
   content: "\e007";
   padding-right: 0.5em; }
 
-/* line 30, ../scss/elements/icons.scss */
+/* line 73, ../scss/elements/icons.scss */
 .icon-filter:before {
   content: "\e008"; }
 
-/* line 31, ../scss/elements/icons.scss */
+/* line 74, ../scss/elements/icons.scss */
 .icon-info:before {
   content: "\e009"; }
 
-/* line 32, ../scss/elements/icons.scss */
+/* line 75, ../scss/elements/icons.scss */
 .icon-link:before {
   content: "\e00a"; }
 
-/* line 33, ../scss/elements/icons.scss */
+/* line 76, ../scss/elements/icons.scss */
 .icon-phone:before {
   content: "\e00b"; }
 
-/* line 34, ../scss/elements/icons.scss */
+/* line 77, ../scss/elements/icons.scss */
 .icon-location:before {
   content: "\e00c"; }
 
-/* line 35, ../scss/elements/icons.scss */
-.icon-feed:before {
+/* line 79, ../scss/elements/icons.scss */
+.follow-link-feed:before {
   content: "\e00d"; }
 
-/* Media Queries */
+/* line 82, ../scss/elements/icons.scss */
+.follow-link-facebook:before {
+  content: "\e00e"; }
+
+/* line 85, ../scss/elements/icons.scss */
+.follow-link-twitter:before {
+  content: "\e00f"; }
+
+/* line 88, ../scss/elements/icons.scss */
+.follow-link-flickr:before {
+  content: "\e010"; }
+
+/* line 91, ../scss/elements/icons.scss */
+.follow-link-vimeo:before {
+  content: "\e011"; }
+
+/* line 94, ../scss/elements/icons.scss */
+.follow-link-youtube:before {
+  content: "\e012"; }
+
+/* line 97, ../scss/elements/icons.scss */
+.follow-link-this-site:before {
+  content: "\e013"; }
+
 /* Fonts */
+/* Media Queries */
 /* line 4, ../scss/elements/layout.scss */
 #main-wrapper {
   padding: 0 1em; }
@@ -166,44 +279,44 @@ you can use the generic selector below, but it's slower:
   padding-left: 0; }
 
 @media all and (min-width: 768px) {
-  /* line 20, ../scss/elements/layout.scss */
+  /* line 21, ../scss/elements/layout.scss */
   #main-wrapper, header .inner {
     max-width: 1120px;
     margin: auto; }
 
-  /* line 24, ../scss/elements/layout.scss */
+  /* line 25, ../scss/elements/layout.scss */
   .main-body {
     padding: 0 0em;
     margin-bottom: 5%; }
 
-  /* line 28, ../scss/elements/layout.scss */
+  /* line 29, ../scss/elements/layout.scss */
   .main-content {
     width: 70%;
     float: left;
     padding-left: 0; }
 
-  /* line 34, ../scss/elements/layout.scss */
+  /* line 35, ../scss/elements/layout.scss */
   .sidebar {
     width: 100%;
     margin-bottom: 3%; }
 
-  /* line 39, ../scss/elements/layout.scss */
+  /* line 40, ../scss/elements/layout.scss */
   .secondary {
     float: right;
     width: 27%;
     margin-left: 3%; } }
-@media all and (min-width: 940px) {
-  /* line 48, ../scss/elements/layout.scss */
+@media all and (min-width: 800px) {
+  /* line 49, ../scss/elements/layout.scss */
   .main-body {
     padding: 0; }
 
-  /* line 52, ../scss/elements/layout.scss */
+  /* line 53, ../scss/elements/layout.scss */
   .main-content {
     width: 58%;
     float: left;
     padding-left: 1em; }
 
-  /* line 58, ../scss/elements/layout.scss */
+  /* line 59, ../scss/elements/layout.scss */
   .sidebar {
     float: left;
     width: 17%;
@@ -211,7 +324,7 @@ you can use the generic selector below, but it's slower:
     margin-top: 0;
     margin-bottom: 5%; }
 
-  /* line 66, ../scss/elements/layout.scss */
+  /* line 67, ../scss/elements/layout.scss */
   .secondary {
     padding-right: 0em;
     width: 20%;
@@ -323,23 +436,23 @@ you can use the generic selector below, but it's slower:
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px; }
 
-/* Media Queries */
 /* Fonts */
+/* Media Queries */
 /* line 4, ../scss/elements/alerts.scss */
-#block-distributed-blocks-d-bopensanmateo-layout-banner {
+#block-distributed-blocks-d-b-opensanmateo-layout-banner {
   background-color: #036cb6;
   padding: 0;
   display: block;
   text-align: left;
   border-bottom: 1px solid rgba(3, 108, 182, 0.8); }
   /* line 11, ../scss/elements/alerts.scss */
-  #block-distributed-blocks-d-bopensanmateo-layout-banner .limiter {
+  #block-distributed-blocks-d-b-opensanmateo-layout-banner .limiter {
     max-width: 1120px;
     margin: auto;
     position: relative;
     padding: 1em 1em 0.6em; }
   /* line 18, ../scss/elements/alerts.scss */
-  #block-distributed-blocks-d-bopensanmateo-layout-banner .icon-feed {
+  #block-distributed-blocks-d-b-opensanmateo-layout-banner .icon-feed {
     color: #074a87;
     text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.25);
     float: left;
@@ -348,8 +461,8 @@ you can use the generic selector below, but it's slower:
     margin-right: 2%;
     margin-bottom: 0; }
   /* line 28, ../scss/elements/alerts.scss */
-  #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content {
-    color: white;
+  #block-distributed-blocks-d-b-opensanmateo-layout-banner .alert-content {
+    color: #FFFFFF;
     margin-bottom: 0;
     width: 80%;
     font-weight: bold;
@@ -357,16 +470,22 @@ you can use the generic selector below, but it's slower:
     float: left;
     padding-top: .6em;
     z-index: 3; }
-  /* line 39, ../scss/elements/alerts.scss */
-  #block-distributed-blocks-d-bopensanmateo-layout-banner .alert-content p {
-    color: white;
-    margin-bottom: 0;
-    width: 100%;
-    font-weight: bold;
-    font-size: .85em; }
+    /* line 38, ../scss/elements/alerts.scss */
+    #block-distributed-blocks-d-b-opensanmateo-layout-banner .alert-content a {
+      color: #EEEEEE; }
+      /* line 41, ../scss/elements/alerts.scss */
+      #block-distributed-blocks-d-b-opensanmateo-layout-banner .alert-content a:hover {
+        color: #FFFFFF; }
+    /* line 45, ../scss/elements/alerts.scss */
+    #block-distributed-blocks-d-b-opensanmateo-layout-banner .alert-content p {
+      color: #FFFFFF;
+      margin-bottom: 0;
+      width: 100%;
+      font-weight: bold;
+      font-size: .85em; }
 
-/* Media Queries */
 /* Fonts */
+/* Media Queries */
 /* line 4, ../scss/elements/teaser.scss */
 .universal-teaser {
   border-top: 1px solid rgba(3, 108, 182, 0.1);
@@ -434,11 +553,761 @@ you can use the generic selector below, but it's slower:
     padding-left: 1em;
     padding-right: 1em; }
 
-/* line 23, ../scss/smc_base.scss */
+/* Fonts */
+/* Media Queries */
+/* line 4, ../scss/elements/follow.scss */
+.follow-links {
+  font-size: 1em;
+  line-height: 1em; }
+  /* line 8, ../scss/elements/follow.scss */
+  .follow-links a.follow-link {
+    float: left;
+    color: white;
+    height: auto;
+    background-color: #036cb6;
+    background-image: none;
+    font-size: 1.25em;
+    padding: .5em;
+    border-radius: 3px;
+    display: inline-block;
+    line-height: 1em;
+    margin: 0 5% 5% 0; }
+    /* line 22, ../scss/elements/follow.scss */
+    .follow-links a.follow-link .follow-link-text {
+      display: none; }
+  /* line 27, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-facebook {
+    background-color: #3b5998; }
+  /* line 30, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-twitter {
+    background-color: #55acee; }
+  /* line 33, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-this-site {
+    background-color: #fd9a27; }
+  /* line 36, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-flickr {
+    background-color: #fc2482; }
+  /* line 39, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-vimeo {
+    background-color: #2ebae9; }
+  /* line 42, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-youtube {
+    background-color: #cc171e; }
+
+@media all and (min-width: 768px) {
+  /* line 51, ../scss/elements/follow.scss */
+  .follow-links a.follow-link {
+    font-size: 1em;
+    padding: .5em; } }
+/* Fonts */
+/* Media Queries */
+/* line 4, ../scss/elements/dept-menu.scss */
+#dept-switch {
+  display: none; }
+
+@media all and (min-width: 768px) {
+  /* line 10, ../scss/elements/dept-menu.scss */
+  #dept-switch {
+    background-color: #036cb6;
+    padding: 1em;
+    display: none; }
+    /* line 15, ../scss/elements/dept-menu.scss */
+    #dept-switch .close {
+      position: absolute;
+      top: 1%;
+      right: 3%;
+      color: white;
+      font-size: 1.5em; }
+    /* line 23, ../scss/elements/dept-menu.scss */
+    #dept-switch .close:hover {
+      color: rgba(255, 255, 255, 0.5); }
+    /* line 25, ../scss/elements/dept-menu.scss */
+    #dept-switch h2 {
+      color: rgba(255, 255, 255, 0.7);
+      padding: 0 .25em .25em .25em;
+      text-transform: uppercase; }
+    /* line 31, ../scss/elements/dept-menu.scss */
+    #dept-switch ul {
+      -webkit-column-count: 4;
+      -moz-column-count: 4;
+      margin-bottom: 0; }
+      /* line 37, ../scss/elements/dept-menu.scss */
+      #dept-switch ul li a {
+        color: white;
+        font-weight: bold;
+        font-size: .8em;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+        padding: .25em .75em;
+        display: inline-block;
+        border-radius: 3px;
+        position: relative; }
+      /* line 50, ../scss/elements/dept-menu.scss */
+      #dept-switch ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.1); } }
+/* Fonts */
+/* Media Queries */
+/* line 5, ../scss/elements/main-menu.scss */
+.primary {
+  color: navy; }
+
+/* line 9, ../scss/elements/main-menu.scss */
+.home {
+  display: none; }
+
+/* line 13, ../scss/elements/main-menu.scss */
+.main nav li ul {
+  display: none; }
+
+@media only screen and (max-width: 767px) {
+  /* Flexnav Base Styles */
+  /* line 12, ../scss/flexnav.scss */
+  .flexnav {
+    *zoom: 1;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    max-height: 0; }
+    /* line 38, ../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+    .flexnav:after {
+      content: "";
+      display: table;
+      clear: both; }
+    /* line 19, ../scss/flexnav.scss */
+    .flexnav.show {
+      -webkit-transition: 0.4s;
+      -moz-transition: 0.4s;
+      -o-transition: 0.4s;
+      transition: 0.4s;
+      max-height: 1000px;
+      position: fixed;
+      background-color: rgba(255, 255, 255, 0.975);
+      padding-top: 60px;
+      top: 0; }
+    /* line 27, ../scss/flexnav.scss */
+    .flexnav.one-page {
+      position: fixed;
+      top: 50px;
+      right: 5%;
+      max-width: 200px; }
+    /* line 34, ../scss/flexnav.scss */
+    .flexnav ul {
+      margin-left: 0; }
+    /* line 35, ../scss/flexnav.scss */
+    .flexnav li {
+      font-size: 100%;
+      position: relative;
+      list-style-type: none; }
+    /* line 41, ../scss/flexnav.scss */
+    .flexnav li a {
+      position: relative;
+      display: block;
+      padding: .96em;
+      z-index: 2;
+      overflow: hidden;
+      color: white;
+      background: #036cb6;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica; }
+    /* line 52, ../scss/flexnav.scss */
+    .flexnav li ul {
+      width: 100%;
+      display: none; }
+    /* line 56, ../scss/flexnav.scss */
+    .flexnav li ul li {
+      float: none;
+      width: 100%; }
+    /* line 60, ../scss/flexnav.scss */
+    .flexnav li ul li a {
+      display: block;
+      background: rgba(56, 147, 155, 0.1);
+      color: #38939b; }
+    /* line 65, ../scss/flexnav.scss */
+    .flexnav ul li ul li a {
+      background: #bfbfbc; }
+    /* line 69, ../scss/flexnav.scss */
+    .flexnav ul li ul li ul li a {
+      background: #cbcbc9; }
+    /* line 72, ../scss/flexnav.scss */
+    .flexnav .touch-button {
+      position: absolute;
+      z-index: 999;
+      top: 0;
+      right: 0;
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      /*
+      		background: #acaca1;
+      		background: rgba(0,0,0,.05);
+      */
+      text-align: center;
+      border-radius: 6px; }
+      /* line 86, ../scss/flexnav.scss */
+      .flexnav .touch-button:hover {
+        cursor: pointer; }
+      /* line 89, ../scss/flexnav.scss */
+      .flexnav .touch-button .navicon {
+        position: relative;
+        top: 1.25em;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5); }
+
+  /* line 97, ../scss/flexnav.scss */
+  .menu-button {
+    position: fixed;
+    display: block;
+    padding: .3em;
+    background: white;
+    color: white;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: #036cb6;
+    font-size: 1.7em;
+    text-align: center;
+    top: .56em;
+    right: .4em;
+    border-radius: 3px;
+    z-index: 9999;
+    box-shadow: 0px 3px 2px rgba(3, 108, 182, 0.1); }
+    /* line 114, ../scss/flexnav.scss */
+    .menu-button.one-page {
+      position: fixed;
+      top: 0;
+      right: 5%;
+      padding-right: 45px; }
+    /* line 121, ../scss/flexnav.scss */
+    .menu-button .touch-button {
+      background: transparent;
+      position: absolute;
+      z-index: 999;
+      top: 0;
+      right: 0;
+      width: 50px;
+      height: 100%;
+      display: inline-block;
+      text-align: center; }
+      /* line 132, ../scss/flexnav.scss */
+      .menu-button .touch-button .navicon {
+        font-size: 16px;
+        position: relative;
+        top: 1em;
+        color: rgba(255, 255, 255, 0.5);
+        display: none; }
+
+  /* line 21, ../scss/elements/main-menu.scss */
+  .flexnav.show {
+    z-index: 11; } }
+@media all and (min-width: 768px) {
+  /* line 26, ../scss/elements/main-menu.scss */
+  .icon-menu {
+    display: none; }
+
+  /* line 30, ../scss/elements/main-menu.scss */
+  .home {
+    display: block; }
+
+  /* line 34, ../scss/elements/main-menu.scss */
+  .primary {
+    border-radius: 3px;
+    width: 100%;
+    background-color: rgba(56, 147, 155, 0.05); }
+    /* line 40, ../scss/elements/main-menu.scss */
+    .primary ul {
+      color: #036cb6; }
+    /* line 44, ../scss/elements/main-menu.scss */
+    .primary .home a:before {
+      content: "\e003";
+      font-family: 'SanMateoIcon';
+      text-indent: 0 !important; }
+    /* line 50, ../scss/elements/main-menu.scss */
+    .primary li {
+      float: left;
+      list-style-type: none;
+      position: relative; }
+      /* line 55, ../scss/elements/main-menu.scss */
+      .primary li a {
+        font-family: 'Trade Gothic W01 Roman', Helvetica Neue, Arial, Helvetica, sans-serif;
+        font-size: .95em;
+        padding: 0.5em .9em;
+        display: block;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s; }
+      /* line 66, ../scss/elements/main-menu.scss */
+      .primary li a:hover, .primary li:hover > a {
+        background-color: #38939b;
+        color: white;
+        border-radius: 3px; }
+      /* line 72, ../scss/elements/main-menu.scss */
+      .primary li.expanded > a:after {
+        content: "\e004";
+        font-family: 'SanMateoIcon';
+        font-size: .5em;
+        padding-left: 5px;
+        color: rgba(56, 147, 155, 0.3); }
+      /* line 81, ../scss/elements/main-menu.scss */
+      .primary li.expanded > a:hover, .primary li.expanded:hover > a {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px; }
+      /* line 87, ../scss/elements/main-menu.scss */
+      .primary li.expanded > a:hover:after, .primary li.expanded:hover > a:after {
+        color: rgba(255, 255, 255, 0.5); }
+      /* line 91, ../scss/elements/main-menu.scss */
+      .primary li ul {
+        position: absolute;
+        top: 40px;
+        left: -20px;
+        width: 300%;
+        max-width: 300px;
+        opacity: 0;
+        background: rgba(56, 147, 155, 0.9);
+        -webkit-border-radius: 0 0 5px 5px;
+        -moz-border-radius: 0 0 5px 5px;
+        border-radius: 0 0 5px 5px;
+        -webkit-transition: opacity .25s ease .1s;
+        -moz-transition: opacity .25s ease .1s;
+        -o-transition: opacity .25s ease .1s;
+        -ms-transition: opacity .25s ease .1s;
+        transition: opacity .25s ease .1s; }
+        /* line 110, ../scss/elements/main-menu.scss */
+        .primary li ul li {
+          height: 0;
+          overflow: hidden;
+          padding: 0;
+          width: 100%;
+          display: inline-table;
+          -webkit-transition: height .25s ease .1s;
+          -moz-transition: height .25s ease .1s;
+          -o-transition: height .25s ease .1s;
+          -ms-transition: height .25s ease .1s;
+          transition: height .25s ease .1s; }
+          /* line 122, ../scss/elements/main-menu.scss */
+          .primary li ul li a {
+            color: white;
+            display: block;
+            border-radius: 0;
+            padding: .5em 1em;
+            width: 100%; }
+        /* line 131, ../scss/elements/main-menu.scss */
+        .primary li ul li:last-child > a, .primary li ul li:last-child > a:hover {
+          border-bottom-left-radius: 3px;
+          border-bottom-right-radius: 3px; }
+    /* line 138, ../scss/elements/main-menu.scss */
+    .primary ul {
+      margin-bottom: 0; }
+
+  /* line 142, ../scss/elements/main-menu.scss */
+  .primary li:hover > ul {
+    opacity: 1; }
+
+  /* line 146, ../scss/elements/main-menu.scss */
+  .primary li:hover > ul li {
+    height: 36px;
+    overflow: visible;
+    padding: 0; }
+
+  /* line 152, ../scss/elements/main-menu.scss */
+  .sub {
+    background-color: white;
+    border: 1px solid rgba(3, 108, 182, 0.05);
+    border-radius: 3px;
+    font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica;
+    font-size: .85em;
+    border-top: 5px solid rgba(3, 108, 182, 0.05); }
+    /* line 160, ../scss/elements/main-menu.scss */
+    .sub ul {
+      margin: 0;
+      padding: 0; }
+      /* line 164, ../scss/elements/main-menu.scss */
+      .sub ul li {
+        margin: 0;
+        padding: 0;
+        list-style-type: none; }
+        /* line 169, ../scss/elements/main-menu.scss */
+        .sub ul li a {
+          display: block;
+          padding: .75em .75em;
+          border-bottom: 1px solid rgba(3, 108, 182, 0.2);
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          transition: all 0.3s; }
+        /* line 177, ../scss/elements/main-menu.scss */
+        .sub ul li a:hover {
+          background-color: rgba(3, 108, 182, 0.8);
+          color: white; }
+      /* line 182, ../scss/elements/main-menu.scss */
+      .sub ul .active {
+        font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica; }
+        /* line 185, ../scss/elements/main-menu.scss */
+        .sub ul .active a {
+          background-color: white;
+          color: #036cb6; }
+        /* line 191, ../scss/elements/main-menu.scss */
+        .sub ul .active ul li a {
+          background-color: rgba(56, 147, 155, 0.1);
+          color: #38939b;
+          font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica;
+          border-color: rgba(56, 147, 155, 0.2); }
+        /* line 197, ../scss/elements/main-menu.scss */
+        .sub ul .active ul li a:hover {
+          background-color: rgba(56, 147, 155, 0.2); } }
+/* Fonts */
+/* Media Queries */
+/* line 5, ../scss/elements/dept-promo.scss */
+.dept-promo {
+  background-color: rgba(85, 90, 90, 0.05);
+  margin-top: -10%;
+  margin-bottom: 0%; }
+  /* line 10, ../scss/elements/dept-promo.scss */
+  .dept-promo .dept-logo {
+    width: 70%;
+    margin: auto;
+    padding: .5em; }
+    /* line 15, ../scss/elements/dept-promo.scss */
+    .dept-promo .dept-logo img {
+      width: 20%;
+      display: block;
+      margin: 2% auto 0; }
+  /* line 22, ../scss/elements/dept-promo.scss */
+  .dept-promo p {
+    float: left;
+    width: 100%;
+    font-size: 1em;
+    color: #555a5a;
+    font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica;
+    padding: 0 1em 1em;
+    margin-bottom: 0;
+    text-align: center; }
+    /* line 32, ../scss/elements/dept-promo.scss */
+    .dept-promo p .amp {
+      color: rgba(85, 90, 90, 0.5); }
+
+@media all and (min-width: 768px) {
+  /* line 42, ../scss/elements/dept-promo.scss */
+  .dept-promo {
+    background-color: transparent;
+    margin-top: 0;
+    background-color: rgba(85, 90, 90, 0.03);
+    display: table;
+    padding: 0 1.5em; }
+    /* line 50, ../scss/elements/dept-promo.scss */
+    .dept-promo .dept-logo {
+      display: table-cell;
+      width: 14%;
+      margin: 0 3% 0% 0%;
+      padding: 1em; }
+      /* line 56, ../scss/elements/dept-promo.scss */
+      .dept-promo .dept-logo img {
+        width: 100%; }
+    /* line 60, ../scss/elements/dept-promo.scss */
+    .dept-promo p {
+      text-align: left;
+      width: 83%;
+      display: table-cell;
+      vertical-align: middle; } }
+@media all and (min-width: 800px) {
+  /* line 70, ../scss/elements/dept-promo.scss */
+  .dept-promo {
+    margin-top: 0%;
+    margin-bottom: 0%;
+    display: block;
+    background-color: transparent;
+    padding: 0; }
+    /* line 77, ../scss/elements/dept-promo.scss */
+    .dept-promo .dept-logo {
+      background-color: rgba(85, 90, 90, 0.05);
+      width: 100%;
+      margin: auto;
+      padding: 1em;
+      display: block; }
+      /* line 84, ../scss/elements/dept-promo.scss */
+      .dept-promo .dept-logo img {
+        width: 50%;
+        display: block;
+        margin: auto; }
+    /* line 91, ../scss/elements/dept-promo.scss */
+    .dept-promo p {
+      float: left;
+      width: 100%;
+      font-size: 1em;
+      color: #555a5a;
+      font-family: "Trade Gothic W01 Roman", Helvetica Neue, Arial, Helvetica;
+      padding: 1em 0;
+      margin-bottom: 0;
+      text-align: left;
+      display: block; }
+      /* line 101, ../scss/elements/dept-promo.scss */
+      .dept-promo p .amp {
+        color: rgba(85, 90, 90, 0.5); } }
+/* Fonts */
+/* Media Queries */
+/*
+
+.btn-bar {
+	width: 100%;
+	background-color: rgba(255,255,255,.3);
+	display: block;
+	padding: 1em 0;
+	margin-bottom: 0;
+	color: white;
+	font-family: 'Trade Gothic W01 Bold';
+	text-transform: uppercase;
+	text-align: center;
+	
+	.blue {
+		background-color: rgba($primaryBlue, .3);
+		color: $primaryBlue;
+		}
+	}
+
+.btn-bar:hover {
+	background-color: rgba(255,255,255,.2);
+	color: white;
+}
+
+.btn-bar:after {
+  content: ' È';
+}
+
+.seamless {
+  padding: 0 0 0em;
+	
+	h4, h5 {
+		padding: .5em; 
+		margin-bottom: 0;
+		}
+	
+	h4 {background-color: white;}
+	h5 {color: white;}
+	
+	img {
+		width: 100%;
+		margin-bottom: 2%;
+		}
+
+	p {
+		color: white;
+		padding: 0 1em .5em;
+		font-size: .85em;
+		}
+
+	h5 span {
+		display: block;
+		color: #ccc;
+		}
+	}
+	
+	.spotlight {
+	background-color:#38939b;
+	border-radius: 3px;
+	}
+
+.spotlight.horz {
+
+	img {
+		float: left;
+		width: 50%;
+		margin-left: 1%;
+		}
+	
+	.content {
+		float: left;
+		width: 40%;
+		}
+
+}
+*/
+/*
+.seamless {padding: 0 0 0em;
+	
+	h4 {background-color: white;}
+
+	h5 {color: white;
+	
+		span {
+			color: rgba(255,255,255, .7);
+			display: block;
+			}
+		}
+		
+	h3, h4, h5 {
+		padding: .5em; 
+		margin-bottom: 0;
+		margin-top: 0;
+		}
+	
+	img {
+		width: 100%;
+		}
+		
+	p {
+		color: white;
+		padding: 0 1em .5em;
+		font-size: .85em;
+		}
+	}
+	
+	.spotlight {
+	background-color:#38939b;
+	border-radius: 3px;
+	}
+
+.spotlight.horz img {
+	float: left;
+	width: 50%;
+	margin-left: 1%;
+	}
+
+.spotlight.horz .content {
+	float: left;
+	width: 40%;
+	}
+
+.campaign {
+	background-color: #8dc63f;
+	border-radius: 3px;
+	
+	img {margin-bottom: 5%;}
+	
+	h4 {
+		color: white;
+		text-transform: uppercase;
+		font-weight: 300;
+		background-color: transparent;
+		}
+	
+	p {
+		color: #fafafa;
+		font-weight: bold;
+		font-size: .9em;
+		}
+		
+	.btn-bar {
+		width: 100%;
+		background-color: rgba(255,255,255,.3);
+		display: block;
+		padding: 1em 0;
+		margin-bottom: 0;
+		color: white;
+		font-family: 'Trade Gothic W01 Bold';
+		text-transform: uppercase;
+		text-align: center;
+		}
+	}
+
+.campaigns div:nth-child(2) {
+	background-color: #6b699e;
+	}
+
+.campaigns div:last-child {
+	margin-right: 0;
+	background-color: #e98a41;
+	}
+
+.btn-bar.blue {
+	background-color: rgba($primaryBlue, .1);
+	color: $primaryBlue;
+	padding: .5em 0;
+	}
+
+.btn-bar:hover {
+	background-color: rgba(255,255,255,.2);
+	color: white;
+	}
+
+.btn-bar.blue:hover {
+	background-color: rgba($primaryBlue, .2);
+	color: $primaryBlue;
+	}
+	
+.btn-bar:after {content: ' È';}
+*/
+/* line 190, ../scss/elements/promo-boxes.scss */
+.pane-bundle-promo-panels-pane {
+  padding: 0;
+  background-color: #38939b;
+  border-radius: 3px; }
+  /* line 196, ../scss/elements/promo-boxes.scss */
+  .pane-bundle-promo-panels-pane h2.pane-title {
+    padding: .5em;
+    margin-bottom: 0;
+    color: #FFFFFF;
+    font-size: 1.25em;
+    line-height: 1.3em; }
+    /* line 203, ../scss/elements/promo-boxes.scss */
+    .pane-bundle-promo-panels-pane h2.pane-title a {
+      color: #FFFFFF; }
+      /* line 206, ../scss/elements/promo-boxes.scss */
+      .pane-bundle-promo-panels-pane h2.pane-title a:hover {
+        color: #EEEEEE; }
+  /* line 212, ../scss/elements/promo-boxes.scss */
+  .pane-bundle-promo-panels-pane .field-name-field-rotator-image {
+    margin-bottom: 2%; }
+  /* line 215, ../scss/elements/promo-boxes.scss */
+  .pane-bundle-promo-panels-pane .field-name-field-rotator-caption {
+    color: #FFFFFF;
+    padding: 0 1em .5em;
+    font-size: .85em;
+    line-height: 1.6em;
+    font-weight: bold;
+    padding-left: 0.75em;
+    line-height: 1.6;
+    margin-bottom: 1.25em;
+    text-rendering: optimizelegibility; }
+    /* line 226, ../scss/elements/promo-boxes.scss */
+    .pane-bundle-promo-panels-pane .field-name-field-rotator-caption a {
+      color: #FFFFFF; }
+      /* line 229, ../scss/elements/promo-boxes.scss */
+      .pane-bundle-promo-panels-pane .field-name-field-rotator-caption a:hover {
+        color: #EEEEEE; }
+  /* line 237, ../scss/elements/promo-boxes.scss */
+  .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    display: block;
+    padding: 1em 0;
+    margin-bottom: 0;
+    color: white;
+    font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica;
+    text-transform: uppercase;
+    text-align: center; }
+  /* line 249, ../scss/elements/promo-boxes.scss */
+  .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white; }
+  /* line 254, ../scss/elements/promo-boxes.scss */
+  .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after {
+    content: ' \00BB'; }
+
+/* line 260, ../scss/elements/promo-boxes.scss */
+.promo-pane-default {
+  background-color: #38939b; }
+
+/* line 263, ../scss/elements/promo-boxes.scss */
+.promo-pane-green {
+  background-color: #8dc63f; }
+
+/* line 266, ../scss/elements/promo-boxes.scss */
+.promo-pane-purple {
+  background-color: #6b699e; }
+
+/* line 269, ../scss/elements/promo-boxes.scss */
+.promo-pane-orange {
+  background-color: #e98a41; }
+
+/* line 37, ../scss/smc_base.scss */
+.limiter {
+  margin: auto;
+  max-width: 1120px;
+  position: relative; }
+
+/* line 43, ../scss/smc_base.scss */
 .krumo-root strong {
   display: inline !important; }
 
-/* line 28, ../scss/smc_base.scss */
+/* line 48, ../scss/smc_base.scss */
 ul li.leaf,
 ul li.expanded {
   list-style-type: none;
@@ -446,34 +1315,34 @@ ul li.expanded {
   padding: 0;
   margin: 0; }
 
-/* line 36, ../scss/smc_base.scss */
+/* line 56, ../scss/smc_base.scss */
 .messages strong {
   display: inline; }
 
-/* line 45, ../scss/smc_base.scss */
+/* line 65, ../scss/smc_base.scss */
 nav.main-nav {
   border-top: 0;
   margin-bottom: 0;
   padding-top: 0;
   z-index: 400 !important; }
 
-/* line 51, ../scss/smc_base.scss */
+/* line 71, ../scss/smc_base.scss */
 .flexslider {
   z-index: 1 !important; }
 
-/* line 54, ../scss/smc_base.scss */
+/* line 74, ../scss/smc_base.scss */
 header {
   z-index: 10; }
 
-/* line 58, ../scss/smc_base.scss */
+/* line 78, ../scss/smc_base.scss */
 div.body {
   z-index: 1; }
 
-/* line 62, ../scss/smc_base.scss */
+/* line 82, ../scss/smc_base.scss */
 footer {
   z-index: 10; }
 
-/* line 67, ../scss/smc_base.scss */
+/* line 87, ../scss/smc_base.scss */
 #footer-wrapper .section {
   margin-bottom: 0; }
 

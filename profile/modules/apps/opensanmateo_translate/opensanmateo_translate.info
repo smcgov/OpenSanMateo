@@ -1,0 +1,6 @@
+name = OpenSanMateo Translate
+description = Provides google translations for OpenSanMateo
+core = 7.x
+package = OpenSanMateo
+php = 5.2.4
+dependencies[] = google_translator

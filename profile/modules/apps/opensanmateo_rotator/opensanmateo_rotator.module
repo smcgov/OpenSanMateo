@@ -16,6 +16,10 @@ function opensanmateo_rotator_entity_info_alter(&$entity_info) {
   $entity_info['fieldable_panels_pane']['bundles']['rotator_panels_pane']['label'] = 'Rotator Pane';
   $entity_info['fieldable_panels_pane']['bundles']['rotator_panels_pane']['admin']['path'] = 'admin/structure/fieldable-panels-panes/manage/%rotator_panels_panes_type';
   $entity_info['fieldable_panels_pane']['bundles']['rotator_panels_pane']['admin']['real path'] = 'admin/structure/fieldable-panels-panes/manage/rotator-panels-pane';
+  $entity_info['fieldable_panels_pane']['bundles']['promo_panels_pane'] = $entity_info['fieldable_panels_pane']['bundles']['fieldable_panels_pane'];
+  $entity_info['fieldable_panels_pane']['bundles']['promo_panels_pane']['label'] = 'Promo Pane';
+  $entity_info['fieldable_panels_pane']['bundles']['promo_panels_pane']['admin']['path'] = 'admin/structure/fieldable-panels-panes/manage/%promo_panels_panes_type';
+  $entity_info['fieldable_panels_pane']['bundles']['promo_panels_pane']['admin']['real path'] = 'admin/structure/fieldable-panels-panes/manage/promo-panels-pane';
 }
 
 /**
@@ -101,5 +105,19 @@ function opensanmateo_rotator_preprocess_panels_pane(&$vars) {
       drupal_add_js(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.js');
     }
     
+  }
+
+  // if we have a promo pane we need to pull out the url and use it on the image and the link
+  // must check to see if it isset first as some panes have pre-rendered HTML for $vars['content']
+  if (isset($vars['content']['#bundle']) && $vars['content']['#bundle'] == 'promo_panels_pane') {
+    $url = '';
+    $url = isset($vars['content']['field_rotator_link_url'][0]['#element']['url']) ? $vars['content']['field_rotator_link_url'][0]['#element']['url'] : $url;
+    $url = isset($vars['content']['field_rotator_link_node'][0]['#markup']) ? $vars['content']['field_rotator_link_node'][0]['#markup'] : $url;
+    unset($vars['content']['field_rotator_link_node']);
+    if($url) {
+      $url = trim($url, "/");
+      $vars['content']['field_rotator_link_url'][0]['#element']['url'] = $url;
+      $vars['content']['field_rotator_image'][0]['#path']['path'] = $url;
+    }
   }
 }

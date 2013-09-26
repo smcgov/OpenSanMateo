@@ -59,12 +59,12 @@ function smc_base_preprocess_block(&$variables) {
 
     break;
 
-    case 'distributed_blocks-d_b|opensanmateo_layout_banner':
+    case 'distributed_blocks-d_b--opensanmateo_layout_banner':
       //dsm($block);
       //dsm($variables);
     break;
 
-    case 'distributed_blocks-d_b|menu-platform-menu':
+    case 'distributed_blocks-d_b--menu-platform-menu':
       //dsm($variables);
     break;
   }
@@ -122,13 +122,25 @@ function smc_base_preprocess_views_view(&$vars) {
   
   if ($view->name == 'opensanmateo_search') {
     //krumo($vars);
+  }  
+}
+
+function smc_base_preprocess_panels_pane(&$vars) {  
+  if (isset($vars['content']['#bundle']) && $vars['content']['#bundle'] == 'promo_panels_pane') {
+    if (isset($vars['content']['field_promo_style'])) {
+      // assign a class we can use to style
+      $vars['classes_array'][] = 'promo-pane-' . $vars['content']['field_promo_style']['#items'][0]['value'];
+      // now remove the field
+      unset($vars['content']['field_promo_style']);
+    }
   }
-  
 }
 function smc_base_preprocess_views_view_fields(&$vars) { 
   $view = $vars['view'];
   
   if ($view->name == 'opensanmateo_search') {
+    
+    //krumo($vars['fields']);
     // Legend for (wonky) field names
     // There is a chance the variable names may need changed later, hence this fancy legend
     // Module developers should be drawn and quartered 
@@ -149,6 +161,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     
     // LOCATION RELATED
     // search_api_multi_aggregation_6   - street
+    // search_api_multi_aggregation_17  - street 2
     // search_api_multi_aggregation_7   - city
     // search_api_multi_aggregation_4   - state
     // search_api_multi_aggregation_5   - zip
@@ -220,27 +233,11 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     unset($vars['fields']['search_api_multi_aggregation_4']); // state
     unset($vars['fields']['search_api_multi_aggregation_5']); // zip
     unset($vars['fields']['search_api_multi_aggregation_7']); // city
+    unset($vars['fields']['search_api_multi_aggregation_17']); // street2
     
-    
-    
-    
-    
-    // let's group the "info" section into a logical array
-    /*
-$vars['fields']['info'] = array(
-      'address' => array(      
-        '#prefix' => '<div class="location address clearfix">',
-        '#suffix' => '</div>',
-        'street' => $vars['fields']['search_api_multi_aggregation_6'],
-        'city' => $vars['fields']['search_api_multi_aggregation_7'],
-        'state' => $vars['fields']['search_api_multi_aggregation_4'],
-        'zip' => $vars['fields']['search_api_multi_aggregation_5'],
-      ),
-    );
-    
-*/
-    
+    unset($vars['fields']['more_link']); // morelink
     //krumo($vars['fields']);
+    
   } // end opensanmateo_search
 }
 
@@ -262,4 +259,24 @@ function smc_base_views_pre_render(&$view) {
   if ($view->name == 'opensanmateo_search') {
     //dsm($view);  
   }
+}
+
+
+/**
+ * customize theme_follow_link to allow title text to be hidden
+ */
+function smc_base_follow_link($variables) {
+  $link = $variables['link'];
+  $link->options['html'] = true;
+  $title = '<span class="follow-link-text">' . $variables['title'] . '</span>';
+  $classes = array();
+  $classes[] = 'follow-link';
+  $classes[] = "follow-link-{$link->name}";
+  $classes[] = $link->uid ? 'follow-link-user' : 'follow-link-site';
+  $attributes = array(
+    'class' => $classes,
+    'title' => follow_link_title($link->uid) .' '. $title,
+  );
+  $link->options['attributes'] = $attributes;
+  return l($title, $link->path, $link->options) . "\n";
 }

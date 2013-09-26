@@ -1,7 +1,7 @@
 // default variables
 @import "vars.scss";
 
-#block-distributed-blocks-d-bopensanmateo-layout-banner {
+#block-distributed-blocks-d-b-opensanmateo-layout-banner {
 	background-color: $primaryBlue;
 	padding: 0;
 	display: block;
@@ -26,7 +26,7 @@
 	 }
 	
 	.alert-content {
-	  color: white; 
+	  color: #FFFFFF; 
 	  margin-bottom: 0; 
 	  width: 80%;
 	  font-weight: bold; 
@@ -34,13 +34,22 @@
 	  float: left;
 	  padding-top: .6em; 
 	  z-index:3;
+	  
+	  a {
+  	  color: #EEEEEE;
+  	  
+  	  &:hover {
+    	  color: #FFFFFF;
+  	  }
+	  }
+	  p {
+  	  color: #FFFFFF; 
+  	  margin-bottom: 0; 
+  	  width: 100%; 
+  	  font-weight: bold; 
+  	  font-size: .85em;  
+	  }
 	}
 	
-	.alert-content p { 		
-	  color: white; 
-	  margin-bottom: 0; 
-	  width: 100%; 
-	  font-weight: bold; 
-	  font-size: .85em;
-  }
+	
 }

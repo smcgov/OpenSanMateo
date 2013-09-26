@@ -71,11 +71,16 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_multi_aggregation_14" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_multi_aggregation_15" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_multi_aggregation_16" : { "type" : "list\\u003Cstring\\u003E" },
+        "search_api_multi_aggregation_17" : { "type" : "list\\u003Cstring\\u003E" },
+        "search_api_multi_aggregation_18" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_site_hash" : { "type" : "uri" },
         "search_api_site_id" : { "type" : "string" },
+        "author:name" : { "type" : "text" },
+        "author:url" : { "type" : "uri" },
         "body:value" : { "type" : "text" },
         "field_sub_type:name" : { "type" : "text" },
         "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_topic:name" : { "type" : "string" },
         "field_address:locality" : { "type" : "string" },
         "field_event_calendar:name" : { "type" : "text" },
         "field_event_date:value" : { "type" : "date" },
@@ -83,140 +88,150 @@ function opensanmateo_search_default_search_api_index() {
         "field_event_type:name" : { "type" : "text" },
         "field_thumbnail_image:file:url" : { "type" : "string" },
         "field_thumbnail_image:file:field_file_image_alt_text" : { "type" : "string" },
-        "field_thumbnail_image:file:field_file_image_title_text" : { "type" : "string" }
+        "field_thumbnail_image:file:field_file_image_title_text" : { "type" : "string" },
+        "field_location_address:field_address:postal_code" : { "type" : "list\\u003Cstring\\u003E" }
       },
       "data_alter_callbacks" : {
         "site_index" : { "status" : 1, "weight" : "-50", "settings" : [] },
+        "search_opensanmateo_image" : {
+          "status" : 1,
+          "weight" : "-50",
+          "settings" : { "image_style" : "list-page-thumbnail" }
+        },
         "search_api_alter_bundle_filter" : {
           "status" : 0,
           "weight" : "-10",
           "settings" : { "default" : "1", "bundles" : [] }
         },
-        "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
+        "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_multi_aggregation" : {
           "status" : 1,
           "weight" : "0",
           "settings" : { "fields" : {
               "search_api_multi_aggregation_1" : {
                 "name" : "Aggregated Teaser",
-                "type" : "fulltext",
                 "fields" : [ "field_summary", "field_blog_teaser", "body:summary" ],
-                "description" : "A Fulltext aggregation of the following fields: Summary, Teaser, The main body text \\u00bb Summary."
+                "description" : "A text aggregation of the following fields: Summary, Teaser, The main body text \\u00bb Summary."
               },
               "search_api_multi_aggregation_3" : {
                 "name" : "Aggregated Author",
-                "type" : "fulltext",
-                "fields" : [ "author", "field_photo_author", "field_document_author" ],
-                "description" : "A Fulltext aggregation of the following fields: Author, author, Author."
+                "fields" : [ "author:name" ],
+                "description" : "A text aggregation of the following fields: Author \\u00bb Name."
               },
               "search_api_multi_aggregation_2" : {
                 "name" : "Aggregated Thumbnail",
-                "type" : "fulltext",
                 "fields" : [ "field_thumbnail_image:file:url" ],
-                "description" : "A Fulltext aggregation of the following fields: Thumbnail Image \\u00bb The image file. \\u00bb URL."
+                "description" : "A text aggregation of the following fields: Thumbnail Image \\u00bb The image file. \\u00bb URL."
               },
               "search_api_multi_aggregation_4" : {
                 "name" : "Aggregated State",
-                "type" : "fulltext",
                 "fields" : [
                   "field_address:administrative_area",
                   "field_location_address:field_address:administrative_area"
                 ],
-                "description" : "A Fulltext aggregation of the following fields: Address \\u00bb Administrative area (i.e. State \\/ Province), Address \\u00bb Address \\u00bb Administrative area (i.e. State \\/ Province)."
+                "description" : "A text aggregation of the following fields: Address \\u00bb Administrative area (i.e. State \\/ Province), Address \\u00bb Address \\u00bb Administrative area (i.e. State \\/ Province)."
               },
               "search_api_multi_aggregation_5" : {
                 "name" : "Aggregated Postal",
-                "type" : "fulltext",
                 "fields" : [
                   "field_address:postal_code",
                   "field_location_address:field_address:postal_code"
                 ],
-                "description" : "A Fulltext aggregation of the following fields: Address \\u00bb Postal code, Address \\u00bb Address \\u00bb Postal code."
+                "description" : "A text aggregation of the following fields: Address \\u00bb Postal code, Address \\u00bb Address \\u00bb Postal code."
               },
               "search_api_multi_aggregation_6" : {
                 "name" : "Aggregated Thoroughfare",
-                "type" : "fulltext",
                 "fields" : [
                   "field_address:thoroughfare",
                   "field_location_address:field_address:thoroughfare"
                 ],
-                "description" : "A Fulltext aggregation of the following fields: Address \\u00bb Thoroughfare (i.e. Street address), Address \\u00bb Address \\u00bb Thoroughfare (i.e. Street address)."
+                "description" : "A text aggregation of the following fields: Address \\u00bb Thoroughfare (i.e. Street address), Address \\u00bb Address \\u00bb Thoroughfare (i.e. Street address)."
               },
               "search_api_multi_aggregation_7" : {
                 "name" : "City",
-                "type" : "fulltext",
                 "fields" : [
                   "field_address:locality",
                   "field_location_address:field_address:locality"
                 ],
-                "description" : "A Fulltext aggregation of the following fields: Address \\u00bb Locality (i.e. City), Address \\u00bb Address \\u00bb Locality (i.e. City)."
+                "description" : "A text aggregation of the following fields: Address \\u00bb Locality (i.e. City), Address \\u00bb Address \\u00bb Locality (i.e. City)."
               },
               "search_api_multi_aggregation_8" : {
                 "name" : "Terms",
-                "type" : "fulltext",
                 "fields" : [
-                  "field_subject:name",
                   "field_sub_type:name",
+                  "field_subject:name",
+                  "field_topic:name",
                   "field_event_calendar:name",
                   "field_event_type:name"
                 ],
-                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
+                "description" : "A text aggregation of the following fields: Sub Type \\u00bb Name, Subject \\u00bb Name, Topic \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
               },
               "search_api_multi_aggregation_9" : {
                 "name" : "Aggregated Start Date",
-                "type" : "fulltext",
-                "fields" : [ "field_release_date", "field_event_date:value" ],
-                "description" : "A Fulltext aggregation of the following fields: Release Date, Date \\u00bb Start date."
+                "fields" : [ "field_event_date:value" ],
+                "description" : "A text aggregation of the following fields: Date \\u00bb Start date."
               },
               "search_api_multi_aggregation_10" : {
                 "name" : "Aggregated End Date",
-                "type" : "fulltext",
                 "fields" : [ "field_event_date:value2" ],
-                "description" : "A Fulltext aggregation of the following fields: Date \\u00bb End date."
+                "description" : "A text aggregation of the following fields: Date \\u00bb End date."
               },
               "search_api_multi_aggregation_11" : {
                 "name" : "Aggregated Sub Type",
-                "type" : "fulltext",
                 "fields" : [ "field_sub_type:name" ],
-                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
+                "description" : "A text aggregation of the following fields: Sub Type \\u00bb Name."
               },
               "search_api_multi_aggregation_12" : {
                 "name" : "Aggregated Event Type",
-                "type" : "fulltext",
                 "fields" : [ "field_event_type:name" ],
-                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
+                "description" : "A text aggregation of the following fields: Event Type \\u00bb Name."
               },
               "search_api_multi_aggregation_13" : {
                 "name" : "Aggregated Calendar",
-                "type" : "fulltext",
                 "fields" : [ "field_event_calendar:name" ],
-                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
+                "description" : "A text aggregation of the following fields: Calendar \\u00bb Name."
               },
               "search_api_multi_aggregation_14" : {
                 "name" : "Aggregated Subject",
-                "type" : "fulltext",
                 "fields" : [ "field_subject:name" ],
-                "description" : "A Fulltext aggregation of the following fields: Subject \\u00bb Name, Sub Type \\u00bb Name, Calendar \\u00bb Name, Event Type \\u00bb Name."
+                "description" : "A text aggregation of the following fields: Subject \\u00bb Name."
               },
               "search_api_multi_aggregation_15" : {
                 "name" : "Aggregated Thumbnail Title",
-                "type" : "fulltext",
                 "fields" : [ "field_thumbnail_image:file:field_file_image_title_text" ],
-                "description" : "A Fulltext aggregation of the following fields: Thumbnail Image \\u00bb The image file. \\u00bb URL."
+                "description" : "A text aggregation of the following fields: Thumbnail Image \\u00bb The image file. \\u00bb Title Text."
               },
               "search_api_multi_aggregation_16" : {
                 "name" : "Aggregated Thumbnail ALt",
-                "type" : "fulltext",
                 "fields" : [ "field_thumbnail_image:file:field_file_image_alt_text" ],
-                "description" : "A Fulltext aggregation of the following fields: Thumbnail Image \\u00bb The image file. \\u00bb URL."
+                "description" : "A text aggregation of the following fields: Thumbnail Image \\u00bb The image file. \\u00bb Alt Text."
+              },
+              "search_api_multi_aggregation_17" : {
+                "name" : "Aggregated Premise",
+                "fields" : [
+                  "field_address:premise",
+                  "field_location_address:field_address:premise"
+                ],
+                "description" : "A text aggregation of the following fields: Address \\u00bb Premise (i.e. Apartment \\/ Suite number), Address \\u00bb Address \\u00bb Premise (i.e. Apartment \\/ Suite number)."
+              },
+              "search_api_multi_aggregation_18" : {
+                "name" : "aggregated Release Date",
+                "fields" : [ "field_release_date" ],
+                "description" : "A text aggregation of the following fields: Release Date."
+              },
+              "search_api_multi_aggregation_19" : {
+                "name" : "Aggregated Author Url",
+                "fields" : [ "author:url" ],
+                "description" : "A text aggregation of the following fields: Author \\u00bb URL."
               }
             }
           }
         },
-        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } }
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
       },
       "processors" : {
         "search_api_case_ignore" : {
