@@ -3,6 +3,10 @@
 @import "vars.scss";
 
 // WYSIWYG styles, and default HTML elements
+// Editor will also include foundation and 
+// normalize defaults so that wysiwyg editors
+// are as accurate as possible, and those 
+// will no longer be imported via .info
 @import "elements/editor.scss";
 // Drupal admin toolbar adjustments
 @import "elements/toolbar.scss";
@@ -28,6 +32,11 @@
 @import "elements/dept-promo.scss";
 // custom promo block(s)
 @import "elements/promo-boxes.scss";
+// pagers
+@import "elements/pagers.scss";
+
+// footer elements
+@import "elements/footer.scss";
 
 body {
   //background: #EEEEEE;

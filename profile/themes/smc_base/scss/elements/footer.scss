@@ -1,0 +1,107 @@
+// default variables
+@import "vars.scss";
+
+// All default/mobile styles will appear before the following media queries.
+footer {
+	background-color: $primaryBlue;
+	width: 100%;
+	margin-bottom: 0;
+	border-top: 3px solid rgba($primaryBlue,.1);
+	
+	.seal {
+		width: 100%;
+		background: url("../images/seal.png") no-repeat center center;
+		background-size: contain;
+		margin: 1em auto;
+		min-height: 40px;
+	}
+	
+	nav {
+	  border-top: 1px solid #014c80;
+	
+		ul, ul.menu {
+			width: 100%; 
+			margin-bottom: 0;
+			
+		li, 
+		li.leaf {
+			float: left; 
+			list-style-type: none; 
+			width: 100%;
+			
+			a {
+				color: white; 
+				display: block; 
+				font-weight: bold; 
+				font-size: 1em; 
+				text-align: center; 
+				padding: .5em 0; 
+				border-bottom: 1px solid #014c80; 
+				min-height: 44px; 
+				font-family: $reg
+		  }
+			
+			a:hover {
+			  color: rgba(255,255,255, .8);
+		  }
+
+			}
+		}
+	}
+}
+	
+@media all and (min-width: $tablet) {
+  footer { 
+	  background: url("../images/footer.jpg") no-repeat scroll center bottom #036cb6;
+	  background-size: cover;
+    border-top: 5px solid rgba($primaryTeal, .5);
+    margin-bottom: 0;
+    padding: 3em 2em;
+    width: 100%;
+
+	.seal {
+		background: url("../images/seal.png") no-repeat;
+		background-size: contain;
+		margin: 0;	
+  }
+		
+	nav {border: none;}
+
+	nav ul, nav ul.menu {
+		width: 55%; 
+		float: right; 
+		margin-bottom: 0;
+	
+		li,
+		li.leaf {
+			float: left;
+			list-style-type: none; 
+			width: 33%; 
+			margin-bottom: 2%;
+			
+			a {
+				color: white;
+				display: block;
+				font-size: .8em;
+				text-align: left;
+				padding: 0;
+				border: none;
+				min-height: 0;
+				font-weight: 100;				
+				}
+				
+			a:hover {
+			  color: rgba(255,255,255, .8);
+		  }
+			}
+		}
+	}
+}
+
+@media all and (min-width: $desktop) {
+  footer {
+  	nav ul, nav ul.menu {
+  	  width: 45%;
+    }
+  }
+}
