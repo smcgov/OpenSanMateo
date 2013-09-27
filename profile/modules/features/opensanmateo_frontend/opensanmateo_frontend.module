@@ -70,4 +70,12 @@ function opensanmateo_frontend_follow_networks_alter(&$networks, $uid) {
     'domain' => 'plus.google.com',
   );
   //dsm($networks);
+  // remove ones we don't have icons for
+  unset($networks[0]['virb']);
+  unset($networks[0]['myspace']);
+  unset($networks[0]['picasa']);
+  unset($networks[0]['bliptv']);
+  unset($networks[0]['lastfm']);
+  unset($networks[0]['tumblr']);
+  unset($networks[0]['delicious']);
 }
