@@ -9074,13 +9074,15 @@ you can use the generic selector below, but it's slower:
   .dept-promo .dept-logo {
     width: 70%;
     margin: auto;
-    padding: .5em; }
+    padding: 10px; }
     /* line 15, ../scss/elements/dept-promo.scss */
     .dept-promo .dept-logo img {
-      width: 20%;
+      max-width: 100%;
+      width: 100%;
+      height: auto;
       display: block;
       margin: 2% auto 0; }
-  /* line 22, ../scss/elements/dept-promo.scss */
+  /* line 24, ../scss/elements/dept-promo.scss */
   .dept-promo p {
     float: left;
     width: 100%;
@@ -9090,54 +9092,54 @@ you can use the generic selector below, but it's slower:
     padding: 0 1em 1em;
     margin-bottom: 0;
     text-align: center; }
-    /* line 32, ../scss/elements/dept-promo.scss */
+    /* line 34, ../scss/elements/dept-promo.scss */
     .dept-promo p .amp {
       color: rgba(85, 90, 90, 0.5); }
 
 @media all and (min-width: 768px) {
-  /* line 42, ../scss/elements/dept-promo.scss */
+  /* line 44, ../scss/elements/dept-promo.scss */
   .dept-promo {
     background-color: transparent;
     margin-top: 0;
     background-color: rgba(85, 90, 90, 0.03);
     display: table;
     padding: 0 1.5em; }
-    /* line 50, ../scss/elements/dept-promo.scss */
+    /* line 52, ../scss/elements/dept-promo.scss */
     .dept-promo .dept-logo {
       display: table-cell;
       width: 14%;
       margin: 0 3% 0% 0%;
-      padding: 1em; }
-      /* line 56, ../scss/elements/dept-promo.scss */
+      padding: 10px; }
+      /* line 58, ../scss/elements/dept-promo.scss */
       .dept-promo .dept-logo img {
         width: 100%; }
-    /* line 60, ../scss/elements/dept-promo.scss */
+    /* line 64, ../scss/elements/dept-promo.scss */
     .dept-promo p {
       text-align: left;
       width: 83%;
       display: table-cell;
       vertical-align: middle; } }
 @media all and (min-width: 800px) {
-  /* line 70, ../scss/elements/dept-promo.scss */
+  /* line 74, ../scss/elements/dept-promo.scss */
   .dept-promo {
     margin-top: 0%;
     margin-bottom: 0%;
     display: block;
     background-color: transparent;
     padding: 0; }
-    /* line 77, ../scss/elements/dept-promo.scss */
+    /* line 81, ../scss/elements/dept-promo.scss */
     .dept-promo .dept-logo {
       background-color: rgba(85, 90, 90, 0.05);
       width: 100%;
       margin: auto;
       padding: 1em;
       display: block; }
-      /* line 84, ../scss/elements/dept-promo.scss */
+      /* line 88, ../scss/elements/dept-promo.scss */
       .dept-promo .dept-logo img {
-        width: 50%;
+        width: 100%;
         display: block;
         margin: auto; }
-    /* line 91, ../scss/elements/dept-promo.scss */
+    /* line 95, ../scss/elements/dept-promo.scss */
     .dept-promo p {
       float: left;
       width: 100%;
@@ -9148,7 +9150,7 @@ you can use the generic selector below, but it's slower:
       margin-bottom: 0;
       text-align: left;
       display: block; }
-      /* line 101, ../scss/elements/dept-promo.scss */
+      /* line 105, ../scss/elements/dept-promo.scss */
       .dept-promo p .amp {
         color: rgba(85, 90, 90, 0.5); } }
 /* Fonts */
