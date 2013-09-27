@@ -28,6 +28,14 @@
     border-left: 1px solid $primaryBlue;
   }
   
+  ul.pagination li.link-inactive {
+    border-color: #CCCCCC;
+    
+    &.pager-prev {
+      border-right: 1px solid $primaryBlue;  
+    }
+  }
+  
   ul.pagination li a {
   	background-color: rgba($primaryBlue, .9);
   	display: inline-block;

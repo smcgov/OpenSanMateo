@@ -317,39 +317,48 @@ function smc_base_pager($variables) {
     
     
     
+    $first_classes = array('pager-first');
+    if ($pager_current == 1) {
+       $first_classes[] = 'link-inactive';
+    }
+    $items[] = array(
+      'class' => $first_classes,
+      'data' => $li_first,
+    );
+
+    $prev_classes = array('pager-prev');
+    if ($pager_current == 1) {
+      $prev_classes[] = 'link-inactive';
+    }
+    $items[] = array(
+      'class' => $prev_classes,
+      'data' => $li_previous,
+    );
     
-    if ($li_first) {
-      $items[] = array(
-        'class' => array('pager-first'),
-        'data' => $li_first,
-      );
-    }
-    if ($li_previous) {
-      $items[] = array(
-        'class' => array('pager-previous'),
-        'data' => $li_previous,
-      );
-    }
     // this renders the 3 of 6 data in the center
     $items[] = array(
       'class' => array('pager-info'),
       'data' => '<span>' . $pager_current . ' of ' . $pager_max . '</span>',
     );
 
-    // End generation.
-    if ($li_next) {
-      $items[] = array(
-        'class' => array('pager-next'),
-        'data' => $li_next,
-      );
+    $next_classes = array('pager-last');
+    if ($pager_current == $pager_max) {
+      $next_classes[] = 'link-inactive';
     }
+    $items[] = array(
+      'class' => $next_classes,
+      'data' => $li_next,
+    );
     
-    if ($li_last) {
-      $items[] = array(
-        'class' => array('pager-last'),
-        'data' => $li_last,
-      );
+    $last_classes = array('pager-last');
+    if ($pager_current == $pager_max) {
+      $last_classes[] = 'link-inactive';
     }
+    $items[] = array(
+      'class' => $last_classes,
+      'data' => $li_last,
+    );
+    
     
     return '<h2 class="element-invisible">' . t('Pages') . '</h2>' . theme('item_list', array(
       'items' => $items,
