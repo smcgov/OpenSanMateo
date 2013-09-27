@@ -8230,7 +8230,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-/* line 52, ../scss/elements/icons.scss */
+/* line 56, ../scss/elements/icons.scss */
 .icon-mag-glass-02,
 .icon-menu,
 .icon-arrow-down,
@@ -8251,7 +8251,11 @@ you can use the generic selector below, but it's slower:
 .follow-link-flickr,
 .follow-link-vimeo,
 .follow-link-youtube,
-.follow-link-this-site {
+.follow-link-this-site,
+.follow-link-pinterest,
+.follow-link-googleplus,
+.follow-link-linkedin,
+.follow-link-instagram {
   font-family: "SanMateoIcon";
   speak: none;
   font-style: normal;
@@ -8260,86 +8264,102 @@ you can use the generic selector below, but it's slower:
   text-transform: none;
   -webkit-font-smoothing: antialiased; }
 
-/* line 62, ../scss/elements/icons.scss */
+/* line 66, ../scss/elements/icons.scss */
 .icon-mag-glass-02:before {
   content: "\e000"; }
 
-/* line 63, ../scss/elements/icons.scss */
+/* line 67, ../scss/elements/icons.scss */
 .icon-menu:before, .touch-button, .menu-button {
   content: "\e001"; }
 
-/* line 64, ../scss/elements/icons.scss */
+/* line 68, ../scss/elements/icons.scss */
 .icon-arrow-down:before {
   content: "\e002"; }
 
-/* line 65, ../scss/elements/icons.scss */
+/* line 69, ../scss/elements/icons.scss */
 .icon-home:before {
   content: "\e003"; }
 
-/* line 66, ../scss/elements/icons.scss */
+/* line 70, ../scss/elements/icons.scss */
 .icon-arrow-down-iso:before {
   content: "\e004"; }
 
-/* line 67, ../scss/elements/icons.scss */
+/* line 71, ../scss/elements/icons.scss */
 .icon-close:before {
   content: "\e005"; }
 
-/* line 68, ../scss/elements/icons.scss */
+/* line 72, ../scss/elements/icons.scss */
 .icon-subnav:before {
   content: "\e006"; }
 
-/* line 69, ../scss/elements/icons.scss */
+/* line 73, ../scss/elements/icons.scss */
 .icon-eye:before {
   content: "\e007";
   padding-right: 0.5em; }
 
-/* line 73, ../scss/elements/icons.scss */
+/* line 77, ../scss/elements/icons.scss */
 .icon-filter:before {
   content: "\e008"; }
 
-/* line 74, ../scss/elements/icons.scss */
+/* line 78, ../scss/elements/icons.scss */
 .icon-info:before {
   content: "\e009"; }
 
-/* line 75, ../scss/elements/icons.scss */
+/* line 79, ../scss/elements/icons.scss */
 .icon-link:before {
   content: "\e00a"; }
 
-/* line 76, ../scss/elements/icons.scss */
+/* line 80, ../scss/elements/icons.scss */
 .icon-phone:before {
   content: "\e00b"; }
 
-/* line 77, ../scss/elements/icons.scss */
+/* line 81, ../scss/elements/icons.scss */
 .icon-location:before {
   content: "\e00c"; }
 
-/* line 79, ../scss/elements/icons.scss */
+/* line 83, ../scss/elements/icons.scss */
 .follow-link-feed:before {
   content: "\e00d"; }
 
-/* line 82, ../scss/elements/icons.scss */
+/* line 86, ../scss/elements/icons.scss */
 .follow-link-facebook:before {
   content: "\e00e"; }
 
-/* line 85, ../scss/elements/icons.scss */
+/* line 89, ../scss/elements/icons.scss */
 .follow-link-twitter:before {
   content: "\e00f"; }
 
-/* line 88, ../scss/elements/icons.scss */
+/* line 92, ../scss/elements/icons.scss */
 .follow-link-flickr:before {
   content: "\e010"; }
 
-/* line 91, ../scss/elements/icons.scss */
+/* line 95, ../scss/elements/icons.scss */
 .follow-link-vimeo:before {
   content: "\e011"; }
 
-/* line 94, ../scss/elements/icons.scss */
+/* line 98, ../scss/elements/icons.scss */
 .follow-link-youtube:before {
   content: "\e012"; }
 
-/* line 97, ../scss/elements/icons.scss */
+/* line 101, ../scss/elements/icons.scss */
 .follow-link-this-site:before {
   content: "\e013"; }
+
+/* line 104, ../scss/elements/icons.scss */
+.follow-link-pinterest:before {
+  content: "\e014"; }
+
+/* line 107, ../scss/elements/icons.scss */
+.follow-link-googleplus:before {
+  content: "\e015"; }
+
+/* line 110, ../scss/elements/icons.scss */
+.follow-link-linkedin:before {
+  content: "\e016"; }
+
+/* line 113, ../scss/elements/icons.scss */
+.follow-link-instagram:before {
+  content: "\e017"; }
 
 /* Fonts */
 /* Media Queries */
@@ -8671,9 +8691,21 @@ you can use the generic selector below, but it's slower:
   /* line 42, ../scss/elements/follow.scss */
   .follow-links a.follow-link-youtube {
     background-color: #cc171e; }
+  /* line 45, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-pinterest {
+    background-color: #c9232b; }
+  /* line 48, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-googleplus {
+    background-color: #4688f1; }
+  /* line 51, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-linkedin {
+    background-color: #1178b3; }
+  /* line 54, ../scss/elements/follow.scss */
+  .follow-links a.follow-link-instagram {
+    background-color: #a57757; }
 
 @media all and (min-width: 768px) {
-  /* line 51, ../scss/elements/follow.scss */
+  /* line 63, ../scss/elements/follow.scss */
   .follow-links a.follow-link {
     font-size: 1em;
     padding: .5em; } }
