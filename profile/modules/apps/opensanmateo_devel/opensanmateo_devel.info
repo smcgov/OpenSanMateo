@@ -1,3 +1,2 @@
-name = Open San Mateo Shared Users
+name = OpenSanMateo Devel
 core = 7.x
-dependencies[] = openid_autocreate

@@ -338,7 +338,7 @@ projects[twitter_pull][type] = module
 projects[twitter_pull][subdir] = contrib
 projects[twitter_pull][download][type] = git
 projects[twitter_pull][download][url] = http://git.drupal.org/project/twitter_pull.git
-projects[twitter_pull][download][revision] = 156a667778ee95a7ebddd52dfd05009444188dfc
+projects[twitter_pull][download][revision] = 46b6f89568aa50654295ad8e192673744afa4d35
 
 projects[twitter_pull_pane][type] = module
 projects[twitter_pull_pane][subdir] = contrib

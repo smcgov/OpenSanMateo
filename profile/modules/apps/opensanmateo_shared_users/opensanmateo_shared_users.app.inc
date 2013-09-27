@@ -9,11 +9,3 @@ function opensanmateo_shared_users_apps_app_info() {
   );
 }
 
-/**
- * quasi hook_app_configure_form
- */
-function opensanmateo_shared_users_app_configure_form() {
-  $form = array();
-  return $form;
-}
-
