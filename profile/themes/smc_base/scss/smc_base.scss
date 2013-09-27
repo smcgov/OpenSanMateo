@@ -3,6 +3,10 @@
 @import "vars.scss";
 
 // WYSIWYG styles, and default HTML elements
+// Editor will also include foundation and 
+// normalize defaults so that wysiwyg editors
+// are as accurate as possible, and those 
+// will no longer be imported via .info
 @import "elements/editor.scss";
 // Drupal admin toolbar adjustments
 @import "elements/toolbar.scss";

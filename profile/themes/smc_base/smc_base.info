@@ -3,12 +3,6 @@ description = Responsive base theme for San Mateo County websites, customizable 
 core = 7.x
 engine = phptemplate
 
-;precomipiled CSS libraries
-stylesheets[all][] = css/normalize.css
-stylesheets[all][] = css/app.css
-
-;currenly compiled on the fly
-stylesheets[all][] = css/style.css
 stylesheets[all][] = css/smc_base.css
 
 scripts[] = js/foundation/modernizr.foundation.js
@@ -19,9 +13,7 @@ scripts[] = js/smc_base.js
 regions[header] = Header
 regions[highlighted] = Highlighted
 regions[help] = Help
-
 regions[content] = Content
-
 regions[footer] = Footer
 
 features[] = logo

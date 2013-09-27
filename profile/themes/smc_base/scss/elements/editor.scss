@@ -1,5 +1,8 @@
 // default variables
 @import "vars.scss";
+@import "../normalize.scss";
+@import "../app.scss";
+@import "../style.scss";
 
 /**
   * This "editor" css file serves two purposes:
@@ -18,17 +21,13 @@ body {
   color: $primaryGray;
   font-family: $reg;
 } 
+// wysiwyg only
+body.cke_show_borders {
+  padding: 5px;
+}
 
 a {
 	color: $primaryBlue;
-}
-
-p {
-  font-size: 1em;
-  font-weight: normal;
-  line-height: 1.6em;
-  margin-bottom: 1.25em;
-  text-rendering: optimizelegibility;
 }
 
 blockquote {
