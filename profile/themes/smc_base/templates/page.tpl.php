@@ -71,15 +71,16 @@
       </div>
     </div> 
   </div>
-
-  <div id="footer-wrapper"><div class="section">
-
-    <?php if ($page['footer']): ?>
-      <footer id="footer" class="clearfix group">
-        <?php print render($page['footer']); ?>
-      </footer> <!-- /#footer -->
-    <?php endif; ?>
-
-  </div></div> <!-- /.section, /#footer-wrapper -->
+  <?php if ($page['footer']): ?>
+  <div id="footer-wrapper">  
+    <footer id="footer" class="clearfix group">    
+      <div class="limiter clearfix">
+        <div class="seal clearfix">
+          <?php print render($page['footer']); ?>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <?php endif; ?>
 
 </div> <!-- /#wrapper -->

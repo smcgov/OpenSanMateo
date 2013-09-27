@@ -45,3 +45,37 @@ function opensanmateo_frontend_ctools_plugin_directory($module, $plugin) {
     return 'plugins/layouts';
   }
 }
+
+/**
+ * Alter the available networks to the Follow module.
+ *
+ * @param $networks
+ *   Associative array of networks that are available.
+ * @param $uid
+ *   The User ID of the networks to be displayed. If 0 is provided, will be the
+ *   networks for the website rather then an individual user.
+ */
+function opensanmateo_frontend_follow_networks_alter(&$networks, $uid) {
+  // Add a network.
+  $networks[0]['pinterest'] = array(
+    'title' => t('Pinterest'),
+    'domain' => 'pinterest.com',
+  );
+  $networks[0]['instagram'] = array(
+    'title' => t('Instagram'),
+    'domain' => 'instagram.com',
+  );
+  $networks[0]['googleplus'] = array(
+    'title' => t('Google+'),
+    'domain' => 'plus.google.com',
+  );
+  //dsm($networks);
+  // remove ones we don't have icons for
+  unset($networks[0]['virb']);
+  unset($networks[0]['myspace']);
+  unset($networks[0]['picasa']);
+  unset($networks[0]['bliptv']);
+  unset($networks[0]['lastfm']);
+  unset($networks[0]['tumblr']);
+  unset($networks[0]['delicious']);
+}

@@ -49,7 +49,11 @@ you can use the generic selector below, but it's slower:
 .follow-link-flickr, 
 .follow-link-vimeo, 
 .follow-link-youtube, 
-.follow-link-this-site  {
+.follow-link-this-site,
+.follow-link-pinterest, 
+.follow-link-googleplus, 
+.follow-link-linkedin, 
+.follow-link-instagram  {
 	font-family: "SanMateoIcon";
 	speak: none;
 	font-style: normal;
@@ -96,4 +100,16 @@ you can use the generic selector below, but it's slower:
 }
 .follow-link-this-site:before {
 	content: "\e013";
+}
+.follow-link-pinterest:before {
+	content: "\e014";
+}
+.follow-link-googleplus:before {
+	content: "\e015";
+}
+.follow-link-linkedin:before {
+	content: "\e016";
+}
+.follow-link-instagram:before {
+	content: "\e017";
 }

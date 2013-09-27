@@ -357,58 +357,7 @@ dl dd, dl dt {
 		}
 	}
 
-footer {
-	background-color: $primaryBlue;
-	width: 100%;
-	margin-bottom: 0;
-	border-top: 3px solid rgba($primaryBlue,.1);
-	
-	.adr {
-		width: 100%;
-		background: url(../images/seal.png) no-repeat center center;
-		background-size: contain;
-		margin: 1em auto;
-		
-		li {
-			color: white;
-			list-style-type: none; 
-			font-size: .85em; 
-			font-weight: bold; 
-			padding-left: 5.5em; 
-			font-family: $bold; 
-			font-weight: 300;
-			}
-		}
-	
-	nav {border-top: 1px solid #014c80;
-	
-		ul {
-			width: 100%; 
-			margin-bottom: 0;
-			
-		li {
-			float: left; 
-			list-style-type: none; 
-			width: 100%;
-			
-			a {
-				color: white; 
-				display: block; 
-				font-weight: bold; 
-				font-size: 1em; 
-				text-align: center; 
-				padding: .5em 0; 
-				border-bottom: 1px solid #014c80; 
-				min-height: 44px; 
-				font-family: $reg
-				}
-			
-			a:hover {color: rgba(255,255,255, .8)}
 
-				}
-			}
-		}
-	}
 
 
 .menu-button {
@@ -1568,60 +1517,7 @@ ul.info {
 
 
 
-footer { 
-	background: url("../images/footer-img-1.jpg") no-repeat scroll center bottom #036cb6;
-	background-size: cover;
-    border-top: 5px solid rgba($primaryTeal, .5);
-    margin-bottom: 0;
-    padding: 3em 2em;
-    width: 100%;
 
-	.adr {
-		float: left;
-		width: 25%;
-		background: url(../images/seal.png) no-repeat;
-		background-size: contain;
-		margin: 0;
-		
-		li {
-			color: white; 
-			list-style-type: none; 
-			font-size: .85em; 
-			font-weight: bold; 
-			padding-left: 5.5em; 
-			font-family: $bold; 
-			font-weight: 300;
-			}
-		}
-		
-	nav {border: none;}
-
-	nav ul {
-		width: 55%; 
-		float: right; 
-		margin-bottom: 0;
-	
-		li {
-			float: left;
-			list-style-type: none; 
-			width: 33%; 
-			margin-bottom: 2%;
-			
-			a {
-				color: white;
-				display: block;
-				font-size: .8em;
-				text-align: left;
-				padding: 0;
-				border: none;
-				min-height: 0;
-				font-weight: 100;				
-				}
-				
-			a:hover {color: rgba(255,255,255, .8)}
-			}
-		}
-	}
 
 
 
@@ -2165,9 +2061,7 @@ padding-right: 0em;
 	 
 	 }
 
-footer {
-	nav ul {width: 45%;}
-}
+
 
 .search-filter, .event-filter {
 
