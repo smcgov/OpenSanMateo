@@ -13,6 +13,13 @@ function opensanmateo_location_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'addressfield_staticmap_api_0';
+  $strongarm->value = 'google_maps_api';
+  $export['addressfield_staticmap_api_0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_location';
   $strongarm->value = 0;
   $export['comment_anonymous_location'] = $strongarm;

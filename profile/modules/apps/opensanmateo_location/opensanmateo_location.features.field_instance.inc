@@ -175,6 +175,7 @@ function opensanmateo_location_field_default_field_instances() {
           'info_window' => 1,
           'map_size' => '500x400',
           'map_style' => 'roadmap',
+          'text_address' => 1,
           'zoom_level' => 14,
         ),
         'type' => 'addressfield_staticmap',
