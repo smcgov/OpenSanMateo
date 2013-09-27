@@ -280,3 +280,296 @@ function smc_base_follow_link($variables) {
   $link->options['attributes'] = $attributes;
   return l($title, $link->path, $link->options) . "\n";
 }
+
+function smc_base_pager($variables) {
+  //dsm($variables);
+  
+  $tags = $variables['tags'];
+  $element = $variables['element'];
+  $parameters = $variables['parameters'];
+  $quantity = $variables['quantity'];
+  global $pager_page_array, $pager_total;
+
+  // Calculate various markers within this pager piece:
+  // Middle is used to "center" pages around the current page.
+  $pager_middle = ceil($quantity / 2);
+  // current is the page we are currently paged to
+  $pager_current = $pager_page_array[$element] + 1;
+  // first is the first page listed by this pager piece (re quantity)
+  $pager_first = $pager_current - $pager_middle + 1;
+  // last is the last page listed by this pager piece (re quantity)
+  $pager_last = $pager_current + $quantity - $pager_middle;
+  // max is the maximum page number
+  $pager_max = $pager_total[$element];
+  // End of marker calculations.
+
+  $i = $pager_first;
+
+  $li_first = theme('pager_first', array('text' => '1', 'element' => $element, 'parameters' => $parameters));
+  $li_previous = theme('pager_previous', array('text' => t('Prev'), 'element' => $element, 'interval' => 1, 'parameters' => $parameters));
+  $li_next = theme('pager_next', array('text' => t('Next'), 'element' => $element, 'interval' => 1, 'parameters' => $parameters));
+  $li_last = theme('pager_last', array('text' => $pager_max, 'element' => $element, 'parameters' => $parameters));
+
+
+  // there's more than one page, so show the pager.
+  if ($pager_total[$element] > 1) {
+    
+    
+    
+    
+    
+    if ($li_first) {
+      $items[] = array(
+        'class' => array('pager-first'),
+        'data' => $li_first,
+      );
+    }
+    if ($li_previous) {
+      $items[] = array(
+        'class' => array('pager-previous'),
+        'data' => $li_previous,
+      );
+    }
+    // this renders the 3 of 6 data in the center
+    $items[] = array(
+      'class' => array('pager-info'),
+      'data' => '<span>' . $pager_current . ' of ' . $pager_max . '</span>',
+    );
+
+    // End generation.
+    if ($li_next) {
+      $items[] = array(
+        'class' => array('pager-next'),
+        'data' => $li_next,
+      );
+    }
+    
+    if ($li_last) {
+      $items[] = array(
+        'class' => array('pager-last'),
+        'data' => $li_last,
+      );
+    }
+    
+    return '<h2 class="element-invisible">' . t('Pages') . '</h2>' . theme('item_list', array(
+      'items' => $items,
+      'attributes' => array('class' => array('pagination', 'clearfix')),
+      'container_attributes' => array(
+        'class' => array('pager-container', 'clearfix'),
+      ),
+    ));
+  }
+}
+
+function smc_base_pager_first($variables) {
+  $text = $variables['text'];
+  $element = $variables['element'];
+  $parameters = $variables['parameters'];
+  global $pager_page_array;
+  $output = '';
+
+  // If we are on the first page, we will show the item, but not as a link
+  $link = FALSE;
+  if ($pager_page_array[$element] > 0) {
+    $link = TRUE;
+  }
+  $output = theme('pager_link', array(
+    'text' => $text, 
+    'link' => $link,
+    'page_new' => pager_load_array(0, $element, $pager_page_array), 
+    'element' => $element, 
+    'parameters' => $parameters)
+  );
+  return $output;
+}
+
+function smc_base_pager_last($variables) {
+  $text = $variables['text'];
+  $element = $variables['element'];
+  $parameters = $variables['parameters'];
+  global $pager_page_array, $pager_total;
+  $output = '';
+
+  // If we are on the first page, we will show the item, but not as a link
+  $link = FALSE;
+  if ($pager_page_array[$element] < ($pager_total[$element] - 1)) {
+    $link = TRUE;
+  }
+  $output = theme('pager_link', array(
+    'text' => $text, 
+    'link' => $link,
+    'page_new' => pager_load_array($pager_total[$element] - 1, $element, $pager_page_array), 
+    'element' => $element, 
+    'parameters' => $parameters)
+  );
+  return $output;
+}
+
+function smc_base_pager_previous($variables) {
+  $text = $variables['text'];
+  $element = $variables['element'];
+  $interval = $variables['interval'];
+  $parameters = $variables['parameters'];
+  global $pager_page_array;
+  $output = '';
+
+  // If we are anywhere but the first page
+  $link = FALSE;
+  if ($pager_page_array[$element] > 0) {
+    $link = TRUE;
+  }
+  $page_new = pager_load_array($pager_page_array[$element] - $interval, $element, $pager_page_array);
+  
+  $output = theme('pager_link', array(
+    'text' => $text,
+    'link' => $link, 
+    'page_new' => $page_new, 
+    'element' => $element, 
+    'parameters' => $parameters)
+  );
+  
+
+  return $output;
+}
+function smc_base_pager_next($variables) {
+  $text = $variables['text'];
+  $element = $variables['element'];
+  $interval = $variables['interval'];
+  $parameters = $variables['parameters'];
+  global $pager_page_array, $pager_total;
+  $output = '';
+
+  // If we are anywhere but the last page
+  $link = FALSE;
+  if ($pager_page_array[$element] < ($pager_total[$element] - 1)) {
+    $link = TRUE;
+  }
+
+  $page_new = pager_load_array($pager_page_array[$element] + $interval, $element, $pager_page_array);
+
+  $output = theme('pager_link', array(
+    'text' => $text, 
+    'link' => $link, 
+    'page_new' => $page_new, 
+    'element' => $element, 
+    'parameters' => $parameters)
+  );
+
+  return $output;
+}
+
+function smc_base_pager_link($variables) {
+  //dsm($variables);
+  $text = $variables['text'];
+  $page_new = $variables['page_new'];
+  $element = $variables['element'];
+  $parameters = $variables['parameters'];
+  $attributes = $variables['attributes'];
+  $link = $variables['link'];
+  $page = isset($_GET['page']) ? $_GET['page'] : '';
+  if ($new_page = implode(',', pager_load_array($page_new[$element], $element, explode(',', $page)))) {
+    $parameters['page'] = $new_page;
+  }
+
+  $query = array();
+  if (count($parameters)) {
+    $query = drupal_get_query_parameters($parameters, array());
+  }
+  if ($query_pager = pager_get_query_parameters()) {
+    $query = array_merge($query, $query_pager);
+  }
+
+  // Set each pager link title
+  if (!isset($attributes['title'])) {
+    static $titles = NULL;
+    if (!isset($titles)) {
+      $titles = array(
+        t('« first') => t('Go to first page'),
+        t('‹ previous') => t('Go to previous page'),
+        t('next ›') => t('Go to next page'),
+        t('last »') => t('Go to last page'),
+      );
+    }
+    if (isset($titles[$text])) {
+      $attributes['title'] = $titles[$text];
+    }
+    elseif (is_numeric($text)) {
+      $attributes['title'] = t('Go to page @number', array('@number' => $text));
+    }
+  }
+
+  // @todo l() cannot be used here, since it adds an 'active' class based on the
+  //   path only (which is always the current path for pager links). Apparently,
+  //   none of the pager links is active at any time - but it should still be
+  //   possible to use l() here.
+  // @see http://drupal.org/node/1410574
+  
+  // if it is a link, make it a link
+  if ($link) {
+    $attributes['href'] = url($_GET['q'], array('query' => $query));
+    return '<a' . drupal_attributes($attributes) . '>' . check_plain($text) . '</a>';  
+  }
+  // otherwise, let's have a span
+  else {
+    return '<span' . drupal_attributes($attributes) . '>' . check_plain($text) . '</span>';  
+  }
+  
+}
+
+function smc_base_item_list($variables) {
+  $items = $variables['items'];
+  $title = $variables['title'];
+  $type = $variables['type'];
+  $attributes = $variables['attributes'];
+  $container_attributes = isset($variables['container_attributes']) ? drupal_attributes($variables['container_attributes']) : array('class' => array('item-list'));
+  // Only output the list container and title, if there are any list items.
+  // Check to see whether the block title exists before adding a header.
+  // Empty headers are not semantic and present accessibility challenges.
+  //$output = '<div class="item-list pager clearfix">';
+  $output = '<div '. $container_attributes . '>';
+  if (isset($title) && $title !== '') {
+    $output .= '<h3>' . $title . '</h3>';
+  }
+
+  if (!empty($items)) {
+    $output .= "<$type" . drupal_attributes($attributes) . '>';
+    $num_items = count($items);
+    $i = 0;
+    foreach ($items as $item) {
+      $attributes = array();
+      $children = array();
+      $data = '';
+      $i++;
+      if (is_array($item)) {
+        foreach ($item as $key => $value) {
+          if ($key == 'data') {
+            $data = $value;
+          }
+          elseif ($key == 'children') {
+            $children = $value;
+          }
+          else {
+            $attributes[$key] = $value;
+          }
+        }
+      }
+      else {
+        $data = $item;
+      }
+      if (count($children) > 0) {
+        // Render nested list.
+        $data .= theme_item_list(array('items' => $children, 'title' => NULL, 'type' => $type, 'attributes' => $attributes));
+      }
+      if ($i == 1) {
+        $attributes['class'][] = 'first';
+      }
+      if ($i == $num_items) {
+        $attributes['class'][] = 'last';
+      }
+      $output .= '<li' . drupal_attributes($attributes) . '>' . $data . "</li>\n";
+    }
+    $output .= "</$type>";
+  }
+  $output .= '</div>';
+  return $output;
+}
