@@ -20,5 +20,7 @@ features[menu_custom][] = menu-department-menu
 features[menu_custom][] = menu-platform-menu
 features[page_manager_handlers][] = node_view_panel_context
 features[page_manager_handlers][] = node_view_panelizer_node
+features[variable][] = default_page_manager_handlers
+features[variable][] = page_manager_node_view_disabled
 features_exclude[dependencies][features] = features
 features_exclude[dependencies][menu] = menu
