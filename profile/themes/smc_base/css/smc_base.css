@@ -8906,15 +8906,16 @@ you can use the generic selector below, but it's slower:
 
   /* line 142, ../scss/elements/main-menu.scss */
   .primary li:hover > ul {
-    opacity: 1; }
+    opacity: 1;
+    z-index: 1000; }
 
-  /* line 146, ../scss/elements/main-menu.scss */
+  /* line 147, ../scss/elements/main-menu.scss */
   .primary li:hover > ul li {
     height: 36px;
     overflow: visible;
     padding: 0; }
 
-  /* line 152, ../scss/elements/main-menu.scss */
+  /* line 153, ../scss/elements/main-menu.scss */
   .sub {
     background-color: white;
     border: 1px solid rgba(3, 108, 182, 0.05);
@@ -8922,16 +8923,16 @@ you can use the generic selector below, but it's slower:
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
     font-size: .85em;
     border-top: 5px solid rgba(3, 108, 182, 0.05); }
-    /* line 160, ../scss/elements/main-menu.scss */
+    /* line 161, ../scss/elements/main-menu.scss */
     .sub ul {
       margin: 0;
       padding: 0; }
-      /* line 164, ../scss/elements/main-menu.scss */
+      /* line 165, ../scss/elements/main-menu.scss */
       .sub ul li {
         margin: 0;
         padding: 0;
         list-style-type: none; }
-        /* line 169, ../scss/elements/main-menu.scss */
+        /* line 170, ../scss/elements/main-menu.scss */
         .sub ul li a {
           display: block;
           padding: .75em .75em;
@@ -8939,24 +8940,24 @@ you can use the generic selector below, but it's slower:
           -webkit-transition: all 0.3s;
           -moz-transition: all 0.3s;
           transition: all 0.3s; }
-        /* line 177, ../scss/elements/main-menu.scss */
+        /* line 178, ../scss/elements/main-menu.scss */
         .sub ul li a:hover {
           background-color: rgba(3, 108, 182, 0.8);
           color: white; }
-      /* line 182, ../scss/elements/main-menu.scss */
+      /* line 183, ../scss/elements/main-menu.scss */
       .sub ul .active {
         font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
-        /* line 185, ../scss/elements/main-menu.scss */
+        /* line 186, ../scss/elements/main-menu.scss */
         .sub ul .active a {
           background-color: white;
           color: #036cb6; }
-        /* line 191, ../scss/elements/main-menu.scss */
+        /* line 192, ../scss/elements/main-menu.scss */
         .sub ul .active ul li a {
           background-color: rgba(56, 147, 155, 0.1);
           color: #38939b;
           font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
           border-color: rgba(56, 147, 155, 0.2); }
-        /* line 197, ../scss/elements/main-menu.scss */
+        /* line 198, ../scss/elements/main-menu.scss */
         .sub ul .active ul li a:hover {
           background-color: rgba(56, 147, 155, 0.2); } }
 /* Fonts */
