@@ -10,19 +10,20 @@
  */
 function openid_autocreate_form_user_register_form_alter(&$form) {
   // Disabled due to SMC-384
-  //$form['#submit'][] = 'openid_autocreate_form_user_register_form_submit';
+  $form['#submit'][] = 'openid_autocreate_form_user_register_form_submit';
 }
 
 /**
  * Submit handler for the user register form.
  * 
- * What does this aim to do? Right now it results in this bug:
- * https://jira.phase2technology.com/browse/SMC-384
+ * This is only meant to happen when a redirected OpenID login leads to a registration
  */
 function openid_autocreate_form_user_register_form_submit($form, &$form_state) {
-  $form_state['uid'] = $form_state['user']->uid;
-  user_login_submit(array(), $form_state);
-  $form_state['redirect'] = '';
+  if (isset($form_state['user']->openid_claimed_id)) {
+    $form_state['uid'] = $form_state['user']->uid;
+    user_login_submit(array(), $form_state);
+    $form_state['redirect'] = '';
+  }
 };
 
 /**
