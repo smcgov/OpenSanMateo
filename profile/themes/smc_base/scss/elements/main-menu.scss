@@ -141,6 +141,7 @@
   }
 	.primary li:hover > ul {
 		opacity: 1;
+		z-index: 1000;
 	}
 		
 	.primary li:hover > ul li {
