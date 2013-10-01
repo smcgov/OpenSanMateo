@@ -112,3 +112,193 @@ function opensanmateo_layout_preprocess_panels_add_content_modal(&$vars) {
       }
   }
 }
+
+
+/**
+ * implements hook_features_template_info()
+ */
+function opensanmateo_layout_features_template_info() {
+  $all_content_types = array_map(function($i) {return $i->type;}, node_type_get_types());
+  $data = array();
+  foreach($all_content_types as $content_type) {
+    $data[] = array(
+      'entity_type' => 'node',
+      'bundle_type' => $content_type,
+      'mode' => 'default',
+      'plugin' => 'panelizer_defaults',
+      'deleted' => FALSE,
+      'template' => 'opensanmateo_layout_panelizer_defaults_template',
+    );
+    $data[] = array(
+      'name' => "panelizer_defaults_node_$content_type",
+      'plugin' => 'strongarm',
+      'deleted' => FALSE,
+      'template' => 'opensanmateo_layout_strongarm_template',
+    );
+    $data[] = array(
+      'entity_type' => 'node',
+      'bundle_type' => $content_type,
+      'field' => 'field_custom_layout',
+      'plugin' => 'field_instance',
+      'deleted' => isset($content_types[$content_type]) &&  $content_types[$content_type],
+      'template' => 'opensanmateo_layout_field_custom_layout_template'
+    );
+
+  }
+  return $data;
+}
+/**
+ * Implements hook_panelizer_defaults().
+ */
+function opensanmateo_layout_panelizer_defaults_template() {
+  $export = array();
+
+  $panelizer = new stdClass();
+  $panelizer->disabled = FALSE; /* Edit this to true to make a default panelizer disabled initially */
+  $panelizer->api_version = 1;
+  $panelizer->name = 'node:site_page:default';
+  $panelizer->title = 'Default';
+  $panelizer->panelizer_type = 'node';
+  $panelizer->panelizer_key = 'site_page';
+  $panelizer->no_blocks = FALSE;
+  $panelizer->css_id = '';
+  $panelizer->css = '';
+  $panelizer->pipeline = 'ipe';
+  $panelizer->contexts = array();
+  $panelizer->relationships = array();
+  $panelizer->access = array();
+  $panelizer->view_mode = 'page_manager';
+  $panelizer->css_class = '';
+  $panelizer->title_element = 'H2';
+  $panelizer->link_to_entity = TRUE;
+  $panelizer->extra = array();
+  $display = new panels_display();
+  $display->layout = 'flexible';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'center' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '%node:title';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-1';
+    $pane->panel = 'center';
+    $pane->type = 'entity_view';
+    $pane->subtype = 'node';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'view_mode' => 'full',
+      'context' => 'panelizer',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-1'] = $pane;
+    $display->panels['center'][0] = 'new-1';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = 'new-1';
+  $panelizer->display = $display;
+  $export['node:site_page:default'] = $panelizer;
+  return $export;
+}
+
+/**
+ * Implements hook_strongarm().
+ */
+function opensanmateo_layout_strongarm_template() {
+  $export = array();
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panelizer_defaults_node_site_page';
+  $strongarm->value = array(
+    'status' => 1,
+    'view modes' => array(
+      'page_manager' => array(
+        'status' => 1,
+        'default' => 1,
+        'choice' => 0,
+      ),
+      'default' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+      'teaser' => array(
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
+      ),
+    ),
+  );
+  $export['panelizer_defaults_node_site_page'] = $strongarm;
+
+  return $export;
+}
+
+function opensanmateo_layout_field_custom_layout_template() {
+  $field_instances = array();
+
+  // Exported field_instance: 'node-site_page-field_custom_layout'
+  $field_instances['node-site_page-field_custom_layout'] = array(
+    'bundle' => 'site_page',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 15,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_custom_layout',
+    'label' => 'Custom Layout',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 36,
+    ),
+  );
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Custom Layout');
+
+  return $field_instances;
+}
