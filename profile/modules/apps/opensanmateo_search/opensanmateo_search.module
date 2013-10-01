@@ -100,6 +100,71 @@ function quick_search_form_views_exposed_form_alter(&$form, &$form_state, $form_
 }
 
 /**
+ * Implementation of hook_block_info().
+ */
+function opensanmateo_search_block_info() {
+  // This example comes from node.module.
+  $blocks['header_search'] = array(
+    'info' => t('Header Search'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implementation of hook_block_view().
+ */
+function opensanmateo_search_block_view($delta = '') {
+ $block = array();
+
+  if ($delta == 'header_search') {
+      $block['content'] = drupal_get_form('opensanmateo_search_header_search_form');
+  }
+
+  return $block;
+}
+
+/**
+ * Provides the header search form.
+ */
+function opensanmateo_search_header_search_form($form, $form_state) {
+  $form = array();
+
+  $form['search'] = array(
+    '#type' => 'textfield',
+    '#attributes' => array(
+      'placeholder' => t('Search All Departments'),
+      'class' => array('header-search-field')
+    ),
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#attributes' => array(
+      'class' => array('header-search-submit')
+    ),
+    '#value' => t('Search'),
+  );
+
+  return $form;
+}
+
+/**
+ * Provides a form submitter for the header search form.
+ */
+function opensanmateo_search_header_search_form_submit($form, $form_state) {
+  $options = array();
+
+  if (!empty($form_state['values']['search'])) {
+    $options['query'] = array(
+      'search_api_views_fulltext' => $form_state['values']['search'],
+    );
+  }
+
+  drupal_goto('search/site', $options);
+}
+
+/**
  * Implementation of template_preprocess_views_view_fields().
  */
 function opensanmateo_search_preprocess_views_view_fields(&$vars) {
