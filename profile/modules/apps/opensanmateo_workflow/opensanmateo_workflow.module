@@ -3,3 +3,15 @@
  * @file
  * Drupal needs this blank file.
  */
+
+ /**
+  * Implements hook_menu_alter()
+  * 
+  * This tab link is completely unstable and doesn't actually alter the status of the content
+  * so we're getting rid of it
+  */
+function opensanmateo_workflow_menu_alter(&$items) {
+  if (isset($items['node/%publishcontent_tab/unpublish/%publishcontent_security_token'])) {
+    unset($items['node/%publishcontent_tab/unpublish/%publishcontent_security_token']);
+  }
+}
