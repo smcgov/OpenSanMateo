@@ -34,7 +34,7 @@ hosted search service. Requires Apache Solr Search Integration module.
 Installation
 --------------------------------------------------------------------------------
 
-Consult the online documentation at https://network.acquia.com/documentation/network/gs-connect for installation instructions.
+Consult the online documentation at https://docs.acquia.com/network/install for installation instructions.
 
 
 Maintainers

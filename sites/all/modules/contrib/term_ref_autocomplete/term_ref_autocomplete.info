@@ -1,0 +1,15 @@
+name = Hierarchical Term Reference Autocomplete
+description = Provides a hierachical autocomplete widget for term reference fields
+package = Other
+core = 7.x
+
+files[] = term_ref_autocomplete.module
+
+dependencies[] = taxonomy
+dependencies[] = field
+; Information added by drupal.org packaging script on 2012-04-26
+version = "7.x-1.0-alpha2"
+core = "7.x"
+project = "term_ref_autocomplete"
+datestamp = "1335471384"
+

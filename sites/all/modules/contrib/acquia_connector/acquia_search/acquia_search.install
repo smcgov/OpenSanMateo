@@ -50,6 +50,10 @@ function acquia_search_requirements($phase) {
       $requirements['acquia_search_apachesolr']['value'] = $t('Incompatible API version');
     }
   }
+  // Update the cached version whenever we may be updating the module.
+  if ($phase == 'runtime' || $phase == 'update') {
+    _acquia_search_set_version();
+  }
 
   return $requirements;
 }
@@ -131,7 +135,9 @@ function _acquia_search_get_default_facets() {
  * Implementation of hook_uninstall().
  */
 function acquia_search_uninstall() {
-  variable_del('acquia_search_url');
+  variable_del('acquia_search_path');
+  variable_del('acquia_search_base_url');
+  variable_del('acquia_search_derived_key_salt');
 }
 
 /**
@@ -141,4 +147,26 @@ function acquia_search_update_7000() {
   variable_del('acquia_search_host');
   variable_del('acquia_search_port');
   variable_del('acquia_search_path');
+}
+
+/**
+ * Removing acquia_search_url variable as it has been split up
+ * to acquia_search_base_url and acquia_search_path
+ */
+function acquia_search_update_7001() {
+  variable_del('acquia_search_url');
+}
+
+/**
+ * Remove apachesolr_service_class if it was set to AcquiaSearchService.
+ *
+ * This can be left set incorrectly when upgrading from Drupal 6 to Drupal 7.
+ */
+function acquia_search_update_7002() {
+  // No need to set apachesolr_service_class for Acquia, since each
+  // environment can have a separate class.
+  $class = variable_get('apachesolr_service_class', '');
+  if ($class && strpos($class, 'Acquia') === 0) {
+    variable_del('apachesolr_service_class');
+  }
 }

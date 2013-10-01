@@ -76,3 +76,12 @@ h5 {
   color: $primaryBlue; 
   font-family: $bold;
 }
+
+ul, ol {
+  padding-left: 2em; 
+  font-size: .9em;
+  
+  li {
+    color: $altPurple;
+  }
+}

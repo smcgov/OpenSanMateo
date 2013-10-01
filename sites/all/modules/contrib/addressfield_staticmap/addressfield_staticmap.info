@@ -1,6 +1,6 @@
-name = Address Field Static Map Block 
-description = Provides a Google Static Map block based on the current node's address field. 
+name = Address Field Static Map
+description = Provides Google Static Map based on entity address fields.
+configure = admin/config/system/addressfield_staticmap
 core = 7.x
-
+configure = admin/config/system/addressfield_staticmap
 dependencies[] = addressfield
-dependencies[] = block

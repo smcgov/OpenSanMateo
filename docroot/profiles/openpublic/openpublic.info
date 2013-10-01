@@ -112,10 +112,7 @@ dependencies[] = openpublic_menu_utility
 dependencies[] = openpublic_menu_footer
 dependencies[] = openpublic_pages
 dependencies[] = openpublic_accessibility
-<<<<<<< HEAD
-=======
 ;dependencies[] = openpublic_password
->>>>>>> 075eea4e76aaf5def5092adfc05d1d464bf2d77a
 dependencies[] = openpublic_filters
 
 ;Defaults

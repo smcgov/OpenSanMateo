@@ -79,7 +79,10 @@ function smc_base_block_view_alter(&$data, $block) {
 
   // Check we get the right menu block (side bar)
   if ($block->bid == 'menu_block-sanmateo-primary-menu') {
-
+    // Gets rid of warnings if there are no menu items
+    if (empty($data['content'])) {
+      return;
+    }
     // create a "home" link as the first link in the main menu.
     $keys = array_keys($data['content']['#content']);
     if (isset($data['content']['#content'][$keys[0]])) {
