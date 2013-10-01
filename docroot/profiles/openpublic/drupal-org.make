@@ -55,7 +55,7 @@ projects[nodequeue][patch][] = http://drupal.org/files/issues/1023606-qid-to-nam
 projects[nodequeue][patch][] = http://drupal.org/files/issues/nodequeue_d7_autocomplete-872444-6.patch
 
 projects[nodeblock][subdir] = contrib
-projects[nodeblock][version] = 1.3
+projects[nodeblock][version] = 1.4
 
 projects[xmlsitemap][subdir] = contrib
 projects[xmlsitemap][version] = 2.0-rc2
@@ -141,7 +141,7 @@ projects[captcha][subdir] = contrib
 projects[captcha][patch][] = http://drupal.org/files/issues/825088-19-captcha_ctools_export.patch
 
 projects[recaptcha][subdir] = contrib
-projects[recaptcha][version] = 1.9
+projects[recaptcha][version] = 1.10
 
 projects[link][subdir] = contrib
 projects[link][version] = 1.1

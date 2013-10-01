@@ -132,35 +132,37 @@ function nodeblock_update_7102() {
       }
     }
 
-    $results = db_select('node', 'n')
-      ->fields('n', array('nid'))
-      ->condition('type', $enabled_types)
-      ->execute()
-      ->fetchCol();
+    if (count($enabled_types)) {
+      $results = db_select('node', 'n')
+        ->fields('n', array('nid'))
+        ->condition('type', $enabled_types)
+        ->execute()
+        ->fetchCol();
 
-    $defaults = array(
-        'comment_link' => 'node_block_default',
-        'node_link' => 'node_block_default',
-        'view_mode' => 'node_block_default');
+      $defaults = array(
+          'comment_link' => 'node_block_default',
+          'node_link' => 'node_block_default',
+          'view_mode' => 'node_block_default');
 
-    foreach ($results as $nid) {
-      $settings = variable_get('nodeblock_block_' . $nid, $defaults);
-      $settings = array_merge($defaults, $settings);
-      if(isset($settings['teaser']) && $settings['teaser'] == 1) {
-        $settings['view_mode'] == 'teaser';
+      foreach ($results as $nid) {
+        $settings = variable_get('nodeblock_block_' . $nid, $defaults);
+        $settings = array_merge($defaults, $settings);
+        if(isset($settings['teaser']) && $settings['teaser'] == 1) {
+          $settings['view_mode'] == 'teaser';
+        }
+        if(isset($settings['links']) && $settings['links'] == 1) {
+          $settings['node_link'] = 1;
+          $settings['comment_link'] = 1;
+        }
+
+        db_insert('nodeblock')
+          ->fields(array('nid', 'machine_name', 'view_mode', 'node_link', 'comment_link', 'translation_fallback'))
+          ->values(array($nid, $nid, $settings['view_mode'], $settings['node_link'], $settings['comment_link'], variable_get('nodeblock_translation_fallback_' . $nid, 0)))
+          ->execute();
+
+        variable_del('nodeblock_translation_fallback_' . $nid);
+        variable_del('nodeblock_block_' . $nid);
       }
-      if(isset($settings['links']) && $settings['links'] == 1) {
-        $settings['node_link'] = 1;
-        $settings['comment_link'] = 1;
-      }
-
-      db_insert('nodeblock')
-        ->fields(array('nid', 'machine_name', 'view_mode', 'node_link', 'comment_link', 'translation_fallback'))
-        ->values(array($nid, $nid, $settings['view_mode'], $settings['node_link'], $settings['comment_link'], variable_get('nodeblock_translation_fallback_' . $nid, 0)))
-        ->execute();
-
-      variable_del('nodeblock_translation_fallback_' . $nid);
-      variable_del('nodeblock_block_' . $nid);
     }
   }
 }
@@ -187,16 +189,18 @@ function nodeblock_update_7103() {
     }
   }
 
-  $results = db_select('node', 'n')
-    ->fields('n', array('nid', 'title'))
-    ->condition('type', $enabled_types)
-    ->execute();
-
-  foreach ($results as $node) {
-    db_update('nodeblock')
-      ->fields(array('block_title' => $node->title))
-      ->condition('nid', $node->nid)
+  if (count($enabled_types)) {
+    $results = db_select('node', 'n')
+      ->fields('n', array('nid', 'title'))
+      ->condition('type', $enabled_types)
       ->execute();
+
+    foreach ($results as $node) {
+      db_update('nodeblock')
+        ->fields(array('block_title' => $node->title))
+        ->condition('nid', $node->nid)
+        ->execute();
+    }
   }
 }
 
@@ -213,10 +217,10 @@ function nodeblock_uninstall() {
       variable_del('nodeblock_view_mode_' . $type_name);
     }
   }
-    db_delete('block')
-      ->condition('module', 'nodeblock')
-      ->execute();
-    db_delete('block_role')
-      ->condition('module', 'nodeblock')
-      ->execute();
+  db_delete('block')
+    ->condition('module', 'nodeblock')
+    ->execute();
+  db_delete('block_role')
+    ->condition('module', 'nodeblock')
+    ->execute();
 }

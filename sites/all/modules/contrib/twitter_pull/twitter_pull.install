@@ -67,3 +67,12 @@ function twitter_pull_requirements($phase) {
 function twitter_pull__update_7101() {
   cache_clear_all('cache_pulled_tweets');
 }
+
+/**
+ * Enable twitter.
+ */
+function twitter_pull_update_7202() {
+  if (!module_enable(array('twitter'))) {
+    throw new DrupalUpdateException('Unable to enable new dependency twitter');
+  }
+}

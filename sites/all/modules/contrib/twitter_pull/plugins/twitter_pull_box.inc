@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Twitter Pull Box
+ */
+
+/**
  * Simple custom text box.
  */
 class twitter_pull_box extends boxes_box {
@@ -9,7 +14,7 @@ class twitter_pull_box extends boxes_box {
    */
   public function options_defaults() {
    return array(
-     'title'=>'',
+     'title' => '',
      'search' => '',
      'max_results' => 20,
      'additional_classes' => '',

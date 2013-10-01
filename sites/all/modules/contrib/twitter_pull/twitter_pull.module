@@ -103,7 +103,7 @@ function twitter_pull_render($twitkey, $title = NULL, $num_items = NULL, $themek
   drupal_add_css(drupal_get_path('module', 'twitter_pull') . '/twitter-pull-listing.css');
 
   //-- Set the lazy load id. Encode the twitkey and title to make sure the they don't contain dashes.
-  $lazy_id = rtrim(base64_encode($twitkey) .'-'. base64_encode($title) .'-'. (int)$num_items . '-' . $themekey, '-');
+  $lazy_id = rtrim(base64_encode($twitkey) . '-' . base64_encode($title) . '-' . (int)$num_items . '-' . $themekey, '-');
 
   //-- Set defaults if empty arguments were passed
   $title = (empty($title) && $title != FALSE ) ? t('Related Tweets') : filter_xss($title);
@@ -119,7 +119,7 @@ function twitter_pull_render($twitkey, $title = NULL, $num_items = NULL, $themek
     $id = uniqid('twitter-pull-lazy-');
 
     $lazy_load = '<div class="throbber twitter-pull-lazy" id="' . $id . '">' . t('Loading...') . '</div>';
-    drupal_add_js('jQuery(document).ready(function () { jQuery.get("' . $uri . '", function(data) { jQuery("#'. $id . '").html(data).removeClass("throbber"); }); });', 'inline');
+    drupal_add_js('jQuery(document).ready(function () { jQuery.get("' . $uri . '", function(data) { jQuery("#' . $id . '").html(data).removeClass("throbber"); }); });', 'inline');
   }
 
   module_invoke_all('twitter_pull_modify', $tweets);
@@ -224,7 +224,7 @@ function twitter_pull_add_links($text) {
 function twitter_pull_block_info() {
   $info = twitter_pull_block_data();
   if (!empty($info) && is_array($info)) {
-    return  array_map(create_function('$a', 'return array("info"=>$a->name);'),$info);
+    return array_map(create_function('$a', 'return array("info"=>$a->name);'), $info);
   }
   else {
     return array();
@@ -238,7 +238,7 @@ function twitter_pull_block_view($delta = '') {
   $info = twitter_pull_block_data();
   $b_info = $info["$delta"];
   $content = twitter_pull_render($b_info->tweetkey, $b_info->title, $b_info->number_of_items, $b_info->theme_key, $b_info->lazy_load);
-  return array("subject"=>"", "content"=>$content);
+  return array("subject" => "", "content" => $content);
 }
 
 /*
