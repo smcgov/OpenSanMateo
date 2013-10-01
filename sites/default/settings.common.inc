@@ -33,3 +33,12 @@ $conf['acquia_key'] = '5f90bbe305adff93b4ad6b1012e75183';
 //$conf['cache_default_class'] = 'MemCacheDrupal';
 //$conf['cache_class_form'] = 'DrupalDatabaseCache';
 
+/**
+ * Util function to derive private filesystem patch from the site settings path and env vars
+ */
+function smc_settings_file_private_path($sitedir) {
+  global $_ENV;
+  
+  $smc_site = array_pop(explode('/', $sitedir));
+  return "/mnt/files/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/sites/{$smc_site}/files-private";
+}
