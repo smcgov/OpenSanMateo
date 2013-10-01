@@ -60,8 +60,8 @@ function distributed_blocks_render_block($block_id) {
     return;
   }
   
-  // The id is provided in MODULE|DELTA|BLOCK TITLE format
-  $block_id = explode('|', $block_id);
+  // The id is provided in MODULE--DELTA--BLOCK TITLE format
+  $block_id = explode('--', $block_id);
   $block = module_invoke($block_id[0], 'block_view', $block_id[1]);
   
   // Force absolute URLs in exposed blocks
@@ -127,8 +127,8 @@ function distributed_blocks_fetch_blocks() {
     }
 
     // Truncate the label here
-    $block_id = explode('|', $block);
-    $block_id = "d_b" . '|' . $block_id[1];
+    $block_id = explode('--', $block);
+    $block_id = "d_b" . '--' . $block_id[1];
     
     // delta can only be 32 chars 
     if (strlen($block_id) > 32) {
@@ -154,9 +154,9 @@ function distributed_blocks_block_info() {
   $fetched_blocks = variable_get('distributed_blocks_fetched_blocks', array());
   
   foreach ($fetched_blocks as $block) {
-    $block = explode('|', $block);
+    $block = explode('--', $block);
     
-    $delta = 'd_b|' . $block[1];
+    $delta = 'd_b--' . $block[1];
     // delta can only be 32 chars 
     if (strlen($delta) > 32) {
       $delta = substr($delta, 0, 32);
@@ -187,9 +187,9 @@ function distributed_blocks_block_view($delta = '') {
     
     // Reformating needed to get rid of label
     foreach ($fetched_blocks as $block) {
-      $block = explode('|', $block);
+      $block = explode('--', $block);
       
-      $delta_id = 'd_b|' . $block[1];
+      $delta_id = 'd_b--' . $block[1];
       // delta can only be 32 chars 
       if (strlen($delta_id) > 32) {
         $delta_id = substr($delta, 0, 32);
@@ -259,7 +259,7 @@ function _distributed_blocks_get_all_blocks() {
   if (empty($options)) {
     $blocks = _block_rehash($theme_key);
     foreach ($blocks as $block) {
-      $options[$block['module'] . '|' . $block['delta'] . '|' . $block['info']] = $block['info'] . ' (' . $block['delta'] . ')';
+      $options[$block['module'] . '--' . $block['delta'] . '--' . $block['info']] = $block['info'] . ' (' . $block['delta'] . ')';
     }
   }
   return $options;

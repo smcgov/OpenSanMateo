@@ -145,7 +145,7 @@ function distributed_blocks_admin_form_validate($form, &$form_state) {
   }
   
   foreach ($resp_array as $block) {
-    $block_array = explode('|', $block);
+    $block_array = explode('--', $block);
     $available_blocks[$block] = $block_array[2] . ' (' . $block_array[1] . ')';
   }
   variable_set('distributed_blocks_available_blocks', $available_blocks);
