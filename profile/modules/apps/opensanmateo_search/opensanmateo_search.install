@@ -21,3 +21,11 @@ function opensanmateo_search_update_7000() {
 function opensanmateo_search_update_7001() {
   module_enable(array('facetapi_select'));
 }
+
+/**
+ * Enable the Acquia Search API module
+ */
+function opensanmateo_search_update_7002() {
+  module_enable(array('search_api_acquia'));
+  drupal_cron_run();
+}

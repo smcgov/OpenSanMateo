@@ -447,6 +447,40 @@ function opensanmateo_search_search_api_alter_callback_info() {
 }
 
 /**
+ * Implements hook_default_search_api_server_alter
+ * We're using this to flip the default search server to Acquia's instances based on their hosting env vars
+ */
+function opensanmateo_search_default_search_api_server_alter(array &$defaults) {
+  global $_ENV;
+
+  // If we have the Solr server definition already set AND we're in the Acquia Cloud, swap out server definitions  
+  if (isset($defaults['san_mateo_solr_server']) && isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+    $defaults['san_mateo_solr_server'] = entity_import('search_api_server', '{
+      "name" : "San Mateo Solr Server [Acquia]",
+      "machine_name" : "san_mateo_solr_server",
+      "description" : "",
+      "class" : "acquia_search_service",
+      "options" : {
+        "scheme" : "http",
+        "host" : "useast1-c1.acquia-search.com",
+        "port" : "80",
+        "path" : "\\/solr\\/DEGK-36837",
+        "edismax" : 0,
+        "modify_acquia_connection" : 0,
+        "http_user" : "",
+        "http_pass" : "",
+        "excerpt" : 0,
+        "retrieve_data" : 1,
+        "highlight_data" : 0,
+        "http_method" : "POST"
+      },
+      "enabled" : "1",
+      "rdf_mapping" : []
+    }');
+  }
+} 
+ 
+/**
  * Search API data alteration callback that adds an URL field for all items.
  */
 class SearchApiRenderedImage extends SearchApiAbstractAlterCallback {
