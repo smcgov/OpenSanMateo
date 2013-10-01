@@ -1,0 +1,6 @@
+name = FileField Sources Plupload
+description = Extends File fields to allow multiple file uploads.
+dependencies[] = filefield_sources
+dependencies[] = plupload
+package = Fields
+core = 7.x

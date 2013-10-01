@@ -35,10 +35,10 @@ class AcquiaSearchService extends DrupalApacheSolrService {
     }
     $url .= 'request_id=' . $id;
     if ($use_data && isset($options['data'])) {
-      list($cookie, $nonce) = acquia_search_auth_cookie($url, $options['data']);
+      list($cookie, $nonce) = acquia_search_auth_cookie($url, $options['data'], NULL, $this->env_id);
     }
     else {
-      list($cookie, $nonce) = acquia_search_auth_cookie($url);
+      list($cookie, $nonce) = acquia_search_auth_cookie($url, NULL, NULL, $this->env_id);
     }
     if (empty($cookie)) {
       throw new Exception('Invalid authentication string - subscription keys expired or missing.');
@@ -60,7 +60,7 @@ class AcquiaSearchService extends DrupalApacheSolrService {
    */
   protected function authenticateResponse($response, $nonce, $url) {
     $hmac = acquia_search_extract_hmac($response->headers);
-    if (!acquia_search_valid_response($hmac, $nonce, $response->data)) {
+    if (!acquia_search_valid_response($hmac, $nonce, $response->data, NULL, $this->env_id)) {
       throw new Exception('Authentication of search content failed url: '. $url);
     }
     return $response;

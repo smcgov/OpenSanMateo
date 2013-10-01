@@ -7,7 +7,7 @@
 ini_set('memory_limit', '512M');
 
 $common_settings_env_map = array(
-  'dev' => 'smc:amc@dev',
+  'dev' => 'smc:smc@dev',
   'test' => 'smc:smc@staging',
   'prod' => 'prod',
 );
@@ -22,11 +22,23 @@ if (isset($_ENV['AH_NON_PRODUCTION'])) {
 else {
   $conf['error_level'] = 0;
   $conf['cron_safe_threshold'] = 0;
-  //$conf['acquia_identifier'] = 'DJLY-22058';
-  //$conf['acquia_key'] = '8602956dedbe389973bc17de9f1eb5eb';
 }
 
+// Set Acquia Connector keys
+$conf['acquia_identifier'] = 'DEGK-36837';
+$conf['acquia_key'] = '5f90bbe305adff93b4ad6b1012e75183';
+
+// Configure caching
 //$conf['cache_backends'][] = './sites/all/modules/contrib/memcache/memcache.inc';
 //$conf['cache_default_class'] = 'MemCacheDrupal';
 //$conf['cache_class_form'] = 'DrupalDatabaseCache';
 
+/**
+ * Util function to derive private filesystem patch from the site settings path and env vars
+ */
+function smc_settings_file_private_path($sitedir) {
+  global $_ENV;
+  
+  $smc_site = array_pop(explode('/', $sitedir));
+  return "/mnt/files/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/sites/{$smc_site}/files-private";
+}

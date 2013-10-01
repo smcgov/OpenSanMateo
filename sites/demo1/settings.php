@@ -562,7 +562,6 @@ if (file_exists('/var/www/site-php')) {
 
 // Set private filesystem for this site
 if (!empty($_ENV['AH_SITE_GROUP']) && !empty($_ENV['AH_SITE_ENVIRONMENT'])) {
-  $smc_site = array_pop(explode('/', __DIR__));
-  $conf['file_private_path'] = "/mnt/files/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/sites/{$smc_site}/files-private";
+  $conf['file_private_path'] = smc_settings_file_private_path(__DIR__);
 }
 

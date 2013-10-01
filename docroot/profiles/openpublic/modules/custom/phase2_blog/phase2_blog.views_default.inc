@@ -45,18 +45,19 @@ function phase2_blog_views_default_views() {
   $handler->display->display_options['fields']['entity_id_1']['label'] = '';
   $handler->display->display_options['fields']['entity_id_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['entity_id_1']['element_label_colon'] = FALSE;
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['created']['alter']['text'] = 'Posted by [entity_id_1] on [created]';
-  $handler->display->display_options['fields']['created']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['created']['element_type'] = 'div';
-  $handler->display->display_options['fields']['created']['element_class'] = 'date';
-  $handler->display->display_options['fields']['created']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['created']['element_wrapper_class'] = 'date-tag';
+  /* Field: Content: Release Date */
+  $handler->display->display_options['fields']['field_release_date']['id'] = 'field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['table'] = 'field_data_field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['field'] = 'field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['label'] = '';
+  $handler->display->display_options['fields']['field_release_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_release_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
   /* Field: Content: Body */
   $handler->display->display_options['fields']['entity_id']['id'] = 'entity_id';
   $handler->display->display_options['fields']['entity_id']['table'] = 'field_data_body';
@@ -75,11 +76,11 @@ function phase2_blog_views_default_views() {
   $handler->display->display_options['fields']['view_node']['element_wrapper_type'] = 'div';
   $handler->display->display_options['fields']['view_node']['element_wrapper_class'] = 'read-more';
   $handler->display->display_options['fields']['view_node']['text'] = 'Read full blog post';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Release Date (field_release_date) */
+  $handler->display->display_options['sorts']['field_release_date_value']['id'] = 'field_release_date_value';
+  $handler->display->display_options['sorts']['field_release_date_value']['table'] = 'field_data_field_release_date';
+  $handler->display->display_options['sorts']['field_release_date_value']['field'] = 'field_release_date_value';
+  $handler->display->display_options['sorts']['field_release_date_value']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -132,20 +133,19 @@ function phase2_blog_views_default_views() {
   $handler->display->display_options['fields']['entity_id_1']['label'] = '';
   $handler->display->display_options['fields']['entity_id_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['entity_id_1']['element_label_colon'] = FALSE;
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['created']['alter']['text'] = 'Posted by [entity_id_1] on [created]';
-  $handler->display->display_options['fields']['created']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['created']['element_type'] = 'div';
-  $handler->display->display_options['fields']['created']['element_class'] = 'date';
-  $handler->display->display_options['fields']['created']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['created']['element_wrapper_class'] = 'date-tag';
-  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['created']['custom_date_format'] = 'M j, Y';
+  /* Field: Content: Release Date */
+  $handler->display->display_options['fields']['field_release_date']['id'] = 'field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['table'] = 'field_data_field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['field'] = 'field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['label'] = '';
+  $handler->display->display_options['fields']['field_release_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_release_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -173,6 +173,28 @@ function phase2_blog_views_default_views() {
     'page_1' => 'page_1',
     'default' => 0,
     'block_1' => 0,
+  );
+  $translatables['blogs'] = array(
+    t('Defaults'),
+    t('More blog posts'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Read full blog post'),
+    t('Blog entry list page'),
+    t('Blog'),
+    t('more'),
+    t('Front page blogs'),
+    t('Feed'),
   );
   $export['blogs'] = $view;
 

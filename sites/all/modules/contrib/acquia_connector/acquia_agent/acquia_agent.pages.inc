@@ -56,7 +56,7 @@ function acquia_agent_migrate_page() {
 function acquia_agent_migrate_form($form, &$form_state) {
   $identifier = acquia_agent_settings('acquia_identifier');
   $key = acquia_agent_settings('acquia_key');
-  $data = acquia_agent_call('acquia.agent.cloud.migration.environments', array('identifier' => $identifier), $identifier, $key, variable_get('acquia_spi_server', 'https://nspi.acquia.com'));
+  $data = acquia_agent_call('acquia.agent.cloud.migration.environments', array('identifier' => $identifier), $identifier, $key, variable_get('acquia_network_address', 'https://rpc.acquia.com'));
 
   $error = NULL;
   if ($errno = xmlrpc_errno()) {
@@ -105,7 +105,7 @@ function acquia_agent_migrate_form($form, &$form_state) {
       '#title' => t('Select environment for migration'),
       '#options' => $envs,
       '#description' => t('Select which environment your site should be migrated to.
-        Please note that only environments that are running trunk or branch can
+        Only environments that are running trunk or branch can
         be overwritten by migration. Environments running a tag are not included.')
     );
   }
@@ -114,15 +114,18 @@ function acquia_agent_migrate_form($form, &$form_state) {
       '#markup' => t('Available environment for migration: %env', array('%env' => array_pop($envs))),
     );
   }
-  $last_migration = variable_get('acquia_agent_cloud_migration', array());
-  if (!empty($last_migration)) {
-    $form['migrate_files'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Migrate files directory'),
-      '#description' => t('Include files directory and all files in migration. If you are experiencing migration errors it is recommended you do not send the files directory.'),
-      '#default_value' => variable_get('acquia_migrate_files', 1),
-    );
-  }
+  $form['migrate_files'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Migrate files directory'),
+    '#description' => t('Include files directory and all files in migration. If you are experiencing migration errors it is recommended you do not send the files directory.'),
+    '#default_value' => variable_get('acquia_migrate_files', 1),
+  );
+  $form['reduce_db_size'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Reduce database export size'),
+    '#description' => t('Reduce the database export size by excluding the data from cache, session, and watchdog tables. If you are experiencing migration errors this is recommended. Table structure will still be exported.'),
+    '#default_value' => 0,
+  );
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
@@ -139,7 +142,7 @@ function acquia_agent_migrate_form($form, &$form_state) {
 }
 
 /**
- *  Main 30 day trial form function
+ *  Main free subscription form function
  */
 function acquia_agent_an_start_form($form, &$form_state, $banner) {
   $header = acquia_agent_an_info_header();
@@ -178,7 +181,7 @@ function acquia_agent_settings_page($arg = NULL) {
   drupal_add_css($path . '/css/acquia_agent.css');
 
   if (empty($identifier) && empty($key) && $arg != 'setup') {
-    drupal_set_title(t('Get a free 30 day trial of the Acquia Network'));
+    drupal_set_title(t('Get an Acquia Cloud Free subscription'));
     return drupal_get_form('acquia_agent_an_start_form', $banner);
   }
   if (empty($identifier) && empty($key)) {
@@ -218,7 +221,7 @@ function _acquia_agent_automatic_setup_form_start(&$form_state) {
     'pass' => array(
       '#type' => 'password',
       '#title' => t('Enter your Acquia Network password:'),
-      '#description' => t('Your password will not be stored locally and will be sent securely to Acquia.com. <a href="!url" target="_blank">Forgot password?</a>', array('!url' => url('http://acquia.com/user/password'))),
+      '#description' => t('Your password will not be stored locally and will be sent securely to Acquia.com. <a href="!url" target="_blank">Forgot password?</a>', array('!url' => url('https://accounts.acquia.com/user/password'))),
       '#size' => 32,
       '#required' => TRUE,
     ),
@@ -229,7 +232,7 @@ function _acquia_agent_automatic_setup_form_start(&$form_state) {
         '#value' => t('Next'),
       ),
       'signup' => array(
-        '#markup' => t('Need a subscription? <a href="!url">Get one</a>.', array('!url' => url('https://www.acquia.com/trial'))),
+        '#markup' => t('Need a subscription? <a href="!url">Get one</a>.', array('!url' => url('https://www.acquia.com/acquia-cloud-free'))),
       ),
     ),
   );
@@ -268,7 +271,7 @@ function acquia_agent_automatic_setup_form_validate($form, &$form_state) {
     $authenticator = _acquia_agent_create_authenticator($body);
     $data = array('body' => $body, 'authenticator' => $authenticator);
     // Does not use acquia_agent_call() because Network identifier and key are not available.
-    $server = variable_get('acquia_spi_server', 'https://nspi.acquia.com');
+    $server = variable_get('acquia_network_address', 'https://rpc.acquia.com');
     $result = xmlrpc(acquia_agent_network_address($server), array('acquia.agent.communication.settings' => array($data)));
 
     if ($errno = xmlrpc_errno() !== NULL) {
@@ -281,7 +284,7 @@ function acquia_agent_automatic_setup_form_validate($form, &$form_state) {
       form_set_error('email', t('Account not found on the Acquia Network.'));
     }
     else {
-      // Build hashed password from account password settings for further 
+      // Build hashed password from account password settings for further
       // XML-RPC communications with acquia.com.
       $pass = _acquia_agent_hash_password_crypt($result['algorithm'], $form_state['values']['pass'], $result['hash_setting'], $result['extra_md5']);
       $form_state['pass'] = $pass;
@@ -307,7 +310,9 @@ function acquia_agent_automatic_setup_form_submit($form, &$form_state) {
     // Redirect to the path without the suffix.
     $form_state['redirect'] = array('admin/config/system/acquia-agent');
     cache_clear_all();
-    drupal_set_message(t('<h3>Connection successful!</h3>You are now connected to the Acquia Network.'));
+    if ($active && count($active) > 1) {
+      drupal_set_message(t('<h3>Connection successful!</h3>You are now connected to the Acquia Network.'));
+    }
   }
 }
 
@@ -322,7 +327,7 @@ function _acquia_agent_automatic_start_submit(&$form_state) {
   $authenticator = _acquia_agent_create_authenticator($body, $form_state['pass']);
   $data = array('body' => $body, 'authenticator' => $authenticator);
   // Does not use acquia_agent_call() because Network identifier and key are not available.
-  $server = variable_get('acquia_spi_server', 'https://nspi.acquia.com');
+  $server = variable_get('acquia_network_address', 'https://rpc.acquia.com');
   $result = xmlrpc(acquia_agent_network_address($server), array('acquia.agent.subscription.credentials' => array($data)));
 
   if ($errno = xmlrpc_errno()) {
@@ -360,7 +365,7 @@ function acquia_agent_settings_credentials($form, &$form_state) {
   $identifier = acquia_agent_settings('acquia_identifier');
   $key = acquia_agent_settings('acquia_key');
 
-  $form['#prefix'] = t('Enter your <a href="!net">identifer and key</a> from your subscriptions overview or <a href="!url">log in</a> to connect your site to the Acquia Network.', array('!net' => url('http://network.acquia.com/network/dashboard/subscription'), '!url' => url('admin/config/system/acquia-agent/setup')));
+  $form['#prefix'] = t('Enter your <a href="!net">identifer and key</a> from your subscriptions overview or <a href="!url">log in</a> to connect your site to the Acquia Network.', array('!net' => url('https://insight.acquia.com/subscriptions'), '!url' => url('admin/config/system/acquia-agent/setup')));
   $form['acquia_identifier'] = array(
     '#type' => 'textfield',
     '#title' => t('Identifier'),
@@ -379,7 +384,7 @@ function acquia_agent_settings_credentials($form, &$form_state) {
     '#value' => t('Connect'),
   );
   $form['actions']['signup'] = array(
-    '#markup' => t('Need a subscription? <a href="!url">Get one</a>.', array('!url' => url('https://www.acquia.com/trial'))),
+    '#markup' => t('Need a subscription? <a href="!url">Get one</a>.', array('!url' => url('https://www.acquia.com/acquia-cloud-free'))),
   );
 
   return $form;
@@ -397,7 +402,7 @@ function acquia_agent_settings_credentials_validate($form, &$form_state) {
   $key = $form_state['values']['acquia_key'];
   // Validate credentials and get subscription name.
   $body = array('identifier' => $identifier);
-  $data = acquia_agent_call('acquia.agent.subscription.name', $body, $identifier, $key, variable_get('acquia_spi_server', 'https://nspi.acquia.com'));
+  $data = acquia_agent_call('acquia.agent.subscription.name', $body, $identifier, $key, variable_get('acquia_network_address', 'https://rpc.acquia.com'));
 
   $error = NULL;
   if ($errno = xmlrpc_errno()) {
@@ -431,10 +436,15 @@ function acquia_agent_settings_credentials_submit($form, &$form_state) {
   variable_set('acquia_key', $form_state['values']['acquia_key']);
   variable_set('acquia_identifier', $form_state['values']['acquia_identifier']);
   variable_set('acquia_subscription_name', $form_state['sub']['site_name']);
-  drupal_set_message(t('The Acquia configuration options have been saved.'));
+  // Check subscription and send a heartbeat to Acquia Network via XML-RPC.
+  // Our status gets updated locally via the return data.
+  $active = acquia_agent_check_subscription();
   // Redirect to the path without the suffix.
   $form_state['redirect'] = array('admin/config/system/acquia-agent');
   cache_clear_all();
+  if ($active && count($active) > 1) {
+    drupal_set_message(t('<h3>Connection successful!</h3>You are now connected to the Acquia Network.'));
+  }
 }
 
 /**
@@ -446,7 +456,7 @@ function _acquia_agent_setup_subscription_name() {
 
   // Get subscription name.
   $body = array('identifier' => $identifier);
-  $data = acquia_agent_call('acquia.agent.subscription.name', $body, $identifier, $key, variable_get('acquia_spi_server', 'https://nspi.acquia.com'));
+  $data = acquia_agent_call('acquia.agent.subscription.name', $body, $identifier, $key, variable_get('acquia_network_address', 'https://rpc.acquia.com'));
 
   if ($errno = xmlrpc_errno()) {
     $error = TRUE;
@@ -482,9 +492,16 @@ function acquia_agent_settings_form($form, &$form_state, $banner) {
   $identifier = acquia_agent_settings('acquia_identifier');
   $key = acquia_agent_settings('acquia_key');
   $subscription = acquia_agent_settings('acquia_subscription_name');
+  // Help documentation is local unless the Help module is disabled.
+  if (module_exists('help')) {
+    $help_url = url('admin/help/acquia_agent');
+  }
+  else {
+    $help_url = url('https://docs.acquia.com/network/install');
+  }
 
   if (empty($_POST)) {
-    // Check our connection to the Acquia Network and validity of the crenditials.
+    // Check our connection to the Acquia Network and validity of the credentials.
     $acquia_network_address = acquia_agent_settings('acquia_network_address');
     if (!acquia_agent_valid_credentials($identifier, $key, $acquia_network_address)) {
       $error_message = acquia_agent_connection_error_message();
@@ -517,17 +534,21 @@ function acquia_agent_settings_form($form, &$form_state, $banner) {
   $ssl_available = (in_array('ssl', stream_get_transports(), TRUE) && !defined('ACQUIA_DEVELOPMENT_NOSSL'));
   $form['connection']['acquia_agent_verify_peer'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Enhanced SSL security'),
-    '#description' => l('Learn more.', 'admin/help/acquia_agent'),
+    '#title' => t('Enhanced SSL security <a href="!url">Learn more</a>.', array('!url' => $help_url)),
     '#default_value' => (int) (variable_get('acquia_agent_verify_peer', 1) && $ssl_available),
     '#disabled' => !$ssl_available,
   );
 
+  $collapsed = FALSE;
+  if (isset($_SERVER['AH_SITE_GROUP'])) { // Collapse migrate if Acquia hosting.
+    $collapsed = TRUE;
+  }
   $form['migrate'] = array(
     '#type' => 'fieldset',
     '#title' => t('Acquia Cloud Migrate'),
-    '#description' => t('Migrate your site to Acquia Cloud hosting service.'),
-    '#collapsible' => FALSE,
+    '#description' => t('Transfer a fully-functional copy of your site to Acquia Cloud. <a href="!url">Learn more</a>.', array('!url' => url('https://docs.acquia.com/cloud/site/import/connector'))),
+    '#collapsible' => TRUE,
+    '#collapsed' => $collapsed,
   );
   $form['migrate']['submit'] = array(
     '#type' => 'submit',
@@ -588,7 +609,9 @@ function acquia_agent_migrate_form_submit($form, &$form_state) {
     return;
   }
 
-  variable_set('acquia_migrate_files', $form_state['values']['migrate_files']);
+  $migrate_files = isset($form_state['values']['migrate_files']) ? $form_state['values']['migrate_files'] : 1;
+  variable_set('acquia_migrate_files', $migrate_files);
+  $reduce_db_size = !empty($form_state['values']['reduce_db_size']) ? $form_state['values']['reduce_db_size'] : 0;
   if (count($form_state['values']['envs']) > 1) {
     // Use selected environment.
     $env = $form_state['values']['envs'][$form_state['values']['environment']];
@@ -602,6 +625,9 @@ function acquia_agent_migrate_form_submit($form, &$form_state) {
   // Prepare for migration.
   $migration = acquia_migrate_prepare($env);
   $migration['site_name'] = $site_name;
+  if ($reduce_db_size) {
+    $migration['no_data_tables'] = array('cache', 'cache_menu', 'cache_page', 'cache_field', 'sessions', 'watchdog');
+  }
 
   if (isset($migration['error']) && $migration['error'] !== FALSE) {
     drupal_set_message(t('Unable to begin migration. @error', array('@error' => $migration['error'])), 'error');
@@ -611,6 +637,7 @@ function acquia_agent_migrate_form_submit($form, &$form_state) {
     $batch = array(
       'title' => t('Acquia Cloud Migrate'),
       'operations' => array(
+        array('acquia_migrate_batch_test', array($migration)),
         array('acquia_migrate_batch_db', array($migration)),
         array('acquia_migrate_batch_tar', array($migration)),
         array('acquia_migrate_batch_transmit', array($migration)),
@@ -673,4 +700,23 @@ function acquia_agent_an_info_header() {
   $output .=  '</div>';
   $output .= '</div>';
   return $output;
+}
+
+/**
+ * Returns basic site information in JSON.
+ */
+function acquia_agent_site_status() {
+  // We don't want this page cached.
+  drupal_page_is_cacheable(FALSE);
+  $data = array(
+    'version' => '1.0',
+    'data' => array(
+      'maintenance_mode' => (bool) variable_get('maintenance_mode', 0),
+      'cache' => (bool) variable_get('cache', 0),
+      'block_cache' => (bool) variable_get('block_cache', 0),
+    ),
+  );
+
+  drupal_json_output($data);
+  drupal_exit();
 }

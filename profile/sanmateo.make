@@ -184,7 +184,7 @@ projects[site_map][patch][] = http://drupal.org/files/site_map-alter_hooks-15889
 
 projects[acquia_connector][type] = module
 projects[acquia_connector][subdir] = contrib
-projects[acquia_connector][version] = 2.2
+projects[acquia_connector][version] = 2.12
 
 projects[memcache][type] = module
 projects[memcache][subdir] = contrib
@@ -302,6 +302,18 @@ projects[search_api_solr][type] = module
 projects[search_api_solr][subdir] = contrib
 projects[search_api_solr][version] = 1.0
 projects[search_api_solr][patch][] =  http://drupal.org/files/1776534.patch
+
+projects[search_api_acquia][type] = module
+projects[search_api_acquia][subdir] = contrib
+projects[search_api_acquia][download][type] = git
+projects[search_api_acquia][download][url] = http://git.drupal.org/project/search_api_acquia.git
+projects[search_api_acquia][download][revision] = 1967e867e0df80a476e218a120d30327034766d9
+projects[search_api_acquia][patch][1977510] = http://drupal.org/files/1977510-14--remove_SolrPhpClient.patch
+projects[search_api_acquia][patch][2087141] = http://drupal.org/files/search_api_acquia-acquia_search_host_precedence-2087141-1.patch
+
+projects[search_api_solr_overrides][type] = module
+projects[search_api_solr_overrides][subdir] = contrib
+projects[search_api_solr_overrides][version] = 1.0-rc1
 
 projects[searchapimultiaggregate][type] = module
 projects[searchapimultiaggregate][subdir] = contrib
