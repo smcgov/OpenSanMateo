@@ -8025,6 +8025,14 @@ h5 {
   color: #036cb6;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
 
+/* line 80, ../scss/elements/editor.scss */
+ul, ol {
+  padding-left: 2em;
+  font-size: .9em; }
+  /* line 84, ../scss/elements/editor.scss */
+  ul li, ol li {
+    color: #6b699e; }
+
 /* Fonts */
 /* Media Queries */
 /* line 5, ../scss/elements/toolbar.scss */
