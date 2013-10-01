@@ -1,5 +1,6 @@
 <?php
 
+include_once 'features_template.features.inc';
 /**
  * Implements hook_ctools_plugin_type()
  */
@@ -56,6 +57,20 @@ function features_template_field_default_field_instances() {
 }
 
 /**
+ * implements hook_strongarm()
+ */
+function features_template_strongarm() {
+  $data = features_template_infos('strongarm');
+  return features_template_implement('strongarm', $data);
+}
+/**
+ * implements hook_layout_panelizer_defaults()
+ */
+function features_template_panelizer_defaults() {
+  $data = features_template_infos('panelizer_defaults');
+  return features_template_implement('panelizer_defaults', $data);
+}
+/**
  * retrieve data from hook_feature_templete_info
  */
 function features_template_infos($plugin = FALSE) {
@@ -80,11 +95,11 @@ function features_template_infos($plugin = FALSE) {
  * Injects feature items into the info file
  */
 function features_template_system_info_alter(&$info, $file, $type) {
-  if($file->name == 'features_template') {
-    $data = features_template_infos();
-    foreach($data as $datum) {
-      if(!$datum['deleted']) {
-        $plugin = features_template_get_template($datum['plugin']);
+  $data = features_template_infos();
+  foreach($data as $datum) {
+    if(!$datum['deleted']) {
+      $plugin = features_template_get_template($datum['plugin']);
+      if($file->name == $plugin['module']) {
         $plugin['features info callback']($info, $datum);
       }
     }
