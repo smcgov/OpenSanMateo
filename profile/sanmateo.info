@@ -79,6 +79,7 @@ dependencies[] = publishcontent
 dependencies[] = breakpoints
 dependencies[] = picture
 dependencies[] = jquery_update
+dependencies[] = search_api_solr_overrides
 
 ; OpenPublic
 

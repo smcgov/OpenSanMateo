@@ -70,3 +70,11 @@ $sites['demo1.smcstg-acquia.fayze2.com'] = 'demo1';
 $sites['demo2.smcstg-acquia.fayze2.com'] = 'demo2';
 $sites['demo3.smcstg-acquia.fayze2.com'] = 'demo3';
 
+/*
+ * Map San Mateo sites to prod host
+ * Acquia domains defines *.smcprd-acquia.fayze.com
+ */
+$sites['demo1.smcprd-acquia.fayze2.com'] = 'demo1';
+$sites['demo2.smcprd-acquia.fayze2.com'] = 'demo2';
+$sites['demo3.smcprd-acquia.fayze2.com'] = 'demo3';
+

@@ -14,6 +14,7 @@ function openpublic_translation_content_apps_app_info() {
  */
 function openpublic_translation_content_configure($form, $form_state) {
   $form = array();
+  $detects = array();
 
   # Point to Langauge page
   $form['setup'] = array(

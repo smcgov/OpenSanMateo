@@ -59,16 +59,16 @@ function openpublic_press_release_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  /* Field: Content: Summary */
+  /* Field: Field: Summary */
   $handler->display->display_options['fields']['entity_id']['id'] = 'entity_id';
   $handler->display->display_options['fields']['entity_id']['table'] = 'field_data_field_summary';
   $handler->display->display_options['fields']['entity_id']['field'] = 'field_summary';
   $handler->display->display_options['fields']['entity_id']['label'] = '';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Release Date (field_release_date) */
+  $handler->display->display_options['sorts']['field_release_date_value']['id'] = 'field_release_date_value';
+  $handler->display->display_options['sorts']['field_release_date_value']['table'] = 'field_data_field_release_date';
+  $handler->display->display_options['sorts']['field_release_date_value']['field'] = 'field_release_date_value';
+  $handler->display->display_options['sorts']['field_release_date_value']['order'] = 'DESC';
   /* Contextual filter: Content: Has taxonomy term ID */
   $handler->display->display_options['arguments']['tid']['id'] = 'tid';
   $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
@@ -110,24 +110,31 @@ function openpublic_press_release_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['created']['element_label_type'] = '0';
-  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['created']['custom_date_format'] = 'M j, Y';
+  /* Field: Content: Release Date */
+  $handler->display->display_options['fields']['field_release_date']['id'] = 'field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['table'] = 'field_data_field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['field'] = 'field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['label'] = '';
+  $handler->display->display_options['fields']['field_release_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_release_date']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_release_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_release_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
   /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['type']['alter']['text'] = '<span class=\'date\'>[created]</span> | <span class=\'tag\'>[type]</span>';
+  $handler->display->display_options['fields']['type']['alter']['text'] = '<span class=\'date\'>[field_release_date]</span> | <span class=\'tag\'>[type]</span>';
   $handler->display->display_options['fields']['type']['element_type'] = 'div';
   $handler->display->display_options['fields']['type']['element_class'] = 'date-tag';
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['type']['element_wrapper_type'] = '0';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -135,7 +142,7 @@ function openpublic_press_release_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_type'] = 'h4';
-  /* Field: Content: Summary */
+  /* Field: Field: Summary */
   $handler->display->display_options['fields']['entity_id']['id'] = 'entity_id';
   $handler->display->display_options['fields']['entity_id']['table'] = 'field_data_field_summary';
   $handler->display->display_options['fields']['entity_id']['field'] = 'field_summary';
@@ -170,30 +177,37 @@ function openpublic_press_release_views_default_views() {
   $handler->display->display_options['header']['area']['content'] = '<div class="divide-double-line"></div>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['created']['custom_date_format'] = 'M j, Y';
+  /* Field: Content: Release Date */
+  $handler->display->display_options['fields']['field_release_date']['id'] = 'field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['table'] = 'field_data_field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['field'] = 'field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['label'] = '';
+  $handler->display->display_options['fields']['field_release_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_release_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_release_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
   /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['type']['alter']['text'] = '<span class=\'date\'>[created]</span> | <span class=\'tag\'>[type]</span>';
+  $handler->display->display_options['fields']['type']['alter']['text'] = '<span class=\'date\'>[field_release_date]</span> | <span class=\'tag\'>[type]</span>';
   $handler->display->display_options['fields']['type']['element_type'] = 'div';
   $handler->display->display_options['fields']['type']['element_class'] = 'date-tag';
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_type'] = 'h4';
-  /* Field: Content: Summary */
+  /* Field: Field: Summary */
   $handler->display->display_options['fields']['entity_id']['id'] = 'entity_id';
   $handler->display->display_options['fields']['entity_id']['table'] = 'field_data_field_summary';
   $handler->display->display_options['fields']['entity_id']['field'] = 'field_summary';
@@ -205,12 +219,6 @@ function openpublic_press_release_views_default_views() {
   $handler->display->display_options['fields']['entity_id']['element_wrapper_type'] = 'p';
   $handler->display->display_options['fields']['entity_id']['element_wrapper_class'] = 'test';
   $handler->display->display_options['fields']['entity_id']['element_default_classes'] = FALSE;
-  $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -253,13 +261,19 @@ function openpublic_press_release_views_default_views() {
   $handler->display->display_options['title'] = 'Press Releases';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['created']['custom_date_format'] = 'M j, Y';
+  /* Field: Content: Release Date */
+  $handler->display->display_options['fields']['field_release_date']['id'] = 'field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['table'] = 'field_data_field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['field'] = 'field_release_date';
+  $handler->display->display_options['fields']['field_release_date']['label'] = '';
+  $handler->display->display_options['fields']['field_release_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_release_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -274,6 +288,35 @@ function openpublic_press_release_views_default_views() {
   $handler->display->display_options['fields']['entity_id']['alter']['max_length'] = '400';
   $handler->display->display_options['fields']['entity_id']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['entity_id']['alter']['html'] = TRUE;
+  $translatables['press_releases'] = array(
+    t('Defaults'),
+    t('More News'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('All'),
+    t('Home Page Block'),
+    t('Latest News'),
+    t('more'),
+    t('<span class=\'date\'>[field_release_date]</span> | <span class=\'tag\'>[type]</span>'),
+    t('Latest News Home Page Block'),
+    t('Press Releases Page'),
+    t('Press Releases'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('<div class="divide-double-line"></div>'),
+    t('Feed'),
+    t('News Feed'),
+    t('Media Room pane'),
+    t('View panes'),
+  );
   $export['press_releases'] = $view;
 
   return $export;

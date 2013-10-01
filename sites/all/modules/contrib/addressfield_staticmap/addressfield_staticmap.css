@@ -1,3 +1,6 @@
 #map_canvas img {
   max-width: none;
 }
+.info-window {
+  padding-bottom: 15px;
+}

@@ -83,6 +83,7 @@ function acquia_migrate_prepare($environment) {
       'nonce' => $environment['nonce'],
     ),
     'env' => $environment,
+    'no_data_tables' => array(),
   );
 
   // Set up local storage of archive.
@@ -95,7 +96,7 @@ function acquia_migrate_prepare($environment) {
  * Ensure this response can work through migration.
  */
 function _acquia_migrate_process_setup() {
-  if (defined('PHP_OS') && in_array(PHP_OS, array('WINNT', 'WIN32', 'Windows'))) {
+  if (!defined('OS_WINDOWS') && defined('PHP_OS') && in_array(PHP_OS, array('WINNT', 'WIN32', 'Windows'))) {
     // OS_WINDOWS constant used by Archive_Tar.
     define('OS_WINDOWS', TRUE);
   }
@@ -119,6 +120,32 @@ function _acquia_migrate_destination(&$migration) {
   }
   $migration['dir'] = $tmp_dir;
   $migration['file'] = $tmp_dir . DIRECTORY_SEPARATOR . 'archive-' . $migration['date'];
+}
+
+/**
+ * Test migration setup and destination.
+ *
+ * @param Array of migration information.
+ *
+ * @return boolean Whether migration can continue.
+ */
+function _acquia_migrate_test_migration_setup(&$migration) {
+  $url = $migration['env']['url'];
+  $headers = array(
+    'User-Agent' => 'Acquia Migrate Client/1.x (Drupal ' . VERSION . ';)',
+  );
+  $response = drupal_http_request($url, array('headers' => $headers, 'max_redirects' => 0));
+  if ($response->code != 200) {
+    $migration['error'] = t('Unable to connect to migration destination site, please contact Acquia Support.');
+    return FALSE;
+  }
+  // A 200 response with body 'invalid request' is returned from the AH_UPLOAD
+  // script if receiving a GET request.
+  if (strpos($url, 'AH_UPLOAD') !== FALSE && trim($response->data) != 'invalid request') {
+    $migration['error'] = t('Unable to connect to migration destination site, please contact Acquia Support.');
+    return FALSE;
+  }
+  return TRUE;
 }
 
 /**
@@ -154,6 +181,26 @@ function _acquia_migrate_complete(&$migration) {
   return $migration;
 }
 
+function acquia_migrate_batch_test($migration, &$context) {
+  _acquia_migrate_process_setup();
+  // Latest migration might be in $context.
+  if (!empty($context['results']['migration'])) {
+    $migration = $context['results']['migration'];
+    variable_set('acquia_agent_cloud_migration', $migration);
+  }
+  // Check for error and abort if appropriate.
+  if (empty($migration) || $migration['error'] !== FALSE) {
+    $context['message'] = t('Encountered error, aborting migration.');
+    return;
+  }
+
+  _acquia_migrate_test_migration_setup($migration);
+
+  // Store migration in results so it can be used by next operation.
+  $context['results']['migration'] = $migration;
+  $context['message'] = t('Testing migration capabilities');
+}
+
 function acquia_migrate_batch_db($migration, &$context) {
   _acquia_migrate_process_setup();
   // Latest migration might be in $context.
@@ -161,9 +208,9 @@ function acquia_migrate_batch_db($migration, &$context) {
     $migration = $context['results']['migration'];
     variable_set('acquia_agent_cloud_migration', $migration);
   }
-  // Check for error and hault.
+  // Check for error and abort if appropriate.
   if (empty($migration) || $migration['error'] !== FALSE) {
-    $context['message'] = t('Encountered error, haulting');
+    $context['message'] = t('Encountered error, aborting migration.');
     return;
   }
 
@@ -181,9 +228,9 @@ function acquia_migrate_batch_tar($migration, &$context) {
     $migration = $context['results']['migration'];
     variable_set('acquia_agent_cloud_migration', $migration);
   }
-  // Check for error and hault.
+  // Check for error and abort if appropriate.
   if (empty($migration) || $migration['error'] !== FALSE) {
-    $context['message'] = t('Encountered error, haulting');
+    $context['message'] = t('Encountered error, aborting migration.');
     return;
   }
 
@@ -201,9 +248,9 @@ function acquia_migrate_batch_transmit($migration, &$context) {
     $migration = $context['results']['migration'];
     variable_set('acquia_agent_cloud_migration', $migration);
   }
-  // Check for error and hault.
+  // Check for error and abort if appropriate.
   if (empty($migration) || $migration['error'] !== FALSE) {
-    $context['message'] = t('Encountered error, haulting');
+    $context['message'] = t('Encountered error, aborting migration.');
     $context['finished'] = 1;
     return;
   }
@@ -258,7 +305,7 @@ function acquia_migrate_batch_finished($success, $results, $operations) {
     // Inform Acquia Cloud of migration completion.
     _acquia_migrate_complete($migration);
     if ($migration['error'] != FALSE) {
-      $message = t('There was an error checking for completed migration. !err<br/>See the !network for more information.', array('!err' => $migration['error'], '!network' => l('Network dashboard', 'https://network.acquia.com/')));
+      $message = t('There was an error checking for completed migration. !err<br/>See the !network for more information.', array('!err' => $migration['error'], '!network' => l(t('Network dashboard'), 'https://network.acquia.com/')));
       drupal_set_message($message);
     }
     else {
@@ -271,7 +318,7 @@ function acquia_migrate_batch_finished($success, $results, $operations) {
     _acquia_migrate_cleanup($migration);
   }
   else {
-    watchdog('acquia-migrate', 'Migration error @m', array('@m' => print_r($migration, TRUE)), WATCHDOG_ERROR);
+    watchdog('acquia-migrate', 'Migration error @m', array('@m' => var_export($migration, TRUE)), WATCHDOG_ERROR);
     $message = t('There was an error during migration.');
     if ($migration && is_string($migration['error'])) {
       $message .= ' ' . $migration['error'];
@@ -289,7 +336,7 @@ function acquia_migrate_exclude($migration) {
   // Exclude the migration directory.
   $exclude[] = basename($migration['dir']);
   if (!variable_get('acquia_migrate_files', 1)) {
-    $exclude[] = realpath(variable_get('file_public_path', conf_path() . DIRECTORY_SEPARATOR .'files'));
+    $exclude[] = realpath(variable_get('file_public_path', conf_path() . DIRECTORY_SEPARATOR . 'files'));
   }
   return $exclude;
 }
@@ -299,6 +346,11 @@ function _acquia_migrate_archive_site(&$migration) {
   $files = acquia_migrate_files_to_backup(DRUPAL_ROOT, $exclude);
 
   if (!empty($files) && isset($migration['file'])) {
+    _acquia_migrate_validate_archive_files($migration, $files);
+    if ($migration['error'] != FALSE) {
+      return;
+    }
+
     $dest_file = $migration['file'] . '.tar';
     if (!empty($migration['compression_ext'])) {
       $dest_file .= '.' . $migration['compression_ext'];
@@ -306,13 +358,67 @@ function _acquia_migrate_archive_site(&$migration) {
     $gz = new Archive_Tar($dest_file, $migration['compression_ext'] ? $migration['compression_ext'] : NULL);
     if (!empty($migration['db_file'])) {
       // Add db file.
-      $ret = $gz->addModify(array($migration['db_file']), '', $migration['dir'] . '/'); // Purposefully use forward slash.
+      $ret = $gz->addModify(array($migration['db_file']), '', $migration['dir'] . DIRECTORY_SEPARATOR);
     }
-    $ret = $gz->addModify($files, '', DRUPAL_ROOT . '/'); // Purposefully use forward slash.
+    // Remove Drupal root from the file paths, OS dependent.
+    if (defined('OS_WINDOWS')) {
+      $remove_dir = DRUPAL_ROOT . '\\';
+    }
+    else {
+      $remove_dir = DRUPAL_ROOT . '/';
+    }
+    $ret = $gz->addModify($files, '', $remove_dir);
     $migration['tar_file'] = $dest_file;
   }
   else {
     $migration['error'] = TRUE;
+  }
+}
+
+/**
+ * Run Acquia's site-uploader.php validation checks.
+ */
+function _acquia_migrate_validate_archive_files(&$migration, $files) {
+  $output = implode("\n", $files);
+  if (defined('OS_WINDOWS')) {
+    $output = str_replace('\\', '/', $output);
+  }
+  $docroot = preg_quote(DRUPAL_ROOT . '/');
+
+  // Count the number of sites dirs with settings.php files and files
+  // directories.
+  $count_settingsphp = preg_match_all('@^' . $docroot . 'sites/[^/\n]+/settings.php$@m', $output, $settings_phps);
+  $count_filesdirs = preg_match_all('@^' . $docroot . 'sites/[^/\n]+/files/$@m', $output, $filesdirs);
+
+  // Count the number of sql dumps in the root, plus in the docroot but
+  // only if the docroot is a sub-dir (not empty or ./). Record all SQL
+  // dumps into $sqls[0].
+  $count_sqls = preg_match_all('@^' . $docroot . '[^/\n.][^/\n]*\.sql$@m', $output, $sqls);
+  if (strlen($docroot) > 2) {
+    $count_sqls += preg_match_all('@^(?:\./)?[^/\n.][^/\n]*\.sql$@m', $output, $docroot_sqls);
+    $sqls[0] = array_merge($sqls[0], $docroot_sqls[0]);
+  }
+  // Allow simpletest SQL files.
+  if (!empty($sqls[0])) {
+    foreach ($sqls[0] as $key => $sql_file) {
+      if (strpos($sql_file, 'simpletest') !== FALSE) {
+        $count_sqls--;
+        unset($sqls[0][$key]);
+      }
+    }
+  }
+
+  if (!in_array(DRUPAL_ROOT . DIRECTORY_SEPARATOR . 'index.php', $files)) {
+    $migration['error'] = "The archive file will not be in the correct format: no index.php found in root or top-level directory.";
+  }
+  elseif ($count_settingsphp > 1) {
+    $migration['error'] = "The archive file will not be in the correct format: it must have at most one sites directory containing settings.php, but the install has $count_settingsphp: " . implode(', ', $settings_phps[0]) . ". Remove unnecessary settings.php files and try again.";
+  }
+  elseif ($count_settingsphp == 0 && $count_filesdirs > 1) {
+    $migration['error'] = "The archive file will not be in the correct format: no settings.php file and the install has more than one sites directory containing a files directory. Remove unnecessary files directories or consolidate and try again.";
+  }
+  elseif ($count_sqls > 0) {
+    $migration['error'] = "The archive file will not be in the correct format: it contains $count_sqls extra SQL files: " . implode(', ', $sqls[0]) . ". Remove extra .sql files and try again.";
   }
 }
 
@@ -359,7 +465,7 @@ function _acquia_migrate_transmit(&$migration, $content) {
     'User-Agent' => 'Acquia Migrate Client/1.x (Drupal ' . VERSION . ';)',
   );
   $url = $migration['env']['url'];
-  
+
   $return = drupal_http_request($url, array(
     'headers' => $headers,
     'method' => 'POST',
@@ -370,8 +476,14 @@ function _acquia_migrate_transmit(&$migration, $content) {
   if ($return->code == 200) {
     $output = drupal_json_decode($return->data);
 
-    if (!empty($output['err'])) {
+    if (!is_array($output)) {
+      $migration['error'] = t('Error occurred, please try again or consult the logs.');
+      $migration['error_data'] = $return->data;
+      return FALSE;
+    }
+    elseif (!empty($output['err'])) {
       $migration['error'] = $output['err'];
+      $migration['error_data'] = $return->data;
       return FALSE;
     }
     else {
@@ -387,6 +499,7 @@ function _acquia_migrate_transmit(&$migration, $content) {
       // Check if response is correct, if not stop migration.
       if ($signature != $response_signature) {
         $migration['error'] = t('Signature from server is wrong');
+        $migration['error_data'] = $return->data;
         return FALSE;
       }
     }
@@ -398,6 +511,7 @@ function _acquia_migrate_transmit(&$migration, $content) {
     parse_str($parsed['query'], $query);
     if (!empty($query['err'])) {
       $migration['error'] = $query['err'];
+      $migration['error_data'] = $return->data;
       return FALSE;
     }
     else {
@@ -419,12 +533,14 @@ function _acquia_migrate_transmit(&$migration, $content) {
       }
       else {
         $migration['error'] = t('Signature from server is wrong');
+        $migration['error_data'] = $return->data;
         return FALSE;
       }
     }
   }
   else {
     $migration['error'] = t('Transfer error');
+    $migration['error_data'] = $return->data;
     return FALSE;
   }
 }
@@ -451,8 +567,8 @@ function acquia_migrate_files_to_backup($directory, $exclude) {
         if (is_dir($directory . DIRECTORY_SEPARATOR . $file)) {
           // Do not include directories that cannot be executed to prevent
           // Archive_Tar error.
-          if (@file_exists($directory. DIRECTORY_SEPARATOR . $file . DIRECTORY_SEPARATOR . '.')) {
-            $array_items = array_merge($array_items, acquia_migrate_files_to_backup($directory. DIRECTORY_SEPARATOR . $file, $exclude));
+          if (@file_exists($directory . DIRECTORY_SEPARATOR . $file . DIRECTORY_SEPARATOR . '.')) {
+            $array_items = array_merge($array_items, acquia_migrate_files_to_backup($directory . DIRECTORY_SEPARATOR . $file, $exclude));
           }
         }
         elseif (is_readable($directory . DIRECTORY_SEPARATOR . $file)) {
@@ -525,17 +641,17 @@ function _acquia_migrate_backup_db_to_file_mysql(&$migration) {
   $handle = fopen($file, 'w');
   $lines = 0;
   $exclude = array();
-  $nodata = array();
+  $nodata = $migration['no_data_tables'];
   if ($handle) {
     $data = _acquia_migrate_get_sql_file_header_mysql();
     fwrite($handle, $data);
     $alltables = _acquia_migrate_get_tables_mysql();
     foreach ($alltables as $table) {
-      if ($table->name && !isset($exclude[$table->name])) {
+      if ($table['name'] && !isset($exclude[$table['name']])) {
         $data = _acquia_migrate_get_table_structure_sql_mysql($table);
         fwrite($handle, $data);
         $lines++;
-        if (!in_array($table->name, $nodata)) {
+        if (!in_array($table['name'], $nodata)) {
           $lines += _acquia_migrate_dump_table_data_sql_to_file($handle, $table);
         }
       }
@@ -558,13 +674,16 @@ function _acquia_migrate_backup_db_to_file_mysql(&$migration) {
  */
 function _acquia_migrate_get_table_structure_sql_mysql($table) {
   $out = "";
-
-  $result = db_query("SHOW CREATE TABLE `". $table->name ."`");
-  if ($record = $result->fetchAssoc()) {
-    $out .= "DROP TABLE IF EXISTS `". $table->name ."`;\n";
-    $out .= strtr($record['create table'], array("\n" => " ", '"' => '`'));
-    if ($table->auto_increment) {
-      $out .= " AUTO_INCREMENT=". $table->auto_increment;
+  $result = db_query("SHOW CREATE TABLE `". $table['name'] ."`", array(), array('fetch' => PDO::FETCH_ASSOC));
+  foreach ($result as $create) {
+    // Lowercase the keys because between Drupal 7.12 and 7.13/14 the default query behavior was changed.
+    // See: http://drupal.org/node/1171866
+    $create = array_change_key_case($create);
+    $out .= "DROP TABLE IF EXISTS `". $table['name'] ."`;\n";
+    // Remove newlines and convert " to ` because PDO seems to convert those for some reason.
+    $out .= strtr($create['create table'], array("\n" => ' ', '"' => '`'));
+    if ($table['auto_increment']) {
+      $out .= " AUTO_INCREMENT=". $table['auto_increment'];
     }
     $out .= ";\n";
   }
@@ -576,19 +695,35 @@ function _acquia_migrate_get_table_structure_sql_mysql($table) {
  */
 function _acquia_migrate_dump_table_data_sql_to_file($handle, $table) {
   $lines = 0;
-  $result = db_query("SELECT * FROM `". $table->name ."`");
-  while($row = $result->fetchAssoc()) {
+  // Escape backslashes, PHP code, special chars
+  $search = array('\\', "'", "\x00", "\x0a", "\x0d", "\x1a");
+  $replace = array('\\\\', "''", '\0', '\n', '\r', '\Z');
+  $result = db_query("SELECT * FROM `" . $table['name'] . "`", array(), array('fetch' => PDO::FETCH_ASSOC));
+  foreach ($result as $row) {
     $items = array();
     foreach ($row as $key => $value) {
-      $items[] = is_null($value) ? "null" : "'". mysql_escape_string($value) ."'";
+      $items[] = is_null($value) ? "null" : "'" . str_replace($search, $replace, $value) . "'";
     }
     if ($items) {
-      $data = "INSERT INTO `". $table->name ."` VALUES (". implode(",", $items) .");\n";
+      $data = "INSERT INTO `" . $table['name'] . "` VALUES (" . implode(",", $items) . ");\n";
       fwrite($handle, $data);
       $lines++;
     }
   }
   return $lines;
+}
+
+/**
+ * Get a list of tables in the db.
+ */
+function _acquia_migrate_get_tables_mysql() {
+  $out = array();
+  $tables = db_query("SHOW TABLE STATUS", array(), array('fetch' => PDO::FETCH_ASSOC));
+  foreach ($tables as $table) {
+    $table = array_change_key_case($table);
+    $out[$table['name']] = $table;
+  }
+  return $out;
 }
 
 /**
@@ -624,37 +759,13 @@ function _acquia_migrate_get_sql_file_footer_mysql() {
 }
 
 /**
- * Get a list of tables in the db.
- */
-function _acquia_migrate_get_tables_mysql() {
-  $out = array();
-  // get auto_increment values and names of all tables
-  $tables = db_query("show table status");
-  foreach ($tables as $table) {
-    $out[$table->name] = $table;
-  }
-  return $out;
-}
-
-/**
- * Get the list of table names.
- */
-function _acquia_migrate_get_table_names_mysql() {
-  $out = array();
-  foreach (_acquia_migrate_get_tables_mysql() as $key => $table) {
-    $out[$key] = $table->name;
-  }
-  return $out;
-}
-
-/**
  * Create multipart boundary
- * 
+ *
  * @return
  *   Boundary
  */
 function _acquia_migrate_multipart_boundary() {
-  return '---------------------------'. substr(md5(rand(0,32000)),0,10);
+  return '---------------------------' . substr(md5(rand(0, 32000)), 0, 10);
 }
 
 /**
@@ -667,7 +778,7 @@ function _acquia_migrate_multipart_boundary() {
  * @return
  *   Encoded string for drupal_http_request
  */
-function _acquia_migrate_multipart_encode_params($boundary, $params, $filename, $content){
+function _acquia_migrate_multipart_encode_params($boundary, $params, $filename, $content) {
   $output = "";
   foreach ($params as $key => $value) {
     $output .= "--$boundary\r\n";
@@ -685,11 +796,11 @@ function _acquia_migrate_multipart_encode_params($boundary, $params, $filename, 
  * @param type $value
  * @return type
  */
-function _acquia_migrate_multipart_enc_text($name,  $value){
+function _acquia_migrate_multipart_enc_text($name,  $value) {
   return "Content-Disposition: form-data; name=\"$name\"\r\n\r\n$value\r\n";
 }
 
-function _acquia_migrate_multipart_enc_file($name, $filename, $file_content){
+function _acquia_migrate_multipart_enc_file($name, $filename, $file_content) {
   $mimetype = "application/octet-stream";
   $data = "Content-Disposition: form-data; name=\"$name\"; filename=\"$filename\"\r\n";
   $data .= "Content-Transfer-Encoding: binary\r\n";
