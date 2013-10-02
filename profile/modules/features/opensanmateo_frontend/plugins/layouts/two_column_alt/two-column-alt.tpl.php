@@ -26,6 +26,14 @@
 
   <div class="panel-panel panel-col panel-col-middle main-content">
     <div class="inside"><?php print $content['middle']; ?></div>
+    
+    <div class="panel-panel panel-col-lower-left">
+      <div class="inside"><?php print $content['lower_left']; ?></div>
+    </div>
+    
+    <div class="panel-panel panel-col-lower-right">
+      <div class="inside"><?php print $content['lower_right']; ?></div>
+    </div>
   </div>
   
   <div class="panel-panel panel-col-bottom section news">
