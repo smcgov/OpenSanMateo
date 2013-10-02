@@ -18,7 +18,7 @@ function opensanmateo_resp_images_field_display_alter(&$display, $context) {
   );
 
   $image_fields = variable_get('opensanmateo_resp_images_fields', array());
-  if ('full' !== $context['view_mode'] || !in_array($context['instance']['id'], $image_fields) || !in_array($default_formatters, $display['type'])) {
+  if ('full' !== $context['view_mode'] || !in_array($context['instance']['id'], $image_fields) || !in_array($display['type'], $default_formatters)) {
     return;
   }
 
