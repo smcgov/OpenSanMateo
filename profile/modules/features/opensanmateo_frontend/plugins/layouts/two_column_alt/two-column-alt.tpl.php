@@ -14,14 +14,13 @@
  *   - $content['right']: Content in the right column.
  */
 ?>
-<div id="main" class="panel-display sm-two-column main-body group clearfix">
+<div id="main" class="panel-display sm-two-column-alt main-body group clearfix">
   
   <div class="panel-panel panel-col-top">
     <div class="inside"><?php print $content['top']; ?></div>
   </div>
   
   <div class="panel-panel panel-col-first sidebar">
-    <div class="inside"><?php print $content['left']; ?></div>
     <div id="responsive-navigation" class="inside sidebar-responsive-navigation">
       <?php print $content['nav']; ?>
     </div>

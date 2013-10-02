@@ -23,10 +23,10 @@
   </div>
   
   <div class="panel-panel panel-col-first sidebar clearfix">
-    <div id="responsive-navigation" class="inside">
+    <div id="responsive-navigation" class="inside sidebar-responsive-navigation">
       <?php print $content['nav']; ?>
     </div>
-    <div class="inside left-sidebar">
+    <div class="inside sidebar-content">
       <?php print $content['left']; ?>
     </div>
   </div>
