@@ -164,15 +164,7 @@ function opensanmateo_rotator_field_default_field_bases() {
     'locked' => 0,
     'module' => 'node_reference',
     'settings' => array(
-      'referenceable_types' => array(
-        'location' => 0,
-        'media_gallery' => 0,
-        'photo' => 0,
-        'press_release' => 0,
-        'profile' => 0,
-        'site_page' => 'site_page',
-        'webform' => 0,
-      ),
+      'referenceable_types' => array_map(function($i) {return $i->type;}, node_type_get_types()),
       'view' => array(
         'args' => array(),
         'display_name' => '',
