@@ -8,9 +8,17 @@
  * Implements hook_field_display_alter
  */
 function opensanmateo_resp_images_field_display_alter(&$display, $context) {
-  // We're only interested in full view mode on our selected fields
+  // We're only interested in full view mode on our selected fields. Additionally
+  // we want to ensure we are only overriding default core formatters, and
+  // not formatters provided by other modules.
+  $default_formatters = array(
+    'file_download_link',
+    'file_rendered',
+    'image',
+  );
+
   $image_fields = variable_get('opensanmateo_resp_images_fields', array());
-  if ('full' !== $context['view_mode'] || !in_array($context['instance']['id'], $image_fields)) {
+  if ('full' !== $context['view_mode'] || !in_array($context['instance']['id'], $image_fields) || !in_array($default_formatters, $display['type'])) {
     return;
   }
 
