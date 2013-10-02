@@ -16,7 +16,7 @@ function osm_ff_remote_source_filefield_sources_info() {
     'name' => t('OSM Remote File'),
     'label' => t('OSM Remote File'),
     'description' => t('Link to a file located on a remote server.'),
-    'process' => 'osm_ff_remote_source_a_process',
+    'process' => 'osm_ff_remote_source_field_process',
     'value' => 'osm_ff_remote_source_value',
     'weight' => 3,
   );
@@ -42,46 +42,60 @@ function theme_osm_ff_remote_source_element($variables) {
 
   $element['url']['#field_suffix'] = drupal_render($element['select']);
   $view = views_get_view('opensanmateo_media_browser');
+
+  //Here we ask for osm_ff_remote_source_form_set to place are form on the page and we insert a placeholder div js will move the form we need back
   $id = uniqid();
   $element['url']['#field_prefix'] = "<div id='$id'></div>";
-  osm_ff_remote_source_forma("<div for='$id' class ='osm-ff-move'>" . views_embed_view('opensanmateo_media_browser', 'default') . "</div>") ;
+  osm_ff_remote_source_form_set($element['#form_build_id'], "<div for='$id' class ='osm-ff-move'>" . views_embed_view('opensanmateo_media_browser', 'default') . "</div>") ;
   return '<div class="filefield-source filefield-source-osmremotefile clear-block">' . drupal_render($element['url']) . '</div>';
 
 }
-
-function osm_ff_remote_source_forma($form = NULL) {
+/**
+ * Keep track for view forms that need to be inserted in to a form build
+ *
+ * PARAM $buid_id: the build id for the form that will use the form inserts
+ * PARAM $form: the html that will need to be injected into the form (this is a view out put for the most part
+ * RETURN all of the elements that are slated to be placed on a build
+ */
+function osm_ff_remote_source_form_set($build_id, $form = NULL) {
   static $forms;
   $forms = is_array($forms) ? $forms : array();
-  #$forms =  &drupal_static(__FUNCTION__, array());
   if($form) {
-    $forms[] = $form;
+    $forms[$build_id][] = $form;
   }
-  return implode('', $forms);
+  if(isset($forms[$build_id])) {
+    return implode('', $forms[$build_id]);
+  }
+  return '';
 
 }
-function osm_ff_remote_source_page_alter(&$page) {
-  $page['content']['#post_render'][] = 'osm_ff_remote_source_page_past';
-}
-function osm_ff_remote_source_page_past($page) {
-  return $page . osm_ff_remote_source_forma();
-}
-
-function osm_ff_remote_source_post_render($element) {
-  $view =  views_embed_view('opensanmateo_media_browser', 'default');
-  $view = preg_replace("/form/", "div", $view);
-  return $view . $element;
+function osm_ff_remote_source_form_post_render($page, $form) {
+  $page = $page . osm_ff_remote_source_form_set($form['#build_id']);
+  return $page;
 }
 
 /**
+ * implements hook_form_alter
+ *
+ * Add a post render to the form so we can add our views (which have a form in them)
+ */
+function osm_ff_remote_source_form_alter(&$form) {
+  $form['#post_render'][] = 'osm_ff_remote_source_form_post_render';
+
+}
+/**
  * A #process callback to extend the filefield_widget element type.
  */
-function osm_ff_remote_source_a_process($element, &$form_state, $form) {
+function osm_ff_remote_source_field_process($element, &$form_state, &$form) {
+  $form['#is_osm_ff_remote_source_form'] = TRUE;
+  unset($form['#post_render']);
 
   $element['filefield_remotefile'] = array(
     '#weight' => 100.5,
     '#theme' => 'osm_ff_remote_source_element',
     '#filefield_source' => TRUE, // Required for proper theming.
     '#filefield_sources_hint_text' => REMOTE_FILE_SOURCE_HINT_TEXT,
+    '#form_build_id' => $form['#build_id'],
   );
 
   $element['filefield_remotefile']['url'] = array(
@@ -91,7 +105,6 @@ function osm_ff_remote_source_a_process($element, &$form_state, $form) {
       'js'=> array( drupal_get_path('module', 'osm_ff_remote_source') . '/osm_ff_remote_source.js'),
       'css'=> array( drupal_get_path('module', 'osm_ff_remote_source') . '/osm_ff_remote_source.css')
     ),
-    #'#prefix' => views_embed_view('opensanmateo_media_browser', 'page'),
   );
 
   $element['filefield_remotefile']['select'] = array(
@@ -166,6 +179,9 @@ function osm_ff_remote_source_value($element, &$item) {
   }
 }
 
+/**
+ * implements hook_preprocess_views_view_fields()
+ */
 function osm_ff_remote_source_preprocess_views_view_fields(&$vars) {
   $uuid = uniqid();
 
