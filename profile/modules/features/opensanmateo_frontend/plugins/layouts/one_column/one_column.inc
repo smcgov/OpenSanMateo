@@ -16,6 +16,7 @@ $plugin = array(
   'css' => 'one_column.css',
   'regions' => array(
     'top' => t('Top'),
+    'nav' => t('Navigation'),
     'middle' => t('Main'),
     'bottom' => t('Bottom'),
   ),

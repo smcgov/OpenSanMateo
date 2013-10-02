@@ -22,6 +22,10 @@
   
   <div class="panel-panel panel-col-first sidebar">
     <div class="inside"><?php print $content['left']; ?></div>
+  <div class="panel-panel panel-col-nav">
+    <div id="responsive-navigation" class="inside sidebar-responsive-navigation">
+      <?php print $content['nav']; ?>
+    </div>
   </div>
 
   <div class="panel-panel panel-col panel-col-middle main-content">
