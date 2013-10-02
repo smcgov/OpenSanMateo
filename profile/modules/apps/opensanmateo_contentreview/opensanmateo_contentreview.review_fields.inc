@@ -69,7 +69,7 @@ function opensanmateo_contentreview_field_default_field_interval_instances_templ
     'bundle' => 'site_page',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 31104000,
       ),
     ),
     'deleted' => 0,
