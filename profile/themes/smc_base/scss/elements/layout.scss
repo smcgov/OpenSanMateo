@@ -1,72 +1,300 @@
 // default variables
 @import "vars.scss";
 
-  #main-wrapper {
-    padding: 0 1em;
-  }
-  
-  .sidebar {
-    width: 100%;
-  	margin-right: 2.5%;
-  }
-  
-  .main-content {
-    padding-left: 0;
-  }
+/**
+  * This layout.scss file handles completely overwriting the layout CSS provided by panels. 
+  * The panels layout css (which essentially is the desktop version) must be reset so that
+  * we can have a mobile layout first, then adjust the layouts accordingly based on the 
+  * screen resolution. 
+  */
 
+
+// Global Defaults
+#main-wrapper {
+  padding: 0 1em;
+}
 
 @media all and (min-width: $tablet) {
-  
-    
-    #main-wrapper, header .inner {
-    	max-width: 1120px;
-    	margin: auto;
-    }
-    .main-body {
-      padding: 0 0em;
-    	margin-bottom: 5%;
-    }
-    .main-content {
-    	width: 70%;
-    	float: left;
-    	padding-left: 0;
-  	}
-  
-    .sidebar {
-    	width: 100%;
-      margin-bottom: 3%;
-  	}
-  
-    .secondary {
-    	float: right; 
-    	width: 27%;
-      margin-left: 3%;
-  	}
-	}
+  #main-wrapper, 
+  header .inner {
+  	max-width: 1120px;
+  	margin: auto;
+  }  
+}
 
 @media all and (min-width: $desktop) {
 
-    .main-body {
-      padding: 0;
-    }
+}
+
+// One Column Layout
+// This is simple as it apples in ALL responsive formats
+#main-wrapper .sm-one-column .panel-col-top,
+#main-wrapper .sm-one-column .panel-col-nav,
+#main-wrapper .sm-one-column .panel-col-middle,
+#main-wrapper .sm-one-column .panel-col-bottom {
+  width: 100%;
+  display: block;
+  float: none;
+  clear: both;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+// Two Column Layout
+#main-wrapper .sm-two-column .panel-col-top,
+#main-wrapper .sm-two-column .panel-col-first,
+#main-wrapper .sm-two-column .panel-col-middle,
+#main-wrapper .sm-two-column .panel-col-bottom {
+  width: 100%;
+  display: block;
+  float: none;
+  clear: both;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3%;
+}
+
+@media all and (min-width: $tablet) {
+  #main-wrapper .sm-two-column .panel-col-first { 
+    float: left; 
+    clear: none;
+    width: 25%; 
+    padding: 0;
+    margin: 0;
+    margin-right: 2.5%;
+    margin-bottom: 3%;
+  }
+  
+  #main-wrapper .sm-two-column .panel-col-middle { 
+    float: left; 
+    clear: none;
+    width: 72.5%; 
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+  }
+}
+
+@media all and (min-width: $desktop) {
+  #main-wrapper .sm-two-column .panel-col-first { 
+    float: left; 
+    clear: none;
+    width: 20%; 
+    padding: 0;
+    margin: 0;
+    margin-right: 2.5%;
+    margin-bottom: 3%;
+  }
+  
+  #main-wrapper .sm-two-column .panel-col-middle { 
+    float: left; 
+    clear: none;
+    width: 77.5%; 
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+  }
+}
+
+// Two Column Layout (Alternate)
+#main-wrapper .sm-two-column-alt .panel-col-top,
+#main-wrapper .sm-two-column-alt .panel-col-first,
+#main-wrapper .sm-two-column-alt .panel-col-middle,
+#main-wrapper .sm-two-column-alt .panel-col-lower-left,
+#main-wrapper .sm-two-column-alt .panel-col-lower-right,
+#main-wrapper .sm-two-column-alt .panel-col-bottom {
+  width: 100%;
+  display: block;
+  float: none;
+  clear: both;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3%;
+}
+
+@media all and (min-width: $tablet) {
+  #main-wrapper .sm-two-column-alt .panel-col-top,
+  #main-wrapper .sm-two-column-alt .panel-col-bottom {
+    width: 100%;
+    display: block;
+    float: none;
+    clear: both;
     
-    .main-content {
-    	width: 58%;
-    	float: left;
-    	padding-left: 1em;
-  	}
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+  }
   
-    .sidebar {
-    	float: left;
-    	width: 17%;
-    	margin-right: 2.5%;
-    	margin-top: 0;
-    	margin-bottom: 5%;
-  	}
+  #main-wrapper .sm-two-column-alt .panel-col-first { 
+    float: left; 
+    clear: none;
+    width: 25%; 
+    padding: 0;
+    margin: 0;
+    margin-right: 2.5%;
+    margin-bottom: 3%;
+  }
   
-    .secondary {
-    	padding-right: 0em;
-    	width: 20%;
-    	margin-left: 2.5%;
-  	}
-	}
+  #main-wrapper .sm-two-column-alt .panel-col-middle { 
+    float: left;
+    clear: none; 
+    width: 72.5%; 
+    padding: 0;
+    margin: 0;
+    
+    margin-bottom: 3%;
+  }
+  
+  #main-wrapper .sm-two-column-alt .panel-col-lower-left {
+    float: left;
+    clear: none;
+    width: 65%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #main-wrapper .sm-two-column-alt .panel-col-lower-right {
+    float: left; 
+    clear: none;
+    width: 32.5%;
+    padding: 0;
+    margin: 0;
+    margin-left: 2.5%;
+  }
+}
+
+@media all and (min-width: $desktop) {
+  #main-wrapper .sm-two-column-alt .panel-col-top,
+  #main-wrapper .sm-two-column-alt .panel-col-bottom {
+    width: 100%;
+    display: block;
+    float: none;
+    clear: both;
+    
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+  }
+  
+  #main-wrapper .sm-two-column-alt .panel-col-first { 
+    float: left; 
+    clear: none;
+    width: 20%; 
+    padding: 0;
+    margin: 0;
+    margin-right: 2.5%;
+    margin-bottom: 3%;
+  }
+  
+  #main-wrapper .sm-two-column-alt .panel-col-middle { 
+    float: left;
+    clear: none; 
+    width: 77.5%; 
+    padding: 0;
+    margin: 0;
+    
+    margin-bottom: 3%;
+  }
+  
+  #main-wrapper .sm-two-column-alt .panel-col-lower-left {
+    float: left;
+    clear: none;
+    width: 65%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #main-wrapper .sm-two-column-alt .panel-col-lower-right {
+    float: left; 
+    clear: none;
+    width: 32.5%;
+    padding: 0;
+    margin: 0;
+    margin-left: 2.5%;
+  }
+}
+
+
+// Three Column Layout
+#main-wrapper .sm-three-column {
+  margin-bottom: 5%;
+}
+
+#main-wrapper .sm-three-column .panel-col-top,
+#main-wrapper .sm-three-column .panel-col-first,
+#main-wrapper .sm-three-column .panel-col-middle,
+#main-wrapper .sm-three-column .panel-col-last,
+#main-wrapper .sm-three-column .panel-col-bottom {
+  width: 100%;
+  display: block;
+  float: none;
+  clear: both;
+  
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3%;
+}
+
+@media all and (min-width: $tablet) {
+  
+  #main-wrapper .sm-three-column .panel-col-first { 
+    float: none; 
+    width: 100%; 
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+  }
+  
+  #main-wrapper .sm-three-column .panel-col-middle { 
+    float: left; 
+    clear: none;
+    width: 70%; 
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+    padding: 0 1em;
+  }
+  
+  #main-wrapper .sm-three-column .panel-col-last { 
+    float: left; 
+    clear: none;
+    width: 27%; 
+    padding: 0;
+    margin: 0;
+    margin-left: 3%;
+    padding-right: 1em;
+    margin-bottom: 3%;
+  }
+}
+
+@media all and (min-width: $desktop) {
+  
+  #main-wrapper .sm-three-column .panel-col-first { 
+    float: left; 
+    clear: none;
+    width: 17%; 
+    padding: 0;
+    margin: 0;
+    margin-right: 2.5%;
+  }
+  
+  #main-wrapper .sm-three-column .panel-col-middle { 
+    float: left; 
+    clear: none;
+    width: 58%; 
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+    padding: 0 1em;
+  }
+  
+  #main-wrapper .sm-three-column .panel-col-last { 
+    float: left;
+    clear: none; 
+    width: 20%; 
+    padding: 0;
+    margin: 0;
+    margin-left: 2.5%;
+  }
+}

@@ -7838,12 +7838,9 @@ ul.info {
     padding-left: 1em;
     padding-right: 1em; }
 
-  /* line 1938, ../scss/style.scss */
-  .main-body {
-    padding: 0 1em; }
-    /* line 1941, ../scss/style.scss */
-    .main-body header {
-      margin-bottom: 3%; }
+  /* line 1941, ../scss/style.scss */
+  .main-body header {
+    margin-bottom: 3%; }
 
   /*
   .sidebar {
@@ -7851,24 +7848,21 @@ ul.info {
   	margin-right: 2.5%;
   }
   */
-  /* line 1953, ../scss/style.scss */
-  .dept-home .main-body {
-    padding: 0 1em; }
-    /* line 1957, ../scss/style.scss */
-    .dept-home .main-body .sidebar {
-      	/*
-      width: 17%;
-      	margin-right: 2.5%;
-      	margin-top: 0;
-      	margin-bottom: 5%;
-      */ }
-      /* line 1965, ../scss/style.scss */
-      .dept-home .main-body .sidebar div {
-        margin-bottom: 15%; }
-      /* line 1966, ../scss/style.scss */
-      .dept-home .main-body .sidebar h3 {
-        border-top: 5px solid rgba(56, 147, 155, 0.1);
-        padding-top: .5em; }
+  /* line 1957, ../scss/style.scss */
+  .dept-home .main-body .sidebar {
+    	/*
+    width: 17%;
+    	margin-right: 2.5%;
+    	margin-top: 0;
+    	margin-bottom: 5%;
+    */ }
+    /* line 1965, ../scss/style.scss */
+    .dept-home .main-body .sidebar div {
+      margin-bottom: 15%; }
+    /* line 1966, ../scss/style.scss */
+    .dept-home .main-body .sidebar h3 {
+      border-top: 5px solid rgba(56, 147, 155, 0.1);
+      padding-top: .5em; }
 
   /* line 1976, ../scss/style.scss */
   .main-content .hls h4 {
@@ -8267,69 +8261,269 @@ you can use the generic selector below, but it's slower:
 
 /* Fonts */
 /* Media Queries */
-/* line 4, ../scss/elements/layout.scss */
+/**
+  * This layout.scss file handles completely overwriting the layout CSS provided by panels. 
+  * The panels layout css (which essentially is the desktop version) must be reset so that
+  * we can have a mobile layout first, then adjust the layouts accordingly based on the 
+  * screen resolution. 
+  */
+/* line 13, ../scss/elements/layout.scss */
 #main-wrapper {
   padding: 0 1em; }
 
-/* line 8, ../scss/elements/layout.scss */
-.sidebar {
+@media all and (min-width: 768px) {
+  /* line 19, ../scss/elements/layout.scss */
+  #main-wrapper,
+  header .inner {
+    max-width: 1120px;
+    margin: auto; } }
+/* line 34, ../scss/elements/layout.scss */
+#main-wrapper .sm-one-column .panel-col-top,
+#main-wrapper .sm-one-column .panel-col-nav,
+#main-wrapper .sm-one-column .panel-col-middle,
+#main-wrapper .sm-one-column .panel-col-bottom {
   width: 100%;
-  margin-right: 2.5%; }
+  display: block;
+  float: none;
+  clear: both;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px; }
 
-/* line 13, ../scss/elements/layout.scss */
-.main-content {
-  padding-left: 0; }
+/* line 48, ../scss/elements/layout.scss */
+#main-wrapper .sm-two-column .panel-col-top,
+#main-wrapper .sm-two-column .panel-col-first,
+#main-wrapper .sm-two-column .panel-col-middle,
+#main-wrapper .sm-two-column .panel-col-bottom {
+  width: 100%;
+  display: block;
+  float: none;
+  clear: both;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3%; }
 
 @media all and (min-width: 768px) {
-  /* line 21, ../scss/elements/layout.scss */
-  #main-wrapper, header .inner {
-    max-width: 1120px;
-    margin: auto; }
-
-  /* line 25, ../scss/elements/layout.scss */
-  .main-body {
-    padding: 0 0em;
-    margin-bottom: 5%; }
-
-  /* line 29, ../scss/elements/layout.scss */
-  .main-content {
-    width: 70%;
+  /* line 59, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column .panel-col-first {
     float: left;
-    padding-left: 0; }
-
-  /* line 35, ../scss/elements/layout.scss */
-  .sidebar {
-    width: 100%;
+    clear: none;
+    width: 25%;
+    padding: 0;
+    margin: 0;
+    margin-right: 2.5%;
     margin-bottom: 3%; }
 
-  /* line 40, ../scss/elements/layout.scss */
-  .secondary {
-    float: right;
-    width: 27%;
-    margin-left: 3%; } }
+  /* line 69, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column .panel-col-middle {
+    float: left;
+    clear: none;
+    width: 72.5%;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%; } }
 @media all and (min-width: 800px) {
-  /* line 49, ../scss/elements/layout.scss */
-  .main-body {
-    padding: 0; }
-
-  /* line 53, ../scss/elements/layout.scss */
-  .main-content {
-    width: 58%;
+  /* line 80, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column .panel-col-first {
     float: left;
-    padding-left: 1em; }
-
-  /* line 59, ../scss/elements/layout.scss */
-  .sidebar {
-    float: left;
-    width: 17%;
-    margin-right: 2.5%;
-    margin-top: 0;
-    margin-bottom: 5%; }
-
-  /* line 67, ../scss/elements/layout.scss */
-  .secondary {
-    padding-right: 0em;
+    clear: none;
     width: 20%;
+    padding: 0;
+    margin: 0;
+    margin-right: 2.5%;
+    margin-bottom: 3%; }
+
+  /* line 90, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column .panel-col-middle {
+    float: left;
+    clear: none;
+    width: 77.5%;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%; } }
+/* line 106, ../scss/elements/layout.scss */
+#main-wrapper .sm-two-column-alt .panel-col-top,
+#main-wrapper .sm-two-column-alt .panel-col-first,
+#main-wrapper .sm-two-column-alt .panel-col-middle,
+#main-wrapper .sm-two-column-alt .panel-col-lower-left,
+#main-wrapper .sm-two-column-alt .panel-col-lower-right,
+#main-wrapper .sm-two-column-alt .panel-col-bottom {
+  width: 100%;
+  display: block;
+  float: none;
+  clear: both;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3%; }
+
+@media all and (min-width: 768px) {
+  /* line 118, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column-alt .panel-col-top,
+  #main-wrapper .sm-two-column-alt .panel-col-bottom {
+    width: 100%;
+    display: block;
+    float: none;
+    clear: both;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%; }
+
+  /* line 129, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column-alt .panel-col-first {
+    float: left;
+    clear: none;
+    width: 25%;
+    padding: 0;
+    margin: 0;
+    margin-right: 2.5%;
+    margin-bottom: 3%; }
+
+  /* line 139, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column-alt .panel-col-middle {
+    float: left;
+    clear: none;
+    width: 72.5%;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%; }
+
+  /* line 149, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column-alt .panel-col-lower-left {
+    float: left;
+    clear: none;
+    width: 65%;
+    padding: 0;
+    margin: 0; }
+
+  /* line 157, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column-alt .panel-col-lower-right {
+    float: left;
+    clear: none;
+    width: 32.5%;
+    padding: 0;
+    margin: 0;
+    margin-left: 2.5%; } }
+@media all and (min-width: 800px) {
+  /* line 169, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column-alt .panel-col-top,
+  #main-wrapper .sm-two-column-alt .panel-col-bottom {
+    width: 100%;
+    display: block;
+    float: none;
+    clear: both;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%; }
+
+  /* line 180, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column-alt .panel-col-first {
+    float: left;
+    clear: none;
+    width: 20%;
+    padding: 0;
+    margin: 0;
+    margin-right: 2.5%;
+    margin-bottom: 3%; }
+
+  /* line 190, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column-alt .panel-col-middle {
+    float: left;
+    clear: none;
+    width: 77.5%;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%; }
+
+  /* line 200, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column-alt .panel-col-lower-left {
+    float: left;
+    clear: none;
+    width: 65%;
+    padding: 0;
+    margin: 0; }
+
+  /* line 208, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column-alt .panel-col-lower-right {
+    float: left;
+    clear: none;
+    width: 32.5%;
+    padding: 0;
+    margin: 0;
+    margin-left: 2.5%; } }
+/* line 220, ../scss/elements/layout.scss */
+#main-wrapper .sm-three-column {
+  margin-bottom: 5%; }
+
+/* line 228, ../scss/elements/layout.scss */
+#main-wrapper .sm-three-column .panel-col-top,
+#main-wrapper .sm-three-column .panel-col-first,
+#main-wrapper .sm-three-column .panel-col-middle,
+#main-wrapper .sm-three-column .panel-col-last,
+#main-wrapper .sm-three-column .panel-col-bottom {
+  width: 100%;
+  display: block;
+  float: none;
+  clear: both;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3%; }
+
+@media all and (min-width: 768px) {
+  /* line 241, ../scss/elements/layout.scss */
+  #main-wrapper .sm-three-column .panel-col-first {
+    float: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%; }
+
+  /* line 249, ../scss/elements/layout.scss */
+  #main-wrapper .sm-three-column .panel-col-middle {
+    float: left;
+    clear: none;
+    width: 70%;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+    padding: 0 1em; }
+
+  /* line 259, ../scss/elements/layout.scss */
+  #main-wrapper .sm-three-column .panel-col-last {
+    float: left;
+    clear: none;
+    width: 27%;
+    padding: 0;
+    margin: 0;
+    margin-left: 3%;
+    padding-right: 1em;
+    margin-bottom: 3%; } }
+@media all and (min-width: 800px) {
+  /* line 273, ../scss/elements/layout.scss */
+  #main-wrapper .sm-three-column .panel-col-first {
+    float: left;
+    clear: none;
+    width: 17%;
+    padding: 0;
+    margin: 0;
+    margin-right: 2.5%; }
+
+  /* line 282, ../scss/elements/layout.scss */
+  #main-wrapper .sm-three-column .panel-col-middle {
+    float: left;
+    clear: none;
+    width: 58%;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+    padding: 0 1em; }
+
+  /* line 292, ../scss/elements/layout.scss */
+  #main-wrapper .sm-three-column .panel-col-last {
+    float: left;
+    clear: none;
+    width: 20%;
+    padding: 0;
+    margin: 0;
     margin-left: 2.5%; } }
 /* line 2, ../scss/elements/rotator-box.scss */
 .flexslider {
