@@ -22,7 +22,36 @@ function sanmateo_apps_servers_info() {
  */
 function sanmateo_install_tasks($install_state) {
   // Load default task list for OpenPublic distro
-  $tasks = openpublic_install_tasks($install_state);
+  require_once(drupal_get_path('module', 'apps') . '/apps.profile.inc');
+  $server = array(
+    'machine name' => 'openpublic',
+    'default apps' => array(
+      'phase2_page',
+      'opensanmateo_search',
+      'phase2_document',
+      'openpublic_service',
+      'opensanmateo_event',
+      'opensanmateo_location',
+      'opensanmateo_shared_content',
+      'opensanmateo_search',
+      'opensanmateo_shared_users',
+      'opensanmateo_layout',
+      'opensanmateo_wysiwyg',
+      'opensanmateo_rotator',
+      'opensanmateo_socialmedia',
+      'opensanmateo_contentreview',
+      'opensanmateo_redirect',
+      'opensanmateo_translate'
+    ),
+    'required apps' => array(
+      'opensanmateo_secruity',
+      'opensanmateo_resp_images',
+      'opensanmateo_google_analytics'
+    ),
+    'default content callback' => '',
+  );
+  $tasks = apps_profile_install_tasks($install_state, $server);
+
 
   // Remove undesired OPIC install tasks
   $skip_tasks = array(

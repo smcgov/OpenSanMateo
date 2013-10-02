@@ -98,22 +98,22 @@ dependencies[] = openpublic_accessibility
 
 ; OpenSanMateo
 
-dependencies[] = opensanmateo_location
+;dependencies[] = opensanmateo_location
 dependencies[] = opensanmateo_roles
 ;dependencies[] = opensanmateo_event
 dependencies[] = opensanmateo_google_analytics
-dependencies[] = opensanmateo_layout
-dependencies[] = opensanmateo_media
+;dependencies[] = opensanmateo_layout
+;dependencies[] = opensanmateo_media
 dependencies[] = opensanmateo_resp_images
 ;dependencies[] = opensanmateo_rotator
 dependencies[] = opensanmateo_search
 ;dependencies[] = opensanmateo_shared_content
 ;dependencies[] = opensanmateo_socialmedia
 ;dependencies[] = opensanmateo_webform
-dependencies[] = opensanmateo_wysiwyg
+;dependencies[] = opensanmateo_wysiwyg
 dependencies[] = opensanmateo_frontend
-dependencies[] = opensanmateo_contentreview
-dependencies[] = opensanmateo_redirect
+;dependencies[] = opensanmateo_contentreview
+;dependencies[] = opensanmateo_redirect
 dependencies[] = opensanmateo_overrides
 dependencies[] = opensanmateo_security
 
