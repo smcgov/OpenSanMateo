@@ -1,33 +1,47 @@
 
+
 .sm-three-column .panel-col-top,
 .sm-three-column .panel-col-bottom {
   width: 100%;
   display: block;
   float: none;
   clear: both;
+  
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
 }
 
 .sm-three-column .panel-col-first { 
   float: left; 
-  width: 17%; 
+  width: 20%; 
+  padding: 0;
+  margin: 0;
 }
 
-.sm-three-column .panel-col-first .inside { 
-  
+.sm-three-column .panel-col-first .sidebar-responsive-navigation,
+.sm-three-column .panel-col-first .sidebar-content { 
+  padding: 0;
+  margin:0;
+  margin-bottom: 20px;
 }
 
 .sm-three-column .panel-col-middle { 
   float: left; 
   width: 58%; 
-}
-
-.sm-three-column .panel-col-last .inside { 
-  
+  padding: 0;
+  margin: 0;
+  margin-right: 1%;
+  margin-left: 1%;
+  margin-bottom: 20px;
 }
 
 .sm-three-column .panel-col-last { 
   float: left; 
   width: 20%; 
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
 }
 
 .sm-three-column .panel-separator {

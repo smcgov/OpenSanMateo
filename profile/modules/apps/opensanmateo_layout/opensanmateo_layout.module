@@ -28,6 +28,16 @@ function opensanmateo_layout_theme() {
 }
 
 /**
+ * Implementation of hook_context_default_contexts_alter().
+ */
+function opensanmateo_layout_context_default_contexts_alter(&$contexts) {
+  // Diable the global context on master sites.
+  if (!empty($contexts['opensanmateo_global']) && sanmateo_is_master()) {
+    unset($contexts['opensanmateo_global']);
+  }
+}
+
+/**
  * Implements hook_block_info().
  */
 function opensanmateo_layout_block_info() {
@@ -39,7 +49,7 @@ function opensanmateo_layout_block_info() {
     'info' => t('Site Brand'),
     'cache' => DRUPAL_CACHE_GLOBAL
   );
-  
+
   return $blocks;
 }
 
@@ -82,8 +92,8 @@ function opensanmateo_layout_block_view($delta = '') {
     case 'opensanmateo_layout_site_brand':
       $slogan = variable_get('site_slogan', '');
       $name = variable_get('site_name', '');
-      
-      
+
+
       $logo = theme('image', array(
         'path' => theme_get_setting('logo'),
         'alt' => 'Logo for ' . $name,
@@ -101,10 +111,10 @@ function opensanmateo_layout_block_view($delta = '') {
 
 /**
  * Implements template_process_panels_add_content_modal().
- * 
+ *
  * We are removing some categories from the IPE modal window.
  */
-function opensanmateo_layout_preprocess_panels_add_content_modal(&$vars) { 
+function opensanmateo_layout_preprocess_panels_add_content_modal(&$vars) {
   foreach ($vars['categories_array'] as $key => $category_name) {
     if (in_array(strip_tags($category_name),
       array('Activity', 'Boxes', 'Comment', 'Node (tokens)', 'Node', 'Page elements'))) {

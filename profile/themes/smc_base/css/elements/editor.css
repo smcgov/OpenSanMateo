@@ -7836,12 +7836,9 @@ ul.info {
     padding-left: 1em;
     padding-right: 1em; }
 
-  /* line 1938, ../../scss/style.scss */
-  .main-body {
-    padding: 0 1em; }
-    /* line 1941, ../../scss/style.scss */
-    .main-body header {
-      margin-bottom: 3%; }
+  /* line 1941, ../../scss/style.scss */
+  .main-body header {
+    margin-bottom: 3%; }
 
   /*
   .sidebar {
@@ -7849,24 +7846,21 @@ ul.info {
   	margin-right: 2.5%;
   }
   */
-  /* line 1953, ../../scss/style.scss */
-  .dept-home .main-body {
-    padding: 0 1em; }
-    /* line 1957, ../../scss/style.scss */
-    .dept-home .main-body .sidebar {
-      	/*
-      width: 17%;
-      	margin-right: 2.5%;
-      	margin-top: 0;
-      	margin-bottom: 5%;
-      */ }
-      /* line 1965, ../../scss/style.scss */
-      .dept-home .main-body .sidebar div {
-        margin-bottom: 15%; }
-      /* line 1966, ../../scss/style.scss */
-      .dept-home .main-body .sidebar h3 {
-        border-top: 5px solid rgba(56, 147, 155, 0.1);
-        padding-top: .5em; }
+  /* line 1957, ../../scss/style.scss */
+  .dept-home .main-body .sidebar {
+    	/*
+    width: 17%;
+    	margin-right: 2.5%;
+    	margin-top: 0;
+    	margin-bottom: 5%;
+    */ }
+    /* line 1965, ../../scss/style.scss */
+    .dept-home .main-body .sidebar div {
+      margin-bottom: 15%; }
+    /* line 1966, ../../scss/style.scss */
+    .dept-home .main-body .sidebar h3 {
+      border-top: 5px solid rgba(56, 147, 155, 0.1);
+      padding-top: .5em; }
 
   /* line 1976, ../../scss/style.scss */
   .main-content .hls h4 {

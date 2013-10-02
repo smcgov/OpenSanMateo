@@ -17,6 +17,7 @@ $plugin = array(
   'regions' => array(
     'top' => t('Top'),
     'left' => t('Sidebar'),
+    'nav' => t('Navigation'),
     'middle' => t('Main'),
     'lower_left' => t('Lower Left'),
     'lower_right' => t('Lower Right'),
