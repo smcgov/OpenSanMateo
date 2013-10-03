@@ -17,7 +17,7 @@ function smc_base_process_page(&$variables) {
     $link = l('OpenSanMateo Frontend', 'admin/structure/features');
     drupal_set_message('In order for the San Mateo County base theme to operate properly, please enable the <strong>' . $link . '</strong> feature module.', 'warning');
   }
-  
+
   //krumo($variables);
 }
 
@@ -35,7 +35,7 @@ function smc_base_preprocess_flexslider(&$variables) {
 }
 
 function smc_base_preprocess_node(&$variables) {
-  
+
 }
 
 function smc_base_preprocess_block(&$variables) {
@@ -122,13 +122,13 @@ function smc_base_menu_tree__menu_block__sanmateo_primary_menu_submenu($variable
 
 function smc_base_preprocess_views_view(&$vars) {
   $view = $vars['view'];
-  
+
   if ($view->name == 'opensanmateo_search') {
     //krumo($vars);
-  }  
+  }
 }
 
-function smc_base_preprocess_panels_pane(&$vars) {  
+function smc_base_preprocess_panels_pane(&$vars) {
   if (isset($vars['content']['#bundle']) && $vars['content']['#bundle'] == 'promo_panels_pane') {
     if (isset($vars['content']['field_promo_style'])) {
       // assign a class we can use to style
@@ -138,39 +138,39 @@ function smc_base_preprocess_panels_pane(&$vars) {
     }
   }
 }
-function smc_base_preprocess_views_view_fields(&$vars) { 
+function smc_base_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
-  
+
   if ($view->name == 'opensanmateo_search') {
-    
     //krumo($vars['fields']);
     // Legend for (wonky) field names
     // There is a chance the variable names may need changed later, hence this fancy legend
-    // Module developers should be drawn and quartered 
-    // for this type of naming convention    
-    
+    // Module developers should be drawn and quartered
+    // for this type of naming convention
+
     // TEASER
     // search_api_multi_aggregation_1   - thumbnail url
-    
+
     // THUMBNAIL RELATED
     // search_api_multi_aggregation_2   - thumbnail url
     // search_api_multi_aggregation_15  - thumbnail title
     // search_api_multi_aggregation_16  - thumbnail alt
-    
+
     // DATE RELATED
     // Preferend Date Format: ""
     // search_api_multi_aggregation_9   - start date
     // search_api_multi_aggregation_10  - end date
-    
+
     // LOCATION RELATED
     // search_api_multi_aggregation_6   - street
     // search_api_multi_aggregation_17  - street 2
     // search_api_multi_aggregation_7   - city
     // search_api_multi_aggregation_4   - state
     // search_api_multi_aggregation_5   - zip
-    
+
     // build the real thumbnail from the data parts (2, 15, 16)
     //dsm($vars['fields']['search_api_multi_aggregation_9']);
+
     if (isset($vars['fields']['search_api_multi_aggregation_2']->content) && strlen($vars['fields']['search_api_multi_aggregation_2']->content) >= 1) {
       $img = theme('image', array(
         'path' => $vars['fields']['search_api_multi_aggregation_2']->content,
@@ -182,36 +182,37 @@ function smc_base_preprocess_views_view_fields(&$vars) {
           ),
         ),
       ));
-      
+
       // apply the image
-      $vars['fields']['search_api_multi_aggregation_2']->content = '<div class="node-thumbnail">' . $img . '</div>';  
-      
-      
-      // now let's wrap the thumbnail and teaser into a single wrapper 
+      $vars['fields']['search_api_multi_aggregation_2']->content = '<div class="node-thumbnail">' . $img . '</div>';
+
+
+      // now let's wrap the thumbnail and teaser into a single wrapper
       $vars['fields']['search_api_multi_aggregation_1']->content = $vars['fields']['search_api_multi_aggregation_2']->content . $vars['fields']['search_api_multi_aggregation_1']->content;
       // since we've combined the two fields, unset the "original" thumbnail
-      unset($vars['fields']['search_api_multi_aggregation_2']);  
+      unset($vars['fields']['search_api_multi_aggregation_2']);
     }
     else {
       // then remove it completely
-      unset($vars['fields']['search_api_multi_aggregation_2']);  
+      unset($vars['fields']['search_api_multi_aggregation_2']);
     }
-    
+
     // unset the alt and title fields completely from displaying
     unset($vars['fields']['search_api_multi_aggregation_15']);
     unset($vars['fields']['search_api_multi_aggregation_16']);
-    
-    
-    
-    
-    
-    
-    // Adjust the header (title and type) 
+
+    // If a sub type is set, use it as the content 'type', otherwise it will default
+    //  to the existing value (content type name by default).
+    if (!empty($vars['row']->_entity_properties['search_api_multi_aggregation_11'][0])) {
+      $vars['fields']['type']->content = '<p class="field-content meta node-type">' . check_plain($vars['row']->_entity_properties['search_api_multi_aggregation_11'][0]) . '</p>';
+    }
+
+    // Adjust the header (title and type)
     // It should be safe here to use prefix on one and suffix on the other because if
     // one is missing (type or title), there are really big problems with the node anyway
     $vars['fields']['title']->wrapper_prefix = '<header class="group clearfix">' . $vars['fields']['type']->wrapper_prefix;
     $vars['fields']['type']->wrapper_suffix = $vars['fields']['type']->wrapper_suffix . '</header>';
-    
+
     // start date
     if (isset($vars['fields']['search_api_multi_aggregation_9']->content) && strlen($vars['fields']['search_api_multi_aggregation_9']->content) >= 1) {
       $startdate = '<div class="node-start-date">' . smc_base_gimme_date($vars['fields']['search_api_multi_aggregation_9']->content) . '</div>';
@@ -219,7 +220,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     }
     else {
       // remove it then
-      unset($vars['fields']['search_api_multi_aggregation_9']);  
+      unset($vars['fields']['search_api_multi_aggregation_9']);
     }
     // end date
     if (isset($vars['fields']['search_api_multi_aggregation_10']->content) && strlen($vars['fields']['search_api_multi_aggregation_10']->content) >= 1) {
@@ -230,17 +231,17 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       // remove it then
       unset($vars['fields']['search_api_multi_aggregation_10']);
     }
-    
+
     // we need to ensure that in the panels pane these items are removed
     // as the views rewrite groups them all into one field (street)
     unset($vars['fields']['search_api_multi_aggregation_4']); // state
     unset($vars['fields']['search_api_multi_aggregation_5']); // zip
     unset($vars['fields']['search_api_multi_aggregation_7']); // city
     unset($vars['fields']['search_api_multi_aggregation_17']); // street2
-    
+
     unset($vars['fields']['more_link']); // morelink
     //krumo($vars['fields']);
-    
+
   } // end opensanmateo_search
 }
 
@@ -260,7 +261,7 @@ function smc_base_gimme_date($stamp) {
 function smc_base_views_pre_render(&$view) {
   //krumo($view);
   if ($view->name == 'opensanmateo_search') {
-    //dsm($view);  
+    //dsm($view);
   }
 }
 
@@ -286,7 +287,7 @@ function smc_base_follow_link($variables) {
 
 function smc_base_pager($variables) {
   //dsm($variables);
-  
+
   $tags = $variables['tags'];
   $element = $variables['element'];
   $parameters = $variables['parameters'];
@@ -316,10 +317,10 @@ function smc_base_pager($variables) {
 
   // there's more than one page, so show the pager.
   if ($pager_total[$element] > 1) {
-    
-    
-    
-    
+
+
+
+
     $first_classes = array('pager-first');
     if ($pager_current == 1) {
        $first_classes[] = 'link-inactive';
@@ -337,7 +338,7 @@ function smc_base_pager($variables) {
       'class' => $prev_classes,
       'data' => $li_previous,
     );
-    
+
     // this renders the 3 of 6 data in the center
     $items[] = array(
       'class' => array('pager-info'),
@@ -352,7 +353,7 @@ function smc_base_pager($variables) {
       'class' => $next_classes,
       'data' => $li_next,
     );
-    
+
     $last_classes = array('pager-last');
     if ($pager_current == $pager_max) {
       $last_classes[] = 'link-inactive';
@@ -361,8 +362,8 @@ function smc_base_pager($variables) {
       'class' => $last_classes,
       'data' => $li_last,
     );
-    
-    
+
+
     return '<h2 class="element-invisible">' . t('Pages') . '</h2>' . theme('item_list', array(
       'items' => $items,
       'attributes' => array('class' => array('pagination', 'clearfix')),
@@ -386,10 +387,10 @@ function smc_base_pager_first($variables) {
     $link = TRUE;
   }
   $output = theme('pager_link', array(
-    'text' => $text, 
+    'text' => $text,
     'link' => $link,
-    'page_new' => pager_load_array(0, $element, $pager_page_array), 
-    'element' => $element, 
+    'page_new' => pager_load_array(0, $element, $pager_page_array),
+    'element' => $element,
     'parameters' => $parameters)
   );
   return $output;
@@ -408,10 +409,10 @@ function smc_base_pager_last($variables) {
     $link = TRUE;
   }
   $output = theme('pager_link', array(
-    'text' => $text, 
+    'text' => $text,
     'link' => $link,
-    'page_new' => pager_load_array($pager_total[$element] - 1, $element, $pager_page_array), 
-    'element' => $element, 
+    'page_new' => pager_load_array($pager_total[$element] - 1, $element, $pager_page_array),
+    'element' => $element,
     'parameters' => $parameters)
   );
   return $output;
@@ -431,15 +432,15 @@ function smc_base_pager_previous($variables) {
     $link = TRUE;
   }
   $page_new = pager_load_array($pager_page_array[$element] - $interval, $element, $pager_page_array);
-  
+
   $output = theme('pager_link', array(
     'text' => $text,
-    'link' => $link, 
-    'page_new' => $page_new, 
-    'element' => $element, 
+    'link' => $link,
+    'page_new' => $page_new,
+    'element' => $element,
     'parameters' => $parameters)
   );
-  
+
 
   return $output;
 }
@@ -460,10 +461,10 @@ function smc_base_pager_next($variables) {
   $page_new = pager_load_array($pager_page_array[$element] + $interval, $element, $pager_page_array);
 
   $output = theme('pager_link', array(
-    'text' => $text, 
-    'link' => $link, 
-    'page_new' => $page_new, 
-    'element' => $element, 
+    'text' => $text,
+    'link' => $link,
+    'page_new' => $page_new,
+    'element' => $element,
     'parameters' => $parameters)
   );
 
@@ -515,17 +516,17 @@ function smc_base_pager_link($variables) {
   //   none of the pager links is active at any time - but it should still be
   //   possible to use l() here.
   // @see http://drupal.org/node/1410574
-  
+
   // if it is a link, make it a link
   if ($link) {
     $attributes['href'] = url($_GET['q'], array('query' => $query));
-    return '<a' . drupal_attributes($attributes) . '>' . check_plain($text) . '</a>';  
+    return '<a' . drupal_attributes($attributes) . '>' . check_plain($text) . '</a>';
   }
   // otherwise, let's have a span
   else {
-    return '<span' . drupal_attributes($attributes) . '>' . check_plain($text) . '</span>';  
+    return '<span' . drupal_attributes($attributes) . '>' . check_plain($text) . '</span>';
   }
-  
+
 }
 
 function smc_base_item_list($variables) {
