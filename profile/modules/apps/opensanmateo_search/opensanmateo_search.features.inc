@@ -118,7 +118,7 @@ function opensanmateo_search_default_search_api_index() {
               },
               "search_api_multi_aggregation_3" : {
                 "name" : "Aggregated Author",
-                "fields" : [ "author:name" ],
+                "fields" : [ "field_blog_author:title", "field_document_author:title" ],
                 "description" : "A text aggregation of the following fields: Author \\u00bb Name."
               },
               "search_api_multi_aggregation_2" : {
@@ -224,7 +224,7 @@ function opensanmateo_search_default_search_api_index() {
               },
               "search_api_multi_aggregation_19" : {
                 "name" : "Aggregated Author Url",
-                "fields" : [ "author:url" ],
+                "fields" : [ "field_blog_author:url", "field_document_author:url" ],
                 "description" : "A text aggregation of the following fields: Author \\u00bb URL."
               }
             }
