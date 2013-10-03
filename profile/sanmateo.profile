@@ -63,83 +63,18 @@ function sanmateo_install_tasks($install_state) {
       unset($tasks[$task]);
     }
   }
-/*
+
   // Add our own profile tasks here
-  $tasks['sanmateo_enable_modules'] = array(
-    'function' => '_sanmateo_enable_modules',
+  $tasks['sanmateo_features_template_revert'] = array(
+    'function' => 'features_template_revert',
     'display' => TRUE,
-    'display_name' => st('Enable remaining modules for OpenSanMateo'),
+    'display_name' => st('Enable templated components'),
     'type' => 'normal',
     'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
   );
 
-  $tasks['sanmateo_db_records'] = array(
-    'function' => '_sanmateo_db_records',
-    'display' => TRUE,
-    'display_name' => st('Generate custom DB records'),
-    'type' => 'normal',
-    'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-  );
-
-  $tasks['sanmateo_imce_roles'] = array(
-    'function' => '_sanmateo_imce_roles',
-    'display' => TRUE,
-    'display_name' => st('Set the IMCE roles profile for OpenSanMateo'),
-    'type' => 'normal',
-    'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-  );
-
-  $tasks['sanmateo_imce_overwrite'] = array(
-    'function' => '_sanmateo_imce_overwrite',
-    'display' => TRUE,
-    'display_name' => st('Sets IMCE settings default to overwrite file.'),
-    'type' => 'normal',
-    'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-  );
-*/
-  //datatables
   return $tasks;
 }
-
-/**
- * Implements callback for profile install task 'sanmateo_enable_modules'
- *
- * Responsible for enabling any problem modules that couldn't be installed via the .info file
- */
-function _sanmateo_enable_modules() {
-  module_enable(array(
-  ));
-}
-
-/**
- * Manually sets custom table records
- */
-function _sanmateo_db_records() {
-}
-
-/**
- * Sets the provided roles to a IMCE profile
- * TODO: This is a common task, build it so that only one code is used.
- */
-function _sanmateo_imce_roles(){
-  if (module_exists('imce') && module_exists('sanmateo_roles')) {
-    $roles = array();
-    foreach (user_roles() as $rid=>$role) {
-      $roles[$rid] = array('weight'=> 0, 'public_pid'=> 1);
-    }
-    variable_set('imce_roles_profiles', $roles);
-  }
-}
-
-/**
- * Sets IMCE File action default to overwrite
- */
-function _sanmateo_imce_overwrite(){
-  if (module_exists('imce')) {
-    variable_set('imce_settings_replace', '1');
-  }
-}
-
 
 function sanmateo_is_master($is_master = NULL) {
   if(isset($is_master)) {
