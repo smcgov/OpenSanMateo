@@ -449,8 +449,11 @@ projects[file_entity][type] = module
 projects[file_entity][subdir] = contrib
 projects[file_entity][version] = 2.0-alpha2
 
+projects[term_ref_autocomplete][type] = module
 projects[term_ref_autocomplete][subdir] = contrib
-projects[term_ref_autocomplete][version] = 1.0-alpha2
+projects[term_ref_autocomplete][download][type] = git
+projects[term_ref_autocomplete][download][url] = http://git.drupal.org/project/term_ref_autocomplete.git
+projects[term_ref_autocomplete][download][revision] = 42e10e6
 
 projects[google_translator][type] = module
 projects[google_translator][subdir] = contrib

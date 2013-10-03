@@ -80,6 +80,7 @@ dependencies[] = breakpoints
 dependencies[] = picture
 dependencies[] = jquery_update
 dependencies[] = search_api_solr_overrides
+dependencies[] = term_ref_autocomplete
 
 ; OpenPublic
 
