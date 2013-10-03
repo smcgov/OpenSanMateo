@@ -117,7 +117,8 @@ function opensanmateo_layout_default_page_manager_handlers() {
           'name' => 'php',
           'settings' => array(
             'description' => 'custom layout',
-            'php' => 'return $contexts[\'argument_entity_id:node_1\']->data->field_custom_layout[$contexts[\'argument_entity_id:node_1\']->data->language][0][\'value\'];',
+            'php' => '$field = field_get_items(\'node\', $contexts[\'argument_entity_id:node_1\']->data, \'field_custom_layout\');
+return $field[0][\'value\'];',
           ),
           'not' => FALSE,
         ),
