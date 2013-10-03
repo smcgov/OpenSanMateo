@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 projects[drupal][type] = core
-projects[drupal][version] = 7.22
+projects[drupal][version] = 7.23
 projects[drupal][patch][] = http://drupal.org/files/issues/object_conversion_menu_router_build-972536-1.patch
 projects[drupal][patch][] = http://drupal.org/files/issues/992540-3-reset_flood_limit_on_password_reset-drush.patch
 projects[drupal][patch][] = http://drupal.org/files/1355984-timeout_on_install_with_drush_si-make.patch
@@ -9,6 +9,7 @@ projects[drupal][patch][] = http://drupal.org/files/1369024-theme-inc-add-messag
 projects[drupal][patch][] = http://drupal.org/files/1369584-form-error-link-from-message-to-element-make-D7.patch
 projects[drupal][patch][] = http://drupal.org/files/1356276-make-D7-17.patch
 projects[drupal][patch][] = http://drupal.org/files/issues/autocomplete_popup_position-1218684-11.patch
+projects[drupal][patch][] = https://drupal.org/files/2066275-file-field-load-merge-order.patch
 
 projects[openpublic][type] = profile
 projects[openpublic][download][type] = git
@@ -447,7 +448,9 @@ projects[defaultconfig][version] = 1.0-alpha9
 
 projects[file_entity][type] = module
 projects[file_entity][subdir] = contrib
-projects[file_entity][version] = 2.0-alpha2
+projects[file_entity][download][type] = git
+projects[file_entity][download][url] = http://git.drupal.org/project/file_entity.git
+projects[file_entity][download][revision] = 3dc863a
 
 projects[term_ref_autocomplete][type] = module
 projects[term_ref_autocomplete][subdir] = contrib
