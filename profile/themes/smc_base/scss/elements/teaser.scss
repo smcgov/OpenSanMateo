@@ -104,13 +104,13 @@
     }  
   }
   
-  .node-thumbnail-title {
+  .read-more-wrapper {
+    font-size: 0.9em;
     
+    a:after {
+      content: ' \00BB';
+    }
   }
-  .node-thumbnail-alt {
-    
-  }
-  
   // custom style(s) for event teaser
   &.event {
     padding-left: 1em;

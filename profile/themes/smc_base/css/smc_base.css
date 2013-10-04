@@ -8641,6 +8641,12 @@ you can use the generic selector below, but it's slower:
       margin: 0;
       padding: 0;
       color: #555a5a; }
+  /* line 107, ../scss/elements/teaser.scss */
+  .universal-teaser .read-more-wrapper {
+    font-size: 0.9em; }
+    /* line 110, ../scss/elements/teaser.scss */
+    .universal-teaser .read-more-wrapper a:after {
+      content: ' \00BB'; }
   /* line 115, ../scss/elements/teaser.scss */
   .universal-teaser.event {
     padding-left: 1em;

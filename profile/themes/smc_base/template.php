@@ -268,8 +268,12 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       unset($vars['fields']['search_api_multi_aggregation_10']);
     }
     
-    
-    
+    // make the more link actually an object that is expected
+    $vars['fields']['readmore'] = new stdClass();
+    $vars['fields']['readmore']->content = $vars['fields']['more_link'];
+    $vars['fields']['readmore']->label_html = '';
+    $vars['fields']['readmore']->wrapper_prefix = '';
+    $vars['fields']['readmore']->wrapper_suffix = '';
     
     // we need to ensure that in the panels pane these items are removed
     // as the views rewrite groups them all into one field (street)
@@ -280,8 +284,9 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     unset($vars['fields']['search_api_multi_aggregation_18']); // release date
     unset($vars['fields']['search_api_multi_aggregation_19']); // author url
     unset($vars['fields']['search_api_multi_aggregation_3']); // author name
+    unset($vars['fields']['nothing']); // wtf
     
-    // need to be reformatted and displayed
+    // get rid of the original more link as we've formatted it above as an object to properly render.    
     unset($vars['fields']['more_link']); // morelink
     //krumo($vars['fields']);
 
