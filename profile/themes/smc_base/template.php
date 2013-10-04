@@ -147,6 +147,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
 
   if ($view->name == 'opensanmateo_search') {
     //krumo($vars['fields']);
+    
     // Legend for (wonky) field names
     // There is a chance the variable names may need changed later, hence this fancy legend
     // Module developers should be drawn and quartered
@@ -159,7 +160,12 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     // search_api_multi_aggregation_2   - thumbnail url
     // search_api_multi_aggregation_15  - thumbnail title
     // search_api_multi_aggregation_16  - thumbnail alt
-
+    
+    // META INFORMATION
+    // search_api_multi_aggregation_3   - author user id
+    // search_api_multi_aggregation_19  - author URL
+    // search_api_multi_aggregation_18  - release date
+    
     // DATE RELATED
     // Preferend Date Format: ""
     // search_api_multi_aggregation_9   - start date
@@ -216,6 +222,32 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     // one is missing (type or title), there are really big problems with the node anyway
     $vars['fields']['title']->wrapper_prefix = '<header class="group clearfix">' . $vars['fields']['type']->wrapper_prefix;
     $vars['fields']['type']->wrapper_suffix = $vars['fields']['type']->wrapper_suffix . '</header>';
+    
+    // Format byline
+    
+    if (isset($vars['fields']['search_api_multi_aggregation_3']->content) && strlen($vars['fields']['search_api_multi_aggregation_3']->content) >= 1) {
+      // let's manipulate the author name data to give us a full byline
+      $author = $vars['fields']['search_api_multi_aggregation_3']->content;
+      
+      if (isset($vars['fields']['search_api_multi_aggregation_19']->content) && strlen($vars['fields']['search_api_multi_aggregation_19']->content) >= 1) {
+        // we have a link field, let's create a link out of the username 
+        $author = l($author, $vars['fields']['search_api_multi_aggregation_19']->content);
+      }
+      
+      $byline = t('Posted by') . ' ' . $author;
+      
+      if (isset($vars['fields']['search_api_multi_aggregation_18']->content) && strlen($vars['fields']['search_api_multi_aggregation_18']->content) >= 1) {
+        // we have a release date field, so let's add that to the byline
+        $release_date = smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_18']->content);
+        
+        $byline = $byline . ' ' . t('on') . ' ' . $release_date;
+      }
+      
+      // Now let's reassign out byline to the content value of the author field
+      $vars['fields']['search_api_multi_aggregation_3']->content = $byline;
+      // We actually won't use the above assignment, but will append this to the header title
+      $vars['fields']['title']->content .= '<div class="author-data">' . $byline . '</div>';
+    }
 
     // start date
     if (isset($vars['fields']['search_api_multi_aggregation_9']->content) && strlen($vars['fields']['search_api_multi_aggregation_9']->content) >= 1) {
@@ -235,18 +267,39 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       // remove it then
       unset($vars['fields']['search_api_multi_aggregation_10']);
     }
-
+    
+    
+    
+    
     // we need to ensure that in the panels pane these items are removed
     // as the views rewrite groups them all into one field (street)
     unset($vars['fields']['search_api_multi_aggregation_4']); // state
     unset($vars['fields']['search_api_multi_aggregation_5']); // zip
     unset($vars['fields']['search_api_multi_aggregation_7']); // city
     unset($vars['fields']['search_api_multi_aggregation_17']); // street2
-
+    unset($vars['fields']['search_api_multi_aggregation_18']); // release date
+    unset($vars['fields']['search_api_multi_aggregation_19']); // author url
+    unset($vars['fields']['search_api_multi_aggregation_3']); // author name
+    
+    // need to be reformatted and displayed
     unset($vars['fields']['more_link']); // morelink
     //krumo($vars['fields']);
 
   } // end opensanmateo_search
+}
+
+function smc_base_format_timestamp($stamp) {
+  // Date formatting and display
+  $dateformat1 = "M j";   // Aug 12
+  $dateformat2 = "S";     // th
+  $dateformat3 = "Y";     // 2013
+  $timeformat = "g:i a";  // 8:00 am
+  
+  $sdate1 = format_date($stamp, 'custom', $dateformat1);
+  $sdate2 = format_date($stamp, 'custom', $dateformat2);
+  $sdate3 = format_date($stamp, 'custom', $dateformat3);
+  $stime = format_date($stamp, 'custom', $timeformat);
+  return $sdate1 . '<sup>' . $sdate2 . '</sup> ' . $sdate3 . ' at ' . $stime;
 }
 
 function smc_base_gimme_date($stamp) {

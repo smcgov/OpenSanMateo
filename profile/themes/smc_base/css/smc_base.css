@@ -8573,7 +8573,7 @@ you can use the generic selector below, but it's slower:
     display: none; }
   /* line 14, ../scss/elements/teaser.scss */
   .universal-teaser header {
-    margin-bottom: 5%; }
+    margin-bottom: 3%; }
   /* line 18, ../scss/elements/teaser.scss */
   .universal-teaser h5 {
     color: #38939b;
@@ -8586,47 +8586,62 @@ you can use the generic selector below, but it's slower:
     position: absolute;
     right: 0;
     border-bottom-right-radius: 0;
-    border-top-right-radius: 0; }
-  /* line 32, ../scss/elements/teaser.scss */
+    border-top-right-radius: 0;
+    margin-bottom: 3%; }
+  /* line 34, ../scss/elements/teaser.scss */
   .universal-teaser .node-title {
     float: left;
     margin-top: 0;
-    width: 80%; }
-  /* line 38, ../scss/elements/teaser.scss */
+    width: 80%;
+    margin-bottom: 0.2em; }
+  /* line 41, ../scss/elements/teaser.scss */
+  .universal-teaser .author-data {
+    float: left;
+    clear: left;
+    margin-top: 0;
+    width: 80%;
+    font-size: .75em;
+    color: #555a5a;
+    margin-bottom: 0.5em;
+    font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
+    /* line 51, ../scss/elements/teaser.scss */
+    .universal-teaser .author-data a {
+      color: #555a5a; }
+  /* line 56, ../scss/elements/teaser.scss */
   .universal-teaser .node-teaser {
     display: block;
     margin-bottom: 3%;
     font-size: 1em;
     line-height: 1.6em; }
-  /* line 45, ../scss/elements/teaser.scss */
+  /* line 63, ../scss/elements/teaser.scss */
   .universal-teaser .node-thumbnail {
     border: 5px solid rgba(3, 108, 182, 0.05);
     float: left;
     border-radius: 3px;
     margin-bottom: 2%;
     margin-right: 2%;
-    height: 80px;
+    max-height: 80px;
     width: 80px;
     overflow: hidden; }
-    /* line 56, ../scss/elements/teaser.scss */
+    /* line 74, ../scss/elements/teaser.scss */
     .universal-teaser .node-thumbnail img {
       max-width: 100%;
       height: auto; }
-  /* line 71, ../scss/elements/teaser.scss */
+  /* line 89, ../scss/elements/teaser.scss */
   .universal-teaser .node-location .location {
     padding: 0;
     margin: 0; }
-  /* line 76, ../scss/elements/teaser.scss */
+  /* line 94, ../scss/elements/teaser.scss */
   .universal-teaser .node-location ul.adr {
     margin: 0;
     padding: 0; }
-    /* line 80, ../scss/elements/teaser.scss */
+    /* line 98, ../scss/elements/teaser.scss */
     .universal-teaser .node-location ul.adr li {
       list-style-type: none;
       margin: 0;
       padding: 0;
       color: #555a5a; }
-  /* line 97, ../scss/elements/teaser.scss */
+  /* line 115, ../scss/elements/teaser.scss */
   .universal-teaser.event {
     padding-left: 1em;
     padding-right: 1em; }
