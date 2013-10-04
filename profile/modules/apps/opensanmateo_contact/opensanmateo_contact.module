@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Code for the OpenSanMateo Contact feature.
+ */
+
+include_once 'opensanmateo_contact.field_contact.inc';
+
+/**
+ * Implements hook_features_template_info
+ */
+function opensanmateo_contact_features_template_info() {
+  $content_types = variable_get('opensanmateo_contact_enabled_types', array());
+
+  $data = array();
+  foreach($content_types as $content_type => $present) {
+    $data[] = array(
+      'entity_type' => 'node',
+      'bundle_type' => $content_type,
+      'field' => 'field_contact',
+      'plugin' => 'field_instance',
+      'deleted' => !$present,
+      'template' => 'opensanmateo_contact_features_template_field_contact'
+    );
+  }
+
+  return $data;
+}
