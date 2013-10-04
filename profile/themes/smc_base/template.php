@@ -50,7 +50,6 @@ function smc_base_preprocess_block(&$variables) {
   if (!isset($block->bid)) {
     return;
   }
-
   switch ($block->bid) {
     case 'menu_block-sanmateo-primary-menu':
 
@@ -66,6 +65,11 @@ function smc_base_preprocess_block(&$variables) {
 
     case 'distributed_blocks-d_b--menu-platform-menu':
       //dsm($variables);
+    break;
+    
+    case 'opensanmateo_search-header_search':
+      $variables['classes_array'][] = 'clearfix';
+      $variables['classes_array'][] = 'search';
     break;
   }
 
