@@ -65,3 +65,10 @@ function sanmateo_update_7003() {
   field_delete_field('field_event_type');
   field_delete_field('field_term_location_type');
 }
+
+/**
+ * [SMC-464] Timestamp(s) on Unified teasers inconsistent
+ */
+function sanmateo_update_7002() {
+  san_mateo_install_features_revert(array('opensanmateo_search'));
+}
