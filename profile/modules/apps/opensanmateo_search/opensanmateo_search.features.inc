@@ -136,7 +136,7 @@ function opensanmateo_search_default_search_api_index() {
               },
               "search_api_multi_aggregation_2" : {
                 "name" : "Aggregated Thumbnail",
-                "fields" : [ "field_thumbnail_image:file:url" ],
+                "fields" : [ "opensanmateo_search_style_url" ],
                 "description" : "A text aggregation of the following fields: Thumbnail Image \\u00bb The image file. \\u00bb URL."
               },
               "search_api_multi_aggregation_4" : {

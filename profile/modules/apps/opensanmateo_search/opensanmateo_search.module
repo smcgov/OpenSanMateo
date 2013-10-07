@@ -580,17 +580,23 @@ class SearchApiRenderedImage extends SearchApiAbstractAlterCallback {
    * Alter items before indexing
    */
   public function alterItems(array &$items) {
-    //dpm($items); return;
-    //dpm($this->options);
     foreach ($items as $id => &$item) {
       // If we have a valid thumbnail field, use the first image as the styled teaser URL
-      if (!empty($item->field_thumbnail_image[$item->language][0]['filename']) && !empty($this->options['image_style'])) {
-        $style_url = image_style_url($this->options['image_style'], $item->field_thumbnail_image[$item->language][0]['uri']);
-        $raw_url = file_create_url($item->field_thumbnail_image[$item->language][0]['uri']);
-        $item->search_api_multi_aggregation_2[0] = str_replace($raw_url, $style_url, $item->search_api_multi_aggregation_2[0]);
+      $field = field_get_items('node', $item, 'field_thumbnail_image');
+      if (!empty($field[0]['uri'])) {
+        $item->opensanmateo_search_style_url = image_style_url($this->options['image_style'], $field[0]['uri']);
       }
     }
-    //dpm($items);
+  }
+
+  public function propertyInfo() {
+    return array(
+      'opensanmateo_search_style_url' => array(
+        'label' => t('Thumbnail site url'),
+        'description' => t('A url styled'),
+        'type' => 'uri',
+      ),
+    );
   }
 
 }
