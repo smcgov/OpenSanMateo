@@ -25,8 +25,31 @@ else {
 }
 
 // Set Acquia Connector keys
-$conf['acquia_identifier'] = 'DEGK-36837';
-$conf['acquia_key'] = '5f90bbe305adff93b4ad6b1012e75183';
+// From Acquia Ticket #15066-99152: Are we able to define multiple Solr instances for the different environments?
+if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+  switch ($_ENV['AH_SITE_ENVIRONMENT']) {
+    case 'prod' :
+      // Acquia production settings
+      $conf['acquia_identifier'] = 'DEGK-36837';
+      $conf['acquia_key'] = '5f90bbe305adff93b4ad6b1012e75183';
+      break;
+    case 'test' :
+      // Acquia test environment
+      $conf['acquia_identifier'] = 'LQUZ-41142';
+      $conf['acquia_key'] = '1af18383d04d25f92ecbd2cd1547ed01';
+      break;
+    case 'dev' :
+    default :
+      // Acquia dev and all other environments
+      $conf['acquia_identifier'] = 'JKWZ-41140';
+      $conf['acquia_key'] = '7e97476c37ef890227d54314c8444ef2';
+      break;
+  }
+} else {
+  // Getting here means site is not inside Acquia Hosting
+  // ( $_ENV['AH_SITE_ENVIRONMENT'] is not set)
+  // Add any desired code here.
+}
 
 // Configure caching
 //$conf['cache_backends'][] = './sites/all/modules/contrib/memcache/memcache.inc';
@@ -38,7 +61,7 @@ $conf['acquia_key'] = '5f90bbe305adff93b4ad6b1012e75183';
  */
 function smc_settings_file_private_path($sitedir) {
   global $_ENV;
-  
+
   $smc_site = array_pop(explode('/', $sitedir));
   return "/mnt/files/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/sites/{$smc_site}/files-private";
 }
