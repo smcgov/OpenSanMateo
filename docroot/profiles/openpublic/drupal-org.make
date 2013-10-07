@@ -25,6 +25,7 @@ projects[diff][version] = 2.0
 
 projects[entity][subdir] = contrib
 projects[entity][version] = 1.1
+projects[entity][patch][2051079] = https://drupal.org/files/2051079-1-entity-features_update.patch
 
 projects[features][subdir] = contrib
 projects[features][version] = 2.0-rc1

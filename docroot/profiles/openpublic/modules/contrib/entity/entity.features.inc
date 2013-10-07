@@ -124,6 +124,20 @@ class EntityDefaultFeaturesController {
    * Generates the result for hook_features_revert().
    */
   function revert($module = NULL) {
+    _entity_features_defaults_revert_by_module($this->type, $module);
+  }
+}
+
+/**
+ * Legacy default controller handling features integration.
+ *
+ * Implements the old revert method with simply deleting entities.
+ */
+class EntityLegacyFeaturesController extends EntityDefaultFeaturesController {
+  /**
+   * Generates the result for hook_features_revert().
+   */
+  function revert($module = NULL) {
     if ($defaults = features_get_default($this->type, $module)) {
       foreach ($defaults as $name => $entity) {
         entity_delete($this->type, $name);
@@ -171,4 +185,55 @@ function entity_features_export_render($module, $data, $export = NULL, $entity_t
  */
 function entity_features_revert($module = NULL, $entity_type) {
   return entity_features_get_controller($entity_type)->revert($module);
+}
+
+/**
+ * Helper callback to revert the entity
+ *
+ * @param string $entity_type
+ *   machine name of the entity type - is similar to the component type name
+ * @param $module
+ *   machine name of the module
+ */
+function _entity_features_defaults_revert_by_module($entity_type, $module) {
+  module_load_include('export.inc', 'features');
+
+  // Loads defaults from feature code.
+  $defaults = features_get_default($entity_type, $module);
+
+  // No defaults, no processing.
+  if (empty($defaults)) {
+    return;
+  }
+
+  // Get entity type information we can use for setting values later.
+  $info = entity_get_info($entity_type);
+  $keys = $info['entity keys'] + array('module' => 'module', 'status' => 'status', 'name' => $info['entity keys']['id']);
+
+  // We try to find existing entities, so we can update them, instead of
+  // creating new ones.
+  $names = array_keys($defaults);
+  $existing = entity_load_multiple_by_name($entity_type, $names);
+
+  foreach ($defaults as $name => $entity) {
+    // If we got an existing entity with the same name, we reuse its entity id.
+    if (isset($existing[$name])) {
+      // Set the original as later reference.
+      $entity->original = $existing[$name];
+
+      // As we got an ID, the entity is not new.
+      $entity->{$keys['id']} = $entity->original->{$keys['id']};
+      unset($entity->is_new);
+
+      // Update the status to be in code.
+      $entity->{$keys['status']} |= ENTITY_IN_CODE;
+
+      // We mark it for being in revert mode.
+      $entity->is_reverted = TRUE;
+      entity_save($entity_type, $entity);
+      unset($entity->is_reverted);
+    }
+    // The rest of the defaults is handled by default implementation.
+    // @see entity_defaults_rebuild()
+  }
 }

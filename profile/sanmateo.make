@@ -477,3 +477,7 @@ projects[filefield_sources_plupload][download][revision] = 8945a60
 libraries[plupload][download][type] = get
 libraries[plupload][download][url] = http://plupload.com/downloads/plupload_1_5_7.zip
 libraries[plupload][destination] = libraries
+
+projects[metatag][type] = module
+projects[metatag][subdir] = contrib
+projects[metatag][version] = 1.0-beta7
