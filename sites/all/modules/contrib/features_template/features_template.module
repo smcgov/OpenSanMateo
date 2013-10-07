@@ -61,7 +61,9 @@ function features_template_field_default_field_instances() {
  */
 function features_template_strongarm() {
   $data = features_template_infos('strongarm');
-  return features_template_implement('strongarm', $data);
+  if($data) {
+    return features_template_implement('strongarm', $data);
+  }
 }
 /**
  * implements hook_layout_panelizer_defaults()

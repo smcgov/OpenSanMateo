@@ -906,7 +906,7 @@ class EntityAPIControllerExportable extends EntityAPIController {
       $entity->original = entity_load_unchanged($this->entityType, $entity->{$this->nameKey});
     }
     // Update the status for entities getting overridden.
-    if (entity_has_status($this->entityType, $entity, ENTITY_IN_CODE) && empty($entity->is_rebuild)) {
+    if (entity_has_status($this->entityType, $entity, ENTITY_IN_CODE) && empty($entity->is_rebuild) && empty($entity->is_reverted)) {
       $entity->{$this->statusKey} |= ENTITY_CUSTOM;
     }
     return parent::save($entity, $transaction);
