@@ -117,6 +117,7 @@ dependencies[] = opensanmateo_frontend
 ;dependencies[] = opensanmateo_redirect
 dependencies[] = opensanmateo_overrides
 dependencies[] = opensanmateo_security
+dependencies[] = opensanmateo_contact
 
 ;DEVELOPMENT ONLY
 
