@@ -16,7 +16,6 @@ include_once 'opensanmateo_event.module.inc';
 function opensanmateo_event_sanmateo_master_is_set($base) {
   $vocabs = array(
     'calendars',
-    'event_type'
   );
 
   foreach($vocabs as $name) {
@@ -34,7 +33,6 @@ function opensanmateo_event_sanmateo_master_is_set($base) {
 function opensanmateo_event_sanmateo_is_master_set($is_master) {
   $vocabs = array(
     'calendars',
-    'event_type'
   );
   foreach($vocabs as $name) {
     variable_set(TAXONOMY_SYNC_MASTER_PREFIX . $name,  $is_master);

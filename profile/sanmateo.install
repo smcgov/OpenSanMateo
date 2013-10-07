@@ -17,6 +17,7 @@ function san_mateo_install_features_revert($modules) {
   foreach ($modules as $module) {
     if (($feature = feature_load($module, TRUE)) && module_exists($module)) {
       $components = array();
+  san_mateo_install_features_revert(array('opensanmateo_search'));
       // Forcefully revert all components of a feature.
       foreach (array_keys($feature->info['features']) as $component) {
         if (features_hook($component, 'features_revert')) {
@@ -55,4 +56,12 @@ function sanmateo_set_default_theme () {
  */
 function sanmateo_update_7001() {
   san_mateo_install_features_revert(array('opensanmateo_search'));
+}
+/**
+ * Remove extra type fields
+ *
+ */
+function sanmateo_update_7003() {
+  field_delete_field('field_event_type');
+  field_delete_field('field_term_location_type');
 }
