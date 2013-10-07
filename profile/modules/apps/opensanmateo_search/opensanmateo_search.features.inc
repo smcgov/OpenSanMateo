@@ -73,6 +73,7 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_multi_aggregation_16" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_multi_aggregation_17" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_multi_aggregation_18" : { "type" : "list\\u003Cstring\\u003E" },
+        "search_api_aggregation_1" : { "type" : "string" },
         "search_api_site_hash" : { "type" : "uri" },
         "search_api_site_id" : { "type" : "string" },
         "author:name" : { "type" : "text" },
@@ -86,6 +87,7 @@ function opensanmateo_search_default_search_api_index() {
         "field_event_date:value" : { "type" : "date" },
         "field_event_date:value2" : { "type" : "date" },
         "field_event_type:name" : { "type" : "text" },
+        "field_blog_author:title" : { "type" : "list\\u003Cstring\\u003E" },
         "field_thumbnail_image:file:url" : { "type" : "string" },
         "field_thumbnail_image:file:field_file_image_alt_text" : { "type" : "string" },
         "field_thumbnail_image:file:field_file_image_title_text" : { "type" : "string" },
@@ -106,7 +108,18 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_aggregation" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "fields" : { "search_api_aggregation_1" : {
+                "name" : "Aggregated Sort Date",
+                "type" : "first",
+                "fields" : [ "field_release_date", "field_event_date:value" ],
+                "description" : "A First aggregation of the following fields: Release Date, Date \\u00bb Start date."
+              }
+            }
+          }
+        },
         "search_api_alter_add_multi_aggregation" : {
           "status" : 1,
           "weight" : "0",

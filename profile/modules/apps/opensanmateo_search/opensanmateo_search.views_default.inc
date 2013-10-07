@@ -371,12 +371,12 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_19']['label'] = '';
   $handler->display->display_options['fields']['search_api_multi_aggregation_19']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_19']['link_to_entity'] = 0;
-  /* Sort criterion: Broken/missing handler */
-  $handler->display->display_options['sorts']['field_release_date']['id'] = 'field_release_date';
-  $handler->display->display_options['sorts']['field_release_date']['table'] = 'search_api_index_san_mateo_content_index';
-  $handler->display->display_options['sorts']['field_release_date']['field'] = 'field_release_date';
-  $handler->display->display_options['sorts']['field_release_date']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['field_release_date']['expose']['label'] = 'Release Date';
+  /* Sort criterion: Indexed Node: Aggregated Sort Date */
+  $handler->display->display_options['sorts']['search_api_aggregation_1']['id'] = 'search_api_aggregation_1';
+  $handler->display->display_options['sorts']['search_api_aggregation_1']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['sorts']['search_api_aggregation_1']['field'] = 'search_api_aggregation_1';
+  $handler->display->display_options['sorts']['search_api_aggregation_1']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['search_api_aggregation_1']['expose']['label'] = 'Date';
   /* Filter criterion: Indexed Node: Site Hash */
   $handler->display->display_options['filters']['search_api_site_hash']['id'] = 'search_api_site_hash';
   $handler->display->display_options['filters']['search_api_site_hash']['table'] = 'search_api_index_san_mateo_content_index';
@@ -397,6 +397,11 @@ function opensanmateo_search_views_default_views() {
 
   /* Display: List w/search */
   $handler = $view->new_display('panel_pane', 'List w/search', 'panel_pane_1');
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Search: Relevance */
+  $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
+  $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Indexed Node: Site Hash */
@@ -515,7 +520,7 @@ function opensanmateo_search_views_default_views() {
       'search_api_multi_aggregation_8' => '',
     ),
     'sorts' => array(
-      'field_release_date' => '',
+      'search_api_aggregation_1' => '',
     ),
   );
 
