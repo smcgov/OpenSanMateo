@@ -44,10 +44,8 @@ function sanmateo_install() {
 * Set the default theme
 */
 function sanmateo_set_default_theme () {
-  /*
-  theme_enable(array("sanmateo"));
-  variable_set('theme_default', 'sanmateo');
-  */
+  theme_enable(array("smc_base"));
+  variable_set('theme_default', 'smc_base');
 }
 
 
