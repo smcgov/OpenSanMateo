@@ -476,3 +476,8 @@ libraries[plupload][destination] = libraries
 projects[metatag][type] = module
 projects[metatag][subdir] = contrib
 projects[metatag][version] = 1.0-beta7
+
+projects[jira_issue_collector][type] = module
+projects[jira_issue_collector][subdir] = contrib
+projects[jira_issue_collector][version] = 1.1
+

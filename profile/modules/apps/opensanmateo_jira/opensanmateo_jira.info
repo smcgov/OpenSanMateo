@@ -1,0 +1,8 @@
+name = OpenSanMateo Jira
+core = 7.x
+package = OpenSanMateo
+dependencies[] = defaultconfig
+dependencies[] = jira_issue_collector
+features[defaultconfig][] = strongarm:jira_issue_collector_code
+features[features_api][] = api:2
+project path = /tmp
