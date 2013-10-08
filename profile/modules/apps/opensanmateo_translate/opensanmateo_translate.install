@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function opensanmateo_translate_install() {
+
+  // Set default google translator disclaimer text.
+  $disclaimer_text = '<p>The County of San Mateo has added a translation feature developed by Google Translate to assist web visitors in understanding information on this website in a variety of foreign languages. Please be aware that Google Translate, a free third party service which the County does not control, provides automated computer translations that may not give you an exact translation.</p>
+
+<p>The County cannot guarantee the accuracy of translations through Google Translate so translations should not be considered exact and only used as a rough guide. Anyone relying on information obtained from Google Translate does so at his or her own risk. The County disclaims and will not accept any liability for damages or losses of any kind caused by the use of the Google Translate feature.</p>';
+  variable_set('google_translator_disclaimer', $disclaimer_text);
+}

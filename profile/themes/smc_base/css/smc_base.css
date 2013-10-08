@@ -8627,30 +8627,81 @@ you can use the generic selector below, but it's slower:
     .universal-teaser .node-thumbnail img {
       max-width: 100%;
       height: auto; }
-  /* line 89, ../scss/elements/teaser.scss */
-  .universal-teaser .node-location .location {
-    padding: 0;
-    margin: 0; }
-  /* line 94, ../scss/elements/teaser.scss */
-  .universal-teaser .node-location ul.adr {
-    margin: 0;
-    padding: 0; }
-    /* line 98, ../scss/elements/teaser.scss */
-    .universal-teaser .node-location ul.adr li {
-      list-style-type: none;
-      margin: 0;
+  /* line 83, ../scss/elements/teaser.scss */
+  .universal-teaser .node-location {
+    width: 50%;
+    float: left; }
+    /* line 87, ../scss/elements/teaser.scss */
+    .universal-teaser .node-location .location {
       padding: 0;
-      color: #555a5a; }
-  /* line 107, ../scss/elements/teaser.scss */
+      margin: 0; }
+    /* line 92, ../scss/elements/teaser.scss */
+    .universal-teaser .node-location ul.adr {
+      margin: 0;
+      padding: 0; }
+      /* line 96, ../scss/elements/teaser.scss */
+      .universal-teaser .node-location ul.adr li {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        color: #555a5a; }
+  /* line 104, ../scss/elements/teaser.scss */
+  .universal-teaser .node-date {
+    width: 50%;
+    float: left; }
+  /* line 120, ../scss/elements/teaser.scss */
   .universal-teaser .read-more-wrapper {
     font-size: 0.9em; }
-    /* line 110, ../scss/elements/teaser.scss */
+    /* line 123, ../scss/elements/teaser.scss */
     .universal-teaser .read-more-wrapper a:after {
       content: ' \00BB'; }
-  /* line 115, ../scss/elements/teaser.scss */
+  /* line 128, ../scss/elements/teaser.scss */
   .universal-teaser.event {
     padding-left: 1em;
-    padding-right: 1em; }
+    padding-right: 1em;
+    padding-bottom: 4em; }
+    /* line 133, ../scss/elements/teaser.scss */
+    .universal-teaser.event h5 {
+      text-transform: uppercase;
+      font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+      font-weight: 100;
+      margin-bottom: 0; }
+      /* line 140, ../scss/elements/teaser.scss */
+      .universal-teaser.event h5 span {
+        display: none; }
+    /* line 146, ../scss/elements/teaser.scss */
+    .universal-teaser.event .node-location {
+      font-size: 0.75em; }
+    /* line 149, ../scss/elements/teaser.scss */
+    .universal-teaser.event .node-date {
+      font-size: 0.75em; }
+    /* line 153, ../scss/elements/teaser.scss */
+    .universal-teaser.event .node-teaser {
+      border-bottom: 1px dashed rgba(56, 147, 155, 0.1);
+      border-top: 1px dashed rgba(56, 147, 155, 0.1);
+      padding: 1em;
+      margin-left: -1em;
+      margin-right: -1em;
+      font-size: 0.75em; }
+    /* line 164, ../scss/elements/teaser.scss */
+    .universal-teaser.event .read-more-wrapper {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      font-size: 1em; }
+      /* line 171, ../scss/elements/teaser.scss */
+      .universal-teaser.event .read-more-wrapper a {
+        display: block;
+        padding: 1em 0;
+        text-transform: uppercase;
+        color: #036cb6;
+        text-align: center;
+        font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+        background-color: rgba(3, 108, 182, 0.1); }
+        /* line 180, ../scss/elements/teaser.scss */
+        .universal-teaser.event .read-more-wrapper a:hover {
+          background-color: rgba(3, 108, 182, 0.2); }
 
 /* Fonts */
 /* Media Queries */

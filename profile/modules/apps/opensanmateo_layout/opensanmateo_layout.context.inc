@@ -50,6 +50,12 @@ function opensanmateo_layout_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-10',
         ),
+        'menu-menu-footer-utility' => array(
+          'module' => 'menu',
+          'delta' => 'menu-footer-utility',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
       ),
     ),
   );

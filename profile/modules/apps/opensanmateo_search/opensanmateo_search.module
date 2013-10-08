@@ -181,7 +181,7 @@ function opensanmateo_search_preprocess_views_view_fields(&$vars) {
         $link_text = t('Read More');
       }
 
-      $vars['fields']['more_link'] = "<div class='read-more-wrapper'>" . l($link_text, $vars['row']->_entity_properties['url'], array('attributes' => array('class' => array('read-more')))) . "</div>";
+      $vars['fields']['more_link'] = "<div class='read-more-wrapper clearfix'>" . l($link_text, $vars['row']->_entity_properties['url'], array('attributes' => array('class' => array('read-more')))) . "</div>";
     }
   }
 }
