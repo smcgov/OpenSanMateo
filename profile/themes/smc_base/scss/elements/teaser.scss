@@ -78,13 +78,11 @@
 		
   }
   
-  .node-start-date {
-    
-  }
-  .node-end-date {
-    
-  }
+  
+  
   .node-location {
+    width: 50%;
+    float: left;
     
     .location {
       padding: 0;
@@ -103,6 +101,21 @@
       }
     }  
   }
+  .node-date {
+    width: 50%;
+    float: left;
+    
+    .label {
+      
+    }
+    .node-start-date {
+    
+    }
+    .node-end-date {
+      
+    }  
+  }
+  
   
   .read-more-wrapper {
     font-size: 0.9em;
@@ -115,5 +128,59 @@
   &.event {
     padding-left: 1em;
     padding-right: 1em;
+    padding-bottom: 4em;
+    
+    h5 {
+      text-transform: uppercase;
+      font-family: $reg;
+      font-weight: 100;
+      margin-bottom: 0;
+      //font-size: 0.75em;
+      
+      span {
+        display: none;
+      }
+      
+    }
+    
+    .node-location {
+      font-size: 0.75em;
+    }
+    .node-date {
+      font-size: 0.75em;
+    }
+    
+    .node-teaser {
+      border-bottom: 1px dashed rgba(56, 147, 155, 0.1);
+      border-top: 1px dashed rgba(56, 147, 155, 0.1);
+
+      padding: 1em;
+      
+      margin-left: -1em;
+      margin-right: -1em;
+      
+      font-size: 0.75em;
+    }
+    .read-more-wrapper {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      font-size: 1em;
+      
+      a {
+        display: block;
+        padding: 1em 0;
+        text-transform: uppercase;
+        color: $primaryBlue;
+        text-align: center;
+        font-family: $bold;
+        background-color: rgba(3, 108, 182, 0.1);
+        
+        &:hover {
+          background-color: rgba(3, 108, 182, 0.2);  
+        }
+      }
+    }
   }
 }

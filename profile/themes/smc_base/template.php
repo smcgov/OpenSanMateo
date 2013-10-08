@@ -251,22 +251,32 @@ function smc_base_preprocess_views_view_fields(&$vars) {
 
     // start date
     if (isset($vars['fields']['search_api_multi_aggregation_9']->content) && strlen($vars['fields']['search_api_multi_aggregation_9']->content) >= 1) {
-      $startdate = '<div class="node-start-date">' . smc_base_gimme_date($vars['fields']['search_api_multi_aggregation_9']->content) . '</div>';
-      $vars['fields']['search_api_multi_aggregation_9']->content = $startdate;
+      $startdate = '<div class="node-start-date"><h5>' . t('From') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content) . '</div></div>';
     }
     else {
       // remove it then
+      $startdate = '';
       unset($vars['fields']['search_api_multi_aggregation_9']);
     }
     // end date
     if (isset($vars['fields']['search_api_multi_aggregation_10']->content) && strlen($vars['fields']['search_api_multi_aggregation_10']->content) >= 1) {
-      $enddate = '<div class="node-end-date">' . smc_base_gimme_date($vars['fields']['search_api_multi_aggregation_10']->content) . '</div>';
-      $vars['fields']['search_api_multi_aggregation_10']->content = $enddate;
+      $enddate = '<div class="node-end-date"><h5>' . t('To') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_10']->content) . '</div></div>';
     }
     else {
       // remove it then
+      $enddate = '';
       unset($vars['fields']['search_api_multi_aggregation_10']);
     }
+    
+    // make the date into a new object that is usable
+    $vars['fields']['dateinfo'] = new stdClass();
+    $vars['fields']['dateinfo']->content = '<div class="node-date clearfix">' . $startdate . $enddate . '</div>';
+    $vars['fields']['dateinfo']->label_html = '';
+    $vars['fields']['dateinfo']->wrapper_prefix = '';
+    $vars['fields']['dateinfo']->wrapper_suffix = '';
+    // unset the original date field(s)
+    unset($vars['fields']['search_api_multi_aggregation_9']);
+    unset($vars['fields']['search_api_multi_aggregation_10']);
     
     // make the more link actually an object that is expected
     $vars['fields']['readmore'] = new stdClass();
@@ -307,19 +317,7 @@ function smc_base_format_timestamp($stamp) {
   return $sdate1 . '<sup>' . $sdate2 . '</sup> ' . $sdate3 . ' at ' . $stime;
 }
 
-function smc_base_gimme_date($stamp) {
-  // Date formatting and display
-  $dateformat1 = "M j";   // Aug 12
-  $dateformat2 = "S";     // th
-  $dateformat3 = "Y";     // 2013
-  $timeformat = "g:i a";  // 8:00 am
-  $osdate = strtotime($stamp);
-  $sdate1 = format_date($osdate, 'custom', $dateformat1);
-  $sdate2 = format_date($osdate, 'custom', $dateformat2);
-  $sdate3 = format_date($osdate, 'custom', $dateformat3);
-  $stime = format_date($osdate, 'custom', $timeformat);
-  return $sdate1 . '<sup>' . $sdate2 . '</sup> ' . $sdate3 . ' at ' . $stime;
-}
+
 function smc_base_views_pre_render(&$view) {
   //krumo($view);
   if ($view->name == 'opensanmateo_search') {

@@ -7,9 +7,9 @@
 ini_set('memory_limit', '512M');
 
 $common_settings_env_map = array(
-  'dev' => 'smc:smc@dev',
-  'test' => 'smc:smc@staging',
-  'prod' => 'prod',
+  'dev' => 'smc:smc@smcgov.smcdev',
+  'test' => 'smc:smc@smcgov.smcstg',
+  'prod' => 'smcgov.smcprd',
 );
 $common_settings_url_prefix = $common_settings_env_map[$_ENV['AH_SITE_ENVIRONMENT']];
 
@@ -50,6 +50,9 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
   // ( $_ENV['AH_SITE_ENVIRONMENT'] is not set)
   // Add any desired code here.
 }
+
+// Set master-client settings that are common across client sites
+$conf['sanmateo_master_is'] = $common_settings_url_prefix . '-acquia.fayze2.com';
 
 // Configure caching
 //$conf['cache_backends'][] = './sites/all/modules/contrib/memcache/memcache.inc';
