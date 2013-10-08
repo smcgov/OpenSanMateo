@@ -251,22 +251,32 @@ function smc_base_preprocess_views_view_fields(&$vars) {
 
     // start date
     if (isset($vars['fields']['search_api_multi_aggregation_9']->content) && strlen($vars['fields']['search_api_multi_aggregation_9']->content) >= 1) {
-      $startdate = '<div class="node-start-date">' . smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content) . '</div>';
-      $vars['fields']['search_api_multi_aggregation_9']->content = $startdate;
+      $startdate = '<div class="node-start-date"><h5>' . t('From') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content) . '</div></div>';
     }
     else {
       // remove it then
+      $startdate = '';
       unset($vars['fields']['search_api_multi_aggregation_9']);
     }
     // end date
     if (isset($vars['fields']['search_api_multi_aggregation_10']->content) && strlen($vars['fields']['search_api_multi_aggregation_10']->content) >= 1) {
-      $enddate = '<div class="node-end-date">' . smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_10']->content) . '</div>';
-      $vars['fields']['search_api_multi_aggregation_10']->content = $enddate;
+      $enddate = '<div class="node-end-date"><h5>' . t('To') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_10']->content) . '</div></div>';
     }
     else {
       // remove it then
+      $enddate = '';
       unset($vars['fields']['search_api_multi_aggregation_10']);
     }
+    
+    // make the date into a new object that is usable
+    $vars['fields']['dateinfo'] = new stdClass();
+    $vars['fields']['dateinfo']->content = '<div class="node-date clearfix">' . $startdate . $enddate . '</div>';
+    $vars['fields']['dateinfo']->label_html = '';
+    $vars['fields']['dateinfo']->wrapper_prefix = '';
+    $vars['fields']['dateinfo']->wrapper_suffix = '';
+    // unset the original date field(s)
+    unset($vars['fields']['search_api_multi_aggregation_9']);
+    unset($vars['fields']['search_api_multi_aggregation_10']);
     
     // make the more link actually an object that is expected
     $vars['fields']['readmore'] = new stdClass();
