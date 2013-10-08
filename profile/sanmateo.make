@@ -269,7 +269,6 @@ projects[content_access][subdir] = contrib
 projects[content_access][version] = 1.2-beta1
 projects[content_access][patch][] = http://drupal.org/files/add_view_own_unpublished_content_setting-1225520-5.patch
 
-
 projects[search_api][type] = module
 projects[search_api][subdir] = contrib
 projects[search_api][version] = 1.7
@@ -406,11 +405,19 @@ projects[field_views][version] = 1.0-alpha1
 projects[taxonomy_view_mode][type] = module
 projects[taxonomy_view_mode][subdir] = contrib
 projects[taxonomy_view_mode][version] = 1.0-alpha1
+
+projects[xrds_simple][type] = module
 projects[xrds_simple][subdir] = contrib
+projects[xrds_simple][version] = 1.1
+
+projects[openid_provider][type] = module
 projects[openid_provider][subdir] = contrib
-projects[filefield_sources][subdir] = contrib
+projects[openid_provider][version] = 1.0
+
+projects[remote_stream_wrapper][type] = module
 projects[remote_stream_wrapper][subdir] = contrib
-projects[remote_stream_wrapper][patch][] = http://drupal.org/files/broken-image-style-7.20-1926434-0.patch
+projects[remote_stream_wrapper][version] = 1.0-beta4
+projects[remote_stream_wrapper][patch][1926434] = http://drupal.org/files/broken-image-style-7.20-1926434-0.patch
 
 projects[jquery_update][type] = module
 projects[jquery_update][subdir] = contrib
