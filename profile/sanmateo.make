@@ -445,7 +445,7 @@ projects[file_entity][type] = module
 projects[file_entity][subdir] = contrib
 projects[file_entity][download][type] = git
 projects[file_entity][download][url] = http://git.drupal.org/project/file_entity.git
-projects[file_entity][download][revision] = 3dc863a
+projects[file_entity][download][revision] = 208ae95
 
 projects[term_ref_autocomplete][type] = module
 projects[term_ref_autocomplete][subdir] = contrib
