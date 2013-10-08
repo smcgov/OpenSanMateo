@@ -1,0 +1,148 @@
+<?php
+
+/**
+ * @file
+ * Drupal Module: JIRA Issue Collector
+ *
+ * Adds the required code to your Drupal pages to add the JIRA Issue Collector
+ * Widget.
+ *
+ * Code heavily inspired by the Snap Engage module,
+ * http://drupal.org/project/snapengage.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function jira_issue_collector_menu() {
+  $items = array();
+
+  $items['admin/config/system/jira_issue_collector'] = array(
+    'title' => 'JIRA Issue Collector',
+    'description' => 'Configure the settings used to add a JIRA Issue Collector widget to your site.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('jira_issue_collector_admin_settings_form'),
+    'access arguments' => array('administer jira issue collector'),
+    'file' => 'jira_issue_collector.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function jira_issue_collector_permission() {
+  return array(
+    'administer jira issue collector' => array(
+      'title' => t('Administer JIRA Issue Collector'),
+      'description' => t('Perform administration tasks for JIRA Issue Collector'),
+    ),
+    'use PHP for JIRA Issue Collector visibility' => array(
+      'title' => t('Use PHP for JIRA Issue Collector visibility'),
+      'description' => t('Enter PHP code in the field for JIRA Issue Collector visibility settings.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_init().
+ *
+ * Inserts JavaScript at the end of the page.
+ */
+function jira_issue_collector_init() {
+  global $user;
+
+  $url = variable_get('jira_issue_collector_url', FALSE);
+
+  // 1. Check if a JIRA Issue Collector URL has been determined.
+  // 2. Track page views based on visibility value.
+  // 3. Check if we should track the currently active user's role.
+  if (!empty($url) && _jira_issue_collector_visibility_pages() && _jira_issue_collector_visibility_roles($user)) {
+    drupal_add_js(drupal_get_path('module', 'jira_issue_collector') . '/jira_issue_collector.js', 'file');
+    drupal_add_js(array('jiraIssueCollector' => array('url' => check_url($url))), 'setting');
+  }
+}
+
+/**
+ * Determine visibility based on roles.
+ *
+ * Based on visibility setting this function returns TRUE if JIRA Issue
+ * Collector code should be added for the current role and otherwise FALSE.
+ *
+ * @param object $account
+ *   The user account to check visibility for.
+ *
+ * @return bool
+ *   Whether visibility is allowed or not.
+ */
+function _jira_issue_collector_visibility_roles($account) {
+  $enabled = FALSE;
+  // Filter the array to remove any non-selected roles. They will appear as
+  // entries with value set to 0.
+  $roles = array_filter(variable_get('jira_issue_collector_roles', array()));
+
+  if (!empty($roles)) {
+    // One or more roles are selected for tracking.
+    foreach (array_keys($account->roles) as $rid) {
+      // Is the current user a member of one role enabled for tracking?
+      if (isset($roles[$rid]) && $rid == $roles[$rid]) {
+        // Current user is a member of a role that should be shown the
+        // JIRA Issue Collector widget.
+        $enabled = TRUE;
+        break;
+      }
+    }
+  }
+  else {
+    // No role is selected for tracking, therefor the widget should be shown for
+    // all roles.
+    $enabled = TRUE;
+  }
+
+  return $enabled;
+}
+
+/**
+ * Determine visibility based on path.
+ *
+ * Based on visibility setting this function returns TRUE if JIRA Issue
+ * Collector code should be added to the current page and otherwise FALSE.
+ *
+ * @return bool
+ *   Whether visibility is allowed or not.
+ */
+function _jira_issue_collector_visibility_pages() {
+  $visibility = variable_get('jira_issue_collector_visibility', 0);
+  $pages = variable_get('jira_issue_collector_pages', '');
+
+  // Match path if necessary.
+  if (!empty($pages)) {
+    if ($visibility < 2) {
+      $path = drupal_get_path_alias($_GET['q']);
+      // Compare with the internal and path alias (if any).
+      $page_match = drupal_match_path($path, $pages);
+      if ($path != $_GET['q']) {
+        $page_match = $page_match || drupal_match_path($_GET['q'], $pages);
+      }
+      // When $visibility has a value of 0, the block is displayed on
+      // all pages except those listed in $pages. When set to 1, it
+      // is displayed only on those pages listed in $pages.
+      $page_match = !($visibility xor $page_match);
+    }
+    elseif (module_exists('php')) {
+      $page_match = php_eval($pages);
+    }
+    else {
+      $page_match = FALSE;
+    }
+  }
+  else {
+    $page_match = TRUE;
+  }
+
+  return $page_match;
+}

@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the JIRA Issue Collector module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function jira_issue_collector_uninstall() {
+  // Avoid leaving any traces. Delete all variables.
+  $vars = array('code', 'url', 'roles', 'visibility', 'pages');
+  foreach ($vars as $var) {
+    variable_del('jira_issue_collector_' . $var);
+  }
+}

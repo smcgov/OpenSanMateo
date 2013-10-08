@@ -1,0 +1,173 @@
+<?php
+
+/**
+ * @file
+ * Test file for JIRA Issue Collector module.
+ */
+
+/**
+ * Test basic functionality of JIRA Issue Collector module.
+ */
+class JiraIssueCollectorBasicTest extends DrupalWebTestCase {
+
+  /**
+   * Implements getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => t('JIRA Issue Collector basic tests'),
+      'description' => t('Test basic functionality of JIRA Issue Collector module.'),
+      'group' => 'JIRA Issue Collector',
+    );
+  }
+
+  /**
+   * Implements DrupalWebTestCase::setup().
+   */
+  protected function setUp() {
+    parent::setUp('jira_issue_collector');
+
+    $permissions = array(
+      'access administration pages',
+      'administer jira issue collector',
+    );
+
+    // User to set up JIRA Issue Collector.
+    $this->admin_user = $this->drupalCreateUser($permissions);
+    $this->drupalLogin($this->admin_user);
+
+    // Example URL to code for a JIRA Issue Collector.
+    $this->jira_issue_collector_script = drupal_get_path('module', 'jira_issue_collector') . '/jira_issue_collector.js';
+    $this->jira_issue_collector_url = 'https://jira-instance/some-path/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=abcd1234';
+  }
+
+  /**
+   * Pass if the JIRA Issue Collector IS found on the loaded page.
+   *
+   * @param string $message
+   *   Message to display.
+   * @param string $group
+   *   The group this message belongs to, defaults to 'Other'.
+   *
+   * @return bool
+   *   TRUE on pass, FALSE on fail.
+   */
+  protected function assertJiraIssueCollectorPresent($message = '', $group = 'Other') {
+    $file_present = $this->assertRaw($this->jira_issue_collector_script, $message . ' Javascript file found.', $group);
+    $setting_present = $this->assertRaw(drupal_json_encode($this->jira_issue_collector_url),  $message . ' URL found.', $group);
+    return $file_present && $setting_present;
+  }
+
+  /**
+   * Pass if the JIRA Issue Collector IS NOT  found on the loaded page.
+   *
+   * @param string $message
+   *   Message to display.
+   * @param string $group
+   *   The group this message belongs to, defaults to 'Other'.
+   *
+   * @return bool
+   *   TRUE on pass, FALSE on fail.
+   */
+  protected function assertJiraIssueCollectorNotPresent($message = '', $group = 'Other') {
+    $file_present = $this->assertNoRaw($this->jira_issue_collector_script, $message, $group);
+    $setting_present = $this->assertNoRaw(drupal_json_encode($this->jira_issue_collector_url), $message, $group);
+    return $file_present && $setting_present;
+  }
+
+  /**
+   * Check presence of the settings page.
+   */
+  public function testConfiguration() {
+    // Check for setting page's presence.
+    $this->drupalGet('admin/config/system/jira_issue_collector');
+    $this->assertRaw(t('Code to insert'), 'Settings page displayed.');
+  }
+
+  /**
+   * Check that the JIRA Issue Collector code is visible.
+   */
+  public function testPageVisibility() {
+    variable_set('jira_issue_collector_url', $this->jira_issue_collector_url);
+
+    // Show collector on "every page except the listed pages".
+    variable_set('jira_issue_collector_visibility', 0);
+    // Disable collector one "admin*" pages only.
+    variable_set('jira_issue_collector_pages', "admin\nadmin/*");
+    // Enable collector only for authenticated users only.
+    variable_set('jira_issue_collector_roles', array(DRUPAL_AUTHENTICATED_RID => DRUPAL_AUTHENTICATED_RID));
+
+    // Check collector code visibility.
+    $this->drupalGet('');
+    $this->assertJiraIssueCollectorPresent('Collector is displayed for authenticated users.');
+
+    // Test whether collector code is not included on pages to omit.
+    $this->drupalGet('admin');
+    $this->assertJiraIssueCollectorNotPresent('Collector is not displayed on admin page.');
+    $this->drupalGet('admin/config/system');
+    $this->assertJiraIssueCollectorNotPresent('Collector is not displayed on admin subpage.');
+
+    // Test whether collector code display is properly flipped.
+    variable_set('jira_issue_collector_visibility', 1);
+    $this->drupalGet('admin');
+    $this->assertJiraIssueCollectorPresent('Collector is displayed on admin page.');
+    $this->drupalGet('admin/config/system');
+    $this->assertJiraIssueCollectorPresent('Collector is displayed on admin subpage.');
+    $this->drupalGet('');
+    $this->assertJiraIssueCollectorNotPresent('Collector is NOT displayed on front page.');
+
+    // Test whether collector code is not display for anonymous.
+    $this->drupalLogout();
+    $this->drupalGet('');
+    $this->assertJiraIssueCollectorNotPresent('Collector is NOT displayed for anonymous.');
+  }
+
+  /**
+   * Test URL dectection from HTML code.
+   *
+   * Check whether we can extract the URL to the collector from inserted code
+   * using the "Embed directly in the HTML of your website" method.
+   */
+  public function testDirectEmbedUrlDetection() {
+    $settings = array(
+      'jira_issue_collector_code' => '<script type="text/javascript" src="' . $this->jira_issue_collector_url . '"></script>',
+    );
+    $this->drupalPost('admin/config/system/jira_issue_collector', $settings, t('Save configuration'));
+    $this->assertFieldByName('jira_issue_collector_url', $this->jira_issue_collector_url, 'Collector detected correctly');
+  }
+
+  /**
+   * Test URL detection from jQuery code.
+   *
+   * This checks whether we can extract the URL to the collector from inserted
+   * code using the "Embed in an existing JavaScript resource (requires JQuery)"
+   * method.
+   */
+  public function testJqueryEmbedUrlDetection() {
+    $code = '// Requires jQuery!
+      jQuery.ajax({
+        url: "' . $this->jira_issue_collector_url . '",
+        type: "get",
+        cache: true,
+        dataType: "script"
+      });';
+
+    $settings = array(
+      'jira_issue_collector_code' => $code,
+    );
+    $this->drupalPost('admin/config/system/jira_issue_collector', $settings, t('Save configuration'));
+    $this->assertFieldByName('jira_issue_collector_url', $this->jira_issue_collector_url, 'Collector detected correctly');
+  }
+
+  /**
+   * Check whether it is possible to inject code via the collector URL.
+   */
+  public function testXssProtection() {
+    $url = $this->jira_issue_collector_url . ");alert('XSS');//";
+    variable_set('jira_issue_collector_url', $url);
+
+    // Check collector code visibility.
+    $this->drupalGet('');
+    $this->assertNoRaw("alert('XSS')", 'Collector URL is XSS protected.');
+  }
+}
