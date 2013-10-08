@@ -66,6 +66,8 @@ $sites['smcgov.smcdev-acquia.fayze2.com'] = 'smcgov.org';
 $sites['hr.smcdev-acquia.fayze2.com'] = 'hr.smcgov.org';
 $sites['planning.smcdev-acquia.fayze2.com'] = 'planning.smcgov.org';
 $sites['parks.smcdev-acquia.fayze2.com'] = 'parks.smcgov.org';
+$sites['isd.smcdev-acquia.fayze2.com'] = 'isd.smcgov.org';
+$sites['da.smcdev-acquia.fayze2.com'] = 'da.smcgov.org';
 
 /*
  * Map San Mateo sites to staging host
@@ -79,6 +81,8 @@ $sites['smcgov.smcstg-acquia.fayze2.com'] = 'smcgov.org';
 $sites['hr.smcstg-acquia.fayze2.com'] = 'hr.smcgov.org';
 $sites['planning.smcstg-acquia.fayze2.com'] = 'planning.smcgov.org';
 $sites['parks.smcstg-acquia.fayze2.com'] = 'parks.smcgov.org';
+$sites['isd.smcstg-acquia.fayze2.com'] = 'isd.smcgov.org';
+$sites['da.smcstg-acquia.fayze2.com'] = 'da.smcgov.org';
 
 /*
  * Map San Mateo sites to prod host
@@ -87,9 +91,4 @@ $sites['parks.smcstg-acquia.fayze2.com'] = 'parks.smcgov.org';
 $sites['demo1.smcprd-acquia.fayze2.com'] = 'demo1';
 $sites['demo2.smcprd-acquia.fayze2.com'] = 'demo2';
 $sites['demo3.smcprd-acquia.fayze2.com'] = 'demo3';
-
-$sites['smcgov.smcprd-acquia.fayze2.com'] = 'smcgov.org';
-$sites['hr.smcprd-acquia.fayze2.com'] = 'hr.smcgov.org';
-$sites['planning.smcprd-acquia.fayze2.com'] = 'planning.smcgov.org';
-$sites['parks.smcprd-acquia.fayze2.com'] = 'parks.smcgov.org';
 

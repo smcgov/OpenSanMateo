@@ -91,4 +91,5 @@ function sanmateo_master_is($master = NULL) {
   }
   $master = variable_get("sanmateo_master_is", $master);
   module_invoke_all("sanmateo_master_is_set", $master);
+  return $master;
 }
