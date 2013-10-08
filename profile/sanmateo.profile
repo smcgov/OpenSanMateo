@@ -65,6 +65,14 @@ function sanmateo_install_tasks($install_state) {
   }
 
   // Add our own profile tasks here
+  $tasks['sanmateo_update_master_client'] = array(
+    'function' => 'sanmateo_update_master_client',
+    'display' => TRUE,
+    'display_name' => st('Finalize master-client settings'),
+    'type' => 'normal',
+    'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+  );
+
   $tasks['sanmateo_features_template_revert'] = array(
     'function' => 'features_template_revert',
     'display' => TRUE,
@@ -74,6 +82,11 @@ function sanmateo_install_tasks($install_state) {
   );
 
   return $tasks;
+}
+
+function sanmateo_update_master_client() {
+  sanmateo_is_master();
+  sanmateo_master_is();
 }
 
 function sanmateo_is_master($is_master = NULL) {

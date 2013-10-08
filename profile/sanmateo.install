@@ -56,6 +56,13 @@ function sanmateo_update_7001() {
   san_mateo_install_features_revert(array('opensanmateo_search'));
 }
 /**
+ * [SMC-464] Timestamp(s) on Unified teasers inconsistent
+ */
+function sanmateo_update_7002() {
+  san_mateo_install_features_revert(array('opensanmateo_search'));
+}
+
+/**
  * Remove extra type fields
  *
  */
@@ -65,14 +72,24 @@ function sanmateo_update_7003() {
 }
 
 /**
- * [SMC-464] Timestamp(s) on Unified teasers inconsistent
- */
-function sanmateo_update_7002() {
-  san_mateo_install_features_revert(array('opensanmateo_search'));
-}
-/**
  * Turn on jira app
  */
 function sanmateo_update_7004() {
-  module_enable(array('opensanmateo_jira'));  
+  module_enable(array('opensanmateo_jira'));
 }
+
+/**
+ * Enable modules - metatag, metatag_context
+ */
+function sanmateo_update_7005() {
+  module_enable(array('metatag', 'metatag_context'));
+}
+
+/**
+ * Reset master-client info to pick up changes in common settings, if any
+ */
+function sanmateo_update_7006() {
+  sanmateo_update_master_client();
+}
+
+// End of file sanmateo.install
