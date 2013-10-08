@@ -21,11 +21,6 @@ projects[redirect][subdir] = contrib
 projects[redirect][version] = 1.0-beta4
 projects[redirect][patch][] = http://drupal.org/files/redirect_entity_type_disable-1263884-11.patch
 
-projects[metatag][type] = module
-projects[metatag][subdir] = contrib
-projects[metatag][version] = 1.0-beta4
-projects[metatag][patch][] = http://drupal.org/files/metatag-n1871020-9_1.patch
-
 projects[backup_migrate][type] = module
 projects[backup_migrate][subdir] = contrib
 projects[backup_migrate][version] = 2.2
