@@ -507,6 +507,12 @@ function opensanmateo_search_search_api_alter_callback_info() {
     'class' => 'SearchApiRenderedImage',
     'weight' => 999,
   );
+  $callbacks['search_opensanmateo_summary'] = array(
+    'name' => t('Generate summary'),
+    'description' => t('If no summary is present, generate one from body text'),
+    'class' => 'SearchApiNodeSummary',
+    'weight' => 999,
+  );
 
   return $callbacks;
 }
@@ -518,7 +524,7 @@ function opensanmateo_search_search_api_alter_callback_info() {
 function opensanmateo_search_default_search_api_server_alter(array &$defaults) {
   global $_ENV;
 
-  // If we have the Solr server definition already set AND we're in the Acquia Cloud, swap out server definitions  
+  // If we have the Solr server definition already set AND we're in the Acquia Cloud, swap out server definitions
   if (isset($defaults['san_mateo_solr_server']) && isset($_ENV['AH_SITE_ENVIRONMENT'])) {
     $defaults['san_mateo_solr_server'] = entity_import('search_api_server', '{
       "name" : "San Mateo Solr Server [Acquia]",
@@ -543,8 +549,8 @@ function opensanmateo_search_default_search_api_server_alter(array &$defaults) {
       "rdf_mapping" : []
     }');
   }
-} 
- 
+}
+
 /**
  * Search API data alteration callback that adds an URL field for all items.
  */
@@ -597,6 +603,41 @@ class SearchApiRenderedImage extends SearchApiAbstractAlterCallback {
         'type' => 'uri',
       ),
     );
+  }
+
+}
+
+/**
+ * Search API data alteration callback that creates a summary from body text if none exists.
+ */
+class SearchApiNodeSummary extends SearchApiAbstractAlterCallback {
+
+  /**
+   * Implements SearchApiAlterCallbackInterface::configurationForm().
+   */
+  public function configurationForm() {
+    $form = array();
+
+    $form['trim_length'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Trim length for auto-generated summary'),
+      '#default_value' => !empty($this->options['trim_length']) ? $this->options['trim_length'] : 100,
+    );
+
+    return $form;
+  }
+
+  /**
+   * Alter items before indexing
+   */
+  public function alterItems(array &$items) {
+    foreach ($items as $id => &$item) {
+      // If our aggregated summary field is empty, fudge something from the body text if that's not empty
+      $body = field_get_items('node', $item, 'body');
+      if (empty($item->search_api_multi_aggregation_1[0]) && !empty($body[0]['safe_value'])) {
+        $item->search_api_multi_aggregation_1[0] = text_summary(strip_tags($body[0]['safe_value']), NULL, $this->options['trim_length']);
+      }
+    }
   }
 
 }
