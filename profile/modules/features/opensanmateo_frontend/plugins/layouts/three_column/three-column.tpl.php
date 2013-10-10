@@ -43,7 +43,7 @@
     </div>
   </div>
   
-  <div class="panel-panel panel-col-bottom section news clearfix">
+  <div class="panel-panel panel-col-bottom section clearfix">
     <div class="inside">
       <?php print $content['bottom']; ?>
       </div>
