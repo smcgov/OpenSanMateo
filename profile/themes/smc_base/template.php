@@ -144,7 +144,7 @@ function smc_base_preprocess_panels_pane(&$vars) {
 }
 function smc_base_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
-
+  //krumo($vars);
   if ($view->name == 'opensanmateo_search') {
     //krumo($vars['fields']);
     
@@ -284,6 +284,12 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     $vars['fields']['readmore']->label_html = '';
     $vars['fields']['readmore']->wrapper_prefix = '';
     $vars['fields']['readmore']->wrapper_suffix = '';
+    
+    // Now we need to unset the readmore link on certain display modes
+    // Curated List Display Mode
+    if ($view->current_display == 'block_2') {
+      unset($vars['fields']['readmore']);
+    }
     
     // we need to ensure that in the panels pane these items are removed
     // as the views rewrite groups them all into one field (street)
