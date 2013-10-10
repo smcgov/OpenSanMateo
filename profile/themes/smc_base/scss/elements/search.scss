@@ -67,7 +67,11 @@
   
   .search-button {
   	width: 15%;
-  	float: left;
+  	position: absolute;
+  	top: 0;
+  	right: 0;
+  	bottom: 0;
+  	
   	border: none;
   	display: block;
   	
@@ -78,7 +82,7 @@
   	font-size: 1em;
   	
   	border-radius: 3px;
-  	padding: .75em 1em;
+  	padding: 0.5em 1em;
   	//text-transform: uppercase;
   	//font-size: 1.1em;
   	
@@ -104,7 +108,7 @@
     border-radius: 3px;
     margin: 0 auto 0;
     position: absolute;
-    right: 2%;
+    right: 0;
     top: -50px;
     width: 30%;
     background-color: transparent;
@@ -135,10 +139,8 @@
   
     .search-button {
     	width: 17%;
-    	float: right;
     	border: none;
     	display: block;
-    	padding: 5px;
     	text-align: center;
     	margin-right: 0;
   	}
