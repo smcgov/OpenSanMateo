@@ -30,7 +30,7 @@
     <div class="inside"><?php print $content['middle']; ?></div>
   </div>
   
-  <div class="panel-panel panel-col-bottom section news">
+  <div class="panel-panel panel-col-bottom section">
     <div class="inside"><?php print $content['bottom']; ?></div>
   </div>
 </div>
