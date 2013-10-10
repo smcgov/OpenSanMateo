@@ -186,7 +186,6 @@ function opensanmateo_search_preprocess_views_view_fields(&$vars) {
   }
 }
 
-
 /**
  * implements hook_features_template_info()
  */
