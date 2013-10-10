@@ -9632,7 +9632,7 @@ you can use the generic selector below, but it's slower:
       margin: 0;
       padding: 0; }
     /* line 31, ../scss/elements/search.scss */
-    #block-opensanmateo-search-header-search #opensanmateo-search-header-search-form #edit-submit {
+    #block-opensanmateo-search-header-search #opensanmateo-search-header-search-form .form-submit {
       display: none; }
   /* line 37, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search input[type=text] {
