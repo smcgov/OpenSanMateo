@@ -1,0 +1,6 @@
+name = Hierarchical Select Menu
+description = Use Hierarchical Select for menu parent selection.
+dependencies[] = hierarchical_select
+dependencies[] = menu
+package = Form Elements
+core = 7.x
