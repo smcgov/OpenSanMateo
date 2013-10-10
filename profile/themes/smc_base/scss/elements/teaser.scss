@@ -31,10 +31,12 @@
   
   .node-type {
     float: right;
-		max-width: 20%;
+		width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
 		font-size: .75em;
-		position: absolute;
-		right: 0;
+		//position: absolute;
+		//right: 0;
 		border-bottom-right-radius: 0;
 		border-top-right-radius: 0;
 		margin-bottom: 3%;
@@ -43,7 +45,7 @@
   .node-title {
     float: left;
     margin-top: 0;
-    width: 80%;
+    //width: 80%;
     margin-bottom: 0.2em;
     
   }
@@ -51,7 +53,7 @@
     float: left;
     clear: left;
     margin-top: 0;
-    width: 80%;
+    //width: 80%;
     font-size: .75em;
     color: $primaryGray;
     margin-bottom: 0.5em;

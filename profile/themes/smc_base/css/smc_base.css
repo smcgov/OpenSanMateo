@@ -8590,39 +8590,37 @@ you can use the generic selector below, but it's slower:
   /* line 32, ../scss/elements/teaser.scss */
   .universal-teaser .node-type {
     float: right;
-    max-width: 20%;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
     font-size: .75em;
-    position: absolute;
-    right: 0;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
     margin-bottom: 3%; }
-  /* line 43, ../scss/elements/teaser.scss */
+  /* line 45, ../scss/elements/teaser.scss */
   .universal-teaser .node-title {
     float: left;
     margin-top: 0;
-    width: 80%;
     margin-bottom: 0.2em; }
-  /* line 50, ../scss/elements/teaser.scss */
+  /* line 52, ../scss/elements/teaser.scss */
   .universal-teaser .author-data {
     float: left;
     clear: left;
     margin-top: 0;
-    width: 80%;
     font-size: .75em;
     color: #555a5a;
     margin-bottom: 0.5em;
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
-    /* line 60, ../scss/elements/teaser.scss */
+    /* line 62, ../scss/elements/teaser.scss */
     .universal-teaser .author-data a {
       color: #555a5a; }
-  /* line 65, ../scss/elements/teaser.scss */
+  /* line 67, ../scss/elements/teaser.scss */
   .universal-teaser .node-teaser {
     display: block;
     margin-bottom: 3%;
     font-size: 1em;
     line-height: 1.6em; }
-  /* line 72, ../scss/elements/teaser.scss */
+  /* line 74, ../scss/elements/teaser.scss */
   .universal-teaser .node-thumbnail {
     border: 5px solid rgba(3, 108, 182, 0.05);
     float: left;
@@ -8632,63 +8630,63 @@ you can use the generic selector below, but it's slower:
     max-height: 80px;
     width: 80px;
     overflow: hidden; }
-    /* line 83, ../scss/elements/teaser.scss */
+    /* line 85, ../scss/elements/teaser.scss */
     .universal-teaser .node-thumbnail img {
       max-width: 100%;
       height: auto; }
-  /* line 92, ../scss/elements/teaser.scss */
+  /* line 94, ../scss/elements/teaser.scss */
   .universal-teaser .node-location {
     width: 50%;
     float: left; }
-    /* line 96, ../scss/elements/teaser.scss */
+    /* line 98, ../scss/elements/teaser.scss */
     .universal-teaser .node-location .location {
       padding: 0;
       margin: 0; }
-    /* line 101, ../scss/elements/teaser.scss */
+    /* line 103, ../scss/elements/teaser.scss */
     .universal-teaser .node-location ul.adr {
       margin: 0;
       padding: 0; }
-      /* line 105, ../scss/elements/teaser.scss */
+      /* line 107, ../scss/elements/teaser.scss */
       .universal-teaser .node-location ul.adr li {
         list-style-type: none;
         margin: 0;
         padding: 0;
         color: #555a5a; }
-  /* line 113, ../scss/elements/teaser.scss */
+  /* line 115, ../scss/elements/teaser.scss */
   .universal-teaser .node-date {
     width: 50%;
     float: left; }
-  /* line 129, ../scss/elements/teaser.scss */
+  /* line 131, ../scss/elements/teaser.scss */
   .universal-teaser .read-more-wrapper {
     font-size: 0.9em; }
-    /* line 132, ../scss/elements/teaser.scss */
+    /* line 134, ../scss/elements/teaser.scss */
     .universal-teaser .read-more-wrapper a:after {
       content: ' \00BB'; }
-  /* line 137, ../scss/elements/teaser.scss */
+  /* line 139, ../scss/elements/teaser.scss */
   .universal-teaser.event {
     padding-left: 1em;
     padding-right: 1em;
     padding-bottom: 4em; }
-    /* line 142, ../scss/elements/teaser.scss */
+    /* line 144, ../scss/elements/teaser.scss */
     .universal-teaser.event h5 {
       text-transform: uppercase;
       font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
       font-weight: 100;
       margin-bottom: 0; }
-      /* line 149, ../scss/elements/teaser.scss */
+      /* line 151, ../scss/elements/teaser.scss */
       .universal-teaser.event h5 span {
         display: none; }
-    /* line 158, ../scss/elements/teaser.scss */
+    /* line 160, ../scss/elements/teaser.scss */
     .universal-teaser.event .node-date {
       font-size: 0.9em; }
-    /* line 162, ../scss/elements/teaser.scss */
+    /* line 164, ../scss/elements/teaser.scss */
     .universal-teaser.event .node-teaser {
       border-bottom: 1px dashed rgba(56, 147, 155, 0.1);
       border-top: 1px dashed rgba(56, 147, 155, 0.1);
       padding: 1em;
       margin-left: -1em;
       margin-right: -1em; }
-    /* line 173, ../scss/elements/teaser.scss */
+    /* line 175, ../scss/elements/teaser.scss */
     .universal-teaser.event .read-more-wrapper {
       position: absolute;
       bottom: 0;
@@ -8696,7 +8694,7 @@ you can use the generic selector below, but it's slower:
       left: 0;
       font-size: 1em;
       margin-bottom: 0; }
-      /* line 181, ../scss/elements/teaser.scss */
+      /* line 183, ../scss/elements/teaser.scss */
       .universal-teaser.event .read-more-wrapper a {
         display: block;
         padding: 1em 0;
@@ -8705,12 +8703,12 @@ you can use the generic selector below, but it's slower:
         text-align: center;
         font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
         background-color: rgba(3, 108, 182, 0.1); }
-        /* line 190, ../scss/elements/teaser.scss */
+        /* line 192, ../scss/elements/teaser.scss */
         .universal-teaser.event .read-more-wrapper a:hover {
           background-color: rgba(3, 108, 182, 0.2); }
 
 @media all and (min-width: 768px) {
-  /* line 206, ../scss/elements/teaser.scss */
+  /* line 208, ../scss/elements/teaser.scss */
   .panel-col-first .universal-teaser.event .node-teaser,
   .panel-col-first .universal-teaser.event .node-date,
   .panel-col-first .universal-teaser.event .node-location,
@@ -8718,52 +8716,52 @@ you can use the generic selector below, but it's slower:
   .panel-col-last .universal-teaser.event .node-date,
   .panel-col-last .universal-teaser.event .node-location {
     font-size: 0.75em; }
-  /* line 209, ../scss/elements/teaser.scss */
+  /* line 211, ../scss/elements/teaser.scss */
   .panel-col-first .universal-teaser.event .node-location ul, .panel-col-first .universal-teaser.event .node-location li,
   .panel-col-last .universal-teaser.event .node-location ul,
   .panel-col-last .universal-teaser.event .node-location li {
     font-size: 1em; }
 
-  /* line 219, ../scss/elements/teaser.scss */
+  /* line 221, ../scss/elements/teaser.scss */
   .panel-col-top .universal-teaser,
   .panel-col-bottom .universal-teaser {
     float: left;
     clear: none;
     width: 47.5%;
     margin-right: 5%; }
-    /* line 226, ../scss/elements/teaser.scss */
+    /* line 228, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+2),
     .panel-col-bottom .universal-teaser:nth-child(2n+2) {
       margin-right: 0; }
-    /* line 230, ../scss/elements/teaser.scss */
+    /* line 232, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+3),
     .panel-col-bottom .universal-teaser:nth-child(2n+3) {
       clear: left; } }
 @media all and (min-width: 800px) {
-  /* line 242, ../scss/elements/teaser.scss */
+  /* line 244, ../scss/elements/teaser.scss */
   .panel-col-top .universal-teaser,
   .panel-col-bottom .universal-teaser {
     float: left;
     clear: none;
     width: 30%;
     margin-right: 5%; }
-    /* line 249, ../scss/elements/teaser.scss */
+    /* line 251, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+2),
     .panel-col-bottom .universal-teaser:nth-child(2n+2) {
       margin-right: 5%; }
-    /* line 253, ../scss/elements/teaser.scss */
+    /* line 255, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+3),
     .panel-col-bottom .universal-teaser:nth-child(2n+3) {
       clear: none; }
-    /* line 258, ../scss/elements/teaser.scss */
+    /* line 260, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(3n+3),
     .panel-col-bottom .universal-teaser:nth-child(3n+3) {
       margin-right: 0; }
-    /* line 262, ../scss/elements/teaser.scss */
+    /* line 264, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(3n+4),
     .panel-col-bottom .universal-teaser:nth-child(3n+4) {
       clear: left; }
-    /* line 269, ../scss/elements/teaser.scss */
+    /* line 271, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser.event .node-teaser,
     .panel-col-top .universal-teaser.event .node-date,
     .panel-col-top .universal-teaser.event .node-location,
@@ -8771,7 +8769,7 @@ you can use the generic selector below, but it's slower:
     .panel-col-bottom .universal-teaser.event .node-date,
     .panel-col-bottom .universal-teaser.event .node-location {
       font-size: 0.75em; }
-    /* line 272, ../scss/elements/teaser.scss */
+    /* line 274, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser.event .node-location ul, .panel-col-top .universal-teaser.event .node-location li,
     .panel-col-bottom .universal-teaser.event .node-location ul,
     .panel-col-bottom .universal-teaser.event .node-location li {
@@ -9744,6 +9742,8 @@ you can use the generic selector below, but it's slower:
       content: none; } }
 /* Fonts */
 /* Media Queries */
+/* Fonts */
+/* Media Queries */
 /* line 5, ../scss/elements/footer.scss */
 footer {
   background-color: #036cb6;
@@ -9841,17 +9841,17 @@ footer {
   /* line 103, ../scss/elements/footer.scss */
   footer nav ul, footer nav ul.menu {
     width: 45%; } }
-/* line 47, ../scss/smc_base.scss */
+/* line 49, ../scss/smc_base.scss */
 .limiter {
   margin: auto;
   max-width: 1120px;
   position: relative; }
 
-/* line 53, ../scss/smc_base.scss */
+/* line 55, ../scss/smc_base.scss */
 .krumo-root strong {
   display: inline !important; }
 
-/* line 58, ../scss/smc_base.scss */
+/* line 60, ../scss/smc_base.scss */
 ul li.leaf,
 ul li.expanded {
   list-style-type: none;
@@ -9859,34 +9859,34 @@ ul li.expanded {
   padding: 0;
   margin: 0; }
 
-/* line 66, ../scss/smc_base.scss */
+/* line 68, ../scss/smc_base.scss */
 .messages strong {
   display: inline; }
 
-/* line 75, ../scss/smc_base.scss */
+/* line 77, ../scss/smc_base.scss */
 nav.main-nav {
   border-top: 0;
   margin-bottom: 0;
   padding-top: 0;
   z-index: 400 !important; }
 
-/* line 81, ../scss/smc_base.scss */
+/* line 83, ../scss/smc_base.scss */
 .flexslider {
   z-index: 1 !important; }
 
-/* line 84, ../scss/smc_base.scss */
+/* line 86, ../scss/smc_base.scss */
 header {
   z-index: 10; }
 
-/* line 88, ../scss/smc_base.scss */
+/* line 90, ../scss/smc_base.scss */
 div.body {
   z-index: 1; }
 
-/* line 92, ../scss/smc_base.scss */
+/* line 94, ../scss/smc_base.scss */
 footer {
   z-index: 10; }
 
-/* line 97, ../scss/smc_base.scss */
+/* line 99, ../scss/smc_base.scss */
 #footer-wrapper .section {
   margin-bottom: 0; }
 
