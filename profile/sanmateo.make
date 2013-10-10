@@ -488,3 +488,10 @@ projects[jira_issue_collector][type] = module
 projects[jira_issue_collector][subdir] = contrib
 projects[jira_issue_collector][version] = 1.1
 
+projects[hierarchical_select][type] = module
+projects[hierarchical_select][subdir] = contrib
+projects[hierarchical_select][download][type] = git
+projects[hierarchical_select][download][url] = http://git.drupal.org/project/hierarchical_select.git
+projects[hierarchical_select][download][revision] = aac15cd
+
+
