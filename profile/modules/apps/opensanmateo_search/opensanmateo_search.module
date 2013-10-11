@@ -265,9 +265,6 @@ function opensanmateo_search_features_template_info() {
   return $data;
 }
 
-function opensanmateo_search_form_alter(&$form, $form_state) {
-}
-
 function opensanmateo_search_file_presave($file) {
 }
 
