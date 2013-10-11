@@ -265,9 +265,6 @@ function opensanmateo_search_features_template_info() {
   return $data;
 }
 
-function opensanmateo_search_form_alter(&$form, $form_state) {
-}
-
 function opensanmateo_search_file_presave($file) {
 }
 
@@ -441,6 +438,33 @@ function opensanmateo_search_facetapi_filters() {
   );
 }
 
+/**
+ * Implements hook_permission().
+ *
+ * Defines the 'edit quick search tags' permission
+ */
+function opensanmateo_search_permission() {
+  return array(
+    'edit quick search tags' => array(
+      'title' => t('Edit Quick Search Tags'),
+      'description' => t('Edit Quick Search tags on all content types.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Disables the Quick Search tags field if the permission isn't set.
+ */
+function opensanmateo_search_form_alter(&$form, &$form_state, $form_id) {
+  if (!isset($form['field_quick_search'])) {
+    return;
+  }
+  if (!user_access('edit quick search tags')) {
+    $form['field_quick_search']['#disabled'] = TRUE;
+  }
+}
 
 /**
 * Plugin that filters taxonomy terms to be just the children of a particular term

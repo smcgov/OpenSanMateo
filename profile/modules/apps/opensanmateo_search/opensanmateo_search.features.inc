@@ -247,7 +247,7 @@ function opensanmateo_search_default_search_api_index() {
         "search_opensanmateo_summary" : {
           "status" : 1,
           "weight" : "999",
-          "settings" : { "trim_length" : "100" }
+          "settings" : { "trim_length" : "200" }
         }
       },
       "processors" : {
