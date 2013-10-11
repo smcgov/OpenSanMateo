@@ -92,4 +92,11 @@ function sanmateo_update_7006() {
   sanmateo_update_master_client();
 }
 
+/**
+ * Reset master-client info to pick up changes in common settings, if any
+ */
+function sanmateo_update_7007() {
+  module_enable(array('panels_interface'));
+}
+
 // End of file sanmateo.install

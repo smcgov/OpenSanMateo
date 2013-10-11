@@ -1,0 +1,79 @@
+<?php
+
+function panels_interface_preprocess_panels_add_content_modal(&$vars) {
+  // Only process panes for non-privileged users.
+  if (!user_access('view advanced panel panes')) {
+    $content =& $vars['categories'];
+
+    // Get rid of custom blocks section.
+    panels_interface_hide($content, 'custom-blocks');
+
+
+    // Hide facet api items.
+    if (!empty($content['facet-api'])) {
+      panels_interface_hide($content['facet-api']['content'], 'Facet API: Search service: San Mateo Content Index : Aggregated Event Type');
+      panels_interface_hide($content['facet-api']['content'], 'Facet API: Search service: San Mateo Content Index : Calendar');
+      panels_interface_hide($content['facet-api']['content'], 'Facet API: Search service: San Mateo Content Index : Date » Start date');
+      panels_interface_hide($content['facet-api']['content'], 'Facet API: Search service: San Mateo Content Index : Date » End date');
+      panels_interface_hide($content['facet-api']['content'], 'Facet API: Search service: San Mateo Content Index : Event Type');
+    }
+
+    // Move things we'd like to keep out of miscellaneous and
+    $content['widgets']['content']['Follow Site'] = $content['miscellaneous']['content']['Follow Site'];
+    $content['widgets']['content']['Site Brand'] = $content['miscellaneous']['content']['Site Brand'];
+    $content['widgets']['content']['Sub-nav menu block'] = $content['miscellaneous']['content']['Sub-nav menu block'];
+
+    // Hide all form elements.
+    panels_interface_hide($content, 'form');
+    panels_interface_hide($content, 'menus');
+    panels_interface_hide($content, 'miscellaneous');
+    panels_interface_hide($content, 'view-panes');
+    panels_interface_hide($content, 'views');
+
+    if (!empty($content['widgets'])) {
+      panels_interface_hide($content['widgets']['content'], 'Powered by Drupal');
+      panels_interface_hide($content['widgets']['content'], 'Recent content');
+      panels_interface_hide($content['widgets']['content'], 'Syndicate');
+      panels_interface_hide($content['widgets']['content'], 'User login');
+    }
+
+    $category_exclusions = array('Activity',
+      'Boxes',
+      'Comment',
+      'Node (tokens)',
+      'Node',
+      'Page elements',
+      'Entity',
+      'Form',
+      'Menus',
+      'Views',
+      'Custom blocks',
+      'Miscellaneous',
+      'View panes'
+    );
+
+    foreach ($vars['categories_array'] as $key => $category_name) {
+      if (in_array(strip_tags($category_name), $category_exclusions)) {
+        unset($vars['categories_array'][$key]);
+      }
+    }
+  }
+}
+
+function panels_interface_hide(&$content, $var) {
+  if (!empty($content[$var])) {
+    unset($content[$var]);
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function panels_interface_permission() {
+  return array(
+    'view advanced panel panes' => array(
+      'title' => t('View Advanced Panel Panes'),
+      'description' => t('View infrequently used panel panes hidden from normal users.'),
+    ),
+  );
+}

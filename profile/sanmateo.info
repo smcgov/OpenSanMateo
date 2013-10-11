@@ -83,6 +83,7 @@ dependencies[] = search_api_solr_overrides
 dependencies[] = term_ref_autocomplete
 dependencies[] = metatag
 dependencies[] = metatag_context
+dependencies[] = panels_interface
 
 ; OpenPublic
 
