@@ -321,7 +321,64 @@
 
 
 
+// classes here provided to be used via WYSIWYG editor
 
+// Call to Actions
+a.button-blue-large {
+  @include button();
+  @include buttonArrow;
+  @include buttonBlue;
+  @include buttonLarge;
+}
+a.button-teal-large {
+  @include button();
+  @include buttonArrow;
+  @include buttonTeal;
+  @include buttonLarge;
+}
+a.button-green-large {
+  @include button();
+  @include buttonArrow;
+  @include buttonGreen;
+  @include buttonLarge;
+}
+
+// Default buttons
+a.button-blue-default {
+  @include button();
+  @include buttonArrow;
+  @include buttonBlue;
+  @include buttonDefault;
+}
+a.button-teal-default {
+  @include button();
+  @include buttonArrow;
+  @include buttonTeal;
+  @include buttonDefault;
+}
+a.button-green-default {
+  @include button();
+  @include buttonArrow;
+  @include buttonGreen;
+  @include buttonDefault;
+}
+
+// Small Buttons
+a.button-blue-small {
+  @include button();
+  @include buttonBlue;
+  @include buttonSmall;
+}
+a.button-teal-small {
+  @include button();
+  @include buttonTeal;
+  @include buttonSmall;
+}
+a.button-green-small {
+  @include button();
+  @include buttonGreen;
+  @include buttonSmall;
+}
 
 
 
@@ -403,7 +460,6 @@ ul.button-test {
       }
     }
   }
-  
 }
 
 
