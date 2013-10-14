@@ -46,7 +46,6 @@ function smc_base_preprocess_block(&$variables) {
   if ($variables['classes_array'][0] == "block") {
     unset($variables['classes_array'][0]);
   }
-
   if (!isset($block->bid)) {
     return;
   }
@@ -70,6 +69,10 @@ function smc_base_preprocess_block(&$variables) {
     case 'opensanmateo_search-header_search':
       $variables['classes_array'][] = 'clearfix';
       $variables['classes_array'][] = 'search';
+    break;
+    
+    case 'menu-menu-footer-utility':
+      //krumo($variables);
     break;
   }
 
