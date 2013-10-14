@@ -175,10 +175,10 @@ function opensanmateo_search_preprocess_views_view_fields(&$vars) {
       // With our app based approach it's possible a content type might not
       // exist on this install, so we'll fall back to a generic 'read more' link.
       if (!empty($types[$vars['row']->_entity_properties['type']])) {
-        $link_text = t('Read the !type', array('!type' => $types[$vars['row']->_entity_properties['type']]->name));
+        $link_text = t('View the !type', array('!type' => $types[$vars['row']->_entity_properties['type']]->name));
       }
       else {
-        $link_text = t('Read More');
+        $link_text = t('View More');
       }
 
       $vars['fields']['more_link'] = "<div class='read-more-wrapper clearfix'>" . l($link_text, $vars['row']->_entity_properties['url'], array('attributes' => array('class' => array('read-more')))) . "</div>";
