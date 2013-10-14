@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function opensnmateo_layout_install() {
+  // Set defaults as blocks which are currently in our global context.
+  $defaults = array(
+    'menu--menu-department-menu--Department Menu' => 'menu--menu-department-menu--Department Menu',
+    'menu--menu-platform-menu--Platform Menu' => 'menu--menu-platform-menu--Platform Menu',
+    'opensanmateo_layout--opensanmateo_layout_banner--Shared Banner' => 'opensanmateo_layout--opensanmateo_layout_banner--Shared Banner',
+    'block--1--San Mateo Request Collector for Phase2 JIRA Integration' => 0,
+  );
+  variable_set('distributed_blocks_fetched_blocks', $defaults);
+  distributed_blocks_fetch_blocks();
+}

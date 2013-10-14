@@ -1,0 +1,3 @@
+name = Panels Interface Customizations
+description = Provides customizations for IPE pane selection.
+core = 7.x

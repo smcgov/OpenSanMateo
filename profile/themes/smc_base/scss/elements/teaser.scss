@@ -1,10 +1,19 @@
 // default variables
 @import "vars.scss";
-
+.view-opensanmateo-search {
+  .view-content:after {
+    // replicating clearfix without applying class
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+}
 .universal-teaser {
   border-top: 1px solid rgba($primaryBlue, .1); 
   padding: 1.5em 0;
-  
+  margin-bottom: 40px;
   
   
   .node-url {
@@ -22,10 +31,12 @@
   
   .node-type {
     float: right;
-		max-width: 20%;
+		width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
 		font-size: .75em;
-		position: absolute;
-		right: 0;
+		//position: absolute;
+		//right: 0;
 		border-bottom-right-radius: 0;
 		border-top-right-radius: 0;
 		margin-bottom: 3%;
@@ -34,7 +45,7 @@
   .node-title {
     float: left;
     margin-top: 0;
-    width: 80%;
+    //width: 80%;
     margin-bottom: 0.2em;
     
   }
@@ -42,7 +53,7 @@
     float: left;
     clear: left;
     margin-top: 0;
-    width: 80%;
+    //width: 80%;
     font-size: .75em;
     color: $primaryGray;
     margin-bottom: 0.5em;
@@ -78,13 +89,11 @@
 		
   }
   
-  .node-start-date {
-    
-  }
-  .node-end-date {
-    
-  }
+  
+  
   .node-location {
+    width: 50%;
+    float: left;
     
     .location {
       padding: 0;
@@ -103,6 +112,21 @@
       }
     }  
   }
+  .node-date {
+    width: 50%;
+    float: left;
+    
+    .label {
+      
+    }
+    .node-start-date {
+    
+    }
+    .node-end-date {
+      
+    }  
+  }
+  
   
   .read-more-wrapper {
     font-size: 0.9em;
@@ -115,5 +139,143 @@
   &.event {
     padding-left: 1em;
     padding-right: 1em;
+    padding-bottom: 4em;
+    
+    h5 {
+      text-transform: uppercase;
+      font-family: $reg;
+      font-weight: 100;
+      margin-bottom: 0;
+      //font-size: 0.75em;
+      
+      span {
+        display: none;
+      }
+      
+    }
+    
+    .node-location {
+      //font-size: 0.75em;
+    }
+    .node-date {
+      font-size: 0.9em;
+    }
+    
+    .node-teaser {
+      border-bottom: 1px dashed rgba(56, 147, 155, 0.1);
+      border-top: 1px dashed rgba(56, 147, 155, 0.1);
+
+      padding: 1em;
+      
+      margin-left: -1em;
+      margin-right: -1em;
+      
+      //font-size: 0.75em;
+    }
+    .read-more-wrapper {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      font-size: 1em;
+      margin-bottom: 0;
+      
+      a {
+        display: block;
+        padding: 1em 0;
+        text-transform: uppercase;
+        color: $primaryBlue;
+        text-align: center;
+        font-family: $bold;
+        background-color: rgba(3, 108, 182, 0.1);
+        
+        &:hover {
+          background-color: rgba(3, 108, 182, 0.2);  
+        }
+      }
+    }
   }
 }
+
+@media all and (min-width: $tablet) {
+  // specific to events
+  .panel-col-first,
+  .panel-col-last {
+    .universal-teaser { 
+      &.event {
+        .node-teaser,
+        .node-date,
+        .node-location {
+          font-size: 0.75em;
+        }
+        .node-location ul, .node-location li {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+  
+  // adjust for top/bottom region teasers to "float"
+  .panel-col-top,
+  .panel-col-bottom {
+    .universal-teaser {
+      float: left;
+      clear: none;
+      width: 47.5%;
+      margin-right: 5%;
+      
+      // no right margin on every 2nd item
+      &:nth-child(2n+2) {
+        margin-right: 0;
+      }
+      // FULLY clear every 3th item so floats don't go all caddywhompus
+      &:nth-child(2n+3) {
+        clear: left;
+      }
+    }
+  }
+  
+}
+
+@media all and (min-width: $desktop) {
+  // adjust for top/bottom region teasers to "float"
+  .panel-col-top,
+  .panel-col-bottom {
+    .universal-teaser {
+      float: left;
+      clear: none;
+      width: 30%;
+      margin-right: 5%;
+      
+      // Reset from tablet size
+      &:nth-child(2n+2) {
+        margin-right: 5%;
+      }
+      // Reset from tablet size
+      &:nth-child(2n+3) {
+        clear: none;
+      }
+      
+      // no right margin on every 3rd item
+      &:nth-child(3n+3) {
+        margin-right: 0;
+      }
+      // FULLY clear every 4th item so floats don't go all caddywhompus
+      &:nth-child(3n+4) {
+        clear: left;
+      }
+      // shrink text on events
+      &.event {
+        .node-teaser,
+        .node-date,
+        .node-location {
+          font-size: 0.75em;
+        }
+        .node-location ul, .node-location li {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+}
+

@@ -110,21 +110,6 @@ function opensanmateo_layout_block_view($delta = '') {
 }
 
 /**
- * Implements template_process_panels_add_content_modal().
- *
- * We are removing some categories from the IPE modal window.
- */
-function opensanmateo_layout_preprocess_panels_add_content_modal(&$vars) {
-  foreach ($vars['categories_array'] as $key => $category_name) {
-    if (in_array(strip_tags($category_name),
-      array('Activity', 'Boxes', 'Comment', 'Node (tokens)', 'Node', 'Page elements'))) {
-        unset($vars['categories_array'][$key]);
-      }
-  }
-}
-
-
-/**
  * implements hook_features_template_info()
  */
 function opensanmateo_layout_features_template_info() {
@@ -276,10 +261,9 @@ function opensanmateo_layout_field_custom_layout_template() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 15,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',

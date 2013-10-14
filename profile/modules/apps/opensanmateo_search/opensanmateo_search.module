@@ -181,11 +181,10 @@ function opensanmateo_search_preprocess_views_view_fields(&$vars) {
         $link_text = t('Read More');
       }
 
-      $vars['fields']['more_link'] = "<div class='read-more-wrapper'>" . l($link_text, $vars['row']->_entity_properties['url'], array('attributes' => array('class' => array('read-more')))) . "</div>";
+      $vars['fields']['more_link'] = "<div class='read-more-wrapper clearfix'>" . l($link_text, $vars['row']->_entity_properties['url'], array('attributes' => array('class' => array('read-more')))) . "</div>";
     }
   }
 }
-
 
 /**
  * implements hook_features_template_info()
@@ -264,9 +263,6 @@ function opensanmateo_search_features_template_info() {
     );
   }
   return $data;
-}
-
-function opensanmateo_search_form_alter(&$form, $form_state) {
 }
 
 function opensanmateo_search_file_presave($file) {
@@ -442,6 +438,33 @@ function opensanmateo_search_facetapi_filters() {
   );
 }
 
+/**
+ * Implements hook_permission().
+ *
+ * Defines the 'edit quick search tags' permission
+ */
+function opensanmateo_search_permission() {
+  return array(
+    'edit quick search tags' => array(
+      'title' => t('Edit Quick Search Tags'),
+      'description' => t('Edit Quick Search tags on all content types.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Disables the Quick Search tags field if the permission isn't set.
+ */
+function opensanmateo_search_form_alter(&$form, &$form_state, $form_id) {
+  if (!isset($form['field_quick_search'])) {
+    return;
+  }
+  if (!user_access('edit quick search tags')) {
+    $form['field_quick_search']['#disabled'] = TRUE;
+  }
+}
 
 /**
 * Plugin that filters taxonomy terms to be just the children of a particular term
@@ -507,6 +530,12 @@ function opensanmateo_search_search_api_alter_callback_info() {
     'class' => 'SearchApiRenderedImage',
     'weight' => 999,
   );
+  $callbacks['search_opensanmateo_summary'] = array(
+    'name' => t('Generate summary'),
+    'description' => t('If no summary is present, generate one from body text'),
+    'class' => 'SearchApiNodeSummary',
+    'weight' => 999,
+  );
 
   return $callbacks;
 }
@@ -518,7 +547,7 @@ function opensanmateo_search_search_api_alter_callback_info() {
 function opensanmateo_search_default_search_api_server_alter(array &$defaults) {
   global $_ENV;
 
-  // If we have the Solr server definition already set AND we're in the Acquia Cloud, swap out server definitions  
+  // If we have the Solr server definition already set AND we're in the Acquia Cloud, swap out server definitions
   if (isset($defaults['san_mateo_solr_server']) && isset($_ENV['AH_SITE_ENVIRONMENT'])) {
     $defaults['san_mateo_solr_server'] = entity_import('search_api_server', '{
       "name" : "San Mateo Solr Server [Acquia]",
@@ -543,8 +572,8 @@ function opensanmateo_search_default_search_api_server_alter(array &$defaults) {
       "rdf_mapping" : []
     }');
   }
-} 
- 
+}
+
 /**
  * Search API data alteration callback that adds an URL field for all items.
  */
@@ -580,17 +609,58 @@ class SearchApiRenderedImage extends SearchApiAbstractAlterCallback {
    * Alter items before indexing
    */
   public function alterItems(array &$items) {
-    //dpm($items); return;
-    //dpm($this->options);
     foreach ($items as $id => &$item) {
       // If we have a valid thumbnail field, use the first image as the styled teaser URL
-      if (!empty($item->field_thumbnail_image[$item->language][0]['filename']) && !empty($this->options['image_style'])) {
-        $style_url = image_style_url($this->options['image_style'], $item->field_thumbnail_image[$item->language][0]['uri']);
-        $raw_url = file_create_url($item->field_thumbnail_image[$item->language][0]['uri']);
-        $item->search_api_multi_aggregation_2[0] = str_replace($raw_url, $style_url, $item->search_api_multi_aggregation_2[0]);
+      $field = field_get_items('node', $item, 'field_thumbnail_image');
+      if (!empty($field[0]['uri'])) {
+        $item->opensanmateo_search_style_url = image_style_url($this->options['image_style'], $field[0]['uri']);
       }
     }
-    //dpm($items);
+  }
+
+  public function propertyInfo() {
+    return array(
+      'opensanmateo_search_style_url' => array(
+        'label' => t('Thumbnail site url'),
+        'description' => t('A url styled'),
+        'type' => 'uri',
+      ),
+    );
+  }
+
+}
+
+/**
+ * Search API data alteration callback that creates a summary from body text if none exists.
+ */
+class SearchApiNodeSummary extends SearchApiAbstractAlterCallback {
+
+  /**
+   * Implements SearchApiAlterCallbackInterface::configurationForm().
+   */
+  public function configurationForm() {
+    $form = array();
+
+    $form['trim_length'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Trim length for auto-generated summary'),
+      '#default_value' => !empty($this->options['trim_length']) ? $this->options['trim_length'] : 100,
+    );
+
+    return $form;
+  }
+
+  /**
+   * Alter items before indexing
+   */
+  public function alterItems(array &$items) {
+    foreach ($items as $id => &$item) {
+      // If our aggregated summary field is empty, fudge something from the body text if that's not empty
+      $body = field_get_items('node', $item, 'body');
+      if (empty($item->search_api_multi_aggregation_1[0]) && !empty($body[0]['safe_value'])) {
+        $item->search_api_multi_aggregation_1[0] = text_summary(strip_tags($body[0]['safe_value']), NULL, $this->options['trim_length']);
+      }
+    }
   }
 
 }

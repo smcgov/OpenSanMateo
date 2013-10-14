@@ -126,7 +126,6 @@ function term_ref_autocomplete_field_widget_info() {
       'field types' => array('taxonomy_term_reference'),
       'settings' => array(
         'size' => 60,
-        'autocomplete_path' => 'term_ref_autocomplete/autocomplete',
       ),
       'behaviors' => array(
         'multiple values' => FIELD_BEHAVIOR_CUSTOM,
@@ -166,7 +165,7 @@ function term_ref_autocomplete_field_widget_form(&$form, &$form_state, $field, $
   $element['names'] = $el_base + array(
     '#type' => 'term_ref_autocomplete_field',
     '#default_value' => implode(', ', $tags),
-    '#autocomplete_path' => $instance['widget']['settings']['autocomplete_path'] . '/' . $field['field_name'],
+    '#autocomplete_path' => 'term_ref_autocomplete/autocomplete/' . $field['field_name'],
     '#size' => $instance['widget']['settings']['size'],
     '#maxlength' => 1024,
     '#element_validate' => array('term_ref_autocomplete_taxonomy_autocomplete_validate'),

@@ -55,5 +55,12 @@ Drupal.smc = Drupal.smc || {};
     }
   };
   
-
+  Drupal.behaviors.smcHeaderSearch = {
+    attach: function (context) {
+      
+     $('.block-opensanmateo-search a.search-button').click(function(){
+       $(this).parent('.block-opensanmateo-search').find('form').submit();
+     });
+    }
+  };
 })(jQuery);

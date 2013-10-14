@@ -21,15 +21,6 @@ class TaxonomySyncDeleteFailedDelete extends Exception { }
 function taxonomy_sync_menu() {
   $items = array();
 
-  $items['admin/config/system/gta-terms-sync'] = array(
-    'title' => 'GTA Terms Synchronization',
-    'description' => 'Configuration settings that control synchronizing a global vocabulary between a master and client sites',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('taxonomy_sync_admin_form'),
-    'file' => 'taxonomy_sync.admin.inc',
-    'access arguments' => array('administer site configuration'),
-  );
-
   $items['taxonomy-sync/list/%'] = array(
     'type' => MENU_CALLBACK,
     'page callback' => 'taxonomy_sync_list',
@@ -105,7 +96,7 @@ function taxonomy_sync_get_tree($name) {
  */
 function taxonomy_sync_get_master($name, $return_false = FALSE) {
   $url = variable_get(TAXONOMY_SYNC_CLIENT_PREFIX . $name, FALSE);
-  if($url) { 
+  if($url) {
     return $url;
   }
   else {
@@ -115,7 +106,7 @@ function taxonomy_sync_get_master($name, $return_false = FALSE) {
 
 /**
  * implements hook_cron
- * 
+ *
  * Try syncing all of the vocabularies
  */
 function taxonomy_sync_cron() {
@@ -185,7 +176,7 @@ function taxonomy_sync_pull_data($url) {
 }
 
 /**
- * A class for handling the sync of Data from a a master to a slave 
+ * A class for handling the sync of Data from a a master to a slave
  */
 class TaxonomySyncData{
   public $master_data = array();
@@ -199,7 +190,7 @@ class TaxonomySyncData{
   public $missing_parent = array();
 
   /**
-   * constructor 
+   * constructor
    * PARAM master_data: an array structure like a taxonomy_tree return
    * PARAM $vocabulary: a machine name or vid of the local vocabulary
    */
@@ -287,7 +278,7 @@ class TaxonomySyncData{
       $query->condition(TAXONOMY_SYNC_COL_MASTER_TID, $this->get_master_ids(), 'IN');
       $query->condition(TAXONOMY_SYNC_COL_LOCAL_VID, $this->vid, '=');
       $existing = $query->execute()->fetchAllKeyed();
-      
+
       $this->inserts = array_diff($this->get_master_ids(), array_keys($existing));
     }
     return $this->inserts;
@@ -324,8 +315,8 @@ class TaxonomySyncData{
   public function process_cleanup() {
     $query = db_select('taxonomy_term_data', 't');
     $query->leftJoin(
-      TAXONOMY_SYNC_TABLE, 
-      's', 
+      TAXONOMY_SYNC_TABLE,
+      's',
         's.' . TAXONOMY_SYNC_COL_LOCAL_TID . ' = t.tid AND s.' . TAXONOMY_SYNC_COL_LOCAL_VID . ' = t.vid');
     $query->fields('t', array('tid', 'tid'));
     $query->condition('t.vid', $this->vid, '=');
@@ -340,8 +331,8 @@ class TaxonomySyncData{
         watchdog_exception(TAXONOMY_SYNC_WATCHDOG, $e);
       }
     }
-    
-  
+
+
   }
   /**
    * process all updates
@@ -399,7 +390,7 @@ class TaxonomySyncData{
     }
   }
   /**
-   * return a master term object 
+   * return a master term object
    */
   protected function get_master_term($id) {
     return $this->master_data[$id];
@@ -460,7 +451,7 @@ class TaxonomySyncData{
       throw new TaxonomySyncDeleteFailedDelete($message);
     }
   }
-  
+
   /**
    * method for merging a term from the master to the local, can be for updates or inserts
    */

@@ -17,6 +17,7 @@ function san_mateo_install_features_revert($modules) {
   foreach ($modules as $module) {
     if (($feature = feature_load($module, TRUE)) && module_exists($module)) {
       $components = array();
+
       // Forcefully revert all components of a feature.
       foreach (array_keys($feature->info['features']) as $component) {
         if (features_hook($component, 'features_revert')) {
@@ -43,10 +44,8 @@ function sanmateo_install() {
 * Set the default theme
 */
 function sanmateo_set_default_theme () {
-  /*
-  theme_enable(array("sanmateo"));
-  variable_set('theme_default', 'sanmateo');
-  */
+  theme_enable(array("smc_base"));
+  variable_set('theme_default', 'smc_base');
 }
 
 
@@ -56,3 +55,48 @@ function sanmateo_set_default_theme () {
 function sanmateo_update_7001() {
   san_mateo_install_features_revert(array('opensanmateo_search'));
 }
+/**
+ * [SMC-464] Timestamp(s) on Unified teasers inconsistent
+ */
+function sanmateo_update_7002() {
+  san_mateo_install_features_revert(array('opensanmateo_search'));
+}
+
+/**
+ * Remove extra type fields
+ *
+ */
+function sanmateo_update_7003() {
+  field_delete_field('field_event_type');
+  field_delete_field('field_term_location_type');
+}
+
+/**
+ * Turn on jira app
+ */
+function sanmateo_update_7004() {
+  module_enable(array('opensanmateo_jira'));
+}
+
+/**
+ * Enable modules - metatag, metatag_context
+ */
+function sanmateo_update_7005() {
+  module_enable(array('metatag', 'metatag_context'));
+}
+
+/**
+ * Reset master-client info to pick up changes in common settings, if any
+ */
+function sanmateo_update_7006() {
+  sanmateo_update_master_client();
+}
+
+/**
+ * Reset master-client info to pick up changes in common settings, if any
+ */
+function sanmateo_update_7007() {
+  module_enable(array('panels_interface'));
+}
+
+// End of file sanmateo.install
