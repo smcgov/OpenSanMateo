@@ -75,19 +75,19 @@ function osm_ff_remote_source_form_post_render($page, $form) {
 }
 
 /**
- * implements hook_form_alter
+ * Implements hook_form_alter().
  *
  * Add a post render to the form so we can add our views (which have a form in them)
  */
 function osm_ff_remote_source_form_alter(&$form) {
   $form['#post_render'][] = 'osm_ff_remote_source_form_post_render';
-
 }
 /**
  * A #process callback to extend the filefield_widget element type.
  */
 function osm_ff_remote_source_field_process($element, &$form_state, &$form) {
   $form['#is_osm_ff_remote_source_form'] = TRUE;
+  $item = $element['#value'];
   unset($form['#post_render']);
 
   $element['filefield_remotefile'] = array(
@@ -123,7 +123,164 @@ function osm_ff_remote_source_field_process($element, &$form_state, &$form) {
     '#suffix' => '<div class="description">' . t('This field will ignore the file size limitation') . '</div>',
   );
 
+  if (!empty($item['fid']) && osm_ff_remote_source_is_sharable($item)) {
+
+    $element['share_fieldset'] = array(
+      '#title' => t('Share Settings'),
+      '#type' => 'fieldset',
+    );
+
+    $file = file_load($item['fid']);
+    // Add field_share form element.
+    $element['share_fieldset']['field_share'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Share'),
+      '#default_value' => empty($item['field_share'][LANGUAGE_NONE][0]['value']) ? 0 : 1,
+      '#access' => osm_ff_remote_source_is_sharable($item),
+    );
+
+    $element['share_fieldset']['field_summary'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Summary'),
+      '#weight' => 100,
+      '#default_value' => !empty($item['field_summary'][LANGUAGE_NONE][0]['value']) ? $item['field_summary'][LANGUAGE_NONE][0]['value'] : '',
+      '#access' => osm_ff_remote_source_is_sharable($item),
+    );
+
+
+    // Add in topic select.
+    /*$topic = taxonomy_vocabulary_machine_name_load('subject');
+
+    $element['field_subject'] = array(
+      '#type' => 'hierarchical_select',
+      '#title' => t('Select the tag you wish to use.'),
+      '#size' => 1,
+      '#config' => array(
+        'module' => 'hs_taxonomy',
+        'params' => array(
+          'vid' => $topic->vid,
+        ),
+      ),
+    );*/
+
+  }
+
   return $element;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+*/
+function osm_ff_remote_source_form_file_entity_admin_file_alter(&$form, &$form_state) {
+  // Alter in share / unshare selections, as well as our custom submitter.
+  $form['admin']['options']['operation']['#options']['share'] = t('Share');
+  $form['admin']['options']['operation']['#options']['unshare'] = t('Unshare');
+  $form['admin']['options']['submit']['#submit'][] = 'osm_ff_remote_source_form_file_entity_admin_file';
+}
+
+/**
+ * Submitter for the file_entity_admin_file form.
+ *
+ * If share / unshare are selected on the form, perform the operation on selected
+ * files.
+ */
+function osm_ff_remote_source_form_file_entity_admin_file($form, &$form_state) {
+  if ($form_state['values']['operation'] == 'share' || $form_state['values']['operation'] == 'unshare') {
+    foreach ($form_state['values']['files'] as $fid => $selected) {
+      if (!empty($selected)) {
+        $f = file_load($fid);
+
+        if (osm_ff_remote_source_is_sharable((array) $f)) {
+          $file = entity_metadata_wrapper('file', $f);
+          $file->field_share->set($form_state['values']['operation'] == 'share' ? 1 : 0);
+          $file->save();
+        }
+      }
+    }
+  }
+}
+/**
+ * Determine if a given file is sharable.
+ *
+ * @param  array $file
+ *   A file array from a form element #value field.
+ *
+ * @return bool
+ *   True if the file is eligible for sharing, false otherwise.
+ */
+function osm_ff_remote_source_is_sharable($file) {
+  if (!(bool) $file['fid']) {;
+    return FALSE;
+  }
+
+  if ($file['type'] != 'image') {
+    return FALSE;
+  }
+
+  return TRUE;
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function osm_ff_remote_source_node_presave($node) {
+  // Find all file fields attached to this node, then aggregate a files list
+  // from all of them.
+  $file_fields = osm_ff_remote_source_get_file_fields($node);
+  $shared_files = osm_ff_remote_source_aggregate_files($node, $file_fields, TRUE);
+
+  foreach ($shared_files as $file) {
+    // Load files and map / save the share field.
+    $f = file_load($file['fid']);
+    $wrapper = entity_metadata_wrapper('file', $f);
+    $wrapper->field_share->set($file['share_fieldset']['field_share']);
+    $wrapper->field_summary->set($file['share_fieldset']['field_summary']);
+    $wrapper->save();
+  }
+}
+
+/**
+ * Aggregate a filtered list of shared or unshared files attached to a node.
+ *
+ * @param  object  $node
+ *   The node to search for files.
+ * @param  array  $field_fields
+ *   An array of file field names.
+ * @param  boolean $shared
+ *   Filter on whether files should have their share field set or not.
+ *
+ * @return array
+ *   An array of file ids matching filter criteria.
+ */
+function osm_ff_remote_source_aggregate_files($node, $file_fields, $shared = TRUE) {
+  $items = array();
+  foreach ($file_fields as $field_name) {
+    $items = $items + field_get_items('node', $node, $field_name);
+  }
+
+  return $items;
+}
+
+/**
+ * Get a list of file fields associated with a specific node.
+ *
+ * @param  object $node
+ *   The node to find attached file fields on.
+ *
+ * @return array
+ *   An array of file field names
+ */
+function osm_ff_remote_source_get_file_fields($node) {
+  $fields = field_info_instances('node', $node->type);
+  $file_fields = array();
+
+  foreach ($fields as $field_name => $field) {
+    if (!empty($field['widget']['module']) && in_array($field['widget']['module'], array('file', 'image'))) {
+      $file_fields[$field_name] = $field;
+    }
+  }
+
+  return array_keys($file_fields);
 }
 
 /**
@@ -180,7 +337,7 @@ function osm_ff_remote_source_value($element, &$item) {
 }
 
 /**
- * implements hook_preprocess_views_view_fields()
+ * Implements hook_preprocess_views_view_fields().
  */
 function osm_ff_remote_source_preprocess_views_view_fields(&$vars) {
   $uuid = uniqid();
