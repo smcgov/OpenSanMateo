@@ -254,8 +254,11 @@ function osm_ff_remote_source_node_presave($node) {
  */
 function osm_ff_remote_source_aggregate_files($node, $file_fields, $shared = TRUE) {
   $items = array();
+
   foreach ($file_fields as $field_name) {
-    $items = $items + field_get_items('node', $node, $field_name);
+    if ($files = field_get_items('node', $node, $field_name)) {
+      $items += $files;
+    }
   }
 
   return $items;
