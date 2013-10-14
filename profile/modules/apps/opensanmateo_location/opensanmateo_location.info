@@ -39,7 +39,6 @@ features[field_instance][] = node-location-field_quick_search
 features[field_instance][] = node-location-field_text_hours
 features[field_instance][] = node-location-field_thumbnail_image
 features[node][] = location
-features[user_permission][] = edit quick search tags
 features[variable][] = addressfield_staticmap_api_0
 features[variable][] = comment_anonymous_location
 features[variable][] = comment_default_mode_location
