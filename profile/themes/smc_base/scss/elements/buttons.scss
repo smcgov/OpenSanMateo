@@ -151,14 +151,15 @@
 @mixin button {
   background: none;
   background-color: none;
-  
 	color: #f7f7f7;
 	border-radius: 3px;
 	padding: .75em 1em;
 	text-transform: uppercase;
-	//font-size: 1.1em;
+	font-size: 1em;
+	line-height: 1;
 	display: inline-block;
-	margin-right: 3%;
+	margin-right: 1%;
+	margin-bottom: 1%;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
@@ -188,6 +189,22 @@
 	}
 }
 
+
+// button sizes
+@mixin buttonLarge {
+  font-size: 1.1em;
+}
+
+@mixin buttonDefault {
+  font-size: 1em;
+}
+
+@mixin buttonSmall {
+  font-size: .85em;
+  padding: .75em 1em;
+}
+
+// large and default buttons have the arrow thingy
 @mixin buttonArrow {
   
   padding: 1.1em 5.5em 1em 1.2em;
@@ -290,11 +307,105 @@
 	}  
 }
 
-@mixin buttonSmall {
-  font-size: .85em;
-	min-width: 170px;
-	padding: 1em;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// test content 
+ul.button-test {
+  margin: 0;
+  padding: 0;
+  li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    
+    a {
+      @include button();
+      
+      // Call to Actions
+      &.blue-cta {
+        float: left;
+        clear: left;
+        @include buttonArrow;
+        @include buttonBlue;
+        @include buttonLarge;
+      }
+      &.teal-cta {
+        float: left;
+        @include buttonArrow;
+        @include buttonTeal;
+        @include buttonLarge;
+      }
+      &.green-cta {
+        float: left;
+        @include buttonArrow;
+        @include buttonGreen;
+        @include buttonLarge;
+      }
+      
+      // Default buttons
+      &.blue-default {
+        float: left;
+        clear: left;
+        @include buttonArrow;
+        @include buttonBlue;
+        @include buttonDefault;
+      }
+      &.teal-default {
+        float: left;
+        @include buttonArrow;
+        @include buttonTeal;
+        @include buttonDefault;
+      }
+      &.green-default {
+        float: left;
+        @include buttonArrow;
+        @include buttonGreen;
+        @include buttonDefault;
+      }
+      
+      // Small Buttons
+      // Call to Actions
+      &.blue-small {
+        float: left;
+        clear: left;
+        @include buttonBlue;
+        @include buttonSmall;
+      }
+      &.teal-small {
+        float: left;
+        @include buttonTeal;
+        @include buttonSmall;
+      }
+      &.green-small {
+        float: left;
+        @include buttonGreen;
+        @include buttonSmall;
+      }
+    }
+  }
+  
 }
+
 
 // All default/mobile styles will appear before the following media queries.
 
