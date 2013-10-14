@@ -1,0 +1,474 @@
+// default variables
+@import "vars.scss";
+
+/*
+.btn {
+	background-color: #036cb6;
+	color: #f7f7f7;
+	border-radius: 3px;
+	padding: .75em 1em;
+	text-transform: uppercase;
+	font-size: 1.1em;
+	display: inline-block;
+	margin-right: 3%;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	font-family: 'Trade Gothic W01 Bold';
+	font-weight: 300;
+	}
+
+.btn:hover {
+	color: #fff;
+	background-color:#38939b;
+	}
+
+.button.secondary {
+	background-color: rgba(56, 147, 155, .95);
+	color: white;
+	}
+
+.button.secondary:hover {
+	background-color: rgba(56, 147, 155, 1.0000);
+	color: white;
+	}
+
+.button.secondary:active {
+	background-color: rgba(56, 147, 155, .9);
+	color: white;
+	}
+
+.button.tertiary {background-color:  rgba(141, 198, 63, .95);}
+
+.button.tertiary:hover {background-color: rgba(141, 198, 63, 1.0000);}
+
+.button.tertiary:active {background-color: rgba(141, 198, 63, .9);}
+
+.button {
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: .25em 1.25em;
+	border: none;
+	display: inline-block;
+	text-transform: uppercase;
+	font-family: 'Trade Gothic W01 Bold';
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	border-radius: 3px;
+	box-shadow: none;
+	min-width: 240px;
+	text-align: left;
+	font-weight: 300;
+	}
+
+.button:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	}
+
+.button:active {box-shadow: none;}
+	
+.btn-3 {
+	background: rgba(3, 108, 182, .95);
+	color: #fff;
+	}
+
+.btn-3:hover {background: rgba(3, 108, 182, 1.0);}
+
+.btn-3:active {
+	background: rgba(3, 108, 182, .9);
+	top: 2px;
+	}
+
+.btn-3:before {
+	position: absolute;
+	height: 100%;
+	left: 0;
+	top: 0;
+	line-height: 2.4;
+	font-size: 140%;
+	width: 60px;
+	}
+
+.btn-3e {
+	padding: 1.1em 5.5em 1em 1.2em;
+	overflow: hidden;
+	}
+
+.btn-3e:before {
+	left: auto;
+	right: 0;
+	z-index: 2;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	}
+
+.btn-3e:after {
+	width: 30%;
+	height: 200%;
+	background: rgba(255,255,255,0.1);
+	z-index: 1;
+	right: 0px;
+	top: 0;
+	margin: -5px 0 0 -5px;
+	-webkit-transform-origin: 0 0;
+	-webkit-transform: rotate(-20deg);
+	-moz-transform-origin: 0 0;
+	-moz-transform: rotate(-20deg);
+	-ms-transform-origin: 0 0;
+	-ms-transform: rotate(-20deg);
+	transform-origin: 0 0;
+	transform: rotate(-20deg);
+	}
+
+.btn-3e:hover:after{width: 35%;}
+.btn-3e:hover:before {right: 10%;}
+
+.icon-arrow-right:before {
+	content: '▶';
+	color: rgba(0,0,0, .3);
+	text-align: right;
+	right: 8%
+	}
+
+.button.small {
+	font-size: .85em;
+	min-width: 170px;
+	padding: 1em;
+}  
+  
+*/
+
+@mixin button {
+  background: none;
+  background-color: none;
+	color: #f7f7f7;
+	border-radius: 3px;
+	padding: .75em 1em;
+	text-transform: uppercase;
+	font-size: 1em;
+	line-height: 1;
+	display: inline-block;
+	margin-right: 1%;
+	margin-bottom: 1%;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	font-family: $bold;
+	font-weight: 300;
+	position: relative;
+	
+	&:hover {
+  	
+  	padding: .75em 1em;
+  	//font-size: 1em;
+  	//font-family: $bold;
+  	//font-weight: 300;
+	}
+	
+	&:before {
+  	
+	}
+	
+	&:after {
+  	content: '';
+  	position: absolute;
+  	z-index: -1;
+  	-webkit-transition: all 0.3s;
+  	-moz-transition: all 0.3s;
+  	transition: all 0.3s;
+	}
+}
+
+
+// button sizes
+@mixin buttonLarge {
+  font-size: 1.1em;
+}
+
+@mixin buttonDefault {
+  font-size: 1em;
+}
+
+@mixin buttonSmall {
+  font-size: .85em;
+  padding: .75em 1em;
+}
+
+// large and default buttons have the arrow thingy
+@mixin buttonArrow {
+  
+  padding: 1.1em 5.5em 1em 1.2em;
+	overflow: hidden;
+  
+  
+  
+  &:before {
+  	z-index: 2;
+  	content: '\25b6';
+  	color: rgba(0,0,0, .3);
+  	text-align: right;
+  	-webkit-transition: all 0.3s;
+  	-moz-transition: all 0.3s;
+  	transition: all 0.3s;
+  	position: absolute;
+  	height: 100%;
+
+  	left: auto;
+  	top: 0;
+  	right: 8%;
+  	
+  	line-height: 2.4;
+  	font-size: 140%;
+  	width: 60px;
+  	
+	}
+	
+	&:after {
+	  z-index: 1;
+	  
+	  width: 30%;
+  	height: 200%;
+  	background: rgba(255,255,255,0.1);
+  	right: 0;
+  	top: 0;
+  	margin: -5px 0 0 -5px;
+  	-webkit-transform-origin: 0 0;
+  	-webkit-transform: rotate(-20deg);
+  	-moz-transform-origin: 0 0;
+  	-moz-transform: rotate(-20deg);
+  	-ms-transform-origin: 0 0;
+  	-ms-transform: rotate(-20deg);
+  	transform-origin: 0 0;
+  	transform: rotate(-20deg);
+  }
+
+  &:hover {
+    padding: 1.1em 5.5em 1em 1.2em;
+  }
+  
+  &:hover:after{
+    width: 35%;
+  }
+  
+  &:hover:before {
+    right: 10%;
+  }
+}
+
+// button color styles
+@mixin buttonBlue {
+  
+  background-color: primaryBlue(0.95);
+  
+  &:hover {
+    background-color: primaryBlue(1);
+  }
+
+  &:active {
+  	background-color: primaryBlue(0.9);
+	}  
+}
+
+// button color styles
+@mixin buttonTeal {
+  
+  background-color: primaryTeal(0.95);
+  
+  &:hover {
+    background-color: primaryTeal(1);
+  }
+
+  &:active {
+  	background-color: primaryTeal(0.9);
+	}  
+}
+
+// button color styles
+@mixin buttonGreen {
+  
+  background-color: altGreen(0.95);
+  
+  &:hover {
+    background-color: altGreen(1);
+  }
+
+  &:active {
+  	background-color: altGreen(0.9);
+	}  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// classes here provided to be used via WYSIWYG editor
+
+// Call to Actions
+a.button-blue-large {
+  @include button();
+  @include buttonArrow;
+  @include buttonBlue;
+  @include buttonLarge;
+}
+a.button-teal-large {
+  @include button();
+  @include buttonArrow;
+  @include buttonTeal;
+  @include buttonLarge;
+}
+a.button-green-large {
+  @include button();
+  @include buttonArrow;
+  @include buttonGreen;
+  @include buttonLarge;
+}
+
+// Default buttons
+a.button-blue-default {
+  @include button();
+  @include buttonArrow;
+  @include buttonBlue;
+  @include buttonDefault;
+}
+a.button-teal-default {
+  @include button();
+  @include buttonArrow;
+  @include buttonTeal;
+  @include buttonDefault;
+}
+a.button-green-default {
+  @include button();
+  @include buttonArrow;
+  @include buttonGreen;
+  @include buttonDefault;
+}
+
+// Small Buttons
+a.button-blue-small {
+  @include button();
+  @include buttonBlue;
+  @include buttonSmall;
+}
+a.button-teal-small {
+  @include button();
+  @include buttonTeal;
+  @include buttonSmall;
+}
+a.button-green-small {
+  @include button();
+  @include buttonGreen;
+  @include buttonSmall;
+}
+
+
+
+
+
+
+
+// test content 
+ul.button-test {
+  margin: 0;
+  padding: 0;
+  li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    
+    a {
+      @include button();
+      
+      // Call to Actions
+      &.blue-cta {
+        float: left;
+        clear: left;
+        @include buttonArrow;
+        @include buttonBlue;
+        @include buttonLarge;
+      }
+      &.teal-cta {
+        float: left;
+        @include buttonArrow;
+        @include buttonTeal;
+        @include buttonLarge;
+      }
+      &.green-cta {
+        float: left;
+        @include buttonArrow;
+        @include buttonGreen;
+        @include buttonLarge;
+      }
+      
+      // Default buttons
+      &.blue-default {
+        float: left;
+        clear: left;
+        @include buttonArrow;
+        @include buttonBlue;
+        @include buttonDefault;
+      }
+      &.teal-default {
+        float: left;
+        @include buttonArrow;
+        @include buttonTeal;
+        @include buttonDefault;
+      }
+      &.green-default {
+        float: left;
+        @include buttonArrow;
+        @include buttonGreen;
+        @include buttonDefault;
+      }
+      
+      // Small Buttons
+      // Call to Actions
+      &.blue-small {
+        float: left;
+        clear: left;
+        @include buttonBlue;
+        @include buttonSmall;
+      }
+      &.teal-small {
+        float: left;
+        @include buttonTeal;
+        @include buttonSmall;
+      }
+      &.green-small {
+        float: left;
+        @include buttonGreen;
+        @include buttonSmall;
+      }
+    }
+  }
+}
+
+
+// All default/mobile styles will appear before the following media queries.
+
+@media all and (min-width: $tablet) {
+
+}
+
+@media all and (min-width: $desktop) {
+
+}

@@ -16,12 +16,29 @@
 
 */
 
-$primaryBlue: #036cb6;
-$primaryTeal: #38939b;
+@function primaryBlue($o:1.0) {
+  @return rgba(3, 108, 182, $o);
+}
+
+@function primaryTeal($o:1.0) {
+  @return rgba(56, 147, 155, $o);
+}
+
+@function altGreen($o:1.0) {
+  @return rgba(141, 198, 63, $o);
+}
+
+$primaryBlue: primaryBlue();
+$primaryTeal: primaryTeal();
+
+
+
 $primaryGray: #555a5a;
 $altBlue: #0d66a1;
 $altPurple: #6b699e;
-$altGreen: #8dc63f;
+
+$altGreen: altGreen();
+
 $altOrange: #e98a41;
 $altRed: #852432;
 
