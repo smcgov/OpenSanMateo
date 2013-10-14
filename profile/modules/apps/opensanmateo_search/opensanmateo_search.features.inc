@@ -71,7 +71,7 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_multi_aggregation_16" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_multi_aggregation_17" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_multi_aggregation_18" : { "type" : "list\\u003Cstring\\u003E" },
-        "search_api_aggregation_1" : { "type" : "string" },
+        "search_api_aggregation_1" : { "type" : "date" },
         "search_api_aggregation_2" : { "type" : "string" },
         "search_api_site_hash" : { "type" : "uri" },
         "search_api_site_id" : { "type" : "string" },
