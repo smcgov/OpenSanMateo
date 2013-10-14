@@ -73,17 +73,17 @@ function opensanmateo_layout_status() {
     );
     $exposed_blocks = variable_get('distributed_blocks_exposed_blocks', array());
 
-    if (empty($exposed_blocks) || empty($exposed_blocks['opensanmateo_layout|opensanmateo_layout_banner|Shared Banner'])) {
+    if (empty($exposed_blocks) || empty($exposed_blocks['opensanmateo_layout--opensanmateo_layout_banner--Shared Banner'])) {
       $status['items']['banner_block_exposed']['description'] = t('The banner block is not exposed.');
       $status['items']['banner_block_exposed']['severity'] = REQUIREMENT_ERROR;
       $status['items']['banner_block_exposed']['action'] = array(l("Change this setting", "admin/config/system/distributed_blocks",  array('query'  => drupal_get_destination())));
     }
-    if (empty($exposed_blocks) || empty($exposed_blocks['menu|menu-platform-menu|Platform Menu'])) {
+    if (empty($exposed_blocks) || empty($exposed_blocks['menu--menu-platform-menu--Platform Menu'])) {
       $status['items']['platform_menu_exposed']['description'] = t('The platform menu block is not exposed.');
       $status['items']['platform_menu_exposed']['severity'] = REQUIREMENT_ERROR;
       $status['items']['platform_menu_exposed']['action'] = array(l("Change this setting", "admin/config/system/distributed_blocks",  array('query'  => drupal_get_destination())));
     }
-    if (empty($exposed_blocks) || empty($exposed_blocks['menu|menu-department-menu|Department Menu'])) {
+    if (empty($exposed_blocks) || empty($exposed_blocks['menu--menu-department-menu--Department Menu'])) {
       $status['items']['dept_menu_exposed']['description'] = t('The department menu block is not exposed.');
       $status['items']['dept_menu_exposed']['severity'] = REQUIREMENT_ERROR;
       $status['items']['dept_menu_exposed']['action'] = array(l("Change this setting", "admin/config/system/distributed_blocks",  array('query'  => drupal_get_destination())));
