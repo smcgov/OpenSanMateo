@@ -575,6 +575,52 @@ function opensanmateo_search_default_search_api_server_alter(array &$defaults) {
 }
 
 /**
+ * Implements hook_taxonomy_vocabulary_insert
+ */
+function opensanmateo_search_taxonomy_vocabulary_insert($vocabulary) {
+  //dpm($vocabulary);
+  // Add a default HS config for this vocabulary so we have consistency across vocabs for the HS widget
+  $config = array(
+    'config_id'       => 'taxonomy-' . $vocabulary->vid,
+    'save_lineage'    => 0,
+    'enforce_deepest' => 0,
+    'entity_count'    => 0,
+    'require_entity'  => 0,
+    'resizable'       => 0,
+    'level_labels' => array(
+      'status' => 0,
+      'labels' => array(
+        0 => '',
+        1 => '',
+        2 => '',
+      ),
+    ),
+    'dropbox' => array(
+      'status'    => 1,
+      'title'     => 'All selections',
+      'limit'     => 0,
+      'reset_hs'  => 1,
+    ),
+    'editability' => array(
+      'status' => 0,
+      'item_types' => array(
+        0 => '',
+        1 => '',
+        2 => '',
+      ),
+      'allowed_levels' => array(
+        0 => 1,
+        1 => 1,
+        2 => 1,
+      ),
+      'allow_new_levels' => 0,
+      'max_levels'       => 0,
+    ),
+  );
+  variable_set('hs_config_' . $config['config_id'], $config);
+}
+
+/**
  * Search API data alteration callback that adds an URL field for all items.
  */
 class SearchApiRenderedImage extends SearchApiAbstractAlterCallback {
