@@ -38,14 +38,11 @@ function opensanmateo_search_field_default_field_instances_subject_template() {
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'term_ref_autocomplete',
-      'settings' => array(
-        'autocomplete_path' => 'term_ref_autocomplete/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'term_ref_autocomplete_widget',
-      'weight' => 33,
+      'active' => 1,
+      'module' => 'hs_taxonomy',
+      'settings' => array(),
+      'type' => 'taxonomy_hs',
+      'weight' => 34,
     ),
   );
 

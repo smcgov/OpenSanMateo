@@ -82,6 +82,30 @@ function osm_ff_remote_source_form_post_render($page, $form) {
 function osm_ff_remote_source_form_alter(&$form) {
   $form['#post_render'][] = 'osm_ff_remote_source_form_post_render';
 }
+
+function osm_ff_remote_source_form_views_exposed_form_alter(&$form, $form_state, $form_id) {
+  $view = $form_state['view'];
+
+  if ($view->name == 'opensanmateo_media_browser') {
+    $topic = taxonomy_vocabulary_machine_name_load('subject');
+    $topics = taxonomy_get_tree($topic->vid);
+    $topic_options = array('' => "-- None --");
+    foreach ($topics as $t) {
+      $topic_options[$t->name] = str_repeat('-', $t->depth) . $t->name;
+    }
+
+    if (!empty($topic_options)) {
+      unset($form['#info']['filter-search_api_multi_aggregation_2']);
+      $form['search_api_multi_aggregation_2']['#title'] = $topic->name;
+      $form['search_api_multi_aggregation_2']['#type'] = 'select';
+      $form['search_api_multi_aggregation_2']['#size'] = 1;
+      $form['search_api_multi_aggregation_2']['#options'] = $topic_options;
+    }
+    else {
+      $form['search_api_multi_aggregation_2']['#access'] = FALSE;
+    }
+  }
+}
 /**
  * A #process callback to extend the filefield_widget element type.
  */
@@ -97,6 +121,7 @@ function osm_ff_remote_source_field_process($element, &$form_state, &$form) {
     '#filefield_sources_hint_text' => REMOTE_FILE_SOURCE_HINT_TEXT,
     '#form_build_id' => $form['#build_id'],
   );
+
 
   $element['filefield_remotefile']['url'] = array(
     '#type' => 'textfield',
