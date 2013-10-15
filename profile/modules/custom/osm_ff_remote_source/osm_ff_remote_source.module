@@ -232,10 +232,13 @@ function osm_ff_remote_source_node_presave($node) {
   foreach ($shared_files as $file) {
     // Load files and map / save the share field.
     $f = file_load($file['fid']);
-    $wrapper = entity_metadata_wrapper('file', $f);
-    $wrapper->field_share->set($file['share_fieldset']['field_share']);
-    $wrapper->field_summary->set($file['share_fieldset']['field_summary']);
-    $wrapper->save();
+
+    if (osm_ff_remote_source_is_sharable((array) $f)) {
+      $wrapper = entity_metadata_wrapper('file', $f);
+      $wrapper->field_share->set($file['share_fieldset']['field_share']);
+      $wrapper->field_summary->set($file['share_fieldset']['field_summary']);
+      $wrapper->save();
+    }
   }
 }
 
