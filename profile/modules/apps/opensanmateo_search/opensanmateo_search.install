@@ -6,11 +6,11 @@
 function opensanmateo_search_update_7000() {
   $to_index = variable_get('opesanmateo_search_content_types_to_index', array());
   $not_index = array();
-  
+
   foreach ($to_index as $id => $setting) {
     $not_index[$id] = (empty($setting)) ? $id : 0;
   }
-  
+
   variable_set('opensanmateo_search_content_types_to_not_index', $not_index);
   return t('The content types to not index have been set.');
 }
@@ -28,4 +28,14 @@ function opensanmateo_search_update_7001() {
 function opensanmateo_search_update_7002() {
   module_enable(array('search_api_acquia'));
   drupal_cron_run();
+}
+
+/**
+ * Updates Hierarchical Select widget configurations on all existing vocabularies
+ */
+function opensanmateo_search_update_7003() {
+  $vocabs = taxonomy_get_vocabularies();
+  foreach ($vocabs as $vocab) {
+    opensanmateo_search_taxonomy_vocabulary_insert($vocab);
+  }
 }
