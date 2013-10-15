@@ -80,7 +80,6 @@ function osm_ff_remote_source_form_post_render($page, $form) {
  * Add a post render to the form so we can add our views (which have a form in them)
  */
 function osm_ff_remote_source_form_alter(&$form) {
-  dpm('form_altering');
   $form['#post_render'][] = 'osm_ff_remote_source_form_post_render';
 }
 
