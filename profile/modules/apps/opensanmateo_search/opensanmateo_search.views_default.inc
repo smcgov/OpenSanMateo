@@ -69,6 +69,29 @@ function opensanmateo_search_views_default_views() {
   /* Display: All Content Types */
   $handler = $view->new_display('block', 'All Content Types', 'block_3');
   $handler->display->display_options['display_description'] = 'Returns all indexed content for a lookup view.';
+  $translatables['opensanmateo_lookup'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Node ID'),
+    t('.'),
+    t(','),
+    t('Locations'),
+    t('Events'),
+    t('All Content Types'),
+    t('Returns all indexed content for a lookup view.'),
+  );
   $export['opensanmateo_lookup'] = $view;
 
   $view = new view();
@@ -136,10 +159,14 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['label'] = '';
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['link_to_entity'] = 0;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'OR',
+  );
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_san_mateo_file_index';
   $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['group'] = 1;
   $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Search';
@@ -154,10 +181,58 @@ function opensanmateo_search_views_default_views() {
     5 => 0,
     7 => 0,
   );
+  /* Filter criterion: Indexed File: Subject */
+  $handler->display->display_options['filters']['search_api_multi_aggregation_2']['id'] = 'search_api_multi_aggregation_2';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_2']['table'] = 'search_api_index_san_mateo_file_index';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_2']['field'] = 'search_api_multi_aggregation_2';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_2']['group'] = 1;
+  $handler->display->display_options['filters']['search_api_multi_aggregation_2']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_multi_aggregation_2']['expose']['operator_id'] = 'search_api_multi_aggregation_2_op';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_2']['expose']['label'] = 'Subject';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_2']['expose']['operator'] = 'search_api_multi_aggregation_2_op';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_2']['expose']['identifier'] = 'search_api_multi_aggregation_2';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_2']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    6 => 0,
+    5 => 0,
+    7 => 0,
+  );
+  $handler->display->display_options['filters']['search_api_multi_aggregation_2']['group_info']['label'] = 'Subject';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_2']['group_info']['identifier'] = 'search_api_multi_aggregation_2';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_2']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['search_api_multi_aggregation_2']['group_info']['group_items'] = array(
+    1 => array(),
+    2 => array(),
+    3 => array(),
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'opensanmateo-media-browser';
+  $translatables['opensanmateo_media_browser'] = array(
+    t('Master'),
+    t('OpenSanMateo Media Browser'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('[url]'),
+    t('Search'),
+    t('Subject'),
+    t('Page'),
+  );
   $export['opensanmateo_media_browser'] = $view;
 
   $view = new view();
@@ -983,6 +1058,56 @@ function opensanmateo_search_views_default_views() {
     'sorts' => array(
       'search_api_aggregation_1' => '',
     ),
+  );
+  $translatables['opensanmateo_search'] = array(
+    t('Master'),
+    t('search'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('No results'),
+    t('<h5><span class="icon-location"> </span>Location</h5>
+    <ul class="adr">
+    <li>[search_api_multi_aggregation_6]</li>
+    <li>[search_api_multi_aggregation_17]</li>
+    <li>[search_api_multi_aggregation_7], [search_api_multi_aggregation_4]
+     [search_api_multi_aggregation_5]</li>
+    </ul>'),
+    t('Date'),
+    t('Alphabetic'),
+    t('True'),
+    t('List w/search'),
+    t('Fulltext search'),
+    t('Lists'),
+    t('List by Type'),
+    t('Site'),
+    t('Content type'),
+    t('Terms'),
+    t('Block'),
+    t('All'),
+    t('Calendar pane'),
+    t('Used to display events.'),
+    t('Sites'),
+    t('Start date'),
+    t('End date'),
+    t('Name (indexed)'),
+    t('Taxonomy Page:Subject'),
+    t('Taxonomy Page:Sub Type'),
+    t('Lookup Title Only Block'),
+    t('Taxonomy Page:Topic'),
+    t('List by Type for Author'),
+    t('List'),
+    t('Agenda'),
   );
   $export['opensanmateo_search'] = $view;
 
