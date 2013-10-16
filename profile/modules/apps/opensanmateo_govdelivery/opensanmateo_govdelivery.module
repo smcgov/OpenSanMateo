@@ -334,7 +334,7 @@ function opensanmateo_govdelivery_modules_enabled($modules) {
   // check if fields exists, and if not, create them via features_revert
   $instance = field_info_instance('taxonomy_term', 'field_govdelivery_topic', 'govdelivery_topics');
   if (empty($instance)) {
-    features_revert(array('opensanmateo_govdelivery' => array('field_instance', 'field_base')));
+    features_revert(array('opensanmateo_govdelivery' => array('field_instance', 'field_base', 'taxonomy')));
   }
 
   if (in_array('opensanmateo_govdelivery', $modules)) {
