@@ -44,12 +44,38 @@ function opensanmateo_govdelivery_app_configure_form() {
     '#default_value' => variable_get('opensanmateo_govdelivery_enabled_vocabs', '')
   );
 
-
   $form['opensanmateo_govdelivery_base_url'] = array(
     '#title' => t('GovDelivery API URL'),
     '#type' => 'textfield',
     '#description' => t('The base url for the GovDelivery API, i.e. !url', array('!url' => opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_base_url'))),
     '#default_value' => variable_get('opensanmateo_govdelivery_base_url', opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_base_url')),
+  );
+
+    $form['opensanmateo_govdelivery_account_name'] = array(
+    '#title' => t('GovDelivery Account Name'),
+    '#type' => 'textfield',
+    '#description' => t('Your GovDelivery account name, e.g. %account', array('%account' => 'CASMATEO')),
+    // opensanmateo_govdelivery_signup_url should be in settings.php in $conf
+    // to allow for easy switching between dev and prov environments,
+    '#default_value' => variable_get('opensanmateo_govdelivery_account_name', ''),
+  );
+
+  $form['opensanmateo_govdelivery_signup_url'] = array(
+    '#title' => t('GovDelivery Signup URL'),
+    '#type' => 'textfield',
+    '#description' => t('The signup URL for GovDelivery, e.g. %url', array('%url' => 'CASMATEO')),
+    // opensanmateo_govdelivery_signup_url should be in settings.php in $conf
+    // to allow for easy switching between dev and prov environments,
+    '#default_value' => variable_get('opensanmateo_govdelivery_signup_url', ''),
+  );
+
+   $form['opensanmateo_govdelivery_signup_text'] = array(
+    '#title' => t('GovDelivery Signup Link text'),
+    '#type' => 'textfield',
+    '#description' => t('The signup link text for GovDelivery.'),
+    // opensanmateo_govdelivery_signup_url should be in settings.php in $conf
+    // to allow for easy switching between dev and prov environments,
+    '#default_value' => variable_get('opensanmateo_govdelivery_signup_text', 'Get notified of content changes.'),
   );
 
   $form['opensanmateo_govdelivery_email_topic'] = array(
@@ -58,6 +84,7 @@ function opensanmateo_govdelivery_app_configure_form() {
     '#description' => t('You may use tokens from the list below'),
     '#default_value' => variable_get('opensanmateo_govdelivery_email_topic', opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_email_topic')),
   );
+
 
   $form['opensanmateo_govdelivery_email_text'] = array(
     '#title' => t('GovDelivery Email Text'),

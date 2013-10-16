@@ -6,6 +6,13 @@
 include_once 'opensanmateo_govdelivery.field_topic_ref.inc';
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ */
+function opensanmateo_govdelivery_ctools_plugin_directory($module, $plugin) {
+  return 'plugins/' . $plugin;
+}
+
+/**
  * Implements hook_features_template_info
  */
 function opensanmateo_govdelivery_features_template_info() {
@@ -37,6 +44,61 @@ function opensanmateo_govdelivery_features_template_info() {
   return $data;
 }
 
+
+/**
+ * Implements hook_block_info().
+ */
+function opensanmateo_govdelivery_block_info() {
+  // This example comes from node.module.
+  $blocks['govdelivery_signup'] = array(
+    'info' => t('GovDelivery Signup Link'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function opensanmateo_govdelivery_block_view($delta = '') {
+  // This example is adapted from node.module.
+  $block = array();
+
+  if ($delta == 'govdelivery_signup') {
+    $block = array();
+
+    $block['content'] = array(
+      '#markup' => opensanmateo_govdelivery_get_signup_link(),
+    );
+
+  }
+  return $block;
+}
+
+/**
+ * Form the govdelivery signup link
+ *
+ * @todo: make this a proper theme function if releasing to contrib.
+ *
+ * @return string
+ *   Markup for the govdelivery signup link.
+ */
+function opensanmateo_govdelivery_get_signup_link() {
+  if ($signup_link = variable_get('opensanmateo_govdelivery_signup_url', FALSE)) {
+    $options = array(
+      'attributes' =>  array(
+        'class' => 'govdelivery-signup-link',
+        'target' => '_blank',
+      ),
+    );
+
+    return "<span class='govdelivery-signup'>" . l(variable_get('opensanmateo_govdelivery_signup_text', t('Get notified of content changes.')), $signup_link, $options) . "</span>";
+  }
+
+  return '';
+}
+
 /**
  * Returns default variable values.
  * @param  string $var
@@ -61,40 +123,43 @@ function opensanmateo_govdelivery_variable_defaults($var = NULL) {
  */
 function opensanmateo_govdelivery_sync_topics() {
   $vocab = taxonomy_vocabulary_machine_name_load('govdelivery_topics');
-  $topic_url = variable_get('opensanmateo_govdelivery_base_url', opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_base_url')) . '/api/account/CASMATEO/topics.xml';
 
-  // Grab existing terms so we can make sure we properly sync items.
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'taxonomy_term');
-  $query->propertyCondition('vid', $vocab->vid);
-  $result = $query->execute();
-  $existing_terms = !empty($result['taxonomy_term']) ? taxonomy_term_load_multiple(array_keys($result['taxonomy_term'])) : array();
+  if ($account_name = variable_get('opensanmateo_govdelivery_account_name', FALSE)) {
+    $topic_url = variable_get('opensanmateo_govdelivery_base_url', opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_base_url')) . '/api/account/' . $account_name . '/topics.xml';
+
+    // Grab existing terms so we can make sure we properly sync items.
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'taxonomy_term');
+    $query->propertyCondition('vid', $vocab->vid);
+    $result = $query->execute();
+    $existing_terms = !empty($result['taxonomy_term']) ? taxonomy_term_load_multiple(array_keys($result['taxonomy_term'])) : array();
 
 
-  $request = drupal_http_request($topic_url, array(), 'GET');
-  if ($request->code == 200 && !empty($request->data)) {
-    @$topics = new SimpleXMLElement($request->data);
+    $request = drupal_http_request($topic_url, array(), 'GET');
+    if ($request->code == 200 && !empty($request->data)) {
+      @$topics = new SimpleXMLElement($request->data);
 
-    foreach ($topics->topic as $topic) {
+      foreach ($topics->topic as $topic) {
 
-      if (!opensanmateo_govdelivery_find_term($existing_terms, (string) $topic->code)) {
-        $term = array(
-          'vid' => $vocab->vid,
-          'name' => (string) $topic->name,
-          'field_govdelivery_topic' => array(
-            'und' => array(
-              array('value' => (string) $topic->code),
+        if (!opensanmateo_govdelivery_find_term($existing_terms, (string) $topic->code)) {
+          $term = array(
+            'vid' => $vocab->vid,
+            'name' => (string) $topic->name,
+            'field_govdelivery_topic' => array(
+              'und' => array(
+                array('value' => (string) $topic->code),
+              ),
             ),
-          ),
-        );
+          );
 
-        taxonomy_term_save((object) $term);
+          taxonomy_term_save((object) $term);
+        }
       }
-    }
 
-    // Prune old terms.
-    foreach ($existing_terms as $tid => $term) {
-      taxonomy_term_delete($tid);
+      // Prune old terms.
+      foreach ($existing_terms as $tid => $term) {
+        taxonomy_term_delete($tid);
+      }
     }
   }
 }
@@ -204,22 +269,24 @@ function opensanmateo_govdelivery_find_topic_updates($node) {
  *   The taxonomy term to send the update for.
  */
 function opensanmateo_govdelivery_send_update($node, $term) {
-  $send_url = variable_get('opensanmateo_govdelivery_base_url', opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_base_url')) . '/api/account/CASMATEO/bulletins/send_now';
+  if ($account_name = variable_get('opensanmateo_govdelivery_account_name', FALSE)) {
+    $send_url = variable_get('opensanmateo_govdelivery_base_url', opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_base_url')) . '/api/account/' . $account_name . '/bulletins/send_now';
 
-  $subject = variable_get('opensanmateo_govdelivery_email_topic', opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_email_topic'));
-  $subject = token_replace($subject, array('node' => $node, 'term' => $term));
+    $subject = variable_get('opensanmateo_govdelivery_email_topic', opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_email_topic'));
+    $subject = token_replace($subject, array('node' => $node, 'term' => $term));
 
-  $body = variable_get('opensanmateo_govdelivery_email_text', opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_email_text'));
-  $body = token_replace($body, array('node' => $node, 'term' => $term));
+    $body = variable_get('opensanmateo_govdelivery_email_text', opensanmateo_govdelivery_variable_defaults('opensanmateo_govdelivery_email_text'));
+    $body = token_replace($body, array('node' => $node, 'term' => $term));
 
-  $post_params = array(
-    'bulletin[body]' => $body,
-    'bulletin[subject]' => $subject,
-    'bulletin[topics][][code]' => $term->field_govdelivery_topic[LANGUAGE_NONE][0]['value'],
-  );
+    $post_params = array(
+      'bulletin[body]' => $body,
+      'bulletin[subject]' => $subject,
+      'bulletin[topics][][code]' => $term->field_govdelivery_topic[LANGUAGE_NONE][0]['value'],
+    );
 
-  $post_params = http_build_query($post_params);
-  $request = drupal_http_request($send_url, array('method' => 'POST', 'data' => $post_params));
+    $post_params = http_build_query($post_params);
+    $request = drupal_http_request($send_url, array('method' => 'POST', 'data' => $post_params));
+  }
 }
 
 /**
