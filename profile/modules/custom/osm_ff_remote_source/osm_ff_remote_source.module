@@ -155,11 +155,18 @@ function osm_ff_remote_source_field_process($element, &$form_state, &$form) {
       '#type' => 'fieldset',
     );
 
+    // Hide the share settings when the share checkbox is not enabled.
+    $states = array(
+      'invisible' => array(
+        ':input[name="' . $element['#name'] . '[share_fieldset][field_share]"]' => array('checked' => FALSE),
+      )
+    );
+
     $file = file_load($item['fid']);
     // Add field_share form element.
     $element['share_fieldset']['field_share'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Share'),
+      '#title' => t('Share with other SanMateo Platform sites'),
       '#default_value' => empty($item['field_share'][LANGUAGE_NONE][0]['value']) ? 0 : 1,
       '#access' => osm_ff_remote_source_is_sharable($item),
     );
@@ -170,24 +177,25 @@ function osm_ff_remote_source_field_process($element, &$form_state, &$form) {
       '#weight' => 100,
       '#default_value' => !empty($item['field_summary'][LANGUAGE_NONE][0]['value']) ? $item['field_summary'][LANGUAGE_NONE][0]['value'] : '',
       '#access' => osm_ff_remote_source_is_sharable($item),
+      '#states' => $states,
     );
 
 
-    // Add in topic select.
-    /*$topic = taxonomy_vocabulary_machine_name_load('subject');
-
-    $element['field_subject'] = array(
-      '#type' => 'hierarchical_select',
-      '#title' => t('Select the tag you wish to use.'),
-      '#size' => 1,
-      '#config' => array(
-        'module' => 'hs_taxonomy',
-        'params' => array(
-          'vid' => $topic->vid,
-        ),
-      ),
-    );*/
-
+    $topic = taxonomy_vocabulary_machine_name_load('subject');
+    $topics = taxonomy_get_tree($topic->vid);
+    $topic_options = array('' => "-- None --");
+    foreach ($topics as $t) {
+      $topic_options[$t->tid] = str_repeat('-', $t->depth) . $t->name;
+    }
+    $element['share_fieldset']['field_subject'] = array(
+      '#type' => 'select',
+      '#title' => t('Subject'),
+      '#weight' => 100,
+      '#options' => $topic_options,
+      '#default_value' => !empty($item['field_subject'][LANGUAGE_NONE][0]['tid']) ? $item['field_subject'][LANGUAGE_NONE][0]['tid'] : '',
+      '#access' => osm_ff_remote_source_is_sharable($item),
+      '#states' => $states,
+    );
   }
 
   return $element;
@@ -257,10 +265,17 @@ function osm_ff_remote_source_node_presave($node) {
   foreach ($shared_files as $file) {
     // Load files and map / save the share field.
     $f = file_load($file['fid']);
-
     if (osm_ff_remote_source_is_sharable((array) $f)) {
       $wrapper = entity_metadata_wrapper('file', $f);
       $wrapper->field_share->set($file['share_fieldset']['field_share']);
+
+      if (!empty($file['share_fieldset']['field_subject'])) {
+        $wrapper->field_subject->set(array($file['share_fieldset']['field_subject']));
+      }
+      else {
+        // unset the term.
+        $wrapper->field_subject->set(array());
+      }
       $wrapper->field_summary->set($file['share_fieldset']['field_summary']);
       $wrapper->save();
     }
