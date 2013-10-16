@@ -1,17 +1,52 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the OpenSanMateo Workflow feature.
  */
+
+include_once 'opensanmateo_workflow.features.inc';
 
  /**
   * Implements hook_menu_alter()
-  * 
-  * This tab link is completely unstable and doesn't actually alter the status of the content
-  * so we're getting rid of it
+  *
   */
 function opensanmateo_workflow_menu_alter(&$items) {
+  // This tab link is completely unstable and doesn't actually alter the status of the content so we're getting rid of it
   if (isset($items['node/%publishcontent_tab/unpublish/%publishcontent_security_token'])) {
     unset($items['node/%publishcontent_tab/unpublish/%publishcontent_security_token']);
+  }
+
+  // Since Workbench is now enabled, let's swap out the core admin/content page callback so we use the new View provided by this app
+  if (isset($items['admin/content'])) {
+    $items['admin/content']['page callback'] = 'views_embed_view';
+    $items['admin/content']['page arguments'] = array('opensanmateo_find_content', 'page');
+  }
+}
+
+/**
+ * Implements hook_views_query_alter()
+ *
+ * Allow content items that are not workbench moderated to still show in opensanmateo_find_content View
+ */
+function opensanmateo_workflow_views_query_alter(&$view, &$query) {
+  if ($view->name != 'opensanmateo_find_content') {
+    return;
+  }
+  $query->table_queue['node_revision']['join']->field = 'nid';
+  $query->table_queue['node_revision']['join']->left_field = 'nid';
+  $query->table_queue['workbench_moderation_node_history']['join']->type = 'LEFT';
+}
+
+/**
+ * Implements hook_form_alter
+ */
+function opensanmateo_workflow_form_alter(&$form, &$form_state, $form_id) {
+  //dpm($form_id);
+  // Alter Views exposed filter forms
+  if ('views_exposed_form' == $form_id) {
+    // Redirect the exposed filter form back to the correct URL
+    if ('opensanmateo_find_content' == $form_state['view']->name) {
+      $form['#action'] = url('admin/content');
+    }
   }
 }
