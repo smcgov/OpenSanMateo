@@ -106,3 +106,16 @@ function sanmateo_master_is($master = NULL) {
   module_invoke_all("sanmateo_master_is_set", $master);
   return $master;
 }
+
+/**
+ * Implementation of hook_form_FORM_ID_alter().
+ * Alter the installation form to set United States as the default country and PT as the timezone
+ */
+function sanmateo_form_install_configure_form_alter(&$form, $form_state) {
+  $form['server_settings']['site_default_country']['#default_value'] = 'US';
+  $form['server_settings']['date_default_timezone']['#default_value'] = 'America/Los_Angeles';
+  $form['server_settings']['date_default_timezone']['#attributes']['class'] = array();
+
+  $form['update_notifications']['update_status_module']['#default_value'] = array();
+}
+
