@@ -11,9 +11,9 @@
       var i, x, y, cookies = document.cookie.split(";");
       var out = "";
       for( i = 0; i < cookies.length; i++) {
-        var x = cookies[i].substr(0, cookies[i].indexOf("="));
-        var y = cookies[i].substr(cookies[i].indexOf("=") + 1);
-        var x = x.replace(/^\s+|\s+$/g, "");
+        x = cookies[i].substr(0, cookies[i].indexOf("="));
+        y = cookies[i].substr(cookies[i].indexOf("=") + 1);
+        x = x.replace(/^\s+|\s+$/g, "");
         if(x == name) {
           return unescape(y);
         }
@@ -22,9 +22,10 @@
     attach : function(context, settings) {
       $(document).ready(function(event) {
         //builds the jQuery selector for the configured link
-        var menu_link_selector = $('.' + settings.google_translator.jquery_selector);
+        var menu_link_selector = $('a.' + settings.google_translator.jquery_selector);
         if (typeof (Drupal.behaviors.google_translator_init.get_cookie('googtrans')) != 'undefined' ) {
           menu_link_selector.hide().after(settings.google_translator.gt_script);
+          $('#google_translator_element').show();
         }
 
         $('#google_translator_element').hide();
@@ -51,7 +52,7 @@
 
               // Accepted terms.
               $('#__dimScreen .message a.accept-terms').click(function(event) {
-                $('#__dimScreen').remove();
+                $('#__dimScreen').hide();
                 $('#google_translator_element').show();
                 menu_link_selector.hide().after(settings.google_translator.gt_script);
               });
@@ -59,12 +60,12 @@
               // Attach esc key to cancel action terms action.
               $(document).keyup(function(e) {
                 if (e.keyCode == 27) {
-                  $('#__dimScreen').remove();
+                  $('#__dimScreen').hide();
                 }
               });
               // Cancel, did not accepted terms.
               $('#__dimScreen .message a.do-not-accept-terms').click(function(event) {
-                $('#__dimScreen').remove();
+                $('#__dimScreen').hide();
               });
 
               $('#__dimScreen .overlay-wrapper').css({
