@@ -1,0 +1,12 @@
+// default variables
+@import "vars.scss";
+
+// All default/mobile styles will appear before the following media queries.
+
+@media all and (min-width: $tablet) {
+
+}
+
+@media all and (min-width: $desktop) {
+
+}
