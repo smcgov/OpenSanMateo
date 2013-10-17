@@ -7587,6 +7587,36 @@ you can use the generic selector below, but it's slower:
 
 /* Fonts */
 /* Media Queries */
+/* line 4, ../scss/elements/tables.scss */
+table {
+  border: 1px solid rgba(3, 108, 182, 0.1);
+  font-size: .85em;
+  border-radius: 3px;
+  margin-bottom: 20px; }
+  /* line 10, ../scss/elements/tables.scss */
+  table th {
+    background-color: #036cb6;
+    color: white;
+    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+    font-weight: 100;
+    text-transform: uppercase;
+    padding: .75em .75em 1em;
+    border-bottom: 0; }
+  /* line 20, ../scss/elements/tables.scss */
+  table th:first-child {
+    border-top-left-radius: 3px; }
+  /* line 23, ../scss/elements/tables.scss */
+  table th:last-child {
+    border-top-right-radius: 3px; }
+  /* line 26, ../scss/elements/tables.scss */
+  table td {
+    padding: .75em; }
+  /* line 29, ../scss/elements/tables.scss */
+  table tr:nth-child(2n+2) {
+    background-color: rgba(3, 108, 182, 0.05); }
+
+/* Fonts */
+/* Media Queries */
 /**
   * This layout.scss file handles completely overwriting the layout CSS provided by panels. 
   * The panels layout css (which essentially is the desktop version) must be reset so that
@@ -9445,17 +9475,17 @@ footer {
   /* line 103, ../scss/elements/footer.scss */
   footer nav ul, footer nav ul.menu {
     width: 45%; } }
-/* line 57, ../scss/smc_base.scss */
+/* line 59, ../scss/smc_base.scss */
 .limiter {
   margin: auto;
   max-width: 1120px;
   position: relative; }
 
-/* line 63, ../scss/smc_base.scss */
+/* line 65, ../scss/smc_base.scss */
 .krumo-root strong {
   display: inline !important; }
 
-/* line 68, ../scss/smc_base.scss */
+/* line 70, ../scss/smc_base.scss */
 ul li.leaf,
 ul li.expanded {
   list-style-type: none;
@@ -9463,34 +9493,34 @@ ul li.expanded {
   padding: 0;
   margin: 0; }
 
-/* line 76, ../scss/smc_base.scss */
+/* line 78, ../scss/smc_base.scss */
 .messages strong {
   display: inline; }
 
-/* line 85, ../scss/smc_base.scss */
+/* line 87, ../scss/smc_base.scss */
 nav.main-nav {
   border-top: 0;
   margin-bottom: 0;
   padding-top: 0;
   z-index: 400 !important; }
 
-/* line 91, ../scss/smc_base.scss */
+/* line 93, ../scss/smc_base.scss */
 .flexslider {
   z-index: 1 !important; }
 
-/* line 94, ../scss/smc_base.scss */
+/* line 96, ../scss/smc_base.scss */
 header {
   z-index: 10; }
 
-/* line 98, ../scss/smc_base.scss */
+/* line 100, ../scss/smc_base.scss */
 div.body {
   z-index: 1; }
 
-/* line 102, ../scss/smc_base.scss */
+/* line 104, ../scss/smc_base.scss */
 footer {
   z-index: 10; }
 
-/* line 107, ../scss/smc_base.scss */
+/* line 109, ../scss/smc_base.scss */
 #footer-wrapper .section {
   margin-bottom: 0; }
 

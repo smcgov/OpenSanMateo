@@ -1,0 +1,40 @@
+// default variables
+@import "vars.scss";
+
+table {
+	border: 1px solid rgba($primaryBlue, .1);
+	font-size: .85em;
+	border-radius: 3px;
+	margin-bottom: 20px;
+	
+	th {
+		background-color: $primaryBlue; 
+		color: white;
+		font-family: $bold;
+		font-weight: 100;
+		text-transform: uppercase;
+		padding:.75em .75em 1em;
+		border-bottom: 0;
+		
+  }
+	th:first-child {
+	  border-top-left-radius: 3px;
+  }
+	th:last-child {
+	  border-top-right-radius: 3px;
+  }
+	td {
+	  padding: .75em;
+  }
+	tr:nth-child(2n+2) {
+	  background-color: rgba($primaryBlue, .05);
+  }
+}
+
+@media all and (min-width: $tablet) {
+
+}
+
+@media all and (min-width: $desktop) {
+
+}
