@@ -193,6 +193,19 @@
         
       }
     }
+    .promo-pane-orange {
+      .field-name-field-rotator-link-url {
+        
+        a {
+          //@include button;
+          
+          //@include buttonArrow;
+          
+          @include buttonBlue;
+        }
+        
+      }
+    }
   }
 }
 
