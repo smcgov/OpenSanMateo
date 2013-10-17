@@ -8904,6 +8904,7 @@ you can use the generic selector below, but it's slower:
 .pane-bundle-promo-panels-pane {
   padding: 0;
   margin-bottom: 20px;
+  position: relative;
   background-color: #38939b;
   border-radius: 3px; }
   /* line 11, ../scss/elements/promo-boxes.scss */
