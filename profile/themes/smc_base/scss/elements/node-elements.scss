@@ -1,10 +1,77 @@
 // default variables
 @import "vars.scss";
 
-// All default/mobile styles will appear before the following media queries.
+.field-type-file {
+  
+  .file {
+  
+    a {
+      width: 100%;
+			float: left; 
+			border-top: 1px solid rgba($primaryGray, .1);
+			padding: .5em 0;
+			display: block;
+    }
+    
+    .file-type {
+			color: $primaryGray; 
+			width: 10%; 
+			background-color: rgba($primaryGray, .05); 
+			font-size: .5em; 
+			padding: .5em; 
+			border-radius: 3px;
+			text-align: center;
+			display: 	inline-block;
+			text-transform: uppercase;
+		}
+		
+		//.upload-name {width: 60%; padding-left: .5em}
+		.file-size {
+			color: $primaryGray; 
+			width: 20%; 
+			font-size: .5em; 
+			float: right;
+			padding: .5em; 
+			border-radius: 3px;
+			text-align: right;
+		}
+		
+		.file-name {
+  		padding-left: .5em;
+		}
+	}
+	.field-items {
+  	border-bottom: 1px solid rgba($primaryGray, .1);
+  	margin-bottom: 20px;
+  	
+  	&:after {
+    	clear: both;
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+  	}
+  	.field-item, .file {
+      &:after {
+      	clear: both;
+        content: ".";
+        display: block;
+        height: 0;
+        visibility: hidden;
+    	}	
+  	}
+	}
+}
+
 
 @media all and (min-width: $tablet) {
-
+  .field-type-file {
+    .file {
+      .file-type, .file-size {
+        font-size: 0.75em;
+      }
+    }
+  }
 }
 
 @media all and (min-width: $desktop) {

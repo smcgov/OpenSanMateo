@@ -8396,6 +8396,59 @@ you can use the generic selector below, but it's slower:
       font-size: 1em; } }
 /* Fonts */
 /* Media Queries */
+/* line 8, ../scss/elements/node-elements.scss */
+.field-type-file .file a {
+  width: 100%;
+  float: left;
+  border-top: 1px solid rgba(85, 90, 90, 0.1);
+  padding: .5em 0;
+  display: block; }
+/* line 16, ../scss/elements/node-elements.scss */
+.field-type-file .file .file-type {
+  color: #555a5a;
+  width: 10%;
+  background-color: rgba(85, 90, 90, 0.05);
+  font-size: .5em;
+  padding: .5em;
+  border-radius: 3px;
+  text-align: center;
+  display: inline-block;
+  text-transform: uppercase; }
+/* line 29, ../scss/elements/node-elements.scss */
+.field-type-file .file .file-size {
+  color: #555a5a;
+  width: 20%;
+  font-size: .5em;
+  float: right;
+  padding: .5em;
+  border-radius: 3px;
+  text-align: right; }
+/* line 39, ../scss/elements/node-elements.scss */
+.field-type-file .file .file-name {
+  padding-left: .5em; }
+/* line 43, ../scss/elements/node-elements.scss */
+.field-type-file .field-items {
+  border-bottom: 1px solid rgba(85, 90, 90, 0.1);
+  margin-bottom: 20px; }
+  /* line 47, ../scss/elements/node-elements.scss */
+  .field-type-file .field-items:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden; }
+  /* line 55, ../scss/elements/node-elements.scss */
+  .field-type-file .field-items .field-item:after, .field-type-file .field-items .file:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden; }
+
+@media all and (min-width: 768px) {
+  /* line 70, ../scss/elements/node-elements.scss */
+  .field-type-file .file .file-type, .field-type-file .file .file-size {
+    font-size: 0.75em; } }
 /* Fonts */
 /* Media Queries */
 /* line 4, ../scss/elements/follow.scss */

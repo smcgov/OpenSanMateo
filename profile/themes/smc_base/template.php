@@ -35,7 +35,7 @@ function smc_base_preprocess_flexslider(&$variables) {
 }
 
 function smc_base_preprocess_node(&$variables) {
-
+  //krumo($variables);
 }
 
 function smc_base_preprocess_block(&$variables) {
@@ -654,4 +654,60 @@ function smc_base_item_list($variables) {
   }
   $output .= '</div>';
   return $output;
+}
+
+
+function smc_base_file_link($variables) {
+  
+  $file = $variables['file'];
+  $icon_directory = $variables['icon_directory'];
+  $size = smc_base_format_filesize($file->filesize);
+  
+  $url = file_create_url($file->uri);
+  $icon = theme('file_icon', array('file' => $file, 'icon_directory' => $icon_directory));
+
+  // Set options as per anchor format described at
+  // http://microformats.org/wiki/file-format-examples
+  $options = array(
+    'attributes' => array(
+      'type' => $file->filemime . '; length=' . $file->filesize,
+    ),
+    'html' => TRUE,
+  );
+
+  // Use the description as the link text if available.
+  if (empty($file->description)) {
+    $link_text = $file->filename;
+  }
+  else {
+    $link_text = $file->description;
+    $options['attributes']['title'] = check_plain($file->filename);
+  }
+  $filesize = '<span class="file-size">' . $size . '</span>';
+  
+  $link_text = '<span class="file-name">' . $link_text . '</span>';
+  return '<div class="file">' . l($icon . $link_text . $filesize, $url, $options) . '</div>';
+}
+
+function smc_base_format_filesize($bytes) { 
+    $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+
+    $bytes = max($bytes, 0); 
+    $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
+    $pow = min($pow, count($units) - 1); 
+    $bytes /= pow(1024, $pow);
+    
+    return round($bytes, 2) . ' ' . $units[$pow]; 
+} 
+
+function smc_base_file_icon($variables) {
+  $file = $variables['file'];
+  //$icon_directory = $variables['icon_directory'];
+
+  $mime = check_plain($file->filemime);
+  //$icon_url = file_icon_url($file, $icon_directory);
+  
+  $dashed_mime = str_replace('application-', '', strtr($mime, array('/' => '-')));
+  
+  return '<span class="file-type">' . $dashed_mime . '</span>';
 }
