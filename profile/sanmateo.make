@@ -464,7 +464,7 @@ projects[google_translator][type] = module
 projects[google_translator][subdir] = contrib
 projects[google_translator][download][type] = git
 projects[google_translator][download][url] = https://bitbucket.org/phase2tech/google_translator.git
-projects[google_translator][download][revision] = 85b611f
+projects[google_translator][download][revision] = c3eee44361b1a636fa0ac10799d2b426949bd0e6
 
 projects[plupload][type] = module
 projects[plupload][subdir] = contrib
