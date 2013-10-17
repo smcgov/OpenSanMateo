@@ -1,0 +1,144 @@
+// default variables
+@import "vars.scss";
+
+.wrapper {
+	overflow: hidden;
+}
+
+.wrapper > header {
+	background-image: url('../images/uber-texture2.png'), 
+  -webkit-linear-gradient(#faffff 0%, #fdffff 100%);
+	background-image: url('../images/uber-texture2.png'), 
+  -moz-linear-gradient(#faffff 0%, #ffffff 100%);
+	border-top: 5px solid rgba($primaryBlue, .9);
+	padding: .5em 0 .75em;
+	margin-bottom: 10%;
+	box-shadow: 0 3px 6px rgba($primaryGray, 0.1);
+}
+
+.lockup {
+	width: 80%;
+	float: left;
+}
+
+.btn .icon-nav {
+	font-size: 1.5em;
+	float: right;
+}
+
+.county-name, .dept-name {
+	display: inline-block;
+	padding: 0 .5em;
+	text-transform: uppercase;
+}
+
+.county-name {
+	color: $primaryBlue;
+	font-size: 1.25em;
+	font-family: 'Trade Gothic W01 Bold';
+}
+
+.county-name span {
+	font-size: .75em;
+	font-family: 'Trade Gothic W01 Roman';
+	padding: 0 0.15em 0 0.1em;
+}
+
+.dept-name {
+	color: $primaryTeal;
+	font-family: 'Trade Gothic W01 Light';
+	font-size: 1.25em;
+	margin-bottom: 0;
+	line-height: 1em;
+	font-weight: 100;
+}
+
+.dept-link {
+  display: none;
+}
+
+@media all and (min-width: $tablet) {
+  .wrapper {
+  	overflow: hidden;
+  	width: 100%;
+  	margin: auto;
+  	
+  	> header {
+  		padding: 1em 0 0;
+  		background-image: url("../images/uber-texture2.png"), 
+  		-webkit-linear-gradient(#faffff 0%, /* #ffffff 50%, */ #fdffff 100%);
+  		background-image: url("../images/uber-texture2.png"), 
+  		-moz-linear-gradient(#faffff 0%, /* #ffffff 50%, */ #ffffff 100%);
+  		border-top: 5px solid rgba($primaryBlue, .9);
+  		margin-bottom: 3%;
+  		box-shadow: 0 3px 6px rgba($primaryGray, 0.1);
+		}
+	}
+	
+	/* Header Logo/Headings */
+  .lockup {
+  	margin-bottom: 2%;
+  	width: 65%;
+  	background: url("../images/seal.png") no-repeat 0 -2px;
+  	background-size: contain;
+  	padding-left: 5em;
+  	float: none;
+  }
+  	
+  .county-name, .dept-name {
+  	display: block;
+  	text-transform: uppercase;
+  	text-shadow: 0px 1px 0px #fff;
+  }
+  
+  .county-name {
+  	color: $primaryBlue;
+  	font-size: 2em;
+  	line-height: 1em;
+  	font-family: 'Trade Gothic W01 Bold';
+    background-size: contain;
+    
+    span {
+		  font-size: .6em;
+		  font-family: 'Trade Gothic W01 Roman';
+		  padding: 0 0.2em 0 0.1em;
+	  }
+  }
+
+  .county-name:hover {
+  	color: rgba($primaryTeal, 1);
+  }
+  
+  .dept-name {
+  	font-size: 2em;
+  	margin: 0;
+  	line-height: 1.2em;
+  }
+
+  /* View Departments Switch */
+  .dept-link {
+    background-color: rgba($primaryBlue,.9);
+  	border-bottom-left-radius: 3px;
+  	border-bottom-right-radius: 3px;
+    color: white;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-bottom: 5px;
+    padding: 0.4em .9em .8em;
+    position: absolute;
+    right: 0;
+    top: -1.3em;
+  }
+    
+  .dept-link:hover {
+    color: rgba(white, .9);
+  }
+
+  .btn-nav {
+	  display: none;
+	}
+}
+
+@media all and (min-width: $desktop) {
+
+}

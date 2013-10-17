@@ -28,7 +28,17 @@
 		color: $primaryTeal; 
 		font-weight: 100;
   }
-  
+  .meta {
+  	font-size: .85em; 
+  	border-top-left-radius: 3px; 
+  	border-bottom-left-radius: 3px; 
+  	background-color: rgba($primaryGray, .05); 
+  	display: inline-block; 
+  	border: 1px solid rgba($primaryGray, .2); 
+  	padding: .25em .75em .25em .5em; 
+  	color: $primaryGray;
+  	margin-bottom: 5%;
+  }
   .node-type {
     float: right;
 		width: -webkit-fit-content;
@@ -155,10 +165,21 @@
     }
     
     .node-location {
-      //font-size: 0.75em;
+      
+      &:after {
+        content: ".";
+        height: 0;
+        display: block;
+      }
     }
     .node-date {
       font-size: 0.9em;
+      
+      &:after {
+        content: ".";
+        height: 0;
+        display: block;
+      }
     }
     
     .node-teaser {
@@ -198,6 +219,17 @@
 }
 
 @media all and (min-width: $tablet) {
+  .universal-teaser {
+  
+    &.event {
+      border-radius: 3px;
+    	background-color: white;
+    	border: 1px solid rgba(3, 108, 182, .1);
+    	width:100%;
+    	position: relative;
+    	display: block;
+    }
+  }
   // specific to events
   .panel-col-first,
   .panel-col-last {
