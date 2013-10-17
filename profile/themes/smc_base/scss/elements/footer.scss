@@ -23,28 +23,43 @@ footer {
 			width: 100%; 
 			margin-bottom: 0;
 			
-		li, 
-		li.leaf {
-			float: left; 
-			list-style-type: none; 
-			width: 100%;
-			
-			a {
-				color: white; 
-				display: block; 
-				font-weight: bold; 
-				font-size: 1em; 
-				text-align: center; 
-				padding: .5em 0; 
-				border-bottom: 1px solid #014c80; 
-				min-height: 44px; 
-				font-family: $reg
-		  }
-			
-			a:hover {
-			  color: rgba(255,255,255, .8);
-		  }
-
+  		li, 
+  		li.leaf {
+  			float: left; 
+  			list-style-type: none; 
+  			width: 100%;
+  			
+  			a {
+  				color: white; 
+  				display: block; 
+  				font-weight: bold; 
+  				font-size: 1em; 
+  				text-align: center; 
+  				padding: .5em 0; 
+  				border-bottom: 1px solid #014c80; 
+  				min-height: 44px; 
+  				font-family: $reg
+  		  }
+  			
+  			a:hover {
+  			  color: rgba(255,255,255, .8);
+  		  }
+          
+        #google_translator_element div {
+          
+          color: #FFFFFF !important;
+  				font-size: 0.5em;
+  				
+  				a {
+    				display: inline;
+    				font-size: 1em;
+  				}
+          
+          select {
+            margin: 0;
+            display: block;
+          }
+        }
 			}
 		}
 	}

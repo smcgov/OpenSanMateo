@@ -234,6 +234,19 @@ a.button-green-small {
 }
 
 
+a.accept-terms {
+  @include button();
+  @include buttonGreen;
+  @include buttonSmall;
+  margin-top: 10px;
+}
+
+a.do-not-accept-terms {
+  @include button();
+  @include buttonTeal;
+  @include buttonSmall;
+  margin-top: 10px;
+}
 
 
 
