@@ -7,3 +7,4 @@ dependencies[] = opensanmateo_roles
 dependencies[] = opensanmateo_workflow
 dependencies[] = workbench
 dependencies[] = workbench_moderation
+dependencies[] = workbench_access
