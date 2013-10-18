@@ -274,7 +274,7 @@ function opensanmateo_layout_field_custom_layout_template() {
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => "Check this box to allow Editors and Site Managers to change this content's page layout and add custom promotions",
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -294,6 +294,7 @@ function opensanmateo_layout_field_custom_layout_template() {
     'label' => 'Custom Layout',
     'required' => 0,
     'settings' => array(
+      'description_field' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
