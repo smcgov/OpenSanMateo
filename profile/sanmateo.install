@@ -99,4 +99,18 @@ function sanmateo_update_7007() {
   module_enable(array('panels_interface'));
 }
 
+/**
+ * Delete document type and blog term vocabularies.
+ */
+function sanmateo_update_7008() {
+  if ($blog = taxonomy_vocabulary_machine_name_load('blog_terms')) {
+    taxonomy_vocabulary_delete($blog->vid);
+  }
+
+  if ($document = taxonomy_vocabulary_machine_name_load('document_terms')) {
+    taxonomy_vocabulary_delete($document->vid);
+  }
+}
+
+
 // End of file sanmateo.install
