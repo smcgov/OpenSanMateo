@@ -5948,25 +5948,26 @@ you can use the generic selector below, but it's slower:
 /* line 5, ../scss/style.scss */
 body {
   margin: auto;
-  height: 100%; }
+  height: 100%;
+  background: #FFFFFF !important; }
 
-/* line 10, ../scss/style.scss */
+/* line 11, ../scss/style.scss */
 .main-body header {
   margin-bottom: 3%; }
 
-/* line 14, ../scss/style.scss */
+/* line 15, ../scss/style.scss */
 .page-title {
   float: left;
   width: 65%; }
 
-/* line 19, ../scss/style.scss */
+/* line 20, ../scss/style.scss */
 .filter-link {
   float: right;
   font-size: .85em;
   width: 30%;
   margin-top: 5.75%; }
 
-/* line 26, ../scss/style.scss */
+/* line 27, ../scss/style.scss */
 .page-title {
   font-size: 2em;
   color: #036cb6;
@@ -5974,54 +5975,54 @@ body {
   margin-bottom: 1%;
   text-transform: none; }
 
-/* line 34, ../scss/style.scss */
+/* line 35, ../scss/style.scss */
 .page-title span {
   color: #38939b; }
 
-/* line 38, ../scss/style.scss */
+/* line 39, ../scss/style.scss */
 .menu-button {
   float: right;
   margin-bottom: 0;
   margin-top: 0; }
 
 /* custom placeholder color */
-/* line 45, ../scss/style.scss */
+/* line 46, ../scss/style.scss */
 input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 50, ../scss/style.scss */
+/* line 51, ../scss/style.scss */
 input:active::-webkit-input-placeholder,
 input:focus::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
-/* line 54, ../scss/style.scss */
+/* line 55, ../scss/style.scss */
 input::-moz-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 59, ../scss/style.scss */
+/* line 60, ../scss/style.scss */
 input:active::-moz-placeholder,
 input:focus::-moz-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
-/* line 63, ../scss/style.scss */
+/* line 64, ../scss/style.scss */
 input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 68, ../scss/style.scss */
+/* line 69, ../scss/style.scss */
 input:active::-ms-input-placeholder,
 input:focus::-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
 @media all and (min-width: 768px) {
-  /* line 74, ../scss/style.scss */
+  /* line 75, ../scss/style.scss */
   html, body {
     min-height: 100%; }
 
-  /* line 78, ../scss/style.scss */
+  /* line 79, ../scss/style.scss */
   body {
-    background-color: #fdfdfd; }
+    background-color: #fdfdfd !important; }
 
-  /* line 82, ../scss/style.scss */
+  /* line 83, ../scss/style.scss */
   .page-title {
     font-size: 2.5em;
     color: #036cb6;
@@ -6033,19 +6034,19 @@ input:focus::-ms-input-placeholder {
     float: none;
     padding-left: .5em; }
 
-  /* line 94, ../scss/style.scss */
+  /* line 95, ../scss/style.scss */
   .sub-link {
     position: absolute;
     top: 10%;
     right: 0; }
 
-  /* line 100, ../scss/style.scss */
+  /* line 101, ../scss/style.scss */
   h1 {
     color: #38939b;
     font-family: 'Trade Gothic W01 Light';
     text-transform: uppercase; }
 
-  /* line 106, ../scss/style.scss */
+  /* line 107, ../scss/style.scss */
   h2 {
     text-transform: uppercase;
     color: #38939b;
@@ -6055,7 +6056,7 @@ input:focus::-ms-input-placeholder {
     line-height: 1.2em;
     font-weight: 100; }
 
-  /* line 116, ../scss/style.scss */
+  /* line 117, ../scss/style.scss */
   h3 {
     color: #38939b;
     font-family: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica;
@@ -6064,43 +6065,43 @@ input:focus::-ms-input-placeholder {
     font-weight: 100;
     line-height: 1.2em; }
 
-  /* line 125, ../scss/style.scss */
+  /* line 126, ../scss/style.scss */
   h4 {
     color: #036cb6;
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
 
-  /* line 130, ../scss/style.scss */
+  /* line 131, ../scss/style.scss */
   h5 {
     color: #036cb6;
     font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
 
-  /* line 136, ../scss/style.scss */
+  /* line 137, ../scss/style.scss */
   a {
     color: #036cb6; }
 
-  /* line 140, ../scss/style.scss */
+  /* line 141, ../scss/style.scss */
   p {
     color: #555a5a; }
 
-  /* line 144, ../scss/style.scss */
+  /* line 145, ../scss/style.scss */
   .main-content ul {
     padding-left: 2em;
     font-size: .9em; }
 
-  /* line 149, ../scss/style.scss */
+  /* line 150, ../scss/style.scss */
   .main-content ul.flush {
     padding-left: 0; }
 
-  /* line 153, ../scss/style.scss */
+  /* line 154, ../scss/style.scss */
   li {
     color: #6b699e; }
 
-  /* line 157, ../scss/style.scss */
+  /* line 158, ../scss/style.scss */
   .inner {
     padding: .5em 1em 1.25em;
     position: relative; }
 
-  /* line 162, ../scss/style.scss */
+  /* line 163, ../scss/style.scss */
   .hideme {
     opacity: 1.0; } }
 /**
@@ -6832,16 +6833,98 @@ a.button-green-small {
   a.button-green-small:active {
     background-color: rgba(141, 198, 63, 0.9); }
 
-/* line 243, ../scss/elements/buttons.scss */
+/* line 237, ../scss/elements/buttons.scss */
+a.accept-terms {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: 300;
+  position: relative;
+  background-color: rgba(141, 198, 63, 0.95);
+  font-size: .85em;
+  padding: .75em 1em;
+  margin-top: 10px; }
+  /* line 23, ../scss/elements/buttons.scss */
+  a.accept-terms:hover {
+    padding: .75em 1em; }
+  /* line 35, ../scss/elements/buttons.scss */
+  a.accept-terms:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 154, ../scss/elements/buttons.scss */
+  a.accept-terms:hover {
+    background-color: #8dc63f; }
+  /* line 158, ../scss/elements/buttons.scss */
+  a.accept-terms:active {
+    background-color: rgba(141, 198, 63, 0.9); }
+
+/* line 244, ../scss/elements/buttons.scss */
+a.do-not-accept-terms {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: 300;
+  position: relative;
+  background-color: rgba(56, 147, 155, 0.95);
+  font-size: .85em;
+  padding: .75em 1em;
+  margin-top: 10px; }
+  /* line 23, ../scss/elements/buttons.scss */
+  a.do-not-accept-terms:hover {
+    padding: .75em 1em; }
+  /* line 35, ../scss/elements/buttons.scss */
+  a.do-not-accept-terms:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 140, ../scss/elements/buttons.scss */
+  a.do-not-accept-terms:hover {
+    background-color: #38939b; }
+  /* line 144, ../scss/elements/buttons.scss */
+  a.do-not-accept-terms:active {
+    background-color: rgba(56, 147, 155, 0.9); }
+
+/* line 256, ../scss/elements/buttons.scss */
 ul.button-test {
   margin: 0;
   padding: 0; }
-  /* line 246, ../scss/elements/buttons.scss */
+  /* line 259, ../scss/elements/buttons.scss */
   ul.button-test li {
     margin: 0;
     padding: 0;
     list-style-type: none; }
-    /* line 251, ../scss/elements/buttons.scss */
+    /* line 264, ../scss/elements/buttons.scss */
     ul.button-test li a {
       background: none;
       background-color: none;
@@ -6871,7 +6954,7 @@ ul.button-test {
         -webkit-transition: all 0.3s;
         -moz-transition: all 0.3s;
         transition: all 0.3s; }
-      /* line 255, ../scss/elements/buttons.scss */
+      /* line 268, ../scss/elements/buttons.scss */
       ul.button-test li a.blue-cta {
         float: left;
         clear: left;
@@ -6928,7 +7011,7 @@ ul.button-test {
         /* line 130, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-cta:active {
           background-color: rgba(3, 108, 182, 0.9); }
-      /* line 262, ../scss/elements/buttons.scss */
+      /* line 275, ../scss/elements/buttons.scss */
       ul.button-test li a.teal-cta {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
@@ -6984,7 +7067,7 @@ ul.button-test {
         /* line 144, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-cta:active {
           background-color: rgba(56, 147, 155, 0.9); }
-      /* line 268, ../scss/elements/buttons.scss */
+      /* line 281, ../scss/elements/buttons.scss */
       ul.button-test li a.green-cta {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
@@ -7040,7 +7123,7 @@ ul.button-test {
         /* line 158, ../scss/elements/buttons.scss */
         ul.button-test li a.green-cta:active {
           background-color: rgba(141, 198, 63, 0.9); }
-      /* line 276, ../scss/elements/buttons.scss */
+      /* line 289, ../scss/elements/buttons.scss */
       ul.button-test li a.blue-default {
         float: left;
         clear: left;
@@ -7097,7 +7180,7 @@ ul.button-test {
         /* line 130, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-default:active {
           background-color: rgba(3, 108, 182, 0.9); }
-      /* line 283, ../scss/elements/buttons.scss */
+      /* line 296, ../scss/elements/buttons.scss */
       ul.button-test li a.teal-default {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
@@ -7153,7 +7236,7 @@ ul.button-test {
         /* line 144, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-default:active {
           background-color: rgba(56, 147, 155, 0.9); }
-      /* line 289, ../scss/elements/buttons.scss */
+      /* line 302, ../scss/elements/buttons.scss */
       ul.button-test li a.green-default {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
@@ -7209,7 +7292,7 @@ ul.button-test {
         /* line 158, ../scss/elements/buttons.scss */
         ul.button-test li a.green-default:active {
           background-color: rgba(141, 198, 63, 0.9); }
-      /* line 298, ../scss/elements/buttons.scss */
+      /* line 311, ../scss/elements/buttons.scss */
       ul.button-test li a.blue-small {
         float: left;
         clear: left;
@@ -7222,7 +7305,7 @@ ul.button-test {
         /* line 130, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-small:active {
           background-color: rgba(3, 108, 182, 0.9); }
-      /* line 304, ../scss/elements/buttons.scss */
+      /* line 317, ../scss/elements/buttons.scss */
       ul.button-test li a.teal-small {
         float: left;
         background-color: rgba(56, 147, 155, 0.95);
@@ -7234,7 +7317,7 @@ ul.button-test {
         /* line 144, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-small:active {
           background-color: rgba(56, 147, 155, 0.9); }
-      /* line 309, ../scss/elements/buttons.scss */
+      /* line 322, ../scss/elements/buttons.scss */
       ul.button-test li a.green-small {
         float: left;
         background-color: rgba(141, 198, 63, 0.95);
@@ -9423,9 +9506,27 @@ footer {
         footer nav ul li.leaf a:hover, footer nav ul.menu li a:hover,
         footer nav ul.menu li.leaf a:hover {
           color: rgba(255, 255, 255, 0.8); }
+        /* line 48, ../scss/elements/footer.scss */
+        footer nav ul li #google_translator_element div,
+        footer nav ul li.leaf #google_translator_element div, footer nav ul.menu li #google_translator_element div,
+        footer nav ul.menu li.leaf #google_translator_element div {
+          color: #FFFFFF !important;
+          font-size: 0.5em; }
+          /* line 53, ../scss/elements/footer.scss */
+          footer nav ul li #google_translator_element div a,
+          footer nav ul li.leaf #google_translator_element div a, footer nav ul.menu li #google_translator_element div a,
+          footer nav ul.menu li.leaf #google_translator_element div a {
+            display: inline;
+            font-size: 1em; }
+          /* line 58, ../scss/elements/footer.scss */
+          footer nav ul li #google_translator_element div select,
+          footer nav ul li.leaf #google_translator_element div select, footer nav ul.menu li #google_translator_element div select,
+          footer nav ul.menu li.leaf #google_translator_element div select {
+            margin: 0;
+            display: block; }
 
 @media all and (min-width: 768px) {
-  /* line 54, ../scss/elements/footer.scss */
+  /* line 69, ../scss/elements/footer.scss */
   footer {
     background: url("../images/footer.jpg") no-repeat scroll center bottom #036cb6;
     background-size: cover;
@@ -9433,20 +9534,20 @@ footer {
     margin-bottom: 0;
     padding: 3em 2em;
     width: 100%; }
-    /* line 62, ../scss/elements/footer.scss */
+    /* line 77, ../scss/elements/footer.scss */
     footer .seal {
       background: url("../images/seal.png") no-repeat;
       background-size: contain;
       margin: 0; }
-    /* line 68, ../scss/elements/footer.scss */
+    /* line 83, ../scss/elements/footer.scss */
     footer nav {
       border: none; }
-    /* line 70, ../scss/elements/footer.scss */
+    /* line 85, ../scss/elements/footer.scss */
     footer nav ul, footer nav ul.menu {
       width: 55%;
       float: right;
       margin-bottom: 0; }
-      /* line 76, ../scss/elements/footer.scss */
+      /* line 91, ../scss/elements/footer.scss */
       footer nav ul li,
       footer nav ul li.leaf, footer nav ul.menu li,
       footer nav ul.menu li.leaf {
@@ -9454,7 +9555,7 @@ footer {
         list-style-type: none;
         width: 33%;
         margin-bottom: 2%; }
-        /* line 82, ../scss/elements/footer.scss */
+        /* line 97, ../scss/elements/footer.scss */
         footer nav ul li a,
         footer nav ul li.leaf a, footer nav ul.menu li a,
         footer nav ul.menu li.leaf a {
@@ -9466,13 +9567,13 @@ footer {
           border: none;
           min-height: 0;
           font-weight: 100; }
-        /* line 93, ../scss/elements/footer.scss */
+        /* line 108, ../scss/elements/footer.scss */
         footer nav ul li a:hover,
         footer nav ul li.leaf a:hover, footer nav ul.menu li a:hover,
         footer nav ul.menu li.leaf a:hover {
           color: rgba(255, 255, 255, 0.8); } }
 @media all and (min-width: 800px) {
-  /* line 103, ../scss/elements/footer.scss */
+  /* line 118, ../scss/elements/footer.scss */
   footer nav ul, footer nav ul.menu {
     width: 45%; } }
 /* line 59, ../scss/smc_base.scss */

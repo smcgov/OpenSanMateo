@@ -5,6 +5,7 @@
 body {
 	margin: auto;
 	height: 100%;	
+	background: #FFFFFF !important;
 }
 
 .main-body header {
@@ -76,7 +77,7 @@ input:focus::-ms-input-placeholder {
   }
 
   body {
-    background-color: #fdfdfd;
+    background-color: #fdfdfd !important;
   }
 
   .page-title {
