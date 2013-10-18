@@ -87,6 +87,16 @@ function osm_ff_remote_source_form_views_exposed_form_alter(&$form, $form_state,
   $view = $form_state['view'];
 
   if ($view->name == 'opensanmateo_media_browser') {
+
+    // Disable auto submit if we're not on a node edit page.
+    // @todo: this was causing issues in the IPE. Perhaps
+    // go back and write our own auto submit code for within the IPE
+    // context.
+    if (arg(0) != 'node' && (arg(1) != 'add' || arg(2) != 'edit')) {
+      unset($form['#attributes']['class']);
+      unset($form['submit']['#attributes']['class']);
+    }
+
     $topic = taxonomy_vocabulary_machine_name_load('subject');
     $topics = taxonomy_get_tree($topic->vid);
     $topic_options = array('' => "-- None --");
