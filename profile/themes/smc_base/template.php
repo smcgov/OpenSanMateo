@@ -703,11 +703,14 @@ function smc_base_format_filesize($bytes) {
 function smc_base_file_icon($variables) {
   $file = $variables['file'];
   //$icon_directory = $variables['icon_directory'];
-
-  $mime = check_plain($file->filemime);
+  //dsm($file);
+  
+  $ext = pathinfo($file->uri, PATHINFO_EXTENSION);
+  
+  //$mime = check_plain($file->filemime);
   //$icon_url = file_icon_url($file, $icon_directory);
   
   $dashed_mime = str_replace('application-', '', strtr($mime, array('/' => '-')));
   
-  return '<span class="file-type">' . $dashed_mime . '</span>';
+  return '<span class="file-type">' . $ext . '</span>';
 }
