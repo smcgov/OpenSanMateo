@@ -31,6 +31,23 @@ function opensanmateo_layout_theme() {
  * Implementation of hook_context_default_contexts_alter().
  */
 function opensanmateo_layout_context_default_contexts_alter(&$contexts) {
+  // Disable default openpublic contexts.
+  if (!empty($contexts['nav_press_release'])) {
+    unset($contexts['nav_press_release']);
+  }
+
+  if (!empty($contexts['nav_blog'])) {
+    unset($contexts['nav_blog']);
+  }
+
+  if (!empty($contexts['leadership'])) {
+    unset($contexts['leadership']);
+  }
+
+  if (!empty($contexts['popular_content'])) {
+    unset($contexts['popular_content']);
+  }
+
   // Diable the global context on master sites.
   if (!empty($contexts['opensanmateo_global']) && sanmateo_is_master()) {
     unset($contexts['opensanmateo_global']);
