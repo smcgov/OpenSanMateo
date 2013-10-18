@@ -17,4 +17,23 @@ function opensanmateo_shared_content_entity_info_alter(&$entity_info) {
   $entity_info['fieldable_panels_pane']['bundles']['curated_list_pane']['admin']['path'] = 'admin/structure/fieldable-panels-panes/manage/%curated_list_pane_type';
   $entity_info['fieldable_panels_pane']['bundles']['curated_list_pane']['admin']['real path'] = 'admin/structure/fieldable-panels-panes/manage/curated-list-pane';
 }
+/**
+ * implements hook_preprocess_views_view_unformatted()
+ *
+ * we need to set the order based on the argment order
+ */
+function opensanmateo_shared_content_preprocess_views_view_unformatted(&$vars) {
+  if(($vars['view']->name == 'opensanmateo_search') && ($vars['view']->current_display == 'block_6')) {
+    $new_rows = array();
 
+    $order = explode("+", $vars['view']->args[0]);
+    $rows_by_id = array() ;
+    foreach($vars['view']->result as $key => $result) {
+      $row_by_id[$result->_entity_properties['search_api_site_id']] = $vars['rows'][$key];
+    }
+    foreach($order as $id) {
+      $new_rows[] = $row_by_id[$id];
+    }
+    $vars['rows'] = $new_rows;
+  }
+}
