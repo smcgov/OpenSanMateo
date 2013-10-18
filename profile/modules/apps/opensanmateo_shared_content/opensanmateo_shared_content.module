@@ -18,26 +18,3 @@ function opensanmateo_shared_content_entity_info_alter(&$entity_info) {
   $entity_info['fieldable_panels_pane']['bundles']['curated_list_pane']['admin']['real path'] = 'admin/structure/fieldable-panels-panes/manage/curated-list-pane';
 }
 
-/**
- * Implementation of template_preprocess_field().
- */
-function opensanmateo_shared_content_preprocess_field(&$vars, $hook) {
-  if ($vars['element']['#field_name'] != 'field_coll_curated_item') {
-    return;
-  }
-
-  foreach ($vars['element']['#items'] as $index => $item) {
-    $value = $item['value'];
-    $slide = $vars['items'][$index]['entity']['field_collection_item'][$value];
-    
-    // A title is set
-    if (isset($slide['field_curated_list_title'])) {
-      $old_title = trim(strip_tags($slide['field_curated_list_item'][0]['#markup']));
-      $override_title = $slide['field_curated_list_title'][0]['#markup'];
-      $slide['field_curated_list_item'][0]['#markup'] = str_replace($old_title, $override_title, $slide['field_curated_list_item'][0]['#markup']);
-      $vars['items'][$index]['entity']['field_collection_item'][$value] = $slide;
-
-      hide($vars['items'][$index]['entity']['field_collection_item'][$value]['field_curated_list_title']);
-    }
-  }
-}
