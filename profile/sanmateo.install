@@ -100,13 +100,12 @@ function sanmateo_update_7007() {
 }
 
 /**
-<<<<<<< HEAD
  * Remove currated item field 
  *
  */
 function sanmateo_update_7009() {
   field_delete_field('field_coll_curated_item');
-=======
+}
  * Delete document type and blog term vocabularies.
  */
 function sanmateo_update_7008() {
@@ -117,7 +116,6 @@ function sanmateo_update_7008() {
   if ($document = taxonomy_vocabulary_machine_name_load('document_terms')) {
     taxonomy_vocabulary_delete($document->vid);
   }
->>>>>>> 089d34e4071ffe981852a88c82a1900862d537f0
 }
 
 
