@@ -1,5 +1,17 @@
 <?php
 
+function smc_base_preprocess_html(&$variables) {
+  $meta = array(
+    '#tag' => 'meta',
+    '#attributes' => array (
+      'name' => 'viewport',
+      'content' => 'width=device-width, initial-scale=1, maximum-scale=2, minimum-scale=1, user-scalable=yes'
+    ),
+  );
+
+  drupal_add_html_head($meta, 'viewport');
+}
+
 function smc_base_process_page(&$variables) {
   // Always print the site name and slogan, but if they are toggled off, we'll
   // just hide them visually.
