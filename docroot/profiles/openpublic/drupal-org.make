@@ -13,7 +13,7 @@ projects[context][download][url] = http://git.drupal.org/project/context.git
 projects[context][download][revision] = c4d47fb08a5aa3f7a258adb10007906029cee44c
 projects[ctools][subdir] = contrib
 projects[ctools][version] = 1.3
-projects[ctools][patch][] = https://drupal.org/files/ctools-views_content-exposed_form_override-1901106_0.patch
+projects[ctools][patch][] = http://drupal.org/files/ctools-views_content-exposed_form_override-1901106_0.patch
 projects[panels][subdir] = contrib
 projects[panels][version] = 3.3
 projects[date][subdir] = contrib
@@ -25,7 +25,7 @@ projects[diff][version] = 3.2
 
 projects[entity][subdir] = contrib
 projects[entity][version] = 1.2
-projects[entity][patch][2051079] = https://drupal.org/files/2051079-1-entity-features_update.patch
+projects[entity][patch][2051079] = http://drupal.org/files/2051079-1-entity-features_update.patch
 
 projects[features][subdir] = contrib
 projects[features][version] = 2.0-rc1
