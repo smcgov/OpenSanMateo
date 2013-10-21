@@ -148,6 +148,8 @@ function smc_base_preprocess_views_view(&$vars) {
 }
 
 function smc_base_preprocess_panels_pane(&$vars) {
+  $pane = $vars['pane'];
+  
   if (isset($vars['content']['#bundle']) && $vars['content']['#bundle'] == 'promo_panels_pane') {
     if (isset($vars['content']['field_promo_style'])) {
       // assign a class we can use to style
@@ -156,6 +158,12 @@ function smc_base_preprocess_panels_pane(&$vars) {
       unset($vars['content']['field_promo_style']);
     }
   }
+  
+  if ($pane->subtype == 'menu_block-subnav-menu') {
+    // remove title on the menu subnav block;
+    unset($vars['title']);  
+  }
+  
 }
 function smc_base_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];

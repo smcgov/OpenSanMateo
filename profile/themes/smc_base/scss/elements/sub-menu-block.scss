@@ -1,0 +1,98 @@
+// default variables
+@import "vars.scss";
+
+// All default/mobile styles will appear before the following media queries.
+
+.menu-block-subnav-menu {
+	background-color: white;
+	border: 1px solid rgba($primaryBlue, .05);
+	border-radius: 3px;
+	font-family: $reg;
+	font-size: .85em;
+	margin-bottom: 5%;
+	
+	ul {
+	  margin: 0;
+	  padding: 0;
+	
+		li {
+		  margin: 0; 
+		  padding: 0; 
+		  list-style-type: none;
+			
+			a, a.active {
+				
+				display: block; 
+				font-family: $bold;
+				padding: .75em .75em;
+				border-bottom: 1px solid rgba($primaryBlue, .2);
+				-webkit-transition: all 0.3s;
+				-moz-transition: all 0.3s;
+				transition: all 0.3s;
+				background-color: $primaryBlue; 
+			  color: white;
+		  }
+		  
+			a:hover, a.active:hover {
+			  background-color: $primaryBlue; 
+			  color: white;
+		  }
+		  
+		  ul li {
+			
+			  a, a.active {
+			    background-color: rgba($primaryTeal, .1); 
+			    color: $primaryTeal; 
+			    font-family: $reg; 
+			    border-color: rgba($primaryTeal,.2);
+			  }
+			  
+				a:hover, a.active:hover {
+				  background-color: rgba($primaryTeal, .2);
+				  color: $primaryTeal; 
+				}
+		  }
+		}
+	}
+}
+
+@media all and (min-width: $tablet) {
+  
+  .menu-block-subnav-menu {
+    border-top: 5px solid rgba($primaryBlue, .05);
+	
+  	ul {
+  	
+  	  li {
+  	    
+  		  a, a.active {
+  		    background-color: white; 
+  			  color: $primaryBlue;
+  			}
+  		  
+  		  a:hover, a.active:hover {
+  		    background-color: $primaryBlue; 
+			    color: white;
+  		  }
+  		  ul li {
+  		    
+  		    a, a.active {
+    		    background-color: rgba($primaryTeal, .1); 
+  			    color: $primaryTeal; 
+  			    font-family: $reg; 
+  			    border-color: rgba($primaryTeal,.2);
+    			}
+    		  
+    		  a:hover, a.active:hover {
+    		    background-color: rgba($primaryTeal, .2);
+				    color: $primaryTeal;
+    		  } 
+  		  }
+  		}
+		}
+	}
+}
+
+@media all and (min-width: $desktop) {
+
+}
