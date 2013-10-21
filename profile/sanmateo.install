@@ -106,6 +106,7 @@ function sanmateo_update_7007() {
 function sanmateo_update_7009() {
   field_delete_field('field_coll_curated_item');
 }
+/**
  * Delete document type and blog term vocabularies.
  */
 function sanmateo_update_7008() {
