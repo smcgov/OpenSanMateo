@@ -334,7 +334,7 @@ function opensanmateo_location_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_text_hours',
-    'label' => 'Hours (text)',
+    'label' => 'Hours',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,

@@ -119,3 +119,17 @@ function sanmateo_form_install_configure_form_alter(&$form, $form_state) {
   $form['update_notifications']['update_status_module']['#default_value'] = array();
 }
 
+/**
+ * Implements hook_taxonomy_default_vocabularies_alter().
+ *
+ * Remove openpublic vocabularies we don't want.
+ */
+function sanmateo_taxonomy_default_vocabularies_alter(&$vocabularies) {
+  if (!empty($vocabularies['document_terms'])) {
+    unset($vocabularies['document_terms']);
+  }
+
+  if (!empty($vocabularies['blog_terms'])) {
+    unset($vocabularies['blog_terms']);
+  }
+}
