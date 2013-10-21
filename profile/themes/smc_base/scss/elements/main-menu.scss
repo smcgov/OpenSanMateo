@@ -23,6 +23,10 @@
 
 @media all and (min-width: $tablet) {
   
+  .touch-button {
+    display: none;
+  }
+  
   .icon-menu {
     display: none;
   }
