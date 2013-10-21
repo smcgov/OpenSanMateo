@@ -5979,50 +5979,44 @@ body {
 .page-title span {
   color: #38939b; }
 
-/* line 39, ../scss/style.scss */
-.menu-button {
-  float: right;
-  margin-bottom: 0;
-  margin-top: 0; }
-
 /* custom placeholder color */
-/* line 46, ../scss/style.scss */
+/* line 40, ../scss/style.scss */
 input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 51, ../scss/style.scss */
+/* line 45, ../scss/style.scss */
 input:active::-webkit-input-placeholder,
 input:focus::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
-/* line 55, ../scss/style.scss */
+/* line 49, ../scss/style.scss */
 input::-moz-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 60, ../scss/style.scss */
+/* line 54, ../scss/style.scss */
 input:active::-moz-placeholder,
 input:focus::-moz-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
-/* line 64, ../scss/style.scss */
+/* line 58, ../scss/style.scss */
 input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 69, ../scss/style.scss */
+/* line 63, ../scss/style.scss */
 input:active::-ms-input-placeholder,
 input:focus::-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
 @media all and (min-width: 768px) {
-  /* line 75, ../scss/style.scss */
+  /* line 69, ../scss/style.scss */
   html, body {
     min-height: 100%; }
 
-  /* line 79, ../scss/style.scss */
+  /* line 73, ../scss/style.scss */
   body {
     background-color: #fdfdfd !important; }
 
-  /* line 83, ../scss/style.scss */
+  /* line 77, ../scss/style.scss */
   .page-title {
     font-size: 2.5em;
     color: #036cb6;
@@ -6034,19 +6028,19 @@ input:focus::-ms-input-placeholder {
     float: none;
     padding-left: .5em; }
 
-  /* line 95, ../scss/style.scss */
+  /* line 89, ../scss/style.scss */
   .sub-link {
     position: absolute;
     top: 10%;
     right: 0; }
 
-  /* line 101, ../scss/style.scss */
+  /* line 95, ../scss/style.scss */
   h1 {
     color: #38939b;
     font-family: 'Trade Gothic W01 Light';
     text-transform: uppercase; }
 
-  /* line 107, ../scss/style.scss */
+  /* line 101, ../scss/style.scss */
   h2 {
     text-transform: uppercase;
     color: #38939b;
@@ -6056,7 +6050,7 @@ input:focus::-ms-input-placeholder {
     line-height: 1.2em;
     font-weight: 100; }
 
-  /* line 117, ../scss/style.scss */
+  /* line 111, ../scss/style.scss */
   h3 {
     color: #38939b;
     font-family: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica;
@@ -6065,43 +6059,43 @@ input:focus::-ms-input-placeholder {
     font-weight: 100;
     line-height: 1.2em; }
 
-  /* line 126, ../scss/style.scss */
+  /* line 120, ../scss/style.scss */
   h4 {
     color: #036cb6;
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
 
-  /* line 131, ../scss/style.scss */
+  /* line 125, ../scss/style.scss */
   h5 {
     color: #036cb6;
     font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
 
-  /* line 137, ../scss/style.scss */
+  /* line 131, ../scss/style.scss */
   a {
     color: #036cb6; }
 
-  /* line 141, ../scss/style.scss */
+  /* line 135, ../scss/style.scss */
   p {
     color: #555a5a; }
 
-  /* line 145, ../scss/style.scss */
+  /* line 139, ../scss/style.scss */
   .main-content ul {
     padding-left: 2em;
     font-size: .9em; }
 
-  /* line 150, ../scss/style.scss */
+  /* line 144, ../scss/style.scss */
   .main-content ul.flush {
     padding-left: 0; }
 
-  /* line 154, ../scss/style.scss */
+  /* line 148, ../scss/style.scss */
   li {
     color: #6b699e; }
 
-  /* line 158, ../scss/style.scss */
+  /* line 152, ../scss/style.scss */
   .inner {
     padding: .5em 1em 1.25em;
     position: relative; }
 
-  /* line 163, ../scss/style.scss */
+  /* line 157, ../scss/style.scss */
   .hideme {
     opacity: 1.0; } }
 /**
@@ -6183,30 +6177,36 @@ ul, ol {
 
 /* Fonts */
 /* Media Queries */
-/* line 5, ../scss/elements/toolbar.scss */
-#toolbar strong {
-  display: inline; }
-/* line 10, ../scss/elements/toolbar.scss */
-#toolbar #toolbar-home,
-#toolbar #toolbar-user {
+/* line 4, ../scss/elements/toolbar.scss */
+#toolbar {
   display: none; }
-/* line 15, ../scss/elements/toolbar.scss */
-#toolbar div.toolbar-menu {
-  padding: 0; }
+  /* line 7, ../scss/elements/toolbar.scss */
+  #toolbar strong {
+    display: inline; }
+  /* line 12, ../scss/elements/toolbar.scss */
+  #toolbar #toolbar-home,
+  #toolbar #toolbar-user {
+    display: none; }
   /* line 17, ../scss/elements/toolbar.scss */
-  #toolbar div.toolbar-menu .toolbar-inner {
-    position: relative;
-    padding: 5px 35px 5px 0; }
-  /* line 22, ../scss/elements/toolbar.scss */
-  #toolbar div.toolbar-menu a.toggle {
-    bottom: 0;
-    right: 5px; }
+  #toolbar div.toolbar-menu {
+    padding: 0; }
+    /* line 19, ../scss/elements/toolbar.scss */
+    #toolbar div.toolbar-menu .toolbar-inner {
+      position: relative;
+      padding: 5px 35px 5px 0; }
+    /* line 24, ../scss/elements/toolbar.scss */
+    #toolbar div.toolbar-menu a.toggle {
+      bottom: 0;
+      right: 5px; }
 
 @media all and (min-width: 800px) {
   /* line 33, ../scss/elements/toolbar.scss */
-  #toolbar #toolbar-home,
-  #toolbar #toolbar-user {
-    display: block; } }
+  #toolbar {
+    display: block; }
+    /* line 37, ../scss/elements/toolbar.scss */
+    #toolbar #toolbar-home,
+    #toolbar #toolbar-user {
+      display: block; } }
 /* Fonts */
 /* Media Queries */
 /* line 180, ../scss/elements/buttons.scss */
@@ -7347,33 +7347,32 @@ ul.button-test {
 
 /* line 19, ../scss/elements/header.scss */
 .lockup {
-  width: 80%;
-  float: left; }
+  display: block; }
 
-/* line 24, ../scss/elements/header.scss */
+/* line 23, ../scss/elements/header.scss */
 .btn .icon-nav {
   font-size: 1.5em;
   float: right; }
 
-/* line 29, ../scss/elements/header.scss */
+/* line 28, ../scss/elements/header.scss */
 .county-name, .dept-name {
   display: inline-block;
   padding: 0 .5em;
   text-transform: uppercase; }
 
-/* line 35, ../scss/elements/header.scss */
+/* line 34, ../scss/elements/header.scss */
 .county-name {
   color: #036cb6;
   font-size: 1.25em;
   font-family: 'Trade Gothic W01 Bold'; }
 
-/* line 41, ../scss/elements/header.scss */
+/* line 40, ../scss/elements/header.scss */
 .county-name span {
   font-size: .75em;
   font-family: 'Trade Gothic W01 Roman';
   padding: 0 0.15em 0 0.1em; }
 
-/* line 47, ../scss/elements/header.scss */
+/* line 46, ../scss/elements/header.scss */
 .dept-name {
   color: #38939b;
   font-family: 'Trade Gothic W01 Light';
@@ -7382,17 +7381,17 @@ ul.button-test {
   line-height: 1em;
   font-weight: 100; }
 
-/* line 56, ../scss/elements/header.scss */
+/* line 55, ../scss/elements/header.scss */
 .dept-link {
   display: none; }
 
 @media all and (min-width: 768px) {
-  /* line 61, ../scss/elements/header.scss */
+  /* line 60, ../scss/elements/header.scss */
   .wrapper {
     overflow: hidden;
     width: 100%;
     margin: auto; }
-    /* line 66, ../scss/elements/header.scss */
+    /* line 65, ../scss/elements/header.scss */
     .wrapper > header {
       padding: 1em 0 0;
       background-image: url("../images/uber-texture2.png"), -webkit-linear-gradient(#faffff 0%, #fdffff 100%);
@@ -7402,7 +7401,7 @@ ul.button-test {
       box-shadow: 0 3px 6px rgba(85, 90, 90, 0.1); }
 
   /* Header Logo/Headings */
-  /* line 79, ../scss/elements/header.scss */
+  /* line 78, ../scss/elements/header.scss */
   .lockup {
     margin-bottom: 2%;
     width: 65%;
@@ -7411,37 +7410,37 @@ ul.button-test {
     padding-left: 5em;
     float: none; }
 
-  /* line 88, ../scss/elements/header.scss */
+  /* line 87, ../scss/elements/header.scss */
   .county-name, .dept-name {
     display: block;
     text-transform: uppercase;
     text-shadow: 0px 1px 0px #fff; }
 
-  /* line 94, ../scss/elements/header.scss */
+  /* line 93, ../scss/elements/header.scss */
   .county-name {
     color: #036cb6;
     font-size: 2em;
     line-height: 1em;
     font-family: 'Trade Gothic W01 Bold';
     background-size: contain; }
-    /* line 101, ../scss/elements/header.scss */
+    /* line 100, ../scss/elements/header.scss */
     .county-name span {
       font-size: .6em;
       font-family: 'Trade Gothic W01 Roman';
       padding: 0 0.2em 0 0.1em; }
 
-  /* line 108, ../scss/elements/header.scss */
+  /* line 107, ../scss/elements/header.scss */
   .county-name:hover {
     color: #38939b; }
 
-  /* line 112, ../scss/elements/header.scss */
+  /* line 111, ../scss/elements/header.scss */
   .dept-name {
     font-size: 2em;
     margin: 0;
     line-height: 1.2em; }
 
   /* View Departments Switch */
-  /* line 119, ../scss/elements/header.scss */
+  /* line 118, ../scss/elements/header.scss */
   .dept-link {
     background-color: rgba(3, 108, 182, 0.9);
     border-bottom-left-radius: 3px;
@@ -7455,11 +7454,11 @@ ul.button-test {
     right: 0;
     top: -1.3em; }
 
-  /* line 133, ../scss/elements/header.scss */
+  /* line 132, ../scss/elements/header.scss */
   .dept-link:hover {
     color: rgba(255, 255, 255, 0.9); }
 
-  /* line 137, ../scss/elements/header.scss */
+  /* line 136, ../scss/elements/header.scss */
   .btn-nav {
     display: none; } }
 /* Fonts */
@@ -8672,39 +8671,63 @@ table {
         display: none; }
 
   /* line 21, ../scss/elements/main-menu.scss */
+  .flexnav {
+    z-index: 999; }
+
+  /* line 25, ../scss/elements/main-menu.scss */
+  .menu-button {
+    top: 10px;
+    right: 10px;
+    height: 48px;
+    width: 48px; }
+
+  /* line 32, ../scss/elements/main-menu.scss */
+  body.toolbar .menu-button {
+    top: 2em; }
+
+  /* line 40, ../scss/elements/main-menu.scss */
+  .flexnav, .flexnav ul {
+    padding: 0;
+    font-size: 1em; }
+
+  /* line 44, ../scss/elements/main-menu.scss */
   .flexnav.show {
-    z-index: 11; } }
+    padding-top: 120px; } }
 @media all and (min-width: 768px) {
-  /* line 26, ../scss/elements/main-menu.scss */
+  /* line 51, ../scss/elements/main-menu.scss */
+  .menu-button, .touch-button {
+    display: none; }
+
+  /* line 55, ../scss/elements/main-menu.scss */
   .icon-menu {
     display: none; }
 
-  /* line 30, ../scss/elements/main-menu.scss */
+  /* line 59, ../scss/elements/main-menu.scss */
   .home {
     display: block; }
 
-  /* line 34, ../scss/elements/main-menu.scss */
+  /* line 63, ../scss/elements/main-menu.scss */
   .primary {
     border-radius: 3px;
     width: 100%;
     background-color: rgba(56, 147, 155, 0.05); }
-    /* line 40, ../scss/elements/main-menu.scss */
+    /* line 69, ../scss/elements/main-menu.scss */
     .primary ul {
       margin: 0;
       padding: 0;
       font-size: 1em;
       color: #036cb6; }
-    /* line 47, ../scss/elements/main-menu.scss */
+    /* line 76, ../scss/elements/main-menu.scss */
     .primary .home a:before {
       content: "\e003";
       font-family: 'SanMateoIcon';
       text-indent: 0 !important; }
-    /* line 53, ../scss/elements/main-menu.scss */
+    /* line 82, ../scss/elements/main-menu.scss */
     .primary li {
       float: left;
       list-style-type: none;
       position: relative; }
-      /* line 58, ../scss/elements/main-menu.scss */
+      /* line 87, ../scss/elements/main-menu.scss */
       .primary li a {
         font-family: 'Trade Gothic W01 Roman', Helvetica Neue, Arial, Helvetica, sans-serif;
         font-size: .95em;
@@ -8713,26 +8736,26 @@ table {
         -webkit-transition: all 0.3s;
         -moz-transition: all 0.3s;
         transition: all 0.3s; }
-      /* line 69, ../scss/elements/main-menu.scss */
+      /* line 98, ../scss/elements/main-menu.scss */
       .primary li a:hover, .primary li:hover > a {
         background-color: #38939b;
         color: white;
         border-radius: 3px; }
-      /* line 75, ../scss/elements/main-menu.scss */
+      /* line 104, ../scss/elements/main-menu.scss */
       .primary li.expanded > a:after {
         content: "\e004";
         font-family: 'SanMateoIcon';
         font-size: .5em;
         padding-left: 5px;
         color: rgba(56, 147, 155, 0.3); }
-      /* line 84, ../scss/elements/main-menu.scss */
+      /* line 113, ../scss/elements/main-menu.scss */
       .primary li.expanded > a:hover, .primary li.expanded:hover > a {
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px; }
-      /* line 90, ../scss/elements/main-menu.scss */
+      /* line 119, ../scss/elements/main-menu.scss */
       .primary li.expanded > a:hover:after, .primary li.expanded:hover > a:after {
         color: rgba(255, 255, 255, 0.5); }
-      /* line 94, ../scss/elements/main-menu.scss */
+      /* line 123, ../scss/elements/main-menu.scss */
       .primary li ul {
         position: absolute;
         top: 40px;
@@ -8751,7 +8774,7 @@ table {
         -o-transition: opacity .25s ease .1s;
         -ms-transition: opacity .25s ease .1s;
         transition: opacity .25s ease .1s; }
-        /* line 114, ../scss/elements/main-menu.scss */
+        /* line 143, ../scss/elements/main-menu.scss */
         .primary li ul li {
           height: 0;
           overflow: hidden;
@@ -8763,33 +8786,33 @@ table {
           -o-transition: height .25s ease .1s;
           -ms-transition: height .25s ease .1s;
           transition: height .25s ease .1s; }
-          /* line 126, ../scss/elements/main-menu.scss */
+          /* line 155, ../scss/elements/main-menu.scss */
           .primary li ul li a {
             color: white;
             display: block;
             border-radius: 0;
             padding: .5em 1em;
             width: 100%; }
-        /* line 135, ../scss/elements/main-menu.scss */
+        /* line 164, ../scss/elements/main-menu.scss */
         .primary li ul li:last-child > a, .primary li ul li:last-child > a:hover {
           border-bottom-left-radius: 3px;
           border-bottom-right-radius: 3px; }
-    /* line 142, ../scss/elements/main-menu.scss */
+    /* line 171, ../scss/elements/main-menu.scss */
     .primary ul {
       margin-bottom: 0; }
 
-  /* line 146, ../scss/elements/main-menu.scss */
+  /* line 175, ../scss/elements/main-menu.scss */
   .primary li:hover > ul {
     opacity: 1;
     z-index: 1000; }
 
-  /* line 151, ../scss/elements/main-menu.scss */
+  /* line 180, ../scss/elements/main-menu.scss */
   .primary li:hover > ul li {
     height: 36px;
     overflow: visible;
     padding: 0; }
 
-  /* line 157, ../scss/elements/main-menu.scss */
+  /* line 186, ../scss/elements/main-menu.scss */
   .sub {
     background-color: white;
     border: 1px solid rgba(3, 108, 182, 0.05);
@@ -8797,17 +8820,17 @@ table {
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
     font-size: .85em;
     border-top: 5px solid rgba(3, 108, 182, 0.05); }
-    /* line 165, ../scss/elements/main-menu.scss */
+    /* line 194, ../scss/elements/main-menu.scss */
     .sub ul {
       margin: 0;
       padding: 0;
       font-size: 1em; }
-      /* line 170, ../scss/elements/main-menu.scss */
+      /* line 199, ../scss/elements/main-menu.scss */
       .sub ul li {
         margin: 0;
         padding: 0;
         list-style-type: none; }
-        /* line 175, ../scss/elements/main-menu.scss */
+        /* line 204, ../scss/elements/main-menu.scss */
         .sub ul li a {
           display: block;
           padding: .75em .75em;
@@ -8815,26 +8838,108 @@ table {
           -webkit-transition: all 0.3s;
           -moz-transition: all 0.3s;
           transition: all 0.3s; }
-        /* line 183, ../scss/elements/main-menu.scss */
+        /* line 212, ../scss/elements/main-menu.scss */
         .sub ul li a:hover {
           background-color: rgba(3, 108, 182, 0.8);
           color: white; }
-      /* line 188, ../scss/elements/main-menu.scss */
+      /* line 217, ../scss/elements/main-menu.scss */
       .sub ul .active {
         font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
-        /* line 191, ../scss/elements/main-menu.scss */
+        /* line 220, ../scss/elements/main-menu.scss */
         .sub ul .active a {
           background-color: white;
           color: #036cb6; }
-        /* line 197, ../scss/elements/main-menu.scss */
+        /* line 226, ../scss/elements/main-menu.scss */
         .sub ul .active ul li a {
           background-color: rgba(56, 147, 155, 0.1);
           color: #38939b;
           font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
           border-color: rgba(56, 147, 155, 0.2); }
-        /* line 203, ../scss/elements/main-menu.scss */
+        /* line 232, ../scss/elements/main-menu.scss */
         .sub ul .active ul li a:hover {
           background-color: rgba(56, 147, 155, 0.2); } }
+/* Fonts */
+/* Media Queries */
+/* line 6, ../scss/elements/sub-menu-block.scss */
+.menu-block-subnav-menu {
+  background-color: white;
+  border: 1px solid rgba(3, 108, 182, 0.05);
+  border-radius: 3px;
+  font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+  font-size: .85em;
+  margin-bottom: 5%; }
+  /* line 14, ../scss/elements/sub-menu-block.scss */
+  .menu-block-subnav-menu ul {
+    margin: 0;
+    padding: 0; }
+    /* line 18, ../scss/elements/sub-menu-block.scss */
+    .menu-block-subnav-menu ul li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none; }
+      /* line 23, ../scss/elements/sub-menu-block.scss */
+      .menu-block-subnav-menu ul li a, .menu-block-subnav-menu ul li a.active {
+        display: block;
+        font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+        padding: .75em .75em;
+        border-bottom: 1px solid rgba(3, 108, 182, 0.2);
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+        background-color: #036cb6;
+        color: white; }
+      /* line 36, ../scss/elements/sub-menu-block.scss */
+      .menu-block-subnav-menu ul li a:hover, .menu-block-subnav-menu ul li a.active:hover {
+        background-color: #036cb6;
+        color: white; }
+      /* line 43, ../scss/elements/sub-menu-block.scss */
+      .menu-block-subnav-menu ul li ul li a, .menu-block-subnav-menu ul li ul li a.active {
+        background-color: rgba(56, 147, 155, 0.1);
+        color: #38939b;
+        font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+        border-color: rgba(56, 147, 155, 0.2); }
+      /* line 50, ../scss/elements/sub-menu-block.scss */
+      .menu-block-subnav-menu ul li ul li a:hover, .menu-block-subnav-menu ul li ul li a.active:hover {
+        background-color: rgba(56, 147, 155, 0.2);
+        color: #38939b; }
+      /* line 55, ../scss/elements/sub-menu-block.scss */
+      .menu-block-subnav-menu ul li ul li a.active {
+        font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
+      /* line 59, ../scss/elements/sub-menu-block.scss */
+      .menu-block-subnav-menu ul li ul li ul li a {
+        padding-left: 1.5em; }
+      /* line 63, ../scss/elements/sub-menu-block.scss */
+      .menu-block-subnav-menu ul li ul li ul li ul li a {
+        padding-left: 2.25em; }
+      /* line 67, ../scss/elements/sub-menu-block.scss */
+      .menu-block-subnav-menu ul li ul li ul li ul li ul li a {
+        padding-left: 3em; }
+
+@media all and (min-width: 768px) {
+  /* line 77, ../scss/elements/sub-menu-block.scss */
+  .menu-block-subnav-menu {
+    border-top: 5px solid rgba(3, 108, 182, 0.05); }
+    /* line 84, ../scss/elements/sub-menu-block.scss */
+    .menu-block-subnav-menu ul li a, .menu-block-subnav-menu ul li a.active {
+      background-color: white;
+      color: #036cb6; }
+    /* line 89, ../scss/elements/sub-menu-block.scss */
+    .menu-block-subnav-menu ul li a:hover, .menu-block-subnav-menu ul li a.active:hover {
+      background-color: #036cb6;
+      color: white; }
+    /* line 95, ../scss/elements/sub-menu-block.scss */
+    .menu-block-subnav-menu ul li ul li a, .menu-block-subnav-menu ul li ul li a.active {
+      background-color: rgba(56, 147, 155, 0.1);
+      color: #38939b;
+      font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+      border-color: rgba(56, 147, 155, 0.2); }
+    /* line 102, ../scss/elements/sub-menu-block.scss */
+    .menu-block-subnav-menu ul li ul li a.active {
+      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
+    /* line 106, ../scss/elements/sub-menu-block.scss */
+    .menu-block-subnav-menu ul li ul li a:hover, .menu-block-subnav-menu ul li ul li a.active:hover {
+      background-color: rgba(56, 147, 155, 0.2);
+      color: #38939b; } }
 /* Fonts */
 /* Media Queries */
 /* line 5, ../scss/elements/dept-promo.scss */
@@ -9267,25 +9372,33 @@ table {
   padding: .5em;
   position: relative;
   border-radius: 3px;
-  margin: 10px auto 0; }
-  /* line 17, ../scss/elements/search.scss */
+  margin: 10px auto 0;
+  display: none;
+  margin-top: 0;
+  position: fixed;
+  top: 68px;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+  background: rgba(56, 147, 155, 0.2); }
+  /* line 25, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search #opensanmateo-search-header-search-form {
     margin: 0;
     padding: 0;
     float: left;
     width: 80%;
-    margin-right: 5%;
+    margin-right: 0;
     margin-bottom: 0; }
-    /* line 26, ../scss/elements/search.scss */
+    /* line 34, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search #opensanmateo-search-header-search-form .form-item {
       margin: 0;
       padding: 0; }
-    /* line 31, ../scss/elements/search.scss */
+    /* line 39, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search #opensanmateo-search-header-search-form .form-submit {
       display: none; }
-  /* line 37, ../scss/elements/search.scss */
+  /* line 45, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search input[type=text] {
-    background: #d7e9eb;
+    background: white;
     border: none;
     box-shadow: none;
     color: white;
@@ -9296,39 +9409,27 @@ table {
     transition: all 0.3s;
     border-radius: 3px;
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
-    font-weight: 300; }
-  /* line 52, ../scss/elements/search.scss */
+    font-weight: 300;
+    margin: 0; }
+  /* line 62, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search input[type=text]:focus {
     box-shadow: none;
-    background: #67adb3;
-    color: white;
     font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
-  /* line 60, ../scss/elements/search.scss */
+  /* line 68, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search input[type=text]::-webkit-input-placeholder {
     color: #036cb6; }
-  /* line 61, ../scss/elements/search.scss */
+  /* line 69, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search input[type=text]::-moz-placeholder {
     /* Firefox 19+ */
     color: #036cb6; }
-  /* line 62, ../scss/elements/search.scss */
+  /* line 70, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search input[type=text]::-ms-input-placeholder {
     color: #036cb6; }
-  /* line 64, ../scss/elements/search.scss */
-  #block-opensanmateo-search-header-search input[type=text]:focus::-webkit-input-placeholder {
-    color: white; }
-  /* line 65, ../scss/elements/search.scss */
-  #block-opensanmateo-search-header-search input[type=text]:focus::-moz-placeholder {
-    color: white; }
-  /* line 66, ../scss/elements/search.scss */
-  #block-opensanmateo-search-header-search input[type=text]:focus::-ms-input-placeholder {
-    color: white; }
-  /* line 68, ../scss/elements/search.scss */
+  /* line 74, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search .search-button {
     width: 15%;
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    right: 10px;
     border: none;
     display: block;
     text-align: center;
@@ -9343,33 +9444,35 @@ table {
     transition: all 0.3s;
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
     font-weight: normal !important; }
-    /* line 94, ../scss/elements/search.scss */
+    /* line 98, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search .search-button span {
       font-weight: normal !important; }
-  /* line 99, ../scss/elements/search.scss */
+  /* line 103, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search .search-button:after {
     content: none; }
 
 @media all and (min-width: 768px) {
   /* Header Search */
-  /* line 106, ../scss/elements/search.scss */
+  /* line 110, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search {
+    display: block !important;
     border-radius: 3px;
     margin: 0 auto 0;
     position: absolute;
     right: 0;
+    left: auto;
     top: -50px;
     width: 30%;
     background-color: transparent;
     padding: 0;
     /* End Header Search */ }
-    /* line 117, ../scss/elements/search.scss */
+    /* line 122, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search #opensanmateo-search-header-search-form {
       float: left;
       width: 80%;
       margin-right: 3%;
       margin-bottom: 0; }
-    /* line 124, ../scss/elements/search.scss */
+    /* line 129, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text] {
       background: #d7e9eb;
       border: none;
@@ -9382,14 +9485,33 @@ table {
       border-radius: 3px;
       font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
       margin: 0; }
-    /* line 140, ../scss/elements/search.scss */
+    /* line 145, ../scss/elements/search.scss */
+    #block-opensanmateo-search-header-search input[type=text]:focus {
+      box-shadow: none;
+      background: #67adb3;
+      color: white;
+      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
+    /* line 152, ../scss/elements/search.scss */
+    #block-opensanmateo-search-header-search input[type=text]:focus::-webkit-input-placeholder {
+      color: white; }
+    /* line 153, ../scss/elements/search.scss */
+    #block-opensanmateo-search-header-search input[type=text]:focus::-moz-placeholder {
+      color: white; }
+    /* line 154, ../scss/elements/search.scss */
+    #block-opensanmateo-search-header-search input[type=text]:focus::-ms-input-placeholder {
+      color: white; }
+    /* line 156, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search .search-button {
       width: 17%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
       border: none;
       display: block;
       text-align: center;
       margin-right: 0; }
-    /* line 148, ../scss/elements/search.scss */
+    /* line 168, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search .search-button:after {
       content: none; } }
 /* Fonts */
@@ -9576,17 +9698,17 @@ footer {
   /* line 118, ../scss/elements/footer.scss */
   footer nav ul, footer nav ul.menu {
     width: 45%; } }
-/* line 59, ../scss/smc_base.scss */
+/* line 61, ../scss/smc_base.scss */
 .limiter {
   margin: auto;
   max-width: 1120px;
   position: relative; }
 
-/* line 65, ../scss/smc_base.scss */
+/* line 67, ../scss/smc_base.scss */
 .krumo-root strong {
   display: inline !important; }
 
-/* line 70, ../scss/smc_base.scss */
+/* line 72, ../scss/smc_base.scss */
 ul li.leaf,
 ul li.expanded {
   list-style-type: none;
@@ -9594,34 +9716,34 @@ ul li.expanded {
   padding: 0;
   margin: 0; }
 
-/* line 78, ../scss/smc_base.scss */
+/* line 80, ../scss/smc_base.scss */
 .messages strong {
   display: inline; }
 
-/* line 87, ../scss/smc_base.scss */
+/* line 89, ../scss/smc_base.scss */
 nav.main-nav {
   border-top: 0;
   margin-bottom: 0;
   padding-top: 0;
   z-index: 400 !important; }
 
-/* line 93, ../scss/smc_base.scss */
+/* line 95, ../scss/smc_base.scss */
 .flexslider {
   z-index: 1 !important; }
 
-/* line 96, ../scss/smc_base.scss */
+/* line 98, ../scss/smc_base.scss */
 header {
   z-index: 10; }
 
-/* line 100, ../scss/smc_base.scss */
+/* line 102, ../scss/smc_base.scss */
 div.body {
   z-index: 1; }
 
-/* line 104, ../scss/smc_base.scss */
+/* line 106, ../scss/smc_base.scss */
 footer {
   z-index: 10; }
 
-/* line 109, ../scss/smc_base.scss */
+/* line 111, ../scss/smc_base.scss */
 #footer-wrapper .section {
   margin-bottom: 0; }
 

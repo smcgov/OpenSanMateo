@@ -5977,50 +5977,44 @@ body {
 .page-title span {
   color: #38939b; }
 
-/* line 39, ../../scss/style.scss */
-.menu-button {
-  float: right;
-  margin-bottom: 0;
-  margin-top: 0; }
-
 /* custom placeholder color */
-/* line 46, ../../scss/style.scss */
+/* line 40, ../../scss/style.scss */
 input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 51, ../../scss/style.scss */
+/* line 45, ../../scss/style.scss */
 input:active::-webkit-input-placeholder,
 input:focus::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
-/* line 55, ../../scss/style.scss */
+/* line 49, ../../scss/style.scss */
 input::-moz-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 60, ../../scss/style.scss */
+/* line 54, ../../scss/style.scss */
 input:active::-moz-placeholder,
 input:focus::-moz-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
-/* line 64, ../../scss/style.scss */
+/* line 58, ../../scss/style.scss */
 input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 69, ../../scss/style.scss */
+/* line 63, ../../scss/style.scss */
 input:active::-ms-input-placeholder,
 input:focus::-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
 @media all and (min-width: 768px) {
-  /* line 75, ../../scss/style.scss */
+  /* line 69, ../../scss/style.scss */
   html, body {
     min-height: 100%; }
 
-  /* line 79, ../../scss/style.scss */
+  /* line 73, ../../scss/style.scss */
   body {
     background-color: #fdfdfd !important; }
 
-  /* line 83, ../../scss/style.scss */
+  /* line 77, ../../scss/style.scss */
   .page-title {
     font-size: 2.5em;
     color: #036cb6;
@@ -6032,19 +6026,19 @@ input:focus::-ms-input-placeholder {
     float: none;
     padding-left: .5em; }
 
-  /* line 95, ../../scss/style.scss */
+  /* line 89, ../../scss/style.scss */
   .sub-link {
     position: absolute;
     top: 10%;
     right: 0; }
 
-  /* line 101, ../../scss/style.scss */
+  /* line 95, ../../scss/style.scss */
   h1 {
     color: #38939b;
     font-family: 'Trade Gothic W01 Light';
     text-transform: uppercase; }
 
-  /* line 107, ../../scss/style.scss */
+  /* line 101, ../../scss/style.scss */
   h2 {
     text-transform: uppercase;
     color: #38939b;
@@ -6054,7 +6048,7 @@ input:focus::-ms-input-placeholder {
     line-height: 1.2em;
     font-weight: 100; }
 
-  /* line 117, ../../scss/style.scss */
+  /* line 111, ../../scss/style.scss */
   h3 {
     color: #38939b;
     font-family: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica;
@@ -6063,43 +6057,43 @@ input:focus::-ms-input-placeholder {
     font-weight: 100;
     line-height: 1.2em; }
 
-  /* line 126, ../../scss/style.scss */
+  /* line 120, ../../scss/style.scss */
   h4 {
     color: #036cb6;
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
 
-  /* line 131, ../../scss/style.scss */
+  /* line 125, ../../scss/style.scss */
   h5 {
     color: #036cb6;
     font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
 
-  /* line 137, ../../scss/style.scss */
+  /* line 131, ../../scss/style.scss */
   a {
     color: #036cb6; }
 
-  /* line 141, ../../scss/style.scss */
+  /* line 135, ../../scss/style.scss */
   p {
     color: #555a5a; }
 
-  /* line 145, ../../scss/style.scss */
+  /* line 139, ../../scss/style.scss */
   .main-content ul {
     padding-left: 2em;
     font-size: .9em; }
 
-  /* line 150, ../../scss/style.scss */
+  /* line 144, ../../scss/style.scss */
   .main-content ul.flush {
     padding-left: 0; }
 
-  /* line 154, ../../scss/style.scss */
+  /* line 148, ../../scss/style.scss */
   li {
     color: #6b699e; }
 
-  /* line 158, ../../scss/style.scss */
+  /* line 152, ../../scss/style.scss */
   .inner {
     padding: .5em 1em 1.25em;
     position: relative; }
 
-  /* line 163, ../../scss/style.scss */
+  /* line 157, ../../scss/style.scss */
   .hideme {
     opacity: 1.0; } }
 /**
