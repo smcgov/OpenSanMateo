@@ -99,4 +99,13 @@ function sanmateo_update_7007() {
   module_enable(array('panels_interface'));
 }
 
+/**
+ * Remove currated item field 
+ *
+ */
+function sanmateo_update_7009() {
+  field_delete_field('field_coll_curated_item');
+}
+
+
 // End of file sanmateo.install
