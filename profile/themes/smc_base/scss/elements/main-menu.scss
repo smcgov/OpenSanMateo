@@ -14,16 +14,41 @@
 	display: none;
 }
 
-
 @media only screen and (max-width: $mobile-only) {
-
+  
 	@import "flexnav";
-	.flexnav.show {z-index: 11;}
+	
+	.flexnav {
+	  z-index: 999;
+	}
+  
+  .menu-button {
+    top: 10px;
+    right: 10px;
+    height: 48px;
+    width: 48px;
+  }
+  
+  body.toolbar .menu-button {
+      top: 2em;
+  }
+  
+  body.toolbar-drawer .menu-button {
+
+  }
+  
+	.flexnav, .flexnav ul {
+  	padding: 0;
+  	font-size: 1em;
+	}
+	.flexnav.show {
+  	padding-top: 120px;
+	}
 }
 
 @media all and (min-width: $tablet) {
   
-  .touch-button {
+  .menu-button, .touch-button {
     display: none;
   }
   
