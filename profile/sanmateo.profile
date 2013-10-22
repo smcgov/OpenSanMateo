@@ -80,8 +80,28 @@ function sanmateo_install_tasks($install_state) {
     'type' => 'normal',
     'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
   );
+  $tasks['sanmateo_features_template_revert2'] = array(
+    'function' => 'features_template_revert',
+    'display' => FALSE,
+    'display_name' => st('Enable templated components'),
+    'type' => 'normal',
+    'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+  );
+
+  $tasks['sanmateo_create_basic_pages'] = array(
+    'function' => 'sanmateo_create_basic_pages',
+    'display' => TRUE,
+    'display_name' => st('Create Default Pages'),
+    'type' => 'normal',
+    'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+  );
 
   return $tasks;
+}
+
+function sanmateo_create_basic_pages() {
+   $node = sanmateo_create_node('site_page', "Home Page", array("field_custom_layout"=>1));
+   variable_set("site_frontpage", "node/{$node->nid}");
 }
 
 function sanmateo_update_master_client() {
@@ -133,3 +153,37 @@ function sanmateo_taxonomy_default_vocabularies_alter(&$vocabularies) {
     unset($vocabularies['blog_terms']);
   }
 }
+/**
+ * Create a node programticly
+ */
+function sanmateo_create_node($type = 'site_page', $title = '', $fields = array()) {
+  $node = new stdClass(); // Create a new node object
+  $node->type = $type; // Or page, or whatever content type you like
+  node_object_prepare($node); // Set some default values
+  // If you update an existing node instead of creating a new one,
+  // comment out the three lines above and uncomment the following:
+  // $node = node_load($nid); // ...where $nid is the node id
+
+  $node->title    = $title;
+  $node->language = LANGUAGE_NONE; // Or e.g. 'en' if locale is enabled
+
+  $node->uid = 1; // UID of the author of the node; or use $node->name
+
+  foreach($fields as $field=>$value) {
+    if($field == 'body') {
+      $node->body[$node->language][0]['value']   = $bodytext;
+      $node->body[$node->language][0]['summary'] = text_summary($bodytext);
+      $node->body[$node->language][0]['format']  = 'filtered_html';
+    }
+    else {
+      $node->{$field}[$node->language][0]['value'] = $value;
+      
+    }
+
+  }
+  if($node = node_submit($node)) { // Prepare node for saving
+      node_save($node);
+  }
+  return $node;
+}
+
