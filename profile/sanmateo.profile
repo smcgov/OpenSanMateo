@@ -44,7 +44,7 @@ function sanmateo_install_tasks($install_state) {
       'opensanmateo_translate'
     ),
     'required apps' => array(
-      'opensanmateo_secruity',
+      'opensanmateo_security',
       'opensanmateo_resp_images',
       'opensanmateo_google_analytics'
     ),
