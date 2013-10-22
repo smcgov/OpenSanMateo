@@ -14,7 +14,25 @@ function opensanmateo_translate_apps_app_info() {
  * Provide app spectific settings.
  */
 function opensanmateo_translate_app_configure_form() {
-  return google_translator_settings_page();
+  // Build default translator settings page.
+  $form = google_translator_settings_page();
+
+  // Define allowed sanmateo languages.
+  $allowed_langs = array(
+    // Filipino.
+    'tl' => 1,
+    // Russian.
+    'ru' => 1,
+    // Spanish.
+    'es' => 1,
+    // Simplified chinese.
+    'zh-CN' => 1,
+  );
+
+  // Filter the language option list.
+  $form['gt_active_languages']['google_translator_active_languages']['#options'] = array_intersect_key($form['gt_active_languages']['google_translator_active_languages']['#options'], $allowed_langs);
+
+  return $form;
 }
 
 
