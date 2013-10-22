@@ -15,12 +15,16 @@ function opensanmateo_layout_menu_default_menu_custom() {
     'menu_name' => 'menu-department-menu',
     'title' => 'Department Menu',
     'description' => 'Shared menu that is used to store department related links.',
+    'language' => 'und',
+    'i18n_mode' => 0,
   );
   // Exported menu: menu-platform-menu.
   $menus['menu-platform-menu'] = array(
     'menu_name' => 'menu-platform-menu',
     'title' => 'Platform Menu',
     'description' => 'This is the platform-wide footer menu that will be shared.',
+    'language' => 'und',
+    'i18n_mode' => 0,
   );
   // Translatables
   // Included for use with string extractors like potx.
