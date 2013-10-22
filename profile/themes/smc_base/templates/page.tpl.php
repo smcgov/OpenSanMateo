@@ -16,7 +16,7 @@
   <?php endif; ?>
 
   <header id="header" class="group clearfix">
-      <div class="inner">
+      <div class="inner clearfix">
     		<a class="dept-link show_hide icon-eye" rel="#dept-switch" href="">View All Departments</a>		
     		
     		<div class="lockup group clearfix">

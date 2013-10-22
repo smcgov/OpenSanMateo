@@ -2,6 +2,8 @@
 @import "vars.scss";
 
 #toolbar {
+  display: none;
+  
   strong {
     display: inline;
   }
@@ -29,6 +31,8 @@
 
 @media all and (min-width: $desktop) {
   #toolbar {
+    display: block;
+    
     #toolbar-home,
     #toolbar-user {
       display: block;

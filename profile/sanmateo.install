@@ -119,5 +119,14 @@ function sanmateo_update_7008() {
   }
 }
 
+/**
+ * revert rotator app [SMC-485] I want to add Alt and Title text for images in Promo Panes, but not alt or title field is avialable
+ */
+function sanmateo_update_7010() {
+  san_mateo_install_features_revert(array('opensanmateo_rotator'));
+}
+
+
+// End of file sanmateo.install
 
 // End of file sanmateo.install
