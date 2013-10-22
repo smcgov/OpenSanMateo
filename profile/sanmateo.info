@@ -121,6 +121,8 @@ dependencies[] = opensanmateo_frontend
 dependencies[] = opensanmateo_overrides
 dependencies[] = opensanmateo_security
 dependencies[] = opensanmateo_contact
+; Do workflow last, since it depends on content types being available.
+dependencies[] = opensanmateo_workflow
 
 ;DEVELOPMENT ONLY
 
