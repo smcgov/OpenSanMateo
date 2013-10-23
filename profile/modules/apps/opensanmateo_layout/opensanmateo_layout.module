@@ -185,7 +185,7 @@ function opensanmateo_layout_panelizer_defaults_template() {
   $panelizer->link_to_entity = TRUE;
   $panelizer->extra = array();
   $display = new panels_display();
-  $display->layout = 'flexible';
+  $display->layout = 'one_column';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
