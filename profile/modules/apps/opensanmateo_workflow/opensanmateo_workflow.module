@@ -50,3 +50,16 @@ function opensanmateo_workflow_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 }
+
+/**
+ * Implements hook_form_NODE_FORM_alter().
+ */
+function opensanmateo_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
+  $node = $form_state['node'];
+  if (!empty($form['options']['revision_scheduler_operation']) || !empty($form['options']['revision_scheduler_datetime'])) {
+    if (!workbench_moderation_node_type_moderated($node->type)) {
+      $form['options']['revision_scheduler_operation']['#access'] = FALSE;
+      $form['options']['revision_scheduler_datetime']['#access'] = FALSE;
+    }
+  }
+}
