@@ -10,4 +10,29 @@ function opensanmateo_translate_install() {
 
 <p>The County cannot guarantee the accuracy of translations through Google Translate so translations should not be considered exact and only used as a rough guide. Anyone relying on information obtained from Google Translate does so at his or her own risk. The County disclaims and will not accept any liability for damages or losses of any kind caused by the use of the Google Translate feature.</p>';
   variable_set('google_translator_disclaimer', $disclaimer_text);
+
+  // Set default translation languages.
+  opensanmateo_translate_set_default_langs();
+}
+
+/**
+ * Set default translation languages.
+ */
+function opensanmateo_translate_update_7001() {
+  opensanmateo_translate_set_default_langs();
+}
+
+function opensanmateo_translate_set_default_langs() {
+    // Define allowed sanmateo languages.
+  $allowed_langs = array(
+    // Filipino.
+    'tl' => 1,
+    // Russian.
+    'ru' => 1,
+    // Spanish.
+    'es' => 1,
+    // Simplified chinese.
+    'zh-CN' => 1,
+  );
+  variable_set('google_translator_active_languages', $allowed_langs);
 }
