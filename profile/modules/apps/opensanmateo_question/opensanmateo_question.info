@@ -1,0 +1,9 @@
+name = OpenSanMateo Question
+description = Provides site with a pane to pose a question and a pop-up of links for curated answers
+core = 7.x
+package = OpenSanMateo
+version = 7.x-1.0
+project = opensanmateo_question
+dependencies[] = fieldable_panels_panes
+features[features_api][] = api:2
+project path = profiles/sanmateo/modules/apps
