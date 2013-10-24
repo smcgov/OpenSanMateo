@@ -23,6 +23,11 @@ else {
   $conf['error_level'] = 0;
   $conf['cron_safe_threshold'] = 0;
 }
+// Global GovDelivery Settings.
+// These may be changed below.
+$conf['opensanmateo_govdelivery_base_url']= 'https://bbowman@phase2technology.com:Simplepassword1@stage-api.govdelivery.com';
+$conf['opensanmateo_govdelivery_account_name'] = 'CASMATEO';
+$conf['opensanmateo_govdelivery_signup_url'] = 'https://stage-public.govdelivery.com/accounts/CASMATEO/subscriber/new';
 
 // Set Acquia Connector keys
 // From Acquia Ticket #15066-99152: Are we able to define multiple Solr instances for the different environments?
@@ -32,6 +37,9 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
       // Acquia production settings
       $conf['acquia_identifier'] = 'DEGK-36837';
       $conf['acquia_key'] = '5f90bbe305adff93b4ad6b1012e75183';
+
+      // Set production specific GovDelivery settings.
+      $conf['opensanmateo_govdelivery_base_url']= 'https://websupport@co.sanmateo.ca.us@:SD6Ru4562OJ3uvp@stage-api.govdelivery.com';
       $conf['opensanmateo_govdelivery_signup_url'] = 'https://public.govdelivery.com/accounts/CASMATEO/subscriber/new';
 
       break;
@@ -39,25 +47,24 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
       // Acquia test environment
       $conf['acquia_identifier'] = 'LQUZ-41142';
       $conf['acquia_key'] = '1af18383d04d25f92ecbd2cd1547ed01';
-      $conf['opensanmateo_govdelivery_signup_url'] = 'https://stage-public.govdelivery.com/accounts/CASMATEO/subscriber/new';
+
+
       break;
     case 'dev' :
     default :
       // Acquia dev and all other environments
       $conf['acquia_identifier'] = 'JKWZ-41140';
       $conf['acquia_key'] = '7e97476c37ef890227d54314c8444ef2';
-      $conf['opensanmateo_govdelivery_signup_url'] = 'https://stage-public.govdelivery.com/accounts/CASMATEO/subscriber/new';
+
       break;
   }
 } else {
-  $conf['opensanmateo_govdelivery_signup_url'] = 'https://stage-public.govdelivery.com/accounts/CASMATEO/subscriber/new';
   // Getting here means site is not inside Acquia Hosting
   // ( $_ENV['AH_SITE_ENVIRONMENT'] is not set)
   // Add any desired code here.
 }
 
-// Global GovDelivery Settings
-$conf['opensanmateo_govdelivery_account_name'] = 'CASMATEO';
+
 
 
 // Set master-client settings that are common across client sites
