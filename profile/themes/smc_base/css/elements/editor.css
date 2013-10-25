@@ -5965,65 +5965,65 @@ body {
   margin-top: 5.75%; }
 
 /* line 27, ../../scss/style.scss */
-.page-title {
-  font-size: 2em;
+#page-title {
+  font-size: 1.5em;
   color: #036cb6;
   padding: 0 0 .25em .4em;
   margin-bottom: 1%;
-  text-transform: none; }
+  text-transform: none;
+  text-align: left;
+  font-family: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica;
+  padding-left: 0; }
 
-/* line 35, ../../scss/style.scss */
-.page-title span {
+/* line 38, ../../scss/style.scss */
+#page-title span {
   color: #38939b; }
 
 /* custom placeholder color */
-/* line 40, ../../scss/style.scss */
+/* line 43, ../../scss/style.scss */
 input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 45, ../../scss/style.scss */
+/* line 48, ../../scss/style.scss */
 input:active::-webkit-input-placeholder,
 input:focus::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
-/* line 49, ../../scss/style.scss */
+/* line 52, ../../scss/style.scss */
 input::-moz-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 54, ../../scss/style.scss */
+/* line 57, ../../scss/style.scss */
 input:active::-moz-placeholder,
 input:focus::-moz-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
-/* line 58, ../../scss/style.scss */
+/* line 61, ../../scss/style.scss */
 input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 63, ../../scss/style.scss */
+/* line 66, ../../scss/style.scss */
 input:active::-ms-input-placeholder,
 input:focus::-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
 @media all and (min-width: 768px) {
-  /* line 69, ../../scss/style.scss */
+  /* line 72, ../../scss/style.scss */
   html, body {
     min-height: 100%; }
 
-  /* line 73, ../../scss/style.scss */
+  /* line 76, ../../scss/style.scss */
   body {
     background-color: #fdfdfd !important; }
 
-  /* line 77, ../../scss/style.scss */
-  .page-title {
+  /* line 80, ../../scss/style.scss */
+  #page-title {
     font-size: 2.5em;
     color: #036cb6;
-    border-bottom: 5px solid rgba(3, 108, 182, 0.1);
-    padding: 0 0 .25em;
     margin-bottom: 0%;
     text-transform: none;
     width: 100%;
-    float: none;
-    padding-left: .5em; }
+    float: none; }
 
   /* line 89, ../../scss/style.scss */
   .sub-link {
