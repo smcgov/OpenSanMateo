@@ -8511,8 +8511,9 @@ table {
 /* line 4, ../scss/elements/follow.scss */
 .follow-links {
   font-size: 1em;
-  line-height: 1em; }
-  /* line 8, ../scss/elements/follow.scss */
+  line-height: 1em;
+  margin-bottom: 40px; }
+  /* line 9, ../scss/elements/follow.scss */
   .follow-links a.follow-link {
     float: left;
     color: white;
@@ -8525,42 +8526,42 @@ table {
     display: inline-block;
     line-height: 1em;
     margin: 0 5% 5% 0; }
-    /* line 22, ../scss/elements/follow.scss */
+    /* line 23, ../scss/elements/follow.scss */
     .follow-links a.follow-link .follow-link-text {
       display: none; }
-  /* line 27, ../scss/elements/follow.scss */
+  /* line 28, ../scss/elements/follow.scss */
   .follow-links a.follow-link-facebook {
     background-color: #3b5998; }
-  /* line 30, ../scss/elements/follow.scss */
+  /* line 31, ../scss/elements/follow.scss */
   .follow-links a.follow-link-twitter {
     background-color: #55acee; }
-  /* line 33, ../scss/elements/follow.scss */
+  /* line 34, ../scss/elements/follow.scss */
   .follow-links a.follow-link-this-site {
     background-color: #fd9a27; }
-  /* line 36, ../scss/elements/follow.scss */
+  /* line 37, ../scss/elements/follow.scss */
   .follow-links a.follow-link-flickr {
     background-color: #fc2482; }
-  /* line 39, ../scss/elements/follow.scss */
+  /* line 40, ../scss/elements/follow.scss */
   .follow-links a.follow-link-vimeo {
     background-color: #2ebae9; }
-  /* line 42, ../scss/elements/follow.scss */
+  /* line 43, ../scss/elements/follow.scss */
   .follow-links a.follow-link-youtube {
     background-color: #cc171e; }
-  /* line 45, ../scss/elements/follow.scss */
+  /* line 46, ../scss/elements/follow.scss */
   .follow-links a.follow-link-pinterest {
     background-color: #c9232b; }
-  /* line 48, ../scss/elements/follow.scss */
+  /* line 49, ../scss/elements/follow.scss */
   .follow-links a.follow-link-googleplus {
     background-color: #4688f1; }
-  /* line 51, ../scss/elements/follow.scss */
+  /* line 52, ../scss/elements/follow.scss */
   .follow-links a.follow-link-linkedin {
     background-color: #1178b3; }
-  /* line 54, ../scss/elements/follow.scss */
+  /* line 55, ../scss/elements/follow.scss */
   .follow-links a.follow-link-instagram {
     background-color: #a57757; }
 
 @media all and (min-width: 768px) {
-  /* line 63, ../scss/elements/follow.scss */
+  /* line 64, ../scss/elements/follow.scss */
   .follow-links a.follow-link {
     font-size: 1em;
     padding: .5em; } }
