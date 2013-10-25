@@ -9556,14 +9556,15 @@ table {
     width: 30%;
     background-color: transparent;
     padding: 0;
+    z-index: 10;
     /* End Header Search */ }
-    /* line 122, ../scss/elements/search.scss */
+    /* line 123, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search #opensanmateo-search-header-search-form {
       float: left;
       width: 80%;
       margin-right: 3%;
       margin-bottom: 0; }
-    /* line 129, ../scss/elements/search.scss */
+    /* line 130, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text] {
       background: #d7e9eb;
       border: none;
@@ -9576,22 +9577,22 @@ table {
       border-radius: 3px;
       font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
       margin: 0; }
-    /* line 145, ../scss/elements/search.scss */
+    /* line 146, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus {
       box-shadow: none;
       background: #67adb3;
       color: white;
       font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
-    /* line 152, ../scss/elements/search.scss */
+    /* line 153, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus::-webkit-input-placeholder {
       color: white; }
-    /* line 153, ../scss/elements/search.scss */
+    /* line 154, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus::-moz-placeholder {
       color: white; }
-    /* line 154, ../scss/elements/search.scss */
+    /* line 155, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus::-ms-input-placeholder {
       color: white; }
-    /* line 156, ../scss/elements/search.scss */
+    /* line 157, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search .search-button {
       width: 17%;
       position: absolute;
@@ -9602,7 +9603,7 @@ table {
       display: block;
       text-align: center;
       margin-right: 0; }
-    /* line 168, ../scss/elements/search.scss */
+    /* line 169, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search .search-button:after {
       content: none; } }
 /* Fonts */
