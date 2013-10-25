@@ -9142,8 +9142,9 @@ table {
         color: #EEEEEE; }
   /* line 27, ../scss/elements/promo-boxes.scss */
   .pane-bundle-promo-panels-pane .field-name-field-rotator-image {
-    margin-bottom: 2%; }
-  /* line 31, ../scss/elements/promo-boxes.scss */
+    margin-bottom: 2%;
+    text-align: center; }
+  /* line 32, ../scss/elements/promo-boxes.scss */
   .pane-bundle-promo-panels-pane .field-name-field-rotator-caption {
     color: #FFFFFF;
     padding: 0 1em .5em;
@@ -9154,13 +9155,13 @@ table {
     line-height: 1.6;
     margin-bottom: 1.25em;
     text-rendering: optimizelegibility; }
-    /* line 42, ../scss/elements/promo-boxes.scss */
+    /* line 43, ../scss/elements/promo-boxes.scss */
     .pane-bundle-promo-panels-pane .field-name-field-rotator-caption a {
       color: #FFFFFF; }
-      /* line 45, ../scss/elements/promo-boxes.scss */
+      /* line 46, ../scss/elements/promo-boxes.scss */
       .pane-bundle-promo-panels-pane .field-name-field-rotator-caption a:hover {
         color: #EEEEEE; }
-  /* line 53, ../scss/elements/promo-boxes.scss */
+  /* line 54, ../scss/elements/promo-boxes.scss */
   .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.3);
@@ -9171,39 +9172,39 @@ table {
     font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
     text-transform: uppercase;
     text-align: center; }
-  /* line 65, ../scss/elements/promo-boxes.scss */
+  /* line 66, ../scss/elements/promo-boxes.scss */
   .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover {
     background-color: rgba(255, 255, 255, 0.2);
     color: white; }
-  /* line 70, ../scss/elements/promo-boxes.scss */
+  /* line 71, ../scss/elements/promo-boxes.scss */
   .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after {
     content: ' \00BB'; }
 
-/* line 76, ../scss/elements/promo-boxes.scss */
+/* line 77, ../scss/elements/promo-boxes.scss */
 .promo-pane-default {
   background-color: #38939b; }
 
-/* line 79, ../scss/elements/promo-boxes.scss */
+/* line 80, ../scss/elements/promo-boxes.scss */
 .promo-pane-green {
   background-color: #8dc63f; }
 
-/* line 82, ../scss/elements/promo-boxes.scss */
+/* line 83, ../scss/elements/promo-boxes.scss */
 .promo-pane-purple {
   background-color: #6b699e; }
 
-/* line 85, ../scss/elements/promo-boxes.scss */
+/* line 86, ../scss/elements/promo-boxes.scss */
 .promo-pane-orange {
   background-color: #e98a41; }
 
 @media all and (min-width: 768px) {
-  /* line 95, ../scss/elements/promo-boxes.scss */
+  /* line 96, ../scss/elements/promo-boxes.scss */
   .panel-col-top .pane-bundle-promo-panels-pane,
   .panel-col-bottom .pane-bundle-promo-panels-pane {
     padding-right: 40%;
     padding-left: 3em;
     padding-top: 1em;
     padding-bottom: 2em; }
-    /* line 102, ../scss/elements/promo-boxes.scss */
+    /* line 103, ../scss/elements/promo-boxes.scss */
     .panel-col-top .pane-bundle-promo-panels-pane h2.pane-title,
     .panel-col-bottom .pane-bundle-promo-panels-pane h2.pane-title {
       font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
@@ -9211,7 +9212,7 @@ table {
       font-weight: 100;
       padding-left: 0;
       padding-right: 0; }
-    /* line 112, ../scss/elements/promo-boxes.scss */
+    /* line 113, ../scss/elements/promo-boxes.scss */
     .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image,
     .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-image {
       position: absolute;
@@ -9220,8 +9221,9 @@ table {
       bottom: 0;
       max-height: 100%;
       height: 100%;
-      margin-bottom: 0; }
-      /* line 122, ../scss/elements/promo-boxes.scss */
+      margin-bottom: 0;
+      max-width: 40%; }
+      /* line 124, ../scss/elements/promo-boxes.scss */
       .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image .field-items,
       .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image .field-item,
       .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-image .field-items,
@@ -9229,7 +9231,7 @@ table {
         max-height: 100%;
         height: 100%;
         width: auto; }
-      /* line 127, ../scss/elements/promo-boxes.scss */
+      /* line 129, ../scss/elements/promo-boxes.scss */
       .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image img,
       .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-image img {
         max-height: 100%;
@@ -9238,7 +9240,7 @@ table {
         height: auto;
         border-left: 10px solid rgba(255, 255, 255, 0.3);
         border-right: 10px solid rgba(255, 255, 255, 0.3); }
-    /* line 139, ../scss/elements/promo-boxes.scss */
+    /* line 141, ../scss/elements/promo-boxes.scss */
     .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-caption,
     .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-caption {
       font-size: 1.5em;
@@ -9246,7 +9248,7 @@ table {
       padding-left: 0;
       padding-right: 0;
       padding-bottom: 0; }
-    /* line 151, ../scss/elements/promo-boxes.scss */
+    /* line 153, ../scss/elements/promo-boxes.scss */
     .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a,
     .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover,
     .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a,
@@ -9261,11 +9263,11 @@ table {
       font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
       text-transform: uppercase;
       text-align: left; }
-    /* line 166, ../scss/elements/promo-boxes.scss */
+    /* line 168, ../scss/elements/promo-boxes.scss */
     .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after,
     .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after {
       content: ''; }
-    /* line 170, ../scss/elements/promo-boxes.scss */
+    /* line 172, ../scss/elements/promo-boxes.scss */
     .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a,
     .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a {
       background: none;
@@ -9359,7 +9361,7 @@ table {
       .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:active,
       .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:active {
         background-color: rgba(141, 198, 63, 0.9); }
-  /* line 186, ../scss/elements/promo-boxes.scss */
+  /* line 188, ../scss/elements/promo-boxes.scss */
   .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a,
   .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a {
     background-color: rgba(56, 147, 155, 0.95); }
@@ -9371,7 +9373,7 @@ table {
     .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a:active,
     .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a:active {
       background-color: rgba(56, 147, 155, 0.9); }
-  /* line 199, ../scss/elements/promo-boxes.scss */
+  /* line 201, ../scss/elements/promo-boxes.scss */
   .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a,
   .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a {
     background-color: rgba(3, 108, 182, 0.95); }
