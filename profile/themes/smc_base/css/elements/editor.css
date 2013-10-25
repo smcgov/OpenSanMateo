@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* Fonts */
 /* Media Queries */
 /* normalize.css v2.1.1 | MIT License | git.io/normalize */
@@ -6171,4 +6170,4 @@ ul, ol {
   font-size: .9em; }
   /* line 84, ../../scss/elements/editor.scss */
   ul li, ol li {
-    color: #6b699e; }
+    color: #555a5a; }
