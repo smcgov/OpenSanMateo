@@ -16,6 +16,24 @@
 	box-shadow: 0 3px 6px rgba($primaryGray, 0.1);
 }
 
+#skip-link {
+  position: relative;
+  text-align: center;
+  
+  a {
+   
+
+    @include button();
+    @include buttonArrow;
+    @include buttonGreen;
+    @include buttonLarge;
+    margin: 10px auto;
+    
+    &:focus {
+       position: relative !important;
+    }
+  }
+}
 .lockup {
 	display: block;
 }

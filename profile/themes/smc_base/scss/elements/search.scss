@@ -114,10 +114,11 @@
     position: absolute;
     right: 0;
     left: auto;
-    top: -50px;
+    top: -50px !important;
     width: 30%;
     background-color: transparent;
     padding: 0;
+    z-index: 10;
     
     #opensanmateo-search-header-search-form {
       float: left;

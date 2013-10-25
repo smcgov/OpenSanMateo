@@ -10,18 +10,20 @@ footer {
 	
 	.seal {
 		width: 100%;
-		background: url("../images/seal.png") no-repeat center center;
-		background-size: contain;
+		background: url("../images/seal.png") no-repeat top center;
+		background-size: 100px;
 		margin: 1em auto;
 		min-height: 40px;
+		padding-top: 140px;
 	}
 	
 	nav {
-	  border-top: 1px solid #014c80;
+	  
 	
 		ul, ul.menu {
 			width: 100%; 
 			margin-bottom: 0;
+			padding-left: 0;
 			
   		li, 
   		li.leaf {
@@ -66,6 +68,7 @@ footer {
 }
 	
 @media all and (min-width: $tablet) {
+  
   footer { 
 	  background: url("../images/footer.jpg") no-repeat scroll center bottom #036cb6;
 	  background-size: cover;
@@ -75,9 +78,11 @@ footer {
     width: 100%;
 
 	.seal {
-		background: url("../images/seal.png") no-repeat;
+		background: url("../images/seal.png") no-repeat left center;
 		background-size: contain;
-		margin: 0;	
+		margin: 0;
+		padding-top: 0;
+		max-width: auto;
   }
 		
 	nav {border: none;}

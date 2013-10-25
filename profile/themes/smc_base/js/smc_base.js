@@ -16,7 +16,11 @@ Drupal.smc = Drupal.smc || {};
         // reapply padding to body because toolbar module doesn't do this... LOL
         // the padding on the #section-header doesn't need adjusted
         $('body').css('padding-top', toolbarHeight);
-        //$('.show').css('padding-top', toolbarHeight + 60);
+        //$('.show').css('padding-top', toolbarHeight + 80);
+        
+        $('body.toolbar .flexnav.show').css('padding-top', toolbarHeight + 120);
+        $('body.toolbar #block-opensanmateo-search-header-search').css('top', toolbarHeight + 68);
+        $('body.toolbar .menu-button').css('top', toolbarHeight + 10);
       }
     });
   }
@@ -53,6 +57,7 @@ Drupal.smc = Drupal.smc || {};
       
       $(".flexnav").flexNav();
       $('.menu-button').click(function(){
+        Drupal.smc.toolbarFix();
         $('#block-opensanmateo-search-header-search').fadeToggle('fast');
       });
     }
