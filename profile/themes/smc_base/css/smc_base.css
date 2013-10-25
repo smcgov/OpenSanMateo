@@ -8969,7 +8969,7 @@ table {
   border-radius: 3px;
   font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
   font-size: .85em;
-  margin-bottom: 5%; }
+  margin-bottom: 40px; }
   /* line 14, ../scss/elements/sub-menu-block.scss */
   .menu-block-subnav-menu ul {
     margin: 0;
