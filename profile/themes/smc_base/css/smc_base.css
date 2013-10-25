@@ -8223,7 +8223,8 @@ table {
 .universal-teaser {
   border-top: 1px solid rgba(3, 108, 182, 0.1);
   padding: 1.5em 0;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+  position: relative; }
   /* line 19, ../scss/elements/teaser.scss */
   .universal-teaser .node-url {
     display: none; }
