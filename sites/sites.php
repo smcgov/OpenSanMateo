@@ -83,6 +83,7 @@ $sites['planning.smcstg-acquia.fayze2.com'] = 'planning.smcgov.org';
 $sites['parks.smcstg-acquia.fayze2.com'] = 'parks.smcgov.org';
 $sites['isd.smcstg-acquia.fayze2.com'] = 'isd.smcgov.org';
 $sites['da.smcstg-acquia.fayze2.com'] = 'da.smcgov.org';
+$sites['coroner.smcstg-acquia.fayze2.com'] = 'coroner.smcgov.org';
 
 /*
  * Map San Mateo sites to prod host
