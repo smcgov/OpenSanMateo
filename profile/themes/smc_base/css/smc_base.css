@@ -9686,63 +9686,62 @@ footer {
   /* line 11, ../scss/elements/footer.scss */
   footer .seal {
     width: 100%;
-    background: url("../images/seal.png") no-repeat center center;
-    background-size: contain;
+    background: url("../images/seal.png") no-repeat top center;
+    background-size: 100px;
     margin: 1em auto;
-    min-height: 40px; }
-  /* line 19, ../scss/elements/footer.scss */
-  footer nav {
-    border-top: 1px solid #014c80; }
-    /* line 22, ../scss/elements/footer.scss */
-    footer nav ul, footer nav ul.menu {
-      width: 100%;
-      margin-bottom: 0; }
-      /* line 27, ../scss/elements/footer.scss */
-      footer nav ul li,
-      footer nav ul li.leaf, footer nav ul.menu li,
-      footer nav ul.menu li.leaf {
-        float: left;
-        list-style-type: none;
-        width: 100%; }
-        /* line 32, ../scss/elements/footer.scss */
-        footer nav ul li a,
-        footer nav ul li.leaf a, footer nav ul.menu li a,
-        footer nav ul.menu li.leaf a {
-          color: white;
-          display: block;
-          font-weight: bold;
-          font-size: 1em;
-          text-align: center;
-          padding: .5em 0;
-          border-bottom: 1px solid #014c80;
-          min-height: 44px;
-          font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
-        /* line 44, ../scss/elements/footer.scss */
-        footer nav ul li a:hover,
-        footer nav ul li.leaf a:hover, footer nav ul.menu li a:hover,
-        footer nav ul.menu li.leaf a:hover {
-          color: rgba(255, 255, 255, 0.8); }
-        /* line 48, ../scss/elements/footer.scss */
-        footer nav ul li #google_translator_element div,
-        footer nav ul li.leaf #google_translator_element div, footer nav ul.menu li #google_translator_element div,
-        footer nav ul.menu li.leaf #google_translator_element div {
-          color: #FFFFFF !important;
-          font-size: 0.5em; }
-          /* line 53, ../scss/elements/footer.scss */
-          footer nav ul li #google_translator_element div a,
-          footer nav ul li.leaf #google_translator_element div a, footer nav ul.menu li #google_translator_element div a,
-          footer nav ul.menu li.leaf #google_translator_element div a {
-            display: inline;
-            font-size: 1em; }
-          /* line 58, ../scss/elements/footer.scss */
-          footer nav ul li #google_translator_element div select,
-          footer nav ul li.leaf #google_translator_element div select, footer nav ul.menu li #google_translator_element div select,
-          footer nav ul.menu li.leaf #google_translator_element div select {
-            margin: 0;
-            display: block; }
+    min-height: 40px;
+    padding-top: 140px; }
+  /* line 23, ../scss/elements/footer.scss */
+  footer nav ul, footer nav ul.menu {
+    width: 100%;
+    margin-bottom: 0;
+    padding-left: 0; }
+    /* line 29, ../scss/elements/footer.scss */
+    footer nav ul li,
+    footer nav ul li.leaf, footer nav ul.menu li,
+    footer nav ul.menu li.leaf {
+      float: left;
+      list-style-type: none;
+      width: 100%; }
+      /* line 34, ../scss/elements/footer.scss */
+      footer nav ul li a,
+      footer nav ul li.leaf a, footer nav ul.menu li a,
+      footer nav ul.menu li.leaf a {
+        color: white;
+        display: block;
+        font-weight: bold;
+        font-size: 1em;
+        text-align: center;
+        padding: .5em 0;
+        border-bottom: 1px solid #014c80;
+        min-height: 44px;
+        font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
+      /* line 46, ../scss/elements/footer.scss */
+      footer nav ul li a:hover,
+      footer nav ul li.leaf a:hover, footer nav ul.menu li a:hover,
+      footer nav ul.menu li.leaf a:hover {
+        color: rgba(255, 255, 255, 0.8); }
+      /* line 50, ../scss/elements/footer.scss */
+      footer nav ul li #google_translator_element div,
+      footer nav ul li.leaf #google_translator_element div, footer nav ul.menu li #google_translator_element div,
+      footer nav ul.menu li.leaf #google_translator_element div {
+        color: #FFFFFF !important;
+        font-size: 0.5em; }
+        /* line 55, ../scss/elements/footer.scss */
+        footer nav ul li #google_translator_element div a,
+        footer nav ul li.leaf #google_translator_element div a, footer nav ul.menu li #google_translator_element div a,
+        footer nav ul.menu li.leaf #google_translator_element div a {
+          display: inline;
+          font-size: 1em; }
+        /* line 60, ../scss/elements/footer.scss */
+        footer nav ul li #google_translator_element div select,
+        footer nav ul li.leaf #google_translator_element div select, footer nav ul.menu li #google_translator_element div select,
+        footer nav ul.menu li.leaf #google_translator_element div select {
+          margin: 0;
+          display: block; }
 
 @media all and (min-width: 768px) {
-  /* line 69, ../scss/elements/footer.scss */
+  /* line 72, ../scss/elements/footer.scss */
   footer {
     background: url("../images/footer.jpg") no-repeat scroll center bottom #036cb6;
     background-size: cover;
@@ -9750,20 +9749,22 @@ footer {
     margin-bottom: 0;
     padding: 3em 2em;
     width: 100%; }
-    /* line 77, ../scss/elements/footer.scss */
+    /* line 80, ../scss/elements/footer.scss */
     footer .seal {
-      background: url("../images/seal.png") no-repeat;
+      background: url("../images/seal.png") no-repeat left center;
       background-size: contain;
-      margin: 0; }
-    /* line 83, ../scss/elements/footer.scss */
+      margin: 0;
+      padding-top: 0;
+      max-width: auto; }
+    /* line 88, ../scss/elements/footer.scss */
     footer nav {
       border: none; }
-    /* line 85, ../scss/elements/footer.scss */
+    /* line 90, ../scss/elements/footer.scss */
     footer nav ul, footer nav ul.menu {
       width: 55%;
       float: right;
       margin-bottom: 0; }
-      /* line 91, ../scss/elements/footer.scss */
+      /* line 96, ../scss/elements/footer.scss */
       footer nav ul li,
       footer nav ul li.leaf, footer nav ul.menu li,
       footer nav ul.menu li.leaf {
@@ -9771,7 +9772,7 @@ footer {
         list-style-type: none;
         width: 33%;
         margin-bottom: 2%; }
-        /* line 97, ../scss/elements/footer.scss */
+        /* line 102, ../scss/elements/footer.scss */
         footer nav ul li a,
         footer nav ul li.leaf a, footer nav ul.menu li a,
         footer nav ul.menu li.leaf a {
@@ -9783,13 +9784,13 @@ footer {
           border: none;
           min-height: 0;
           font-weight: 100; }
-        /* line 108, ../scss/elements/footer.scss */
+        /* line 113, ../scss/elements/footer.scss */
         footer nav ul li a:hover,
         footer nav ul li.leaf a:hover, footer nav ul.menu li a:hover,
         footer nav ul.menu li.leaf a:hover {
           color: rgba(255, 255, 255, 0.8); } }
 @media all and (min-width: 800px) {
-  /* line 118, ../scss/elements/footer.scss */
+  /* line 123, ../scss/elements/footer.scss */
   footer nav ul, footer nav ul.menu {
     width: 45%; } }
 /* line 61, ../scss/smc_base.scss */
