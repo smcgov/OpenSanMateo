@@ -9614,9 +9614,67 @@ table {
   #block-opensanmateo-search-header-search .search-button:after {
     content: none; }
 
+/* line 112, ../scss/elements/search.scss */
+.view-opensanmateo-search .view-filters #edit-field-event-date-value-wrapper {
+  clear: left; }
+/* line 116, ../scss/elements/search.scss */
+.view-opensanmateo-search .view-filters #edit-field-event-date-value-wrapper,
+.view-opensanmateo-search .view-filters #edit-field-event-date-value2-wrapper {
+  padding: 0; }
+/* line 121, ../scss/elements/search.scss */
+.view-opensanmateo-search .view-filters .container-inline-date label,
+.view-opensanmateo-search .view-filters .container-inline-date div.description {
+  display: none; }
+/* line 126, ../scss/elements/search.scss */
+.view-opensanmateo-search .view-filters .views-submit-button {
+  padding: 0; }
+/* line 129, ../scss/elements/search.scss */
+.view-opensanmateo-search .view-filters .form-submit {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: 300;
+  position: relative;
+  background-color: rgba(3, 108, 182, 0.95);
+  font-size: .85em;
+  padding: .75em 1em;
+  margin-top: 0;
+  border: 0;
+  font-size: .75em;
+  margin-top: 1.25em; }
+  /* line 23, ../scss/elements/buttons.scss */
+  .view-opensanmateo-search .view-filters .form-submit:hover {
+    padding: .75em 1em; }
+  /* line 35, ../scss/elements/buttons.scss */
+  .view-opensanmateo-search .view-filters .form-submit:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 126, ../scss/elements/buttons.scss */
+  .view-opensanmateo-search .view-filters .form-submit:hover {
+    background-color: #036cb6; }
+  /* line 130, ../scss/elements/buttons.scss */
+  .view-opensanmateo-search .view-filters .form-submit:active {
+    background-color: rgba(3, 108, 182, 0.9); }
+
 @media all and (min-width: 768px) {
   /* Header Search */
-  /* line 110, ../scss/elements/search.scss */
+  /* line 147, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search {
     display: block !important;
     border-radius: 3px;
@@ -9630,13 +9688,13 @@ table {
     padding: 0;
     z-index: 10;
     /* End Header Search */ }
-    /* line 123, ../scss/elements/search.scss */
+    /* line 160, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search #opensanmateo-search-header-search-form {
       float: left;
       width: 80%;
       margin-right: 3%;
       margin-bottom: 0; }
-    /* line 130, ../scss/elements/search.scss */
+    /* line 167, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text] {
       background: #d7e9eb;
       border: none;
@@ -9649,22 +9707,22 @@ table {
       border-radius: 3px;
       font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
       margin: 0; }
-    /* line 146, ../scss/elements/search.scss */
+    /* line 183, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus {
       box-shadow: none;
       background: #67adb3;
       color: white;
       font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
-    /* line 153, ../scss/elements/search.scss */
+    /* line 190, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus::-webkit-input-placeholder {
       color: white; }
-    /* line 154, ../scss/elements/search.scss */
+    /* line 191, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus::-moz-placeholder {
       color: white; }
-    /* line 155, ../scss/elements/search.scss */
+    /* line 192, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus::-ms-input-placeholder {
       color: white; }
-    /* line 157, ../scss/elements/search.scss */
+    /* line 194, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search .search-button {
       width: 17%;
       position: absolute;
@@ -9675,7 +9733,7 @@ table {
       display: block;
       text-align: center;
       margin-right: 0; }
-    /* line 169, ../scss/elements/search.scss */
+    /* line 206, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search .search-button:after {
       content: none; } }
 /* Fonts */

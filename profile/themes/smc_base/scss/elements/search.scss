@@ -105,6 +105,43 @@
   }
 }
 
+// search form(s)
+.view-opensanmateo-search {
+  .view-filters {
+    
+    #edit-field-event-date-value-wrapper {
+      clear: left;
+    }
+    #edit-field-event-date-value-wrapper,
+    #edit-field-event-date-value2-wrapper {
+      padding: 0;
+    }
+    .container-inline-date {
+      label,
+      div.description {
+        display: none;
+      }
+      
+    }
+    .views-submit-button {
+      padding: 0;
+    }
+    .form-submit {
+      @include button();
+      @include buttonBlue;
+      @include buttonSmall;
+      
+      margin-top: 0;
+      border: 0;
+      font-size: .75em;
+      margin-top: 1.25em;
+    }
+  }
+}
+
+
+
+
 @media all and (min-width: $tablet) {
   /* Header Search */
   #block-opensanmateo-search-header-search {
