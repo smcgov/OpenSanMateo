@@ -8054,6 +8054,36 @@ table {
     padding: 0;
     margin: 0;
     margin-left: 2.5%; } }
+/* line 305, ../scss/elements/layout.scss */
+#main-wrapper #responsive-navigation {
+  display: none; }
+
+/* line 309, ../scss/elements/layout.scss */
+#main-wrapper #navigation-toggle {
+  display: block;
+  text-align: right;
+  margin-bottom: 10px; }
+  /* line 314, ../scss/elements/layout.scss */
+  #main-wrapper #navigation-toggle a {
+    display: inline-block;
+    padding: .75em .5em;
+    font-size: .7em;
+    text-align: center;
+    background-color: rgba(3, 108, 182, 0.1);
+    border-radius: 3px; }
+    /* line 323, ../scss/elements/layout.scss */
+    #main-wrapper #navigation-toggle a:before {
+      padding-right: 1em;
+      content: "\e006"; }
+
+@media all and (min-width: 768px) {
+  /* line 336, ../scss/elements/layout.scss */
+  #main-wrapper #responsive-navigation {
+    display: block !important; }
+
+  /* line 340, ../scss/elements/layout.scss */
+  #main-wrapper #navigation-toggle {
+    display: none; } }
 /* line 2, ../scss/elements/rotator-box.scss */
 .flexslider {
   box-shadow: none;

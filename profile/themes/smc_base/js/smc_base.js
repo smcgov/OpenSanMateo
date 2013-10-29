@@ -71,4 +71,13 @@ Drupal.smc = Drupal.smc || {};
      });
     }
   };
+  Drupal.behaviors.smcNavToggle = {
+    attach: function (context) {
+      
+     $('#navigation-toggle a').click(function(){
+       $('#responsive-navigation').slideToggle();
+       return false;
+     });
+    }
+  };
 })(jQuery);

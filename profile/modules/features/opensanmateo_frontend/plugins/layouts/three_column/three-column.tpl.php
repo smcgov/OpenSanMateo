@@ -23,6 +23,7 @@
   </div>
   
   <div class="panel-panel panel-col-first sidebar clearfix">
+    <div id="navigation-toggle"><a href="#" class="icon-subnav">View More</a></div>
     <div id="responsive-navigation" class="inside sidebar-responsive-navigation">
       <?php print $content['nav']; ?>
     </div>

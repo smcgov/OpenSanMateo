@@ -298,3 +298,46 @@
     margin-left: 2.5%;
   }
 }
+
+
+
+// navigation region toggle
+#main-wrapper #responsive-navigation {
+  display: none;
+}
+
+#main-wrapper #navigation-toggle {
+  display: block;
+  text-align: right;
+  margin-bottom: 10px;
+  
+  a {
+    
+    display: inline-block;
+  	padding: .75em .5em;
+  	font-size: .7em;
+  	text-align: center;
+  	background-color: rgba($primaryBlue, .1);
+  	border-radius: 3px;
+    
+    &:before {
+      padding-right: 1em;
+      content: "\e006";
+    }
+    
+    &:hover {
+      
+    }
+  }
+}
+
+@media all and (min-width: $tablet) {
+  
+  #main-wrapper #responsive-navigation {
+    display: block !important;
+  }
+  
+  #main-wrapper #navigation-toggle {
+    display: none;
+  }
+}
