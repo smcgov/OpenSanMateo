@@ -24,7 +24,7 @@ function opensanmateo_location_field_default_field_bases() {
     'settings' => array(
       'non_empty_fields' => array(
         'administrative_area' => 0,
-        'country' => 'country',
+        'country' => 0,
         'data' => 0,
         'dependent_locality' => 'dependent_locality',
         'first_name' => 0,
