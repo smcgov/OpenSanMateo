@@ -5,3 +5,12 @@
  */
 
 include_once 'opensanmateo_socialmedia.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Alter the default sharethis configuration form.
+ */
+function opensanmateo_socialmedia_form_sharethis_configuration_form_alter(&$form, &$form_state) {
+  $form['context']['sharethis_location']['#access'] = FALSE;
+}

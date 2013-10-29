@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function opensanmateo_socialmedia_install() {
+  opensanmateo_socialmedia_set_defaults();
+}
+
+/**
+ * Set sharethis variable defaults.
+ */
+function opensanmateo_socialmedia_set_defaults() {
+  variable_set('sharethis_location', 'content');
+}
+
+/**
+ * Set sharethis variable defaults.
+ */
+function opensanmateo_socialmedia_update_7001() {
+  opensanmateo_socialmedia_set_defaults();
+}
