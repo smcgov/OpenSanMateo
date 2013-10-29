@@ -92,7 +92,9 @@
 			float: left;
 			list-style-type: none;
 			position: relative;
-		
+      
+      
+      
   		a {
   			font-family: 'Trade Gothic W01 Roman', Helvetica Neue, Arial, Helvetica, sans-serif; 
   			font-size: .95em;
@@ -104,7 +106,8 @@
 			}
 			
   		a:hover,
-  		&:hover > a {
+  		&:hover > a,
+  		&.active-trail > a {
   			background-color: rgba($primaryTeal, 1);
   			color: white;
   			border-radius: 3px;
@@ -125,7 +128,8 @@
   		}
   		
   		&.expanded > a:hover:after,
-  		&.expanded:hover > a:after {
+  		&.expanded:hover > a:after,
+  		&.active-trail > a:after {
   			color: rgba(#fff, .5);
   		}
 		

@@ -68,6 +68,10 @@ function smc_base_preprocess_flexslider(&$variables) {
 
 function smc_base_preprocess_node(&$variables) {
   //krumo($variables);
+  
+  unset($variables['content']['field_release_date']);
+  
+  $variables['submitted'] = '';
 }
 
 function smc_base_preprocess_block(&$variables) {
