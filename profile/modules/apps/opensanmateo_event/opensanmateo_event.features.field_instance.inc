@@ -255,7 +255,7 @@ function opensanmateo_event_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'opensanmateo_resp_images_large',
         ),
         'type' => 'image',
         'weight' => 0,

@@ -200,10 +200,14 @@ function opensanmateo_media_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'opensanmateo_resp_images_large',
+        ),
+        'type' => 'image',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
