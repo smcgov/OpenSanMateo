@@ -37,6 +37,8 @@ function san_mateo_install_features_revert($modules) {
  */
 function sanmateo_install() {
   openpublic_install();
+  // Ensure update.module is disable after fresh install.
+  module_disable(array('update'));
   sanmateo_set_default_theme();
 }
 
@@ -100,7 +102,7 @@ function sanmateo_update_7007() {
 }
 
 /**
- * Remove currated item field 
+ * Remove currated item field
  *
  */
 function sanmateo_update_7009() {
@@ -125,6 +127,14 @@ function sanmateo_update_7008() {
 function sanmateo_update_7010() {
   san_mateo_install_features_revert(array('opensanmateo_rotator', 'opensanmateo_layout'));
 }
+
+/**
+ * Disable update.module
+ */
+function sanmateo_update_7011() {
+  module_disable(array('update'));
+}
+
 
 
 // End of file sanmateo.install
