@@ -68,10 +68,47 @@ function smc_base_preprocess_flexslider(&$variables) {
 
 function smc_base_preprocess_node(&$variables) {
   //krumo($variables);
-  
+  // remove the release date field
   unset($variables['content']['field_release_date']);
   
-  $variables['submitted'] = '';
+  switch($variables['type']) {
+    
+    default:
+      // hide display info by default
+      $display_byline = FALSE;
+      $author_field = FALSE;
+      
+      $variables['display_submitted'] = FALSE;
+    break;
+    
+    case 'blog_entry':
+      $display_byline = isset($variables['field_blog_show_author_info']) ? $variables['field_blog_show_author_info']['und'][0]['value'] : FALSE;
+      $author_field = isset($variables['field_blog_author']) ? $variables['field_blog_author']['und'][0]['nid'] : FALSE;
+    break;
+    
+    case 'document':
+      $display_byline = $variables['display_submitted'];
+      $author_field = isset($variables['field_document_author']) ? $variables['field_document_author'][0]['nid'] : FALSE;
+    break;
+  }
+  
+  
+  
+  
+  // author info turned on
+  if ($display_byline && $author_field) {
+    // load the author node
+    
+    $author = node_load($author_field);  
+    $author_link = l($author->title, 'node/' . $author->nid);
+    $date = smc_base_format_timestamp($variables['created']);
+  
+    $byline = t('Posted by ') . $author_link . ' on ' . $date;
+    
+    // assign byline to standard drupal "submitted" variable, and P2 specific "posted_by"
+    $variables['submitted'] = $byline;
+    $variables['posted_by'] = $byline;
+  }
 }
 
 function smc_base_preprocess_block(&$variables) {
@@ -185,7 +222,7 @@ function smc_base_preprocess_panels_pane(&$vars) {
   
   if ($pane->subtype == 'menu_block-subnav-menu') {
     // remove title on the menu subnav block;
-    unset($vars['title']);  
+    $vars['title'] = '';
   }
   
 }
@@ -754,7 +791,7 @@ function smc_base_file_icon($variables) {
   //$mime = check_plain($file->filemime);
   //$icon_url = file_icon_url($file, $icon_directory);
   
-  $dashed_mime = str_replace('application-', '', strtr($mime, array('/' => '-')));
+  //$dashed_mime = str_replace('application-', '', strtr($mime, array('/' => '-')));
   
   return '<span class="file-type">' . $ext . '</span>';
 }
