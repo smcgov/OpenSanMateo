@@ -42,13 +42,20 @@ Drupal.smc = Drupal.smc || {};
   Drupal.behaviors.smcShowHide = {
     attach: function (context) {
       
-      $('.show_hide').showHide({			 
+      $('.show_hide').click(function() {
+        $('#dept-switch').slideToggle(500);
+        return false;
+      });
+      
+      /*
+$('.show_hide').showHide({			 
         speed: 500,  // speed you want the toggle to happen	
         easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
         changeText: 0, // if you dont want the button text to change, set this to 0
         showText: 'View',// the button text to show when a div is closed
         hideText: 'Close' // the button text to show when a div is open
       });
+*/
     }
   };
   

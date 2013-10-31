@@ -8607,43 +8607,56 @@ table {
   #dept-switch {
     background-color: #036cb6;
     padding: 1em;
-    display: none; }
-    /* line 15, ../scss/elements/dept-menu.scss */
+    display: none;
+    width: 100%; }
+    /* line 16, ../scss/elements/dept-menu.scss */
     #dept-switch .close {
       position: absolute;
       top: 1%;
       right: 3%;
       color: white;
       font-size: 1.5em; }
-    /* line 23, ../scss/elements/dept-menu.scss */
+    /* line 24, ../scss/elements/dept-menu.scss */
     #dept-switch .close:hover {
       color: rgba(255, 255, 255, 0.5); }
-    /* line 25, ../scss/elements/dept-menu.scss */
+    /* line 26, ../scss/elements/dept-menu.scss */
     #dept-switch h2 {
       color: rgba(255, 255, 255, 0.7);
       padding: 0 .25em .25em .25em;
       text-transform: uppercase; }
-    /* line 31, ../scss/elements/dept-menu.scss */
+    /* line 32, ../scss/elements/dept-menu.scss */
     #dept-switch ul.menu {
       -webkit-column-count: 4;
       -moz-column-count: 4;
       margin-bottom: 0;
       padding-left: 0; }
-      /* line 38, ../scss/elements/dept-menu.scss */
-      #dept-switch ul.menu li a {
-        color: white;
-        font-weight: bold;
-        font-size: .8em;
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-        transition: all 0.3s;
-        padding: .25em .75em;
-        display: inline-block;
-        border-radius: 3px;
-        position: relative; }
-      /* line 51, ../scss/elements/dept-menu.scss */
-      #dept-switch ul.menu li a:hover {
-        background-color: rgba(255, 255, 255, 0.1); } }
+      /* line 40, ../scss/elements/dept-menu.scss */
+      #dept-switch ul.menu li,
+      #dept-switch ul.menu li.leaf,
+      #dept-switch ul.menu li.collapsed {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        list-style-image: none; }
+        /* line 46, ../scss/elements/dept-menu.scss */
+        #dept-switch ul.menu li a,
+        #dept-switch ul.menu li.leaf a,
+        #dept-switch ul.menu li.collapsed a {
+          color: white;
+          font-weight: bold;
+          font-size: .8em;
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          transition: all 0.3s;
+          padding: .25em .75em;
+          display: inline-block;
+          border-radius: 3px;
+          position: relative; }
+        /* line 59, ../scss/elements/dept-menu.scss */
+        #dept-switch ul.menu li a:hover,
+        #dept-switch ul.menu li.leaf a:hover,
+        #dept-switch ul.menu li.collapsed a:hover {
+          background-color: rgba(255, 255, 255, 0.1); } }
 /* Fonts */
 /* Media Queries */
 /* line 5, ../scss/elements/main-menu.scss */
