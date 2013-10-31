@@ -8223,7 +8223,7 @@ table {
     font-weight: bold;
     font-size: .85em;
     float: left;
-    padding-top: .6em;
+    padding-top: 0;
     z-index: 3; }
     /* line 38, ../scss/elements/alerts.scss */
     #block-distributed-blocks-d-b-opensanmateo-layout-banner .alert-content a {
