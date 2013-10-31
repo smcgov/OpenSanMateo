@@ -32,7 +32,7 @@ function opensanmateo_search_field_default_field_instances_subject_template() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_subject',
-    'label' => 'Subject',
+    'label' => 'County Subject',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -48,7 +48,7 @@ function opensanmateo_search_field_default_field_instances_subject_template() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Subject');
+  t('County Subject');
 
   return $field_instances;
 }

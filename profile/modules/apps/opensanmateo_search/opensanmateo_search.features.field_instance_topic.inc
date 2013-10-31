@@ -33,7 +33,7 @@ function opensanmateo_search_field_default_field_instances_topic_template() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_topic',
-    'label' => 'Topic',
+    'label' => 'Site Topic',
     'required' => FALSE,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -49,7 +49,7 @@ function opensanmateo_search_field_default_field_instances_topic_template() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Topic');
+  t('Site Topic');
 
 
   return $field_instances;

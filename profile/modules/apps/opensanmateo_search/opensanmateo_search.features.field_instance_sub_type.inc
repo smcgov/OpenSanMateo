@@ -32,7 +32,7 @@ function opensanmateo_search_field_default_field_instances_sub_type_template() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_sub_type',
-    'label' => 'Sub Type',
+    'label' => 'County Sub Type',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -48,7 +48,7 @@ function opensanmateo_search_field_default_field_instances_sub_type_template() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Sub Type');
+  t('County Sub Type');
 
   return $field_instances;
 }
