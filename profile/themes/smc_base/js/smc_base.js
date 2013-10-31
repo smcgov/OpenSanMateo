@@ -88,4 +88,18 @@ $('.show_hide').showHide({
      });
     }
   };
+  Drupal.behaviors.smcMetaPadding = {
+    attach: function (context) {
+      
+      $('.universal-teaser .node-type').each(function(){
+        var metaWidth = $(this).outerWidth();
+        $(this).parent('header').css('padding-right', metaWidth);
+      });
+     
+      $(window).resize(function(){
+        var metaWidth = $(this).outerWidth();
+        $(this).parent('header').css('padding-right', metaWidth);
+      });
+    }
+  };
 })(jQuery);
