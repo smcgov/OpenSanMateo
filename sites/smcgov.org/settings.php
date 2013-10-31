@@ -552,11 +552,11 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  */
 # $conf['allow_authorize_operations'] = FALSE;
 
-// Load common settings for all sites
-require('./sites/default/settings.common.inc');
-
 // Set master-client settings that define this as the master site
 $conf['sanmateo_is_master'] = TRUE;
+
+// Load common settings for all sites
+require('./sites/default/settings.common.inc');
 
 // Acquia database connector info
 if (file_exists('/var/www/site-php')) {
