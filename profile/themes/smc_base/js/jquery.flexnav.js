@@ -51,7 +51,6 @@ $ = jQuery;
     $('.menu-button, .menu-button .touch-button').on('touchstart mousedown', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      console.log(isDragging);
       return $(this).on('touchmove mousemove', function(e) {
         var msg;
         msg = e.pageX;
@@ -65,7 +64,7 @@ $ = jQuery;
       isDragging = false;
       $parent = $(this).parent();
       if (isDragging === false) {
-        console.log('clicked');
+        //console.log('clicked');
       }
       if (nav_open === false) {
         $nav.addClass('show');
@@ -88,17 +87,17 @@ $ = jQuery;
       e.stopPropagation();
       $sub = $(this).parent('.item-with-ul').find('>ul');
       if ($nav.hasClass('lg-screen') === true) {
-        $(this).parent('.item-with-ul').siblings().find('ul.show').removeClass('show').hide();
+        $(this).parent('.item-with-ul').siblings().find('ul.show').removeClass('show').stop(true, true).hide();
       }
       if ($sub.hasClass('show') === true) {
-        return $sub.removeClass('show').slideUp(settings.animationSpeed);
+        return $sub.removeClass('show').stop(true, true).slideUp(settings.animationSpeed);
       } else if ($sub.hasClass('show') === false) {
-        return $sub.addClass('show').slideDown(settings.animationSpeed);
+        return $sub.addClass('show').stop(true, true).slideDown(settings.animationSpeed);
       }
     });
     $('.item-with-ul *').focus(function() {
-      $(this).parent('.item-with-ul').parent().find(".open").not(this).removeClass("open").hide();
-      return $(this).parent('.item-with-ul').find('>ul').addClass("open").show();
+      $(this).parent('.item-with-ul').parent().find(".open").not(this).removeClass("open").stop(true, true).hide();
+      return $(this).parent('.item-with-ul').find('>ul').addClass("open").stop(true, true).show();
     });
     resizer();
     return $(window).on('resize', resizer);

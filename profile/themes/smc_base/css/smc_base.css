@@ -8878,7 +8878,7 @@ table {
       /* line 107, ../scss/elements/main-menu.scss */
       .primary li a {
         font-family: 'Trade Gothic W01 Roman', Helvetica Neue, Arial, Helvetica, sans-serif;
-        font-size: .95em;
+        font-size: 1em;
         padding: 0.5em .9em;
         display: block;
         -webkit-transition: all 0.3s;
@@ -8906,7 +8906,7 @@ table {
       /* line 145, ../scss/elements/main-menu.scss */
       .primary li ul {
         position: absolute;
-        top: 40px;
+        top: 2.5em;
         font-size: 1em;
         width: 300%;
         max-width: 300px;
