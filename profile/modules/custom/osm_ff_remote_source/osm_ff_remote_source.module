@@ -400,20 +400,23 @@ function osm_ff_remote_source_preprocess_views_view_fields(&$vars) {
 
   // Add check since apparently $vars['row']->_entity_properties isn't always present; set reasonable default if missing
   $url = !empty($vars['row']->_entity_properties['url']) ? $vars['row']->_entity_properties['url'] : '';
-  $vars['fields']['nothing'] = (object) array(
-    'content' => theme('image', array(
-      'path' => $url,
-      'attributes' => array('class' => 'osm_ff_remote_source_preview'),
-    )),
 
-    // Add these to prevent views-view-fields.tpl.php from losing its mind
-    'class' => '',            // The safe class id to use.
-    'inline' => FALSE,        // Whether or not the field should be inline.
-    'wrapper_prefix' => '',   // A complete wrapper containing the inline_html to use.
-    'wrapper_suffix' => '',   // The closing tag for the wrapper.
-    'label' => '',            // The wrap label text to use.
-    'label_html' => '',       // The full HTML of the label to use including
-  );
+  if (!empty($url)) {
+    $vars['fields']['nothing'] = (object) array(
+      'content' => theme('image', array(
+        'path' => $url,
+        'attributes' => array('class' => 'osm_ff_remote_source_preview'),
+      )),
+
+      // Add these to prevent views-view-fields.tpl.php from losing its mind
+      'class' => '',            // The safe class id to use.
+      'inline' => FALSE,        // Whether or not the field should be inline.
+      'wrapper_prefix' => '',   // A complete wrapper containing the inline_html to use.
+      'wrapper_suffix' => '',   // The closing tag for the wrapper.
+      'label' => '',            // The wrap label text to use.
+      'label_html' => '',       // The full HTML of the label to use including
+    );
+  }
   //TODO revist a way to make each file unq with out braking the widget validation
   #$vars['fields']['url']->content = $url . "#" . $uuid;
 }
