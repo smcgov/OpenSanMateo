@@ -9610,7 +9610,7 @@ table {
     border: none;
     box-shadow: none;
     color: white;
-    padding: .25em;
+    padding: 0.25em 0.75em;
     font-size: 1em;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
