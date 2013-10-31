@@ -11,12 +11,12 @@
 }
 
 .main nav li ul {
-	display: none;
+	//display: none;
 }
 
 @media only screen and (max-width: $mobile-only) {
   
-	@import "flexnav";
+	@import "flexnav.scss";
 	
 	.flexnav {
 	  z-index: 999;
@@ -87,8 +87,16 @@
 			font-family: 'SanMateoIcon';
 			text-indent: 0 !important;
 			color: $primaryBlue;
+			
+			
 		}
-		
+		.home a:hover {
+			
+			&:before {
+  		  color: #FFF;	
+			}
+			
+		}
 		li {
 			float: left;
 			list-style-type: none;
@@ -98,7 +106,7 @@
       
   		a {
   			font-family: 'Trade Gothic W01 Roman', Helvetica Neue, Arial, Helvetica, sans-serif; 
-  			font-size: .95em;
+  			font-size: 1em;
   			padding: 0.5em .9em;
   			display: block;
   			-webkit-transition: all 0.3s;
@@ -136,7 +144,7 @@
 		
       ul {
 			  position: absolute;
-		    top: 40px;
+		    top: 2.5em;
 		    font-size: 1em;
 		    width: 300%;
         max-width: 300px;
