@@ -28,10 +28,11 @@
   		text-transform: uppercase;
   		}
   	
-  	ul {
+  	ul.menu {
   		-webkit-column-count: 4;
   		-moz-column-count: 4;
   		margin-bottom: 0;
+  		padding-left: 0;
   		
   		li {
   			a {

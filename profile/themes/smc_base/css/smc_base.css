@@ -8624,12 +8624,13 @@ table {
       padding: 0 .25em .25em .25em;
       text-transform: uppercase; }
     /* line 31, ../scss/elements/dept-menu.scss */
-    #dept-switch ul {
+    #dept-switch ul.menu {
       -webkit-column-count: 4;
       -moz-column-count: 4;
-      margin-bottom: 0; }
-      /* line 37, ../scss/elements/dept-menu.scss */
-      #dept-switch ul li a {
+      margin-bottom: 0;
+      padding-left: 0; }
+      /* line 38, ../scss/elements/dept-menu.scss */
+      #dept-switch ul.menu li a {
         color: white;
         font-weight: bold;
         font-size: .8em;
@@ -8640,8 +8641,8 @@ table {
         display: inline-block;
         border-radius: 3px;
         position: relative; }
-      /* line 50, ../scss/elements/dept-menu.scss */
-      #dept-switch ul li a:hover {
+      /* line 51, ../scss/elements/dept-menu.scss */
+      #dept-switch ul.menu li a:hover {
         background-color: rgba(255, 255, 255, 0.1); } }
 /* Fonts */
 /* Media Queries */
