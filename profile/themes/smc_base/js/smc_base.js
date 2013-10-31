@@ -63,6 +63,7 @@ $('.show_hide').showHide({
     attach: function (context) {
       
       $(".flexnav").flexNav();
+      
       $('.menu-button').click(function(){
         Drupal.smc.toolbarFix();
         $('#block-opensanmateo-search-header-search').fadeToggle('fast');

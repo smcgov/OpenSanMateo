@@ -1,57 +1,207 @@
-/*
-Syntax error: Undefined variable: "$primaryTeal".
-        on line 8 of /Users/himerus/Dropbox/development/www/sm/sanmateo/profile/themes/smc_base/scss/flexnav.scss
+/* Flexnav Base Styles */
+/* Fonts */
+/* Media Queries */
+/* line 12, ../scss/flexnav.scss */
+.flexnav {
+  *zoom: 1;
+  overflow: hidden;
+  margin: 0 auto;
+  width: 100%;
+  max-height: 0; }
+  /* line 38, ../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+  .flexnav:after {
+    content: "";
+    display: table;
+    clear: both; }
+  /* line 19, ../scss/flexnav.scss */
+  .flexnav.show {
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+    max-height: 1000px;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.975);
+    padding-top: 60px;
+    top: 0; }
+  /* line 27, ../scss/flexnav.scss */
+  .flexnav.one-page {
+    position: fixed;
+    top: 50px;
+    right: 5%;
+    max-width: 200px; }
+  /* line 34, ../scss/flexnav.scss */
+  .flexnav ul {
+    margin-left: 0; }
+  /* line 35, ../scss/flexnav.scss */
+  .flexnav li {
+    font-size: 100%;
+    position: relative;
+    list-style-type: none; }
+  /* line 41, ../scss/flexnav.scss */
+  .flexnav li a {
+    position: relative;
+    display: block;
+    padding: .96em;
+    z-index: 2;
+    overflow: hidden;
+    color: white;
+    background: #036cb6;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
+  /* line 52, ../scss/flexnav.scss */
+  .flexnav li ul {
+    width: 100%;
+    display: none; }
+  /* line 56, ../scss/flexnav.scss */
+  .flexnav li ul li {
+    float: none;
+    width: 100%; }
+  /* line 60, ../scss/flexnav.scss */
+  .flexnav li ul li a {
+    display: block;
+    background: rgba(56, 147, 155, 0.1);
+    color: #38939b; }
+  /* line 65, ../scss/flexnav.scss */
+  .flexnav ul li ul li a {
+    background: #bfbfbc; }
+  /* line 69, ../scss/flexnav.scss */
+  .flexnav ul li ul li ul li a {
+    background: #cbcbc9; }
+  /* line 72, ../scss/flexnav.scss */
+  .flexnav .touch-button {
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    /*
+    		background: #acaca1;
+    		background: rgba(0,0,0,.05);
+    */
+    text-align: center;
+    border-radius: 6px; }
+    /* line 86, ../scss/flexnav.scss */
+    .flexnav .touch-button:hover {
+      cursor: pointer; }
+    /* line 89, ../scss/flexnav.scss */
+    .flexnav .touch-button .navicon {
+      position: relative;
+      top: 1.25em;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5); }
 
-Backtrace:
-/Users/himerus/Dropbox/development/www/sm/sanmateo/profile/themes/smc_base/scss/flexnav.scss:8
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/script/variable.rb:49:in `_perform'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/script/node.rb:40:in `perform'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/script/funcall.rb:99:in `_perform'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/script/funcall.rb:99:in `map'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/script/funcall.rb:99:in `_perform'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/script/node.rb:40:in `perform'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/perform.rb:327:in `visit_variable'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/perform.rb:109:in `visit_children'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/perform.rb:121:in `with_environment'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/perform.rb:108:in `visit_children'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/perform.rb:128:in `visit_root'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/tree/root_node.rb:20:in `render'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/engine.rb:315:in `_render'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../../scss/lib/sass/../sass/engine.rb:262:in `render'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/compiler.rb:140:in `compile'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/compiler.rb:126:in `timed'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/compiler.rb:139:in `compile'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/logger.rb:45:in `red'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/compiler.rb:138:in `compile'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/compiler.rb:118:in `compile_if_required'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/compiler.rb:103:in `run'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/compiler.rb:101:in `each'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/compiler.rb:101:in `run'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/compiler.rb:126:in `timed'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/compiler.rb:100:in `run'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/commands/update_project.rb:45:in `perform'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/commands/stamp_pattern.rb:76:in `perform'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/commands/base.rb:18:in `execute'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/commands/project_base.rb:19:in `execute'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/../lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/compass:45
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/compass:59:in `call'
-/Applications/CodeKit.app/Contents/Resources/engines/compass/bin/compass:59
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$primaryTeal\".\A         on line 8 of /Users/himerus/Dropbox/development/www/sm/sanmateo/profile/themes/smc_base/scss/flexnav.scss"; }
+/* line 97, ../scss/flexnav.scss */
+.menu-button {
+  position: fixed;
+  display: block;
+  padding: .3em;
+  background: white;
+  color: white;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: #036cb6;
+  font-size: 1.7em;
+  text-align: center;
+  top: .56em;
+  right: .4em;
+  border-radius: 3px;
+  z-index: 9999;
+  box-shadow: 0px 3px 2px rgba(3, 108, 182, 0.1); }
+  /* line 114, ../scss/flexnav.scss */
+  .menu-button.one-page {
+    position: fixed;
+    top: 0;
+    right: 5%;
+    padding-right: 45px; }
+  /* line 121, ../scss/flexnav.scss */
+  .menu-button .touch-button {
+    background: transparent;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 100%;
+    display: inline-block;
+    text-align: center; }
+    /* line 132, ../scss/flexnav.scss */
+    .menu-button .touch-button .navicon {
+      font-size: 16px;
+      position: relative;
+      top: 1em;
+      color: rgba(255, 255, 255, 0.5);
+      display: none; }
+
+@media all and (min-width: 768px) {
+  /* line 143, ../scss/flexnav.scss */
+  body.one-page {
+    padding-top: 70px; }
+
+  /* line 146, ../scss/flexnav.scss */
+  .flexnav {
+    overflow: visible;
+    max-height: 1000px; }
+    /* line 150, ../scss/flexnav.scss */
+    .flexnav.one-page {
+      top: 0;
+      right: auto;
+      max-width: 1080px; }
+    /* line 155, ../scss/flexnav.scss */
+    .flexnav li {
+      position: relative;
+      list-style: none;
+      float: left;
+      display: block;
+      background-color: #a6a6a2;
+      width: 20%; }
+    /* line 163, ../scss/flexnav.scss */
+    .flexnav li:hover > ul {
+      visibility: visible;
+      opacity: 1;
+      height: auto;
+      display: block;
+      top: 3.1em;
+      position: absolute; }
+    /* line 172, ../scss/flexnav.scss */
+    .flexnav.lg-screen li:hover > ul, .flexnav.sm-screen li:hover > ul {
+      display: none; }
+    /* line 175, ../scss/flexnav.scss */
+    .flexnav li a {
+      border-left: 1px solid #acaca1;
+      border-bottom: none; }
+    /* line 179, ../scss/flexnav.scss */
+    .flexnav li > ul {
+      position: absolute;
+      top: auto;
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+      height: 1px;
+      z-index: 1; }
+    /* line 188, ../scss/flexnav.scss */
+    .flexnav li ul li ul {
+      top: 0; }
+    /* line 191, ../scss/flexnav.scss */
+    .flexnav li ul li a {
+      border-bottom: none; }
+    /* line 194, ../scss/flexnav.scss */
+    .flexnav li ul.open {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      height: auto; }
+      /* line 200, ../scss/flexnav.scss */
+      .flexnav li ul.open ul.open {
+        margin-left: 100%;
+        top: 0; }
+    /* line 205, ../scss/flexnav.scss */
+    .flexnav ul li:hover ul {
+      margin-left: 100%;
+      top: 0; }
+
+  /* line 210, ../scss/flexnav.scss */
+  .menu-button {
+    display: none; } }

@@ -11,12 +11,12 @@
 }
 
 .main nav li ul {
-	display: none;
+	//display: none;
 }
 
 @media only screen and (max-width: $mobile-only) {
   
-	@import "flexnav";
+	@import "flexnav.scss";
 	
 	.flexnav {
 	  z-index: 999;
@@ -87,8 +87,16 @@
 			font-family: 'SanMateoIcon';
 			text-indent: 0 !important;
 			color: $primaryBlue;
+			
+			
 		}
-		
+		.home a:hover {
+			
+			&:before {
+  		  color: #FFF;	
+			}
+			
+		}
 		li {
 			float: left;
 			list-style-type: none;
