@@ -67,10 +67,6 @@
     // whether or not FOUT will be prevented
     MTIConfig.EnableCustomFOUTHandler = true // true = prevent FOUT
 	</script>
-	<script type="text/javascript" src="http://fast.fonts.net/jsapi/259f3181-2d3b-4389-baf3-501c5548670d.js"></script>
-	<script type="text/javascript">
-		
-	</script>
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <div id="skip-link" class="clearfix">

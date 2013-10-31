@@ -494,4 +494,6 @@ projects[hierarchical_select][download][type] = git
 projects[hierarchical_select][download][url] = http://git.drupal.org/project/hierarchical_select.git
 projects[hierarchical_select][download][revision] = aac15cd
 
-
+projects[fontyourface][type] = module
+projects[fontyourface][subdir] = contrib
+projects[fontyourface][version] = 2.8
