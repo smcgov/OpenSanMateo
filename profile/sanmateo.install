@@ -135,6 +135,12 @@ function sanmateo_update_7011() {
   module_disable(array('update'));
 }
 
+/**
+ * Force a field instance revert on features_template to update field labels.
+ */
+function sanmateo_update_7012() {
+  features_template_revert();
+}
 
 
 // End of file sanmateo.install
