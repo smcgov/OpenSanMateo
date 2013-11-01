@@ -7,8 +7,10 @@
 
 /**
  * Implements hook_entity_info_alter
+ * https://api.drupal.org/api/drupal/modules!system!system.api.php/function/hook_entity_info_alter/7
  *
- * Defines a new bundle type for the question pane
+ * Defines a new bundle type for the question pane since there is no UI mechanism to do so.
+ * Copied from opensanmateo_rotator and modified for this app.
  */
 function opensanmateo_question_entity_info_alter(&$entity_info) {
   $entity_info['fieldable_panels_pane']['bundles']['question_panels_pane'] = $entity_info['fieldable_panels_pane']['bundles']['fieldable_panels_pane'];
@@ -19,12 +21,14 @@ function opensanmateo_question_entity_info_alter(&$entity_info) {
 
 /**
  * Implements hook_entity_view_alter
+ * https://api.drupal.org/api/drupal/modules!system!system.api.php/function/hook_entity_view_alter/7
  *
- * This allows us to take the raw field collection entity data and reformat
+ * This allows us to take the raw field collection entity data and reformat it
  * into what we need for the jQuery plugin + CSS to display properly
  */
 function opensanmateo_question_entity_view_alter(&$build, $type) {
   //dpm(func_get_args()); return;
+  // Check to see if this entity is one we want to manipulate (refer to opensanmateo_question_entity_info_alter)
   if ('fieldable_panels_pane' == $type && 'question_panels_pane' == $build['#bundle']) {
     $options = array();
     // Iterate through multiple items stored in the field
@@ -38,7 +42,7 @@ function opensanmateo_question_entity_view_alter(&$build, $type) {
 
       // Check to see if a discrete URL is provided, and use it
       if (!empty($link['field_question_links_url'][0]['#element']['url'])) {
-        // Use Drupal url() function to ensure we have a properly-formed URL (note the absolute for posible external URLs)
+        // Use Drupal url() function to ensure we have a properly-formed URL (note the absolute for possible external URLs)
         $url = url($link['field_question_links_url'][0]['#element']['url'], array('absolute' => TRUE));
       }
 
@@ -59,9 +63,15 @@ function opensanmateo_question_entity_view_alter(&$build, $type) {
       }
     }
 
+    // Rewrite this element as a SELECT tag using Drupal's theming system; see theme() and theme_select()
     $build['field_question_links'] = array(
       '#theme' => 'select',
       '#options' => $options,
     );
+
+    // Inject JS and CSS into page
+    $module_path = drupal_get_path('module', 'opensanmateo_question');
+    drupal_add_js("{$module_path}/js/opensanmateo_question.js");
+    drupal_add_css("{$module_path}/css/opensanmateo_question.css");
   }
 }
