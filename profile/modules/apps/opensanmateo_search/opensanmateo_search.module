@@ -171,17 +171,16 @@ function opensanmateo_search_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
   if ($view->name == 'opensanmateo_search') {
     if (!empty($vars['row']->_entity_properties['url'])) {
-      $types =  node_type_get_types();
-      // With our app based approach it's possible a content type might not
-      // exist on this install, so we'll fall back to a generic 'read more' link.
-      if (!empty($types[$vars['row']->_entity_properties['type']])) {
-        $link_text = t('View the !type', array('!type' => $types[$vars['row']->_entity_properties['type']]->name));
-      }
-      else {
-        $link_text = t('View More');
-      }
+      $read_more = "<span class='read-more-title'>" . t('View !event', array('!event' => check_plain($vars['row']->_entity_properties['title'][0]))) . "</span>";
 
-      $vars['fields']['more_link'] = "<div class='read-more-wrapper clearfix'>" . l($link_text, $vars['row']->_entity_properties['url'], array('attributes' => array('class' => array('read-more')))) . "</div>";
+      $link_options = array(
+        'attributes' => array(
+          'class' => array('read-more')
+        ),
+        'html' => TRUE,
+      );
+
+      $vars['fields']['more_link'] = "<div class='read-more-wrapper clearfix'>" . l(t('View') . $read_more, $vars['row']->_entity_properties['url'], $link_options) . "</div>";
     }
   }
 }
