@@ -497,3 +497,10 @@ projects[hierarchical_select][download][revision] = aac15cd
 projects[fontyourface][type] = module
 projects[fontyourface][subdir] = contrib
 projects[fontyourface][version] = 2.8
+
+projects[apps][type] = module
+projects[apps][subdir] = contrib
+projects[apps][download][type] = git
+projects[apps][download][url] = http://git.drupal.org/project/apps.git
+projects[apps][download][revision] = b9d82b7bf5b4ebc7ba53324ce87082a84c3515cc
+projects[apps][patch][1899390] = https://drupal.org/files/issues/1899390-remove-update-dep-2.patch
