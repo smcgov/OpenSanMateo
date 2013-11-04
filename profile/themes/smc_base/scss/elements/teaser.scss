@@ -144,6 +144,14 @@
   .read-more-wrapper {
     font-size: 0.9em;
     
+    .read-more-title {
+      height: 1px; 
+      width: 1px; 
+      position: absolute; 
+      overflow: hidden; 
+      top: -10px;
+    }
+    
     a:after {
       content: ' \00BB';
     }
