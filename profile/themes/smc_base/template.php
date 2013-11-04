@@ -8,15 +8,15 @@ function smc_base_preprocess_html(&$variables) {
       'content' => 'width=device-width, initial-scale=1, maximum-scale=2, minimum-scale=1, user-scalable=yes'
     ),
   );
-  
+
   drupal_add_html_head($meta, 'viewport');
-  
+
   //krumo($variables);
 }
 
 function smc_base_html_head_alter(&$head_elements) {
   global $base_url;
-  
+
   $favicon = array();
   foreach($head_elements as $k => $element) {
     if (isset($element['#attributes']) && isset($element['#attributes']['rel'])) {
@@ -27,7 +27,7 @@ function smc_base_html_head_alter(&$head_elements) {
         $head_elements['shortcut_icon']['#attributes']['href'] = $base_url . '/' . drupal_get_path('theme', 'smc_base') . '/favicon.png';
 
       }
-      
+
     }
   }
 }
@@ -70,41 +70,50 @@ function smc_base_preprocess_node(&$variables) {
   //krumo($variables);
   // remove the release date field
   unset($variables['content']['field_release_date']);
-  
+
   switch($variables['type']) {
-    
+
     default:
       // hide display info by default
       $display_byline = FALSE;
       $author_field = FALSE;
-      
+
       $variables['display_submitted'] = FALSE;
     break;
-    
+
     case 'blog_entry':
       $display_byline = isset($variables['field_blog_show_author_info']) ? $variables['field_blog_show_author_info']['und'][0]['value'] : FALSE;
       $author_field = isset($variables['field_blog_author']) ? $variables['field_blog_author']['und'][0]['nid'] : FALSE;
     break;
-    
+
     case 'document':
+
+      // Opic automatically adds a suffix to the document attachment field, which
+      // we want to get rid of.
+      if (!empty($variables['content']['field_document_attachment'][0]['#suffix'])) {
+        unset($variables['content']['field_document_attachment'][0]['#suffix']);
+      }
+
       $display_byline = $variables['display_submitted'];
       $author_field = isset($variables['field_document_author']) ? $variables['field_document_author'][0]['nid'] : FALSE;
     break;
   }
-  
-  
-  
-  
+
+  // Unset language info if it's trying to sneak it's way in.
+  if (!empty($variables['content']['language'])) {
+    unset($variables['content']['language']);
+  }
+
   // author info turned on
   if ($display_byline && $author_field) {
     // load the author node
-    
-    $author = node_load($author_field);  
+
+    $author = node_load($author_field);
     $author_link = l($author->title, 'node/' . $author->nid);
     $date = smc_base_format_timestamp($variables['created']);
-  
+
     $byline = t('Posted by ') . $author_link . ' on ' . $date;
-    
+
     // assign byline to standard drupal "submitted" variable, and P2 specific "posted_by"
     $variables['submitted'] = $byline;
     $variables['posted_by'] = $byline;
@@ -138,12 +147,12 @@ function smc_base_preprocess_block(&$variables) {
     case 'distributed_blocks-d_b--menu-platform-menu':
       //dsm($variables);
     break;
-    
+
     case 'opensanmateo_search-header_search':
       $variables['classes_array'][] = 'clearfix';
       $variables['classes_array'][] = 'search';
     break;
-    
+
     case 'menu-menu-footer-utility':
       //krumo($variables);
     break;
@@ -210,7 +219,7 @@ function smc_base_preprocess_views_view(&$vars) {
 
 function smc_base_preprocess_panels_pane(&$vars) {
   $pane = $vars['pane'];
-  
+
   if (isset($vars['content']['#bundle']) && $vars['content']['#bundle'] == 'promo_panels_pane') {
     if (isset($vars['content']['field_promo_style'])) {
       // assign a class we can use to style
@@ -219,19 +228,19 @@ function smc_base_preprocess_panels_pane(&$vars) {
       unset($vars['content']['field_promo_style']);
     }
   }
-  
+
   if ($pane->subtype == 'menu_block-subnav-menu') {
     // remove title on the menu subnav block;
     $vars['title'] = '';
   }
-  
+
 }
 function smc_base_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
   //krumo($vars);
   if ($view->name == 'opensanmateo_search') {
     //krumo($vars['fields']);
-    
+
     // Legend for (wonky) field names
     // There is a chance the variable names may need changed later, hence this fancy legend
     // Module developers should be drawn and quartered
@@ -244,12 +253,12 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     // search_api_multi_aggregation_2   - thumbnail url
     // search_api_multi_aggregation_15  - thumbnail title
     // search_api_multi_aggregation_16  - thumbnail alt
-    
+
     // META INFORMATION
     // search_api_multi_aggregation_3   - author user id
     // search_api_multi_aggregation_19  - author URL
     // search_api_multi_aggregation_18  - release date
-    
+
     // DATE RELATED
     // Preferend Date Format: ""
     // search_api_multi_aggregation_9   - start date
@@ -306,27 +315,27 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     // one is missing (type or title), there are really big problems with the node anyway
     $vars['fields']['title']->wrapper_prefix = '<header class="group clearfix">' . $vars['fields']['type']->wrapper_prefix;
     $vars['fields']['type']->wrapper_suffix = $vars['fields']['type']->wrapper_suffix . '</header>';
-    
+
     // Format byline
-    
+
     if (isset($vars['fields']['search_api_multi_aggregation_3']->content) && strlen($vars['fields']['search_api_multi_aggregation_3']->content) >= 1) {
       // let's manipulate the author name data to give us a full byline
       $author = $vars['fields']['search_api_multi_aggregation_3']->content;
-      
+
       if (isset($vars['fields']['search_api_multi_aggregation_19']->content) && strlen($vars['fields']['search_api_multi_aggregation_19']->content) >= 1) {
-        // we have a link field, let's create a link out of the username 
+        // we have a link field, let's create a link out of the username
         $author = l($author, $vars['fields']['search_api_multi_aggregation_19']->content);
       }
-      
+
       $byline = t('Posted by') . ' ' . $author;
-      
+
       if (isset($vars['fields']['search_api_multi_aggregation_18']->content) && strlen($vars['fields']['search_api_multi_aggregation_18']->content) >= 1) {
         // we have a release date field, so let's add that to the byline
         $release_date = smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_18']->content);
-        
+
         $byline = $byline . ' ' . t('on') . ' ' . $release_date;
       }
-      
+
       // Now let's reassign out byline to the content value of the author field
       $vars['fields']['search_api_multi_aggregation_3']->content = $byline;
       // We actually won't use the above assignment, but will append this to the header title
@@ -351,7 +360,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       $enddate = '';
       unset($vars['fields']['search_api_multi_aggregation_10']);
     }
-    
+
     // make the date into a new object that is usable
     $vars['fields']['dateinfo'] = new stdClass();
     $vars['fields']['dateinfo']->content = '<div class="node-date clearfix">' . $startdate . $enddate . '</div>';
@@ -361,20 +370,20 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     // unset the original date field(s)
     unset($vars['fields']['search_api_multi_aggregation_9']);
     unset($vars['fields']['search_api_multi_aggregation_10']);
-    
+
     // make the more link actually an object that is expected
     $vars['fields']['readmore'] = new stdClass();
     $vars['fields']['readmore']->content = $vars['fields']['more_link'];
     $vars['fields']['readmore']->label_html = '';
     $vars['fields']['readmore']->wrapper_prefix = '';
     $vars['fields']['readmore']->wrapper_suffix = '';
-    
+
     // Now we need to unset the readmore link on certain display modes
     // Curated List Display Mode
     if ($view->current_display == 'block_2') {
       unset($vars['fields']['readmore']);
     }
-    
+
     // we need to ensure that in the panels pane these items are removed
     // as the views rewrite groups them all into one field (street)
     unset($vars['fields']['search_api_multi_aggregation_4']); // state
@@ -385,8 +394,8 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     unset($vars['fields']['search_api_multi_aggregation_19']); // author url
     unset($vars['fields']['search_api_multi_aggregation_3']); // author name
     unset($vars['fields']['nothing']); // wtf
-    
-    // get rid of the original more link as we've formatted it above as an object to properly render.    
+
+    // get rid of the original more link as we've formatted it above as an object to properly render.
     unset($vars['fields']['more_link']); // morelink
     //krumo($vars['fields']);
 
@@ -399,7 +408,7 @@ function smc_base_format_timestamp($stamp) {
   $dateformat2 = "S";     // th
   $dateformat3 = "Y";     // 2013
   $timeformat = "g:i a";  // 8:00 am
-  
+
   $sdate1 = format_date($stamp, 'custom', $dateformat1);
   $sdate2 = format_date($stamp, 'custom', $dateformat2);
   $sdate3 = format_date($stamp, 'custom', $dateformat3);
@@ -739,11 +748,11 @@ function smc_base_item_list($variables) {
 
 
 function smc_base_file_link($variables) {
-  
+
   $file = $variables['file'];
   $icon_directory = $variables['icon_directory'];
   $size = smc_base_format_filesize($file->filesize);
-  
+
   $url = file_create_url($file->uri);
   $icon = theme('file_icon', array('file' => $file, 'icon_directory' => $icon_directory));
 
@@ -765,34 +774,34 @@ function smc_base_file_link($variables) {
     $options['attributes']['title'] = check_plain($file->filename);
   }
   $filesize = '<span class="file-size">' . $size . '</span>';
-  
+
   $link_text = '<span class="file-name">' . $link_text . '</span>';
   return '<div class="file">' . l($icon . $link_text . $filesize, $url, $options) . '</div>';
 }
 
-function smc_base_format_filesize($bytes) { 
-    $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+function smc_base_format_filesize($bytes) {
+    $units = array('B', 'KB', 'MB', 'GB', 'TB');
 
-    $bytes = max($bytes, 0); 
-    $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
-    $pow = min($pow, count($units) - 1); 
+    $bytes = max($bytes, 0);
+    $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+    $pow = min($pow, count($units) - 1);
     $bytes /= pow(1024, $pow);
-    
-    return round($bytes, 2) . ' ' . $units[$pow]; 
-} 
+
+    return round($bytes, 2) . ' ' . $units[$pow];
+}
 
 function smc_base_file_icon($variables) {
   $file = $variables['file'];
   //$icon_directory = $variables['icon_directory'];
   //dsm($file);
-  
+
   $ext = pathinfo($file->uri, PATHINFO_EXTENSION);
-  
+
   //$mime = check_plain($file->filemime);
   //$icon_url = file_icon_url($file, $icon_directory);
-  
+
   //$dashed_mime = str_replace('application-', '', strtr($mime, array('/' => '-')));
-  
+
   return '<span class="file-type">' . $ext . '</span>';
 }
 
