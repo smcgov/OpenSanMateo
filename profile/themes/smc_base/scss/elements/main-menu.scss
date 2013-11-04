@@ -47,6 +47,8 @@
 	.flexnav.show {
 	  display: block;
   	padding-top: 120px;
+  	max-height: 100%;
+  	overflow-y: auto;
 	}
 	
 }
