@@ -149,7 +149,12 @@ function sanmateo_update_7013() {
   module_disable(array('statistics', 'openpublic_most_popular'));
 }
 
-
+/**
+ * Enable opensanmateo overrides.
+ */
+function sanmateo_update_7014() {
+  module_enable(array('opensanmateo_overrides'));
+}
 // End of file sanmateo.install
 
 // End of file sanmateo.install

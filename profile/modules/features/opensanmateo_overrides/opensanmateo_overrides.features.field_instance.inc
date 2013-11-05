@@ -35,7 +35,7 @@ function opensanmateo_overrides_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_thumbnail_image',
-    'label' => 'Thumbnail Image',
+    'label' => 'Main Image',
     'required' => 0,
     'settings' => array(
       'alt_field' => 1,
@@ -154,7 +154,7 @@ function opensanmateo_overrides_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Attachment');
-  t('Thumbnail Image');
+  t('Main Image');
 
   return $field_instances;
 }
