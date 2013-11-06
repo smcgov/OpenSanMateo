@@ -30,6 +30,172 @@ function opensanmateo_search_search_api_query_alter($query) {
   $query->filter($filter);
 }
 */
+
+/**
+ * Implements hook_menu().
+ */
+function opensanmateo_search_menu() {
+  // Term autocomplete callback for list views.
+  $items['opensanmateo_search_term_autocomplete/autocomplete'] = array(
+    'page callback' => 'opensanmateo_search_aggregated_term_autocomplete_callback',
+    'access callback' => TRUE,
+    'page arguments' => array(2),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function opensanmateo_search_views_data_alter(&$data) {
+
+  // By default lists will always use SearchApiViewsHandlerFilter, which doesn't
+  // allow for multi-value input, and also doesn't allow for "AND" / "OR" matching
+  // on terms.
+  if (!empty($data['search_api_index_san_mateo_content_index']['search_api_multi_aggregation_8'])) {
+    $field =& $data['search_api_index_san_mateo_content_index']['search_api_multi_aggregation_8'];
+
+    // Set the handler to an OptionsList, which is closest to what we are doing.
+    $field['filter']['handler'] = 'SearchApiViewsHandlerFilterOptions';
+
+    // Make options a list of all possible terms. Without #options being
+    // set to valid values, all form submissions will result in validation
+    // failures due to illegal options.
+    //
+    // @todo: Look into how to do this better. This is certainly sub-optimal.
+    // @todo: Probably should split this terms query out into it's own function.
+    $matches = array();
+    $server = search_api_server_load('san_mateo_solr_server');
+    $uri = "terms";
+    $params = array(
+      'terms' => 'true',
+      'terms.fl' => 'sm_search_api_multi_aggregation_8',
+      'terms.regex' => '.*',
+      'terms.limit' => '1000'
+    );
+
+    $connection = $server->getSolrConnection();
+    $response = $connection->makeServletRequest($uri, $params);
+
+    if ($response->code == 200) {
+      $potential_matches = drupal_json_decode($response->data);
+      if (!empty($potential_matches['terms']['sm_search_api_multi_aggregation_8'])) {
+        foreach ($potential_matches['terms']['sm_search_api_multi_aggregation_8'] as $term => $term_count) {
+          if (isset($existing_values)) {
+            $matches[$existing_values . ', ' . $term] = $term . '(' . $term_count . ')';
+          }
+          else {
+            $matches[$term] = $term . '(' . $term_count . ')';
+          }
+        }
+      }
+    }
+
+    $field['filter']['options'] = $matches;
+    // Set the field as multi-value.
+    $field['filter']['multi-valued'] = TRUE;
+  }
+}
+
+/**
+ * Provide term reference autocomplete for the list by type widget.
+ */
+function opensanmateo_search_aggregated_term_autocomplete_callback($str = 0) {
+  $matches = array();
+  $current_values = explode(',', $str);
+  $num_current_values = count($current_values) - 1;
+  $search_value = trim(array_pop($current_values));
+
+  // If we have existing values, ensure those are retained with the autocomplete
+  // suggestion.
+  if ($num_current_values > 0) {
+    $existing_values = implode(',', $current_values);
+  }
+
+  // Query the terms component of solr to match autocomplete. Limit to 20
+  // suggestions.
+  // @see http://wiki.apache.org/solr/TermsComponent
+  $server = search_api_server_load('san_mateo_solr_server');
+  $uri = "terms";
+  $params = array(
+    'terms' => 'true',
+    'terms.fl' => 'sm_search_api_multi_aggregation_8',
+    'terms.regex' => '.*' . preg_quote($search_value) . '.*',
+    'terms.limit' => '20'
+  );
+
+  $connection = $server->getSolrConnection();
+  $response = $connection->makeServletRequest($uri, $params);
+
+  // Parse any matches we have and return the autocomplete json.
+  if ($response->code == 200) {
+    $potential_matches = drupal_json_decode($response->data);
+    if (!empty($potential_matches['terms']['sm_search_api_multi_aggregation_8'])) {
+      foreach ($potential_matches['terms']['sm_search_api_multi_aggregation_8'] as $term => $term_count) {
+        if (isset($existing_values)) {
+          $matches[$existing_values . ', ' . $term] = $term . ' (' . $term_count . ')';
+        }
+        else {
+          $matches[$term] = $term . ' (' . $term_count . ')';
+        }
+      }
+    }
+  }
+
+  drupal_json_output($matches);
+}
+
+/**
+ * Validate views_content_views_panes_content_type_edit_form().
+ */
+function opensanmateo_search_views_content_views_panes_content_type_edit_form_validate($form, &$form_state) {
+
+  // Views expects multi-value results in an array, not a comma separated list,
+  // so expand the list here.
+  if (!empty($form_state['values']['exposed']['search_api_multi_aggregation_8'])) {
+    $terms = explode(',' , $form_state['values']['exposed']['search_api_multi_aggregation_8']);
+    // Unset previous value.
+    unset($form_state['values']['exposed']['search_api_multi_aggregation_8']);
+    // Format array.
+    foreach ($terms as &$term) {
+      $term =  trim($term);
+      $form_state['values']['exposed']['search_api_multi_aggregation_8'][$term] = $term;
+    }
+  }
+}
+
+/**
+ * Implementation of hook_form_FORM_ID_alter().
+ */
+function opensanmateo_search_form_views_content_views_panes_content_type_edit_form_alter(&$form, &$form_state) {
+
+  // If the term field is present.
+  if (!empty($form['exposed']['filter-search_api_multi_aggregation_8'])) {
+    // Alias field for eas of use.
+    $element =& $form['exposed']['filter-search_api_multi_aggregation_8']['search_api_multi_aggregation_8'];
+
+    // Set type to textfield and unset the options array.
+    $element['#type'] = 'textfield';
+    unset($element['#options']);
+
+    // Process stored values (if any) into something suitable for an autocomplete (comma delimited list).
+    if (!empty($form_state['conf']['exposed']['search_api_multi_aggregation_8']) && is_array($form_state['conf']['exposed']['search_api_multi_aggregation_8'])) {
+      $element['#default_value'] = implode(', ', $form_state['conf']['exposed']['search_api_multi_aggregation_8']);
+    }
+
+    // Give it an autocomplete path.
+    $element['#autocomplete_path'] = 'opensanmateo_search_term_autocomplete/autocomplete';
+
+    // Add validation (for processing results back into the array views expects).
+    $form['#validate'][] = 'opensanmateo_search_views_content_views_panes_content_type_edit_form_validate';
+  }
+}
+
+/**
+ * Implements hook_api_index_items_alter().
+ */
 function opensanmateo_search_search_api_index_items_alter(array &$items, SearchApiIndex $index) {
   if ($index->item_type == 'file') {
     $types = array_filter(variable_get('opensanmateo_search_file_types_to_index', array()));
@@ -390,7 +556,6 @@ function opensanmateo_search_sanmateo_is_master_set($is_master) {
     variable_set(TAXONOMY_SYNC_MASTER_PREFIX . $name,  $is_master);
   }
 }
-
 
 /**
  * helper function to parse out the different facet names and id for creating new facets
