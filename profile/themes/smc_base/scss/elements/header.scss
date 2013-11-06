@@ -159,3 +159,76 @@
 @media all and (min-width: $desktop) {
 
 }
+
+.lte8 {
+  .wrapper {
+  	overflow: hidden;
+  	width: 100%;
+  	margin: auto;
+  	
+  	> header {
+  		padding: 1em 0 0;
+  		background-image: url("../images/uber-texture2.png"), 
+  		-webkit-linear-gradient(#faffff 0%, /* #ffffff 50%, */ #fdffff 100%);
+  		background-image: url("../images/uber-texture2.png"), 
+  		-moz-linear-gradient(#faffff 0%, /* #ffffff 50%, */ #ffffff 100%);
+  		border-top: 5px solid rgba($primaryBlue, .9);
+  		margin-bottom: 3%;
+  		box-shadow: 0 3px 6px rgba($primaryGray, 0.1);
+		}
+	}
+	
+	/* Header Logo/Headings */
+  .lockup {
+  	margin-bottom: 2%;
+  	width: 65%;
+  	
+  
+  	
+  	float: none;
+  }
+  	
+  .county-name, .dept-name {
+  	display: block;
+  	text-transform: uppercase;
+  	text-shadow: 0px 1px 0px #fff;
+  }
+  
+  .county-name {
+  	color: $primaryBlue;
+  	font-size: 2em;
+  	line-height: 1em;
+  	font-family: 'Trade Gothic W01 Bold';
+    background-size: contain;
+    
+    span {
+		  font-size: .6em;
+		  font-family: 'Trade Gothic W01 Roman';
+		  padding: 0 0.2em 0 0.1em;
+	  }
+  }
+
+  .county-name:hover {
+  	color: rgba($primaryTeal, 1);
+  }
+  
+  .dept-name {
+  	font-size: 2em;
+  	margin: 0;
+  	line-height: 1.2em;
+  }
+
+  /* View Departments Switch */
+  .dept-link {
+    display: none;
+  }
+    
+  .dept-link:hover {
+    color: white;
+    color: rgba(white, .9);
+  }
+
+  .btn-nav {
+	  display: none;
+	}
+}

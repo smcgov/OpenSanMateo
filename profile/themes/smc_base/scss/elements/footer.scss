@@ -125,3 +125,51 @@ footer {
     }
   }
 }
+
+
+.lte8 {
+  footer { 
+    
+    border-top: 5px solid $primaryTeal;
+    margin-bottom: 0;
+    padding: 3em 2em;
+    width: 100%;
+
+	.seal {
+		margin: 0;
+		padding-top: 0;
+		background-image: none;
+  }
+		
+	nav {border: none;}
+
+	nav ul, nav ul.menu {
+		width: 45%;
+		float: right; 
+		margin-bottom: 0;
+	
+		li,
+		li.leaf {
+			float: left;
+			list-style-type: none; 
+			width: 33%; 
+			margin-bottom: 2%;
+			
+			a {
+				color: white;
+				display: block;
+				font-size: .8em;
+				text-align: left;
+				padding: 0;
+				border: none;
+				min-height: 0;
+				font-weight: 100;				
+				}
+				
+			a:hover {
+			  color: rgba(255,255,255, .8);
+		  }
+			}
+		}
+	}
+}
