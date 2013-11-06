@@ -215,3 +215,124 @@
 
 }
 
+.lte8 {
+  .panel-col-top,
+  .panel-col-bottom {
+    
+    .pane-bundle-promo-panels-pane {
+      padding-right: 40%;
+      padding-left: 3em;
+      padding-top: 1em;
+      padding-bottom: 2em;
+    
+  
+      h2.pane-title  {
+        
+        font-family: $bold;
+        font-size: 1.6875em;
+        font-weight: 100;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      
+      
+      .field-name-field-rotator-image {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        max-height: 100%;
+        height: 100%;
+        margin-bottom: 0;
+        max-width: 40%;
+        
+        .field-items,
+        .field-item {
+          max-height: 100%;
+          height: 100%;
+          width: auto;
+        }
+        img {
+          max-height: 100%;
+          max-width: 100%;
+          //height: 100%;
+          width: auto;
+          height: auto;
+          
+          border-left: 10px solid rgba(255, 255, 255, 0.3);
+          border-right: 10px solid rgba(255, 255, 255, 0.3);
+          
+        }
+      }
+      .field-name-field-rotator-caption {
+        font-size: 1.5em;
+        line-height: 1.6em;
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 0;
+      }
+      
+      .field-name-field-rotator-link-url {
+        // must reset, then mixin for buttons
+        
+        a, 
+        a:hover {
+          width: auto;
+        	background: none;
+        	background-color: none;
+        	display: inline-block;
+        	padding: inherit;
+        	margin-bottom: 0;
+        	color: white;
+        	font-family: $bold;
+        	text-transform: uppercase;
+        	text-align: left;
+        	//font-size: 1em;
+        	//line-height: 1;
+        }
+                
+        a:after {
+          content: '';
+        }
+        
+        a {
+          @include button;
+          
+          @include buttonArrow;
+          
+          @include buttonGreen;
+          
+          @include buttonLarge;
+          
+          margin-bottom: 0;
+        }
+      }
+    }
+    .promo-pane-green {
+      .field-name-field-rotator-link-url {
+        
+        a {
+          //@include button;
+          
+          //@include buttonArrow;
+          
+          @include buttonTeal;
+        }
+        
+      }
+    }
+    .promo-pane-orange {
+      .field-name-field-rotator-link-url {
+        
+        a {
+          //@include button;
+          
+          //@include buttonArrow;
+          
+          @include buttonBlue;
+        }
+        
+      }
+    }
+  }
+}

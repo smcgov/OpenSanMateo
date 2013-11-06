@@ -6208,7 +6208,7 @@ ul, ol {
       display: block; } }
 /* Fonts */
 /* Media Queries */
-/* line 180, ../scss/elements/buttons.scss */
+/* line 186, ../scss/elements/buttons.scss */
 a.button-blue-large {
   background: none;
   background-color: none;
@@ -6229,6 +6229,7 @@ a.button-blue-large {
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
+  background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: 1.1em; }
   /* line 23, ../scss/elements/buttons.scss */
@@ -6287,12 +6288,14 @@ a.button-blue-large {
     right: 10%; }
   /* line 126, ../scss/elements/buttons.scss */
   a.button-blue-large:hover {
+    background-color: #036cb6;
     background-color: #036cb6; }
-  /* line 130, ../scss/elements/buttons.scss */
+  /* line 131, ../scss/elements/buttons.scss */
   a.button-blue-large:active {
+    background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
 
-/* line 186, ../scss/elements/buttons.scss */
+/* line 192, ../scss/elements/buttons.scss */
 a.button-teal-large {
   background: none;
   background-color: none;
@@ -6313,6 +6316,7 @@ a.button-teal-large {
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
+  background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95);
   font-size: 1.1em; }
   /* line 23, ../scss/elements/buttons.scss */
@@ -6369,14 +6373,16 @@ a.button-teal-large {
   /* line 116, ../scss/elements/buttons.scss */
   a.button-teal-large:hover:before {
     right: 10%; }
-  /* line 140, ../scss/elements/buttons.scss */
+  /* line 142, ../scss/elements/buttons.scss */
   a.button-teal-large:hover {
+    background-color: #38939b;
     background-color: #38939b; }
-  /* line 144, ../scss/elements/buttons.scss */
+  /* line 147, ../scss/elements/buttons.scss */
   a.button-teal-large:active {
+    background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.9); }
 
-/* line 192, ../scss/elements/buttons.scss */
+/* line 198, ../scss/elements/buttons.scss */
 a.button-green-large {
   background: none;
   background-color: none;
@@ -6397,6 +6403,7 @@ a.button-green-large {
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
+  background-color: #8dc63f;
   background-color: rgba(141, 198, 63, 0.95);
   font-size: 1.1em; }
   /* line 23, ../scss/elements/buttons.scss */
@@ -6453,14 +6460,16 @@ a.button-green-large {
   /* line 116, ../scss/elements/buttons.scss */
   a.button-green-large:hover:before {
     right: 10%; }
-  /* line 154, ../scss/elements/buttons.scss */
-  a.button-green-large:hover {
-    background-color: #8dc63f; }
   /* line 158, ../scss/elements/buttons.scss */
+  a.button-green-large:hover {
+    background-color: #8dc63f;
+    background-color: #8dc63f; }
+  /* line 163, ../scss/elements/buttons.scss */
   a.button-green-large:active {
+    background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.9); }
 
-/* line 200, ../scss/elements/buttons.scss */
+/* line 206, ../scss/elements/buttons.scss */
 a.button-blue-default {
   background: none;
   background-color: none;
@@ -6481,6 +6490,7 @@ a.button-blue-default {
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
+  background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: 1em; }
   /* line 23, ../scss/elements/buttons.scss */
@@ -6539,12 +6549,14 @@ a.button-blue-default {
     right: 10%; }
   /* line 126, ../scss/elements/buttons.scss */
   a.button-blue-default:hover {
+    background-color: #036cb6;
     background-color: #036cb6; }
-  /* line 130, ../scss/elements/buttons.scss */
+  /* line 131, ../scss/elements/buttons.scss */
   a.button-blue-default:active {
+    background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
 
-/* line 206, ../scss/elements/buttons.scss */
+/* line 212, ../scss/elements/buttons.scss */
 a.button-teal-default {
   background: none;
   background-color: none;
@@ -6565,6 +6577,7 @@ a.button-teal-default {
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
+  background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95);
   font-size: 1em; }
   /* line 23, ../scss/elements/buttons.scss */
@@ -6621,14 +6634,16 @@ a.button-teal-default {
   /* line 116, ../scss/elements/buttons.scss */
   a.button-teal-default:hover:before {
     right: 10%; }
-  /* line 140, ../scss/elements/buttons.scss */
+  /* line 142, ../scss/elements/buttons.scss */
   a.button-teal-default:hover {
+    background-color: #38939b;
     background-color: #38939b; }
-  /* line 144, ../scss/elements/buttons.scss */
+  /* line 147, ../scss/elements/buttons.scss */
   a.button-teal-default:active {
+    background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.9); }
 
-/* line 212, ../scss/elements/buttons.scss */
+/* line 218, ../scss/elements/buttons.scss */
 a.button-green-default {
   background: none;
   background-color: none;
@@ -6649,6 +6664,7 @@ a.button-green-default {
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
+  background-color: #8dc63f;
   background-color: rgba(141, 198, 63, 0.95);
   font-size: 1em; }
   /* line 23, ../scss/elements/buttons.scss */
@@ -6705,14 +6721,16 @@ a.button-green-default {
   /* line 116, ../scss/elements/buttons.scss */
   a.button-green-default:hover:before {
     right: 10%; }
-  /* line 154, ../scss/elements/buttons.scss */
-  a.button-green-default:hover {
-    background-color: #8dc63f; }
   /* line 158, ../scss/elements/buttons.scss */
+  a.button-green-default:hover {
+    background-color: #8dc63f;
+    background-color: #8dc63f; }
+  /* line 163, ../scss/elements/buttons.scss */
   a.button-green-default:active {
+    background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.9); }
 
-/* line 220, ../scss/elements/buttons.scss */
+/* line 226, ../scss/elements/buttons.scss */
 a.button-blue-small {
   background: none;
   background-color: none;
@@ -6731,6 +6749,7 @@ a.button-blue-small {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: 300;
   position: relative;
+  background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: .85em;
   padding: .75em 1em; }
@@ -6747,12 +6766,14 @@ a.button-blue-small {
     transition: all 0.3s; }
   /* line 126, ../scss/elements/buttons.scss */
   a.button-blue-small:hover {
+    background-color: #036cb6;
     background-color: #036cb6; }
-  /* line 130, ../scss/elements/buttons.scss */
+  /* line 131, ../scss/elements/buttons.scss */
   a.button-blue-small:active {
+    background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
 
-/* line 225, ../scss/elements/buttons.scss */
+/* line 231, ../scss/elements/buttons.scss */
 a.button-teal-small {
   background: none;
   background-color: none;
@@ -6771,6 +6792,7 @@ a.button-teal-small {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: 300;
   position: relative;
+  background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95);
   font-size: .85em;
   padding: .75em 1em; }
@@ -6785,14 +6807,16 @@ a.button-teal-small {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 140, ../scss/elements/buttons.scss */
+  /* line 142, ../scss/elements/buttons.scss */
   a.button-teal-small:hover {
+    background-color: #38939b;
     background-color: #38939b; }
-  /* line 144, ../scss/elements/buttons.scss */
+  /* line 147, ../scss/elements/buttons.scss */
   a.button-teal-small:active {
+    background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.9); }
 
-/* line 230, ../scss/elements/buttons.scss */
+/* line 236, ../scss/elements/buttons.scss */
 a.button-green-small {
   background: none;
   background-color: none;
@@ -6811,6 +6835,7 @@ a.button-green-small {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: 300;
   position: relative;
+  background-color: #8dc63f;
   background-color: rgba(141, 198, 63, 0.95);
   font-size: .85em;
   padding: .75em 1em; }
@@ -6825,14 +6850,16 @@ a.button-green-small {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 154, ../scss/elements/buttons.scss */
-  a.button-green-small:hover {
-    background-color: #8dc63f; }
   /* line 158, ../scss/elements/buttons.scss */
+  a.button-green-small:hover {
+    background-color: #8dc63f;
+    background-color: #8dc63f; }
+  /* line 163, ../scss/elements/buttons.scss */
   a.button-green-small:active {
+    background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.9); }
 
-/* line 237, ../scss/elements/buttons.scss */
+/* line 243, ../scss/elements/buttons.scss */
 a.accept-terms {
   background: none;
   background-color: none;
@@ -6851,6 +6878,7 @@ a.accept-terms {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: 300;
   position: relative;
+  background-color: #8dc63f;
   background-color: rgba(141, 198, 63, 0.95);
   font-size: .85em;
   padding: .75em 1em;
@@ -6866,14 +6894,16 @@ a.accept-terms {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 154, ../scss/elements/buttons.scss */
-  a.accept-terms:hover {
-    background-color: #8dc63f; }
   /* line 158, ../scss/elements/buttons.scss */
+  a.accept-terms:hover {
+    background-color: #8dc63f;
+    background-color: #8dc63f; }
+  /* line 163, ../scss/elements/buttons.scss */
   a.accept-terms:active {
+    background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.9); }
 
-/* line 244, ../scss/elements/buttons.scss */
+/* line 250, ../scss/elements/buttons.scss */
 a.do-not-accept-terms {
   background: none;
   background-color: none;
@@ -6892,6 +6922,7 @@ a.do-not-accept-terms {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: 300;
   position: relative;
+  background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95);
   font-size: .85em;
   padding: .75em 1em;
@@ -6907,23 +6938,25 @@ a.do-not-accept-terms {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 140, ../scss/elements/buttons.scss */
+  /* line 142, ../scss/elements/buttons.scss */
   a.do-not-accept-terms:hover {
+    background-color: #38939b;
     background-color: #38939b; }
-  /* line 144, ../scss/elements/buttons.scss */
+  /* line 147, ../scss/elements/buttons.scss */
   a.do-not-accept-terms:active {
+    background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.9); }
 
-/* line 256, ../scss/elements/buttons.scss */
+/* line 262, ../scss/elements/buttons.scss */
 ul.button-test {
   margin: 0;
   padding: 0; }
-  /* line 259, ../scss/elements/buttons.scss */
+  /* line 265, ../scss/elements/buttons.scss */
   ul.button-test li {
     margin: 0;
     padding: 0;
     list-style-type: none; }
-    /* line 264, ../scss/elements/buttons.scss */
+    /* line 270, ../scss/elements/buttons.scss */
     ul.button-test li a {
       background: none;
       background-color: none;
@@ -6953,12 +6986,13 @@ ul.button-test {
         -webkit-transition: all 0.3s;
         -moz-transition: all 0.3s;
         transition: all 0.3s; }
-      /* line 268, ../scss/elements/buttons.scss */
+      /* line 274, ../scss/elements/buttons.scss */
       ul.button-test li a.blue-cta {
         float: left;
         clear: left;
         padding: 1.1em 5.5em 1em 1.2em;
         overflow: hidden;
+        background-color: #036cb6;
         background-color: rgba(3, 108, 182, 0.95);
         font-size: 1.1em; }
         /* line 68, ../scss/elements/buttons.scss */
@@ -7006,15 +7040,18 @@ ul.button-test {
           right: 10%; }
         /* line 126, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-cta:hover {
+          background-color: #036cb6;
           background-color: #036cb6; }
-        /* line 130, ../scss/elements/buttons.scss */
+        /* line 131, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-cta:active {
+          background-color: #036cb6;
           background-color: rgba(3, 108, 182, 0.9); }
-      /* line 275, ../scss/elements/buttons.scss */
+      /* line 281, ../scss/elements/buttons.scss */
       ul.button-test li a.teal-cta {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
         overflow: hidden;
+        background-color: #38939b;
         background-color: rgba(56, 147, 155, 0.95);
         font-size: 1.1em; }
         /* line 68, ../scss/elements/buttons.scss */
@@ -7060,17 +7097,20 @@ ul.button-test {
         /* line 116, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-cta:hover:before {
           right: 10%; }
-        /* line 140, ../scss/elements/buttons.scss */
+        /* line 142, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-cta:hover {
+          background-color: #38939b;
           background-color: #38939b; }
-        /* line 144, ../scss/elements/buttons.scss */
+        /* line 147, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-cta:active {
+          background-color: #38939b;
           background-color: rgba(56, 147, 155, 0.9); }
-      /* line 281, ../scss/elements/buttons.scss */
+      /* line 287, ../scss/elements/buttons.scss */
       ul.button-test li a.green-cta {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
         overflow: hidden;
+        background-color: #8dc63f;
         background-color: rgba(141, 198, 63, 0.95);
         font-size: 1.1em; }
         /* line 68, ../scss/elements/buttons.scss */
@@ -7116,18 +7156,21 @@ ul.button-test {
         /* line 116, ../scss/elements/buttons.scss */
         ul.button-test li a.green-cta:hover:before {
           right: 10%; }
-        /* line 154, ../scss/elements/buttons.scss */
-        ul.button-test li a.green-cta:hover {
-          background-color: #8dc63f; }
         /* line 158, ../scss/elements/buttons.scss */
+        ul.button-test li a.green-cta:hover {
+          background-color: #8dc63f;
+          background-color: #8dc63f; }
+        /* line 163, ../scss/elements/buttons.scss */
         ul.button-test li a.green-cta:active {
+          background-color: #8dc63f;
           background-color: rgba(141, 198, 63, 0.9); }
-      /* line 289, ../scss/elements/buttons.scss */
+      /* line 295, ../scss/elements/buttons.scss */
       ul.button-test li a.blue-default {
         float: left;
         clear: left;
         padding: 1.1em 5.5em 1em 1.2em;
         overflow: hidden;
+        background-color: #036cb6;
         background-color: rgba(3, 108, 182, 0.95);
         font-size: 1em; }
         /* line 68, ../scss/elements/buttons.scss */
@@ -7175,15 +7218,18 @@ ul.button-test {
           right: 10%; }
         /* line 126, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-default:hover {
+          background-color: #036cb6;
           background-color: #036cb6; }
-        /* line 130, ../scss/elements/buttons.scss */
+        /* line 131, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-default:active {
+          background-color: #036cb6;
           background-color: rgba(3, 108, 182, 0.9); }
-      /* line 296, ../scss/elements/buttons.scss */
+      /* line 302, ../scss/elements/buttons.scss */
       ul.button-test li a.teal-default {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
         overflow: hidden;
+        background-color: #38939b;
         background-color: rgba(56, 147, 155, 0.95);
         font-size: 1em; }
         /* line 68, ../scss/elements/buttons.scss */
@@ -7229,17 +7275,20 @@ ul.button-test {
         /* line 116, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-default:hover:before {
           right: 10%; }
-        /* line 140, ../scss/elements/buttons.scss */
+        /* line 142, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-default:hover {
+          background-color: #38939b;
           background-color: #38939b; }
-        /* line 144, ../scss/elements/buttons.scss */
+        /* line 147, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-default:active {
+          background-color: #38939b;
           background-color: rgba(56, 147, 155, 0.9); }
-      /* line 302, ../scss/elements/buttons.scss */
+      /* line 308, ../scss/elements/buttons.scss */
       ul.button-test li a.green-default {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
         overflow: hidden;
+        background-color: #8dc63f;
         background-color: rgba(141, 198, 63, 0.95);
         font-size: 1em; }
         /* line 68, ../scss/elements/buttons.scss */
@@ -7285,48 +7334,59 @@ ul.button-test {
         /* line 116, ../scss/elements/buttons.scss */
         ul.button-test li a.green-default:hover:before {
           right: 10%; }
-        /* line 154, ../scss/elements/buttons.scss */
-        ul.button-test li a.green-default:hover {
-          background-color: #8dc63f; }
         /* line 158, ../scss/elements/buttons.scss */
+        ul.button-test li a.green-default:hover {
+          background-color: #8dc63f;
+          background-color: #8dc63f; }
+        /* line 163, ../scss/elements/buttons.scss */
         ul.button-test li a.green-default:active {
+          background-color: #8dc63f;
           background-color: rgba(141, 198, 63, 0.9); }
-      /* line 311, ../scss/elements/buttons.scss */
+      /* line 317, ../scss/elements/buttons.scss */
       ul.button-test li a.blue-small {
         float: left;
         clear: left;
+        background-color: #036cb6;
         background-color: rgba(3, 108, 182, 0.95);
         font-size: .85em;
         padding: .75em 1em; }
         /* line 126, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-small:hover {
+          background-color: #036cb6;
           background-color: #036cb6; }
-        /* line 130, ../scss/elements/buttons.scss */
+        /* line 131, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-small:active {
+          background-color: #036cb6;
           background-color: rgba(3, 108, 182, 0.9); }
-      /* line 317, ../scss/elements/buttons.scss */
+      /* line 323, ../scss/elements/buttons.scss */
       ul.button-test li a.teal-small {
         float: left;
+        background-color: #38939b;
         background-color: rgba(56, 147, 155, 0.95);
         font-size: .85em;
         padding: .75em 1em; }
-        /* line 140, ../scss/elements/buttons.scss */
+        /* line 142, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-small:hover {
+          background-color: #38939b;
           background-color: #38939b; }
-        /* line 144, ../scss/elements/buttons.scss */
+        /* line 147, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-small:active {
+          background-color: #38939b;
           background-color: rgba(56, 147, 155, 0.9); }
-      /* line 322, ../scss/elements/buttons.scss */
+      /* line 328, ../scss/elements/buttons.scss */
       ul.button-test li a.green-small {
         float: left;
+        background-color: #8dc63f;
         background-color: rgba(141, 198, 63, 0.95);
         font-size: .85em;
         padding: .75em 1em; }
-        /* line 154, ../scss/elements/buttons.scss */
-        ul.button-test li a.green-small:hover {
-          background-color: #8dc63f; }
         /* line 158, ../scss/elements/buttons.scss */
+        ul.button-test li a.green-small:hover {
+          background-color: #8dc63f;
+          background-color: #8dc63f; }
+        /* line 163, ../scss/elements/buttons.scss */
         ul.button-test li a.green-small:active {
+          background-color: #8dc63f;
           background-color: rgba(141, 198, 63, 0.9); }
 
 /* Fonts */
@@ -7369,6 +7429,7 @@ ul.button-test {
     position: relative;
     padding: 1.1em 5.5em 1em 1.2em;
     overflow: hidden;
+    background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.95);
     font-size: 1.1em;
     margin: 10px auto; }
@@ -7426,11 +7487,13 @@ ul.button-test {
     /* line 116, ../scss/elements/buttons.scss */
     #skip-link a:hover:before {
       right: 10%; }
-    /* line 154, ../scss/elements/buttons.scss */
-    #skip-link a:hover {
-      background-color: #8dc63f; }
     /* line 158, ../scss/elements/buttons.scss */
+    #skip-link a:hover {
+      background-color: #8dc63f;
+      background-color: #8dc63f; }
+    /* line 163, ../scss/elements/buttons.scss */
     #skip-link a:active {
+      background-color: #8dc63f;
       background-color: rgba(141, 198, 63, 0.9); }
     /* line 32, ../scss/elements/header.scss */
     #skip-link a:focus {
@@ -7496,42 +7559,50 @@ ul.button-test {
   .lockup {
     margin-bottom: 2%;
     width: 65%;
-    background: url("../images/seal.png") no-repeat 0 -2px;
-    background-size: contain;
     padding-left: 5em;
     float: none; }
 
-  /* line 105, ../scss/elements/header.scss */
+  /* line 103, ../scss/elements/header.scss */
+  .site-seal {
+    background: url("../images/seal.png") no-repeat 0 -2px;
+    background-size: contain;
+    position: absolute;
+    top: 0.25em;
+    left: 1em;
+    height: 5em;
+    width: 5em; }
+
+  /* line 113, ../scss/elements/header.scss */
   .county-name, .dept-name {
     display: block;
     text-transform: uppercase;
     text-shadow: 0px 1px 0px #fff; }
 
-  /* line 111, ../scss/elements/header.scss */
+  /* line 119, ../scss/elements/header.scss */
   .county-name {
     color: #036cb6;
     font-size: 2em;
     line-height: 1em;
     font-family: 'Trade Gothic W01 Bold';
     background-size: contain; }
-    /* line 118, ../scss/elements/header.scss */
+    /* line 126, ../scss/elements/header.scss */
     .county-name span {
       font-size: .6em;
       font-family: 'Trade Gothic W01 Roman';
       padding: 0 0.2em 0 0.1em; }
 
-  /* line 125, ../scss/elements/header.scss */
+  /* line 133, ../scss/elements/header.scss */
   .county-name:hover {
     color: #38939b; }
 
-  /* line 129, ../scss/elements/header.scss */
+  /* line 137, ../scss/elements/header.scss */
   .dept-name {
     font-size: 2em;
     margin: 0;
     line-height: 1.2em; }
 
   /* View Departments Switch */
-  /* line 136, ../scss/elements/header.scss */
+  /* line 144, ../scss/elements/header.scss */
   .dept-link {
     background-color: rgba(3, 108, 182, 0.9);
     border-bottom-left-radius: 3px;
@@ -7545,13 +7616,74 @@ ul.button-test {
     right: 0;
     top: -1.3em; }
 
-  /* line 150, ../scss/elements/header.scss */
+  /* line 158, ../scss/elements/header.scss */
   .dept-link:hover {
     color: rgba(255, 255, 255, 0.9); }
 
-  /* line 154, ../scss/elements/header.scss */
+  /* line 162, ../scss/elements/header.scss */
   .btn-nav {
     display: none; } }
+/* line 171, ../scss/elements/header.scss */
+.lte8 {
+  /* Header Logo/Headings */
+  /* View Departments Switch */ }
+  /* line 172, ../scss/elements/header.scss */
+  .lte8 .wrapper {
+    overflow: hidden;
+    width: 100%;
+    margin: auto; }
+    /* line 177, ../scss/elements/header.scss */
+    .lte8 .wrapper > header {
+      padding: 1em 0 0;
+      background-image: url("../images/uber-texture2.png"), -webkit-linear-gradient(#faffff 0%, #fdffff 100%);
+      background-image: url("../images/uber-texture2.png"), -moz-linear-gradient(#faffff 0%, white 100%);
+      border-top: 5px solid rgba(3, 108, 182, 0.9);
+      margin-bottom: 3%;
+      box-shadow: 0 3px 6px rgba(85, 90, 90, 0.1); }
+  /* line 190, ../scss/elements/header.scss */
+  .lte8 .lockup {
+    margin-bottom: 2%;
+    width: 65%;
+    float: none; }
+  /* line 198, ../scss/elements/header.scss */
+  .lte8 .site-seal {
+    display: none; }
+  /* line 201, ../scss/elements/header.scss */
+  .lte8 .county-name, .lte8 .dept-name {
+    display: block;
+    text-transform: uppercase;
+    text-shadow: 0px 1px 0px #fff; }
+  /* line 207, ../scss/elements/header.scss */
+  .lte8 .county-name {
+    color: #036cb6;
+    font-size: 2em;
+    line-height: 1em;
+    font-family: 'Trade Gothic W01 Bold';
+    background-size: contain; }
+    /* line 214, ../scss/elements/header.scss */
+    .lte8 .county-name span {
+      font-size: .6em;
+      font-family: 'Trade Gothic W01 Roman';
+      padding: 0 0.2em 0 0.1em; }
+  /* line 221, ../scss/elements/header.scss */
+  .lte8 .county-name:hover {
+    color: #38939b; }
+  /* line 225, ../scss/elements/header.scss */
+  .lte8 .dept-name {
+    font-size: 2em;
+    margin: 0;
+    line-height: 1.2em; }
+  /* line 232, ../scss/elements/header.scss */
+  .lte8 .dept-link {
+    display: none; }
+  /* line 236, ../scss/elements/header.scss */
+  .lte8 .dept-link:hover {
+    color: white;
+    color: rgba(255, 255, 255, 0.9); }
+  /* line 241, ../scss/elements/header.scss */
+  .lte8 .btn-nav {
+    display: none; }
+
 /* Fonts */
 /* Media Queries */
 /* line 6, ../scss/elements/tabs.scss */
@@ -8084,6 +8216,91 @@ table {
   /* line 340, ../scss/elements/layout.scss */
   #main-wrapper #navigation-toggle {
     display: none; } }
+/* line 347, ../scss/elements/layout.scss */
+.lte8 #main-wrapper .sm-two-column .panel-col-first {
+  float: left;
+  clear: none;
+  width: 20%;
+  padding: 0;
+  margin: 0;
+  margin-right: 2.5%;
+  margin-bottom: 3%; }
+/* line 357, ../scss/elements/layout.scss */
+.lte8 #main-wrapper .sm-two-column .panel-col-middle {
+  float: left;
+  clear: none;
+  width: 77.5%;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3%; }
+/* line 366, ../scss/elements/layout.scss */
+.lte8 #main-wrapper .sm-two-column-alt .panel-col-top,
+.lte8 #main-wrapper .sm-two-column-alt .panel-col-bottom {
+  width: 100%;
+  display: block;
+  float: none;
+  clear: both;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3%; }
+/* line 377, ../scss/elements/layout.scss */
+.lte8 #main-wrapper .sm-two-column-alt .panel-col-first {
+  float: left;
+  clear: none;
+  width: 20%;
+  padding: 0;
+  margin: 0;
+  margin-right: 2.5%;
+  margin-bottom: 3%; }
+/* line 387, ../scss/elements/layout.scss */
+.lte8 #main-wrapper .sm-two-column-alt .panel-col-middle {
+  float: left;
+  clear: none;
+  width: 77.5%;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3%; }
+/* line 397, ../scss/elements/layout.scss */
+.lte8 #main-wrapper .sm-two-column-alt .panel-col-lower-left {
+  float: left;
+  clear: none;
+  width: 65%;
+  padding: 0;
+  margin: 0; }
+/* line 405, ../scss/elements/layout.scss */
+.lte8 #main-wrapper .sm-two-column-alt .panel-col-lower-right {
+  float: left;
+  clear: none;
+  width: 32.5%;
+  padding: 0;
+  margin: 0;
+  margin-left: 2.5%; }
+/* line 413, ../scss/elements/layout.scss */
+.lte8 #main-wrapper .sm-three-column .panel-col-first {
+  float: left;
+  clear: none;
+  width: 17%;
+  padding: 0;
+  margin: 0;
+  margin-right: 2.5%; }
+/* line 422, ../scss/elements/layout.scss */
+.lte8 #main-wrapper .sm-three-column .panel-col-middle {
+  float: left;
+  clear: none;
+  width: 58%;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3%;
+  padding: 0 1em; }
+/* line 432, ../scss/elements/layout.scss */
+.lte8 #main-wrapper .sm-three-column .panel-col-last {
+  float: left;
+  clear: none;
+  width: 20%;
+  padding: 0;
+  margin: 0;
+  margin-left: 2.5%; }
+
 /* line 2, ../scss/elements/rotator-box.scss */
 .flexslider {
   box-shadow: none;
@@ -9015,6 +9232,173 @@ table {
         /* line 256, ../scss/elements/main-menu.scss */
         .sub ul .active ul li a:hover {
           background-color: rgba(56, 147, 155, 0.2); } }
+/* line 270, ../scss/elements/main-menu.scss */
+.lte8 .menu-button, .lte8 .touch-button {
+  display: none; }
+/* line 274, ../scss/elements/main-menu.scss */
+.lte8 .icon-menu {
+  display: none; }
+/* line 278, ../scss/elements/main-menu.scss */
+.lte8 .home {
+  display: block; }
+/* line 282, ../scss/elements/main-menu.scss */
+.lte8 .flexnav {
+  padding-top: 0 !important; }
+/* line 286, ../scss/elements/main-menu.scss */
+.lte8 .primary {
+  border-radius: 3px;
+  width: 100%;
+  background-color: rgba(56, 147, 155, 0.05); }
+  /* line 292, ../scss/elements/main-menu.scss */
+  .lte8 .primary ul {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    color: #036cb6; }
+  /* line 299, ../scss/elements/main-menu.scss */
+  .lte8 .primary .home a:before {
+    content: "\e003";
+    font-family: 'SanMateoIcon';
+    text-indent: 0 !important;
+    color: #036cb6; }
+  /* line 309, ../scss/elements/main-menu.scss */
+  .lte8 .primary .home a:hover:before {
+    color: #FFF; }
+  /* line 314, ../scss/elements/main-menu.scss */
+  .lte8 .primary li {
+    float: left;
+    list-style-type: none;
+    position: relative; }
+    /* line 321, ../scss/elements/main-menu.scss */
+    .lte8 .primary li a {
+      font-family: 'Trade Gothic W01 Roman', Helvetica Neue, Arial, Helvetica, sans-serif;
+      font-size: 1em;
+      padding: 0.5em .9em;
+      display: block;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s; }
+    /* line 333, ../scss/elements/main-menu.scss */
+    .lte8 .primary li a:hover, .lte8 .primary li:hover > a, .lte8 .primary li.active-trail > a {
+      background-color: #38939b;
+      color: white;
+      border-radius: 3px; }
+    /* line 339, ../scss/elements/main-menu.scss */
+    .lte8 .primary li.expanded > a:after {
+      content: "\e004";
+      font-family: 'SanMateoIcon';
+      font-size: .5em;
+      padding-left: 5px;
+      color: rgba(56, 147, 155, 0.3); }
+    /* line 348, ../scss/elements/main-menu.scss */
+    .lte8 .primary li.expanded > a:hover, .lte8 .primary li.expanded:hover > a {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px; }
+    /* line 355, ../scss/elements/main-menu.scss */
+    .lte8 .primary li.expanded > a:hover:after, .lte8 .primary li.expanded:hover > a:after, .lte8 .primary li.active-trail > a:after {
+      color: rgba(255, 255, 255, 0.5); }
+    /* line 359, ../scss/elements/main-menu.scss */
+    .lte8 .primary li ul {
+      position: absolute;
+      top: 2.5em;
+      font-size: 1em;
+      width: 300%;
+      max-width: 300px;
+      opacity: 0;
+      background: #38939b;
+      background: rgba(56, 147, 155, 0.9);
+      margin: 0;
+      padding: 0;
+      -webkit-border-radius: 0 0 5px 5px;
+      -moz-border-radius: 0 0 5px 5px;
+      border-radius: 0 0 5px 5px;
+      -webkit-transition: opacity .25s ease .1s;
+      -moz-transition: opacity .25s ease .1s;
+      -o-transition: opacity .25s ease .1s;
+      -ms-transition: opacity .25s ease .1s;
+      transition: opacity .25s ease .1s; }
+      /* line 380, ../scss/elements/main-menu.scss */
+      .lte8 .primary li ul li {
+        height: 0;
+        overflow: hidden;
+        padding: 0;
+        width: 100%;
+        display: inline-table;
+        -webkit-transition: height .25s ease .1s;
+        -moz-transition: height .25s ease .1s;
+        -o-transition: height .25s ease .1s;
+        -ms-transition: height .25s ease .1s;
+        transition: height .25s ease .1s; }
+        /* line 392, ../scss/elements/main-menu.scss */
+        .lte8 .primary li ul li a {
+          color: white;
+          display: block;
+          border-radius: 0;
+          padding: .5em 1em;
+          width: 100%; }
+      /* line 401, ../scss/elements/main-menu.scss */
+      .lte8 .primary li ul li:last-child > a, .lte8 .primary li ul li:last-child > a:hover {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px; }
+  /* line 408, ../scss/elements/main-menu.scss */
+  .lte8 .primary ul {
+    margin-bottom: 0; }
+/* line 412, ../scss/elements/main-menu.scss */
+.lte8 .primary li:hover > ul {
+  opacity: 1;
+  z-index: 1000; }
+/* line 417, ../scss/elements/main-menu.scss */
+.lte8 .primary li:hover > ul li {
+  height: 36px;
+  overflow: visible;
+  padding: 0; }
+/* line 423, ../scss/elements/main-menu.scss */
+.lte8 .sub {
+  background-color: white;
+  border: 1px solid rgba(3, 108, 182, 0.05);
+  border-radius: 3px;
+  font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+  font-size: .85em;
+  border-top: 5px solid rgba(3, 108, 182, 0.05); }
+  /* line 431, ../scss/elements/main-menu.scss */
+  .lte8 .sub ul {
+    margin: 0;
+    padding: 0;
+    font-size: 1em; }
+    /* line 436, ../scss/elements/main-menu.scss */
+    .lte8 .sub ul li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none; }
+      /* line 441, ../scss/elements/main-menu.scss */
+      .lte8 .sub ul li a {
+        display: block;
+        padding: .75em .75em;
+        border-bottom: 1px solid rgba(3, 108, 182, 0.2);
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s; }
+      /* line 449, ../scss/elements/main-menu.scss */
+      .lte8 .sub ul li a:hover {
+        background-color: rgba(3, 108, 182, 0.8);
+        color: white; }
+    /* line 454, ../scss/elements/main-menu.scss */
+    .lte8 .sub ul .active {
+      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
+      /* line 457, ../scss/elements/main-menu.scss */
+      .lte8 .sub ul .active a {
+        background-color: white;
+        color: #036cb6; }
+      /* line 463, ../scss/elements/main-menu.scss */
+      .lte8 .sub ul .active ul li a {
+        background-color: rgba(56, 147, 155, 0.1);
+        color: #38939b;
+        font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+        border-color: rgba(56, 147, 155, 0.2); }
+      /* line 469, ../scss/elements/main-menu.scss */
+      .lte8 .sub ul .active ul li a:hover {
+        background-color: rgba(56, 147, 155, 0.2); }
+
 /* Fonts */
 /* Media Queries */
 /* line 6, ../scss/elements/sub-menu-block.scss */
@@ -9353,6 +9737,7 @@ table {
       position: relative;
       padding: 1.1em 5.5em 1em 1.2em;
       overflow: hidden;
+      background-color: #8dc63f;
       background-color: rgba(141, 198, 63, 0.95);
       font-size: 1.1em;
       margin-bottom: 0; }
@@ -9417,38 +9802,244 @@ table {
       .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover:before,
       .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover:before {
         right: 10%; }
-      /* line 154, ../scss/elements/buttons.scss */
+      /* line 158, ../scss/elements/buttons.scss */
       .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover,
       .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover {
+        background-color: #8dc63f;
         background-color: #8dc63f; }
-      /* line 158, ../scss/elements/buttons.scss */
+      /* line 163, ../scss/elements/buttons.scss */
       .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:active,
       .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:active {
+        background-color: #8dc63f;
         background-color: rgba(141, 198, 63, 0.9); }
   /* line 188, ../scss/elements/promo-boxes.scss */
   .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a,
   .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a {
+    background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.95); }
-    /* line 140, ../scss/elements/buttons.scss */
+    /* line 142, ../scss/elements/buttons.scss */
     .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a:hover,
     .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a:hover {
+      background-color: #38939b;
       background-color: #38939b; }
-    /* line 144, ../scss/elements/buttons.scss */
+    /* line 147, ../scss/elements/buttons.scss */
     .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a:active,
     .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a:active {
+      background-color: #38939b;
       background-color: rgba(56, 147, 155, 0.9); }
   /* line 201, ../scss/elements/promo-boxes.scss */
   .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a,
   .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a {
+    background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.95); }
     /* line 126, ../scss/elements/buttons.scss */
     .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a:hover,
     .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a:hover {
+      background-color: #036cb6;
       background-color: #036cb6; }
-    /* line 130, ../scss/elements/buttons.scss */
+    /* line 131, ../scss/elements/buttons.scss */
     .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a:active,
     .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a:active {
+      background-color: #036cb6;
       background-color: rgba(3, 108, 182, 0.9); } }
+/* line 222, ../scss/elements/promo-boxes.scss */
+.lte8 .panel-col-top .pane-bundle-promo-panels-pane,
+.lte8 .panel-col-bottom .pane-bundle-promo-panels-pane {
+  padding-right: 40%;
+  padding-left: 3em;
+  padding-top: 1em;
+  padding-bottom: 2em; }
+  /* line 229, ../scss/elements/promo-boxes.scss */
+  .lte8 .panel-col-top .pane-bundle-promo-panels-pane h2.pane-title,
+  .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane h2.pane-title {
+    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+    font-size: 1.6875em;
+    font-weight: 100;
+    padding-left: 0;
+    padding-right: 0; }
+  /* line 239, ../scss/elements/promo-boxes.scss */
+  .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image,
+  .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 100%;
+    height: 100%;
+    margin-bottom: 0;
+    max-width: 40%; }
+    /* line 250, ../scss/elements/promo-boxes.scss */
+    .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image .field-items,
+    .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image .field-item,
+    .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-image .field-items,
+    .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-image .field-item {
+      max-height: 100%;
+      height: 100%;
+      width: auto; }
+    /* line 255, ../scss/elements/promo-boxes.scss */
+    .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image img,
+    .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-image img {
+      max-height: 100%;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      border-left: 10px solid rgba(255, 255, 255, 0.3);
+      border-right: 10px solid rgba(255, 255, 255, 0.3); }
+  /* line 267, ../scss/elements/promo-boxes.scss */
+  .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-caption,
+  .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-caption {
+    font-size: 1.5em;
+    line-height: 1.6em;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0; }
+  /* line 279, ../scss/elements/promo-boxes.scss */
+  .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a,
+  .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover,
+  .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a,
+  .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover {
+    width: auto;
+    background: none;
+    background-color: none;
+    display: inline-block;
+    padding: inherit;
+    margin-bottom: 0;
+    color: white;
+    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+    text-transform: uppercase;
+    text-align: left; }
+  /* line 294, ../scss/elements/promo-boxes.scss */
+  .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after,
+  .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after {
+    content: ''; }
+  /* line 298, ../scss/elements/promo-boxes.scss */
+  .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a,
+  .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a {
+    background: none;
+    background-color: none;
+    color: #f7f7f7;
+    border-radius: 3px;
+    padding: .75em 1em;
+    text-transform: uppercase;
+    font-size: 1em;
+    line-height: 1;
+    display: inline-block;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+    font-weight: 300;
+    position: relative;
+    padding: 1.1em 5.5em 1em 1.2em;
+    overflow: hidden;
+    background-color: #8dc63f;
+    background-color: rgba(141, 198, 63, 0.95);
+    font-size: 1.1em;
+    margin-bottom: 0; }
+    /* line 23, ../scss/elements/buttons.scss */
+    .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover,
+    .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover {
+      padding: .75em 1em; }
+    /* line 35, ../scss/elements/buttons.scss */
+    .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after,
+    .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s; }
+    /* line 68, ../scss/elements/buttons.scss */
+    .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:before,
+    .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:before {
+      z-index: 2;
+      content: '\25b6';
+      color: rgba(0, 0, 0, 0.3);
+      text-align: right;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      position: absolute;
+      height: 100%;
+      left: auto;
+      top: 0;
+      right: 8%;
+      line-height: 2.4;
+      font-size: 140%;
+      width: 60px; }
+    /* line 89, ../scss/elements/buttons.scss */
+    .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after,
+    .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after {
+      z-index: 1;
+      width: 30%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      right: 0;
+      top: 0;
+      margin: -5px 0 0 -5px;
+      -webkit-transform-origin: 0 0;
+      -webkit-transform: rotate(-20deg);
+      -moz-transform-origin: 0 0;
+      -moz-transform: rotate(-20deg);
+      -ms-transform-origin: 0 0;
+      -ms-transform: rotate(-20deg);
+      transform-origin: 0 0;
+      transform: rotate(-20deg); }
+    /* line 108, ../scss/elements/buttons.scss */
+    .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover,
+    .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover {
+      padding: 1.1em 5.5em 1em 1.2em; }
+    /* line 112, ../scss/elements/buttons.scss */
+    .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover:after,
+    .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover:after {
+      width: 35%; }
+    /* line 116, ../scss/elements/buttons.scss */
+    .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover:before,
+    .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover:before {
+      right: 10%; }
+    /* line 158, ../scss/elements/buttons.scss */
+    .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover,
+    .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover {
+      background-color: #8dc63f;
+      background-color: #8dc63f; }
+    /* line 163, ../scss/elements/buttons.scss */
+    .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:active,
+    .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:active {
+      background-color: #8dc63f;
+      background-color: rgba(141, 198, 63, 0.9); }
+/* line 314, ../scss/elements/promo-boxes.scss */
+.lte8 .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a,
+.lte8 .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a {
+  background-color: #38939b;
+  background-color: rgba(56, 147, 155, 0.95); }
+  /* line 142, ../scss/elements/buttons.scss */
+  .lte8 .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a:hover,
+  .lte8 .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a:hover {
+    background-color: #38939b;
+    background-color: #38939b; }
+  /* line 147, ../scss/elements/buttons.scss */
+  .lte8 .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a:active,
+  .lte8 .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a:active {
+    background-color: #38939b;
+    background-color: rgba(56, 147, 155, 0.9); }
+/* line 327, ../scss/elements/promo-boxes.scss */
+.lte8 .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a,
+.lte8 .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a {
+  background-color: #036cb6;
+  background-color: rgba(3, 108, 182, 0.95); }
+  /* line 126, ../scss/elements/buttons.scss */
+  .lte8 .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a:hover,
+  .lte8 .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a:hover {
+    background-color: #036cb6;
+    background-color: #036cb6; }
+  /* line 131, ../scss/elements/buttons.scss */
+  .lte8 .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a:active,
+  .lte8 .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a:active {
+    background-color: #036cb6;
+    background-color: rgba(3, 108, 182, 0.9); }
+
 /* Fonts */
 /* Media Queries */
 /* line 6, ../scss/elements/pagers.scss */
@@ -9544,6 +10135,7 @@ table {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: 300;
   position: relative;
+  background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: .85em;
   padding: .75em 1em;
@@ -9564,9 +10156,11 @@ table {
     transition: all 0.3s; }
   /* line 126, ../scss/elements/buttons.scss */
   #breadcrumb a:hover {
+    background-color: #036cb6;
     background-color: #036cb6; }
-  /* line 130, ../scss/elements/buttons.scss */
+  /* line 131, ../scss/elements/buttons.scss */
   #breadcrumb a:active {
+    background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
   /* line 21, ../scss/elements/breadcrumb.scss */
   #breadcrumb a:hover {
@@ -9702,6 +10296,7 @@ table {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: 300;
   position: relative;
+  background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: .85em;
   padding: .75em 1em;
@@ -9722,9 +10317,11 @@ table {
     transition: all 0.3s; }
   /* line 126, ../scss/elements/buttons.scss */
   .view-opensanmateo-search .view-filters .form-submit:hover {
+    background-color: #036cb6;
     background-color: #036cb6; }
-  /* line 130, ../scss/elements/buttons.scss */
+  /* line 131, ../scss/elements/buttons.scss */
   .view-opensanmateo-search .view-filters .form-submit:active {
+    background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
 
 @media all and (min-width: 768px) {
@@ -9976,6 +10573,51 @@ footer {
   /* line 123, ../scss/elements/footer.scss */
   footer nav ul, footer nav ul.menu {
     width: 45%; } }
+/* line 131, ../scss/elements/footer.scss */
+.lte8 footer {
+  border-top: 5px solid #38939b;
+  margin-bottom: 0;
+  padding: 3em 2em;
+  width: 100%; }
+  /* line 138, ../scss/elements/footer.scss */
+  .lte8 footer .seal {
+    margin: 0;
+    padding-top: 0;
+    background-image: none; }
+  /* line 144, ../scss/elements/footer.scss */
+  .lte8 footer nav {
+    border: none; }
+  /* line 146, ../scss/elements/footer.scss */
+  .lte8 footer nav ul, .lte8 footer nav ul.menu {
+    width: 45%;
+    float: right;
+    margin-bottom: 0; }
+    /* line 152, ../scss/elements/footer.scss */
+    .lte8 footer nav ul li,
+    .lte8 footer nav ul li.leaf, .lte8 footer nav ul.menu li,
+    .lte8 footer nav ul.menu li.leaf {
+      float: left;
+      list-style-type: none;
+      width: 33%;
+      margin-bottom: 2%; }
+      /* line 158, ../scss/elements/footer.scss */
+      .lte8 footer nav ul li a,
+      .lte8 footer nav ul li.leaf a, .lte8 footer nav ul.menu li a,
+      .lte8 footer nav ul.menu li.leaf a {
+        color: white;
+        display: block;
+        font-size: .8em;
+        text-align: left;
+        padding: 0;
+        border: none;
+        min-height: 0;
+        font-weight: 100; }
+      /* line 169, ../scss/elements/footer.scss */
+      .lte8 footer nav ul li a:hover,
+      .lte8 footer nav ul li.leaf a:hover, .lte8 footer nav ul.menu li a:hover,
+      .lte8 footer nav ul.menu li.leaf a:hover {
+        color: rgba(255, 255, 255, 0.8); }
+
 /* line 63, ../scss/smc_base.scss */
 .limiter {
   margin: auto;

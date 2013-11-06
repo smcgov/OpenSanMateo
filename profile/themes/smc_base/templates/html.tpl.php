@@ -42,23 +42,29 @@
  *
  * @ingroup themeable
  */
-
-?><!DOCTYPE html>
-
+  
+?><!--[if lt IE 8]><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><![endif]--><!--[if !IE]><!--><!DOCTYPE html><!--<![endif]-->
+<!--[if lt IE 7]><html class="ie ie6 lte9 lte8 lte7" lang="<?php print $language->language; ?>"><![endif]-->
+<!--[if IE 7]><html class="ie ie7 lte9 lte8 lte7" lang="<?php print $language->language; ?>"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="<?php print $language->language; ?>"><![endif]-->
+<!--[if IE 9]><html class="ie ie9 lte9" lang="<?php print $language->language; ?>"><![endif]-->
+<!--[if gt IE 9]><html> <![endif]-->
+<!--[if !IE]><!--><html class="" lang="<?php print $language->language; ?>"><!--<![endif]-->
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="<?php print $language->language; ?>"> <![endif]-->
-<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="<?php print $language->language; ?>"> <![endif]-->
-<!--[if IE 8]>    <html class="lt-ie9" lang="<?php print $language->language; ?>"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="" lang="<?php print $language->language; ?>"> <!--<![endif]-->
 <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
-  <?php print $scripts; ?>
   <!-- IE Fix for HTML5 Tags -->
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
 	<![endif]-->
+  
+  <?php print $scripts; ?>
+  
+	
 	<script type="text/javascript">
     // first, create the object that contains
     // configuration variables
