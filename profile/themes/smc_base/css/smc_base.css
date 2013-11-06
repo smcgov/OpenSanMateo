@@ -7559,42 +7559,50 @@ ul.button-test {
   .lockup {
     margin-bottom: 2%;
     width: 65%;
-    background: url("../images/seal.png") no-repeat 0 -2px;
-    background-size: contain;
     padding-left: 5em;
     float: none; }
 
-  /* line 105, ../scss/elements/header.scss */
+  /* line 103, ../scss/elements/header.scss */
+  .site-seal {
+    background: url("../images/seal.png") no-repeat 0 -2px;
+    background-size: contain;
+    position: absolute;
+    top: 0.25em;
+    left: 1em;
+    height: 5em;
+    width: 5em; }
+
+  /* line 113, ../scss/elements/header.scss */
   .county-name, .dept-name {
     display: block;
     text-transform: uppercase;
     text-shadow: 0px 1px 0px #fff; }
 
-  /* line 111, ../scss/elements/header.scss */
+  /* line 119, ../scss/elements/header.scss */
   .county-name {
     color: #036cb6;
     font-size: 2em;
     line-height: 1em;
     font-family: 'Trade Gothic W01 Bold';
     background-size: contain; }
-    /* line 118, ../scss/elements/header.scss */
+    /* line 126, ../scss/elements/header.scss */
     .county-name span {
       font-size: .6em;
       font-family: 'Trade Gothic W01 Roman';
       padding: 0 0.2em 0 0.1em; }
 
-  /* line 125, ../scss/elements/header.scss */
+  /* line 133, ../scss/elements/header.scss */
   .county-name:hover {
     color: #38939b; }
 
-  /* line 129, ../scss/elements/header.scss */
+  /* line 137, ../scss/elements/header.scss */
   .dept-name {
     font-size: 2em;
     margin: 0;
     line-height: 1.2em; }
 
   /* View Departments Switch */
-  /* line 136, ../scss/elements/header.scss */
+  /* line 144, ../scss/elements/header.scss */
   .dept-link {
     background-color: rgba(3, 108, 182, 0.9);
     border-bottom-left-radius: 3px;
@@ -7608,23 +7616,23 @@ ul.button-test {
     right: 0;
     top: -1.3em; }
 
-  /* line 150, ../scss/elements/header.scss */
+  /* line 158, ../scss/elements/header.scss */
   .dept-link:hover {
     color: rgba(255, 255, 255, 0.9); }
 
-  /* line 154, ../scss/elements/header.scss */
+  /* line 162, ../scss/elements/header.scss */
   .btn-nav {
     display: none; } }
-/* line 163, ../scss/elements/header.scss */
+/* line 171, ../scss/elements/header.scss */
 .lte8 {
   /* Header Logo/Headings */
   /* View Departments Switch */ }
-  /* line 164, ../scss/elements/header.scss */
+  /* line 172, ../scss/elements/header.scss */
   .lte8 .wrapper {
     overflow: hidden;
     width: 100%;
     margin: auto; }
-    /* line 169, ../scss/elements/header.scss */
+    /* line 177, ../scss/elements/header.scss */
     .lte8 .wrapper > header {
       padding: 1em 0 0;
       background-image: url("../images/uber-texture2.png"), -webkit-linear-gradient(#faffff 0%, #fdffff 100%);
@@ -7632,44 +7640,47 @@ ul.button-test {
       border-top: 5px solid rgba(3, 108, 182, 0.9);
       margin-bottom: 3%;
       box-shadow: 0 3px 6px rgba(85, 90, 90, 0.1); }
-  /* line 182, ../scss/elements/header.scss */
+  /* line 190, ../scss/elements/header.scss */
   .lte8 .lockup {
     margin-bottom: 2%;
     width: 65%;
     float: none; }
-  /* line 191, ../scss/elements/header.scss */
+  /* line 198, ../scss/elements/header.scss */
+  .lte8 .site-seal {
+    display: none; }
+  /* line 201, ../scss/elements/header.scss */
   .lte8 .county-name, .lte8 .dept-name {
     display: block;
     text-transform: uppercase;
     text-shadow: 0px 1px 0px #fff; }
-  /* line 197, ../scss/elements/header.scss */
+  /* line 207, ../scss/elements/header.scss */
   .lte8 .county-name {
     color: #036cb6;
     font-size: 2em;
     line-height: 1em;
     font-family: 'Trade Gothic W01 Bold';
     background-size: contain; }
-    /* line 204, ../scss/elements/header.scss */
+    /* line 214, ../scss/elements/header.scss */
     .lte8 .county-name span {
       font-size: .6em;
       font-family: 'Trade Gothic W01 Roman';
       padding: 0 0.2em 0 0.1em; }
-  /* line 211, ../scss/elements/header.scss */
+  /* line 221, ../scss/elements/header.scss */
   .lte8 .county-name:hover {
     color: #38939b; }
-  /* line 215, ../scss/elements/header.scss */
+  /* line 225, ../scss/elements/header.scss */
   .lte8 .dept-name {
     font-size: 2em;
     margin: 0;
     line-height: 1.2em; }
-  /* line 222, ../scss/elements/header.scss */
+  /* line 232, ../scss/elements/header.scss */
   .lte8 .dept-link {
     display: none; }
-  /* line 226, ../scss/elements/header.scss */
+  /* line 236, ../scss/elements/header.scss */
   .lte8 .dept-link:hover {
     color: white;
     color: rgba(255, 255, 255, 0.9); }
-  /* line 231, ../scss/elements/header.scss */
+  /* line 241, ../scss/elements/header.scss */
   .lte8 .btn-nav {
     display: none; }
 

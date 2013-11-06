@@ -96,12 +96,20 @@
   .lockup {
   	margin-bottom: 2%;
   	width: 65%;
-  	background: url("../images/seal.png") no-repeat 0 -2px;
-  	background-size: contain;
+  	
   	padding-left: 5em;
   	float: none;
   }
-  	
+  .site-seal {
+    
+    background: url("../images/seal.png") no-repeat 0 -2px;
+  	background-size: contain;
+    position: absolute;
+    top: 0.25em;
+    left: 1em;
+    height: 5em;
+    width: 5em;
+  }
   .county-name, .dept-name {
   	display: block;
   	text-transform: uppercase;
@@ -187,7 +195,9 @@
   	
   	float: none;
   }
-  	
+  .site-seal {
+    display: none;
+  }
   .county-name, .dept-name {
   	display: block;
   	text-transform: uppercase;
