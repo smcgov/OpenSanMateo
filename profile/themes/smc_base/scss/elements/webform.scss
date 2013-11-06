@@ -1,0 +1,95 @@
+// default variables
+@import "vars.scss";
+
+// All default/mobile styles will appear before the following media queries.
+.node-webform {
+  label {
+    color: $primaryBlue;
+    font-family: $bold;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+  }  
+  .form-text,
+  .form-textarea {
+    border: 1px solid rgba($primaryBlue, .2);
+  	box-shadow: none;
+  	//width: 80%;
+  	//margin-right: 5%;
+  	margin-bottom: 0;
+  	font-size: 1em;
+  	-webkit-transition: all 0.3s;
+  	-moz-transition: all 0.3s;
+  	transition: all 0.3s;
+  	border-radius: 3px;
+  	font-weight: normal;
+  	background-color: white;
+  	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  	
+  	&:focus {
+    	box-shadow: none;
+      border-color: rgba($primaryBlue, 1);
+     	background-color: white;
+     	color: $primaryGray;
+     	font-weight: normal;
+  	}
+  }
+  .form-textarea {
+  	min-height: 220px;
+	}
+  
+  .form-radios,
+  .form-checkboxes {
+    .form-item {
+      margin-bottom: 1em;
+    }
+    label {
+      font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; 
+      font-weight: normal; 
+      color: $primaryGray; 
+      text-transform: none;
+    }
+    .form-radio,
+    .form-checkbox {
+      margin-bottom: 0;
+    }
+  }
+  
+  .form-managed-file {
+    
+    .form-file {
+    	background-color: rgba($primaryBlue, .05);
+    	padding: 1em;
+    	border-radius: 3px;
+    	color: $primaryBlue;
+    	display: inline-block;
+    	width: auto;
+    	margin-right: 2em;
+    }  
+    
+    .form-submit {
+      display: inline-block;
+    }
+  }
+  
+    
+  
+  .form-submit {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    
+    @include button();
+    @include buttonBlue;
+    @include buttonSmall;
+  }
+}
+
+@media all and (min-width: $tablet) {
+
+}
+
+@media all and (min-width: $desktop) {
+
+}
+
