@@ -8605,37 +8605,35 @@ table {
   /* line 42, ../scss/elements/teaser.scss */
   .universal-teaser .node-type {
     float: right;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
+    white-space: nowrap;
     font-size: .75em;
     position: absolute;
     top: 2em;
-    right: 1em;
+    right: 0;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
     margin-bottom: 0; }
-  /* line 58, ../scss/elements/teaser.scss */
+  /* line 56, ../scss/elements/teaser.scss */
   .universal-teaser .node-title {
     margin-top: 0;
     margin-bottom: 0.2em; }
-  /* line 65, ../scss/elements/teaser.scss */
+  /* line 63, ../scss/elements/teaser.scss */
   .universal-teaser .author-data {
     margin-top: 0;
     font-size: .75em;
     color: #555a5a;
     margin-bottom: 0.5em;
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
-    /* line 75, ../scss/elements/teaser.scss */
+    /* line 73, ../scss/elements/teaser.scss */
     .universal-teaser .author-data a {
       color: #555a5a; }
-  /* line 80, ../scss/elements/teaser.scss */
+  /* line 78, ../scss/elements/teaser.scss */
   .universal-teaser .node-teaser {
     display: block;
     margin-bottom: 3%;
     font-size: 1em;
     line-height: 1.6em; }
-  /* line 87, ../scss/elements/teaser.scss */
+  /* line 85, ../scss/elements/teaser.scss */
   .universal-teaser .node-thumbnail {
     border: 5px solid rgba(3, 108, 182, 0.05);
     float: left;
@@ -8645,59 +8643,62 @@ table {
     max-height: 80px;
     width: 80px;
     overflow: hidden; }
-    /* line 98, ../scss/elements/teaser.scss */
+    /* line 96, ../scss/elements/teaser.scss */
     .universal-teaser .node-thumbnail img {
       max-width: 100%;
       height: auto; }
-  /* line 107, ../scss/elements/teaser.scss */
+  /* line 105, ../scss/elements/teaser.scss */
   .universal-teaser .node-location {
     width: 50%;
     float: left; }
-    /* line 111, ../scss/elements/teaser.scss */
+    /* line 109, ../scss/elements/teaser.scss */
     .universal-teaser .node-location .location {
       padding: 0;
       margin: 0; }
-    /* line 116, ../scss/elements/teaser.scss */
+    /* line 114, ../scss/elements/teaser.scss */
     .universal-teaser .node-location ul.adr {
       margin: 0;
       padding: 0; }
-      /* line 120, ../scss/elements/teaser.scss */
+      /* line 118, ../scss/elements/teaser.scss */
       .universal-teaser .node-location ul.adr li {
         list-style-type: none;
         margin: 0;
         padding: 0;
         color: #555a5a; }
-  /* line 128, ../scss/elements/teaser.scss */
+  /* line 126, ../scss/elements/teaser.scss */
   .universal-teaser .node-date {
     width: 50%;
     float: left; }
-  /* line 144, ../scss/elements/teaser.scss */
+  /* line 142, ../scss/elements/teaser.scss */
   .universal-teaser .read-more-wrapper {
     font-size: 0.9em; }
-    /* line 147, ../scss/elements/teaser.scss */
+    /* line 145, ../scss/elements/teaser.scss */
     .universal-teaser .read-more-wrapper .read-more-title {
       height: 1px;
       width: 1px;
       position: absolute;
       overflow: hidden;
       top: -10px; }
-    /* line 155, ../scss/elements/teaser.scss */
+    /* line 153, ../scss/elements/teaser.scss */
     .universal-teaser .read-more-wrapper a:after {
       content: ' \00BB'; }
-  /* line 160, ../scss/elements/teaser.scss */
+  /* line 158, ../scss/elements/teaser.scss */
   .universal-teaser.event {
     padding-left: 1em;
     padding-right: 1em;
     padding-bottom: 4em; }
-    /* line 165, ../scss/elements/teaser.scss */
+    /* line 163, ../scss/elements/teaser.scss */
     .universal-teaser.event h5 {
       text-transform: uppercase;
       font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
       font-weight: 100;
       margin-bottom: 0; }
-      /* line 172, ../scss/elements/teaser.scss */
+      /* line 170, ../scss/elements/teaser.scss */
       .universal-teaser.event h5 span {
         display: none; }
+    /* line 175, ../scss/elements/teaser.scss */
+    .universal-teaser.event .node-type {
+      right: 1em; }
     /* line 180, ../scss/elements/teaser.scss */
     .universal-teaser.event .node-location:after {
       content: ".";
