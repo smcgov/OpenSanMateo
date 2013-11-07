@@ -6066,35 +6066,36 @@ input:focus::-ms-input-placeholder {
   /* line 125, ../scss/style.scss */
   h5 {
     color: #036cb6;
-    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
+    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+    font-weight: normal; }
 
-  /* line 131, ../scss/style.scss */
+  /* line 132, ../scss/style.scss */
   a {
     color: #036cb6; }
 
-  /* line 135, ../scss/style.scss */
+  /* line 136, ../scss/style.scss */
   p {
     color: #555a5a; }
 
-  /* line 139, ../scss/style.scss */
+  /* line 140, ../scss/style.scss */
   .main-content ul {
     padding-left: 2em;
     font-size: .9em; }
 
-  /* line 144, ../scss/style.scss */
+  /* line 145, ../scss/style.scss */
   .main-content ul.flush {
     padding-left: 0; }
 
-  /* line 148, ../scss/style.scss */
+  /* line 149, ../scss/style.scss */
   li {
     color: #6b699e; }
 
-  /* line 152, ../scss/style.scss */
+  /* line 153, ../scss/style.scss */
   .inner {
     padding: .5em 1em 1.25em;
     position: relative; }
 
-  /* line 157, ../scss/style.scss */
+  /* line 158, ../scss/style.scss */
   .hideme {
     opacity: 1.0; } }
 /**
@@ -6164,13 +6165,14 @@ h4 {
 /* line 75, ../scss/elements/editor.scss */
 h5 {
   color: #036cb6;
-  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal; }
 
-/* line 80, ../scss/elements/editor.scss */
+/* line 81, ../scss/elements/editor.scss */
 ul, ol {
   padding-left: 2em;
   font-size: .9em; }
-  /* line 84, ../scss/elements/editor.scss */
+  /* line 85, ../scss/elements/editor.scss */
   ul li, ol li {
     color: #555a5a; }
 
@@ -6225,7 +6227,7 @@ a.button-blue-large {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
@@ -6312,7 +6314,7 @@ a.button-teal-large {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
@@ -6399,7 +6401,7 @@ a.button-green-large {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
@@ -6486,7 +6488,7 @@ a.button-blue-default {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
@@ -6573,7 +6575,7 @@ a.button-teal-default {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
@@ -6660,7 +6662,7 @@ a.button-green-default {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
@@ -6747,7 +6749,7 @@ a.button-blue-small {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   position: relative;
   background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
@@ -6790,7 +6792,7 @@ a.button-teal-small {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   position: relative;
   background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95);
@@ -6833,7 +6835,7 @@ a.button-green-small {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   position: relative;
   background-color: #8dc63f;
   background-color: rgba(141, 198, 63, 0.95);
@@ -6876,7 +6878,7 @@ a.accept-terms {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   position: relative;
   background-color: #8dc63f;
   background-color: rgba(141, 198, 63, 0.95);
@@ -6920,7 +6922,7 @@ a.do-not-accept-terms {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   position: relative;
   background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95);
@@ -6973,7 +6975,7 @@ ul.button-test {
       -moz-transition: all 0.3s;
       transition: all 0.3s;
       font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-      font-weight: 300;
+      font-weight: normal;
       position: relative; }
       /* line 23, ../scss/elements/buttons.scss */
       ul.button-test li a:hover {
@@ -7425,7 +7427,7 @@ ul.button-test {
     -moz-transition: all 0.3s;
     transition: all 0.3s;
     font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-    font-weight: 300;
+    font-weight: normal;
     position: relative;
     padding: 1.1em 5.5em 1em 1.2em;
     overflow: hidden;
@@ -7690,7 +7692,7 @@ ul.button-test {
 .node-webform label {
   color: #036cb6;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   text-transform: uppercase;
   margin-bottom: 0.5em; }
 /* line 14, ../scss/elements/webform.scss */
@@ -7767,7 +7769,7 @@ ul.button-test {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   position: relative;
   background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
@@ -8012,7 +8014,7 @@ table {
     background-color: #036cb6;
     color: white;
     font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-    font-weight: 100;
+    font-weight: normal;
     text-transform: uppercase;
     padding: .75em .75em 1em;
     border-bottom: 0; }
@@ -8735,13 +8737,14 @@ table {
         color: #036cb6;
         text-align: center;
         font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+        font-weight: normal;
         background-color: rgba(3, 108, 182, 0.1); }
-        /* line 224, ../scss/elements/teaser.scss */
+        /* line 225, ../scss/elements/teaser.scss */
         .universal-teaser.event .read-more-wrapper a:hover {
           background-color: rgba(3, 108, 182, 0.2); }
 
 @media all and (min-width: 768px) {
-  /* line 235, ../scss/elements/teaser.scss */
+  /* line 236, ../scss/elements/teaser.scss */
   .universal-teaser.event {
     border-radius: 3px;
     background-color: white;
@@ -8750,7 +8753,7 @@ table {
     position: relative;
     display: block; }
 
-  /* line 251, ../scss/elements/teaser.scss */
+  /* line 252, ../scss/elements/teaser.scss */
   .panel-col-first .universal-teaser.event .node-teaser,
   .panel-col-first .universal-teaser.event .node-date,
   .panel-col-first .universal-teaser.event .node-location,
@@ -8758,52 +8761,52 @@ table {
   .panel-col-last .universal-teaser.event .node-date,
   .panel-col-last .universal-teaser.event .node-location {
     font-size: 0.75em; }
-  /* line 254, ../scss/elements/teaser.scss */
+  /* line 255, ../scss/elements/teaser.scss */
   .panel-col-first .universal-teaser.event .node-location ul, .panel-col-first .universal-teaser.event .node-location li,
   .panel-col-last .universal-teaser.event .node-location ul,
   .panel-col-last .universal-teaser.event .node-location li {
     font-size: 1em; }
 
-  /* line 264, ../scss/elements/teaser.scss */
+  /* line 265, ../scss/elements/teaser.scss */
   .panel-col-top .universal-teaser,
   .panel-col-bottom .universal-teaser {
     float: left;
     clear: none;
     width: 47.5%;
     margin-right: 5%; }
-    /* line 271, ../scss/elements/teaser.scss */
+    /* line 272, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+2),
     .panel-col-bottom .universal-teaser:nth-child(2n+2) {
       margin-right: 0; }
-    /* line 275, ../scss/elements/teaser.scss */
+    /* line 276, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+3),
     .panel-col-bottom .universal-teaser:nth-child(2n+3) {
       clear: left; } }
 @media all and (min-width: 800px) {
-  /* line 287, ../scss/elements/teaser.scss */
+  /* line 288, ../scss/elements/teaser.scss */
   .panel-col-top .universal-teaser,
   .panel-col-bottom .universal-teaser {
     float: left;
     clear: none;
     width: 30%;
     margin-right: 5%; }
-    /* line 294, ../scss/elements/teaser.scss */
+    /* line 295, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+2),
     .panel-col-bottom .universal-teaser:nth-child(2n+2) {
       margin-right: 5%; }
-    /* line 298, ../scss/elements/teaser.scss */
+    /* line 299, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+3),
     .panel-col-bottom .universal-teaser:nth-child(2n+3) {
       clear: none; }
-    /* line 303, ../scss/elements/teaser.scss */
+    /* line 304, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(3n+3),
     .panel-col-bottom .universal-teaser:nth-child(3n+3) {
       margin-right: 0; }
-    /* line 307, ../scss/elements/teaser.scss */
+    /* line 308, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(3n+4),
     .panel-col-bottom .universal-teaser:nth-child(3n+4) {
       clear: left; }
-    /* line 314, ../scss/elements/teaser.scss */
+    /* line 315, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser.event .node-teaser,
     .panel-col-top .universal-teaser.event .node-date,
     .panel-col-top .universal-teaser.event .node-location,
@@ -8811,7 +8814,7 @@ table {
     .panel-col-bottom .universal-teaser.event .node-date,
     .panel-col-bottom .universal-teaser.event .node-location {
       font-size: 0.75em; }
-    /* line 317, ../scss/elements/teaser.scss */
+    /* line 318, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser.event .node-location ul, .panel-col-top .universal-teaser.event .node-location li,
     .panel-col-bottom .universal-teaser.event .node-location ul,
     .panel-col-bottom .universal-teaser.event .node-location li {
@@ -9328,7 +9331,8 @@ table {
           color: white; }
       /* line 241, ../scss/elements/main-menu.scss */
       .sub ul .active {
-        font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
+        font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+        font-weight: normal; }
         /* line 244, ../scss/elements/main-menu.scss */
         .sub ul .active a {
           background-color: white;
@@ -9494,7 +9498,8 @@ table {
         color: white; }
     /* line 454, ../scss/elements/main-menu.scss */
     .lte8 .sub ul .active {
-      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
+      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+      font-weight: normal; }
       /* line 457, ../scss/elements/main-menu.scss */
       .lte8 .sub ul .active a {
         background-color: white;
@@ -9532,6 +9537,7 @@ table {
       .menu-block-subnav-menu ul li a, .menu-block-subnav-menu ul li a.active {
         display: block;
         font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+        font-weight: normal;
         padding: .75em .75em;
         border-bottom: 1px solid rgba(3, 108, 182, 0.2);
         -webkit-transition: all 0.3s;
@@ -9539,55 +9545,56 @@ table {
         transition: all 0.3s;
         background-color: #036cb6;
         color: white; }
-      /* line 36, ../scss/elements/sub-menu-block.scss */
+      /* line 37, ../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li a:hover, .menu-block-subnav-menu ul li a.active:hover {
         background-color: #036cb6;
         color: white; }
-      /* line 43, ../scss/elements/sub-menu-block.scss */
+      /* line 44, ../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li ul li a, .menu-block-subnav-menu ul li ul li a.active {
         background-color: rgba(56, 147, 155, 0.1);
         color: #38939b;
         font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
         border-color: rgba(56, 147, 155, 0.2); }
-      /* line 50, ../scss/elements/sub-menu-block.scss */
+      /* line 51, ../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li ul li a:hover, .menu-block-subnav-menu ul li ul li a.active:hover {
         background-color: rgba(56, 147, 155, 0.2);
         color: #38939b; }
-      /* line 55, ../scss/elements/sub-menu-block.scss */
+      /* line 56, ../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li ul li a.active {
-        font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
-      /* line 59, ../scss/elements/sub-menu-block.scss */
+        font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+        font-weight: normal; }
+      /* line 61, ../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li ul li ul li a {
         padding-left: 1.5em; }
-      /* line 63, ../scss/elements/sub-menu-block.scss */
+      /* line 65, ../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li ul li ul li ul li a {
         padding-left: 2.25em; }
-      /* line 67, ../scss/elements/sub-menu-block.scss */
+      /* line 69, ../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li ul li ul li ul li ul li a {
         padding-left: 3em; }
 
 @media all and (min-width: 768px) {
-  /* line 77, ../scss/elements/sub-menu-block.scss */
+  /* line 79, ../scss/elements/sub-menu-block.scss */
   .menu-block-subnav-menu {
     border-top: 5px solid rgba(3, 108, 182, 0.05); }
-    /* line 84, ../scss/elements/sub-menu-block.scss */
+    /* line 86, ../scss/elements/sub-menu-block.scss */
     .menu-block-subnav-menu ul li a, .menu-block-subnav-menu ul li a.active {
       background-color: white;
       color: #036cb6; }
-    /* line 89, ../scss/elements/sub-menu-block.scss */
+    /* line 91, ../scss/elements/sub-menu-block.scss */
     .menu-block-subnav-menu ul li a:hover, .menu-block-subnav-menu ul li a.active:hover {
       background-color: #036cb6;
       color: white; }
-    /* line 95, ../scss/elements/sub-menu-block.scss */
+    /* line 97, ../scss/elements/sub-menu-block.scss */
     .menu-block-subnav-menu ul li ul li a, .menu-block-subnav-menu ul li ul li a.active {
       background-color: rgba(56, 147, 155, 0.1);
       color: #38939b;
       font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
       border-color: rgba(56, 147, 155, 0.2); }
-    /* line 102, ../scss/elements/sub-menu-block.scss */
+    /* line 104, ../scss/elements/sub-menu-block.scss */
     .menu-block-subnav-menu ul li ul li a.active {
       color: #000000; }
-    /* line 106, ../scss/elements/sub-menu-block.scss */
+    /* line 108, ../scss/elements/sub-menu-block.scss */
     .menu-block-subnav-menu ul li ul li a:hover, .menu-block-subnav-menu ul li ul li a.active:hover {
       background-color: rgba(56, 147, 155, 0.2);
       color: #38939b; } }
@@ -9728,49 +9735,51 @@ table {
     margin-bottom: 0;
     color: white;
     font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+    font-weight: normal;
     text-transform: uppercase;
     text-align: center; }
-  /* line 66, ../scss/elements/promo-boxes.scss */
+  /* line 67, ../scss/elements/promo-boxes.scss */
   .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover {
     background-color: rgba(255, 255, 255, 0.2);
     color: white; }
-  /* line 71, ../scss/elements/promo-boxes.scss */
+  /* line 72, ../scss/elements/promo-boxes.scss */
   .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after {
     content: ' \00BB'; }
 
-/* line 77, ../scss/elements/promo-boxes.scss */
+/* line 78, ../scss/elements/promo-boxes.scss */
 .promo-pane-default {
   background-color: #38939b; }
 
-/* line 80, ../scss/elements/promo-boxes.scss */
+/* line 81, ../scss/elements/promo-boxes.scss */
 .promo-pane-green {
   background-color: #8dc63f; }
 
-/* line 83, ../scss/elements/promo-boxes.scss */
+/* line 84, ../scss/elements/promo-boxes.scss */
 .promo-pane-purple {
   background-color: #6b699e; }
 
-/* line 86, ../scss/elements/promo-boxes.scss */
+/* line 87, ../scss/elements/promo-boxes.scss */
 .promo-pane-orange {
   background-color: #e98a41; }
 
 @media all and (min-width: 768px) {
-  /* line 96, ../scss/elements/promo-boxes.scss */
+  /* line 97, ../scss/elements/promo-boxes.scss */
   .panel-col-top .pane-bundle-promo-panels-pane,
   .panel-col-bottom .pane-bundle-promo-panels-pane {
     padding-right: 40%;
     padding-left: 3em;
     padding-top: 1em;
     padding-bottom: 2em; }
-    /* line 103, ../scss/elements/promo-boxes.scss */
+    /* line 104, ../scss/elements/promo-boxes.scss */
     .panel-col-top .pane-bundle-promo-panels-pane h2.pane-title,
     .panel-col-bottom .pane-bundle-promo-panels-pane h2.pane-title {
       font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+      font-weight: normal;
       font-size: 1.6875em;
       font-weight: 100;
       padding-left: 0;
       padding-right: 0; }
-    /* line 113, ../scss/elements/promo-boxes.scss */
+    /* line 115, ../scss/elements/promo-boxes.scss */
     .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image,
     .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-image {
       position: absolute;
@@ -9781,7 +9790,7 @@ table {
       height: 100%;
       margin-bottom: 0;
       max-width: 40%; }
-      /* line 124, ../scss/elements/promo-boxes.scss */
+      /* line 126, ../scss/elements/promo-boxes.scss */
       .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image .field-items,
       .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image .field-item,
       .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-image .field-items,
@@ -9789,7 +9798,7 @@ table {
         max-height: 100%;
         height: 100%;
         width: auto; }
-      /* line 129, ../scss/elements/promo-boxes.scss */
+      /* line 131, ../scss/elements/promo-boxes.scss */
       .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image img,
       .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-image img {
         max-height: 100%;
@@ -9798,7 +9807,7 @@ table {
         height: auto;
         border-left: 10px solid rgba(255, 255, 255, 0.3);
         border-right: 10px solid rgba(255, 255, 255, 0.3); }
-    /* line 141, ../scss/elements/promo-boxes.scss */
+    /* line 143, ../scss/elements/promo-boxes.scss */
     .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-caption,
     .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-caption {
       font-size: 1.5em;
@@ -9806,7 +9815,7 @@ table {
       padding-left: 0;
       padding-right: 0;
       padding-bottom: 0; }
-    /* line 153, ../scss/elements/promo-boxes.scss */
+    /* line 155, ../scss/elements/promo-boxes.scss */
     .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a,
     .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover,
     .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a,
@@ -9819,13 +9828,14 @@ table {
       margin-bottom: 0;
       color: white;
       font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+      font-weight: normal;
       text-transform: uppercase;
       text-align: left; }
-    /* line 168, ../scss/elements/promo-boxes.scss */
+    /* line 171, ../scss/elements/promo-boxes.scss */
     .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after,
     .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after {
       content: ''; }
-    /* line 172, ../scss/elements/promo-boxes.scss */
+    /* line 175, ../scss/elements/promo-boxes.scss */
     .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a,
     .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a {
       background: none;
@@ -9843,7 +9853,7 @@ table {
       -moz-transition: all 0.3s;
       transition: all 0.3s;
       font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-      font-weight: 300;
+      font-weight: normal;
       position: relative;
       padding: 1.1em 5.5em 1em 1.2em;
       overflow: hidden;
@@ -9922,7 +9932,7 @@ table {
       .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:active {
         background-color: #8dc63f;
         background-color: rgba(141, 198, 63, 0.9); }
-  /* line 188, ../scss/elements/promo-boxes.scss */
+  /* line 191, ../scss/elements/promo-boxes.scss */
   .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a,
   .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a {
     background-color: #38939b;
@@ -9937,7 +9947,7 @@ table {
     .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a:active {
       background-color: #38939b;
       background-color: rgba(56, 147, 155, 0.9); }
-  /* line 201, ../scss/elements/promo-boxes.scss */
+  /* line 204, ../scss/elements/promo-boxes.scss */
   .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a,
   .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a {
     background-color: #036cb6;
@@ -9952,22 +9962,23 @@ table {
     .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a:active {
       background-color: #036cb6;
       background-color: rgba(3, 108, 182, 0.9); } }
-/* line 222, ../scss/elements/promo-boxes.scss */
+/* line 225, ../scss/elements/promo-boxes.scss */
 .lte8 .panel-col-top .pane-bundle-promo-panels-pane,
 .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane {
   padding-right: 40%;
   padding-left: 3em;
   padding-top: 1em;
   padding-bottom: 2em; }
-  /* line 229, ../scss/elements/promo-boxes.scss */
+  /* line 232, ../scss/elements/promo-boxes.scss */
   .lte8 .panel-col-top .pane-bundle-promo-panels-pane h2.pane-title,
   .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane h2.pane-title {
     font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+    font-weight: normal;
     font-size: 1.6875em;
     font-weight: 100;
     padding-left: 0;
     padding-right: 0; }
-  /* line 239, ../scss/elements/promo-boxes.scss */
+  /* line 243, ../scss/elements/promo-boxes.scss */
   .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image,
   .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-image {
     position: absolute;
@@ -9978,7 +9989,7 @@ table {
     height: 100%;
     margin-bottom: 0;
     max-width: 40%; }
-    /* line 250, ../scss/elements/promo-boxes.scss */
+    /* line 254, ../scss/elements/promo-boxes.scss */
     .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image .field-items,
     .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image .field-item,
     .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-image .field-items,
@@ -9986,7 +9997,7 @@ table {
       max-height: 100%;
       height: 100%;
       width: auto; }
-    /* line 255, ../scss/elements/promo-boxes.scss */
+    /* line 259, ../scss/elements/promo-boxes.scss */
     .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-image img,
     .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-image img {
       max-height: 100%;
@@ -9995,7 +10006,7 @@ table {
       height: auto;
       border-left: 10px solid rgba(255, 255, 255, 0.3);
       border-right: 10px solid rgba(255, 255, 255, 0.3); }
-  /* line 267, ../scss/elements/promo-boxes.scss */
+  /* line 271, ../scss/elements/promo-boxes.scss */
   .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-caption,
   .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-caption {
     font-size: 1.5em;
@@ -10003,7 +10014,7 @@ table {
     padding-left: 0;
     padding-right: 0;
     padding-bottom: 0; }
-  /* line 279, ../scss/elements/promo-boxes.scss */
+  /* line 283, ../scss/elements/promo-boxes.scss */
   .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a,
   .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover,
   .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a,
@@ -10016,13 +10027,14 @@ table {
     margin-bottom: 0;
     color: white;
     font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+    font-weight: normal;
     text-transform: uppercase;
     text-align: left; }
-  /* line 294, ../scss/elements/promo-boxes.scss */
+  /* line 299, ../scss/elements/promo-boxes.scss */
   .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after,
   .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:after {
     content: ''; }
-  /* line 298, ../scss/elements/promo-boxes.scss */
+  /* line 303, ../scss/elements/promo-boxes.scss */
   .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a,
   .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a {
     background: none;
@@ -10040,7 +10052,7 @@ table {
     -moz-transition: all 0.3s;
     transition: all 0.3s;
     font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-    font-weight: 300;
+    font-weight: normal;
     position: relative;
     padding: 1.1em 5.5em 1em 1.2em;
     overflow: hidden;
@@ -10119,7 +10131,7 @@ table {
     .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:active {
       background-color: #8dc63f;
       background-color: rgba(141, 198, 63, 0.9); }
-/* line 314, ../scss/elements/promo-boxes.scss */
+/* line 319, ../scss/elements/promo-boxes.scss */
 .lte8 .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a,
 .lte8 .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a {
   background-color: #38939b;
@@ -10134,7 +10146,7 @@ table {
   .lte8 .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a:active {
     background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.9); }
-/* line 327, ../scss/elements/promo-boxes.scss */
+/* line 332, ../scss/elements/promo-boxes.scss */
 .lte8 .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a,
 .lte8 .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a {
   background-color: #036cb6;
@@ -10243,7 +10255,7 @@ table {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   position: relative;
   background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
@@ -10336,18 +10348,19 @@ table {
   /* line 62, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search input[type=text]:focus {
     box-shadow: none;
-    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
-  /* line 68, ../scss/elements/search.scss */
+    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+    font-weight: normal; }
+  /* line 69, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search input[type=text]::-webkit-input-placeholder {
     color: #036cb6; }
-  /* line 69, ../scss/elements/search.scss */
+  /* line 70, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search input[type=text]::-moz-placeholder {
     /* Firefox 19+ */
     color: #036cb6; }
-  /* line 70, ../scss/elements/search.scss */
+  /* line 71, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search input[type=text]::-ms-input-placeholder {
     color: #036cb6; }
-  /* line 74, ../scss/elements/search.scss */
+  /* line 75, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search .search-button {
     width: 15%;
     position: absolute;
@@ -10366,28 +10379,28 @@ table {
     transition: all 0.3s;
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
     font-weight: normal !important; }
-    /* line 98, ../scss/elements/search.scss */
+    /* line 99, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search .search-button span {
       font-weight: normal !important; }
-  /* line 103, ../scss/elements/search.scss */
+  /* line 104, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search .search-button:after {
     content: none; }
 
-/* line 112, ../scss/elements/search.scss */
+/* line 113, ../scss/elements/search.scss */
 .view-opensanmateo-search .view-filters #edit-field-event-date-value-wrapper {
   clear: left; }
-/* line 116, ../scss/elements/search.scss */
+/* line 117, ../scss/elements/search.scss */
 .view-opensanmateo-search .view-filters #edit-field-event-date-value-wrapper,
 .view-opensanmateo-search .view-filters #edit-field-event-date-value2-wrapper {
   padding: 0; }
-/* line 121, ../scss/elements/search.scss */
+/* line 122, ../scss/elements/search.scss */
 .view-opensanmateo-search .view-filters .container-inline-date label,
 .view-opensanmateo-search .view-filters .container-inline-date div.description {
   display: none; }
-/* line 126, ../scss/elements/search.scss */
+/* line 127, ../scss/elements/search.scss */
 .view-opensanmateo-search .view-filters .views-submit-button {
   padding: 0; }
-/* line 129, ../scss/elements/search.scss */
+/* line 130, ../scss/elements/search.scss */
 .view-opensanmateo-search .view-filters .form-submit {
   background: none;
   background-color: none;
@@ -10404,7 +10417,7 @@ table {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: 300;
+  font-weight: normal;
   position: relative;
   background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
@@ -10436,7 +10449,7 @@ table {
 
 @media all and (min-width: 768px) {
   /* Header Search */
-  /* line 147, ../scss/elements/search.scss */
+  /* line 148, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search {
     display: block !important;
     border-radius: 3px;
@@ -10450,13 +10463,13 @@ table {
     padding: 0;
     z-index: 10;
     /* End Header Search */ }
-    /* line 160, ../scss/elements/search.scss */
+    /* line 161, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search #opensanmateo-search-header-search-form {
       float: left;
       width: 80%;
       margin-right: 3%;
       margin-bottom: 0; }
-    /* line 167, ../scss/elements/search.scss */
+    /* line 168, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text] {
       background: #d7e9eb;
       border: none;
@@ -10469,22 +10482,23 @@ table {
       border-radius: 3px;
       font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
       margin: 0; }
-    /* line 183, ../scss/elements/search.scss */
+    /* line 184, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus {
       box-shadow: none;
       background: #67adb3;
       color: white;
-      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
-    /* line 190, ../scss/elements/search.scss */
+      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+      font-weight: normal; }
+    /* line 192, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus::-webkit-input-placeholder {
       color: white; }
-    /* line 191, ../scss/elements/search.scss */
+    /* line 193, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus::-moz-placeholder {
       color: white; }
-    /* line 192, ../scss/elements/search.scss */
+    /* line 194, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus::-ms-input-placeholder {
       color: white; }
-    /* line 194, ../scss/elements/search.scss */
+    /* line 196, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search .search-button {
       width: 17%;
       position: absolute;
@@ -10495,7 +10509,7 @@ table {
       display: block;
       text-align: center;
       margin-right: 0; }
-    /* line 206, ../scss/elements/search.scss */
+    /* line 208, ../scss/elements/search.scss */
     #block-opensanmateo-search-header-search .search-button:after {
       content: none; } }
 /* Fonts */
