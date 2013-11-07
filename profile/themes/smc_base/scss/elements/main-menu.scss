@@ -240,7 +240,7 @@
   		}
   		.active {
   		  font-family: $bold;
-  		
+  		  font-weight: normal;
   			a {
   			  background-color: white; 
   			  color: $primaryBlue;
@@ -453,7 +453,7 @@
   		}
   		.active {
   		  font-family: $bold;
-  		
+        font-weight: normal;
   			a {
   			  background-color: white; 
   			  color: $primaryBlue;

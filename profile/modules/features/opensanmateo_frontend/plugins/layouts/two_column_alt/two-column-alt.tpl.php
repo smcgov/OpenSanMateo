@@ -16,7 +16,7 @@
 ?>
 <div id="main" class="panel-display sm-two-column-alt main-body group clearfix">
   
-  <div class="panel-panel panel-col-top">
+  <div class="panel-panel panel-col-top clearfix">
     <div class="inside"><?php print $content['top']; ?></div>
   </div>
   
@@ -42,7 +42,7 @@
     </div>
   </div>
   
-  <div class="panel-panel panel-col-bottom section">
+  <div class="panel-panel panel-col-bottom section clearfix">
     <div class="inside"><?php print $content['bottom']; ?></div>
   </div>
 </div>
