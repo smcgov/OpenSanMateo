@@ -57,9 +57,9 @@
 // footer elements
 @import "elements/footer.scss";
 
-body {
-  //background: #EEEEEE;
-  //padding: 50px;
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .limiter {

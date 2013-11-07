@@ -10727,6 +10727,11 @@ footer {
       .lte8 footer nav ul.menu li.leaf a:hover {
         color: rgba(255, 255, 255, 0.8); }
 
+/* line 60, ../scss/smc_base.scss */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden; }
+
 /* line 65, ../scss/smc_base.scss */
 .limiter {
   margin: auto;
