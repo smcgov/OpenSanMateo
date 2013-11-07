@@ -41,14 +41,12 @@
   }
   .node-type {
     float: right;
-		width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
+		white-space: nowrap;
 		font-size: .75em;
 		
 		position: absolute;
 		top: 2em;
-		right: 1em;
+		right: 0;
 		
 		border-bottom-right-radius: 0;
 		border-top-right-radius: 0;
@@ -174,7 +172,9 @@
       }
       
     }
-    
+    .node-type {
+      right: 1em;
+    }
     .node-location {
       
       &:after {
@@ -219,6 +219,7 @@
         color: $primaryBlue;
         text-align: center;
         font-family: $bold;
+        font-weight: normal;
         background-color: rgba(3, 108, 182, 0.1);
         
         &:hover {

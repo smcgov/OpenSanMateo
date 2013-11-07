@@ -155,6 +155,12 @@ function sanmateo_update_7013() {
 function sanmateo_update_7014() {
   module_enable(array('opensanmateo_overrides'));
 }
-// End of file sanmateo.install
+
+/**
+ * Revert features: openpublic_press_release, openpublic_site_page, openpublic_webform
+ */
+function sanmateo_update_7015() {
+  san_mateo_install_features_revert(array('openpublic_press_release', 'openpublic_site_page', 'openpublic_webform'));
+}
 
 // End of file sanmateo.install

@@ -24,6 +24,7 @@
 				
 				display: block; 
 				font-family: $bold;
+				font-weight: normal;
 				padding: .75em .75em;
 				border-bottom: 1px solid rgba($primaryBlue, .2);
 				-webkit-transition: all 0.3s;
@@ -54,6 +55,7 @@
 				
 				a.active {
   				font-family: $bold;
+  				font-weight: normal;
 				}
 				
 				ul li a {

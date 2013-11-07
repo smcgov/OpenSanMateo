@@ -93,15 +93,15 @@ $('.show_hide').showHide({
   };
   Drupal.behaviors.smcMetaPadding = {
     attach: function (context) {
-      
+      var metaWidth;
       $('.universal-teaser .node-type').each(function(){
-        var metaWidth = $(this).outerWidth();
-        $(this).parent('header').css('padding-right', metaWidth);
+        metaWidth = $(this).outerWidth();
+        $(this).parent('header').css('padding-right', metaWidth + 10);
       });
      
       $(window).resize(function(){
-        var metaWidth = $(this).outerWidth();
-        $(this).parent('header').css('padding-right', metaWidth);
+        metaWidth = $(this).outerWidth();
+        $(this).parent('header').css('padding-right', metaWidth + 10);
       });
     }
   };
