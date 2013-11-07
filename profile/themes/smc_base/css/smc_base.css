@@ -8142,19 +8142,19 @@ table {
 
   /* line 129, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-first {
-    float: left;
+    float: none;
     clear: none;
-    width: 25%;
+    width: 100%;
     padding: 0;
     margin: 0;
-    margin-right: 2.5%;
+    margin-right: 0;
     margin-bottom: 3%; }
 
   /* line 139, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-middle {
     float: left;
     clear: none;
-    width: 72.5%;
+    width: 100%;
     padding: 0;
     margin: 0;
     margin-bottom: 3%; }
