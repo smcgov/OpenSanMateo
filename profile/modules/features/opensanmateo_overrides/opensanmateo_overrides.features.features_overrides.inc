@@ -11,6 +11,32 @@ function opensanmateo_overrides_features_override_default_overrides() {
   // This code is only used for UI in features. Exported alters hooks do the magic.
   $overrides = array();
 
+  // Exported overrides for: field
+  $overrides["field.node-profile-field_profile_leadership.field_config|active"] = 1;
+  $overrides["field.node-profile-field_profile_leadership.field_config|cardinality"] = 1;
+  $overrides["field.node-profile-field_profile_leadership.field_config|deleted"] = 0;
+  $overrides["field.node-profile-field_profile_leadership.field_config|translatable"] = 1;
+  $overrides["field.node-profile-field_profile_leadership.field_instance|deleted"] = 0;
+  $overrides["field.node-profile-field_profile_leadership.field_instance|description"] = 'Indicate whether or not this person is either a Department Head or an Elected Official.';
+  $overrides["field.node-profile-field_profile_leadership.field_instance|display|default|weight"] = 0;
+  $overrides["field.node-profile-field_profile_leadership.field_instance|display|editors_choice|weight"] = 11;
+  $overrides["field.node-profile-field_profile_leadership.field_instance|display|teaser|weight"] = 0;
+  $overrides["field.node-profile-field_profile_leadership.field_instance|label"] = 'Department Head';
+  $overrides["field.node-profile-field_profile_leadership.field_instance|widget|weight"] = 14;
+  $overrides["field.node-profile-field_profile_leadership.field_instance|workbench_access_field"] = 0;
+  $overrides["field.node-profile-field_profile_staff.field_config|active"] = 1;
+  $overrides["field.node-profile-field_profile_staff.field_config|cardinality"] = 1;
+  $overrides["field.node-profile-field_profile_staff.field_config|deleted"] = 0;
+  $overrides["field.node-profile-field_profile_staff.field_config|translatable"] = 1;
+  $overrides["field.node-profile-field_profile_staff.field_instance|deleted"] = 0;
+  $overrides["field.node-profile-field_profile_staff.field_instance|description"] = 'This is used to indicate whether this is a San Mateo County Employee. This is helpful when creating lists of profiles for staff directories, while excluding special cases such as Commissioners or Consultants.';
+  $overrides["field.node-profile-field_profile_staff.field_instance|display|default|weight"] = 7;
+  $overrides["field.node-profile-field_profile_staff.field_instance|display|editors_choice|weight"] = 10;
+  $overrides["field.node-profile-field_profile_staff.field_instance|display|teaser|weight"] = 0;
+  $overrides["field.node-profile-field_profile_staff.field_instance|label"] = 'Employee';
+  $overrides["field.node-profile-field_profile_staff.field_instance|widget|weight"] = 10;
+  $overrides["field.node-profile-field_profile_staff.field_instance|workbench_access_field"] = 0;
+
   // Exported overrides for: field_instance
   $overrides["field_instance.node-blog_entry-field_thumbnail_image.label"] = 'Main Image';
   $overrides["field_instance.node-blog_entry-field_thumbnail_image.settings|image_field_caption"] = 0;
@@ -64,6 +90,14 @@ function opensanmateo_overrides_features_override_default_overrides() {
     ),
   );
   $overrides["field_instance.node-press_release-field_thumbnail_image.workbench_access_field"] = 0;
+  $overrides["field_instance.node-profile-field_profile_leadership.description"] = 'Indicate whether or not this person is either a Department Head or an Elected Official.';
+  $overrides["field_instance.node-profile-field_profile_leadership.label"] = 'Department Head';
+  $overrides["field_instance.node-profile-field_profile_leadership.widget|weight"] = 14;
+  $overrides["field_instance.node-profile-field_profile_leadership.workbench_access_field"] = 0;
+  $overrides["field_instance.node-profile-field_profile_staff.description"] = 'This is used to indicate whether this is a San Mateo County Employee. This is helpful when creating lists of profiles for staff directories, while excluding special cases such as Commissioners or Consultants.';
+  $overrides["field_instance.node-profile-field_profile_staff.label"] = 'Employee';
+  $overrides["field_instance.node-profile-field_profile_staff.widget|weight"] = 10;
+  $overrides["field_instance.node-profile-field_profile_staff.workbench_access_field"] = 0;
   $overrides["field_instance.node-site_page-field_files.settings|description_field"] = 1;
   $overrides["field_instance.node-site_page-field_files.widget|settings|filefield_sources"] = array(
     'filefield_sources' => array(),
