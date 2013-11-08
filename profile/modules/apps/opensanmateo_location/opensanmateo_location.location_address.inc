@@ -25,7 +25,7 @@ function open_sanmateo_location_field_default_field_instances_template() {
           'delete' => 'Delete',
           'description' => TRUE,
           'edit' => 'Edit',
-          'hide_empty' => FALSE,
+          'hide_empty' => TRUE,
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',

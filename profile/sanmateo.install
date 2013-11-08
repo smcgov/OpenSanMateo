@@ -142,7 +142,45 @@ function sanmateo_update_7012() {
   features_template_revert();
 }
 
+/**
+ * Disable statistics.module and openpublic_most_popular.module
+ */
+function sanmateo_update_7013() {
+  module_disable(array('statistics', 'openpublic_most_popular'));
+}
 
-// End of file sanmateo.install
+/**
+ * Enable opensanmateo overrides.
+ */
+function sanmateo_update_7014() {
+  module_enable(array('opensanmateo_overrides'));
+}
 
+/**
+ * Revert features: openpublic_press_release, openpublic_site_page, openpublic_webform
+ */
+function sanmateo_update_7015() {
+  san_mateo_install_features_revert(array('openpublic_press_release', 'openpublic_site_page', 'openpublic_webform'));
+}
+
+/**
+ * Revert features template, to get rid of HS and move to SHS fields for term selection.
+ */
+function sanmateo_update_7016() {
+  features_template_revert();
+}
+
+/**
+ * Disable HS.
+ */
+function sanmateo_update_7017() {
+  module_disable(array('hierarchical_select'));
+}
+
+/**
+ * Enable SHS module.
+ */
+function sanmateo_update_7018() {
+  module_enable(array('shs'));
+}
 // End of file sanmateo.install

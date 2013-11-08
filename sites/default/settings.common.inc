@@ -64,12 +64,12 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
   // Add any desired code here.
 }
 
-
-
-
 // Set master-client settings that are common across client sites
-$conf['sanmateo_master_is'] = $common_settings_url_prefix . '-acquia.fayze2.com';
-$conf['distributed_blocks_master_url'] = 'http://' . $conf['sanmateo_master_is'];
+$master_host = $common_settings_url_prefix . '-acquia.fayze2.com';
+if (empty($conf['sanmateo_is_master'])) {
+  $conf['sanmateo_master_is'] = $master_host;
+}
+$conf['distributed_blocks_master_url'] = 'http://' . $master_host;
 $conf['distributed_blocks_update_freq'] = 1;
 
 // Configure caching

@@ -30,7 +30,7 @@ function opensanmateo_frontend_menu_block_blocks() {
       'admin_title' => 'Sub-nav menu block',
       'level'       => 1,
       'follow'      => 0,
-      'depth'       => 0,
+      'depth'       => 2,
       'expanded'    => 0,
       'sort'        => 1,
     ),

@@ -504,3 +504,7 @@ projects[apps][download][type] = git
 projects[apps][download][url] = http://git.drupal.org/project/apps.git
 projects[apps][download][revision] = b9d82b7bf5b4ebc7ba53324ce87082a84c3515cc
 projects[apps][patch][1899390] = https://drupal.org/files/issues/1899390-remove-update-dep-2.patch
+
+projects[shs][type] = module
+projects[shs][subdir] = contrib
+projects[shs][version] = 1.6

@@ -6064,35 +6064,36 @@ input:focus::-ms-input-placeholder {
   /* line 125, ../../scss/style.scss */
   h5 {
     color: #036cb6;
-    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
+    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+    font-weight: normal; }
 
-  /* line 131, ../../scss/style.scss */
+  /* line 132, ../../scss/style.scss */
   a {
     color: #036cb6; }
 
-  /* line 135, ../../scss/style.scss */
+  /* line 136, ../../scss/style.scss */
   p {
     color: #555a5a; }
 
-  /* line 139, ../../scss/style.scss */
+  /* line 140, ../../scss/style.scss */
   .main-content ul {
     padding-left: 2em;
     font-size: .9em; }
 
-  /* line 144, ../../scss/style.scss */
+  /* line 145, ../../scss/style.scss */
   .main-content ul.flush {
     padding-left: 0; }
 
-  /* line 148, ../../scss/style.scss */
+  /* line 149, ../../scss/style.scss */
   li {
     color: #6b699e; }
 
-  /* line 152, ../../scss/style.scss */
+  /* line 153, ../../scss/style.scss */
   .inner {
     padding: .5em 1em 1.25em;
     position: relative; }
 
-  /* line 157, ../../scss/style.scss */
+  /* line 158, ../../scss/style.scss */
   .hideme {
     opacity: 1.0; } }
 /**
@@ -6162,12 +6163,13 @@ h4 {
 /* line 75, ../../scss/elements/editor.scss */
 h5 {
   color: #036cb6;
-  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal; }
 
-/* line 80, ../../scss/elements/editor.scss */
+/* line 81, ../../scss/elements/editor.scss */
 ul, ol {
   padding-left: 2em;
   font-size: .9em; }
-  /* line 84, ../../scss/elements/editor.scss */
+  /* line 85, ../../scss/elements/editor.scss */
   ul li, ol li {
     color: #555a5a; }

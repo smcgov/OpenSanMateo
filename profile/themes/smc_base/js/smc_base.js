@@ -13,6 +13,7 @@ Drupal.smc = Drupal.smc || {};
       if ($('body').hasClass('toolbar')) {
         // default toolbar height = 30px;
         var toolbarHeight = $('#toolbar').height();
+        //var alertHeight = $('#block-distributed-blocks-d-b-opensanmateo-layout-banner').height();
         // reapply padding to body because toolbar module doesn't do this... LOL
         // the padding on the #section-header doesn't need adjusted
         $('body').css('padding-top', toolbarHeight);
@@ -21,6 +22,8 @@ Drupal.smc = Drupal.smc || {};
         $('body.toolbar .flexnav.show').css('padding-top', toolbarHeight + 120);
         $('body.toolbar #block-opensanmateo-search-header-search').css('top', toolbarHeight + 68);
         $('body.toolbar .menu-button').css('top', toolbarHeight + 10);
+        //$('body.toolbar .menu-button').css('top', toolbarHeight + alertHeight + 10);
+        //$('body:not(.toolbar) .menu-button').css('top', alertHeight + 10);
       }
     });
   }
@@ -86,6 +89,20 @@ $('.show_hide').showHide({
        $('#responsive-navigation').slideToggle();
        return false;
      });
+    }
+  };
+  Drupal.behaviors.smcMetaPadding = {
+    attach: function (context) {
+      var metaWidth;
+      $('.universal-teaser .node-type').each(function(){
+        metaWidth = $(this).outerWidth();
+        $(this).parent('header').css('padding-right', metaWidth + 10);
+      });
+     
+      $(window).resize(function(){
+        metaWidth = $(this).outerWidth();
+        $(this).parent('header').css('padding-right', metaWidth + 10);
+      });
     }
   };
 })(jQuery);

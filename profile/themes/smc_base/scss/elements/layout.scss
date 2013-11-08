@@ -127,19 +127,19 @@
   }
   
   #main-wrapper .sm-two-column-alt .panel-col-first { 
-    float: left; 
+    float: none; 
     clear: none;
-    width: 25%; 
+    width: 100%; 
     padding: 0;
     margin: 0;
-    margin-right: 2.5%;
+    margin-right: 0;
     margin-bottom: 3%;
   }
   
   #main-wrapper .sm-two-column-alt .panel-col-middle { 
     float: left;
     clear: none; 
-    width: 72.5%; 
+    width: 100%;
     padding: 0;
     margin: 0;
     
@@ -339,5 +339,102 @@
   
   #main-wrapper #navigation-toggle {
     display: none;
+  }
+}
+
+// IE8 (and lower) specific layout adjustments
+.lte8 {
+  #main-wrapper .sm-two-column .panel-col-first { 
+    float: left; 
+    clear: none;
+    width: 20%; 
+    padding: 0;
+    margin: 0;
+    margin-right: 2.5%;
+    margin-bottom: 3%;
+  }
+  
+  #main-wrapper .sm-two-column .panel-col-middle { 
+    float: left; 
+    clear: none;
+    width: 77.5%; 
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+  }
+  #main-wrapper .sm-two-column-alt .panel-col-top,
+  #main-wrapper .sm-two-column-alt .panel-col-bottom {
+    width: 100%;
+    display: block;
+    float: none;
+    clear: both;
+    
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+  }
+  
+  #main-wrapper .sm-two-column-alt .panel-col-first { 
+    float: left; 
+    clear: none;
+    width: 20%; 
+    padding: 0;
+    margin: 0;
+    margin-right: 2.5%;
+    margin-bottom: 3%;
+  }
+  
+  #main-wrapper .sm-two-column-alt .panel-col-middle { 
+    float: left;
+    clear: none; 
+    width: 77.5%; 
+    padding: 0;
+    margin: 0;
+    
+    margin-bottom: 3%;
+  }
+  
+  #main-wrapper .sm-two-column-alt .panel-col-lower-left {
+    float: left;
+    clear: none;
+    width: 65%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #main-wrapper .sm-two-column-alt .panel-col-lower-right {
+    float: left; 
+    clear: none;
+    width: 32.5%;
+    padding: 0;
+    margin: 0;
+    margin-left: 2.5%;
+  }
+  #main-wrapper .sm-three-column .panel-col-first { 
+    float: left; 
+    clear: none;
+    width: 17%; 
+    padding: 0;
+    margin: 0;
+    margin-right: 2.5%;
+  }
+  
+  #main-wrapper .sm-three-column .panel-col-middle { 
+    float: left; 
+    clear: none;
+    width: 58%; 
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+    padding: 0 1em;
+  }
+  
+  #main-wrapper .sm-three-column .panel-col-last { 
+    float: left;
+    clear: none; 
+    width: 20%; 
+    padding: 0;
+    margin: 0;
+    margin-left: 2.5%;
   }
 }

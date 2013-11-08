@@ -14,6 +14,8 @@
 @import "elements/buttons.scss";
 // Header
 @import "elements/header.scss";
+// Webforms
+@import "elements/webform.scss";
 // Drupal admin tabs adjustments
 @import "elements/tabs.scss";
 // system (font) icons
@@ -55,9 +57,9 @@
 // footer elements
 @import "elements/footer.scss";
 
-body {
-  //background: #EEEEEE;
-  //padding: 50px;
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .limiter {
