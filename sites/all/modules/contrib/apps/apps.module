@@ -289,7 +289,7 @@ function apps_admin_paths() {
 /**
  * Implements hook_image_default_styles().
  */
-function apps_image_default_styles() { 
+function apps_image_default_styles() {
   $styles = array();
 
   // Exported image style: apps_logo
@@ -448,7 +448,7 @@ function apps_block_info() {
     $blocks["manage_apps__$id"] = array(
       'info' => t('Manage Apps for %server', array('%server' => $server['title'])),
     );
-     
+
   }
   return $blocks;
 }
@@ -494,10 +494,10 @@ function apps_authorize_filetransfer_form_submit() {
 function apps_updater_info() {
   return array(
     'library' => array(
-      'class' => 'LibraryUpdater', 
-      'name' => t('Update Library'), 
+      'class' => 'LibraryUpdater',
+      'name' => t('Update Library'),
       'weight' => -10,
-    ), 
+    ),
   );
 }
 

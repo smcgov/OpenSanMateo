@@ -14,14 +14,20 @@
  *
  */
 function apps_download_apps($app) {
-  $download_batch = apps_download_apps_batch(array($app));
-  batch_set($download_batch);
-  batch_process($_SESSION['apps_install_next']);
+  if (module_enabled('update') {
+    $download_batch = apps_download_apps_batch(array($app));
+    batch_set($download_batch);
+    batch_process($_SESSION['apps_install_next']);
+  }
+  else {
+    $link = user_permission('administer modules') ? l(t('Go enable the module'), 'admin/modules') : '':
+    drupal_set_message("To download or update apps you need the update module installed. !link", array('!link' => $link));
+  }
 }
 
-/** 
+/**
  * Make the batch for downloading modules for app.
- * 
+ *
  * Split out for use in apps.profile.inc
  */
 function apps_download_apps_batch($apps) {
@@ -85,7 +91,7 @@ function apps_download_apps_list($app) {
  * Batch callback invoked when the download batch is completed.
  *
  * A pass though to update_manager_download_batch_finished
- * but we set $_GET['destination'] to control the drupal_goto that is 
+ * but we set $_GET['destination'] to control the drupal_goto that is
  * in that function
  */
 function apps_download_batch_finished($success, $results) {
@@ -147,8 +153,8 @@ function apps_download_batch($project, $url, $type, &$context) {
 
 /**
  * Wrapper for _update_manager_extract_directory()
- * 
- * Since libraries and modules can live in the same location, we need to 
+ *
+ * Since libraries and modules can live in the same location, we need to
  * namespace the types so they don't collide like the colorbox module.
  */
 function apps_extract_directory($type = '') {
@@ -221,7 +227,7 @@ function apps_install_downloads() {
 
 
 /**
- * The batch builder and processor for moving files to drupal 
+ * The batch builder and processor for moving files to drupal
  *
  * taken from update_authorize_run_update
  * builds a batch and process it for installing modules from the templocation

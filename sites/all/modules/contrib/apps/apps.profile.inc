@@ -1,12 +1,12 @@
 <?php
 /**
- * This file handles all the functions for downloading, transferring and 
+ * This file handles all the functions for downloading, transferring and
  * installing apps during the install process.
  */
 
 /**
  * Add install tasks to profile install tasks.
- * 
+ *
  * See apps.api.php for use.
  *
  */
@@ -18,7 +18,6 @@ function apps_profile_install_tasks($install_state, $apps_server) {
   // Only use apps forms during interactive installs.
   $tasks = array();
   $apps_server_name = $apps_server['machine name'];
-
   $task_screen = 'apps_profile_apps_select_form_' . $apps_server_name;
   $_SESSION['apps_servers'][$task_screen] = $apps_server;
   $tasks = array(
@@ -175,7 +174,7 @@ function apps_profile_download_app_modules(&$install_state) {
     $apps[] = $_SESSION['apps_manifest'][$name];
   }
   $batch = apps_download_apps_batch($apps);
-  
+
   $batch['finished'] = 'apps_profile_download_batch_finished';
   return $batch;
 }
@@ -221,8 +220,8 @@ function apps_profile_authorize_transfer($form, $form_state, &$install_state) {
 }
 
 /**
- * Callback after the authorize_filetransfer_form_submit. 
- * 
+ * Callback after the authorize_filetransfer_form_submit.
+ *
  * Save the file transfer protocol.
  */
 function apps_profile_authorize_transfer_save($filetransfer, $nothing = array()) {
@@ -236,7 +235,7 @@ function apps_profile_install_app_modules(&$install_state) {
   $batch = array();
   if (!empty($_SESSION['update_manager_update_projects'])) {
     apps_include('installer');
-    
+
     // Make sure the Updater registry is loaded.
     drupal_get_updaters();
 
@@ -255,7 +254,7 @@ function apps_profile_install_app_modules(&$install_state) {
         );
       }
     }
-    
+
     if (isset($_SESSION['filetransfer'])) {
       // We have authenticated a filetransfer so use it.
       $filetransfer = $_SESSION['filetransfer'];
@@ -362,7 +361,7 @@ function app_profile_enable_module($module, $module_name, &$context) {
   $context['finished'] = TRUE;
 }
 
-/**  
+/**
  * Batch callback invoked when enable batch is completed.
  */
 function apps_profile_enable_app_modules_finished($success, $results) {
@@ -395,7 +394,7 @@ function apps_profile_enable_app_modules_finished($success, $results) {
 /**
  * Function to check and make sure all dependencies are available. This will stop stray apps
  * or broken downloads from stopping the install process for everything.
- * 
+ *
  * Copied from module_enable() in module.inc
  */
 function apps_profile_check_dependencies($module_list) {
@@ -424,7 +423,7 @@ function apps_profile_check_dependencies($module_list) {
       }
     }
   }
-  
+
   // If we make it this far then everything is good.
   return TRUE;
 }
