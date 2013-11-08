@@ -497,3 +497,7 @@ projects[hierarchical_select][download][revision] = aac15cd
 projects[fontyourface][type] = module
 projects[fontyourface][subdir] = contrib
 projects[fontyourface][version] = 2.8
+
+projects[shs][type] = module
+projects[shs][subdir] = contrib
+projects[shs][version] = 1.6

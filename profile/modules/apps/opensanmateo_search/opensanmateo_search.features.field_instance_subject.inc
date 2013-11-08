@@ -39,9 +39,9 @@ function opensanmateo_search_field_default_field_instances_subject_template() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'hs_taxonomy',
+      'module' => 'shs',
       'settings' => array(),
-      'type' => 'taxonomy_hs',
+      'type' => 'taxonomy_shs',
       'weight' => 34,
     ),
   );

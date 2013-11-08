@@ -163,4 +163,18 @@ function sanmateo_update_7015() {
   san_mateo_install_features_revert(array('openpublic_press_release', 'openpublic_site_page', 'openpublic_webform'));
 }
 
+/**
+ * Revert features template, to get rid of HS and move to SHS fields for term selection.
+ */
+function sanmateo_update_7016() {
+  features_template_revert();
+}
+
+/**
+ * Disable HS.
+ */
+function sanmateo_update_7017() {
+  module_disable(array('hierarchical_select'));
+}
+
 // End of file sanmateo.install
