@@ -177,4 +177,10 @@ function sanmateo_update_7017() {
   module_disable(array('hierarchical_select'));
 }
 
+/**
+ * Enable SHS module.
+ */
+function sanmateo_update_7018() {
+  module_enable(array('shs'));
+}
 // End of file sanmateo.install

@@ -24,6 +24,7 @@ dependencies[] = search_api_site
 dependencies[] = search_api_solr
 dependencies[] = search_api_views
 dependencies[] = searchapimultiaggregate
+dependencies[] = shs
 dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = taxonomy_sync
