@@ -10,9 +10,17 @@ include_once 'opensanmateo_layout.features.inc';
  * Code for the OpenSanMateo Example feature.
  */
 
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function opensanmateo_layout_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools' && !empty($plugin)) {
+    return "plugins/$plugin";
+  }
+}
 
 /**
- * Implments hook_theme()
+ * Implements hook_theme()
  */
 function opensanmateo_layout_theme() {
   return array(
@@ -199,7 +207,7 @@ function opensanmateo_layout_panelizer_defaults_template() {
   $display->panels = array();
     $pane = new stdClass();
     $pane->pid = 'new-1';
-    $pane->panel = 'center';
+    $pane->panel = 'middle';
     $pane->type = 'entity_view';
     $pane->subtype = 'node';
     $pane->shown = TRUE;
@@ -219,7 +227,7 @@ function opensanmateo_layout_panelizer_defaults_template() {
     $pane->position = 0;
     $pane->locks = array();
     $display->content['new-1'] = $pane;
-    $display->panels['center'][0] = 'new-1';
+    $display->panels['middle'][0] = 'new-1';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-1';
   $panelizer->display = $display;
