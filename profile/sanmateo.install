@@ -183,4 +183,30 @@ function sanmateo_update_7017() {
 function sanmateo_update_7018() {
   module_enable(array('shs'));
 }
+
+/**
+ * Manual update of address field since features won't revert field bases with data.
+ */
+function sanmateo_update_7019() {
+  $field = db_select('field_config', 'fc')
+             ->fields('fc', array('id', 'field_name', 'data'))
+             ->condition('fc.field_name', 'field_address')
+             ->execute()
+             ->fetchAssoc();
+
+  if (!empty($field)) {
+    $data = unserialize($field['data']);
+    if (!empty($data['settings']['non_empty_fields'])) {
+      $data['settings']['non_empty_fields']['country'] = 0;
+      $data['settings']['non_empty_fields']['locality'] = 'locality';
+
+      db_update('field_config')
+        ->fields(array('data' => serialize($data)))
+        ->condition('id', $field['id'])
+        ->condition('field_name', $field['field_name'])
+        ->execute();
+
+    }
+  }
+}
 // End of file sanmateo.install
