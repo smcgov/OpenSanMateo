@@ -28,10 +28,10 @@ function opensanmateo_frontend_menu_block_blocks() {
       'parent_mlid' => 0,
       'title_link'  => 0,
       'admin_title' => 'Sub-nav menu block',
-      'level'       => 1,
+      'level'       => 2,
       'follow'      => 0,
-      'depth'       => 2,
-      'expanded'    => 0,
+      'depth'       => 0,
+      'expanded'    => 1,
       'sort'        => 1,
     ),
   );
