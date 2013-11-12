@@ -775,9 +775,15 @@ class SearchApiRenderedImage extends SearchApiAbstractAlterCallback {
   public function alterItems(array &$items) {
     foreach ($items as $id => &$item) {
       // If we have a valid thumbnail field, use the first image as the styled teaser URL
-      $field = field_get_items('node', $item, 'field_thumbnail_image');
-      if (!empty($field[0]['uri'])) {
-        $item->opensanmateo_search_style_url = image_style_url($this->options['image_style'], $field[0]['uri']);
+      $thumb = field_get_items('node', $item, 'field_thumbnail_image');
+      if (!empty($thumb[0]['uri'])) {
+        $item->opensanmateo_search_style_url = image_style_url($this->options['image_style'], $thumb[0]['uri']);
+      }
+
+      // Use a profile image if it exists.
+      $profile = field_get_items('node', $item, 'field_profile_photo');
+      if (!empty($profile[0]['uri'])) {
+        $item->opensanmateo_search_style_url = image_style_url($this->options['image_style'], $profile[0]['uri']);
       }
     }
   }
