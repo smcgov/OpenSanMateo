@@ -304,10 +304,12 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     unset($vars['fields']['search_api_multi_aggregation_15']);
     unset($vars['fields']['search_api_multi_aggregation_16']);
 
-    // If a sub type is set, use it as the content 'type', otherwise it will default
-    //  to the existing value (content type name by default).
+    // If a sub type is set, use it as the content 'type'.
     if (!empty($vars['row']->_entity_properties['search_api_multi_aggregation_11'][0])) {
       $vars['fields']['type']->content = '<p class="field-content meta node-type">' . check_plain($vars['row']->_entity_properties['search_api_multi_aggregation_11'][0]) . '</p>';
+    }
+    else {
+      unset($vars['fields']['type']->content);
     }
 
     // Adjust the header (title and type)
