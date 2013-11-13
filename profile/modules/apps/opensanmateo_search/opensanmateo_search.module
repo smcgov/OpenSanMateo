@@ -151,7 +151,6 @@ function opensanmateo_search_aggregated_term_autocomplete_callback($str = 0) {
  * Validate views_content_views_panes_content_type_edit_form().
  */
 function opensanmateo_search_views_content_views_panes_content_type_edit_form_validate($form, &$form_state) {
-
   // Views expects multi-value results in an array, not a comma separated list,
   // so expand the list here.
   if (!empty($form_state['values']['exposed']['search_api_multi_aggregation_8'])) {
@@ -170,6 +169,18 @@ function opensanmateo_search_views_content_views_panes_content_type_edit_form_va
  * Implementation of hook_form_FORM_ID_alter().
  */
 function opensanmateo_search_form_views_content_views_panes_content_type_edit_form_alter(&$form, &$form_state) {
+  $view = $form_state['view'];
+
+  // sort_by and sort_order were not getting set automatically, potentially because the search_api
+  // values do not match standard drupal sorting values. Either way, just force a #default_value
+  // here.
+  if (!empty($form['exposed']['sort_by']) && !empty($view->exposed_input['sort_by'])) {
+    $form['exposed']['sort_by']['#default_value'] = $view->exposed_input['sort_by'];
+  }
+
+  if (!empty($form['exposed']['sort_order']) && !empty($view->exposed_input['sort_order'])) {
+    $form['exposed']['sort_order']['#default_value'] = $view->exposed_input['sort_order'];
+  }
 
   // If the term field is present.
   if (!empty($form['exposed']['filter-search_api_multi_aggregation_8'])) {
@@ -261,8 +272,9 @@ function quick_search_form_views_exposed_form_alter(&$form, &$form_state, $form_
   if($form_state['view']->name == 'opensanmateo_media_browser') {
     return;
   }
-    $form['search_api_views_fulltext']['#pre_render'][] = 'quick_search_process_search';
-    $form['search_api_views_fulltext']['#attributes']['quick_search_callback'] = 'opensanmateo_search_qs_callback';
+
+  $form['search_api_views_fulltext']['#pre_render'][] = 'quick_search_process_search';
+  $form['search_api_views_fulltext']['#attributes']['quick_search_callback'] = 'opensanmateo_search_qs_callback';
 }
 
 /**
@@ -625,6 +637,7 @@ function opensanmateo_search_form_alter(&$form, &$form_state, $form_id) {
   if (!isset($form['field_quick_search'])) {
     return;
   }
+
   if (!user_access('edit quick search tags')) {
     $form['field_quick_search']['#disabled'] = TRUE;
   }
