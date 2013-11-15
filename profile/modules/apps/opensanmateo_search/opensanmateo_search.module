@@ -50,6 +50,8 @@ function opensanmateo_search_menu() {
  * Implements hook_views_data_alter().
  */
 function opensanmateo_search_views_data_alter(&$data) {
+  // Temp disable this function so we can mess with it some more
+  return;
 
   // By default lists will always use SearchApiViewsHandlerFilter, which doesn't
   // allow for multi-value input, and also doesn't allow for "AND" / "OR" matching
@@ -183,7 +185,8 @@ function opensanmateo_search_form_views_content_views_panes_content_type_edit_fo
   }
 
   // If the term field is present.
-  if (!empty($form['exposed']['filter-search_api_multi_aggregation_8'])) {
+  // Disable this one for future refinement w/out tossing the code
+  if (FALSE) {//(!empty($form['exposed']['filter-search_api_multi_aggregation_8'])) {
     // Alias field for eas of use.
     $element =& $form['exposed']['filter-search_api_multi_aggregation_8']['search_api_multi_aggregation_8'];
 
@@ -735,7 +738,7 @@ function opensanmateo_search_default_search_api_server_alter(array &$defaults) {
         "scheme" : "http",
         "host" : "useast1-c1.acquia-search.com",
         "port" : "80",
-        "path" : "\\/solr\\/DEGK-36837",
+        "path" : "\\/solr\\/' . variable_get('acquia_identifier', '') . '",
         "edismax" : 0,
         "modify_acquia_connection" : 0,
         "http_user" : "",
