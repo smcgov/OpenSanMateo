@@ -10269,8 +10269,12 @@ table {
   padding: .75em 1em;
   margin-bottom: 0;
   margin-right: 5px;
-  font-size: 0.75em;
-  padding: 0.5em 0.75em; }
+  font-size: 0.8em;
+  padding: 0.5em 0.75em;
+  font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+  background: rgba(250, 250, 250, 0.95);
+  color: #666666;
+  text-transform: none; }
   /* line 23, ../scss/elements/buttons.scss */
   #breadcrumb a:hover {
     padding: .75em 1em; }
@@ -10290,16 +10294,19 @@ table {
   #breadcrumb a:active {
     background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
-  /* line 21, ../scss/elements/breadcrumb.scss */
+  /* line 25, ../scss/elements/breadcrumb.scss */
   #breadcrumb a:hover {
+    color: #999999;
+    background: rgba(250, 250, 250, 0.95);
     padding: 0.5em 0.75em; }
-/* line 25, ../scss/elements/breadcrumb.scss */
+/* line 31, ../scss/elements/breadcrumb.scss */
 #breadcrumb span.breadcrumb-separator {
   margin-right: 5px; }
-/* line 29, ../scss/elements/breadcrumb.scss */
+/* line 35, ../scss/elements/breadcrumb.scss */
 #breadcrumb span.breadcrumb-separator:after {
   content: '\25b6';
-  font-size: 0.75em; }
+  font-size: 0.75em;
+  color: #DDDDDD; }
 
 /* Fonts */
 /* Media Queries */
