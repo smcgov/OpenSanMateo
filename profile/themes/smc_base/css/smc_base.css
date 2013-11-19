@@ -8586,8 +8586,8 @@ table {
 /* line 13, ../scss/elements/teaser.scss */
 .universal-teaser {
   border-top: 1px solid rgba(3, 108, 182, 0.1);
-  padding: 1.5em 0;
-  margin-bottom: 40px;
+  padding: 1em 0;
+  margin-bottom: 10px;
   position: relative; }
   /* line 19, ../scss/elements/teaser.scss */
   .universal-teaser .node-url {
@@ -8616,7 +8616,7 @@ table {
     white-space: nowrap;
     font-size: .75em;
     position: absolute;
-    top: 2em;
+    top: 1.25em;
     right: 0;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
