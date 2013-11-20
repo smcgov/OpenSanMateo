@@ -26,16 +26,3 @@ foreach ($smc_sites as $site) {
   );
 }
 
-// Generate special case for demo sites
-for ($i = 1; $i <= 3; ++$i) {
-  $aliases[$smc_env . ".demo{$i}"] = array(
-    'uri' => "demo{$i}.smcdev-acquia.fayze2.com",
-    'root' => $smc_docroot,
-    'remote-host' => $smc_remote_host,
-    'remote-user' => $smc_remote_user,
-    'path-aliases' => array(
-      '%files' => "sites/demo{$i}/files",
-      '%dump' => "/tmp/demo{$i}.sql",
-    ),
-  );
-}
