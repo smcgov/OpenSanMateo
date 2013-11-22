@@ -10874,3 +10874,8 @@ footer {
 /* line 149, ../scss/smc_base.scss */
 .node .field-type-image {
   margin-bottom: 2%; }
+
+/* line 152, ../scss/smc_base.scss */
+.node .field-name-body div {
+  font-size: 1em;
+  line-height: 1.6; }
