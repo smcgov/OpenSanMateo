@@ -6021,25 +6021,26 @@ input:focus::-ms-input-placeholder {
   /* line 80, ../scss/style.scss */
   #page-title {
     font-size: 2.5em;
+    line-height: 1.2em;
     color: #036cb6;
     margin-bottom: 0%;
     text-transform: none;
     width: 100%;
     float: none; }
 
-  /* line 89, ../scss/style.scss */
+  /* line 90, ../scss/style.scss */
   .sub-link {
     position: absolute;
     top: 10%;
     right: 0; }
 
-  /* line 95, ../scss/style.scss */
+  /* line 96, ../scss/style.scss */
   h1 {
     color: #38939b;
     font-family: 'Trade Gothic W01 Light';
     text-transform: uppercase; }
 
-  /* line 101, ../scss/style.scss */
+  /* line 102, ../scss/style.scss */
   h2 {
     text-transform: uppercase;
     color: #38939b;
@@ -6049,7 +6050,7 @@ input:focus::-ms-input-placeholder {
     line-height: 1.2em;
     font-weight: 100; }
 
-  /* line 111, ../scss/style.scss */
+  /* line 112, ../scss/style.scss */
   h3 {
     color: #38939b;
     font-family: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica;
@@ -6058,44 +6059,44 @@ input:focus::-ms-input-placeholder {
     font-weight: 100;
     line-height: 1.2em; }
 
-  /* line 120, ../scss/style.scss */
+  /* line 121, ../scss/style.scss */
   h4 {
     color: #036cb6;
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
 
-  /* line 125, ../scss/style.scss */
+  /* line 126, ../scss/style.scss */
   h5 {
     color: #036cb6;
     font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
     font-weight: normal; }
 
-  /* line 132, ../scss/style.scss */
+  /* line 133, ../scss/style.scss */
   a {
     color: #036cb6; }
 
-  /* line 136, ../scss/style.scss */
+  /* line 137, ../scss/style.scss */
   p {
     color: #555a5a; }
 
-  /* line 140, ../scss/style.scss */
+  /* line 141, ../scss/style.scss */
   .main-content ul {
     padding-left: 2em;
     font-size: .9em; }
 
-  /* line 145, ../scss/style.scss */
+  /* line 146, ../scss/style.scss */
   .main-content ul.flush {
     padding-left: 0; }
 
-  /* line 149, ../scss/style.scss */
+  /* line 150, ../scss/style.scss */
   li {
     color: #6b699e; }
 
-  /* line 153, ../scss/style.scss */
+  /* line 154, ../scss/style.scss */
   .inner {
     padding: .5em 1em 1.25em;
     position: relative; }
 
-  /* line 158, ../scss/style.scss */
+  /* line 159, ../scss/style.scss */
   .hideme {
     opacity: 1.0; } }
 /**
@@ -8068,9 +8069,10 @@ table {
   margin: 0;
   margin-bottom: 20px; }
 
-/* line 48, ../scss/elements/layout.scss */
+/* line 49, ../scss/elements/layout.scss */
 #main-wrapper .sm-two-column .panel-col-top,
 #main-wrapper .sm-two-column .panel-col-first,
+#main-wrapper .sm-two-column .panel-col-nav,
 #main-wrapper .sm-two-column .panel-col-middle,
 #main-wrapper .sm-two-column .panel-col-bottom {
   width: 100%;
@@ -8081,8 +8083,22 @@ table {
   margin: 0;
   margin-bottom: 3%; }
 
+/* line 64, ../scss/elements/layout.scss */
+#main-wrapper .sm-two-column-fifty-fifty .panel-col-top,
+#main-wrapper .sm-two-column-fifty-fifty .panel-col-nav,
+#main-wrapper .sm-two-column-fifty-fifty .panel-col-first,
+#main-wrapper .sm-two-column-fifty-fifty .panel-col-middle,
+#main-wrapper .sm-two-column-fifty-fifty .panel-col-bottom {
+  width: 100%;
+  display: block;
+  float: none;
+  clear: both;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3%; }
+
 @media all and (min-width: 768px) {
-  /* line 59, ../scss/elements/layout.scss */
+  /* line 75, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column .panel-col-first {
     float: left;
     clear: none;
@@ -8092,16 +8108,35 @@ table {
     margin-right: 2.5%;
     margin-bottom: 3%; }
 
-  /* line 69, ../scss/elements/layout.scss */
+  /* line 85, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column .panel-col-middle {
     float: left;
     clear: none;
     width: 72.5%;
     padding: 0;
     margin: 0;
+    margin-bottom: 3%; }
+
+  /* line 94, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column-fifty-fifty .panel-col-first {
+    float: left;
+    clear: none;
+    width: 47.5%;
+    padding: 0;
+    margin: 0;
+    margin-right: 5%;
+    margin-bottom: 3%; }
+
+  /* line 104, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column-fifty-fifty .panel-col-middle {
+    float: left;
+    clear: none;
+    width: 47.5%;
+    padding: 0;
+    margin: 0;
     margin-bottom: 3%; } }
 @media all and (min-width: 800px) {
-  /* line 80, ../scss/elements/layout.scss */
+  /* line 115, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column .panel-col-first {
     float: left;
     clear: none;
@@ -8111,7 +8146,7 @@ table {
     margin-right: 2.5%;
     margin-bottom: 3%; }
 
-  /* line 90, ../scss/elements/layout.scss */
+  /* line 125, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column .panel-col-middle {
     float: left;
     clear: none;
@@ -8119,7 +8154,7 @@ table {
     padding: 0;
     margin: 0;
     margin-bottom: 3%; } }
-/* line 106, ../scss/elements/layout.scss */
+/* line 141, ../scss/elements/layout.scss */
 #main-wrapper .sm-two-column-alt .panel-col-top,
 #main-wrapper .sm-two-column-alt .panel-col-first,
 #main-wrapper .sm-two-column-alt .panel-col-middle,
@@ -8135,7 +8170,7 @@ table {
   margin-bottom: 3%; }
 
 @media all and (min-width: 768px) {
-  /* line 118, ../scss/elements/layout.scss */
+  /* line 153, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-top,
   #main-wrapper .sm-two-column-alt .panel-col-bottom {
     width: 100%;
@@ -8146,7 +8181,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 129, ../scss/elements/layout.scss */
+  /* line 164, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-first {
     float: none;
     clear: none;
@@ -8156,7 +8191,7 @@ table {
     margin-right: 0;
     margin-bottom: 3%; }
 
-  /* line 139, ../scss/elements/layout.scss */
+  /* line 174, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-middle {
     float: left;
     clear: none;
@@ -8165,7 +8200,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 149, ../scss/elements/layout.scss */
+  /* line 184, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-lower-left {
     float: left;
     clear: none;
@@ -8173,7 +8208,7 @@ table {
     padding: 0;
     margin: 0; }
 
-  /* line 157, ../scss/elements/layout.scss */
+  /* line 192, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-lower-right {
     float: left;
     clear: none;
@@ -8182,7 +8217,7 @@ table {
     margin: 0;
     margin-left: 2.5%; } }
 @media all and (min-width: 800px) {
-  /* line 169, ../scss/elements/layout.scss */
+  /* line 204, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-top,
   #main-wrapper .sm-two-column-alt .panel-col-bottom {
     width: 100%;
@@ -8193,7 +8228,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 180, ../scss/elements/layout.scss */
+  /* line 215, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-first {
     float: left;
     clear: none;
@@ -8203,7 +8238,7 @@ table {
     margin-right: 2.5%;
     margin-bottom: 3%; }
 
-  /* line 190, ../scss/elements/layout.scss */
+  /* line 225, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-middle {
     float: left;
     clear: none;
@@ -8212,7 +8247,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 200, ../scss/elements/layout.scss */
+  /* line 235, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-lower-left {
     float: left;
     clear: none;
@@ -8220,7 +8255,7 @@ table {
     padding: 0;
     margin: 0; }
 
-  /* line 208, ../scss/elements/layout.scss */
+  /* line 243, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-lower-right {
     float: left;
     clear: none;
@@ -8228,11 +8263,11 @@ table {
     padding: 0;
     margin: 0;
     margin-left: 2.5%; } }
-/* line 220, ../scss/elements/layout.scss */
+/* line 255, ../scss/elements/layout.scss */
 #main-wrapper .sm-three-column {
   margin-bottom: 5%; }
 
-/* line 228, ../scss/elements/layout.scss */
+/* line 263, ../scss/elements/layout.scss */
 #main-wrapper .sm-three-column .panel-col-top,
 #main-wrapper .sm-three-column .panel-col-first,
 #main-wrapper .sm-three-column .panel-col-middle,
@@ -8247,7 +8282,7 @@ table {
   margin-bottom: 3%; }
 
 @media all and (min-width: 768px) {
-  /* line 241, ../scss/elements/layout.scss */
+  /* line 276, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-first {
     float: none;
     width: 100%;
@@ -8255,7 +8290,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 249, ../scss/elements/layout.scss */
+  /* line 284, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-middle {
     float: left;
     clear: none;
@@ -8265,7 +8300,7 @@ table {
     margin-bottom: 3%;
     padding: 0 1em; }
 
-  /* line 259, ../scss/elements/layout.scss */
+  /* line 294, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-last {
     float: left;
     clear: none;
@@ -8276,7 +8311,7 @@ table {
     padding-right: 1em;
     margin-bottom: 3%; } }
 @media all and (min-width: 800px) {
-  /* line 273, ../scss/elements/layout.scss */
+  /* line 308, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-first {
     float: left;
     clear: none;
@@ -8285,7 +8320,7 @@ table {
     margin: 0;
     margin-right: 2.5%; }
 
-  /* line 282, ../scss/elements/layout.scss */
+  /* line 317, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-middle {
     float: left;
     clear: none;
@@ -8295,7 +8330,7 @@ table {
     margin-bottom: 3%;
     padding: 0 1em; }
 
-  /* line 292, ../scss/elements/layout.scss */
+  /* line 327, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-last {
     float: left;
     clear: none;
@@ -8303,16 +8338,16 @@ table {
     padding: 0;
     margin: 0;
     margin-left: 2.5%; } }
-/* line 305, ../scss/elements/layout.scss */
+/* line 340, ../scss/elements/layout.scss */
 #main-wrapper #responsive-navigation {
   display: none; }
 
-/* line 309, ../scss/elements/layout.scss */
+/* line 344, ../scss/elements/layout.scss */
 #main-wrapper #navigation-toggle {
   display: block;
   text-align: right;
   margin-bottom: 10px; }
-  /* line 314, ../scss/elements/layout.scss */
+  /* line 349, ../scss/elements/layout.scss */
   #main-wrapper #navigation-toggle a {
     display: inline-block;
     padding: .75em .5em;
@@ -8320,20 +8355,20 @@ table {
     text-align: center;
     background-color: rgba(3, 108, 182, 0.1);
     border-radius: 3px; }
-    /* line 323, ../scss/elements/layout.scss */
+    /* line 358, ../scss/elements/layout.scss */
     #main-wrapper #navigation-toggle a:before {
       padding-right: 1em;
       content: "\e006"; }
 
 @media all and (min-width: 768px) {
-  /* line 336, ../scss/elements/layout.scss */
+  /* line 371, ../scss/elements/layout.scss */
   #main-wrapper #responsive-navigation {
     display: block !important; }
 
-  /* line 340, ../scss/elements/layout.scss */
+  /* line 375, ../scss/elements/layout.scss */
   #main-wrapper #navigation-toggle {
     display: none; } }
-/* line 347, ../scss/elements/layout.scss */
+/* line 382, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column .panel-col-first {
   float: left;
   clear: none;
@@ -8342,7 +8377,7 @@ table {
   margin: 0;
   margin-right: 2.5%;
   margin-bottom: 3%; }
-/* line 357, ../scss/elements/layout.scss */
+/* line 392, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column .panel-col-middle {
   float: left;
   clear: none;
@@ -8350,7 +8385,7 @@ table {
   padding: 0;
   margin: 0;
   margin-bottom: 3%; }
-/* line 366, ../scss/elements/layout.scss */
+/* line 401, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-top,
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-bottom {
   width: 100%;
@@ -8360,7 +8395,7 @@ table {
   padding: 0;
   margin: 0;
   margin-bottom: 3%; }
-/* line 377, ../scss/elements/layout.scss */
+/* line 412, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-first {
   float: left;
   clear: none;
@@ -8369,7 +8404,7 @@ table {
   margin: 0;
   margin-right: 2.5%;
   margin-bottom: 3%; }
-/* line 387, ../scss/elements/layout.scss */
+/* line 422, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-middle {
   float: left;
   clear: none;
@@ -8377,14 +8412,14 @@ table {
   padding: 0;
   margin: 0;
   margin-bottom: 3%; }
-/* line 397, ../scss/elements/layout.scss */
+/* line 432, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-lower-left {
   float: left;
   clear: none;
   width: 65%;
   padding: 0;
   margin: 0; }
-/* line 405, ../scss/elements/layout.scss */
+/* line 440, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-lower-right {
   float: left;
   clear: none;
@@ -8392,7 +8427,7 @@ table {
   padding: 0;
   margin: 0;
   margin-left: 2.5%; }
-/* line 413, ../scss/elements/layout.scss */
+/* line 448, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-three-column .panel-col-first {
   float: left;
   clear: none;
@@ -8400,7 +8435,7 @@ table {
   padding: 0;
   margin: 0;
   margin-right: 2.5%; }
-/* line 422, ../scss/elements/layout.scss */
+/* line 457, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-three-column .panel-col-middle {
   float: left;
   clear: none;
@@ -8409,7 +8444,7 @@ table {
   margin: 0;
   margin-bottom: 3%;
   padding: 0 1em; }
-/* line 432, ../scss/elements/layout.scss */
+/* line 467, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-three-column .panel-col-last {
   float: left;
   clear: none;
@@ -8433,35 +8468,36 @@ table {
 .pane-bundle-rotator-panels-pane {
   width: 100%;
   background-image: -webkit-linear-gradient(rgba(3, 108, 182, 0.05) 0%, rgba(3, 108, 182, 0) 50%, rgba(3, 108, 182, 0.025) 100%);
+  background-image: -moz-linear-gradient(rgba(3, 108, 182, 0.05) 0%, rgba(3, 108, 182, 0) 50%, rgba(3, 108, 182, 0.025) 100%);
   padding: 1em;
   margin: 0 auto 5%;
   border-radius: 3px;
   background-color: transparent; }
-  /* line 31, ../scss/elements/rotator-box.scss */
+  /* line 32, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .field-collection-view {
     position: relative; }
-    /* line 34, ../scss/elements/rotator-box.scss */
+    /* line 35, ../scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .field-collection-view .content {
       display: block; }
-  /* line 39, ../scss/elements/rotator-box.scss */
+  /* line 40, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .field-collection-view > a.rotator-wrap-link {
     position: relative;
     display: block;
     height: 100%;
     width: 100%; }
-  /* line 45, ../scss/elements/rotator-box.scss */
+  /* line 46, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows {
     z-index: 10; }
-  /* line 47, ../scss/elements/rotator-box.scss */
+  /* line 48, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows a:after, .pane-bundle-rotator-panels-pane .flex-control-thumbs a:after, .pane-bundle-rotator-panels-pane .rs-slider li a:after {
     content: none; }
-  /* line 51, ../scss/elements/rotator-box.scss */
+  /* line 52, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows a {
     background-color: rgba(0, 0, 0, 0.8); }
-  /* line 55, ../scss/elements/rotator-box.scss */
+  /* line 56, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows a:hover {
     background-color: black; }
-  /* line 59, ../scss/elements/rotator-box.scss */
+  /* line 60, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-caption {
     background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%) !important;
     background-color: rgba(85, 90, 90, 0.7) !important;
@@ -8472,7 +8508,7 @@ table {
     right: 0;
     width: 100% !important;
     font-size: inherit !important; }
-    /* line 70, ../scss/elements/rotator-box.scss */
+    /* line 71, ../scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .flex-caption h3 {
       text-transform: none;
       font-size: 2.5em;
@@ -8481,45 +8517,45 @@ table {
       margin-bottom: 1%;
       color: white;
       text-shadow: none; }
-    /* line 81, ../scss/elements/rotator-box.scss */
+    /* line 82, ../scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .flex-caption p {
       color: #EEEEEE;
       font-size: 1.3em;
       line-height: 1.3em;
       text-shadow: none; }
-      /* line 87, ../scss/elements/rotator-box.scss */
+      /* line 88, ../scss/elements/rotator-box.scss */
       .pane-bundle-rotator-panels-pane .flex-caption p:last-child {
         margin-bottom: 0; }
-  /* line 93, ../scss/elements/rotator-box.scss */
+  /* line 94, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-slider > li img {
     width: 100%; }
-  /* line 95, ../scss/elements/rotator-box.scss */
+  /* line 96, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs {
     margin-top: 10px !important;
     padding: 0 0.5em; }
-  /* line 100, ../scss/elements/rotator-box.scss */
+  /* line 101, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs li {
     border: 5px solid #eee;
     width: 22.75%;
     margin-left: 3%; }
-    /* line 105, ../scss/elements/rotator-box.scss */
+    /* line 106, ../scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .flex-control-thumbs li:first-child {
       margin-left: 0; }
-  /* line 110, ../scss/elements/rotator-box.scss */
+  /* line 111, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs li.active-item {
     border: 5px solid rgba(3, 108, 182, 0.2); }
-  /* line 114, ../scss/elements/rotator-box.scss */
+  /* line 115, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs li:hover {
     border: 5px solid #036cb6; }
-  /* line 122, ../scss/elements/rotator-box.scss */
+  /* line 123, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-caption.rs-bottom > a {
     color: white; }
-  /* line 126, ../scss/elements/rotator-box.scss */
+  /* line 127, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-prev {
     left: 0;
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px; }
-  /* line 132, ../scss/elements/rotator-box.scss */
+  /* line 133, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-next {
     right: 0;
     border-bottom-left-radius: 3px;
@@ -9256,7 +9292,7 @@ table {
         width: 300%;
         max-width: 300px;
         opacity: 0;
-        background: rgba(56, 147, 155, 0.9);
+        background: rgba(56, 147, 155, 0.975);
         margin: 0;
         padding: 0;
         -webkit-border-radius: 0 0 5px 5px;
@@ -9426,7 +9462,7 @@ table {
       max-width: 300px;
       opacity: 0;
       background: #38939b;
-      background: rgba(56, 147, 155, 0.9);
+      background: rgba(56, 147, 155, 0.975);
       margin: 0;
       padding: 0;
       -webkit-border-radius: 0 0 5px 5px;
@@ -10836,3 +10872,11 @@ footer {
   }
 }
 */
+/* line 149, ../scss/smc_base.scss */
+.node .field-type-image {
+  margin-bottom: 2%; }
+
+/* line 152, ../scss/smc_base.scss */
+.node .field-name-body div {
+  font-size: 1em;
+  line-height: 1.6; }
