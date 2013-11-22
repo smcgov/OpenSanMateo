@@ -1,0 +1,35 @@
+
+.sm-two-column-fifty-fifty .panel-col-top,
+.sm-two-column-fifty-fifty .panel-col-bottom {
+  width: 100%;
+  display: block;
+  float: none;
+  clear: both;
+  
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.sm-two-column-fifty-fifty .panel-col-first { 
+  float: left; 
+  width: 47.5%; 
+  
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.sm-two-column-fifty-fifty .panel-col-middle { 
+  float: left; 
+  width: 47.5%; 
+  
+  padding: 0;
+  margin: 0;
+  margin-left: 5%;
+  margin-bottom: 20px;
+}
+
+.sm-two-column-fifty-fifty .panel-separator {
+  margin: 0 0 1em 0;
+}
