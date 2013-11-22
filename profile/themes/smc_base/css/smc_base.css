@@ -9291,7 +9291,7 @@ table {
         width: 300%;
         max-width: 300px;
         opacity: 0;
-        background: rgba(56, 147, 155, 0.9);
+        background: rgba(56, 147, 155, 0.975);
         margin: 0;
         padding: 0;
         -webkit-border-radius: 0 0 5px 5px;
@@ -9461,7 +9461,7 @@ table {
       max-width: 300px;
       opacity: 0;
       background: #38939b;
-      background: rgba(56, 147, 155, 0.9);
+      background: rgba(56, 147, 155, 0.975);
       margin: 0;
       padding: 0;
       -webkit-border-radius: 0 0 5px 5px;
