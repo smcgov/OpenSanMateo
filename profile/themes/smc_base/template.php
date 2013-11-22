@@ -91,6 +91,7 @@ function smc_base_preprocess_node(&$variables) {
       // Opic automatically adds a suffix to the document attachment field, which
       // we want to get rid of.
       if (!empty($variables['content']['field_document_attachment'][0]['#suffix'])) {
+        unset($variables['content']['field_document_attachment'][0]['#prefix']);
         unset($variables['content']['field_document_attachment'][0]['#suffix']);
       }
 

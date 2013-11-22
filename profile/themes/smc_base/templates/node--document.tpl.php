@@ -13,8 +13,8 @@
  
 ?>
 
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"><div class="node-inner node-content">
-  <?php //print $picture; ?>
+<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>">
+  <div class="node-inner node-content">
 
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
@@ -40,5 +40,5 @@
   </div>
 
   <?php print render($content['links']); ?>
-
-</div></div> <!-- /node-inner, /node -->
+  </div>
+</div> <!-- /node-inner, /node -->
