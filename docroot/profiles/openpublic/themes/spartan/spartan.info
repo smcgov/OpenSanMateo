@@ -425,3 +425,10 @@ settings[alpha_region_footer_second_position] = '0'
 settings[alpha_region_footer_second_css] = ''
 settings[alpha_region_footer_second_equal_height_element] = '0'
 settings[alpha_region_footer_second_equal_height_container] = '0'
+
+
+; Information added by drush on 2013-11-25
+version = "appify_services"
+project = "openpublic"
+datestamp = "1385398153"
+

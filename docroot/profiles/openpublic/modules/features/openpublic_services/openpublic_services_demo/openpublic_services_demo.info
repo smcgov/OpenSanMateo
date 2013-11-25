@@ -14,3 +14,10 @@ features[content][] = services_research_assistance
 features[features_api][] = api:1
 features_exclude[dependencies][defaultcontent] = defaultcontent
 project path = /tmp
+
+
+; Information added by drush on 2013-11-25
+version = "appify_services"
+project = "openpublic"
+datestamp = "1385398153"
+

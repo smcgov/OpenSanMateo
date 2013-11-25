@@ -43,7 +43,7 @@ if [ "$1" = "--acquia" ]; then
   NOMAKE=0
   GIT_REPO='sanmateo@svn-2314.prod.hosting.acquia.com:sanmateo.git'
 else
-  #DRUSH_OPTS='--working-copy'
+  #DRUSH_OPTS='-v'
   TARGET=$1
 fi
 

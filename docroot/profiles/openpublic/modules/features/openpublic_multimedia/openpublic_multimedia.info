@@ -51,3 +51,10 @@ features[variable][] = node_preview_photo
 features[variable][] = node_submitted_media_gallery
 features[variable][] = node_submitted_photo
 features[views_view][] = media_gallery
+
+
+; Information added by drush on 2013-11-25
+version = "appify_services"
+project = "openpublic"
+datestamp = "1385398153"
+

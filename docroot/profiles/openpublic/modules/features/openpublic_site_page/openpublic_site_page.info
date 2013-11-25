@@ -37,3 +37,10 @@ features[variable][] = node_submitted_site_page
 features[variable][] = show_diff_inline_site_page
 features_exclude[dependencies][openpublic_defaults] = openpublic_defaults
 features_exclude[dependencies][options] = options
+
+
+; Information added by drush on 2013-11-25
+version = "appify_services"
+project = "openpublic"
+datestamp = "1385398153"
+

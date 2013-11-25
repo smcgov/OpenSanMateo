@@ -14,3 +14,10 @@ files[] = flexslider.test
 
 ; Configuration link
 configure = admin/config/media/flexslider
+
+
+; Information added by drush on 2013-11-25
+version = "068df89"
+project = "flexslider"
+datestamp = "1385398236"
+

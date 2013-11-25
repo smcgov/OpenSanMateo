@@ -38,3 +38,10 @@ features[variable][] = captcha_default_validation
 features[variable][] = captcha_description
 features[variable][] = captcha_log_wrong_responses
 features[variable][] = captcha_persistence
+
+
+; Information added by drush on 2013-11-25
+version = "appify_services"
+project = "openpublic"
+datestamp = "1385398153"
+

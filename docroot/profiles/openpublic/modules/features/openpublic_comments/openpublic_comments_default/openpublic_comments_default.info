@@ -21,3 +21,10 @@ features[variable][] = comment_form_location_services
 features[variable][] = comment_preview_services
 features[variable][] = comment_services
 features[variable][] = comment_subject_field_services
+
+
+; Information added by drush on 2013-11-25
+version = "appify_services"
+project = "openpublic"
+datestamp = "1385398153"
+

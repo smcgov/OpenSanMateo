@@ -13,3 +13,10 @@ files[] = views/entity_boxes_handler_delete_link_field.inc
 files[] = views/entity_boxes_handler_edit_link_field.inc
 files[] = views/entity_boxes_handler_entity_boxes_operations_field.inc
 
+
+
+; Information added by drush on 2013-11-25
+version = "c7c670b3cc6c37f61176ad0c20adbcfc3f4b02a8"
+project = "entity_boxes"
+datestamp = "1385398196"
+

@@ -15,3 +15,10 @@ files[] = includes/workbench_moderation_handler_filter_user_can_moderate.inc
 files[] = workbench_moderation.migrate.inc
 files[] = tests/workbench_moderation.test
 files[] = tests/workbench_moderation.files.test
+
+
+; Information added by drush on 2013-11-25
+version = "a90378de5b1aea2b095ff5613eea44f55947f514"
+project = "workbench_moderation"
+datestamp = "1385398203"
+

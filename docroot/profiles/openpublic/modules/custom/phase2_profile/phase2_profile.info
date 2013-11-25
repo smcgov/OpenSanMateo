@@ -62,3 +62,10 @@ features[variable][] = node_preview_profile
 features[variable][] = node_submitted_profile
 features_exclude[dependencies][openpublic_defaults] = openpublic_defaults
 features_exclude[dependencies][openpublic_translation_content] = openpublic_translation_content
+
+
+; Information added by drush on 2013-11-25
+version = "appify_services"
+project = "openpublic"
+datestamp = "1385398153"
+

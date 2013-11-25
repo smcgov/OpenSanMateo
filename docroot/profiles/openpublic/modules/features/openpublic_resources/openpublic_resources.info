@@ -41,3 +41,10 @@ features[variable][] = node_preview_resource
 features[variable][] = node_submitted_resource
 features[views_view][] = resources
 features_exclude[dependencies][openpublic_defaults] = openpublic_defaults
+
+
+; Information added by drush on 2013-11-25
+version = "appify_services"
+project = "openpublic"
+datestamp = "1385398153"
+

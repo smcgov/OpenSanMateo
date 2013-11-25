@@ -21,3 +21,10 @@ features[field_base][] = field_files
 features[field_base][] = field_related_content
 features[field_base][] = field_release_date
 features[field_base][] = field_summary
+
+
+; Information added by drush on 2013-11-25
+version = "appify_services"
+project = "openpublic"
+datestamp = "1385398153"
+

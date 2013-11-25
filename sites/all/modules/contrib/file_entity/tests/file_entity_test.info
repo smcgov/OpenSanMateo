@@ -4,3 +4,10 @@ package = Testing
 core = 7.x
 dependencies[] = file_entity
 hidden = TRUE
+
+
+; Information added by drush on 2013-11-25
+version = "208ae95"
+project = "file_entity"
+datestamp = "1385398308"
+

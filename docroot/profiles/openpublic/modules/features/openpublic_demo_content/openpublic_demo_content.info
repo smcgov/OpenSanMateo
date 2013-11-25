@@ -25,3 +25,10 @@ features[content][] = photo_statehouse
 features[content][] = san_francisco_implements_open_source_policies
 features[content][] = taxcode_rotator
 features[features_api][] = api:1
+
+
+; Information added by drush on 2013-11-25
+version = "appify_services"
+project = "openpublic"
+datestamp = "1385398153"
+

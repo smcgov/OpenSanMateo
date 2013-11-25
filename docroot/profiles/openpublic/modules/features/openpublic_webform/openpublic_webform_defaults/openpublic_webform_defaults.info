@@ -17,3 +17,10 @@ features[user_permission][] = edit all webform submissions
 features[user_permission][] = edit any webform content
 features[user_permission][] = edit own webform content
 features[user_permission][] = edit own webform submissions
+
+
+; Information added by drush on 2013-11-25
+version = "appify_services"
+project = "openpublic"
+datestamp = "1385398153"
+
