@@ -255,7 +255,11 @@ a.do-not-accept-terms {
 }
 
 
-
+.addtocal {
+  @include button();
+  @include buttonBlue;
+  @include buttonSmall;
+}
 
 
 // test content 
