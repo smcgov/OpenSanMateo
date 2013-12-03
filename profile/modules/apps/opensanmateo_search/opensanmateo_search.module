@@ -50,8 +50,6 @@ function opensanmateo_search_menu() {
  * Implements hook_views_data_alter().
  */
 function opensanmateo_search_views_data_alter(&$data) {
-  // Temp disable this function so we can mess with it some more
-  return;
 
   // By default lists will always use SearchApiViewsHandlerFilter, which doesn't
   // allow for multi-value input, and also doesn't allow for "AND" / "OR" matching
