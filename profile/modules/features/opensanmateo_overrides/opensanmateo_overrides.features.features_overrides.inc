@@ -64,6 +64,16 @@ function opensanmateo_overrides_features_override_default_overrides() {
     ),
   );
   $overrides["field_instance.node-blog_entry-field_thumbnail_image.workbench_access_field"] = 0;
+  $overrides["field_instance.node-location-field_files.settings|description_field"] = 1;
+  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|attach"] = 0;
+  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|clipboard"] = 0;
+  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|imce"] = 0;
+  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|opensanmateo_search"] = 0;
+  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|osmremotefile"] = 0;
+  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|plupload"] = 0;
+  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|reference"] = 0;
+  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|remote"] = 0;
+  $overrides["field_instance.node-location-field_files.workbench_access_field"] = 0;
   $overrides["field_instance.node-press_release-field_thumbnail_image.label"] = 'Main Image';
   $overrides["field_instance.node-press_release-field_thumbnail_image.settings|image_field_caption"] = 0;
   $overrides["field_instance.node-press_release-field_thumbnail_image.widget|settings|filefield_sources"] = array(

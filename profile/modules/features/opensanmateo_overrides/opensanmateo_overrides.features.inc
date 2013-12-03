@@ -70,6 +70,18 @@ function opensanmateo_overrides_field_default_field_instances_alter(&$data) {
     ); /* WAS: '' */
     $data['node-blog_entry-field_thumbnail_image']['workbench_access_field'] = 0; /* WAS: '' */
   }
+  if (isset($data['node-location-field_files'])) {
+    $data['node-location-field_files']['settings']['description_field'] = 1; /* WAS: 0 */
+    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['attach'] = 0; /* WAS: '' */
+    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['clipboard'] = 0; /* WAS: '' */
+    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['imce'] = 0; /* WAS: '' */
+    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['opensanmateo_search'] = 0; /* WAS: '' */
+    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['osmremotefile'] = 0; /* WAS: '' */
+    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['plupload'] = 0; /* WAS: '' */
+    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['reference'] = 0; /* WAS: '' */
+    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['remote'] = 0; /* WAS: '' */
+    $data['node-location-field_files']['workbench_access_field'] = 0; /* WAS: '' */
+  }
   if (isset($data['node-press_release-field_thumbnail_image'])) {
     $data['node-press_release-field_thumbnail_image']['label'] = 'Main Image'; /* WAS: 'Thumbnail Image' */
     $data['node-press_release-field_thumbnail_image']['settings']['image_field_caption'] = 0; /* WAS: '' */
