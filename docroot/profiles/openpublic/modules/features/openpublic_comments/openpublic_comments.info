@@ -16,8 +16,8 @@ project = "openpublic_comments"
 version = "7.x-1.0"
 
 
-; Information added by drush on 2013-11-25
+; Information added by drush on 2013-12-04
 version = "appify_services"
 project = "openpublic"
-datestamp = "1385398153"
+datestamp = "1386184361"
 

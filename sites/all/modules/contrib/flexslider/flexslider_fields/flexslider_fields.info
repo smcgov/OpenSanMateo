@@ -5,8 +5,8 @@ package = FlexSlider
 
 dependencies[] = flexslider
 
-; Information added by drush on 2013-11-25
+; Information added by drush on 2013-12-04
 version = "068df89"
 project = "flexslider"
-datestamp = "1385398236"
+datestamp = "1386184447"
 

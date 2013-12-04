@@ -4,8 +4,8 @@ dependencies[] = context
 dependencies[] = entity_autocomplete
 
 
-; Information added by drush on 2013-11-25
+; Information added by drush on 2013-12-04
 version = "b52592fc5236c3c6e4fd7262cd9c7a50a28c1ad7"
 project = "embeddable"
-datestamp = "1385398238"
+datestamp = "1386184449"
 

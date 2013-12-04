@@ -15,8 +15,8 @@ features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
 features[views_view][] = services
 
-; Information added by drush on 2013-11-25
+; Information added by drush on 2013-12-04
 version = "appify_services"
 project = "openpublic"
-datestamp = "1385398153"
+datestamp = "1386184361"
 
