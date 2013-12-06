@@ -14,8 +14,8 @@ datestamp = "1271870106"
 
 
 
-; Information added by drush on 2013-12-04
+; Information added by drush on 2013-12-06
 version = "cb07de891efbbc2c5aaffe0d6f3648822a9a4dfd"
 project = "context_http_headers"
-datestamp = "1386184473"
+datestamp = "1386371378"
 
