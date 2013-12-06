@@ -606,6 +606,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['filters']['search_api_multi_aggregation_8']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_multi_aggregation_8']['expose']['operator_id'] = 'search_api_multi_aggregation_8_op';
   $handler->display->display_options['filters']['search_api_multi_aggregation_8']['expose']['label'] = 'Terms';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_8']['expose']['use_operator'] = TRUE;
   $handler->display->display_options['filters']['search_api_multi_aggregation_8']['expose']['operator'] = 'search_api_multi_aggregation_8_op';
   $handler->display->display_options['filters']['search_api_multi_aggregation_8']['expose']['identifier'] = 'search_api_multi_aggregation_8';
   $handler->display->display_options['filters']['search_api_multi_aggregation_8']['expose']['multiple'] = TRUE;
