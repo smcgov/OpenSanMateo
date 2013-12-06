@@ -118,7 +118,9 @@
 			
   		a:hover,
   		&:hover > a,
-  		&.active-trail > a {
+  		&.active-trail > a,
+  		&:focus,
+  		&:focus > a {
   			background-color: rgba($primaryTeal, 1);
   			color: white;
   			border-radius: 3px;
@@ -196,12 +198,14 @@
       margin-bottom: 0;
     }
   }
-	.primary li:hover > ul {
+	.primary li:hover > ul,
+	.primary li a:focus + ul {
 		opacity: 1;
 		z-index: 1000;
 	}
 		
-	.primary li:hover > ul li {
+	.primary li:hover > ul li,
+	.primary li a:focus + ul li {
 		height: 36px;
 		overflow: visible;
 		padding: 0;

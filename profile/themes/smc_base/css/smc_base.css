@@ -9266,7 +9266,7 @@ table {
         -moz-transition: all 0.3s;
         transition: all 0.3s; }
       /* line 121, ../scss/elements/main-menu.scss */
-      .primary li a:hover, .primary li:hover > a, .primary li.active-trail > a {
+      .primary li a:hover, .primary li:hover > a, .primary li.active-trail > a, .primary li a:focus {
         background-color: #38939b;
         color: white;
         border-radius: 3px; }
@@ -9331,12 +9331,12 @@ table {
       margin-bottom: 0; }
 
   /* line 199, ../scss/elements/main-menu.scss */
-  .primary li:hover > ul {
+  .primary li:hover > ul, .primary li a:focus + ul{
     opacity: 1;
     z-index: 1000; }
 
   /* line 204, ../scss/elements/main-menu.scss */
-  .primary li:hover > ul li {
+  .primary li:hover > ul li, .primary li a:focus + ul li {
     height: 36px;
     overflow: visible;
     padding: 0; }
