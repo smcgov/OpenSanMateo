@@ -9308,26 +9308,26 @@ table {
         -webkit-transition: all 0.3s;
         -moz-transition: all 0.3s;
         transition: all 0.3s; }
-      /* line 121, ../scss/elements/main-menu.scss */
-      .primary li a:hover, .primary li:hover > a, .primary li.active-trail > a, .primary li a:focus {
+      /* line 123, ../scss/elements/main-menu.scss */
+      .primary li a:hover, .primary li:hover > a, .primary li.active-trail > a, .primary li:focus, .primary li:focus > a {
         background-color: #38939b;
         color: white;
         border-radius: 3px; }
-      /* line 127, ../scss/elements/main-menu.scss */
+      /* line 129, ../scss/elements/main-menu.scss */
       .primary li.expanded > a:after {
         content: "\e004";
         font-family: 'SanMateoIcon';
         font-size: .5em;
         padding-left: 5px;
         color: rgba(56, 147, 155, 0.3); }
-      /* line 136, ../scss/elements/main-menu.scss */
+      /* line 138, ../scss/elements/main-menu.scss */
       .primary li.expanded > a:hover, .primary li.expanded:hover > a {
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px; }
-      /* line 143, ../scss/elements/main-menu.scss */
+      /* line 145, ../scss/elements/main-menu.scss */
       .primary li.expanded > a:hover:after, .primary li.expanded:hover > a:after, .primary li.active-trail > a:after {
         color: rgba(255, 255, 255, 0.5); }
-      /* line 147, ../scss/elements/main-menu.scss */
+      /* line 149, ../scss/elements/main-menu.scss */
       .primary li ul {
         position: absolute;
         top: 2.5em;
@@ -9346,7 +9346,7 @@ table {
         -o-transition: opacity .25s ease .1s;
         -ms-transition: opacity .25s ease .1s;
         transition: opacity .25s ease .1s; }
-        /* line 167, ../scss/elements/main-menu.scss */
+        /* line 169, ../scss/elements/main-menu.scss */
         .primary li ul li {
           height: 0;
           overflow: hidden;
@@ -9358,33 +9358,35 @@ table {
           -o-transition: height .25s ease .1s;
           -ms-transition: height .25s ease .1s;
           transition: height .25s ease .1s; }
-          /* line 179, ../scss/elements/main-menu.scss */
+          /* line 181, ../scss/elements/main-menu.scss */
           .primary li ul li a {
             color: white;
             display: block;
             border-radius: 0;
             padding: .5em 1em;
             width: 100%; }
-        /* line 188, ../scss/elements/main-menu.scss */
+        /* line 190, ../scss/elements/main-menu.scss */
         .primary li ul li:last-child > a, .primary li ul li:last-child > a:hover {
           border-bottom-left-radius: 3px;
           border-bottom-right-radius: 3px; }
-    /* line 195, ../scss/elements/main-menu.scss */
+    /* line 197, ../scss/elements/main-menu.scss */
     .primary ul {
       margin-bottom: 0; }
 
-  /* line 199, ../scss/elements/main-menu.scss */
-  .primary li:hover > ul, .primary li a:focus + ul{
+  /* line 202, ../scss/elements/main-menu.scss */
+  .primary li:hover > ul,
+  .primary li a:focus + ul {
     opacity: 1;
     z-index: 1000; }
 
-  /* line 204, ../scss/elements/main-menu.scss */
-  .primary li:hover > ul li, .primary li a:focus + ul li {
+  /* line 208, ../scss/elements/main-menu.scss */
+  .primary li:hover > ul li,
+  .primary li a:focus + ul li {
     height: 36px;
     overflow: visible;
     padding: 0; }
 
-  /* line 210, ../scss/elements/main-menu.scss */
+  /* line 214, ../scss/elements/main-menu.scss */
   .sub {
     background-color: white;
     border: 1px solid rgba(3, 108, 182, 0.05);
@@ -9392,17 +9394,17 @@ table {
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
     font-size: .85em;
     border-top: 5px solid rgba(3, 108, 182, 0.05); }
-    /* line 218, ../scss/elements/main-menu.scss */
+    /* line 222, ../scss/elements/main-menu.scss */
     .sub ul {
       margin: 0;
       padding: 0;
       font-size: 1em; }
-      /* line 223, ../scss/elements/main-menu.scss */
+      /* line 227, ../scss/elements/main-menu.scss */
       .sub ul li {
         margin: 0;
         padding: 0;
         list-style-type: none; }
-        /* line 228, ../scss/elements/main-menu.scss */
+        /* line 232, ../scss/elements/main-menu.scss */
         .sub ul li a {
           display: block;
           padding: .75em .75em;
@@ -9410,65 +9412,65 @@ table {
           -webkit-transition: all 0.3s;
           -moz-transition: all 0.3s;
           transition: all 0.3s; }
-        /* line 236, ../scss/elements/main-menu.scss */
+        /* line 240, ../scss/elements/main-menu.scss */
         .sub ul li a:hover {
           background-color: rgba(3, 108, 182, 0.8);
           color: white; }
-      /* line 241, ../scss/elements/main-menu.scss */
+      /* line 245, ../scss/elements/main-menu.scss */
       .sub ul .active {
         font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
         font-weight: normal; }
-        /* line 244, ../scss/elements/main-menu.scss */
+        /* line 248, ../scss/elements/main-menu.scss */
         .sub ul .active a {
           background-color: white;
           color: #036cb6; }
-        /* line 250, ../scss/elements/main-menu.scss */
+        /* line 254, ../scss/elements/main-menu.scss */
         .sub ul .active ul li a {
           background-color: rgba(56, 147, 155, 0.1);
           color: #38939b;
           font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
           border-color: rgba(56, 147, 155, 0.2); }
-        /* line 256, ../scss/elements/main-menu.scss */
+        /* line 260, ../scss/elements/main-menu.scss */
         .sub ul .active ul li a:hover {
           background-color: rgba(56, 147, 155, 0.2); } }
-/* line 270, ../scss/elements/main-menu.scss */
+/* line 274, ../scss/elements/main-menu.scss */
 .lte8 .menu-button, .lte8 .touch-button {
   display: none; }
-/* line 274, ../scss/elements/main-menu.scss */
+/* line 278, ../scss/elements/main-menu.scss */
 .lte8 .icon-menu {
   display: none; }
-/* line 278, ../scss/elements/main-menu.scss */
+/* line 282, ../scss/elements/main-menu.scss */
 .lte8 .home {
   display: block; }
-/* line 282, ../scss/elements/main-menu.scss */
+/* line 286, ../scss/elements/main-menu.scss */
 .lte8 .flexnav {
   padding-top: 0 !important; }
-/* line 286, ../scss/elements/main-menu.scss */
+/* line 290, ../scss/elements/main-menu.scss */
 .lte8 .primary {
   border-radius: 3px;
   width: 100%;
   background-color: rgba(56, 147, 155, 0.05); }
-  /* line 292, ../scss/elements/main-menu.scss */
+  /* line 296, ../scss/elements/main-menu.scss */
   .lte8 .primary ul {
     margin: 0;
     padding: 0;
     font-size: 1em;
     color: #036cb6; }
-  /* line 299, ../scss/elements/main-menu.scss */
+  /* line 303, ../scss/elements/main-menu.scss */
   .lte8 .primary .home a:before {
     content: "\e003";
     font-family: 'SanMateoIcon';
     text-indent: 0 !important;
     color: #036cb6; }
-  /* line 309, ../scss/elements/main-menu.scss */
+  /* line 313, ../scss/elements/main-menu.scss */
   .lte8 .primary .home a:hover:before {
     color: #FFF; }
-  /* line 314, ../scss/elements/main-menu.scss */
+  /* line 318, ../scss/elements/main-menu.scss */
   .lte8 .primary li {
     float: left;
     list-style-type: none;
     position: relative; }
-    /* line 321, ../scss/elements/main-menu.scss */
+    /* line 325, ../scss/elements/main-menu.scss */
     .lte8 .primary li a {
       font-family: 'Trade Gothic W01 Roman', Helvetica Neue, Arial, Helvetica, sans-serif;
       font-size: 1em;
@@ -9477,26 +9479,26 @@ table {
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s; }
-    /* line 333, ../scss/elements/main-menu.scss */
+    /* line 337, ../scss/elements/main-menu.scss */
     .lte8 .primary li a:hover, .lte8 .primary li:hover > a, .lte8 .primary li.active-trail > a {
       background-color: #38939b;
       color: white;
       border-radius: 3px; }
-    /* line 339, ../scss/elements/main-menu.scss */
+    /* line 343, ../scss/elements/main-menu.scss */
     .lte8 .primary li.expanded > a:after {
       content: "\e004";
       font-family: 'SanMateoIcon';
       font-size: .5em;
       padding-left: 5px;
       color: rgba(56, 147, 155, 0.3); }
-    /* line 348, ../scss/elements/main-menu.scss */
+    /* line 352, ../scss/elements/main-menu.scss */
     .lte8 .primary li.expanded > a:hover, .lte8 .primary li.expanded:hover > a {
       border-bottom-left-radius: 0px;
       border-bottom-right-radius: 0px; }
-    /* line 355, ../scss/elements/main-menu.scss */
+    /* line 359, ../scss/elements/main-menu.scss */
     .lte8 .primary li.expanded > a:hover:after, .lte8 .primary li.expanded:hover > a:after, .lte8 .primary li.active-trail > a:after {
       color: rgba(255, 255, 255, 0.5); }
-    /* line 359, ../scss/elements/main-menu.scss */
+    /* line 363, ../scss/elements/main-menu.scss */
     .lte8 .primary li ul {
       position: absolute;
       top: 2.5em;
@@ -9516,7 +9518,7 @@ table {
       -o-transition: opacity .25s ease .1s;
       -ms-transition: opacity .25s ease .1s;
       transition: opacity .25s ease .1s; }
-      /* line 380, ../scss/elements/main-menu.scss */
+      /* line 384, ../scss/elements/main-menu.scss */
       .lte8 .primary li ul li {
         height: 0;
         overflow: hidden;
@@ -9528,30 +9530,30 @@ table {
         -o-transition: height .25s ease .1s;
         -ms-transition: height .25s ease .1s;
         transition: height .25s ease .1s; }
-        /* line 392, ../scss/elements/main-menu.scss */
+        /* line 396, ../scss/elements/main-menu.scss */
         .lte8 .primary li ul li a {
           color: white;
           display: block;
           border-radius: 0;
           padding: .5em 1em;
           width: 100%; }
-      /* line 401, ../scss/elements/main-menu.scss */
+      /* line 405, ../scss/elements/main-menu.scss */
       .lte8 .primary li ul li:last-child > a, .lte8 .primary li ul li:last-child > a:hover {
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px; }
-  /* line 408, ../scss/elements/main-menu.scss */
+  /* line 412, ../scss/elements/main-menu.scss */
   .lte8 .primary ul {
     margin-bottom: 0; }
-/* line 412, ../scss/elements/main-menu.scss */
+/* line 416, ../scss/elements/main-menu.scss */
 .lte8 .primary li:hover > ul {
   opacity: 1;
   z-index: 1000; }
-/* line 417, ../scss/elements/main-menu.scss */
+/* line 421, ../scss/elements/main-menu.scss */
 .lte8 .primary li:hover > ul li {
   height: 36px;
   overflow: visible;
   padding: 0; }
-/* line 423, ../scss/elements/main-menu.scss */
+/* line 427, ../scss/elements/main-menu.scss */
 .lte8 .sub {
   background-color: white;
   border: 1px solid rgba(3, 108, 182, 0.05);
@@ -9559,17 +9561,17 @@ table {
   font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
   font-size: .85em;
   border-top: 5px solid rgba(3, 108, 182, 0.05); }
-  /* line 431, ../scss/elements/main-menu.scss */
+  /* line 435, ../scss/elements/main-menu.scss */
   .lte8 .sub ul {
     margin: 0;
     padding: 0;
     font-size: 1em; }
-    /* line 436, ../scss/elements/main-menu.scss */
+    /* line 440, ../scss/elements/main-menu.scss */
     .lte8 .sub ul li {
       margin: 0;
       padding: 0;
       list-style-type: none; }
-      /* line 441, ../scss/elements/main-menu.scss */
+      /* line 445, ../scss/elements/main-menu.scss */
       .lte8 .sub ul li a {
         display: block;
         padding: .75em .75em;
@@ -9577,25 +9579,25 @@ table {
         -webkit-transition: all 0.3s;
         -moz-transition: all 0.3s;
         transition: all 0.3s; }
-      /* line 449, ../scss/elements/main-menu.scss */
+      /* line 453, ../scss/elements/main-menu.scss */
       .lte8 .sub ul li a:hover {
         background-color: rgba(3, 108, 182, 0.8);
         color: white; }
-    /* line 454, ../scss/elements/main-menu.scss */
+    /* line 458, ../scss/elements/main-menu.scss */
     .lte8 .sub ul .active {
       font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
       font-weight: normal; }
-      /* line 457, ../scss/elements/main-menu.scss */
+      /* line 461, ../scss/elements/main-menu.scss */
       .lte8 .sub ul .active a {
         background-color: white;
         color: #036cb6; }
-      /* line 463, ../scss/elements/main-menu.scss */
+      /* line 467, ../scss/elements/main-menu.scss */
       .lte8 .sub ul .active ul li a {
         background-color: rgba(56, 147, 155, 0.1);
         color: #38939b;
         font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
         border-color: rgba(56, 147, 155, 0.2); }
-      /* line 469, ../scss/elements/main-menu.scss */
+      /* line 473, ../scss/elements/main-menu.scss */
       .lte8 .sub ul .active ul li a:hover {
         background-color: rgba(56, 147, 155, 0.2); }
 
@@ -10427,7 +10429,7 @@ table {
     background: white;
     border: none;
     box-shadow: none;
-    color: white;
+    color: rgba(56, 147, 155, 0.9);
     padding: 0.25em 0.75em;
     font-size: 1em;
     -webkit-transition: all 0.3s;
