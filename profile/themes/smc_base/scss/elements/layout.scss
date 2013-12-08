@@ -19,11 +19,13 @@
   header .inner {
   	max-width: 1120px;
   	margin: auto;
-  }  
+  } 
 }
 
 @media all and (min-width: $desktop) {
-
+  #main-wrapper.one-column-display {
+    max-width: 77.5%;
+  }
 }
 
 // One Column Layout

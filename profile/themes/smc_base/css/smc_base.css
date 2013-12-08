@@ -8099,7 +8099,11 @@ table {
   header .inner {
     max-width: 1120px;
     margin: auto; } }
-/* line 34, ../scss/elements/layout.scss */
+@media all and (min-width: 800px) {
+  /* line 26, ../scss/elements/layout.scss */
+  #main-wrapper.one-column-display {
+    max-width: 77.5%; } }
+/* line 36, ../scss/elements/layout.scss */
 #main-wrapper .sm-one-column .panel-col-top,
 #main-wrapper .sm-one-column .panel-col-nav,
 #main-wrapper .sm-one-column .panel-col-middle,
@@ -8112,7 +8116,7 @@ table {
   margin: 0;
   margin-bottom: 20px; }
 
-/* line 49, ../scss/elements/layout.scss */
+/* line 51, ../scss/elements/layout.scss */
 #main-wrapper .sm-two-column .panel-col-top,
 #main-wrapper .sm-two-column .panel-col-first,
 #main-wrapper .sm-two-column .panel-col-nav,
@@ -8126,7 +8130,7 @@ table {
   margin: 0;
   margin-bottom: 3%; }
 
-/* line 64, ../scss/elements/layout.scss */
+/* line 66, ../scss/elements/layout.scss */
 #main-wrapper .sm-two-column-fifty-fifty .panel-col-top,
 #main-wrapper .sm-two-column-fifty-fifty .panel-col-nav,
 #main-wrapper .sm-two-column-fifty-fifty .panel-col-first,
@@ -8141,7 +8145,7 @@ table {
   margin-bottom: 3%; }
 
 @media all and (min-width: 768px) {
-  /* line 75, ../scss/elements/layout.scss */
+  /* line 77, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column .panel-col-first {
     float: left;
     clear: none;
@@ -8151,7 +8155,7 @@ table {
     margin-right: 2.5%;
     margin-bottom: 3%; }
 
-  /* line 85, ../scss/elements/layout.scss */
+  /* line 87, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column .panel-col-middle {
     float: left;
     clear: none;
@@ -8160,7 +8164,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 94, ../scss/elements/layout.scss */
+  /* line 96, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-fifty-fifty .panel-col-first {
     float: left;
     clear: none;
@@ -8170,7 +8174,7 @@ table {
     margin-right: 5%;
     margin-bottom: 3%; }
 
-  /* line 104, ../scss/elements/layout.scss */
+  /* line 106, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-fifty-fifty .panel-col-middle {
     float: left;
     clear: none;
@@ -8179,7 +8183,7 @@ table {
     margin: 0;
     margin-bottom: 3%; } }
 @media all and (min-width: 800px) {
-  /* line 115, ../scss/elements/layout.scss */
+  /* line 117, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column .panel-col-first {
     float: left;
     clear: none;
@@ -8189,7 +8193,7 @@ table {
     margin-right: 2.5%;
     margin-bottom: 3%; }
 
-  /* line 125, ../scss/elements/layout.scss */
+  /* line 127, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column .panel-col-middle {
     float: left;
     clear: none;
@@ -8197,7 +8201,7 @@ table {
     padding: 0;
     margin: 0;
     margin-bottom: 3%; } }
-/* line 141, ../scss/elements/layout.scss */
+/* line 143, ../scss/elements/layout.scss */
 #main-wrapper .sm-two-column-alt .panel-col-top,
 #main-wrapper .sm-two-column-alt .panel-col-first,
 #main-wrapper .sm-two-column-alt .panel-col-middle,
@@ -8213,7 +8217,7 @@ table {
   margin-bottom: 3%; }
 
 @media all and (min-width: 768px) {
-  /* line 153, ../scss/elements/layout.scss */
+  /* line 155, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-top,
   #main-wrapper .sm-two-column-alt .panel-col-bottom {
     width: 100%;
@@ -8224,7 +8228,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 164, ../scss/elements/layout.scss */
+  /* line 166, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-first {
     float: none;
     clear: none;
@@ -8234,7 +8238,7 @@ table {
     margin-right: 0;
     margin-bottom: 3%; }
 
-  /* line 174, ../scss/elements/layout.scss */
+  /* line 176, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-middle {
     float: left;
     clear: none;
@@ -8243,7 +8247,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 184, ../scss/elements/layout.scss */
+  /* line 186, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-lower-left {
     float: left;
     clear: none;
@@ -8251,7 +8255,7 @@ table {
     padding: 0;
     margin: 0; }
 
-  /* line 192, ../scss/elements/layout.scss */
+  /* line 194, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-lower-right {
     float: left;
     clear: none;
@@ -8260,7 +8264,7 @@ table {
     margin: 0;
     margin-left: 2.5%; } }
 @media all and (min-width: 800px) {
-  /* line 204, ../scss/elements/layout.scss */
+  /* line 206, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-top,
   #main-wrapper .sm-two-column-alt .panel-col-bottom {
     width: 100%;
@@ -8271,7 +8275,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 215, ../scss/elements/layout.scss */
+  /* line 217, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-first {
     float: left;
     clear: none;
@@ -8281,7 +8285,7 @@ table {
     margin-right: 2.5%;
     margin-bottom: 3%; }
 
-  /* line 225, ../scss/elements/layout.scss */
+  /* line 227, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-middle {
     float: left;
     clear: none;
@@ -8290,7 +8294,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 235, ../scss/elements/layout.scss */
+  /* line 237, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-lower-left {
     float: left;
     clear: none;
@@ -8298,7 +8302,7 @@ table {
     padding: 0;
     margin: 0; }
 
-  /* line 243, ../scss/elements/layout.scss */
+  /* line 245, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-lower-right {
     float: left;
     clear: none;
@@ -8306,11 +8310,11 @@ table {
     padding: 0;
     margin: 0;
     margin-left: 2.5%; } }
-/* line 255, ../scss/elements/layout.scss */
+/* line 257, ../scss/elements/layout.scss */
 #main-wrapper .sm-three-column {
   margin-bottom: 5%; }
 
-/* line 263, ../scss/elements/layout.scss */
+/* line 265, ../scss/elements/layout.scss */
 #main-wrapper .sm-three-column .panel-col-top,
 #main-wrapper .sm-three-column .panel-col-first,
 #main-wrapper .sm-three-column .panel-col-middle,
@@ -8325,7 +8329,7 @@ table {
   margin-bottom: 3%; }
 
 @media all and (min-width: 768px) {
-  /* line 276, ../scss/elements/layout.scss */
+  /* line 278, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-first {
     float: none;
     width: 100%;
@@ -8333,7 +8337,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 284, ../scss/elements/layout.scss */
+  /* line 286, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-middle {
     float: left;
     clear: none;
@@ -8343,7 +8347,7 @@ table {
     margin-bottom: 3%;
     padding: 0 1em; }
 
-  /* line 294, ../scss/elements/layout.scss */
+  /* line 296, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-last {
     float: left;
     clear: none;
@@ -8354,7 +8358,7 @@ table {
     padding-right: 1em;
     margin-bottom: 3%; } }
 @media all and (min-width: 800px) {
-  /* line 308, ../scss/elements/layout.scss */
+  /* line 310, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-first {
     float: left;
     clear: none;
@@ -8363,7 +8367,7 @@ table {
     margin: 0;
     margin-right: 2.5%; }
 
-  /* line 317, ../scss/elements/layout.scss */
+  /* line 319, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-middle {
     float: left;
     clear: none;
@@ -8373,7 +8377,7 @@ table {
     margin-bottom: 3%;
     padding: 0 1em; }
 
-  /* line 327, ../scss/elements/layout.scss */
+  /* line 329, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-last {
     float: left;
     clear: none;
@@ -8381,16 +8385,16 @@ table {
     padding: 0;
     margin: 0;
     margin-left: 2.5%; } }
-/* line 340, ../scss/elements/layout.scss */
+/* line 342, ../scss/elements/layout.scss */
 #main-wrapper #responsive-navigation {
   display: none; }
 
-/* line 344, ../scss/elements/layout.scss */
+/* line 346, ../scss/elements/layout.scss */
 #main-wrapper #navigation-toggle {
   display: block;
   text-align: right;
   margin-bottom: 10px; }
-  /* line 349, ../scss/elements/layout.scss */
+  /* line 351, ../scss/elements/layout.scss */
   #main-wrapper #navigation-toggle a {
     display: inline-block;
     padding: .75em .5em;
@@ -8398,20 +8402,20 @@ table {
     text-align: center;
     background-color: rgba(3, 108, 182, 0.1);
     border-radius: 3px; }
-    /* line 358, ../scss/elements/layout.scss */
+    /* line 360, ../scss/elements/layout.scss */
     #main-wrapper #navigation-toggle a:before {
       padding-right: 1em;
       content: "\e006"; }
 
 @media all and (min-width: 768px) {
-  /* line 371, ../scss/elements/layout.scss */
+  /* line 373, ../scss/elements/layout.scss */
   #main-wrapper #responsive-navigation {
     display: block !important; }
 
-  /* line 375, ../scss/elements/layout.scss */
+  /* line 377, ../scss/elements/layout.scss */
   #main-wrapper #navigation-toggle {
     display: none; } }
-/* line 382, ../scss/elements/layout.scss */
+/* line 384, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column .panel-col-first {
   float: left;
   clear: none;
@@ -8420,7 +8424,7 @@ table {
   margin: 0;
   margin-right: 2.5%;
   margin-bottom: 3%; }
-/* line 392, ../scss/elements/layout.scss */
+/* line 394, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column .panel-col-middle {
   float: left;
   clear: none;
@@ -8428,7 +8432,7 @@ table {
   padding: 0;
   margin: 0;
   margin-bottom: 3%; }
-/* line 401, ../scss/elements/layout.scss */
+/* line 403, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-top,
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-bottom {
   width: 100%;
@@ -8438,7 +8442,7 @@ table {
   padding: 0;
   margin: 0;
   margin-bottom: 3%; }
-/* line 412, ../scss/elements/layout.scss */
+/* line 414, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-first {
   float: left;
   clear: none;
@@ -8447,7 +8451,7 @@ table {
   margin: 0;
   margin-right: 2.5%;
   margin-bottom: 3%; }
-/* line 422, ../scss/elements/layout.scss */
+/* line 424, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-middle {
   float: left;
   clear: none;
@@ -8455,14 +8459,14 @@ table {
   padding: 0;
   margin: 0;
   margin-bottom: 3%; }
-/* line 432, ../scss/elements/layout.scss */
+/* line 434, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-lower-left {
   float: left;
   clear: none;
   width: 65%;
   padding: 0;
   margin: 0; }
-/* line 440, ../scss/elements/layout.scss */
+/* line 442, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-lower-right {
   float: left;
   clear: none;
@@ -8470,7 +8474,7 @@ table {
   padding: 0;
   margin: 0;
   margin-left: 2.5%; }
-/* line 448, ../scss/elements/layout.scss */
+/* line 450, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-three-column .panel-col-first {
   float: left;
   clear: none;
@@ -8478,7 +8482,7 @@ table {
   padding: 0;
   margin: 0;
   margin-right: 2.5%; }
-/* line 457, ../scss/elements/layout.scss */
+/* line 459, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-three-column .panel-col-middle {
   float: left;
   clear: none;
@@ -8487,7 +8491,7 @@ table {
   margin: 0;
   margin-bottom: 3%;
   padding: 0 1em; }
-/* line 467, ../scss/elements/layout.scss */
+/* line 469, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-three-column .panel-col-last {
   float: left;
   clear: none;
