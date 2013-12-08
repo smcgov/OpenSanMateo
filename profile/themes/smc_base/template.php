@@ -82,7 +82,8 @@ function smc_base_preprocess_node(&$variables) {
     break;
 
     case 'blog_entry':
-      $display_byline = isset($variables['field_blog_show_author_info']) ? $variables['field_blog_show_author_info']['und'][0]['value'] : FALSE;
+      //$display_byline = isset($variables['field_blog_show_author_info']) ? $variables['field_blog_show_author_info']['und'][0]['value'] : FALSE;
+      $display_byline = TRUE;
       $author_field = isset($variables['field_blog_author']) ? $variables['field_blog_author']['und'][0]['nid'] : FALSE;
     break;
 
