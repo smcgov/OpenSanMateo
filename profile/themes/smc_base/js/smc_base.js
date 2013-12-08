@@ -91,6 +91,11 @@ $('.show_hide').showHide({
      });
     }
   };
+  Drupal.behaviors.smcOneColResize = {
+    attach: function (context) {
+     $('#block-system-main .sm-one-column').parents('#main-wrapper').addClass('one-column-display');
+    }
+  };
   Drupal.behaviors.smcMetaPadding = {
     attach: function (context) {
       var metaWidth;
