@@ -30,7 +30,7 @@ function opensanmateo_question_entity_view_alter(&$build, $type) {
   //dpm(func_get_args()); return;
   // Check to see if this entity is one we want to manipulate (refer to opensanmateo_question_entity_info_alter)
   if ('fieldable_panels_pane' == $type && 'question_panels_pane' == $build['#bundle']) {
-    $options = array();
+    $options = array('' => t('choose a topic...'));
     // Iterate through multiple items stored in the field
     foreach ($build['field_question_links']['#items'] as $index => $item) {
       // Locate the item using field_collection's indexing mechanism
