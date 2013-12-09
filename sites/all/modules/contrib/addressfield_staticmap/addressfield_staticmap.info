@@ -6,8 +6,8 @@ configure = admin/config/system/addressfield_staticmap
 dependencies[] = addressfield
 
 
-; Information added by drush on 2013-12-06
+; Information added by drush on 2013-12-09
 version = "f9f1d97b025ddc0f02af3b39a88da662fcf5d15d"
 project = "addressfield_staticmap"
-datestamp = "1386371358"
+datestamp = "1386568642"
 
