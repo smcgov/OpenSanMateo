@@ -66,10 +66,15 @@ $('.show_hide').showHide({
     attach: function (context) {
       
       $(".flexnav").flexNav();
-      
-      $('.menu-button').click(function(){
+      $('#block-opensanmateo-search-header-search').fadeOut('fast');
+      $('.menu-button .touch-button').on('click touchstart', function(e){
         Drupal.smc.toolbarFix();
+        e.stopPropagation();
+        e.preventDefault();
         $('#block-opensanmateo-search-header-search').fadeToggle('fast');
+        $('#responsive-navigation').slideToggle();
+        //$('#responsive-navigation').slideToggle();
+        //alert('whoa!!');
       });
     }
   };
@@ -86,8 +91,8 @@ $('.show_hide').showHide({
     attach: function (context) {
       
      $('#navigation-toggle a').click(function(){
-       $('#responsive-navigation').slideToggle();
-       return false;
+       //$('#responsive-navigation').slideToggle();
+       //return false;
      });
     }
   };

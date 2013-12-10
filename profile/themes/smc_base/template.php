@@ -87,17 +87,18 @@ function smc_base_preprocess_node(&$variables) {
       $author_field = isset($variables['field_blog_author']) ? $variables['field_blog_author']['und'][0]['nid'] : FALSE;
     break;
 
-    case 'document':
-
+    case 'document':      
+      $docs = element_children($variables['content']['field_document_attachment']);
       // Opic automatically adds a suffix to the document attachment field, which
       // we want to get rid of.
-      if (!empty($variables['content']['field_document_attachment'][0]['#suffix'])) {
-        unset($variables['content']['field_document_attachment'][0]['#prefix']);
-        unset($variables['content']['field_document_attachment'][0]['#suffix']);
+      foreach($docs as $doc) {
+        if (!empty($variables['content']['field_document_attachment'][$doc]['#suffix'])) {
+          unset($variables['content']['field_document_attachment'][$doc]['#prefix']);
+          unset($variables['content']['field_document_attachment'][$doc]['#suffix']);
+        }  
       }
-
       $display_byline = $variables['display_submitted'];
-      $author_field = isset($variables['field_document_author']) ? $variables['field_document_author'][0]['nid'] : FALSE;
+      $author_field = isset($variables['field_document_author'][0]) ? $variables['field_document_author'][0]['nid'] : FALSE;
     break;
   }
 

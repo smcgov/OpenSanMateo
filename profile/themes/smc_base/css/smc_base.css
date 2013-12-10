@@ -7610,7 +7610,7 @@ ul.button-test {
 
   /* line 103, ../scss/elements/header.scss */
   .site-seal {
-    background: url("../images/seal.png") no-repeat 0 -2px;
+    background: url("../images/seal.png") no-repeat 0 0;
     background-size: contain;
     position: absolute;
     top: 0.25em;
@@ -8832,8 +8832,22 @@ table {
         .universal-teaser.event .read-more-wrapper a:hover {
           background-color: rgba(3, 108, 182, 0.2); }
 
+/* line 234, ../scss/elements/teaser.scss */
+.field-type-node-reference .node-profile h2 {
+  color: #036cb6;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  font-size: 1.125em;
+  line-height: 1.4;
+  margin-bottom: 0.5em;
+  margin-top: 0.2em;
+  display: block; }
+  /* line 244, ../scss/elements/teaser.scss */
+  .field-type-node-reference .node-profile h2 a {
+    color: #036cb6; }
+
 @media all and (min-width: 768px) {
-  /* line 236, ../scss/elements/teaser.scss */
+  /* line 254, ../scss/elements/teaser.scss */
   .universal-teaser.event {
     border-radius: 3px;
     background-color: white;
@@ -8842,7 +8856,7 @@ table {
     position: relative;
     display: block; }
 
-  /* line 252, ../scss/elements/teaser.scss */
+  /* line 270, ../scss/elements/teaser.scss */
   .panel-col-first .universal-teaser.event .node-teaser,
   .panel-col-first .universal-teaser.event .node-date,
   .panel-col-first .universal-teaser.event .node-location,
@@ -8850,52 +8864,52 @@ table {
   .panel-col-last .universal-teaser.event .node-date,
   .panel-col-last .universal-teaser.event .node-location {
     font-size: 0.75em; }
-  /* line 255, ../scss/elements/teaser.scss */
+  /* line 273, ../scss/elements/teaser.scss */
   .panel-col-first .universal-teaser.event .node-location ul, .panel-col-first .universal-teaser.event .node-location li,
   .panel-col-last .universal-teaser.event .node-location ul,
   .panel-col-last .universal-teaser.event .node-location li {
     font-size: 1em; }
 
-  /* line 265, ../scss/elements/teaser.scss */
+  /* line 283, ../scss/elements/teaser.scss */
   .panel-col-top .universal-teaser,
   .panel-col-bottom .universal-teaser {
     float: left;
     clear: none;
     width: 47.5%;
     margin-right: 5%; }
-    /* line 272, ../scss/elements/teaser.scss */
+    /* line 290, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+2),
     .panel-col-bottom .universal-teaser:nth-child(2n+2) {
       margin-right: 0; }
-    /* line 276, ../scss/elements/teaser.scss */
+    /* line 294, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+3),
     .panel-col-bottom .universal-teaser:nth-child(2n+3) {
       clear: left; } }
 @media all and (min-width: 800px) {
-  /* line 288, ../scss/elements/teaser.scss */
+  /* line 306, ../scss/elements/teaser.scss */
   .panel-col-top .universal-teaser,
   .panel-col-bottom .universal-teaser {
     float: left;
     clear: none;
     width: 30%;
     margin-right: 5%; }
-    /* line 295, ../scss/elements/teaser.scss */
+    /* line 313, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+2),
     .panel-col-bottom .universal-teaser:nth-child(2n+2) {
       margin-right: 5%; }
-    /* line 299, ../scss/elements/teaser.scss */
+    /* line 317, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+3),
     .panel-col-bottom .universal-teaser:nth-child(2n+3) {
       clear: none; }
-    /* line 304, ../scss/elements/teaser.scss */
+    /* line 322, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(3n+3),
     .panel-col-bottom .universal-teaser:nth-child(3n+3) {
       margin-right: 0; }
-    /* line 308, ../scss/elements/teaser.scss */
+    /* line 326, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(3n+4),
     .panel-col-bottom .universal-teaser:nth-child(3n+4) {
       clear: left; }
-    /* line 315, ../scss/elements/teaser.scss */
+    /* line 333, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser.event .node-teaser,
     .panel-col-top .universal-teaser.event .node-date,
     .panel-col-top .universal-teaser.event .node-location,
@@ -8903,21 +8917,103 @@ table {
     .panel-col-bottom .universal-teaser.event .node-date,
     .panel-col-bottom .universal-teaser.event .node-location {
       font-size: 0.75em; }
-    /* line 318, ../scss/elements/teaser.scss */
+    /* line 336, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser.event .node-location ul, .panel-col-top .universal-teaser.event .node-location li,
     .panel-col-bottom .universal-teaser.event .node-location ul,
     .panel-col-bottom .universal-teaser.event .node-location li {
       font-size: 1em; } }
 /* Fonts */
 /* Media Queries */
-/* line 8, ../scss/elements/node-elements.scss */
+/* line 4, ../scss/elements/node-elements.scss */
+body.page-node .node .action-links-field-collection-add {
+  display: none; }
+
+/* line 7, ../scss/elements/node-elements.scss */
+.sharethis-buttons {
+  margin-bottom: 20px; }
+
+/* line 11, ../scss/elements/node-elements.scss */
+.field-name-field-profile-organization {
+  line-height: 1.6; }
+
+/* line 14, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node-profile {
+  margin-bottom: 40px; }
+  /* line 17, ../scss/elements/node-elements.scss */
+  .page-node div.panel-pane .node-profile .field {
+    margin-bottom: 20px; }
+    /* line 20, ../scss/elements/node-elements.scss */
+    .page-node div.panel-pane .node-profile .field div.field-label {
+      color: #036cb6;
+      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+      font-weight: normal;
+      font-size: 1.125em;
+      line-height: 1.4;
+      margin-bottom: 0.5em;
+      margin-top: 0.2em;
+      display: block; }
+
+/* line 33, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node .field {
+  margin-bottom: 20px; }
+/* line 36, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node div.field-label {
+  color: #036cb6;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  font-size: 1.125em;
+  line-height: 1.4;
+  margin-bottom: 0.5em;
+  margin-top: 0.2em;
+  display: block; }
+
+/* line 47, ../scss/elements/node-elements.scss */
+.field-collection-container {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px; }
+
+/* line 59, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node .field-name-field-location-address div.field-label,
+.page-node div.panel-pane .node .field-name-field-location-address ul.field-collection-view-links,
+.page-node div.panel-pane .node .field-name-field-location-address ul.action-links {
+  display: none; }
+/* line 65, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node .field-name-field-location-address .field-collection-view,
+.page-node div.panel-pane .node .field-name-field-location-address .views-row,
+.page-node div.panel-pane .node .field-name-field-location-address header {
+  padding: 0;
+  margin: 0;
+  border: 0; }
+/* line 70, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node .field-name-field-location-address .field {
+  margin-bottom: 0; }
+/* line 74, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node .field-name-field-location-address .views-row header span.field-content {
+  color: #036cb6;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  font-size: 1.125em;
+  line-height: 1.4;
+  margin-bottom: 0.5em;
+  margin-top: 0.2em;
+  display: block; }
+  /* line 84, ../scss/elements/node-elements.scss */
+  .page-node div.panel-pane .node .field-name-field-location-address .views-row header span.field-content a {
+    color: #036cb6; }
+/* line 89, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node .field-name-field-location-address .field-name-field-address {
+  line-height: 1.4; }
+
+/* line 98, ../scss/elements/node-elements.scss */
 .field-type-file .file a {
   width: 100%;
   float: left;
   border-top: 1px solid rgba(85, 90, 90, 0.1);
   padding: .5em 0;
   display: block; }
-/* line 16, ../scss/elements/node-elements.scss */
+/* line 106, ../scss/elements/node-elements.scss */
 .field-type-file .file .file-type {
   color: #555a5a;
   width: 10%;
@@ -8928,7 +9024,7 @@ table {
   text-align: center;
   display: inline-block;
   text-transform: uppercase; }
-/* line 29, ../scss/elements/node-elements.scss */
+/* line 119, ../scss/elements/node-elements.scss */
 .field-type-file .file .file-size {
   color: #555a5a;
   width: 20%;
@@ -8937,21 +9033,21 @@ table {
   padding: .5em;
   border-radius: 3px;
   text-align: right; }
-/* line 39, ../scss/elements/node-elements.scss */
+/* line 129, ../scss/elements/node-elements.scss */
 .field-type-file .file .file-name {
   padding-left: .5em; }
-/* line 43, ../scss/elements/node-elements.scss */
+/* line 133, ../scss/elements/node-elements.scss */
 .field-type-file .field-items {
   border-bottom: 1px solid rgba(85, 90, 90, 0.1);
   margin-bottom: 20px; }
-  /* line 47, ../scss/elements/node-elements.scss */
+  /* line 137, ../scss/elements/node-elements.scss */
   .field-type-file .field-items:after {
     clear: both;
     content: ".";
     display: block;
     height: 0;
     visibility: hidden; }
-  /* line 55, ../scss/elements/node-elements.scss */
+  /* line 145, ../scss/elements/node-elements.scss */
   .field-type-file .field-items .field-item:after, .field-type-file .field-items .file:after {
     clear: both;
     content: ".";
@@ -8960,7 +9056,7 @@ table {
     visibility: hidden; }
 
 @media all and (min-width: 768px) {
-  /* line 70, ../scss/elements/node-elements.scss */
+  /* line 160, ../scss/elements/node-elements.scss */
   .field-type-file .file .file-type, .field-type-file .file .file-size {
     font-size: 0.75em; } }
 /* Fonts */
