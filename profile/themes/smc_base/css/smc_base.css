@@ -10507,7 +10507,7 @@ body.page-node .node .action-links-field-collection-add {
   top: 68px;
   right: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 9999;
   background: rgba(56, 147, 155, 0.2); }
   /* line 25, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search #opensanmateo-search-header-search-form {
