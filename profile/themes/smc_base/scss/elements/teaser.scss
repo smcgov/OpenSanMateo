@@ -230,6 +230,24 @@
   }
 }
 
+.field-type-node-reference .node-profile {
+  h2 {
+    color: $primaryBlue; 
+    font-family: $bold;
+    font-weight: normal;
+    font-size: 1.125em;
+    line-height: 1.4;
+    margin-bottom: 0.5em;
+    margin-top: 0.2em;  
+    display: block;
+    
+    a {
+      color: $primaryBlue;   
+    }
+
+  }
+}
+
 @media all and (min-width: $tablet) {
   .universal-teaser {
   
