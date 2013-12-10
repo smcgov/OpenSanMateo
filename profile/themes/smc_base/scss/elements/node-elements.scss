@@ -7,6 +7,43 @@ body.page-node .node .action-links-field-collection-add {
 .sharethis-buttons {
   margin-bottom: 20px;
 }
+
+.field-name-field-profile-organization {
+  line-height: 1.6;
+}
+.page-node div.panel-pane .node-profile {
+  margin-bottom: 40px;
+  
+  .field {
+    margin-bottom: 20px;
+    
+    div.field-label {
+      color: $primaryBlue; 
+      font-family: $bold;
+      font-weight: normal;
+      font-size: 1.125em;
+      line-height: 1.4;
+      margin-bottom: 0.5em;
+      margin-top: 0.2em;  
+      display: block;
+    }
+  }
+}
+.page-node div.panel-pane .node {
+  .field {
+    margin-bottom: 20px;
+  }
+  div.field-label {
+    color: $primaryBlue; 
+    font-family: $bold;
+    font-weight: normal;
+    font-size: 1.125em;
+    line-height: 1.4;
+    margin-bottom: 0.5em;
+    margin-top: 0.2em;  
+    display: block;
+  }
+}
 .field-collection-container {
   border: 0;
   margin: 0;
@@ -14,7 +51,9 @@ body.page-node .node .action-links-field-collection-add {
   margin-bottom: 20px;
 }
 
-.field-name-field-location-address {
+.page-node div.panel-pane .node .field-name-field-location-address {
+  
+  
   div.field-label,
   ul.field-collection-view-links,
   ul.action-links {
@@ -28,7 +67,9 @@ body.page-node .node .action-links-field-collection-add {
     margin: 0;
     border: 0;
   }
-  
+  .field {
+    margin-bottom: 0;
+  }
   .views-row header {
     span.field-content {
       color: $primaryBlue; 

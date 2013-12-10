@@ -7610,7 +7610,7 @@ ul.button-test {
 
   /* line 103, ../scss/elements/header.scss */
   .site-seal {
-    background: url("../images/seal.png") no-repeat 0 -2px;
+    background: url("../images/seal.png") no-repeat 0 0;
     background-size: contain;
     position: absolute;
     top: 0.25em;
@@ -8918,27 +8918,32 @@ body.page-node .node .action-links-field-collection-add {
 .sharethis-buttons {
   margin-bottom: 20px; }
 
-/* line 10, ../scss/elements/node-elements.scss */
-.field-collection-container {
-  border: 0;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 20px; }
+/* line 11, ../scss/elements/node-elements.scss */
+.field-name-field-profile-organization {
+  line-height: 1.6; }
 
-/* line 20, ../scss/elements/node-elements.scss */
-.field-name-field-location-address div.field-label,
-.field-name-field-location-address ul.field-collection-view-links,
-.field-name-field-location-address ul.action-links {
-  display: none; }
-/* line 26, ../scss/elements/node-elements.scss */
-.field-name-field-location-address .field-collection-view,
-.field-name-field-location-address .views-row,
-.field-name-field-location-address header {
-  padding: 0;
-  margin: 0;
-  border: 0; }
+/* line 14, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node-profile {
+  margin-bottom: 40px; }
+  /* line 17, ../scss/elements/node-elements.scss */
+  .page-node div.panel-pane .node-profile .field {
+    margin-bottom: 20px; }
+    /* line 20, ../scss/elements/node-elements.scss */
+    .page-node div.panel-pane .node-profile .field div.field-label {
+      color: #036cb6;
+      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+      font-weight: normal;
+      font-size: 1.125em;
+      line-height: 1.4;
+      margin-bottom: 0.5em;
+      margin-top: 0.2em;
+      display: block; }
+
 /* line 33, ../scss/elements/node-elements.scss */
-.field-name-field-location-address .views-row header span.field-content {
+.page-node div.panel-pane .node .field {
+  margin-bottom: 20px; }
+/* line 36, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node div.field-label {
   color: #036cb6;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: normal;
@@ -8947,21 +8952,54 @@ body.page-node .node .action-links-field-collection-add {
   margin-bottom: 0.5em;
   margin-top: 0.2em;
   display: block; }
-  /* line 43, ../scss/elements/node-elements.scss */
-  .field-name-field-location-address .views-row header span.field-content a {
+
+/* line 47, ../scss/elements/node-elements.scss */
+.field-collection-container {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px; }
+
+/* line 59, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node .field-name-field-location-address div.field-label,
+.page-node div.panel-pane .node .field-name-field-location-address ul.field-collection-view-links,
+.page-node div.panel-pane .node .field-name-field-location-address ul.action-links {
+  display: none; }
+/* line 65, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node .field-name-field-location-address .field-collection-view,
+.page-node div.panel-pane .node .field-name-field-location-address .views-row,
+.page-node div.panel-pane .node .field-name-field-location-address header {
+  padding: 0;
+  margin: 0;
+  border: 0; }
+/* line 70, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node .field-name-field-location-address .field {
+  margin-bottom: 0; }
+/* line 74, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node .field-name-field-location-address .views-row header span.field-content {
+  color: #036cb6;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  font-size: 1.125em;
+  line-height: 1.4;
+  margin-bottom: 0.5em;
+  margin-top: 0.2em;
+  display: block; }
+  /* line 84, ../scss/elements/node-elements.scss */
+  .page-node div.panel-pane .node .field-name-field-location-address .views-row header span.field-content a {
     color: #036cb6; }
-/* line 48, ../scss/elements/node-elements.scss */
-.field-name-field-location-address .field-name-field-address {
+/* line 89, ../scss/elements/node-elements.scss */
+.page-node div.panel-pane .node .field-name-field-location-address .field-name-field-address {
   line-height: 1.4; }
 
-/* line 57, ../scss/elements/node-elements.scss */
+/* line 98, ../scss/elements/node-elements.scss */
 .field-type-file .file a {
   width: 100%;
   float: left;
   border-top: 1px solid rgba(85, 90, 90, 0.1);
   padding: .5em 0;
   display: block; }
-/* line 65, ../scss/elements/node-elements.scss */
+/* line 106, ../scss/elements/node-elements.scss */
 .field-type-file .file .file-type {
   color: #555a5a;
   width: 10%;
@@ -8972,7 +9010,7 @@ body.page-node .node .action-links-field-collection-add {
   text-align: center;
   display: inline-block;
   text-transform: uppercase; }
-/* line 78, ../scss/elements/node-elements.scss */
+/* line 119, ../scss/elements/node-elements.scss */
 .field-type-file .file .file-size {
   color: #555a5a;
   width: 20%;
@@ -8981,21 +9019,21 @@ body.page-node .node .action-links-field-collection-add {
   padding: .5em;
   border-radius: 3px;
   text-align: right; }
-/* line 88, ../scss/elements/node-elements.scss */
+/* line 129, ../scss/elements/node-elements.scss */
 .field-type-file .file .file-name {
   padding-left: .5em; }
-/* line 92, ../scss/elements/node-elements.scss */
+/* line 133, ../scss/elements/node-elements.scss */
 .field-type-file .field-items {
   border-bottom: 1px solid rgba(85, 90, 90, 0.1);
   margin-bottom: 20px; }
-  /* line 96, ../scss/elements/node-elements.scss */
+  /* line 137, ../scss/elements/node-elements.scss */
   .field-type-file .field-items:after {
     clear: both;
     content: ".";
     display: block;
     height: 0;
     visibility: hidden; }
-  /* line 104, ../scss/elements/node-elements.scss */
+  /* line 145, ../scss/elements/node-elements.scss */
   .field-type-file .field-items .field-item:after, .field-type-file .field-items .file:after {
     clear: both;
     content: ".";
@@ -9004,7 +9042,7 @@ body.page-node .node .action-links-field-collection-add {
     visibility: hidden; }
 
 @media all and (min-width: 768px) {
-  /* line 119, ../scss/elements/node-elements.scss */
+  /* line 160, ../scss/elements/node-elements.scss */
   .field-type-file .file .file-type, .field-type-file .file .file-size {
     font-size: 0.75em; } }
 /* Fonts */
@@ -10455,7 +10493,7 @@ body.page-node .node .action-links-field-collection-add {
   top: 68px;
   right: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 1000;
   background: rgba(56, 147, 155, 0.2); }
   /* line 25, ../scss/elements/search.scss */
   #block-opensanmateo-search-header-search #opensanmateo-search-header-search-form {
