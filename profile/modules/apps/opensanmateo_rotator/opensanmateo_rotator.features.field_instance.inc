@@ -443,6 +443,43 @@ function opensanmateo_rotator_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'fieldable_panels_pane-rotator_panels_pane-field_auto_advance'
+  $field_instances['fieldable_panels_pane-rotator_panels_pane-field_auto_advance'] = array(
+    'bundle' => 'rotator_panels_pane',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'fieldable_panels_pane',
+    'field_name' => 'field_auto_advance',
+    'label' => 'Auto Advance',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => -2,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'fieldable_panels_pane-rotator_panels_pane-field_coll_rotator_item'
   $field_instances['fieldable_panels_pane-rotator_panels_pane-field_coll_rotator_item'] = array(
     'bundle' => 'rotator_panels_pane',
@@ -496,7 +533,7 @@ function opensanmateo_rotator_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'fieldable_panels_pane',
@@ -517,8 +554,10 @@ function opensanmateo_rotator_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Auto Advance');
   t('Caption');
   t('Description');
+  t('Image');
   t('Link (URL)');
   t('Link (node reference)');
   t('Promo Style');

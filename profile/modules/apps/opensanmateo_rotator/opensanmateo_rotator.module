@@ -8,7 +8,7 @@ include_once 'opensanmateo_rotator.features.inc';
 
 /**
  * Implements hook_entity_info_alter()
- * 
+ *
  * Defines a new bundle type for the rotator pane
  */
 function opensanmateo_rotator_entity_info_alter(&$entity_info) {
@@ -32,12 +32,12 @@ function opensanmateo_rotator_preprocess_field(&$vars, $hook) {
 
   foreach ($vars['element']['#items'] as $index => $item) {
     $value = $item['value'];
-    $slide = $vars['items'][$index]['entity']['field_collection_item'][$value]; 
+    $slide = $vars['items'][$index]['entity']['field_collection_item'][$value];
     $link = NULL;
 
     // give a value for the entity id visible in $items
     $vars['items'][$index]['#eid'] = $value;
-    
+
     // wrap the caption in an h3
     if (isset($slide['field_rotator_caption'])) {
       $slide['field_rotator_caption'][0]['#markup'] = '<h3>' . $slide['field_rotator_caption'][0]['#markup'] . '</h3>';
@@ -48,7 +48,7 @@ function opensanmateo_rotator_preprocess_field(&$vars, $hook) {
       unset($slide['field_rotator_description']);
       $vars['items'][$index]['entity']['field_collection_item'][$value] = $slide;
     }
-    
+
     // Fetch link
     if (isset($slide['field_rotator_link_url'])) {
       $link = $slide['field_rotator_link_url']['#items'][0]['url'];
@@ -63,16 +63,16 @@ function opensanmateo_rotator_preprocess_field(&$vars, $hook) {
     }
     // give a value for the entity id visible in $items
     $vars['items'][$index]['#eid'] = $value;
-    
-    if (!empty($link)) {      
-      // this seems like semi-cheating - but there doesn't seem to be a more drupally way to do this     
+
+    if (!empty($link)) {
+      // this seems like semi-cheating - but there doesn't seem to be a more drupally way to do this
       $l = l('|', $link, array('attributes' => array('class' => array('rotator-wrap-link'))));
       $parts = explode('|', $l);
 
-      // wrap the image in our link      
+      // wrap the image in our link
       $vars['items'][$index]['entity']['field_collection_item'][$value]['field_rotator_image']['#prefix'] = $parts[0];
       $vars['items'][$index]['entity']['field_collection_item'][$value]['field_rotator_image']['#suffix'] = $parts[1];
-      
+
       // hide the links
       hide($vars['items'][$index]['entity']['field_collection_item'][$value]['field_rotator_link_url']);
       hide($vars['items'][$index]['entity']['field_collection_item'][$value]['field_rotator_link_node']);
@@ -86,7 +86,7 @@ function opensanmateo_rotator_preprocess_field(&$vars, $hook) {
 function opensanmateo_rotator_preprocess_panels_pane(&$vars) {
   if ($vars['pane']->type == 'fieldable_panels_pane' && isset($vars['content']['field_coll_rotator_item']) &&
       $vars['content']['field_coll_rotator_item']['#bundle'] == 'rotator_panels_pane') {
-    
+
     // Determine the type (Carousel or rotator)
     $type = field_get_items('fieldable_panels_pane', $vars['content']['field_coll_rotator_item']['#object'], 'field_rotator_type');
     if ($type) {
@@ -96,15 +96,27 @@ function opensanmateo_rotator_preprocess_panels_pane(&$vars) {
     else {
       $type = 'none';
     }
-    $fpid = $vars['content']['field_coll_rotator_item']['#object']->fpid;    
-    drupal_add_js(array('OpenSanMateoRotator' => array(array('type' => $type, 'fpid' => $fpid))), 'setting');
-        
+
+    $advance = field_get_items('fieldable_panels_pane', $vars['content']['field_coll_rotator_item']['#object'], 'field_auto_advance');
+
+    if ($advance) {
+      $advance = reset($advance);
+      $advance = $advance['value'];
+    }
+    else {
+      $advance = 0;
+    }
+
+    $fpid = $vars['content']['field_coll_rotator_item']['#object']->fpid;
+
+    drupal_add_js(array('OpenSanMateoRotator' => array(array('type' => $type, 'fpid' => $fpid, 'advance' => $advance))), 'setting');
+
     if ($type != 'list') {
       flexslider_add();
       drupal_add_css(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.css');
       drupal_add_js(drupal_get_path('module', 'opensanmateo_rotator') . '/opensanmateo_rotator.js');
     }
-    
+
   }
 
   // if we have a promo pane we need to pull out the url and use it on the image and the link
