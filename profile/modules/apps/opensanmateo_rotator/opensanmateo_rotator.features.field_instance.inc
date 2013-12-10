@@ -220,6 +220,41 @@ function opensanmateo_rotator_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'fieldable_panels_pane-custom_content_pane-field_custom_content'
+  $field_instances['fieldable_panels_pane-custom_content_pane-field_custom_content'] = array(
+    'bundle' => 'custom_content_pane',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'fieldable_panels_pane',
+    'field_name' => 'field_custom_content',
+    'label' => 'Body',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => -4,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'fieldable_panels_pane-promo_panels_pane-field_promo_style'
   $field_instances['fieldable_panels_pane-promo_panels_pane-field_promo_style'] = array(
     'bundle' => 'promo_panels_pane',
@@ -555,6 +590,7 @@ function opensanmateo_rotator_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Auto Advance');
+  t('Body');
   t('Caption');
   t('Description');
   t('Image');

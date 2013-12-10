@@ -12,10 +12,16 @@ include_once 'opensanmateo_rotator.features.inc';
  * Defines a new bundle type for the rotator pane
  */
 function opensanmateo_rotator_entity_info_alter(&$entity_info) {
+  $entity_info['fieldable_panels_pane']['bundles']['custom_content_pane'] = $entity_info['fieldable_panels_pane']['bundles']['fieldable_panels_pane'];
+  $entity_info['fieldable_panels_pane']['bundles']['custom_content_pane']['label'] = 'Content Pane';
+  $entity_info['fieldable_panels_pane']['bundles']['custom_content_pane']['admin']['path'] = 'admin/structure/fieldable-panels-panes/manage/%custom_content_panes_type';
+  $entity_info['fieldable_panels_pane']['bundles']['custom_content_pane']['admin']['real path'] = 'admin/structure/fieldable-panels-panes/manage/custom-content-pane';
+
   $entity_info['fieldable_panels_pane']['bundles']['rotator_panels_pane'] = $entity_info['fieldable_panels_pane']['bundles']['fieldable_panels_pane'];
   $entity_info['fieldable_panels_pane']['bundles']['rotator_panels_pane']['label'] = 'Rotator Pane';
   $entity_info['fieldable_panels_pane']['bundles']['rotator_panels_pane']['admin']['path'] = 'admin/structure/fieldable-panels-panes/manage/%rotator_panels_panes_type';
   $entity_info['fieldable_panels_pane']['bundles']['rotator_panels_pane']['admin']['real path'] = 'admin/structure/fieldable-panels-panes/manage/rotator-panels-pane';
+
   $entity_info['fieldable_panels_pane']['bundles']['promo_panels_pane'] = $entity_info['fieldable_panels_pane']['bundles']['fieldable_panels_pane'];
   $entity_info['fieldable_panels_pane']['bundles']['promo_panels_pane']['label'] = 'Promo Pane';
   $entity_info['fieldable_panels_pane']['bundles']['promo_panels_pane']['admin']['path'] = 'admin/structure/fieldable-panels-panes/manage/%promo_panels_panes_type';
