@@ -1,6 +1,55 @@
 // default variables
 @import "vars.scss";
 
+body.page-node .node .action-links-field-collection-add {
+  display: none;
+}
+.sharethis-buttons {
+  margin-bottom: 20px;
+}
+.field-collection-container {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.field-name-field-location-address {
+  div.field-label,
+  ul.field-collection-view-links,
+  ul.action-links {
+    display: none;
+  }
+  
+  .field-collection-view,
+  .views-row,
+  header {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  
+  .views-row header {
+    span.field-content {
+      color: $primaryBlue; 
+      font-family: $bold;
+      font-weight: normal;
+      font-size: 1.125em;
+      line-height: 1.4;
+      margin-bottom: 0.5em;
+      margin-top: 0.2em;  
+      display: block;
+      
+      a {
+        color: $primaryBlue;   
+      }
+    }
+  }
+  .field-name-field-address {
+    line-height: 1.4;
+  }
+}
+
 .field-type-file {
   
   .file {
