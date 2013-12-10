@@ -34,5 +34,5 @@ version = "7.x-1.0"
 ; Information added by drush on 2013-12-10
 version = "appify_services"
 project = "openpublic"
-datestamp = "1386640932"
+datestamp = "1386711971"
 

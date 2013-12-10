@@ -11,5 +11,5 @@ dependencies[] = flexslider_fields (2.x)
 ; Information added by drush on 2013-12-10
 version = "3d9fe6c4b5fc5e48fcee225853cd32b6e5f61242"
 project = "picture"
-datestamp = "1386641123"
+datestamp = "1386712119"
 

@@ -10,5 +10,5 @@ files[] = tests/internals.test
 ; Information added by drush on 2013-12-10
 version = "aac15cd"
 project = "hierarchical_select"
-datestamp = "1386641152"
+datestamp = "1386712144"
 

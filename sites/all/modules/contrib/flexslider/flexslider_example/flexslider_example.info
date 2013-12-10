@@ -35,5 +35,5 @@ features[views_view][] = flexslider_views_example
 ; Information added by drush on 2013-12-10
 version = "068df89"
 project = "flexslider"
-datestamp = "1386641069"
+datestamp = "1386712065"
 
