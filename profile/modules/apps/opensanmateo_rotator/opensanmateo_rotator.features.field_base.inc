@@ -55,6 +55,33 @@ function opensanmateo_rotator_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
+  // Exported field_base: 'field_custom_content'
+  $field_bases['field_custom_content'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_custom_content',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_promo_style'
   $field_bases['field_promo_style'] = array(
     'active' => 1,
@@ -190,7 +217,18 @@ function opensanmateo_rotator_field_default_field_bases() {
     'locked' => 0,
     'module' => 'node_reference',
     'settings' => array(
-      'referenceable_types' => array_map(function($i) {return $i->type;}, node_type_get_types()),
+      'referenceable_types' => array(
+        'blog_entry' => 'blog_entry',
+        'document' => 'document',
+        'event' => 'event',
+        'location' => 'location',
+        'media' => 'media',
+        'press_release' => 'press_release',
+        'profile' => 'profile',
+        'services' => 'services',
+        'site_page' => 'site_page',
+        'webform' => 'webform',
+      ),
       'view' => array(
         'args' => array(),
         'display_name' => '',
