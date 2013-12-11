@@ -59,7 +59,10 @@
         slideshowSpeed: 4000,
       });
 
-      $('.flexslider-auto-advance').flexslider('play');
+      var $advance = $('.flexslider-auto-advance');
+      if ($advance.length) {
+        $advance.flexslider('play');
+      }
     }
   };
 })(jQuery);
