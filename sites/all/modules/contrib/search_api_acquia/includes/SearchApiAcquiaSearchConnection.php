@@ -1,12 +1,9 @@
 <?php
 
 /**
- * @file
- * Contains SearchApiAcquiaSearchConnection.
- */
-
-/**
- * Establishes a connection to the Acquia Search service.
+ * Starting point for the Solr API. Represents a Solr server resource and has
+ * methods for pinging, adding, deleting, committing, optimizing and searching.
+ *
  */
 class SearchApiAcquiaSearchConnection extends SearchApiSolrConnection {
 
@@ -16,22 +13,6 @@ class SearchApiAcquiaSearchConnection extends SearchApiSolrConnection {
    * @var string
    */
   protected $derivedKey;
-
-  /**
-   * Overrides SearchApiSolrConnection::__construct().
-   *
-   * Also accepts the 'derived_key' setting in $options to set the derived key
-   * used to HMAC hash the search request.
-   *
-   * @see SearchApiAcquiaSearchHttpTransport
-   */
-  public function __construct(array $options) {
-    parent::__construct($options);
-
-    if (isset($options['derived_key'])) {
-      $this->derivedKey = $options['derived_key'];
-    }
-  }
 
   /**
    * Creates an authenticator based on a data string and HMAC-SHA1.
@@ -93,48 +74,15 @@ class SearchApiAcquiaSearchConnection extends SearchApiSolrConnection {
   }
 
   /**
-   * Modify a solr base url and construct a hmac authenticator cookie.
+   * Send an optimize command.
    *
-   * @param $url
-   *  The solr url beng requested - passed by reference and may be altered.
-   * @param $string
-   *  A string - the data to be authenticated, or empty to just use the path
-   *  and query from the url to build the authenticator.
-   * @param $derived_key
-   *  Optional string to supply the derived key.
+   * We want to control the schedule of optimize commands ourselves,
+   * so do a method override to make ->optimize() a no-op.
    *
-   * @return
-   *  An array containing the string to be added as the content of the
-   *  Cookie header to the request and the nonce.
-   *
-   * @see acquia_search_auth_cookie
+   * @see SearchApiSolrConnection::optimize()
    */
-  function authCookie(&$url, $string = '', $derived_key = NULL) {
-    $uri = parse_url($url);
-
-    // Add a scheme - should always be https if available.
-    if (in_array('ssl', stream_get_transports(), TRUE) && !defined('ACQUIA_DEVELOPMENT_NOSSL')) {
-      $scheme = 'https://';
-      $port = '';
-    }
-    else {
-      $scheme = 'http://';
-      $port = (isset($uri['port']) && $uri['port'] != 80) ? ':'. $uri['port'] : '';
-    }
-    $path = isset($uri['path']) ? $uri['path'] : '/';
-    $query = isset($uri['query']) ? '?'. $uri['query'] : '';
-    $url = $scheme . $uri['host'] . $port . $path . $query;
-
-    // 32 character nonce.
-    $nonce = base64_encode(drupal_random_bytes(24));
-
-    if ($string) {
-      $auth_header = $this->authenticator($string, $nonce, $derived_key);
-    }
-    else {
-      $auth_header = $this->authenticator($path . $query, $nonce, $derived_key);
-    }
-    return array($auth_header, $nonce);
+  public function optimize($waitFlush = true, $waitSearcher = true, $timeout = 3600) {
+    return TRUE;
   }
 
   /**
@@ -211,56 +159,102 @@ class SearchApiAcquiaSearchConnection extends SearchApiSolrConnection {
    */
   protected function validResponse($hmac, $nonce, $string, $derived_key = NULL) {
     if (empty($derived_key)) {
-      $derived_key = $this->derivedKey();
+      $derived_key = $this->getDerivedKey();
     }
     return $hmac == hash_hmac('sha1', $nonce . $string, $derived_key);
   }
 
   /**
-   * Overrides SearchApiSolrHttpTransport::performHttpRequest().
+   * Make a request to a servlet (a path) that's not a standard path.
    *
-   * Adds the data to the query string required for HMAC authentication,
-   * executes the search query.
+   * @override
    */
-  protected function makeHttpRequest($url, array $options = array()) {
-    if (empty($options['method']) || $options['method'] == 'GET' || $options['method'] == 'HEAD') {
-      // Make sure we are not sending a request body.
-      $options['data'] = NULL;
-    }
-    if ($this->http_auth) {
-      $options['headers']['Authorization'] = $this->http_auth;
-    }
-    if ($this->stream_context) {
-      $options['context'] = $this->stream_context;
-    }
+  public function makeServletRequest($servlet, array $params = array(), array $options = array()) {
+    // Add default params.
+    $params += array(
+      'wt' => 'json',
+    );
 
-    $this->prepareRequest($url, $options);
-    $result = drupal_http_request($url, $options);
+    $url = $this->constructUrl($servlet, $params);
+    // We assume we only authenticate the URL for other servlets.
+    $nonce = $this->prepareRequest($url, $options, FALSE);
+    $response = $this->makeHttpRequest($url, $options);
+    $response = $this->checkResponse($response);
+    return $this->authenticateResponse($response, $nonce, $url);
+  }
 
-    if (!isset($result->code) || $result->code < 0) {
-      $result->code = 0;
-      $result->status_message = 'Request failed';
-      $result->protocol = 'HTTP/1.0';
-    }
-    // Additional information may be in the error property.
-    if (isset($result->error)) {
-      $result->status_message .= ': ' . check_plain($result->error);
-    }
+  /**
+   * Central method for making a GET operation against this Solr Server
+   *
+   * @override
+   */
+  protected function sendRawGet($url, array $options = array()) {
+    $nonce = $this->prepareRequest($url, $options);
+    $response = $this->makeHttpRequest($url, $options);
+    $response = $this->checkResponse($response);
+    return $this->authenticateResponse($response, $nonce, $url);
+  }
 
-    if (!isset($result->data)) {
-      $result->data = '';
-      $result->response = NULL;
+  /**
+   * Central method for making a POST operation against this Solr Server
+   *
+   * @override
+   */
+  protected function sendRawPost($url, array $options = array()) {
+    $options['method'] = 'POST';
+    // Normally we use POST to send XML documents.
+    if (!isset($options['headers']['Content-Type'])) {
+      $options['headers']['Content-Type'] = 'text/xml; charset=UTF-8';
+    }
+    $nonce = $this->prepareRequest($url, $options);
+    $response = $this->makeHttpRequest($url, $options);
+    $response = $this->checkResponse($response);
+    return $this->authenticateResponse($response, $nonce, $url);
+  }
+
+  /**
+   * Modify a solr base url and construct a hmac authenticator cookie.
+   *
+   * @param $url
+   *  The solr url beng requested - passed by reference and may be altered.
+   * @param $string
+   *  A string - the data to be authenticated, or empty to just use the path
+   *  and query from the url to build the authenticator.
+   * @param $derived_key
+   *  Optional string to supply the derived key.
+   *
+   * @return
+   *  An array containing the string to be added as the content of the
+   *  Cookie header to the request and the nonce.
+   *
+   * @see acquia_search_auth_cookie
+   */
+  function authCookie(&$url, $string = '', $derived_key = NULL) {
+    $uri = parse_url($url);
+
+    // Add a scheme - should always be https if available.
+    if (in_array('ssl', stream_get_transports(), TRUE) && !defined('ACQUIA_DEVELOPMENT_NOSSL')) {
+      $scheme = 'https://';
+      $port = '';
     }
     else {
-      $response = json_decode($result->data);
-      if (is_object($response)) {
-        foreach ($response as $key => $value) {
-          $result->$key = $value;
-        }
-      }
+      $scheme = 'http://';
+      $port = (isset($uri['port']) && $uri['port'] != 80) ? ':'. $uri['port'] : '';
     }
+    $path = isset($uri['path']) ? $uri['path'] : '/';
+    $query = isset($uri['query']) ? '?'. $uri['query'] : '';
+    $url = $scheme . $uri['host'] . $port . $path . $query;
 
-    return $result;
+    // 32 character nonce.
+    $nonce = base64_encode(drupal_random_bytes(24));
+
+    if ($string) {
+      $auth_header = $this->authenticator($string, $nonce, $derived_key);
+    }
+    else {
+      $auth_header = $this->authenticator($path . $query, $nonce, $derived_key);
+    }
+    return array($auth_header, $nonce);
   }
 
 }

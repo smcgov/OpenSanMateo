@@ -5,9 +5,9 @@ description = Provide suggestions for search from various content types and fiel
 core = 7.x
 
 
-; Information added by drush on 2013-12-10
+; Information added by drush on 2013-12-11
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "quick_search"
-datestamp = "1386712100"
+datestamp = "1386781137"
 

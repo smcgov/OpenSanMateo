@@ -4,8 +4,8 @@ core = 7.x
 files[] = suspend_session.module
 dependencies[] = password_policy2
 
-; Information added by drush on 2013-12-10
+; Information added by drush on 2013-12-11
 version = "cc94f8c634b1d6f9a3f551c8e8b082f549b56370"
 project = "lock_session"
-datestamp = "1386712077"
+datestamp = "1386781112"
 
