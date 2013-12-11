@@ -10,9 +10,9 @@ files[] = includes/SearchApiAcquiaSearchConnection.php
 files[] = includes/SearchApiAcquiaSearchHttpTransport.php
 files[] = includes/SearchApiAcquiaSearchService.php
 
-; Information added by drupal.org packaging script on 2013-10-16
-version = "7.x-2.0"
-core = "7.x"
+
+; Information added by drush on 2013-12-11
+version = "1967e867e0df80a476e218a120d30327034766d9"
 project = "search_api_acquia"
-datestamp = "1381944182"
+datestamp = "1386785513"
 

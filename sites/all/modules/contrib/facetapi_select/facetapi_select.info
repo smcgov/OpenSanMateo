@@ -10,5 +10,5 @@ files[] = plugins/facetapi_select_dropdowns.inc
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "facetapi_select"
-datestamp = "1386781142"
+datestamp = "1386785517"
 
