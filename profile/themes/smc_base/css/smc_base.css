@@ -7586,12 +7586,12 @@ ul.button-test {
   display: none; }
 
 @media all and (min-width: 768px) {
-  /* line 78, ../scss/elements/header.scss */
+  /* line 79, ../scss/elements/header.scss */
   .wrapper {
     overflow: hidden;
     width: 100%;
     margin: auto; }
-    /* line 83, ../scss/elements/header.scss */
+    /* line 84, ../scss/elements/header.scss */
     .wrapper > header {
       padding: 1em 0 0;
       background-image: url("../images/uber-texture2.png"), -webkit-linear-gradient(#faffff 0%, #fdffff 100%);
@@ -7601,14 +7601,14 @@ ul.button-test {
       box-shadow: 0 3px 6px rgba(85, 90, 90, 0.1); }
 
   /* Header Logo/Headings */
-  /* line 96, ../scss/elements/header.scss */
+  /* line 97, ../scss/elements/header.scss */
   .lockup {
     margin-bottom: 2%;
     width: 65%;
     padding-left: 5em;
     float: none; }
 
-  /* line 103, ../scss/elements/header.scss */
+  /* line 104, ../scss/elements/header.scss */
   .site-seal {
     background: url("../images/seal.png") no-repeat 0 0;
     background-size: contain;
@@ -7618,37 +7618,37 @@ ul.button-test {
     height: 5em;
     width: 5em; }
 
-  /* line 113, ../scss/elements/header.scss */
+  /* line 114, ../scss/elements/header.scss */
   .county-name, .dept-name {
     display: block;
     text-transform: uppercase;
     text-shadow: 0px 1px 0px #fff; }
 
-  /* line 119, ../scss/elements/header.scss */
+  /* line 120, ../scss/elements/header.scss */
   .county-name {
     color: #036cb6;
     font-size: 2em;
     line-height: 1em;
     font-family: 'Trade Gothic W01 Bold';
     background-size: contain; }
-    /* line 126, ../scss/elements/header.scss */
+    /* line 127, ../scss/elements/header.scss */
     .county-name span {
       font-size: .6em;
       font-family: 'Trade Gothic W01 Roman';
       padding: 0 0.2em 0 0.1em; }
 
-  /* line 133, ../scss/elements/header.scss */
+  /* line 134, ../scss/elements/header.scss */
   .county-name:hover {
     color: #38939b; }
 
-  /* line 137, ../scss/elements/header.scss */
+  /* line 138, ../scss/elements/header.scss */
   .dept-name {
     font-size: 2em;
     margin: 0;
     line-height: 1.2em; }
 
   /* View Departments Switch */
-  /* line 144, ../scss/elements/header.scss */
+  /* line 145, ../scss/elements/header.scss */
   .dept-link {
     background-color: rgba(3, 108, 182, 0.9);
     border-bottom-left-radius: 3px;
@@ -7662,23 +7662,23 @@ ul.button-test {
     right: 0;
     top: -1.3em; }
 
-  /* line 158, ../scss/elements/header.scss */
+  /* line 159, ../scss/elements/header.scss */
   .dept-link:hover {
     color: rgba(255, 255, 255, 0.9); }
 
-  /* line 162, ../scss/elements/header.scss */
+  /* line 163, ../scss/elements/header.scss */
   .btn-nav {
     display: none; } }
-/* line 171, ../scss/elements/header.scss */
+/* line 172, ../scss/elements/header.scss */
 .lte8 {
   /* Header Logo/Headings */
   /* View Departments Switch */ }
-  /* line 172, ../scss/elements/header.scss */
+  /* line 173, ../scss/elements/header.scss */
   .lte8 .wrapper {
     overflow: hidden;
     width: 100%;
     margin: auto; }
-    /* line 177, ../scss/elements/header.scss */
+    /* line 178, ../scss/elements/header.scss */
     .lte8 .wrapper > header {
       padding: 1em 0 0;
       background-image: url("../images/uber-texture2.png"), -webkit-linear-gradient(#faffff 0%, #fdffff 100%);
@@ -7686,47 +7686,47 @@ ul.button-test {
       border-top: 5px solid rgba(3, 108, 182, 0.9);
       margin-bottom: 3%;
       box-shadow: 0 3px 6px rgba(85, 90, 90, 0.1); }
-  /* line 190, ../scss/elements/header.scss */
+  /* line 191, ../scss/elements/header.scss */
   .lte8 .lockup {
     margin-bottom: 2%;
     width: 65%;
     float: none; }
-  /* line 198, ../scss/elements/header.scss */
+  /* line 199, ../scss/elements/header.scss */
   .lte8 .site-seal {
     display: none; }
-  /* line 201, ../scss/elements/header.scss */
+  /* line 202, ../scss/elements/header.scss */
   .lte8 .county-name, .lte8 .dept-name {
     display: block;
     text-transform: uppercase;
     text-shadow: 0px 1px 0px #fff; }
-  /* line 207, ../scss/elements/header.scss */
+  /* line 208, ../scss/elements/header.scss */
   .lte8 .county-name {
     color: #036cb6;
     font-size: 2em;
     line-height: 1em;
     font-family: 'Trade Gothic W01 Bold';
     background-size: contain; }
-    /* line 214, ../scss/elements/header.scss */
+    /* line 215, ../scss/elements/header.scss */
     .lte8 .county-name span {
       font-size: .6em;
       font-family: 'Trade Gothic W01 Roman';
       padding: 0 0.2em 0 0.1em; }
-  /* line 221, ../scss/elements/header.scss */
+  /* line 222, ../scss/elements/header.scss */
   .lte8 .county-name:hover {
     color: #38939b; }
-  /* line 225, ../scss/elements/header.scss */
+  /* line 226, ../scss/elements/header.scss */
   .lte8 .dept-name {
     font-size: 2em;
     margin: 0;
     line-height: 1.2em; }
-  /* line 232, ../scss/elements/header.scss */
+  /* line 233, ../scss/elements/header.scss */
   .lte8 .dept-link {
     display: none; }
-  /* line 236, ../scss/elements/header.scss */
+  /* line 237, ../scss/elements/header.scss */
   .lte8 .dept-link:hover {
     color: white;
     color: rgba(255, 255, 255, 0.9); }
-  /* line 241, ../scss/elements/header.scss */
+  /* line 242, ../scss/elements/header.scss */
   .lte8 .btn-nav {
     display: none; }
 
@@ -7923,7 +7923,6 @@ you can use the generic selector below, but it's slower:
 .icon-close,
 .icon-subnav,
 .menu-button,
-.icon-eye,
 .icon-filter,
 .icon-info,
 .icon-link,
@@ -7965,11 +7964,6 @@ you can use the generic selector below, but it's slower:
 /* line 62, ../scss/elements/icons.scss */
 .icon-subnav:before {
   content: "\e006"; }
-
-/* line 63, ../scss/elements/icons.scss */
-.icon-eye:before {
-  content: "\e007";
-  padding-right: 0.5em; }
 
 /* line 67, ../scss/elements/icons.scss */
 .icon-filter:before {
