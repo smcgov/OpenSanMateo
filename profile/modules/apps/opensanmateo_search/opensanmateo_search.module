@@ -60,38 +60,6 @@ function opensanmateo_search_views_data_alter(&$data) {
     // Set the handler to an OptionsList, which is closest to what we are doing.
     $field['filter']['handler'] = 'SearchApiViewsHandlerFilterOptions';
 
-    // Make options a list of all possible terms. Without #options being
-    // set to valid values, all form submissions will result in validation
-    // failures due to illegal options.
-    //
-    // @todo: Look into how to do this better. This is certainly sub-optimal.
-    // @todo: Probably should split this terms query out into it's own function.
-    $matches = array();
-    $server = search_api_server_load('san_mateo_solr_server');
-    $uri = "terms";
-    $params = array(
-      'terms' => 'true',
-      'terms.fl' => 'sm_search_api_multi_aggregation_8',
-      'terms.regex' => '.*',
-      'terms.limit' => '1000'
-    );
-
-    $connection = $server->getSolrConnection();
-    $response = $connection->makeServletRequest($uri, $params);
-
-    if ($response->code == 200) {
-      $potential_matches = drupal_json_decode($response->data);
-      if (!empty($potential_matches['terms']['sm_search_api_multi_aggregation_8'])) {
-        foreach ($potential_matches['terms']['sm_search_api_multi_aggregation_8'] as $term => $term_count) {
-          if (isset($existing_values)) {
-            $matches[$existing_values . ', ' . $term] = $term . '(' . $term_count . ')';
-          }
-          else {
-            $matches[$term] = $term . '(' . $term_count . ')';
-          }
-        }
-      }
-    }
 
     $field['filter']['options'] = $matches;
     // Set the field as multi-value.
