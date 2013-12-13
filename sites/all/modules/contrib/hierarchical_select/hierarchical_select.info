@@ -7,8 +7,8 @@ core = 7.x
 files[] = tests/internals.test
 
 
-; Information added by drush on 2013-12-11
+; Information added by drush on 2013-12-13
 version = "aac15cd"
 project = "hierarchical_select"
-datestamp = "1386785546"
+datestamp = "1386895435"
 
