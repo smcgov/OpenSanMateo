@@ -22,6 +22,11 @@ if (isset($_ENV['AH_NON_PRODUCTION'])) {
 else {
   $conf['error_level'] = 0;
   $conf['cron_safe_threshold'] = 0;
+
+  // Configure caching
+  $conf['cache_backends'][] = './sites/all/modules/contrib/memcache/memcache.inc';
+  $conf['cache_default_class'] = 'MemCacheDrupal';
+  $conf['cache_class_form'] = 'DrupalDatabaseCache';
 }
 // Global GovDelivery Settings.
 // These may be changed below.
@@ -71,11 +76,6 @@ if (empty($conf['sanmateo_is_master'])) {
 }
 $conf['distributed_blocks_master_url'] = 'http://' . $master_host;
 $conf['distributed_blocks_update_freq'] = 1;
-
-// Configure caching
-//$conf['cache_backends'][] = './sites/all/modules/contrib/memcache/memcache.inc';
-//$conf['cache_default_class'] = 'MemCacheDrupal';
-//$conf['cache_class_form'] = 'DrupalDatabaseCache';
 
 /**
  * Util function to derive private filesystem patch from the site settings path and env vars
