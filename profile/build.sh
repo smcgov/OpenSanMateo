@@ -138,6 +138,9 @@ if [ "$TYPE" = 'acquia' ]; then
     echo Allow from env=auth_whitelist >> docroot/.htaccess
     echo Allow from env=redirect_auth_whitelist >> docroot/.htaccess
     echo Satisfy Any >> docroot/.htaccess
+
+    # Add custom entries to core stock robots.txt
+    cat $ABS_CALLPATH/build/robots.txt >> docroot/robots.txt
   fi
 
   # add for commit
