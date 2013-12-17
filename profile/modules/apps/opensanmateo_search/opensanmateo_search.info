@@ -3,6 +3,7 @@ description = Allows for Search accross the sanmateo platform
 core = 7.x
 package = OpenSanMateo
 php = 5.2.4
+files[] = plugins/views/opensanmateo_search_views_autocomplete.inc
 dependencies[] = ctools
 dependencies[] = entity
 dependencies[] = facetapi

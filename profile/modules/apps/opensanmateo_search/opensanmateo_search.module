@@ -58,10 +58,10 @@ function opensanmateo_search_views_data_alter(&$data) {
     $field =& $data['search_api_index_san_mateo_content_index']['search_api_multi_aggregation_8'];
 
     // Set the handler to an OptionsList, which is closest to what we are doing.
-    $field['filter']['handler'] = 'SearchApiViewsHandlerFilterOptions';
+    $field['filter']['handler'] = 'OpenSanMateoSearchViewsAutocomplete';
 
 
-    $field['filter']['options'] = $matches;
+    //$field['filter']['options'] = $matches;
     // Set the field as multi-value.
     $field['filter']['multi-valued'] = TRUE;
   }
