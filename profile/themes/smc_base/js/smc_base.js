@@ -101,6 +101,13 @@ $('.show_hide').showHide({
      $('#block-system-main .sm-one-column').parents('#main-wrapper').addClass('one-column-display');
     }
   };
+  Drupal.behaviors.smcTranslateFixes = {
+    attach: function (context) {
+     $('a.google-translator-switch').click(function(){
+       return false;
+     });
+    }
+  };
   Drupal.behaviors.smcMetaPadding = {
     attach: function (context) {
       var metaWidth;

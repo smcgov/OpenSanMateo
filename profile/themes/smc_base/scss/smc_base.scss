@@ -57,6 +57,9 @@
 // footer elements
 @import "elements/footer.scss";
 
+html {
+  height: auto !important;
+}
 html, body {
   max-width: 100%;
   overflow-x: hidden;
