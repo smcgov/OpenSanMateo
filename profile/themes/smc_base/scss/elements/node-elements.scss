@@ -11,6 +11,22 @@ body.page-node .node .action-links-field-collection-add {
 .field-name-field-profile-organization {
   line-height: 1.6;
 }
+
+.page-node .node .field-name-field-thumbnail-image {
+  float: left;
+  clear: none;
+  margin: 0 10px;
+  max-width: 100%;
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+.page-node .node .field-name-body {
+  margin-top: 10px;
+}
+
 .page-node div.panel-pane .node-profile {
   margin-bottom: 40px;
   
