@@ -91,7 +91,7 @@ $('.show_hide').showHide({
     attach: function (context) {
       
      $('#navigation-toggle a').click(function(){
-       //$('#responsive-navigation').slideToggle();
+       $('#responsive-navigation').slideToggle();
        //return false;
      });
     }
