@@ -20,6 +20,7 @@
     		<a class="dept-link show_hide icon-eye" rel="#dept-switch" href="">View All Departments</a>		
     		
     		<div class="lockup group clearfix">
+    		  <!--[if IE 8]><img class="ie-logo" src="<?php print($themelogo); ?>" /><![endif]-->
     		  <div class="site-seal"></div>
     			<?php if ($site_name): ?>
       			<a href="<?php print $front_page; ?>" title="<?php print t('County of San Mateo'); ?>" rel="home"><h2 class="county-name">County<span class="tiny">of</span>San Mateo</h2></a>

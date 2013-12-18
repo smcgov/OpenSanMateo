@@ -7549,30 +7549,40 @@ ul.button-test {
 .lockup {
   display: block; }
 
-/* line 41, ../scss/elements/header.scss */
+/* line 40, ../scss/elements/header.scss */
+.ie-logo {
+  height: 80px;
+  width: 80px;
+  float: left;
+  margin-right: 10px;
+  margin-left: 5px;
+  top: -5px;
+  position: relative; }
+
+/* line 49, ../scss/elements/header.scss */
 .btn .icon-nav {
   font-size: 1.5em;
   float: right; }
 
-/* line 46, ../scss/elements/header.scss */
+/* line 54, ../scss/elements/header.scss */
 .county-name, .dept-name {
   display: inline-block;
   padding: 0 .5em;
   text-transform: uppercase; }
 
-/* line 52, ../scss/elements/header.scss */
+/* line 60, ../scss/elements/header.scss */
 .county-name {
   color: #036cb6;
   font-size: 1.25em;
   font-family: 'Trade Gothic W01 Bold'; }
 
-/* line 58, ../scss/elements/header.scss */
+/* line 66, ../scss/elements/header.scss */
 .county-name span {
   font-size: .75em;
   font-family: 'Trade Gothic W01 Roman';
   padding: 0 0.15em 0 0.1em; }
 
-/* line 64, ../scss/elements/header.scss */
+/* line 72, ../scss/elements/header.scss */
 .dept-name {
   color: #38939b;
   font-family: 'Trade Gothic W01 Light';
@@ -7581,17 +7591,17 @@ ul.button-test {
   line-height: 1em;
   font-weight: 100; }
 
-/* line 73, ../scss/elements/header.scss */
+/* line 81, ../scss/elements/header.scss */
 .dept-link {
   display: none; }
 
 @media all and (min-width: 768px) {
-  /* line 79, ../scss/elements/header.scss */
+  /* line 87, ../scss/elements/header.scss */
   .wrapper {
     overflow: hidden;
     width: 100%;
     margin: auto; }
-    /* line 84, ../scss/elements/header.scss */
+    /* line 92, ../scss/elements/header.scss */
     .wrapper > header {
       padding: 1em 0 0;
       background-image: url("../images/uber-texture2.png"), -webkit-linear-gradient(#faffff 0%, #fdffff 100%);
@@ -7601,14 +7611,14 @@ ul.button-test {
       box-shadow: 0 3px 6px rgba(85, 90, 90, 0.1); }
 
   /* Header Logo/Headings */
-  /* line 97, ../scss/elements/header.scss */
+  /* line 105, ../scss/elements/header.scss */
   .lockup {
     margin-bottom: 2%;
     width: 65%;
     padding-left: 5em;
     float: none; }
 
-  /* line 104, ../scss/elements/header.scss */
+  /* line 112, ../scss/elements/header.scss */
   .site-seal {
     background: url("../images/seal.png") no-repeat 0 0;
     background-size: contain;
@@ -7618,37 +7628,37 @@ ul.button-test {
     height: 5em;
     width: 5em; }
 
-  /* line 114, ../scss/elements/header.scss */
+  /* line 122, ../scss/elements/header.scss */
   .county-name, .dept-name {
     display: block;
     text-transform: uppercase;
     text-shadow: 0px 1px 0px #fff; }
 
-  /* line 120, ../scss/elements/header.scss */
+  /* line 128, ../scss/elements/header.scss */
   .county-name {
     color: #036cb6;
     font-size: 2em;
     line-height: 1em;
     font-family: 'Trade Gothic W01 Bold';
     background-size: contain; }
-    /* line 127, ../scss/elements/header.scss */
+    /* line 135, ../scss/elements/header.scss */
     .county-name span {
       font-size: .6em;
       font-family: 'Trade Gothic W01 Roman';
       padding: 0 0.2em 0 0.1em; }
 
-  /* line 134, ../scss/elements/header.scss */
+  /* line 142, ../scss/elements/header.scss */
   .county-name:hover {
     color: #38939b; }
 
-  /* line 138, ../scss/elements/header.scss */
+  /* line 146, ../scss/elements/header.scss */
   .dept-name {
     font-size: 2em;
     margin: 0;
     line-height: 1.2em; }
 
   /* View Departments Switch */
-  /* line 145, ../scss/elements/header.scss */
+  /* line 153, ../scss/elements/header.scss */
   .dept-link {
     background-color: rgba(3, 108, 182, 0.9);
     border-bottom-left-radius: 3px;
@@ -7662,23 +7672,23 @@ ul.button-test {
     right: 0;
     top: -1.3em; }
 
-  /* line 159, ../scss/elements/header.scss */
+  /* line 167, ../scss/elements/header.scss */
   .dept-link:hover {
     color: rgba(255, 255, 255, 0.9); }
 
-  /* line 163, ../scss/elements/header.scss */
+  /* line 171, ../scss/elements/header.scss */
   .btn-nav {
     display: none; } }
-/* line 172, ../scss/elements/header.scss */
+/* line 180, ../scss/elements/header.scss */
 .lte8 {
   /* Header Logo/Headings */
   /* View Departments Switch */ }
-  /* line 173, ../scss/elements/header.scss */
+  /* line 181, ../scss/elements/header.scss */
   .lte8 .wrapper {
     overflow: hidden;
     width: 100%;
     margin: auto; }
-    /* line 178, ../scss/elements/header.scss */
+    /* line 186, ../scss/elements/header.scss */
     .lte8 .wrapper > header {
       padding: 1em 0 0;
       background-image: url("../images/uber-texture2.png"), -webkit-linear-gradient(#faffff 0%, #fdffff 100%);
@@ -7686,47 +7696,47 @@ ul.button-test {
       border-top: 5px solid rgba(3, 108, 182, 0.9);
       margin-bottom: 3%;
       box-shadow: 0 3px 6px rgba(85, 90, 90, 0.1); }
-  /* line 191, ../scss/elements/header.scss */
+  /* line 199, ../scss/elements/header.scss */
   .lte8 .lockup {
     margin-bottom: 2%;
     width: 65%;
     float: none; }
-  /* line 199, ../scss/elements/header.scss */
+  /* line 207, ../scss/elements/header.scss */
   .lte8 .site-seal {
     display: none; }
-  /* line 202, ../scss/elements/header.scss */
+  /* line 210, ../scss/elements/header.scss */
   .lte8 .county-name, .lte8 .dept-name {
     display: block;
     text-transform: uppercase;
     text-shadow: 0px 1px 0px #fff; }
-  /* line 208, ../scss/elements/header.scss */
+  /* line 216, ../scss/elements/header.scss */
   .lte8 .county-name {
     color: #036cb6;
     font-size: 2em;
     line-height: 1em;
     font-family: 'Trade Gothic W01 Bold';
     background-size: contain; }
-    /* line 215, ../scss/elements/header.scss */
+    /* line 223, ../scss/elements/header.scss */
     .lte8 .county-name span {
       font-size: .6em;
       font-family: 'Trade Gothic W01 Roman';
       padding: 0 0.2em 0 0.1em; }
-  /* line 222, ../scss/elements/header.scss */
+  /* line 230, ../scss/elements/header.scss */
   .lte8 .county-name:hover {
     color: #38939b; }
-  /* line 226, ../scss/elements/header.scss */
+  /* line 234, ../scss/elements/header.scss */
   .lte8 .dept-name {
     font-size: 2em;
     margin: 0;
     line-height: 1.2em; }
-  /* line 233, ../scss/elements/header.scss */
+  /* line 241, ../scss/elements/header.scss */
   .lte8 .dept-link {
     display: none; }
-  /* line 237, ../scss/elements/header.scss */
+  /* line 245, ../scss/elements/header.scss */
   .lte8 .dept-link:hover {
     color: white;
     color: rgba(255, 255, 255, 0.9); }
-  /* line 242, ../scss/elements/header.scss */
+  /* line 250, ../scss/elements/header.scss */
   .lte8 .btn-nav {
     display: none; }
 

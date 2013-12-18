@@ -49,7 +49,7 @@ function smc_base_process_page(&$variables) {
     $link = l('OpenSanMateo Frontend', 'admin/structure/features');
     drupal_set_message('In order for the San Mateo County base theme to operate properly, please enable the <strong>' . $link . '</strong> feature module.', 'warning');
   }
-
+  $variables['themelogo'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal.png';
   //krumo($variables);
 }
 

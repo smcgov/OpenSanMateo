@@ -37,7 +37,15 @@
 .lockup {
 	display: block;
 }
-
+.ie-logo {
+  height: 80px;
+  width: 80px;
+  float: left;
+  margin-right: 10px;
+  margin-left: 5px;
+  top: -5px;
+  position: relative;
+}
 .btn .icon-nav {
 	font-size: 1.5em;
 	float: right;
