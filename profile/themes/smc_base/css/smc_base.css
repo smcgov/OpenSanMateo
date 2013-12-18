@@ -8954,8 +8954,8 @@ body.page-node .node .action-links-field-collection-add {
 .page-node .node .field-name-field-thumbnail-image {
   float: left;
   clear: none;
-  margin: 0 10px;
-  max-width: 100%; }
+  margin-right: 10px;
+  max-width: 40%; }
   /* line 21, ../scss/elements/node-elements.scss */
   .page-node .node .field-name-field-thumbnail-image img {
     max-width: 100%;
