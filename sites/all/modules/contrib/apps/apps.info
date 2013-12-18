@@ -10,8 +10,8 @@ files[] = apps.installer.inc
 files[] = apps.test
 
 
-; Information added by drush on 2013-12-13
+; Information added by drush on 2013-12-18
 version = "b9d82b7bf5b4ebc7ba53324ce87082a84c3515cc"
 project = "apps"
-datestamp = "1386895440"
+datestamp = "1387383115"
 
