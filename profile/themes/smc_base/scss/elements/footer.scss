@@ -1,6 +1,17 @@
 // default variables
 @import "vars.scss";
 
+#__dimScreen .message {
+  font-size: 0.8em;  
+  background-color: #FFFFFF;
+  left: 10%;
+  padding: 20px;
+  position: absolute;
+  top: 10%;
+  width: 80%;
+  z-index: 800;
+}
+
 // All default/mobile styles will appear before the following media queries.
 footer {
 	background-color: $primaryBlue;
@@ -123,6 +134,17 @@ footer {
   	nav ul, nav ul.menu {
   	  width: 45%;
     }
+  }
+  
+  #__dimScreen .message {
+    font-size: 1em;  
+    background-color: #FFFFFF;
+    left: 25%;
+    padding: 20px;
+    position: absolute;
+    top: 25%;
+    width: 50%;
+    z-index: 800;
   }
 }
 
