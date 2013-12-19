@@ -34,6 +34,7 @@ function opensanmateo_search_app_configure_form() {
     '#default_value' => variable_get('opensanmateo_search_term_facets', ''),
     '#title' => t('Term Facets'),
     '#description' => t('Here one can create new term facets, please put the Administrative title of the facet one per line, then a block will be create for this facet'),
+    '#suffix' => l("Edit facets", "admin/config/search/search_api/index/san_mateo_content_index/facets/block"),
   );
 
   $form = system_settings_form($form);
@@ -140,7 +141,6 @@ function opensanmateo_search_status() {
   elseif ($percentage <100) {
     $status['items']['qs_index_status']['severity'] = REQUIREMENT_WARNING;
   }
-
 
 
 
