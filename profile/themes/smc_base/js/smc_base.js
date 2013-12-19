@@ -94,6 +94,10 @@ $('.show_hide').showHide({
        $('#responsive-navigation').slideToggle();
        //return false;
      });
+     
+     if ($('#responsive-navigation').children().size() == 0) {
+       $('.panel-col-nav').css('display', 'none');
+     }
     }
   };
   Drupal.behaviors.smcOneColResize = {
