@@ -131,6 +131,8 @@ function features_template_revert() {
       $reverts[] = $plugin['component'];
     }
   }
+  //make sure we are not duplicating the component
+  $reverts = array_unique($reverts);
   features_revert(array('features_template' => $reverts));
   foreach($data as $datum) {
     if($datum['deleted']) {
