@@ -368,6 +368,17 @@
   }
 }
 
+
+.lte8 {
+  
+  #main-wrapper #responsive-navigation {
+    display: block !important;
+  }
+  #main-wrapper #navigation-toggle, #main-wrapper #navigation-toggle a {
+    display: none !important;
+  }
+}
+
 @media all and (min-width: $tablet) {
   
   #main-wrapper #responsive-navigation {

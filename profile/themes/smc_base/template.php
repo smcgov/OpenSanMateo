@@ -10,13 +10,29 @@ function smc_base_preprocess_html(&$variables) {
   );
 
   drupal_add_html_head($meta, 'viewport');
+}
+function smc_base_process_html(&$variables) {
+  //dsm($variables);
+}
 
-  //krumo($variables);
+function smc_base_page_alter(&$page) {
+  //dsm($page);
+}
+function smc_base_css_alter(&$css) {
+  //dsm($css);
+}
+
+function smc_base_js_alter(&$js) {
+ //dsm($js);
+  
+  if (isset($js['http://fast.fonts.com/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js'])) {
+    unset($js['http://fast.fonts.com/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js']);
+    //$js['http://fast.fonts.com/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js']['scope'] = 'footer';
+  }
 }
 
 function smc_base_html_head_alter(&$head_elements) {
   global $base_url;
-
   $favicon = array();
   foreach($head_elements as $k => $element) {
     if (isset($element['#attributes']) && isset($element['#attributes']['rel'])) {

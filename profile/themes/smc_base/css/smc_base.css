@@ -8421,15 +8421,22 @@ table {
       padding-right: 1em;
       content: "\e006"; }
 
+/* line 374, ../scss/elements/layout.scss */
+.lte8 #main-wrapper #responsive-navigation {
+  display: block !important; }
+/* line 377, ../scss/elements/layout.scss */
+.lte8 #main-wrapper #navigation-toggle, .lte8 #main-wrapper #navigation-toggle a {
+  display: none !important; }
+
 @media all and (min-width: 768px) {
-  /* line 373, ../scss/elements/layout.scss */
+  /* line 384, ../scss/elements/layout.scss */
   #main-wrapper #responsive-navigation {
     display: block !important; }
 
-  /* line 377, ../scss/elements/layout.scss */
+  /* line 388, ../scss/elements/layout.scss */
   #main-wrapper #navigation-toggle {
     display: none; } }
-/* line 384, ../scss/elements/layout.scss */
+/* line 395, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column .panel-col-first {
   float: left;
   clear: none;
@@ -8438,7 +8445,7 @@ table {
   margin: 0;
   margin-right: 2.5%;
   margin-bottom: 3%; }
-/* line 394, ../scss/elements/layout.scss */
+/* line 405, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column .panel-col-middle {
   float: left;
   clear: none;
@@ -8446,7 +8453,7 @@ table {
   padding: 0;
   margin: 0;
   margin-bottom: 3%; }
-/* line 403, ../scss/elements/layout.scss */
+/* line 414, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-top,
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-bottom {
   width: 100%;
@@ -8456,7 +8463,7 @@ table {
   padding: 0;
   margin: 0;
   margin-bottom: 3%; }
-/* line 414, ../scss/elements/layout.scss */
+/* line 425, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-first {
   float: left;
   clear: none;
@@ -8465,7 +8472,7 @@ table {
   margin: 0;
   margin-right: 2.5%;
   margin-bottom: 3%; }
-/* line 424, ../scss/elements/layout.scss */
+/* line 435, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-middle {
   float: left;
   clear: none;
@@ -8473,14 +8480,14 @@ table {
   padding: 0;
   margin: 0;
   margin-bottom: 3%; }
-/* line 434, ../scss/elements/layout.scss */
+/* line 445, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-lower-left {
   float: left;
   clear: none;
   width: 65%;
   padding: 0;
   margin: 0; }
-/* line 442, ../scss/elements/layout.scss */
+/* line 453, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-lower-right {
   float: left;
   clear: none;
@@ -8488,7 +8495,7 @@ table {
   padding: 0;
   margin: 0;
   margin-left: 2.5%; }
-/* line 450, ../scss/elements/layout.scss */
+/* line 461, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-three-column .panel-col-first {
   float: left;
   clear: none;
@@ -8496,7 +8503,7 @@ table {
   padding: 0;
   margin: 0;
   margin-right: 2.5%; }
-/* line 459, ../scss/elements/layout.scss */
+/* line 470, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-three-column .panel-col-middle {
   float: left;
   clear: none;
@@ -8505,7 +8512,7 @@ table {
   margin: 0;
   margin-bottom: 3%;
   padding: 0 1em; }
-/* line 469, ../scss/elements/layout.scss */
+/* line 480, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-three-column .panel-col-last {
   float: left;
   clear: none;
