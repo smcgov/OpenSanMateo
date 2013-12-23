@@ -4,7 +4,7 @@ include_once('common.inc');
 
 // Common alias values for this environment
 $smc_docroot = '/var/www/html/sanmateo/docroot';
-$smc_remote_host = 'ded-5627.prod.hosting.acquia.com';
+$smc_remote_host = 'web-6415.prod.hosting.acquia.com';
 $smc_remote_user = 'sanmateo';
 $smc_env = 'prod';
 
