@@ -97,3 +97,80 @@ function opensanmateo_roles_submit_perms($form, &$form_state) {
   }
   unset($form_state['values']['app_config_perms']);
 }
+
+/**
+ * Implements hook_modules_enabled
+ *
+ * Perform one-time initializations when a module is installed
+ */
+function opensanmateo_roles_modules_enabled($modules) {
+  if (!module_exists('sanmateo')) {
+    return;
+  }
+  //opensanmateo_roles_set_default_perms($modules);
+}
+
+/**
+ * Implements hook_modules_uninstalled
+ *
+ * Perform one-time un-initializations when a module is uninstalled
+ */
+function opensanmateo_roles_modules_uninstalled($modules) {
+  $cfg = _opensanmateo_roles_cfg();
+
+  // Clear our status info for modules being uninstalled
+  foreach ($modules as $module) {
+    if (isset($cfg['$module'])) {
+      unset($cfg['$module']);
+    }
+  }
+  _opensanmateo_roles_cfg($cfg);
+}
+
+/**
+ * Public method to enable default module perms
+ */
+function opensanmateo_roles_set_default_perms($modules = NULL) {
+  module_load_include('inc', 'opensanmateo_roles', 'opensanmateo_roles.defperms');
+  $cfg = _opensanmateo_roles_cfg();
+  $def_perms = _opensanmateo_roles_def_perms();
+  $roles = array_flip(user_roles());
+
+  // If no modules passed, assume we're setting all of them that haven't been
+  if (!$modules) {
+    $modules = module_list();
+  }
+
+  // Iterate over modules-perms-roles and set default perms
+  foreach ($modules as $module) {
+    if (!empty($def_perms[$module])) {
+      foreach ($def_perms[$module] as $perm => $perm_roles) {
+        if (empty($cfg[$module][$perm])) {
+          foreach ($perm_roles as $role => $perm_val) {
+            if (isset($roles[$role]) && empty($cfg[$module][$perm][$role])) {
+              // Set the perm
+              user_role_change_permissions($roles[$role], array($perm => $perm_val));
+
+              // Flag this perm as being defaulted so we don't do it again until the module is uninstalled
+              $cfg[$module][$perm][$role] = TRUE;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Update module status variable
+  _opensanmateo_roles_cfg($cfg);
+}
+
+/**
+ * Helper function for perms config variable
+ */
+function _opensanmateo_roles_cfg($cfg = NULL) {
+  if ($cfg) {
+    variable_set('opensanmateo_roles', $cfg);
+  }
+  return variable_get('opensanmateo_roles', array());
+}
+
