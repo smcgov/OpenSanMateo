@@ -8,8 +8,8 @@ package = Picture
 stylesheets[all][] = picture_wysiwyg.css
 
 
-; Information added by drush on 2013-12-19
+; Information added by drush on 2014-01-07
 version = "3d9fe6c4b5fc5e48fcee225853cd32b6e5f61242"
 project = "picture"
-datestamp = "1387426213"
+datestamp = "1389127784"
 

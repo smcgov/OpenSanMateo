@@ -16,8 +16,8 @@ project = "openpublic_breaking_news"
 version = "7.x-1.0"
 
 
-; Information added by drush on 2013-12-19
+; Information added by drush on 2014-01-07
 version = "appify_services"
 project = "openpublic"
-datestamp = "1387426010"
+datestamp = "1389127655"
 

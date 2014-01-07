@@ -9,8 +9,8 @@ files[] = plugins/twitter_pull_box.inc
 files[] = twitter_pull.class.inc
 
 
-; Information added by drush on 2013-12-19
+; Information added by drush on 2014-01-07
 version = "46b6f89568aa50654295ad8e192673744afa4d35"
 project = "twitter_pull"
-datestamp = "1387426201"
+datestamp = "1389127778"
 
