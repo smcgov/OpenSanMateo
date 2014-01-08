@@ -942,6 +942,16 @@ function _opensanmateo_roles_def_perms() {
         'administrator' => true,
         'content creator' => false,
         'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'administer content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
         'editor' => true,
         'site manager' => true,
       ),
@@ -1095,6 +1105,56 @@ function _opensanmateo_roles_def_perms() {
         'editor' => true,
         'site manager' => true,
       ),
+      'create event content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => true,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'edit own event content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => true,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'edit any event content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => true,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'delete own event content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => true,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'delete any event content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => true,
+        'editor' => false,
+        'site manager' => true,
+      ),
       'create location content' =>
       array (
         'anonymous user' => false,
@@ -1136,6 +1196,56 @@ function _opensanmateo_roles_def_perms() {
         'site manager' => false,
       ),
       'delete any location content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'create media content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => true,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => false,
+      ),
+      'edit own media content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => true,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => false,
+      ),
+      'edit any media content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => true,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => false,
+      ),
+      'delete own media content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => true,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => false,
+      ),
+      'delete any media content' =>
       array (
         'anonymous user' => false,
         'authenticated user' => false,
@@ -1196,6 +1306,16 @@ function _opensanmateo_roles_def_perms() {
         'site manager' => false,
       ),
       'create profile content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => true,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => false,
+      ),
+      'edit own profile content' =>
       array (
         'anonymous user' => false,
         'authenticated user' => false,
@@ -2360,6 +2480,16 @@ function _opensanmateo_roles_def_perms() {
         'authenticated user' => false,
         'administrator' => true,
         'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => false,
+      ),
+      'moderate content from needs_review to draft' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => true,
         'event creator' => false,
         'editor' => true,
         'site manager' => false,
