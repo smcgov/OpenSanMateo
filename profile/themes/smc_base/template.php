@@ -103,7 +103,7 @@ function smc_base_preprocess_node(&$variables) {
       $author_field = isset($variables['field_blog_author']) ? $variables['field_blog_author']['und'][0]['nid'] : FALSE;
     break;
 
-    case 'document':      
+    case 'document':
       $docs = element_children($variables['content']['field_document_attachment']);
       // Opic automatically adds a suffix to the document attachment field, which
       // we want to get rid of.
@@ -111,7 +111,7 @@ function smc_base_preprocess_node(&$variables) {
         if (!empty($variables['content']['field_document_attachment'][$doc]['#suffix'])) {
           unset($variables['content']['field_document_attachment'][$doc]['#prefix']);
           unset($variables['content']['field_document_attachment'][$doc]['#suffix']);
-        }  
+        }
       }
       $display_byline = $variables['display_submitted'];
       $author_field = isset($variables['field_document_author'][0]) ? $variables['field_document_author'][0]['nid'] : FALSE;
@@ -254,6 +254,26 @@ function smc_base_preprocess_panels_pane(&$vars) {
   }
 
 }
+
+/**
+ * Implements hook_url_outbound_alter().
+ */
+function smc_base_url_outbound_alter(&$path, &$options, $original_path) {
+  global $user;
+
+  // All content gets indexed via HTTP in solr. Unfortunately logged in users
+  // will get kicked to HTTP instead of HTTPS due to these links coming from solr
+  // instead of Drupal. Unfortunately varnish won't allow us to just redirect
+  // back to HTTP, since it has no knowledge of the user being logged in.
+  //
+  // This is a fairly unfortunate fix to the problem.
+  if (!empty($_SERVER['HTTPS']) && !empty($user->uid) && !empty($path)) {
+    if (strstr($path, 'http://')) {
+      $path = str_replace('http://', 'https://', $path);
+    }
+  }
+}
+
 function smc_base_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
   //krumo($vars);
