@@ -477,7 +477,7 @@ projects[filefield_sources_plupload][download][url] = http://git.drupal.org/proj
 projects[filefield_sources_plupload][download][revision] = 8945a60
 
 libraries[plupload][download][type] = get
-libraries[plupload][download][url] = http://plupload.com/downloads/plupload_1_5_7.zip
+libraries[plupload][download][url] = https://github.com/downloads/moxiecode/plupload/plupload_1_5_4.zip
 libraries[plupload][destination] = libraries
 
 projects[metatag][type] = module
@@ -504,6 +504,12 @@ projects[apps][download][type] = git
 projects[apps][download][url] = http://git.drupal.org/project/apps.git
 projects[apps][download][revision] = b9d82b7bf5b4ebc7ba53324ce87082a84c3515cc
 projects[apps][patch][1899390] = https://drupal.org/files/issues/1899390-remove-update-dep-2.patch
+
+projects[shield][type] = module
+projects[shield][subdir] = contrib
+projects[shield][download][type] = git
+projects[shield][download][url] = http://git.drupal.org/project/shield.git
+projects[shield][download][revision] = d0d4d8ba32ac128d15c758fe29dbc022223a1270
 
 projects[shs][type] = module
 projects[shs][subdir] = contrib
