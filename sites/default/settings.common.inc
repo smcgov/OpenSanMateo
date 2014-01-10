@@ -44,7 +44,7 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
       $conf['acquia_key'] = '5f90bbe305adff93b4ad6b1012e75183';
 
       // Set production specific GovDelivery settings.
-      $conf['opensanmateo_govdelivery_base_url']= 'https://websupport@co.sanmateo.ca.us@:SD6Ru4562OJ3uvp@stage-api.govdelivery.com';
+      $conf['opensanmateo_govdelivery_base_url']= 'https://websupport@smcgov.org:SD6Ru4562OJ3uvp@api.govdelivery.com';
       $conf['opensanmateo_govdelivery_signup_url'] = 'https://public.govdelivery.com/accounts/CASMATEO/subscriber/new';
 
       break;
