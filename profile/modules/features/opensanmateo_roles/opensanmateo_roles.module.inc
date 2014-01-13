@@ -189,6 +189,9 @@ function _opensanmateo_roles_cfg($cfg = NULL) {
  * Util function for devel
  */
 function _opensanmateo_roles_debug($msg) {
+  if (!variable_get('opensanmateo_debug', FALSE)) {
+    return;
+  }
   $fmt_msg = (!is_string($msg) && (is_array($msg) || is_object($msg))) ? '<pre>' . print_r($msg, TRUE) . '</pre>' : $msg;
   if (function_exists('dpm')) {
     dpm(msg);
