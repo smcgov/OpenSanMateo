@@ -62,6 +62,7 @@
  *   *.smcprd-acquia.fayze.com
  */
 $fayze2_sites = array(
+  'test' => 'test.smcgov.org',
   'smcgov' => 'smcgov.org',
   '911dispatch' => '911dispatch.smcgov.org',
   'agwm' => 'agwm.smcgov.org',
