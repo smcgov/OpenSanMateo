@@ -1,0 +1,26 @@
+<?php
+/**
+ * @file
+ * Install hooks for the OpenSanMateo Roles feature.
+ */
+
+/**
+ * Implements hook_enable
+ */
+function opensanmateo_roles_enable() {
+  // Set default perms for already-enabled modules if not already done
+  opensanmateo_roles_set_default_perms();
+
+  // Execute update hooks
+  opensanmateo_roles_update_7001();
+}
+
+/**
+ * Update module weight to 999 so this module's hooks execute last (or at least after all apps and features)
+ */
+function opensanmateo_roles_update_7001() {
+  $sql = "UPDATE {system}
+          SET weight = '999'
+          WHERE name = 'opensanmateo_roles'";
+  db_query($sql);
+}
