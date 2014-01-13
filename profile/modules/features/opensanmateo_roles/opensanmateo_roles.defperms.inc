@@ -9,6 +9,201 @@
  */
 function _opensanmateo_roles_def_perms() {
   return array (
+    'sharethis' => array(
+      'administer sharethis' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => true,
+      ),
+    ),
+    'redirect' => array(
+      'administer redirects' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+    ),
+    'block' => array(
+      'administer blocks' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+    ),
+    'fieldable_panels_panes' => array(
+      'administer fieldable panels panes' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'create fieldable fieldable_panels_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'edit fieldable fieldable_panels_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'delete fieldable fieldable_panels_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'create fieldable custom_content_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => false,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'edit fieldable custom_content_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => false,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'delete fieldable custom_content_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => false,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'create fieldable rotator_panels_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'edit fieldable rotator_panels_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => true,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'delete fieldable rotator_panels_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'create fieldable promo_panels_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'edit fieldable promo_panels_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'delete fieldable promo_panels_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'create fieldable curated_list_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'edit fieldable curated_list_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'delete fieldable curated_list_pane' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+    ),
     'webform' =>
     array (
       'access all webform results' =>
@@ -1762,6 +1957,190 @@ function _opensanmateo_roles_def_perms() {
         'editor' => true,
         'site manager' => true,
       ),
+
+      'publish any event content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => true,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'publish own event content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => true,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'publish editable event content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => true,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'unpublish any event content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'unpublish own event content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'unpublish editable event content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+
+      'publish any media content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'publish own media content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'publish editable media content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'unpublish any media content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'unpublish own media content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'unpublish editable media content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+
+      'publish any document content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'publish own document content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'publish editable document content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'unpublish any document content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'unpublish own document content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'unpublish editable document content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+
       'publish any location content' =>
       array (
         'anonymous user' => false,
@@ -2120,6 +2499,16 @@ function _opensanmateo_roles_def_perms() {
     ),
     'taxonomy' =>
     array (
+      'administer taxonomy' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
       'edit terms in 1' =>
       array (
         'anonymous user' => false,
@@ -2179,6 +2568,46 @@ function _opensanmateo_roles_def_perms() {
         'event creator' => false,
         'editor' => true,
         'site manager' => true,
+      ),
+      'edit terms in 4' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'delete terms in 4' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'edit terms in 5' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'delete terms in 5' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
       ),
     ),
     'toolbar' =>
@@ -2854,6 +3283,188 @@ function _opensanmateo_roles_def_perms() {
         'site manager' => true,
       ),
       'administer panelizer node webform content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'administer panelizer node document defaults' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'administer panelizer node document overview' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'administer panelizer node document settings' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'administer panelizer node document context' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'administer panelizer node document layout' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'administer panelizer node document content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+
+      'administer panelizer node event defaults' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'administer panelizer node event overview' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'administer panelizer node event settings' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'administer panelizer node event context' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'administer panelizer node event layout' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'administer panelizer node event content' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+
+      'administer panelizer node media defaults' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'administer panelizer node media overview' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'administer panelizer node media settings' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'administer panelizer node media context' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'administer panelizer node media layout' =>
+      array (
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'administer panelizer node media content' =>
       array (
         'anonymous user' => false,
         'authenticated user' => false,
