@@ -73,7 +73,7 @@
 		
 		h3 {
 			text-transform: none;
-			font-size: 2.5em;
+			font-size: 1.5em;
 	    line-height: 1.1em;
 	    font-weight: normal;
 	    margin-bottom: 1%;
@@ -84,7 +84,7 @@
 			
 		p {
     		color: #EEEEEE;
-        font-size: 1.3em;
+        font-size: 1em;
         line-height: 1.3em;
         text-shadow: none;
         
@@ -146,5 +146,22 @@
     .flex-caption {
 		  background: $primaryGray !important;
 		}
+  }
+}
+
+@media all and (min-width: $tablet) {
+  
+  .pane-bundle-rotator-panels-pane {
+    .flex-caption {
+  		  		
+  		h3 {
+  			font-size: 2.5em;  	    
+  		}
+  			
+  		p {
+        font-size: 1.3em;
+        line-height: 1.3em;
+  		}
+  	}
   }
 }

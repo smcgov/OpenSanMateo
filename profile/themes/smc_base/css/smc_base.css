@@ -8582,7 +8582,7 @@ table {
     /* line 74, ../scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .flex-caption h3 {
       text-transform: none;
-      font-size: 2.5em;
+      font-size: 1.5em;
       line-height: 1.1em;
       font-weight: normal;
       margin-bottom: 1%;
@@ -8591,7 +8591,7 @@ table {
     /* line 85, ../scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .flex-caption p {
       color: #EEEEEE;
-      font-size: 1.3em;
+      font-size: 1em;
       line-height: 1.3em;
       text-shadow: none; }
       /* line 91, ../scss/elements/rotator-box.scss */
@@ -8636,6 +8636,14 @@ table {
 .lte8 .pane-bundle-rotator-panels-pane .flex-caption {
   background: #555a5a !important; }
 
+@media all and (min-width: 768px) {
+  /* line 157, ../scss/elements/rotator-box.scss */
+  .pane-bundle-rotator-panels-pane .flex-caption h3 {
+    font-size: 2.5em; }
+  /* line 161, ../scss/elements/rotator-box.scss */
+  .pane-bundle-rotator-panels-pane .flex-caption p {
+    font-size: 1.3em;
+    line-height: 1.3em; } }
 /* Fonts */
 /* Media Queries */
 /* line 4, ../scss/elements/alerts.scss */
