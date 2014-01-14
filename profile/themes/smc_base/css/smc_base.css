@@ -8632,6 +8632,10 @@ table {
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px; }
 
+/* line 146, ../scss/elements/rotator-box.scss */
+.lte8 .pane-bundle-rotator-panels-pane .flex-caption {
+  background: #555a5a !important; }
+
 /* Fonts */
 /* Media Queries */
 /* line 4, ../scss/elements/alerts.scss */
