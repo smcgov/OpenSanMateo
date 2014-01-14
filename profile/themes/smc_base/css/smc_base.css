@@ -6232,7 +6232,7 @@ a.button-blue-large {
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
-  background-color: #036cb6;
+  *background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: 1.1em; }
   /* line 23, ../scss/elements/buttons.scss */
@@ -6291,11 +6291,11 @@ a.button-blue-large {
     right: 10%; }
   /* line 126, ../scss/elements/buttons.scss */
   a.button-blue-large:hover {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: #036cb6; }
   /* line 131, ../scss/elements/buttons.scss */
   a.button-blue-large:active {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
 
 /* line 192, ../scss/elements/buttons.scss */
@@ -6319,7 +6319,7 @@ a.button-teal-large {
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
-  background-color: #38939b;
+  *background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95);
   font-size: 1.1em; }
   /* line 23, ../scss/elements/buttons.scss */
@@ -6378,11 +6378,11 @@ a.button-teal-large {
     right: 10%; }
   /* line 142, ../scss/elements/buttons.scss */
   a.button-teal-large:hover {
-    background-color: #38939b;
+    *background-color: #38939b;
     background-color: #38939b; }
   /* line 147, ../scss/elements/buttons.scss */
   a.button-teal-large:active {
-    background-color: #38939b;
+    *background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.9); }
 
 /* line 198, ../scss/elements/buttons.scss */
@@ -6406,7 +6406,7 @@ a.button-green-large {
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
-  background-color: #8dc63f;
+  *background-color: #8dc63f;
   background-color: rgba(141, 198, 63, 0.95);
   font-size: 1.1em; }
   /* line 23, ../scss/elements/buttons.scss */
@@ -6465,11 +6465,11 @@ a.button-green-large {
     right: 10%; }
   /* line 158, ../scss/elements/buttons.scss */
   a.button-green-large:hover {
-    background-color: #8dc63f;
+    *background-color: #8dc63f;
     background-color: #8dc63f; }
   /* line 163, ../scss/elements/buttons.scss */
   a.button-green-large:active {
-    background-color: #8dc63f;
+    *background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.9); }
 
 /* line 206, ../scss/elements/buttons.scss */
@@ -6493,7 +6493,7 @@ a.button-blue-default {
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
-  background-color: #036cb6;
+  *background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: 1em; }
   /* line 23, ../scss/elements/buttons.scss */
@@ -6552,11 +6552,11 @@ a.button-blue-default {
     right: 10%; }
   /* line 126, ../scss/elements/buttons.scss */
   a.button-blue-default:hover {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: #036cb6; }
   /* line 131, ../scss/elements/buttons.scss */
   a.button-blue-default:active {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
 
 /* line 212, ../scss/elements/buttons.scss */
@@ -6580,7 +6580,7 @@ a.button-teal-default {
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
-  background-color: #38939b;
+  *background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95);
   font-size: 1em; }
   /* line 23, ../scss/elements/buttons.scss */
@@ -6639,11 +6639,11 @@ a.button-teal-default {
     right: 10%; }
   /* line 142, ../scss/elements/buttons.scss */
   a.button-teal-default:hover {
-    background-color: #38939b;
+    *background-color: #38939b;
     background-color: #38939b; }
   /* line 147, ../scss/elements/buttons.scss */
   a.button-teal-default:active {
-    background-color: #38939b;
+    *background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.9); }
 
 /* line 218, ../scss/elements/buttons.scss */
@@ -6667,7 +6667,7 @@ a.button-green-default {
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
-  background-color: #8dc63f;
+  *background-color: #8dc63f;
   background-color: rgba(141, 198, 63, 0.95);
   font-size: 1em; }
   /* line 23, ../scss/elements/buttons.scss */
@@ -6726,11 +6726,11 @@ a.button-green-default {
     right: 10%; }
   /* line 158, ../scss/elements/buttons.scss */
   a.button-green-default:hover {
-    background-color: #8dc63f;
+    *background-color: #8dc63f;
     background-color: #8dc63f; }
   /* line 163, ../scss/elements/buttons.scss */
   a.button-green-default:active {
-    background-color: #8dc63f;
+    *background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.9); }
 
 /* line 226, ../scss/elements/buttons.scss */
@@ -6752,7 +6752,7 @@ a.button-blue-small {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: normal;
   position: relative;
-  background-color: #036cb6;
+  *background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: .85em;
   padding: .75em 1em; }
@@ -6769,11 +6769,11 @@ a.button-blue-small {
     transition: all 0.3s; }
   /* line 126, ../scss/elements/buttons.scss */
   a.button-blue-small:hover {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: #036cb6; }
   /* line 131, ../scss/elements/buttons.scss */
   a.button-blue-small:active {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
 
 /* line 231, ../scss/elements/buttons.scss */
@@ -6795,7 +6795,7 @@ a.button-teal-small {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: normal;
   position: relative;
-  background-color: #38939b;
+  *background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95);
   font-size: .85em;
   padding: .75em 1em; }
@@ -6812,11 +6812,11 @@ a.button-teal-small {
     transition: all 0.3s; }
   /* line 142, ../scss/elements/buttons.scss */
   a.button-teal-small:hover {
-    background-color: #38939b;
+    *background-color: #38939b;
     background-color: #38939b; }
   /* line 147, ../scss/elements/buttons.scss */
   a.button-teal-small:active {
-    background-color: #38939b;
+    *background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.9); }
 
 /* line 236, ../scss/elements/buttons.scss */
@@ -6838,7 +6838,7 @@ a.button-green-small {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: normal;
   position: relative;
-  background-color: #8dc63f;
+  *background-color: #8dc63f;
   background-color: rgba(141, 198, 63, 0.95);
   font-size: .85em;
   padding: .75em 1em; }
@@ -6855,11 +6855,11 @@ a.button-green-small {
     transition: all 0.3s; }
   /* line 158, ../scss/elements/buttons.scss */
   a.button-green-small:hover {
-    background-color: #8dc63f;
+    *background-color: #8dc63f;
     background-color: #8dc63f; }
   /* line 163, ../scss/elements/buttons.scss */
   a.button-green-small:active {
-    background-color: #8dc63f;
+    *background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.9); }
 
 /* line 243, ../scss/elements/buttons.scss */
@@ -6881,7 +6881,7 @@ a.accept-terms {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: normal;
   position: relative;
-  background-color: #8dc63f;
+  *background-color: #8dc63f;
   background-color: rgba(141, 198, 63, 0.95);
   font-size: .85em;
   padding: .75em 1em;
@@ -6899,11 +6899,11 @@ a.accept-terms {
     transition: all 0.3s; }
   /* line 158, ../scss/elements/buttons.scss */
   a.accept-terms:hover {
-    background-color: #8dc63f;
+    *background-color: #8dc63f;
     background-color: #8dc63f; }
   /* line 163, ../scss/elements/buttons.scss */
   a.accept-terms:active {
-    background-color: #8dc63f;
+    *background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.9); }
 
 /* line 250, ../scss/elements/buttons.scss */
@@ -6925,7 +6925,7 @@ a.do-not-accept-terms {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: normal;
   position: relative;
-  background-color: #38939b;
+  *background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95);
   font-size: .85em;
   padding: .75em 1em;
@@ -6943,11 +6943,11 @@ a.do-not-accept-terms {
     transition: all 0.3s; }
   /* line 142, ../scss/elements/buttons.scss */
   a.do-not-accept-terms:hover {
-    background-color: #38939b;
+    *background-color: #38939b;
     background-color: #38939b; }
   /* line 147, ../scss/elements/buttons.scss */
   a.do-not-accept-terms:active {
-    background-color: #38939b;
+    *background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.9); }
 
 /* line 258, ../scss/elements/buttons.scss */
@@ -6969,7 +6969,7 @@ a.do-not-accept-terms {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: normal;
   position: relative;
-  background-color: #036cb6;
+  *background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: .85em;
   padding: .75em 1em; }
@@ -6986,11 +6986,11 @@ a.do-not-accept-terms {
     transition: all 0.3s; }
   /* line 126, ../scss/elements/buttons.scss */
   .addtocal:hover {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: #036cb6; }
   /* line 131, ../scss/elements/buttons.scss */
   .addtocal:active {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
 
 /* line 266, ../scss/elements/buttons.scss */
@@ -7038,7 +7038,7 @@ ul.button-test {
         clear: left;
         padding: 1.1em 5.5em 1em 1.2em;
         overflow: hidden;
-        background-color: #036cb6;
+        *background-color: #036cb6;
         background-color: rgba(3, 108, 182, 0.95);
         font-size: 1.1em; }
         /* line 68, ../scss/elements/buttons.scss */
@@ -7086,18 +7086,18 @@ ul.button-test {
           right: 10%; }
         /* line 126, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-cta:hover {
-          background-color: #036cb6;
+          *background-color: #036cb6;
           background-color: #036cb6; }
         /* line 131, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-cta:active {
-          background-color: #036cb6;
+          *background-color: #036cb6;
           background-color: rgba(3, 108, 182, 0.9); }
       /* line 285, ../scss/elements/buttons.scss */
       ul.button-test li a.teal-cta {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
         overflow: hidden;
-        background-color: #38939b;
+        *background-color: #38939b;
         background-color: rgba(56, 147, 155, 0.95);
         font-size: 1.1em; }
         /* line 68, ../scss/elements/buttons.scss */
@@ -7145,18 +7145,18 @@ ul.button-test {
           right: 10%; }
         /* line 142, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-cta:hover {
-          background-color: #38939b;
+          *background-color: #38939b;
           background-color: #38939b; }
         /* line 147, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-cta:active {
-          background-color: #38939b;
+          *background-color: #38939b;
           background-color: rgba(56, 147, 155, 0.9); }
       /* line 291, ../scss/elements/buttons.scss */
       ul.button-test li a.green-cta {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
         overflow: hidden;
-        background-color: #8dc63f;
+        *background-color: #8dc63f;
         background-color: rgba(141, 198, 63, 0.95);
         font-size: 1.1em; }
         /* line 68, ../scss/elements/buttons.scss */
@@ -7204,11 +7204,11 @@ ul.button-test {
           right: 10%; }
         /* line 158, ../scss/elements/buttons.scss */
         ul.button-test li a.green-cta:hover {
-          background-color: #8dc63f;
+          *background-color: #8dc63f;
           background-color: #8dc63f; }
         /* line 163, ../scss/elements/buttons.scss */
         ul.button-test li a.green-cta:active {
-          background-color: #8dc63f;
+          *background-color: #8dc63f;
           background-color: rgba(141, 198, 63, 0.9); }
       /* line 299, ../scss/elements/buttons.scss */
       ul.button-test li a.blue-default {
@@ -7216,7 +7216,7 @@ ul.button-test {
         clear: left;
         padding: 1.1em 5.5em 1em 1.2em;
         overflow: hidden;
-        background-color: #036cb6;
+        *background-color: #036cb6;
         background-color: rgba(3, 108, 182, 0.95);
         font-size: 1em; }
         /* line 68, ../scss/elements/buttons.scss */
@@ -7264,18 +7264,18 @@ ul.button-test {
           right: 10%; }
         /* line 126, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-default:hover {
-          background-color: #036cb6;
+          *background-color: #036cb6;
           background-color: #036cb6; }
         /* line 131, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-default:active {
-          background-color: #036cb6;
+          *background-color: #036cb6;
           background-color: rgba(3, 108, 182, 0.9); }
       /* line 306, ../scss/elements/buttons.scss */
       ul.button-test li a.teal-default {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
         overflow: hidden;
-        background-color: #38939b;
+        *background-color: #38939b;
         background-color: rgba(56, 147, 155, 0.95);
         font-size: 1em; }
         /* line 68, ../scss/elements/buttons.scss */
@@ -7323,18 +7323,18 @@ ul.button-test {
           right: 10%; }
         /* line 142, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-default:hover {
-          background-color: #38939b;
+          *background-color: #38939b;
           background-color: #38939b; }
         /* line 147, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-default:active {
-          background-color: #38939b;
+          *background-color: #38939b;
           background-color: rgba(56, 147, 155, 0.9); }
       /* line 312, ../scss/elements/buttons.scss */
       ul.button-test li a.green-default {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
         overflow: hidden;
-        background-color: #8dc63f;
+        *background-color: #8dc63f;
         background-color: rgba(141, 198, 63, 0.95);
         font-size: 1em; }
         /* line 68, ../scss/elements/buttons.scss */
@@ -7382,57 +7382,57 @@ ul.button-test {
           right: 10%; }
         /* line 158, ../scss/elements/buttons.scss */
         ul.button-test li a.green-default:hover {
-          background-color: #8dc63f;
+          *background-color: #8dc63f;
           background-color: #8dc63f; }
         /* line 163, ../scss/elements/buttons.scss */
         ul.button-test li a.green-default:active {
-          background-color: #8dc63f;
+          *background-color: #8dc63f;
           background-color: rgba(141, 198, 63, 0.9); }
       /* line 321, ../scss/elements/buttons.scss */
       ul.button-test li a.blue-small {
         float: left;
         clear: left;
-        background-color: #036cb6;
+        *background-color: #036cb6;
         background-color: rgba(3, 108, 182, 0.95);
         font-size: .85em;
         padding: .75em 1em; }
         /* line 126, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-small:hover {
-          background-color: #036cb6;
+          *background-color: #036cb6;
           background-color: #036cb6; }
         /* line 131, ../scss/elements/buttons.scss */
         ul.button-test li a.blue-small:active {
-          background-color: #036cb6;
+          *background-color: #036cb6;
           background-color: rgba(3, 108, 182, 0.9); }
       /* line 327, ../scss/elements/buttons.scss */
       ul.button-test li a.teal-small {
         float: left;
-        background-color: #38939b;
+        *background-color: #38939b;
         background-color: rgba(56, 147, 155, 0.95);
         font-size: .85em;
         padding: .75em 1em; }
         /* line 142, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-small:hover {
-          background-color: #38939b;
+          *background-color: #38939b;
           background-color: #38939b; }
         /* line 147, ../scss/elements/buttons.scss */
         ul.button-test li a.teal-small:active {
-          background-color: #38939b;
+          *background-color: #38939b;
           background-color: rgba(56, 147, 155, 0.9); }
       /* line 332, ../scss/elements/buttons.scss */
       ul.button-test li a.green-small {
         float: left;
-        background-color: #8dc63f;
+        *background-color: #8dc63f;
         background-color: rgba(141, 198, 63, 0.95);
         font-size: .85em;
         padding: .75em 1em; }
         /* line 158, ../scss/elements/buttons.scss */
         ul.button-test li a.green-small:hover {
-          background-color: #8dc63f;
+          *background-color: #8dc63f;
           background-color: #8dc63f; }
         /* line 163, ../scss/elements/buttons.scss */
         ul.button-test li a.green-small:active {
-          background-color: #8dc63f;
+          *background-color: #8dc63f;
           background-color: rgba(141, 198, 63, 0.9); }
 
 /* Fonts */
@@ -7475,7 +7475,7 @@ ul.button-test {
     position: relative;
     padding: 1.1em 5.5em 1em 1.2em;
     overflow: hidden;
-    background-color: #8dc63f;
+    *background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.95);
     font-size: 1.1em;
     margin: 10px auto; }
@@ -7535,11 +7535,11 @@ ul.button-test {
       right: 10%; }
     /* line 158, ../scss/elements/buttons.scss */
     #skip-link a:hover {
-      background-color: #8dc63f;
+      *background-color: #8dc63f;
       background-color: #8dc63f; }
     /* line 163, ../scss/elements/buttons.scss */
     #skip-link a:active {
-      background-color: #8dc63f;
+      *background-color: #8dc63f;
       background-color: rgba(141, 198, 63, 0.9); }
     /* line 32, ../scss/elements/header.scss */
     #skip-link a:focus {
@@ -7825,7 +7825,7 @@ ul.button-test {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: normal;
   position: relative;
-  background-color: #036cb6;
+  *background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: .85em;
   padding: .75em 1em; }
@@ -7842,11 +7842,11 @@ ul.button-test {
     transition: all 0.3s; }
   /* line 126, ../scss/elements/buttons.scss */
   .node-webform .form-submit:hover {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: #036cb6; }
   /* line 131, ../scss/elements/buttons.scss */
   .node-webform .form-submit:active {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
 
 /* Fonts */
@@ -10057,7 +10057,7 @@ body.page-node .node .action-links-field-collection-add {
       position: relative;
       padding: 1.1em 5.5em 1em 1.2em;
       overflow: hidden;
-      background-color: #8dc63f;
+      *background-color: #8dc63f;
       background-color: rgba(141, 198, 63, 0.95);
       font-size: 1.1em;
       margin-bottom: 0; }
@@ -10125,42 +10125,42 @@ body.page-node .node .action-links-field-collection-add {
       /* line 158, ../scss/elements/buttons.scss */
       .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover,
       .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover {
-        background-color: #8dc63f;
+        *background-color: #8dc63f;
         background-color: #8dc63f; }
       /* line 163, ../scss/elements/buttons.scss */
       .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:active,
       .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:active {
-        background-color: #8dc63f;
+        *background-color: #8dc63f;
         background-color: rgba(141, 198, 63, 0.9); }
   /* line 191, ../scss/elements/promo-boxes.scss */
   .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a,
   .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a {
-    background-color: #38939b;
+    *background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.95); }
     /* line 142, ../scss/elements/buttons.scss */
     .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a:hover,
     .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a:hover {
-      background-color: #38939b;
+      *background-color: #38939b;
       background-color: #38939b; }
     /* line 147, ../scss/elements/buttons.scss */
     .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a:active,
     .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a:active {
-      background-color: #38939b;
+      *background-color: #38939b;
       background-color: rgba(56, 147, 155, 0.9); }
   /* line 204, ../scss/elements/promo-boxes.scss */
   .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a,
   .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.95); }
     /* line 126, ../scss/elements/buttons.scss */
     .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a:hover,
     .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a:hover {
-      background-color: #036cb6;
+      *background-color: #036cb6;
       background-color: #036cb6; }
     /* line 131, ../scss/elements/buttons.scss */
     .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a:active,
     .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a:active {
-      background-color: #036cb6;
+      *background-color: #036cb6;
       background-color: rgba(3, 108, 182, 0.9); } }
 /* line 225, ../scss/elements/promo-boxes.scss */
 .lte8 .panel-col-top .pane-bundle-promo-panels-pane,
@@ -10256,7 +10256,7 @@ body.page-node .node .action-links-field-collection-add {
     position: relative;
     padding: 1.1em 5.5em 1em 1.2em;
     overflow: hidden;
-    background-color: #8dc63f;
+    *background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.95);
     font-size: 1.1em;
     margin-bottom: 0; }
@@ -10324,42 +10324,42 @@ body.page-node .node .action-links-field-collection-add {
     /* line 158, ../scss/elements/buttons.scss */
     .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover,
     .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:hover {
-      background-color: #8dc63f;
+      *background-color: #8dc63f;
       background-color: #8dc63f; }
     /* line 163, ../scss/elements/buttons.scss */
     .lte8 .panel-col-top .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:active,
     .lte8 .panel-col-bottom .pane-bundle-promo-panels-pane .field-name-field-rotator-link-url a:active {
-      background-color: #8dc63f;
+      *background-color: #8dc63f;
       background-color: rgba(141, 198, 63, 0.9); }
 /* line 319, ../scss/elements/promo-boxes.scss */
 .lte8 .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a,
 .lte8 .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a {
-  background-color: #38939b;
+  *background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95); }
   /* line 142, ../scss/elements/buttons.scss */
   .lte8 .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a:hover,
   .lte8 .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a:hover {
-    background-color: #38939b;
+    *background-color: #38939b;
     background-color: #38939b; }
   /* line 147, ../scss/elements/buttons.scss */
   .lte8 .panel-col-top .promo-pane-green .field-name-field-rotator-link-url a:active,
   .lte8 .panel-col-bottom .promo-pane-green .field-name-field-rotator-link-url a:active {
-    background-color: #38939b;
+    *background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.9); }
 /* line 332, ../scss/elements/promo-boxes.scss */
 .lte8 .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a,
 .lte8 .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a {
-  background-color: #036cb6;
+  *background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95); }
   /* line 126, ../scss/elements/buttons.scss */
   .lte8 .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a:hover,
   .lte8 .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a:hover {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: #036cb6; }
   /* line 131, ../scss/elements/buttons.scss */
   .lte8 .panel-col-top .promo-pane-orange .field-name-field-rotator-link-url a:active,
   .lte8 .panel-col-bottom .promo-pane-orange .field-name-field-rotator-link-url a:active {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
 
 /* Fonts */
@@ -10457,7 +10457,7 @@ body.page-node .node .action-links-field-collection-add {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: normal;
   position: relative;
-  background-color: #036cb6;
+  *background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: .85em;
   padding: .75em 1em;
@@ -10482,11 +10482,11 @@ body.page-node .node .action-links-field-collection-add {
     transition: all 0.3s; }
   /* line 126, ../scss/elements/buttons.scss */
   #breadcrumb a:hover {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: #036cb6; }
   /* line 131, ../scss/elements/buttons.scss */
   #breadcrumb a:active {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
   /* line 25, ../scss/elements/breadcrumb.scss */
   #breadcrumb a:hover {
@@ -10626,7 +10626,7 @@ body.page-node .node .action-links-field-collection-add {
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
   font-weight: normal;
   position: relative;
-  background-color: #036cb6;
+  *background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: .85em;
   padding: .75em 1em;
@@ -10647,11 +10647,11 @@ body.page-node .node .action-links-field-collection-add {
     transition: all 0.3s; }
   /* line 126, ../scss/elements/buttons.scss */
   .view-opensanmateo-search .view-filters .form-submit:hover {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: #036cb6; }
   /* line 131, ../scss/elements/buttons.scss */
   .view-opensanmateo-search .view-filters .form-submit:active {
-    background-color: #036cb6;
+    *background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
 
 @media all and (min-width: 768px) {

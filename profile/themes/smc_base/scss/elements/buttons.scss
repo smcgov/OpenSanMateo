@@ -120,48 +120,48 @@
 
 // button color styles
 @mixin buttonBlue {
-  background-color: $primaryBlue;
+  *background-color: $primaryBlue;
   background-color: primaryBlue(0.95);
   
   &:hover {
-    background-color: $primaryBlue;
+    *background-color: $primaryBlue;
     background-color: primaryBlue(1);
   }
 
   &:active {
-  	background-color: $primaryBlue;
+  	*background-color: $primaryBlue;
   	background-color: primaryBlue(0.9);
 	}  
 }
 
 // button color styles
 @mixin buttonTeal {
-  background-color: $primaryTeal;
+  *background-color: $primaryTeal;
   background-color: primaryTeal(0.95);
   
   &:hover {
-    background-color: $primaryTeal;
+    *background-color: $primaryTeal;
     background-color: primaryTeal(1);
   }
 
   &:active {
-  	background-color: $primaryTeal;
+  	*background-color: $primaryTeal;
   	background-color: primaryTeal(0.9);
 	}  
 }
 
 // button color styles
 @mixin buttonGreen {
-  background-color: $altGreen;
+  *background-color: $altGreen;
   background-color: altGreen(0.95);
   
   &:hover {
-    background-color: $altGreen;
+    *background-color: $altGreen;
     background-color: altGreen(1);
   }
 
   &:active {
-  	background-color: $altGreen;
+  	*background-color: $altGreen;
   	background-color: altGreen(0.9);
 	}  
 }
