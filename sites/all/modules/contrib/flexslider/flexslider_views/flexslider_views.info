@@ -13,5 +13,5 @@ files[] = flexslider_views_plugin_style_flexslider.inc
 ; Information added by drush on 2014-01-14
 version = "068df89"
 project = "flexslider"
-datestamp = "1389689758"
+datestamp = "1389720873"
 

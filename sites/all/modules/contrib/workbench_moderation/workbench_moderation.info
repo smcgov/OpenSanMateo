@@ -20,5 +20,5 @@ files[] = tests/workbench_moderation.files.test
 ; Information added by drush on 2014-01-14
 version = "a90378de5b1aea2b095ff5613eea44f55947f514"
 project = "workbench_moderation"
-datestamp = "1389689721"
+datestamp = "1389720828"
 

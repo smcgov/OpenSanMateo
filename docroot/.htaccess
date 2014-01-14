@@ -88,6 +88,9 @@ DirectoryIndex index.php index.html index.htm
 #RewriteCond %{REQUEST_URI} ^/dir((/dir)+)(.*)$
 #RewriteRule ^.*$ /dir%3 [R=301,L]
 
+# To get the Shield module to work properly in Acquia hosting - https://drupal.org/project/shield
+RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+
 RewriteCond %{REQUEST_URI} =/CHANGELOG.txt [OR]
 RewriteCond %{REQUEST_URI} =/COPYRIGHT.txt [OR]
 RewriteCond %{REQUEST_URI} =/INSTALL.mysql.txt [OR]

@@ -11,5 +11,5 @@ files[] = views/custom_pagers_plugin_style_php_array.inc
 ; Information added by drush on 2014-01-14
 version = "dcc774741f5152a8c6a10d21a70399d77794cfa2"
 project = "custom_pagers"
-datestamp = "1389689794"
+datestamp = "1389720904"
 

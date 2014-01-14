@@ -14,5 +14,5 @@ files[] = tests/context.reactions.test
 version = "7.x-3.0-beta4+2-dev"
 core = "7.x"
 project = "context"
-datestamp = "1389689660"
+datestamp = "1389720776"
 

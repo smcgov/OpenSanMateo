@@ -12,5 +12,5 @@ files[] = hs_taxonomy_views_handler_filter_term_node_tid.inc
 ; Information added by drush on 2014-01-14
 version = "aac15cd"
 project = "hierarchical_select"
-datestamp = "1389689873"
+datestamp = "1389720972"
 

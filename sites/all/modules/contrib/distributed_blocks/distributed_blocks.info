@@ -8,5 +8,5 @@ dependencies[] = block
 ; Information added by drush on 2014-01-14
 version = "501219b163acda942c06d3c0017655fba7695b3c"
 project = "distributed_blocks"
-datestamp = "1389689839"
+datestamp = "1389720949"
 
