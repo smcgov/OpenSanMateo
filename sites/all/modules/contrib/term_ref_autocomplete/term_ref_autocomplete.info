@@ -8,8 +8,8 @@ files[] = term_ref_autocomplete.module
 dependencies[] = taxonomy
 dependencies[] = field
 
-; Information added by drush on 2014-01-07
+; Information added by drush on 2014-01-14
 version = "42e10e6"
 project = "term_ref_autocomplete"
-datestamp = "1389127800"
+datestamp = "1389689860"
 

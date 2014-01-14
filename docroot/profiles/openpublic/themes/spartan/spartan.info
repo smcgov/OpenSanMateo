@@ -427,8 +427,8 @@ settings[alpha_region_footer_second_equal_height_element] = '0'
 settings[alpha_region_footer_second_equal_height_container] = '0'
 
 
-; Information added by drush on 2014-01-07
+; Information added by drush on 2014-01-14
 version = "appify_services"
 project = "openpublic"
-datestamp = "1389127655"
+datestamp = "1389689654"
 

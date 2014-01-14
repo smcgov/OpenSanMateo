@@ -10,8 +10,8 @@ files[] = flexslider_views.module
 files[] = flexslider_views.views.inc
 files[] = flexslider_views_plugin_style_flexslider.inc
 
-; Information added by drush on 2014-01-07
+; Information added by drush on 2014-01-14
 version = "068df89"
 project = "flexslider"
-datestamp = "1389127735"
+datestamp = "1389689758"
 

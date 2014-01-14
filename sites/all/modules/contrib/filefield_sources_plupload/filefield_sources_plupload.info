@@ -6,8 +6,8 @@ package = Fields
 core = 7.x
 
 
-; Information added by drush on 2014-01-07
+; Information added by drush on 2014-01-14
 version = "8945a60"
 project = "filefield_sources_plupload"
-datestamp = "1389127808"
+datestamp = "1389689866"
 

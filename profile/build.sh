@@ -122,22 +122,22 @@ if [ "$TYPE" = 'acquia' ]; then
     cat $ABS_CALLPATH/build/htaccess_register_ie_mime_types.txt >> docroot/.htaccess
     #cp $ABS_CALLPATH/build/google58ce90b3ca3c2b88.html docroot/
     #add in password protection to
-    echo AuthType Basic >> docroot/.htaccess
-    echo AuthName \"Access Restricted\" >> docroot/.htaccess
-    echo "# since staging and dev are on the same machine, this path will be available" >> docroot/.htaccess
-    echo "# for both the staging and dev tiers and since that is the only place we are" >> docroot/.htaccess
-    echo "# password protecting that is acceptable" >> docroot/.htaccess
-    echo AuthUserFile /mnt/files/sanmateodev/.htpasswd >> docroot/.htaccess
-    echo Require valid-user >> docroot/.htaccess
-    echo SetEnvIf AH_SITE_ENVIRONMENT prod SANMATEO_ALLOW_ACCESS=1 >> docroot/.htaccess
-    echo SetEnvIf Request_URI "^/openid/" auth_whitelist >> docroot/.htaccess
-    echo SetEnvIf Request_URI "^/user/.*/identity" auth_whitelist >> docroot/.htaccess
-    echo SetEnvIf Request_URI "^/sites/.*/files/" auth_whitelist >> docroot/.htaccess
-    echo Deny from All >> docroot/.htaccess
-    echo Allow from env=SANMATEO_ALLOW_ACCESS >> docroot/.htaccess
-    echo Allow from env=auth_whitelist >> docroot/.htaccess
-    echo Allow from env=redirect_auth_whitelist >> docroot/.htaccess
-    echo Satisfy Any >> docroot/.htaccess
+#    echo AuthType Basic >> docroot/.htaccess
+#    echo AuthName \"Access Restricted\" >> docroot/.htaccess
+#    echo "# since staging and dev are on the same machine, this path will be available" >> docroot/.htaccess
+#    echo "# for both the staging and dev tiers and since that is the only place we are" >> docroot/.htaccess
+#    echo "# password protecting that is acceptable" >> docroot/.htaccess
+#    echo AuthUserFile /mnt/files/sanmateodev/.htpasswd >> docroot/.htaccess
+#    echo Require valid-user >> docroot/.htaccess
+#    echo SetEnvIf AH_SITE_ENVIRONMENT prod SANMATEO_ALLOW_ACCESS=1 >> docroot/.htaccess
+#    echo SetEnvIf Request_URI "^/openid/" auth_whitelist >> docroot/.htaccess
+#    echo SetEnvIf Request_URI "^/user/.*/identity" auth_whitelist >> docroot/.htaccess
+#    echo SetEnvIf Request_URI "^/sites/.*/files/" auth_whitelist >> docroot/.htaccess
+#    echo Deny from All >> docroot/.htaccess
+#    echo Allow from env=SANMATEO_ALLOW_ACCESS >> docroot/.htaccess
+#    echo Allow from env=auth_whitelist >> docroot/.htaccess
+#    echo Allow from env=redirect_auth_whitelist >> docroot/.htaccess
+#    echo Satisfy Any >> docroot/.htaccess
 
     # Add custom entries to core stock robots.txt
     cat $ABS_CALLPATH/build/robots.txt >> docroot/robots.txt

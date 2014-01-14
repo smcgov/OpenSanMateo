@@ -16,8 +16,8 @@ files[] = flexslider.test
 configure = admin/config/media/flexslider
 
 
-; Information added by drush on 2014-01-07
+; Information added by drush on 2014-01-14
 version = "068df89"
 project = "flexslider"
-datestamp = "1389127735"
+datestamp = "1389689758"
 
