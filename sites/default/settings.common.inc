@@ -77,6 +77,14 @@ if (empty($conf['sanmateo_is_master'])) {
 $conf['distributed_blocks_master_url'] = 'http://' . $master_host;
 $conf['distributed_blocks_update_freq'] = 1;
 
+// Set default shield module config so all we have to do is flip it on and off
+$conf['shield_enabled'] = 1;
+$conf['shield_user'] = 'smc';
+$conf['shield_pass'] = 'smc';
+if (empty($conf['sanmateo_is_master'])) {
+  $conf['shield_paths'] = "openid/*\r\nuser/*/identity\r\nsites/*/files";
+}
+
 /**
  * Util function to derive private filesystem patch from the site settings path and env vars
  */
