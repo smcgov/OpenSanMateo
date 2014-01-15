@@ -393,6 +393,7 @@ projects[distributed_blocks][subdir] = contrib
 projects[distributed_blocks][download][type] = git
 projects[distributed_blocks][download][url] = http://git.drupal.org/project/distributed_blocks.git
 projects[distributed_blocks][download][revision] = 501219b163acda942c06d3c0017655fba7695b3c
+projects[distributed_blocks][patch][2105889] = http://drupal.org/files/issues/distributed_blocks-undefined-offset-2105889-01.patch
 
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.4.16.zip
