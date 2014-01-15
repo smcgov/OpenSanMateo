@@ -31,3 +31,6 @@
 #RewriteCond %{REQUEST_URI} ^/dir((/dir)+)(.*)$
 #RewriteRule ^.*$ /dir%3 [R=301,L]
 
+# To get the Shield module to work properly in Acquia hosting - https://drupal.org/project/shield
+RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+

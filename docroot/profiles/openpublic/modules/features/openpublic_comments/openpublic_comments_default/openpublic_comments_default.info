@@ -23,8 +23,8 @@ features[variable][] = comment_services
 features[variable][] = comment_subject_field_services
 
 
-; Information added by drush on 2014-01-07
+; Information added by drush on 2014-01-15
 version = "appify_services"
 project = "openpublic"
-datestamp = "1389127655"
+datestamp = "1389764210"
 

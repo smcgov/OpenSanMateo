@@ -12,8 +12,8 @@ php = "5.2.4"
 project = "openpublic_person_leadership"
 version = "7.x-1.0"
 
-; Information added by drush on 2014-01-07
+; Information added by drush on 2014-01-15
 version = "appify_services"
 project = "openpublic"
-datestamp = "1389127655"
+datestamp = "1389764210"
 
