@@ -134,6 +134,20 @@ function opensanmateo_roles_modules_uninstalled($modules) {
 }
 
 /**
+ * Implements hook_taxonomy_vocabulary_insert
+ */
+function hook_taxonomy_vocabulary_insert($vocabulary) {
+  opensanmateo_roles_set_default_perms();
+}
+
+/**
+ * Implements hook_taxonomy_vocabulary_update
+ */
+function hook_taxonomy_vocabulary_update($vocabulary) {
+  opensanmateo_roles_set_default_perms();
+}
+
+/**
  * Util method to abstract perms setup
  */
 function opensanmateo_roles_set_default_perms() {
@@ -146,21 +160,21 @@ function opensanmateo_roles_set_default_perms() {
 function _opensanmateo_roles_set_default_perms_shutdown() {
   module_load_include('inc', 'opensanmateo_roles', 'opensanmateo_roles.defperms');
   $cfg = _opensanmateo_roles_cfg();
-  $def_perms = _opensanmateo_roles_def_perms();
-  $roles = array_flip(user_roles());
 
   // Force a reload of modules and perms hooks, retrieve all perms
   module_implements('permission', FALSE, TRUE);
   $all_perms = user_permission_get_modules();
 
   // Iterate over modules-perms-roles and set default perms
+  $def_perms = _opensanmateo_roles_def_perms();
+  $roles = array_flip(user_roles());
   foreach ($def_perms as $module => $perms) {
     foreach ($perms as $perm => $perm_roles) {
       if (isset($all_perms[$perm])) {
         foreach ($perm_roles as $role => $perm_val) {
           if (isset($roles[$role]) && !isset($cfg[$module][$perm][$role])) {
             // Set the perm
-            _opensanmateo_roles_debug("$role: $perm = " . ($perm_val ? 'TRUE' : 'FALSE'));
+            _opensanmateo_roles_debug("$perm: $role = " . ($perm_val ? 'TRUE' : 'FALSE'));
             user_role_change_permissions($roles[$role], array($perm => $perm_val));
 
             // Flag this perm as being defaulted so we don't do it again until the module is uninstalled
@@ -179,7 +193,7 @@ function _opensanmateo_roles_set_default_perms_shutdown() {
  * Helper function for perms config variable
  */
 function _opensanmateo_roles_cfg($cfg = NULL) {
-  if ($cfg) {
+  if (NULL !== $cfg) {
     variable_set('opensanmateo_roles_def_perms', $cfg);
   }
   return variable_get('opensanmateo_roles_def_perms', array());
