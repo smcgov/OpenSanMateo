@@ -511,6 +511,10 @@ projects[shield][download][type] = git
 projects[shield][download][url] = http://git.drupal.org/project/shield.git
 projects[shield][download][revision] = d0d4d8ba32ac128d15c758fe29dbc022223a1270
 
+projects[XHProf][type] = module
+projects[XHProf][subdir] = contrib
+projects[XHProf][version] = 1.x-dev
+
 projects[shs][type] = module
 projects[shs][subdir] = contrib
 projects[shs][version] = 1.6
