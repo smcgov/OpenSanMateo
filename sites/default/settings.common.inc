@@ -81,9 +81,6 @@ $conf['distributed_blocks_update_freq'] = 1;
 $conf['shield_enabled'] = 1;
 $conf['shield_user'] = 'smc';
 $conf['shield_pass'] = 'smc';
-if (empty($conf['sanmateo_is_master'])) {
-  $conf['shield_paths'] = "openid/*\r\nuser/*/identity\r\nsites/*/files";
-}
 
 /**
  * Util function to derive private filesystem patch from the site settings path and env vars
