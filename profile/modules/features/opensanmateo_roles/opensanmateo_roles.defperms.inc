@@ -8,7 +8,29 @@
  * Helper function to consolidate perms in one place
  */
 function _opensanmateo_roles_def_perms() {
-  return array (
+  $def_perms = array (
+    'xmlsitemap' => array(
+      'administer xmlsitemap' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => true,
+      ),
+    ),
+    'flexslider' => array(
+      'administer flexslider' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => true,
+      ),
+    ),
     'sharethis' => array(
       'administer sharethis' => array(
         'anonymous user' => false,
@@ -1140,7 +1162,7 @@ function _opensanmateo_roles_def_perms() {
         'editor' => false,
         'site manager' => false,
       ),
-      'administer content' =>
+      'administer nodes' =>
       array (
         'anonymous user' => false,
         'authenticated user' => false,
@@ -1163,6 +1185,16 @@ function _opensanmateo_roles_def_perms() {
       'access content' =>
       array (
         'anonymous user' => true,
+        'authenticated user' => true,
+        'administrator' => true,
+        'content creator' => true,
+        'event creator' => true,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'view own unpublished content' =>
+      array (
+        'anonymous user' => false,
         'authenticated user' => true,
         'administrator' => true,
         'content creator' => true,
@@ -2509,106 +2541,6 @@ function _opensanmateo_roles_def_perms() {
         'editor' => true,
         'site manager' => true,
       ),
-      'edit terms in 1' =>
-      array (
-        'anonymous user' => false,
-        'authenticated user' => false,
-        'administrator' => true,
-        'content creator' => false,
-        'event creator' => false,
-        'editor' => false,
-        'site manager' => false,
-      ),
-      'delete terms in 1' =>
-      array (
-        'anonymous user' => false,
-        'authenticated user' => false,
-        'administrator' => true,
-        'content creator' => false,
-        'event creator' => false,
-        'editor' => false,
-        'site manager' => false,
-      ),
-      'edit terms in 2' =>
-      array (
-        'anonymous user' => false,
-        'authenticated user' => false,
-        'administrator' => true,
-        'content creator' => false,
-        'event creator' => false,
-        'editor' => false,
-        'site manager' => false,
-      ),
-      'delete terms in 2' =>
-      array (
-        'anonymous user' => false,
-        'authenticated user' => false,
-        'administrator' => true,
-        'content creator' => false,
-        'event creator' => false,
-        'editor' => false,
-        'site manager' => false,
-      ),
-      'edit terms in 3' =>
-      array (
-        'anonymous user' => false,
-        'authenticated user' => false,
-        'administrator' => true,
-        'content creator' => false,
-        'event creator' => false,
-        'editor' => true,
-        'site manager' => true,
-      ),
-      'delete terms in 3' =>
-      array (
-        'anonymous user' => false,
-        'authenticated user' => false,
-        'administrator' => true,
-        'content creator' => false,
-        'event creator' => false,
-        'editor' => true,
-        'site manager' => true,
-      ),
-      'edit terms in 4' =>
-      array (
-        'anonymous user' => false,
-        'authenticated user' => false,
-        'administrator' => true,
-        'content creator' => false,
-        'event creator' => false,
-        'editor' => false,
-        'site manager' => false,
-      ),
-      'delete terms in 4' =>
-      array (
-        'anonymous user' => false,
-        'authenticated user' => false,
-        'administrator' => true,
-        'content creator' => false,
-        'event creator' => false,
-        'editor' => false,
-        'site manager' => false,
-      ),
-      'edit terms in 5' =>
-      array (
-        'anonymous user' => false,
-        'authenticated user' => false,
-        'administrator' => true,
-        'content creator' => false,
-        'event creator' => false,
-        'editor' => true,
-        'site manager' => true,
-      ),
-      'delete terms in 5' =>
-      array (
-        'anonymous user' => false,
-        'authenticated user' => false,
-        'administrator' => true,
-        'content creator' => false,
-        'event creator' => false,
-        'editor' => false,
-        'site manager' => false,
-      ),
     ),
     'toolbar' =>
     array (
@@ -3499,4 +3431,160 @@ function _opensanmateo_roles_def_perms() {
       ),
     ),
   );
+
+  // Add vocabulary-specific terms
+  $vocab_perms = array(
+    'sub_type' => array(
+      'edit' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'delete' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+    ),
+    'subject' => array(
+      'edit' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'delete' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+    ),
+    'topic' => array(
+      'edit' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'delete' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+    ),
+    'calendars' => array(
+      'edit' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'delete' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+    ),
+    'govdelivery_topics' => array(
+      'edit' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'delete' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+    ),
+    'location_type' => array(
+      'edit' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'delete' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+    ),
+    'event_type' => array(
+      'edit' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+      'delete' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => false,
+      ),
+    ),
+  );
+
+  foreach ($vocab_perms as $vocab_name => $perms) {
+    $vocab = taxonomy_vocabulary_machine_name_load($vocab_name);
+    if (FALSE !== $vocab) {
+      foreach ($perms as $perm => $perm_roles) {
+        $perm = "{$perm} terms in {$vocab->vid}";
+        $def_perms['taxonomy'][$perm] = $perm_roles;
+      }
+    }
+  }
+
+  return $def_perms;
 }
