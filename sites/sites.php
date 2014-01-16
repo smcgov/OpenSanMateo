@@ -77,6 +77,10 @@ $fayze2_sites = array(
   'parks' => 'parks.smcgov.org',
   'planning' => 'planning.smcgov.org',
   'probation' => 'probation.smcgov.org',
+  'housing' => 'housing.smcgov.org',
+  'controller' => 'controller.smcgov.org',
+  'taxcollector' => 'taxcollector.smcgov.org',
+  'csw' => 'csw.smcgov.org',
 );
 
 foreach ($fayze2_sites as $short_name => $site_name) {

@@ -39,8 +39,8 @@ features_exclude[dependencies][openpublic_defaults] = openpublic_defaults
 features_exclude[dependencies][options] = options
 
 
-; Information added by drush on 2014-01-15
+; Information added by drush on 2014-01-16
 version = "appify_services"
 project = "openpublic"
-datestamp = "1389764210"
+datestamp = "1389846233"
 

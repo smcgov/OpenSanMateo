@@ -4,9 +4,9 @@ core = 7.x
 dependencies[] = date_popup
 
 
-; Information added by drush on 2014-01-15
+; Information added by drush on 2014-01-16
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "revision_scheduler"
-datestamp = "1389764280"
+datestamp = "1389846299"
 

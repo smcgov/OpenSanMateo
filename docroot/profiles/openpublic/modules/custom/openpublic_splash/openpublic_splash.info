@@ -9,8 +9,8 @@ core = 7.x
 files[] = openpublic_splash.module
 
 
-; Information added by drush on 2014-01-15
+; Information added by drush on 2014-01-16
 version = "appify_services"
 project = "openpublic"
-datestamp = "1389764210"
+datestamp = "1389846233"
 

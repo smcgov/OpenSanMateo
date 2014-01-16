@@ -6,8 +6,8 @@ dependencies[] = page_manager
 dependencies[] = twitter_pull
 core = 7.x
 
-; Information added by drush on 2014-01-15
+; Information added by drush on 2014-01-16
 version = "master-dev"
 project = "twitter_pull_pane"
-datestamp = "1389764365"
+datestamp = "1389846389"
 
