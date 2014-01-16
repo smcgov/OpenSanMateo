@@ -38,13 +38,6 @@ function opensanmateo_location_views_default_views_alter(&$data) {
 }
 
 /**
- * Implements hook_views_api().
- */
-function opensanmateo_location_views_api() {
-  return array("api" => "3.0");
-}
-
-/**
  * Implements hook_node_info().
  */
 function opensanmateo_location_node_info() {
