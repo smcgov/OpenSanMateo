@@ -21,7 +21,8 @@
     		
     		<div class="lockup group clearfix">
     		  <!--[if IE 8]><img class="ie-logo" src="<?php print($themelogo); ?>" /><![endif]-->
-    		  <div class="site-seal"></div>
+    		  <div class="site-seal"><img src="<?php print $header_logo; ?>" alt="Home" /></div>
+    		  
     			<?php if ($site_name): ?>
       			<a href="<?php print $front_page; ?>" title="<?php print t('County of San Mateo'); ?>" rel="home"><h2 class="county-name">County<span class="tiny">of</span>San Mateo</h2></a>
             <a href="<?php print $front_page; ?>" title="<?php print $site_name; ?>" rel="home"><h2 id="site-name" class="dept-name"><?php print $site_name; ?></h2></a>
@@ -78,6 +79,8 @@
     <footer id="footer" class="clearfix group">    
       <div class="limiter clearfix">
         <div class="seal clearfix">
+          <img class="mobile-only" src="<?php print $footer_logo; ?>" />
+          <img class="not-mobile" src="<?php print $footer_logo_small; ?>" />
           <?php print render($page['footer']); ?>
         </div>
       </div>

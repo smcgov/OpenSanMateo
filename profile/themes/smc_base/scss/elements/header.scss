@@ -37,6 +37,10 @@
 .lockup {
 	display: block;
 }
+.site-seal {
+  display: none;
+}
+
 .ie-logo {
   height: 80px;
   width: 80px;
@@ -110,15 +114,21 @@
   	float: none;
   }
   .site-seal {
-    
-    background: url("../images/seal.png") no-repeat 0 0;
-  	background-size: contain;
+    display: block;
+    //background: url("../images/seal-header.png") no-repeat 0 0;
+  	//background-size: contain;
     position: absolute;
     top: 0.25em;
     left: 1em;
-    height: 5em;
-    width: 5em;
+    height: 80px;
+    width: 80px;
+    
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   }
+  
   .county-name, .dept-name {
   	display: block;
   	text-transform: uppercase;

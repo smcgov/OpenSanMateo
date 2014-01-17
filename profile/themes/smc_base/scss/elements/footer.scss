@@ -21,11 +21,24 @@ footer {
 	
 	.seal {
 		width: 100%;
-		background: url("../images/seal.png") no-repeat top center;
-		background-size: 100px;
+		text-align: center;
 		margin: 1em auto;
 		min-height: 40px;
-		padding-top: 140px;
+		
+		
+		img {
+  		max-width: 100%;
+  		height: auto;
+  		display: block;
+  		margin: 20px auto;
+  		
+  		&.mobile-only {
+    		display: block;
+  		}
+  		&.not-mobile {
+    		display: none;
+  		}
+		}
 	}
 	
 	nav {
@@ -89,13 +102,32 @@ footer {
     width: 100%;
 
 	.seal {
-		background: url("../images/seal.png") no-repeat left center;
-		background-size: contain;
-		margin: 0;
-		padding-top: 0;
-		max-width: auto;
-  }
 		
+  }
+  
+  .seal {
+		width: 100%;
+		text-align: center;
+		margin: 1em auto;
+		min-height: 40px;
+		padding: 20px 0;
+		
+		img {
+  		max-width: 100%;
+  		height: auto;
+  		
+  		&.mobile-only {
+    		display: none;
+  		}
+  		&.not-mobile {
+    		display: block;
+    		position: absolute;
+    		left: 0;
+    		margin: 0;
+  		}
+		}
+	}
+  
 	nav {border: none;}
 
 	nav ul, nav ul.menu {
