@@ -7550,6 +7550,10 @@ ul.button-test {
   display: block; }
 
 /* line 40, ../scss/elements/header.scss */
+.site-seal {
+  display: none; }
+
+/* line 44, ../scss/elements/header.scss */
 .ie-logo {
   height: 80px;
   width: 80px;
@@ -7559,30 +7563,30 @@ ul.button-test {
   top: -5px;
   position: relative; }
 
-/* line 49, ../scss/elements/header.scss */
+/* line 53, ../scss/elements/header.scss */
 .btn .icon-nav {
   font-size: 1.5em;
   float: right; }
 
-/* line 54, ../scss/elements/header.scss */
+/* line 58, ../scss/elements/header.scss */
 .county-name, .dept-name {
   display: inline-block;
   padding: 0 .5em;
   text-transform: uppercase; }
 
-/* line 60, ../scss/elements/header.scss */
+/* line 64, ../scss/elements/header.scss */
 .county-name {
   color: #036cb6;
   font-size: 1.25em;
   font-family: 'Trade Gothic W01 Bold'; }
 
-/* line 66, ../scss/elements/header.scss */
+/* line 70, ../scss/elements/header.scss */
 .county-name span {
   font-size: .75em;
   font-family: 'Trade Gothic W01 Roman';
   padding: 0 0.15em 0 0.1em; }
 
-/* line 72, ../scss/elements/header.scss */
+/* line 76, ../scss/elements/header.scss */
 .dept-name {
   color: #38939b;
   font-family: 'Trade Gothic W01 Light';
@@ -7591,17 +7595,17 @@ ul.button-test {
   line-height: 1em;
   font-weight: 100; }
 
-/* line 81, ../scss/elements/header.scss */
+/* line 85, ../scss/elements/header.scss */
 .dept-link {
   display: none; }
 
 @media all and (min-width: 768px) {
-  /* line 87, ../scss/elements/header.scss */
+  /* line 91, ../scss/elements/header.scss */
   .wrapper {
     overflow: hidden;
     width: 100%;
     margin: auto; }
-    /* line 92, ../scss/elements/header.scss */
+    /* line 96, ../scss/elements/header.scss */
     .wrapper > header {
       padding: 1em 0 0;
       background-image: url("../images/uber-texture2.png"), -webkit-linear-gradient(#faffff 0%, #fdffff 100%);
@@ -7611,54 +7615,57 @@ ul.button-test {
       box-shadow: 0 3px 6px rgba(85, 90, 90, 0.1); }
 
   /* Header Logo/Headings */
-  /* line 105, ../scss/elements/header.scss */
+  /* line 109, ../scss/elements/header.scss */
   .lockup {
     margin-bottom: 2%;
     width: 65%;
     padding-left: 5em;
     float: none; }
 
-  /* line 112, ../scss/elements/header.scss */
+  /* line 116, ../scss/elements/header.scss */
   .site-seal {
-    background: url("../images/seal.png") no-repeat 0 0;
-    background-size: contain;
+    display: block;
     position: absolute;
     top: 0.25em;
     left: 1em;
-    height: 5em;
-    width: 5em; }
+    height: 80px;
+    width: 80px; }
+    /* line 126, ../scss/elements/header.scss */
+    .site-seal img {
+      max-width: 100%;
+      height: auto; }
 
-  /* line 122, ../scss/elements/header.scss */
+  /* line 132, ../scss/elements/header.scss */
   .county-name, .dept-name {
     display: block;
     text-transform: uppercase;
     text-shadow: 0px 1px 0px #fff; }
 
-  /* line 128, ../scss/elements/header.scss */
+  /* line 138, ../scss/elements/header.scss */
   .county-name {
     color: #036cb6;
     font-size: 2em;
     line-height: 1em;
     font-family: 'Trade Gothic W01 Bold';
     background-size: contain; }
-    /* line 135, ../scss/elements/header.scss */
+    /* line 145, ../scss/elements/header.scss */
     .county-name span {
       font-size: .6em;
       font-family: 'Trade Gothic W01 Roman';
       padding: 0 0.2em 0 0.1em; }
 
-  /* line 142, ../scss/elements/header.scss */
+  /* line 152, ../scss/elements/header.scss */
   .county-name:hover {
     color: #38939b; }
 
-  /* line 146, ../scss/elements/header.scss */
+  /* line 156, ../scss/elements/header.scss */
   .dept-name {
     font-size: 2em;
     margin: 0;
     line-height: 1.2em; }
 
   /* View Departments Switch */
-  /* line 153, ../scss/elements/header.scss */
+  /* line 163, ../scss/elements/header.scss */
   .dept-link {
     background-color: rgba(3, 108, 182, 0.9);
     border-bottom-left-radius: 3px;
@@ -7672,23 +7679,23 @@ ul.button-test {
     right: 0;
     top: -1.3em; }
 
-  /* line 167, ../scss/elements/header.scss */
+  /* line 177, ../scss/elements/header.scss */
   .dept-link:hover {
     color: rgba(255, 255, 255, 0.9); }
 
-  /* line 171, ../scss/elements/header.scss */
+  /* line 181, ../scss/elements/header.scss */
   .btn-nav {
     display: none; } }
-/* line 180, ../scss/elements/header.scss */
+/* line 190, ../scss/elements/header.scss */
 .lte8 {
   /* Header Logo/Headings */
   /* View Departments Switch */ }
-  /* line 181, ../scss/elements/header.scss */
+  /* line 191, ../scss/elements/header.scss */
   .lte8 .wrapper {
     overflow: hidden;
     width: 100%;
     margin: auto; }
-    /* line 186, ../scss/elements/header.scss */
+    /* line 196, ../scss/elements/header.scss */
     .lte8 .wrapper > header {
       padding: 1em 0 0;
       background-image: url("../images/uber-texture2.png"), -webkit-linear-gradient(#faffff 0%, #fdffff 100%);
@@ -7696,47 +7703,47 @@ ul.button-test {
       border-top: 5px solid rgba(3, 108, 182, 0.9);
       margin-bottom: 3%;
       box-shadow: 0 3px 6px rgba(85, 90, 90, 0.1); }
-  /* line 199, ../scss/elements/header.scss */
+  /* line 209, ../scss/elements/header.scss */
   .lte8 .lockup {
     margin-bottom: 2%;
     width: 65%;
     float: none; }
-  /* line 207, ../scss/elements/header.scss */
+  /* line 217, ../scss/elements/header.scss */
   .lte8 .site-seal {
     display: none; }
-  /* line 210, ../scss/elements/header.scss */
+  /* line 220, ../scss/elements/header.scss */
   .lte8 .county-name, .lte8 .dept-name {
     display: block;
     text-transform: uppercase;
     text-shadow: 0px 1px 0px #fff; }
-  /* line 216, ../scss/elements/header.scss */
+  /* line 226, ../scss/elements/header.scss */
   .lte8 .county-name {
     color: #036cb6;
     font-size: 2em;
     line-height: 1em;
     font-family: 'Trade Gothic W01 Bold';
     background-size: contain; }
-    /* line 223, ../scss/elements/header.scss */
+    /* line 233, ../scss/elements/header.scss */
     .lte8 .county-name span {
       font-size: .6em;
       font-family: 'Trade Gothic W01 Roman';
       padding: 0 0.2em 0 0.1em; }
-  /* line 230, ../scss/elements/header.scss */
+  /* line 240, ../scss/elements/header.scss */
   .lte8 .county-name:hover {
     color: #38939b; }
-  /* line 234, ../scss/elements/header.scss */
+  /* line 244, ../scss/elements/header.scss */
   .lte8 .dept-name {
     font-size: 2em;
     margin: 0;
     line-height: 1.2em; }
-  /* line 241, ../scss/elements/header.scss */
+  /* line 251, ../scss/elements/header.scss */
   .lte8 .dept-link {
     display: none; }
-  /* line 245, ../scss/elements/header.scss */
+  /* line 255, ../scss/elements/header.scss */
   .lte8 .dept-link:hover {
     color: white;
     color: rgba(255, 255, 255, 0.9); }
-  /* line 250, ../scss/elements/header.scss */
+  /* line 260, ../scss/elements/header.scss */
   .lte8 .btn-nav {
     display: none; }
 
@@ -10816,24 +10823,34 @@ footer {
   /* line 22, ../scss/elements/footer.scss */
   footer .seal {
     width: 100%;
-    background: url("../images/seal.png") no-repeat top center;
-    background-size: 100px;
+    text-align: center;
     margin: 1em auto;
-    min-height: 40px;
-    padding-top: 140px; }
-  /* line 34, ../scss/elements/footer.scss */
+    min-height: 40px; }
+    /* line 29, ../scss/elements/footer.scss */
+    footer .seal img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto; }
+      /* line 35, ../scss/elements/footer.scss */
+      footer .seal img.mobile-only {
+        display: block; }
+      /* line 38, ../scss/elements/footer.scss */
+      footer .seal img.not-mobile {
+        display: none; }
+  /* line 47, ../scss/elements/footer.scss */
   footer nav ul, footer nav ul.menu {
     width: 100%;
     margin-bottom: 0;
     padding-left: 0; }
-    /* line 40, ../scss/elements/footer.scss */
+    /* line 53, ../scss/elements/footer.scss */
     footer nav ul li,
     footer nav ul li.leaf, footer nav ul.menu li,
     footer nav ul.menu li.leaf {
       float: left;
       list-style-type: none;
       width: 100%; }
-      /* line 45, ../scss/elements/footer.scss */
+      /* line 58, ../scss/elements/footer.scss */
       footer nav ul li a,
       footer nav ul li.leaf a, footer nav ul.menu li a,
       footer nav ul.menu li.leaf a {
@@ -10846,24 +10863,24 @@ footer {
         border-bottom: 1px solid #014c80;
         min-height: 44px;
         font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
-      /* line 57, ../scss/elements/footer.scss */
+      /* line 70, ../scss/elements/footer.scss */
       footer nav ul li a:hover,
       footer nav ul li.leaf a:hover, footer nav ul.menu li a:hover,
       footer nav ul.menu li.leaf a:hover {
         color: rgba(255, 255, 255, 0.8); }
-      /* line 61, ../scss/elements/footer.scss */
+      /* line 74, ../scss/elements/footer.scss */
       footer nav ul li #google_translator_element div,
       footer nav ul li.leaf #google_translator_element div, footer nav ul.menu li #google_translator_element div,
       footer nav ul.menu li.leaf #google_translator_element div {
         color: #FFFFFF !important;
         font-size: 0.5em; }
-        /* line 66, ../scss/elements/footer.scss */
+        /* line 79, ../scss/elements/footer.scss */
         footer nav ul li #google_translator_element div a,
         footer nav ul li.leaf #google_translator_element div a, footer nav ul.menu li #google_translator_element div a,
         footer nav ul.menu li.leaf #google_translator_element div a {
           display: inline;
           font-size: 1em; }
-        /* line 71, ../scss/elements/footer.scss */
+        /* line 84, ../scss/elements/footer.scss */
         footer nav ul li #google_translator_element div select,
         footer nav ul li.leaf #google_translator_element div select, footer nav ul.menu li #google_translator_element div select,
         footer nav ul.menu li.leaf #google_translator_element div select {
@@ -10871,7 +10888,7 @@ footer {
           display: block; }
 
 @media all and (min-width: 768px) {
-  /* line 83, ../scss/elements/footer.scss */
+  /* line 96, ../scss/elements/footer.scss */
   footer {
     background: url("../images/footer.jpg") no-repeat scroll center bottom #036cb6;
     background-size: cover;
@@ -10879,22 +10896,35 @@ footer {
     margin-bottom: 0;
     padding: 3em 2em;
     width: 100%; }
-    /* line 91, ../scss/elements/footer.scss */
+    /* line 108, ../scss/elements/footer.scss */
     footer .seal {
-      background: url("../images/seal.png") no-repeat left center;
-      background-size: contain;
-      margin: 0;
-      padding-top: 0;
-      max-width: auto; }
-    /* line 99, ../scss/elements/footer.scss */
+      width: 100%;
+      text-align: center;
+      margin: 1em auto;
+      min-height: 40px;
+      padding: 20px 0; }
+      /* line 115, ../scss/elements/footer.scss */
+      footer .seal img {
+        max-width: 100%;
+        height: auto; }
+        /* line 119, ../scss/elements/footer.scss */
+        footer .seal img.mobile-only {
+          display: none; }
+        /* line 122, ../scss/elements/footer.scss */
+        footer .seal img.not-mobile {
+          display: block;
+          position: absolute;
+          left: 0;
+          margin: 0; }
+    /* line 131, ../scss/elements/footer.scss */
     footer nav {
       border: none; }
-    /* line 101, ../scss/elements/footer.scss */
+    /* line 133, ../scss/elements/footer.scss */
     footer nav ul, footer nav ul.menu {
       width: 55%;
       float: right;
       margin-bottom: 0; }
-      /* line 107, ../scss/elements/footer.scss */
+      /* line 139, ../scss/elements/footer.scss */
       footer nav ul li,
       footer nav ul li.leaf, footer nav ul.menu li,
       footer nav ul.menu li.leaf {
@@ -10902,7 +10932,7 @@ footer {
         list-style-type: none;
         width: 33%;
         margin-bottom: 2%; }
-        /* line 113, ../scss/elements/footer.scss */
+        /* line 145, ../scss/elements/footer.scss */
         footer nav ul li a,
         footer nav ul li.leaf a, footer nav ul.menu li a,
         footer nav ul.menu li.leaf a {
@@ -10914,17 +10944,17 @@ footer {
           border: none;
           min-height: 0;
           font-weight: 100; }
-        /* line 124, ../scss/elements/footer.scss */
+        /* line 156, ../scss/elements/footer.scss */
         footer nav ul li a:hover,
         footer nav ul li.leaf a:hover, footer nav ul.menu li a:hover,
         footer nav ul.menu li.leaf a:hover {
           color: rgba(255, 255, 255, 0.8); } }
 @media all and (min-width: 800px) {
-  /* line 134, ../scss/elements/footer.scss */
+  /* line 166, ../scss/elements/footer.scss */
   footer nav ul, footer nav ul.menu {
     width: 45%; }
 
-  /* line 139, ../scss/elements/footer.scss */
+  /* line 171, ../scss/elements/footer.scss */
   #__dimScreen .message {
     font-size: 1em;
     background-color: #FFFFFF;
@@ -10934,26 +10964,26 @@ footer {
     top: 25%;
     width: 50%;
     z-index: 800; } }
-/* line 153, ../scss/elements/footer.scss */
+/* line 185, ../scss/elements/footer.scss */
 .lte8 footer {
   border-top: 5px solid #38939b;
   margin-bottom: 0;
   padding: 3em 2em;
   width: 100%; }
-  /* line 160, ../scss/elements/footer.scss */
+  /* line 192, ../scss/elements/footer.scss */
   .lte8 footer .seal {
     margin: 0;
     padding-top: 0;
     background-image: none; }
-  /* line 166, ../scss/elements/footer.scss */
+  /* line 198, ../scss/elements/footer.scss */
   .lte8 footer nav {
     border: none; }
-  /* line 168, ../scss/elements/footer.scss */
+  /* line 200, ../scss/elements/footer.scss */
   .lte8 footer nav ul, .lte8 footer nav ul.menu {
     width: 45%;
     float: right;
     margin-bottom: 0; }
-    /* line 174, ../scss/elements/footer.scss */
+    /* line 206, ../scss/elements/footer.scss */
     .lte8 footer nav ul li,
     .lte8 footer nav ul li.leaf, .lte8 footer nav ul.menu li,
     .lte8 footer nav ul.menu li.leaf {
@@ -10961,7 +10991,7 @@ footer {
       list-style-type: none;
       width: 33%;
       margin-bottom: 2%; }
-      /* line 180, ../scss/elements/footer.scss */
+      /* line 212, ../scss/elements/footer.scss */
       .lte8 footer nav ul li a,
       .lte8 footer nav ul li.leaf a, .lte8 footer nav ul.menu li a,
       .lte8 footer nav ul.menu li.leaf a {
@@ -10973,7 +11003,7 @@ footer {
         border: none;
         min-height: 0;
         font-weight: 100; }
-      /* line 191, ../scss/elements/footer.scss */
+      /* line 223, ../scss/elements/footer.scss */
       .lte8 footer nav ul li a:hover,
       .lte8 footer nav ul li.leaf a:hover, .lte8 footer nav ul.menu li a:hover,
       .lte8 footer nav ul.menu li.leaf a:hover {
