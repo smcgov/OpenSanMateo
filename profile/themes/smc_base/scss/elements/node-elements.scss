@@ -1,6 +1,14 @@
 // default variables
 @import "vars.scss";
 
+
+.node-type-location {
+  .field-name-field-address {
+    #map_canvas {
+      margin-top: 1.6em;
+    }
+  }
+}
 body.page-node .node .action-links-field-collection-add {
   display: none;
 }
@@ -181,5 +189,14 @@ body.page-node .node .action-links-field-collection-add {
 }
 
 @media all and (min-width: $desktop) {
-
+  .node-type-location {
+    .field-name-field-address {
+      #map_canvas {
+        float: right;
+        margin-top: 0;
+        margin-left: 20px;
+        margin-bottom: 20px;
+      }
+    }
+  }
 }

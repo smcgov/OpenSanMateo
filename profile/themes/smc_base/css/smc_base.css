@@ -8968,40 +8968,44 @@ table {
       font-size: 1em; } }
 /* Fonts */
 /* Media Queries */
-/* line 4, ../scss/elements/node-elements.scss */
+/* line 7, ../scss/elements/node-elements.scss */
+.node-type-location .field-name-field-address #map_canvas {
+  margin-top: 1.6em; }
+
+/* line 12, ../scss/elements/node-elements.scss */
 body.page-node .node .action-links-field-collection-add {
   display: none; }
 
-/* line 7, ../scss/elements/node-elements.scss */
+/* line 15, ../scss/elements/node-elements.scss */
 .sharethis-buttons {
   margin-bottom: 20px; }
 
-/* line 11, ../scss/elements/node-elements.scss */
+/* line 19, ../scss/elements/node-elements.scss */
 .field-name-field-profile-organization {
   line-height: 1.6; }
 
-/* line 15, ../scss/elements/node-elements.scss */
+/* line 23, ../scss/elements/node-elements.scss */
 .page-node .node .field-name-field-thumbnail-image {
   float: left;
   clear: none;
   margin-right: 10px;
   max-width: 40%; }
-  /* line 21, ../scss/elements/node-elements.scss */
+  /* line 29, ../scss/elements/node-elements.scss */
   .page-node .node .field-name-field-thumbnail-image img {
     max-width: 100%;
     height: auto; }
 
-/* line 26, ../scss/elements/node-elements.scss */
+/* line 34, ../scss/elements/node-elements.scss */
 .page-node .node .field-name-body {
   margin-top: 10px; }
 
-/* line 30, ../scss/elements/node-elements.scss */
+/* line 38, ../scss/elements/node-elements.scss */
 .page-node div.panel-pane .node-profile {
   margin-bottom: 40px; }
-  /* line 33, ../scss/elements/node-elements.scss */
+  /* line 41, ../scss/elements/node-elements.scss */
   .page-node div.panel-pane .node-profile .field {
     margin-bottom: 20px; }
-    /* line 36, ../scss/elements/node-elements.scss */
+    /* line 44, ../scss/elements/node-elements.scss */
     .page-node div.panel-pane .node-profile .field div.field-label {
       color: #036cb6;
       font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
@@ -9012,10 +9016,10 @@ body.page-node .node .action-links-field-collection-add {
       margin-top: 0.2em;
       display: block; }
 
-/* line 49, ../scss/elements/node-elements.scss */
+/* line 57, ../scss/elements/node-elements.scss */
 .page-node div.panel-pane .node .field {
   margin-bottom: 20px; }
-/* line 52, ../scss/elements/node-elements.scss */
+/* line 60, ../scss/elements/node-elements.scss */
 .page-node div.panel-pane .node div.field-label {
   color: #036cb6;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
@@ -9026,29 +9030,29 @@ body.page-node .node .action-links-field-collection-add {
   margin-top: 0.2em;
   display: block; }
 
-/* line 63, ../scss/elements/node-elements.scss */
+/* line 71, ../scss/elements/node-elements.scss */
 .field-collection-container {
   border: 0;
   margin: 0;
   padding: 0;
   margin-bottom: 20px; }
 
-/* line 75, ../scss/elements/node-elements.scss */
+/* line 83, ../scss/elements/node-elements.scss */
 .page-node div.panel-pane .node .field-name-field-location-address div.field-label,
 .page-node div.panel-pane .node .field-name-field-location-address ul.field-collection-view-links,
 .page-node div.panel-pane .node .field-name-field-location-address ul.action-links {
   display: none; }
-/* line 81, ../scss/elements/node-elements.scss */
+/* line 89, ../scss/elements/node-elements.scss */
 .page-node div.panel-pane .node .field-name-field-location-address .field-collection-view,
 .page-node div.panel-pane .node .field-name-field-location-address .views-row,
 .page-node div.panel-pane .node .field-name-field-location-address header {
   padding: 0;
   margin: 0;
   border: 0; }
-/* line 86, ../scss/elements/node-elements.scss */
+/* line 94, ../scss/elements/node-elements.scss */
 .page-node div.panel-pane .node .field-name-field-location-address .field {
   margin-bottom: 0; }
-/* line 90, ../scss/elements/node-elements.scss */
+/* line 98, ../scss/elements/node-elements.scss */
 .page-node div.panel-pane .node .field-name-field-location-address .views-row header span.field-content {
   color: #036cb6;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
@@ -9058,21 +9062,21 @@ body.page-node .node .action-links-field-collection-add {
   margin-bottom: 0.5em;
   margin-top: 0.2em;
   display: block; }
-  /* line 100, ../scss/elements/node-elements.scss */
+  /* line 108, ../scss/elements/node-elements.scss */
   .page-node div.panel-pane .node .field-name-field-location-address .views-row header span.field-content a {
     color: #036cb6; }
-/* line 105, ../scss/elements/node-elements.scss */
+/* line 113, ../scss/elements/node-elements.scss */
 .page-node div.panel-pane .node .field-name-field-location-address .field-name-field-address {
   line-height: 1.4; }
 
-/* line 114, ../scss/elements/node-elements.scss */
+/* line 122, ../scss/elements/node-elements.scss */
 .field-type-file .file a {
   width: 100%;
   float: left;
   border-top: 1px solid rgba(85, 90, 90, 0.1);
   padding: .5em 0;
   display: block; }
-/* line 122, ../scss/elements/node-elements.scss */
+/* line 130, ../scss/elements/node-elements.scss */
 .field-type-file .file .file-type {
   color: #555a5a;
   width: 10%;
@@ -9083,7 +9087,7 @@ body.page-node .node .action-links-field-collection-add {
   text-align: center;
   display: inline-block;
   text-transform: uppercase; }
-/* line 135, ../scss/elements/node-elements.scss */
+/* line 143, ../scss/elements/node-elements.scss */
 .field-type-file .file .file-size {
   color: #555a5a;
   width: 20%;
@@ -9092,21 +9096,21 @@ body.page-node .node .action-links-field-collection-add {
   padding: .5em;
   border-radius: 3px;
   text-align: right; }
-/* line 145, ../scss/elements/node-elements.scss */
+/* line 153, ../scss/elements/node-elements.scss */
 .field-type-file .file .file-name {
   padding-left: .5em; }
-/* line 149, ../scss/elements/node-elements.scss */
+/* line 157, ../scss/elements/node-elements.scss */
 .field-type-file .field-items {
   border-bottom: 1px solid rgba(85, 90, 90, 0.1);
   margin-bottom: 20px; }
-  /* line 153, ../scss/elements/node-elements.scss */
+  /* line 161, ../scss/elements/node-elements.scss */
   .field-type-file .field-items:after {
     clear: both;
     content: ".";
     display: block;
     height: 0;
     visibility: hidden; }
-  /* line 161, ../scss/elements/node-elements.scss */
+  /* line 169, ../scss/elements/node-elements.scss */
   .field-type-file .field-items .field-item:after, .field-type-file .field-items .file:after {
     clear: both;
     content: ".";
@@ -9115,9 +9119,16 @@ body.page-node .node .action-links-field-collection-add {
     visibility: hidden; }
 
 @media all and (min-width: 768px) {
-  /* line 176, ../scss/elements/node-elements.scss */
+  /* line 184, ../scss/elements/node-elements.scss */
   .field-type-file .file .file-type, .field-type-file .file .file-size {
     font-size: 0.75em; } }
+@media all and (min-width: 800px) {
+  /* line 194, ../scss/elements/node-elements.scss */
+  .node-type-location .field-name-field-address #map_canvas {
+    float: right;
+    margin-top: 0;
+    margin-left: 20px;
+    margin-bottom: 20px; } }
 /* Fonts */
 /* Media Queries */
 /* line 4, ../scss/elements/follow.scss */
