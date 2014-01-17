@@ -7,8 +7,8 @@ package = Form Elements
 core = 7.x
 
 
-; Information added by drush on 2014-01-16
+; Information added by drush on 2014-01-17
 version = "aac15cd"
 project = "hierarchical_select"
-datestamp = "1389846424"
+datestamp = "1389982494"
 

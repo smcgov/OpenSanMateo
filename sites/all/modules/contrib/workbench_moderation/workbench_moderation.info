@@ -17,8 +17,8 @@ files[] = tests/workbench_moderation.test
 files[] = tests/workbench_moderation.files.test
 
 
-; Information added by drush on 2014-01-16
+; Information added by drush on 2014-01-17
 version = "a90378de5b1aea2b095ff5613eea44f55947f514"
 project = "workbench_moderation"
-datestamp = "1389846297"
+datestamp = "1389982360"
 
