@@ -94,7 +94,7 @@ function distributed_blocks_list_blocks() {
  * in different contexts (cron call, manual call, drush).
  */
 function distributed_blocks_fetch_blocks() {
-  $fetched_blocks = variable_get('distributed_blocks_fetched_blocks', array());
+  $fetched_blocks = array_filter(variable_get('distributed_blocks_fetched_blocks', array()));
   
   $result = array(
     'status' => FALSE,
@@ -151,7 +151,7 @@ function distributed_blocks_fetch_blocks() {
  */
 function distributed_blocks_block_info() {
   $blocks = array();
-  $fetched_blocks = variable_get('distributed_blocks_fetched_blocks', array());
+  $fetched_blocks = array_filter(variable_get('distributed_blocks_fetched_blocks', array()));
   
   foreach ($fetched_blocks as $block) {
     $block = explode('--', $block);
@@ -183,12 +183,14 @@ function distributed_blocks_block_view($delta = '') {
   // Using static caching approach since we don't want to repeat this
   // if we have multiple distributed blocks on the same page
   if (empty($blocks)) {
-    $fetched_blocks = variable_get('distributed_blocks_fetched_blocks', array());
+    $fetched_blocks = array_filter(variable_get('distributed_blocks_fetched_blocks', array()));
     
     // Reformating needed to get rid of label
     foreach ($fetched_blocks as $block) {
       $block = explode('--', $block);
       
+      // Make sure we have a valid block ID
+      if (count($block) > 2) {
       $delta_id = 'd_b--' . $block[1];
       // delta can only be 32 chars 
       if (strlen($delta_id) > 32) {
@@ -197,6 +199,7 @@ function distributed_blocks_block_view($delta = '') {
       
       $blocks[$delta_id] = $block[2];
     }
+  }
   }
   
   // if this delta matches one of our distributed blocks, spawn it

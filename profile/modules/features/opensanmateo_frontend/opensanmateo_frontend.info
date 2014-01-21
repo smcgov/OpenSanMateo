@@ -37,5 +37,6 @@ features[variable][] = fontyourface_css_md5
 features[variable][] = jquery_update_compression_type
 features[variable][] = jquery_update_jquery_cdn
 features[variable][] = jquery_update_jquery_version
+features[variable][] = theme_settings
 features_exclude[dependencies][features] = features
 files[] = opensanmateo_frontend.module

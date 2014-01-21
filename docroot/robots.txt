@@ -58,3 +58,5 @@ Disallow: /?q=user/password/
 Disallow: /?q=user/register/
 Disallow: /?q=user/login/
 Disallow: /?q=user/logout/
+# Custom additions to Drupal core's stock robots.txt
+Disallow: /search

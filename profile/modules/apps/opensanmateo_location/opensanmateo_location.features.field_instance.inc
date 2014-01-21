@@ -117,7 +117,7 @@ function opensanmateo_location_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -179,7 +179,7 @@ function opensanmateo_location_field_default_field_instances() {
           'zoom_level' => 14,
         ),
         'type' => 'addressfield_staticmap',
-        'weight' => 3,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -226,7 +226,7 @@ function opensanmateo_location_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 5,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -240,7 +240,7 @@ function opensanmateo_location_field_default_field_instances() {
     'label' => 'Files',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
+      'description_field' => 1,
       'file_directory' => 'locations',
       'file_extensions' => 'pdf doc docx xls xlsx csv txt rtf html zip flv jpg jpeg png gif ppt pptx vsd',
       'max_filesize' => '',
@@ -251,7 +251,16 @@ function opensanmateo_location_field_default_field_instances() {
       'module' => 'file',
       'settings' => array(
         'filefield_sources' => array(
-          'filefield_sources' => array(),
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'imce' => 0,
+            'opensanmateo_search' => 0,
+            'osmremotefile' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+          ),
           'source_attach' => array(
             'absolute' => 0,
             'attach_mode' => 'move',
@@ -269,6 +278,7 @@ function opensanmateo_location_field_default_field_instances() {
       'type' => 'file_generic',
       'weight' => 8,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-location-field_quick_search'
@@ -283,7 +293,7 @@ function opensanmateo_location_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -337,7 +347,7 @@ function opensanmateo_location_field_default_field_instances() {
     'label' => 'Hours',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -349,6 +359,7 @@ function opensanmateo_location_field_default_field_instances() {
       'type' => 'text_textarea',
       'weight' => 3,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-location-field_thumbnail_image'
@@ -365,7 +376,7 @@ function opensanmateo_location_field_default_field_instances() {
           'image_style' => 'opensanmateo_resp_images_large',
         ),
         'type' => 'image',
-        'weight' => 6,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -423,9 +434,8 @@ function opensanmateo_location_field_default_field_instances() {
   t('Business hours of the location, when applicable.');
   t('Can be used to enter a description of the location, special instructions for obtaining access to the location, directions, where to park, etc.');
   t('Files');
-  t('Hours (text)');
+  t('Hours');
   t('Location');
-  t('Location Type');
   t('Main Image');
   t('Quick Search');
 

@@ -22,6 +22,11 @@ if (isset($_ENV['AH_NON_PRODUCTION'])) {
 else {
   $conf['error_level'] = 0;
   $conf['cron_safe_threshold'] = 0;
+
+  // Configure caching
+  $conf['cache_backends'][] = './sites/all/modules/contrib/memcache/memcache.inc';
+  $conf['cache_default_class'] = 'MemCacheDrupal';
+  $conf['cache_class_form'] = 'DrupalDatabaseCache';
 }
 // Global GovDelivery Settings.
 // These may be changed below.
@@ -39,7 +44,7 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
       $conf['acquia_key'] = '5f90bbe305adff93b4ad6b1012e75183';
 
       // Set production specific GovDelivery settings.
-      $conf['opensanmateo_govdelivery_base_url']= 'https://websupport@co.sanmateo.ca.us@:SD6Ru4562OJ3uvp@stage-api.govdelivery.com';
+      $conf['opensanmateo_govdelivery_base_url']= 'https://websupport@smcgov.org:SD6Ru4562OJ3uvp@api.govdelivery.com';
       $conf['opensanmateo_govdelivery_signup_url'] = 'https://public.govdelivery.com/accounts/CASMATEO/subscriber/new';
 
       break;
@@ -72,10 +77,10 @@ if (empty($conf['sanmateo_is_master'])) {
 $conf['distributed_blocks_master_url'] = 'http://' . $master_host;
 $conf['distributed_blocks_update_freq'] = 1;
 
-// Configure caching
-//$conf['cache_backends'][] = './sites/all/modules/contrib/memcache/memcache.inc';
-//$conf['cache_default_class'] = 'MemCacheDrupal';
-//$conf['cache_class_form'] = 'DrupalDatabaseCache';
+// Set default shield module config so all we have to do is flip it on and off
+$conf['shield_enabled'] = 1;
+$conf['shield_user'] = 'smc';
+$conf['shield_pass'] = 'smc';
 
 /**
  * Util function to derive private filesystem patch from the site settings path and env vars

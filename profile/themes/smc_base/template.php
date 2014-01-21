@@ -10,13 +10,29 @@ function smc_base_preprocess_html(&$variables) {
   );
 
   drupal_add_html_head($meta, 'viewport');
+}
+function smc_base_process_html(&$variables) {
+  //dsm($variables);
+}
 
-  //krumo($variables);
+function smc_base_page_alter(&$page) {
+  //dsm($page);
+}
+function smc_base_css_alter(&$css) {
+  //dsm($css);
+}
+
+function smc_base_js_alter(&$js) {
+ //dsm($js);
+  
+  if (isset($js['http://fast.fonts.com/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js'])) {
+    unset($js['http://fast.fonts.com/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js']);
+    //$js['http://fast.fonts.com/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js']['scope'] = 'footer';
+  }
 }
 
 function smc_base_html_head_alter(&$head_elements) {
   global $base_url;
-
   $favicon = array();
   foreach($head_elements as $k => $element) {
     if (isset($element['#attributes']) && isset($element['#attributes']['rel'])) {
@@ -49,7 +65,10 @@ function smc_base_process_page(&$variables) {
     $link = l('OpenSanMateo Frontend', 'admin/structure/features');
     drupal_set_message('In order for the San Mateo County base theme to operate properly, please enable the <strong>' . $link . '</strong> feature module.', 'warning');
   }
-
+  
+  $variables['header_logo'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-header.png';
+  $variables['footer_logo'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-footer-small.png';
+  $variables['footer_logo_small'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-footer.png';
   //krumo($variables);
 }
 
@@ -82,21 +101,23 @@ function smc_base_preprocess_node(&$variables) {
     break;
 
     case 'blog_entry':
-      $display_byline = isset($variables['field_blog_show_author_info']) ? $variables['field_blog_show_author_info']['und'][0]['value'] : FALSE;
+      //$display_byline = isset($variables['field_blog_show_author_info']) ? $variables['field_blog_show_author_info']['und'][0]['value'] : FALSE;
+      $display_byline = TRUE;
       $author_field = isset($variables['field_blog_author']) ? $variables['field_blog_author']['und'][0]['nid'] : FALSE;
     break;
 
     case 'document':
-
+      $docs = element_children($variables['content']['field_document_attachment']);
       // Opic automatically adds a suffix to the document attachment field, which
       // we want to get rid of.
-      if (!empty($variables['content']['field_document_attachment'][0]['#suffix'])) {
-        unset($variables['content']['field_document_attachment'][0]['#prefix']);
-        unset($variables['content']['field_document_attachment'][0]['#suffix']);
+      foreach($docs as $doc) {
+        if (!empty($variables['content']['field_document_attachment'][$doc]['#suffix'])) {
+          unset($variables['content']['field_document_attachment'][$doc]['#prefix']);
+          unset($variables['content']['field_document_attachment'][$doc]['#suffix']);
+        }
       }
-
       $display_byline = $variables['display_submitted'];
-      $author_field = isset($variables['field_document_author']) ? $variables['field_document_author'][0]['nid'] : FALSE;
+      $author_field = isset($variables['field_document_author'][0]) ? $variables['field_document_author'][0]['nid'] : FALSE;
     break;
   }
 
@@ -236,6 +257,26 @@ function smc_base_preprocess_panels_pane(&$vars) {
   }
 
 }
+
+/**
+ * Implements hook_url_outbound_alter().
+ */
+function smc_base_url_outbound_alter(&$path, &$options, $original_path) {
+  global $user;
+
+  // All content gets indexed via HTTP in solr. Unfortunately logged in users
+  // will get kicked to HTTP instead of HTTPS due to these links coming from solr
+  // instead of Drupal. Unfortunately varnish won't allow us to just redirect
+  // back to HTTP, since it has no knowledge of the user being logged in.
+  //
+  // This is a fairly unfortunate fix to the problem.
+  if (!empty($_SERVER['HTTPS']) && !empty($user->uid) && !empty($path)) {
+    if (strstr($path, 'http://')) {
+      $path = str_replace('http://', 'https://', $path);
+    }
+  }
+}
+
 function smc_base_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
   //krumo($vars);

@@ -5,3 +5,23 @@
  */
 
 include_once 'opensanmateo_overrides.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function opensanmateo_overrides_form_taxonomy_overview_terms_alter(&$form, &$form_state) {
+  $form['#submit'][] = 'opensanmateo_overrides_taxonomy_overview_terms_submit';
+
+}
+
+/**
+ * Clear cache on taxonomy overview submit.
+ */
+function opensanmateo_overrides_taxonomy_overview_terms_submit($form, &$form_state) {
+  // Clear caches to force a vocabulary tree rebuild.
+  $vocabulary = $form['#vocabulary'];
+  $num_deleted = db_delete('cache')->condition('cid', 'shs:' . $vocabulary->vid)->execute();
+  drupal_static_reset('taxonomy_get_tree');
+  drupal_static_reset('taxonomy_get_tree:parents');
+  drupal_static_reset('taxonomy_get_tree:terms');
+}

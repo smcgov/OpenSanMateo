@@ -22,7 +22,7 @@ function opensanmateo_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -66,7 +66,7 @@ function opensanmateo_event_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -103,7 +103,7 @@ function opensanmateo_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -117,7 +117,7 @@ function opensanmateo_event_field_default_field_instances() {
     'label' => 'Contact',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -129,6 +129,7 @@ function opensanmateo_event_field_default_field_instances() {
       'type' => 'text_textarea',
       'weight' => 6,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-event-field_event_date'
@@ -151,7 +152,7 @@ function opensanmateo_event_field_default_field_instances() {
           'past_events' => 0,
         ),
         'type' => 'addtocal_view',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -199,7 +200,7 @@ function opensanmateo_event_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -213,7 +214,7 @@ function opensanmateo_event_field_default_field_instances() {
     'label' => 'Files',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
+      'description_field' => 1,
       'file_directory' => 'events',
       'file_extensions' => 'pdf doc docx xls xlsx csv txt rtf html zip flv jpg jpeg png gif ppt pptx vsd',
       'max_filesize' => '',
@@ -258,7 +259,7 @@ function opensanmateo_event_field_default_field_instances() {
           'image_style' => 'opensanmateo_resp_images_large',
         ),
         'type' => 'image',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -319,7 +320,6 @@ function opensanmateo_event_field_default_field_instances() {
   t('Calendar');
   t('Contact');
   t('Date');
-  t('Event Type');
   t('Files');
   t('Main Image');
 

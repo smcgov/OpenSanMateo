@@ -55,41 +55,44 @@
  */
 
 /*
- * Map San Mateo sites to dev host
- * Acquia domains defines *.smcdev-acquia.fayze.com
+ * Map San Mateo sites to dev, staging and prod fayze2.com hostnames
+ * Acquia domains: 
+ *   *.smcdev-acquia.fayze.com
+ *   *.smcstg-acquia.fayze.com
+ *   *.smcprd-acquia.fayze.com
  */
-$sites['demo1.smcdev-acquia.fayze2.com'] = 'demo1';
-$sites['demo2.smcdev-acquia.fayze2.com'] = 'demo2';
-$sites['demo3.smcdev-acquia.fayze2.com'] = 'demo3';
+$fayze2_sites = array(
+  'test' => 'test.smcgov.org',
+  'smcgov' => 'smcgov.org',
+  '911dispatch' => '911dispatch.smcgov.org',
+  'agwm' => 'agwm.smcgov.org',
+  'bos' => 'bos.smcgov.org',
+  'cmo' => 'cmo.smcgov.org',
+  'coroner' => 'coroner.smcgov.org',
+  'da' => 'da.smcgov.org',
+  'green' => 'green.smcgov.org',
+  'hr' => 'hr.smcgov.org',
+  'isd' => 'isd.smcgov.org',
+  'jobs' => 'jobs.smcgov.org',
+  'parks' => 'parks.smcgov.org',
+  'planning' => 'planning.smcgov.org',
+  'probation' => 'probation.smcgov.org',
+  'housing' => 'housing.smcgov.org',
+  'controller' => 'controller.smcgov.org',
+  'taxcollector' => 'taxcollector.smcgov.org',
+  'csw' => 'csw.smcgov.org',
+);
 
-$sites['smcgov.smcdev-acquia.fayze2.com'] = 'smcgov.org';
-$sites['hr.smcdev-acquia.fayze2.com'] = 'hr.smcgov.org';
-$sites['planning.smcdev-acquia.fayze2.com'] = 'planning.smcgov.org';
-$sites['parks.smcdev-acquia.fayze2.com'] = 'parks.smcgov.org';
-$sites['isd.smcdev-acquia.fayze2.com'] = 'isd.smcgov.org';
-$sites['da.smcdev-acquia.fayze2.com'] = 'da.smcgov.org';
+foreach ($fayze2_sites as $short_name => $site_name) {
+  $sites["{$short_name}.smcdev-acquia.fayze2.com"] = $site_name;
+  $sites["{$short_name}.smcstg-acquia.fayze2.com"] = $site_name;
+  $sites["{$short_name}.smcprd-acquia.fayze2.com"] = $site_name;
+}
 
 /*
- * Map San Mateo sites to staging host
- * Acquia domains defines *.smcstg-acquia.fayze.com
+ * Additional mappings for staging
  */
-$sites['demo1.smcstg-acquia.fayze2.com'] = 'demo1';
-$sites['demo2.smcstg-acquia.fayze2.com'] = 'demo2';
-$sites['demo3.smcstg-acquia.fayze2.com'] = 'demo3';
-
-$sites['smcgov.smcstg-acquia.fayze2.com'] = 'smcgov.org';
-$sites['hr.smcstg-acquia.fayze2.com'] = 'hr.smcgov.org';
-$sites['planning.smcstg-acquia.fayze2.com'] = 'planning.smcgov.org';
-$sites['parks.smcstg-acquia.fayze2.com'] = 'parks.smcgov.org';
-$sites['isd.smcstg-acquia.fayze2.com'] = 'isd.smcgov.org';
-$sites['da.smcstg-acquia.fayze2.com'] = 'da.smcgov.org';
-$sites['coroner.smcstg-acquia.fayze2.com'] = 'coroner.smcgov.org';
 
 /*
- * Map San Mateo sites to prod host
- * Acquia domains defines *.smcprd-acquia.fayze.com
+ * Additional mappings for prod
  */
-$sites['demo1.smcprd-acquia.fayze2.com'] = 'demo1';
-$sites['demo2.smcprd-acquia.fayze2.com'] = 'demo2';
-$sites['demo3.smcprd-acquia.fayze2.com'] = 'demo3';
-

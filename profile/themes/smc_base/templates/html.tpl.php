@@ -61,6 +61,7 @@
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
 	<![endif]-->
+
   
   <?php print $scripts; ?>
   
@@ -81,5 +82,13 @@
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
+  
+  <!--[if gt IE 8]>
+  <script src="//fast.fonts.com/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js"></script>
+  <![endif]-->
+  
+  <!--[if !IE]> -->
+  <script src="//fast.fonts.com/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js"></script>
+  <![endif]-->
 </body>
 </html>

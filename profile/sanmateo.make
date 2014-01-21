@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 projects[drupal][type] = core
-projects[drupal][version] = 7.24
+projects[drupal][version] = 7.26
 projects[drupal][patch][] = http://drupal.org/files/issues/object_conversion_menu_router_build-972536-1.patch
 ;projects[drupal][patch][] = http://drupal.org/files/issues/992540-3-reset_flood_limit_on_password_reset-drush.patch
 projects[drupal][patch][] = http://drupal.org/files/1355984-timeout_on_install_with_drush_si-make.patch
@@ -9,7 +9,6 @@ projects[drupal][patch][] = http://drupal.org/files/1369024-theme-inc-add-messag
 projects[drupal][patch][] = http://drupal.org/files/1369584-form-error-link-from-message-to-element-make-D7.patch
 projects[drupal][patch][] = http://drupal.org/files/1356276-make-D7-17.patch
 projects[drupal][patch][] = http://drupal.org/files/issues/autocomplete_popup_position-1218684-11.patch
-projects[drupal][patch][] = https://drupal.org/files/2066275-file-field-load-merge-order.patch
 
 projects[openpublic][type] = profile
 projects[openpublic][download][type] = git
@@ -283,8 +282,8 @@ projects[search_api_site][download][url] = http://git.drupal.org/sandbox/e2thex/
 projects[features_template][type] = module
 projects[features_template][subdir] = contrib
 projects[features_template][download][type] = git
-projects[features_template][download][branch] = 7.x-1.x
 projects[features_template][download][url] = http://git.drupal.org/sandbox/e2thex/2042669.git
+projects[features_template][download][revision] = 1a164f75d5f389d79b36ad3b9d3ed6593a466386
 
 projects[quick_search][type] = module
 projects[quick_search][subdir] = contrib
@@ -394,6 +393,7 @@ projects[distributed_blocks][subdir] = contrib
 projects[distributed_blocks][download][type] = git
 projects[distributed_blocks][download][url] = http://git.drupal.org/project/distributed_blocks.git
 projects[distributed_blocks][download][revision] = 501219b163acda942c06d3c0017655fba7695b3c
+projects[distributed_blocks][patch][2105889] = http://drupal.org/files/issues/distributed_blocks-undefined-offset-2105889-01.patch
 
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archive/1.4.16.zip
@@ -477,7 +477,7 @@ projects[filefield_sources_plupload][download][url] = http://git.drupal.org/proj
 projects[filefield_sources_plupload][download][revision] = 8945a60
 
 libraries[plupload][download][type] = get
-libraries[plupload][download][url] = http://plupload.com/downloads/plupload_1_5_7.zip
+libraries[plupload][download][url] = https://github.com/downloads/moxiecode/plupload/plupload_1_5_4.zip
 libraries[plupload][destination] = libraries
 
 projects[metatag][type] = module
@@ -504,6 +504,16 @@ projects[apps][download][type] = git
 projects[apps][download][url] = http://git.drupal.org/project/apps.git
 projects[apps][download][revision] = b9d82b7bf5b4ebc7ba53324ce87082a84c3515cc
 projects[apps][patch][1899390] = https://drupal.org/files/issues/1899390-remove-update-dep-2.patch
+
+projects[shield][type] = module
+projects[shield][subdir] = contrib
+projects[shield][download][type] = git
+projects[shield][download][url] = http://git.drupal.org/project/shield.git
+projects[shield][download][revision] = d0d4d8ba32ac128d15c758fe29dbc022223a1270
+
+projects[XHProf][type] = module
+projects[XHProf][subdir] = contrib
+projects[XHProf][version] = 1.x-dev
 
 projects[shs][type] = module
 projects[shs][subdir] = contrib

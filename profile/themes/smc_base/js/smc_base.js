@@ -66,10 +66,15 @@ $('.show_hide').showHide({
     attach: function (context) {
       
       $(".flexnav").flexNav();
-      
-      $('.menu-button').click(function(){
+      $('html:not(.lte8) #block-opensanmateo-search-header-search').fadeOut('fast');
+      $('html:not(.lte8) .menu-button .touch-button').on('click touchstart', function(e){
         Drupal.smc.toolbarFix();
+        e.stopPropagation();
+        e.preventDefault();
         $('#block-opensanmateo-search-header-search').fadeToggle('fast');
+        //$('#responsive-navigation').slideToggle();
+        //$('#responsive-navigation').slideToggle();
+        //alert('whoa!!');
       });
     }
   };
@@ -85,8 +90,25 @@ $('.show_hide').showHide({
   Drupal.behaviors.smcNavToggle = {
     attach: function (context) {
       
-     $('#navigation-toggle a').click(function(){
+     $('html:not(.lte8) #navigation-toggle a').click(function(){
        $('#responsive-navigation').slideToggle();
+       //return false;
+     });
+     
+     if ($('html:not(.lte8) #responsive-navigation').children().size() == 0) {
+       $('.panel-col-nav').css('display', 'none');
+       $('#navigation-toggle a').css('display', 'none');
+     }
+    }
+  };
+  Drupal.behaviors.smcOneColResize = {
+    attach: function (context) {
+     $('#block-system-main .sm-one-column').parents('#main-wrapper').addClass('one-column-display');
+    }
+  };
+  Drupal.behaviors.smcTranslateFixes = {
+    attach: function (context) {
+     $('a.google-translator-switch').click(function(){
        return false;
      });
     }

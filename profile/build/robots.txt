@@ -1,0 +1,2 @@
+# Custom additions to Drupal core's stock robots.txt
+Disallow: /search

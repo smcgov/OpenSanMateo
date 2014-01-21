@@ -58,42 +58,10 @@ function opensanmateo_search_views_data_alter(&$data) {
     $field =& $data['search_api_index_san_mateo_content_index']['search_api_multi_aggregation_8'];
 
     // Set the handler to an OptionsList, which is closest to what we are doing.
-    $field['filter']['handler'] = 'SearchApiViewsHandlerFilterOptions';
+    $field['filter']['handler'] = 'OpenSanMateoSearchViewsAutocomplete';
 
-    // Make options a list of all possible terms. Without #options being
-    // set to valid values, all form submissions will result in validation
-    // failures due to illegal options.
-    //
-    // @todo: Look into how to do this better. This is certainly sub-optimal.
-    // @todo: Probably should split this terms query out into it's own function.
-    $matches = array();
-    $server = search_api_server_load('san_mateo_solr_server');
-    $uri = "terms";
-    $params = array(
-      'terms' => 'true',
-      'terms.fl' => 'sm_search_api_multi_aggregation_8',
-      'terms.regex' => '.*',
-      'terms.limit' => '1000'
-    );
 
-    $connection = $server->getSolrConnection();
-    $response = $connection->makeServletRequest($uri, $params);
-
-    if ($response->code == 200) {
-      $potential_matches = drupal_json_decode($response->data);
-      if (!empty($potential_matches['terms']['sm_search_api_multi_aggregation_8'])) {
-        foreach ($potential_matches['terms']['sm_search_api_multi_aggregation_8'] as $term => $term_count) {
-          if (isset($existing_values)) {
-            $matches[$existing_values . ', ' . $term] = $term . '(' . $term_count . ')';
-          }
-          else {
-            $matches[$term] = $term . '(' . $term_count . ')';
-          }
-        }
-      }
-    }
-
-    $field['filter']['options'] = $matches;
+    //$field['filter']['options'] = $matches;
     // Set the field as multi-value.
     $field['filter']['multi-valued'] = TRUE;
   }
@@ -114,20 +82,7 @@ function opensanmateo_search_aggregated_term_autocomplete_callback($str = 0) {
     $existing_values = implode(',', $current_values);
   }
 
-  // Query the terms component of solr to match autocomplete. Limit to 20
-  // suggestions.
-  // @see http://wiki.apache.org/solr/TermsComponent
-  $server = search_api_server_load('san_mateo_solr_server');
-  $uri = "terms";
-  $params = array(
-    'terms' => 'true',
-    'terms.fl' => 'sm_search_api_multi_aggregation_8',
-    'terms.regex' => '.*' . preg_quote($search_value) . '.*',
-    'terms.limit' => '20'
-  );
-
-  $connection = $server->getSolrConnection();
-  $response = $connection->makeServletRequest($uri, $params);
+  $response = openansanmateo_search_termquery('.*' . preg_quote($search_value) . '.*');
 
   // Parse any matches we have and return the autocomplete json.
   if ($response->code == 200) {
@@ -147,6 +102,25 @@ function opensanmateo_search_aggregated_term_autocomplete_callback($str = 0) {
   drupal_json_output($matches);
 }
 
+function openansanmateo_search_termquery($regex) {
+  // Query the terms component of solr to match autocomplete. Limit to 20
+  // suggestions.
+  // @see http://wiki.apache.org/solr/TermsComponent
+  $server = search_api_server_load('san_mateo_solr_server');
+  $uri = "terms";
+  $params = array(
+    'terms' => 'true',
+    'terms.fl' => 'sm_search_api_multi_aggregation_8',
+    'terms.regex' => $regex,
+    'terms.limit' => '20'
+  );
+
+  $connection = $server->getSolrConnection();
+  $response = $connection->makeServletRequest($uri, $params);
+
+  return $response;
+}
+
 /**
  * Validate views_content_views_panes_content_type_edit_form().
  */
@@ -160,6 +134,14 @@ function opensanmateo_search_views_content_views_panes_content_type_edit_form_va
     // Format array.
     foreach ($terms as &$term) {
       $term =  trim($term);
+      $response = openansanmateo_search_termquery($term);
+
+      if ($response->code == 200) {
+        $potential_matches = drupal_json_decode($response->data);
+        if (empty($potential_matches['terms']['sm_search_api_multi_aggregation_8'][$term])) {
+          form_set_error('search_api_multi_aggregation_8', t('The term %term is invalid', array('%term' => $term)));
+        }
+      }
       $form_state['values']['exposed']['search_api_multi_aggregation_8'][$term] = $term;
     }
   }

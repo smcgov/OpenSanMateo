@@ -37,23 +37,13 @@ you can use the generic selector below, but it's slower:
 .icon-close, 
 .icon-subnav, 
 .menu-button, 
-.icon-eye, 
+//.icon-eye, 
 .icon-filter, 
 .icon-info, 
 .icon-link, 
 .icon-phone, 
 .icon-location, 
-.icon-feed, 
-.follow-link-facebook, 
-.follow-link-twitter, 
-.follow-link-flickr, 
-.follow-link-vimeo, 
-.follow-link-youtube, 
-.follow-link-this-site,
-.follow-link-pinterest, 
-.follow-link-googleplus, 
-.follow-link-linkedin, 
-.follow-link-instagram  {
+.icon-feed  {
 	font-family: "SanMateoIcon";
 	speak: none;
 	font-style: normal;
@@ -71,8 +61,8 @@ you can use the generic selector below, but it's slower:
 .icon-close:before {content: "\e005";}
 .icon-subnav:before {content: "\e006";}
 .icon-eye:before {
-	content: "\e007";
-	padding-right: 0.5em;
+	//content: "\e007";
+	//padding-right: 0.5em;
 }
 .icon-filter:before {content: "\e008";}
 .icon-info:before {content: "\e009";}
@@ -80,36 +70,55 @@ you can use the generic selector below, but it's slower:
 .icon-phone:before {content: "\e00b";}
 .icon-location:before {content: "\e00c";}
 
-.follow-link-feed:before {
-  content: "\e00d";
+a.follow-link-feed,
+a.follow-link-facebook,
+a.follow-link-twitter,
+a.follow-link-flickr,
+a.follow-link-vimeo,
+a.follow-link-youtube,
+a.follow-link-this-site,
+a.follow-link-pinterest,
+a.follow-link-googleplus,
+a.follow-link-linkedin,
+a.follow-link-instagram,
+a.follow-link-tumblr {
+  background-repeat: no-repeat;
+  background-position: center center;
 }
-.follow-link-facebook:before {
-	content: "\e00e";
+
+a.follow-link-feed {
+  background-image: url('../images/share/rss_32.png');
 }
-.follow-link-twitter:before {
-	content: "\e00f";
+a.follow-link-facebook {
+	background-image: url('../images/share/facebook_32.png');
 }
-.follow-link-flickr:before {
-	content: "\e010";
+a.follow-link-twitter {
+	background-image: url('../images/share/twitter_32.png');
 }
-.follow-link-vimeo:before {
-	content: "\e011";
+a.follow-link-flickr {
+	background-image: url('../images/share/flickr_32.png');
 }
-.follow-link-youtube:before {
-	content: "\e012";
+a.follow-link-vimeo {
+	background-image: url('../images/share/vimeo_32.png');
 }
-.follow-link-this-site:before {
-	content: "\e013";
+a.follow-link-youtube {
+	background-image: url('../images/share/youtube_32.png');
 }
-.follow-link-pinterest:before {
-	content: "\e014";
+a.follow-link-this-site {
+	background-image: url('../images/share/rss_32.png');
 }
-.follow-link-googleplus:before {
-	content: "\e015";
+a.follow-link-pinterest {
+	background-image: url('../images/share/pinterest_32.png');
 }
-.follow-link-linkedin:before {
-	content: "\e016";
+a.follow-link-googleplus {
+	background-image: url('../images/share/googleplus_32.png');
 }
-.follow-link-instagram:before {
-	content: "\e017";
+a.follow-link-linkedin {
+	background-image: url('../images/share/linkedin_32.png');
+}
+a.follow-link-instagram {
+	background-image: url('../images/share/instagram_32.png');
+}
+a.follow-link-tumblr {
+	background-image: url('../images/share/tumblr_32.png');
 }

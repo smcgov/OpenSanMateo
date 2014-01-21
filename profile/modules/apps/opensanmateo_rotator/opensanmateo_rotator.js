@@ -9,30 +9,34 @@
         var link = $(this).attr('href');
         $(this).next('.field-name-field-rotator-caption').wrap('<a href="' + link + '" />');
       });
-      
-      
+
+
       for (var i=0; i < Drupal.settings.OpenSanMateoRotator.length; i++) {
         var fpid = Drupal.settings.OpenSanMateoRotator[i].fpid;
-        var type = Drupal.settings.OpenSanMateoRotator[i].type;        
-        
+        var type = Drupal.settings.OpenSanMateoRotator[i].type;
+        var slideshows;
         // must change the class from carousel to something else. .carousel is used in the foundation css
         if (type == 'carousel') {
           type = 'carousel-rotator';
         }
-        
+
         $('.pane-fpid-' + fpid + '.pane-bundle-rotator-panels-pane .field-collection-container').addClass(type);
-        
+
         var controlNav = true;
         // Add thumbnail data only if we have a rotator
         if (Drupal.settings.OpenSanMateoRotator[i].type == 'rotator') {
-          var controlNav = "thumbnails"; 
-          $('.field-name-field-coll-rotator-item > .field-items > .field-item').each(function(i) { 
+          var controlNav = "thumbnails";
+          $('.field-name-field-coll-rotator-item > .field-items > .field-item').each(function(i) {
             var img = $(this).find('img').attr('src');
             $(this).attr('data-thumb', img);
           });
         }
+
+        if (Drupal.settings.OpenSanMateoRotator[i].advance == '1') {
+          $('.field-collection-container.rotator, .field-collection-container.carousel-rotator').addClass('flexslider-auto-advance');
+        }
       }
-      
+
       $('.field-collection-container.rotator').flexslider({
         selector: '.field-name-field-coll-rotator-item > .field-items > .field-item',
         controlNav: "thumbnails",
@@ -54,6 +58,11 @@
         slideshow: false,
         slideshowSpeed: 4000,
       });
+
+      var $advance = $('.flexslider-auto-advance');
+      if ($advance.length) {
+        $advance.flexslider('play');
+      }
     }
   };
 })(jQuery);

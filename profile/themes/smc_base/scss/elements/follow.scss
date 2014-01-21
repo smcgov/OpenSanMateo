@@ -9,9 +9,8 @@
   a.follow-link {
     float: left;
     color: white; 
-    height: auto;
-    background-color: $primaryBlue; 
-    background-image: none;
+    height: 32px;
+    width: 32px;
     font-size: 1.25em;
     padding: .5em; 
     border-radius: 3px; 
@@ -24,37 +23,6 @@
       display: none;
     }
   }
-  
-  a.follow-link-facebook {
-    background-color: #3b5998;
-  }
-  a.follow-link-twitter {
-    background-color: #55acee;
-  } 
-  a.follow-link-this-site {
-    background-color:#fd9a27;
-  }
-  a.follow-link-flickr {
-    background-color:#fc2482;
-  }
-  a.follow-link-vimeo {
-    background-color:#2ebae9;
-  }
-  a.follow-link-youtube {
-    background-color: #cc171e;
-  }
-  a.follow-link-pinterest {
-    background-color:#c9232b;
-  }
-  a.follow-link-googleplus {
-    background-color:#4688f1;
-  }
-	a.follow-link-linkedin {
-	  background-color:#1178b3; 
-  }
-	a.follow-link-instagram {
-	  background-color: #a57757;
-	}
 }
 
 @media all and (min-width: $tablet) {

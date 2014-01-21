@@ -88,6 +88,9 @@ DirectoryIndex index.php index.html index.htm
 #RewriteCond %{REQUEST_URI} ^/dir((/dir)+)(.*)$
 #RewriteRule ^.*$ /dir%3 [R=301,L]
 
+# To get the Shield module to work properly in Acquia hosting - https://drupal.org/project/shield
+RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+
 RewriteCond %{REQUEST_URI} =/CHANGELOG.txt [OR]
 RewriteCond %{REQUEST_URI} =/COPYRIGHT.txt [OR]
 RewriteCond %{REQUEST_URI} =/INSTALL.mysql.txt [OR]
@@ -210,19 +213,3 @@ AddType application/vnd.openxmlformats-officedocument.spreadsheetml.sheet xlsx
 AddType application/vnd.ms-excel.template.macroEnabled.12 xltm
 AddType application/vnd.openxmlformats-officedocument.spreadsheetml.template xltx
 
-AuthType Basic
-AuthName "Access Restricted"
-# since staging and dev are on the same machine, this path will be available
-# for both the staging and dev tiers and since that is the only place we are
-# password protecting that is acceptable
-AuthUserFile /mnt/files/sanmateodev/.htpasswd
-Require valid-user
-SetEnvIf AH_SITE_ENVIRONMENT prod SANMATEO_ALLOW_ACCESS=1
-SetEnvIf Request_URI ^/openid/ auth_whitelist
-SetEnvIf Request_URI ^/user/.*/identity auth_whitelist
-SetEnvIf Request_URI ^/sites/.*/files/ auth_whitelist
-Deny from All
-Allow from env=SANMATEO_ALLOW_ACCESS
-Allow from env=auth_whitelist
-Allow from env=redirect_auth_whitelist
-Satisfy Any

@@ -57,11 +57,16 @@
 // footer elements
 @import "elements/footer.scss";
 
+html {
+  height: auto !important;
+}
 html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
-
+body {
+  overflow-y: hidden;
+}
 .limiter {
   margin: auto;
   max-width: 1120px;
@@ -152,4 +157,40 @@ footer {
 .node .field-name-body div {
   font-size: 1em;
   line-height: 1.6;
+}
+
+.modal-content .field-type-field-collection {
+  font-size: 16px;
+}
+
+ul.facetapi-facetapi-checkbox-links {
+  padding-left: 10px;
+  
+  input {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+}
+
+// should be changed in ctype, not in css
+.field-name-field-profile-leadership {
+  display: none;
+}
+
+#main .staff-page p {
+  font-size:100%;
+  margin-bottom:0;
+  line-height: 1.6;
+}
+
+#main .staff-page .staff-position {
+  margin:0;
+  color: $primaryBlue; 
+  font-family: $bold;
+  font-weight: normal;
+  font-size: 1.125em;
+  line-height: 1.4;
+  margin-bottom: 0.5em;
+  margin-top: 0.2em;  
+  display: block;
 }

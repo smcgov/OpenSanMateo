@@ -139,16 +139,6 @@ function user_pass_reset($form, &$form_state, $uid, $timestamp, $hashed_pass, $a
           // Let the user's password be changed without the current password check.
           $token = drupal_random_key();
           $_SESSION['pass_reset_' . $user->uid] = $token;
-          //clear out flood event for user trying to log in too many times
-          if (variable_get('user_failed_login_identifier_uid_only', FALSE)) {
-            $identifier = $account->uid;
-          }
-          else {
-            $identifier = $account->uid . '-' . ip_address();
-          }
-          flood_clear_event('failed_login_attempt_user', $identifier);
-          //also clear out the ip attempts for that user
-          flood_clear_event('failed_login_attempt_ip');
           drupal_goto('user/' . $user->uid . '/edit', array('query' => array('pass-reset-token' => $token)));
         }
         else {
@@ -169,6 +159,7 @@ function user_pass_reset($form, &$form_state, $uid, $timestamp, $hashed_pass, $a
       // Deny access, no more clues.
       // Everything will be in the watchdog's URL for the administrator to check.
       drupal_access_denied();
+      drupal_exit();
     }
   }
 }
@@ -334,15 +325,6 @@ function user_profile_form_submit($form, &$form_state) {
     // Remove the password reset tag since a new password was saved.
     unset($_SESSION['pass_reset_'. $account->uid]);
   }
-
-  // Clear the flood table. Since we don't know the IP address for this user
-  // we can't use flood_clear_event because we need to use the LIKE operator.
-  $identifier = $account->uid .'-%';
-  db_delete('flood')
-    ->condition('event', 'failed_login_attempt_user')
-    ->condition('identifier', $identifier, 'LIKE')
-    ->execute();
-
   // Clear the page cache because pages can contain usernames and/or profile information:
   cache_clear_all();
 
@@ -553,14 +535,20 @@ function user_cancel_confirm($account, $timestamp = 0, $hashed_pass = '') {
       drupal_goto("user/$account->uid/cancel");
     }
   }
-  drupal_access_denied();
+  return MENU_ACCESS_DENIED;
 }
 
 /**
- * Access callback for path /user.
+ * Page callback: Displays the user page.
  *
  * Displays user profile if user is logged in, or login form for anonymous
  * users.
+ *
+ * @return
+ *   A render array for either a user profile or a login form.
+ *
+ * @see user_view_page()
+ * @see user_login()
  */
 function user_page() {
   global $user;
