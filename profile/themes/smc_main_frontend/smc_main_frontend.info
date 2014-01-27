@@ -2,8 +2,10 @@ name = San Mateo County Main Theme
 description = Primary theme for San Mateo County sites.
 core = 7.x
 engine = phptemplate
+base theme = smc_base 
 
 stylesheets[all][] = css/smc_main.css
+scripts[] = js/smc_main.js
 
 regions[header] = Header
 regions[highlighted] = Highlighted
