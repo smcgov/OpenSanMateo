@@ -28,33 +28,33 @@
   @return rgba(141, 198, 63, $o);
 }
 
-$primaryBlue: primaryBlue();
-$primaryTeal: primaryTeal();
+$primaryBlue: primaryBlue() !default;
+$primaryTeal: primaryTeal() !default;
 
 
 
-$primaryGray: #555a5a;
-$altBlue: #0d66a1;
-$altPurple: #6b699e;
+$primaryGray: #555a5a !default;
+$altBlue: #0d66a1 !default;
+$altPurple: #6b699e !default;
 
-$altGreen: altGreen();
+$altGreen: altGreen() !default;
 
-$altOrange: #e98a41;
-$altRed: #852432;
+$altOrange: #e98a41 !default;
+$altRed: #852432 !default;
 
-$searchDefaultBG: #d7e9eb;
-$searchFocusBG: #67adb3;
+$searchDefaultBG: #d7e9eb !default;
+$searchFocusBG: #67adb3 !default;
 
-$searchMobileDefaultBG: #FFFFFF;
+$searchMobileDefaultBG: #FFFFFF !default;
 
 /* Fonts */
-$light: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica;
-$reg: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
-$bold:"Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-$lightOb: "TradeGothicW01-LightObl", "Helvetica Neue", Arial, Helvetica;  
+$light: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica !default;
+$reg: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica !default;
+$bold:"Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica !default;
+$lightOb: "TradeGothicW01-LightObl", "Helvetica Neue", Arial, Helvetica !default;  
 
 /* Media Queries */
-$mobile: 320px;
-$mobile-only: 767px;
-$tablet: 768px;
-$desktop: 800px; 
+$mobile: 320px !default;
+$mobile-only: 767px !default;
+$tablet: 768px !default;
+$desktop: 800px !default; 
