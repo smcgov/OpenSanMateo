@@ -20,7 +20,6 @@
     		<a class="dept-link show_hide icon-eye" rel="#dept-switch" href="">View All Departments</a>		
     		
     		<div class="lockup group clearfix">
-    		  <!--[if IE 8]><img class="ie-logo" src="<?php print($themelogo); ?>" /><![endif]-->
     		  <div class="site-seal"><img src="<?php print $header_logo; ?>" alt="Home" /></div>
     		  
     			<?php if ($site_name): ?>

@@ -207,13 +207,24 @@
   .lockup {
   	margin-bottom: 2%;
   	width: 65%;
-  	
-  
-  	
   	float: none;
   }
+  
   .site-seal {
-    display: none;
+    display: block;
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    margin-left: 10px;
+    position: relative;
+    top: 0;
+    left: 0;
+    
+    img {
+      height: 80px;
+      width: 80px;
+    }
   }
   .county-name, .dept-name {
   	display: block;

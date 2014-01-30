@@ -29,25 +29,29 @@
 				-moz-transition: all 0.3s;
 				transition: all 0.3s;
 				background-color: $primaryBlue; 
-			  color: white;
+			  color: #FFF;
 		  }
 		  
 			a:hover, a.active:hover {
 			  background-color: $primaryBlue; 
-			  color: white;
+			  color: #FFF;
 		  }
 		  
 		  ul li {
 			
 			  a, a.active {
-			    background-color: rgba($primaryTeal, .1); 
+			    
+			    background-color: $primaryTeal(.1); 
+			    *background-color: #EEE;
 			    color: $primaryTeal; 
 			    font-family: $reg; 
-			    border-color: rgba($primaryTeal,.2);
+			    border-color: primaryTeal(0.2);
 			  }
 			  
 				a:hover, a.active:hover {
-				  background-color: rgba($primaryTeal, .2);
+				  
+				  background-color: primaryTeal(0.2);
+				  *background-color: #DDD;
 				  color: $primaryTeal; 
 				}
 				
@@ -115,4 +119,55 @@
 
 @media all and (min-width: $desktop) {
 
+}
+
+.lte8 {
+  
+  .menu-block-subnav-menu { 
+    
+    ul {
+  	  margin: 0;
+  	  padding: 0;
+  	
+  		li {
+  		  margin: 0; 
+  		  padding: 0; 
+  		  list-style-type: none;
+  			
+  			a, a.active {
+  				
+  				display: block; 
+  				font-family: $bold;
+  				font-weight: normal;
+  				padding: .75em .75em;
+  				border-bottom: 1px solid rgba($primaryBlue, .2);
+  				-webkit-transition: all 0.3s;
+  				-moz-transition: all 0.3s;
+  				transition: all 0.3s;
+  				background-color: #EEE; 
+  			  color: #000;
+  		  }
+  		  
+  			a:hover, a.active:hover {
+  			  background-color: #DDD; 
+  			  color: #FFF;
+  		  }
+  		  
+  		  ul li {
+  			
+  			  a, a.active {
+  			    background-color: #EEE !important;
+  			    color: #999 !important;
+  			    font-family: $reg; 
+  			    border-color: rgba($primaryTeal,.2);
+  			  }
+  			  
+  				a:hover, a.active:hover {
+  				  background-color: #DDD !important;
+  				  color: #000 !important;
+  				}
+  		  }
+  		}
+  	}
+  }
 }
