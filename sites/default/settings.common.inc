@@ -13,6 +13,9 @@ $common_settings_env_map = array(
 );
 $common_settings_url_prefix = $common_settings_env_map[$_ENV['AH_SITE_ENVIRONMENT']];
 
+// Disable poor man's cron
+$conf['cron_safe_threshold'] = 0;
+
 if (isset($_ENV['AH_NON_PRODUCTION'])) {
   if ($_ENV['AH_SITE_ENVIRONMENT'] == 'dev') {
     error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT);
@@ -21,7 +24,6 @@ if (isset($_ENV['AH_NON_PRODUCTION'])) {
 }
 else {
   $conf['error_level'] = 0;
-  $conf['cron_safe_threshold'] = 0;
 
   // Configure caching
   $conf['cache_backends'][] = './sites/all/modules/contrib/memcache/memcache.inc';
