@@ -9,6 +9,10 @@
    */
   Drupal.behaviors.opensanmateo_question = {
     attach: function(context, settings) {
+      $('.nl-field-toggle, .nl-overlay').click(function() {
+        $('div .nl-dd').toggleClass('nl-field-open');
+        $('.nl-overlay, .nl-field ul').toggle();
+      });
     }
   };
 })(jQuery);

@@ -5,6 +5,19 @@
  * overwriting it in the main .module file
  */
 
+function opensanmateo_question_theme($existing, $type, $theme, $path) {
+  return array(
+    'question_pane' => array(
+      'template' => 'question-pane',
+      'path' => drupal_get_path('module', 'opensanmateo_question') . '/templates',
+      'variables' => array(
+        'items' => NULL,
+        'title' => NULL,
+      ),
+    ),
+  );
+}
+
 /**
  * Implements hook_entity_info_alter
  * https://api.drupal.org/api/drupal/modules!system!system.api.php/function/hook_entity_info_alter/7
@@ -30,9 +43,10 @@ function opensanmateo_question_entity_view_alter(&$build, $type) {
   //dpm(func_get_args()); return;
   // Check to see if this entity is one we want to manipulate (refer to opensanmateo_question_entity_info_alter)
   if ('fieldable_panels_pane' == $type && 'question_panels_pane' == $build['#bundle']) {
-    $options = array('' => t('choose a topic...'));
     // Iterate through multiple items stored in the field
+    $fpp = $build['#fieldable_panels_pane'];
     foreach ($build['field_question_links']['#items'] as $index => $item) {
+
       // Locate the item using field_collection's indexing mechanism
       $value = $item['value'];
       $link = $build['field_question_links'][$index]['entity']['field_collection_item'][$value];
@@ -64,10 +78,7 @@ function opensanmateo_question_entity_view_alter(&$build, $type) {
     }
 
     // Rewrite this element as a SELECT tag using Drupal's theming system; see theme() and theme_select()
-    $build['field_question_links'] = array(
-      '#theme' => 'select',
-      '#options' => $options,
-    );
+    $build['field_question_links'] = theme('question_pane', array('items' => $options, 'title' => $fpp->title));
 
     // Inject JS and CSS into page
     $module_path = drupal_get_path('module', 'opensanmateo_question');
