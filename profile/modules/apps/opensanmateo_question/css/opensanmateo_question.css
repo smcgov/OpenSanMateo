@@ -1,0 +1,171 @@
+/**
+ *   Contains CSS rules specific to the opensanmateo_question app
+ */
+
+@media (min-width: 768px) {
+  .hls-light {
+    background-color: rgba(3, 108, 182, 0.05);
+    color: #036cb6;
+    width: 100%;
+    border-radius: 3px;
+  }
+
+  .hls {
+    border-radius: 3px;
+    margin-bottom: 4.5%;
+    text-align: center;
+    padding: 1em;
+  }
+
+  .hls-light span {
+    color: #036cb6;
+  }
+
+  .icon-info {
+    float: left;
+    font-size: 1.4375em;
+    margin-right: 2%;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .hls-light h4 {
+    color: #036cb6;
+  }
+
+  .hls h4 {
+    font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica;
+    text-transform: uppercase;
+    float: left;
+    margin: 0;
+    line-height: 1.7em;
+  }
+
+  .hls .nl-form {
+    margin: 0;
+    float: right;
+    width: auto;
+    font-size: 1.1em;
+    line-height: 1.5;
+  }
+
+  .hls .nl-field {
+    margin-right: 4%;
+  }
+
+  .nl-field {
+    display: inline;
+    position: relative;
+  }
+
+  .hls-light .nl-field-toggle {
+    color: #036cb6;
+  }
+
+  .hls .nl-field-toggle, .hls .nl-form input, .hls .nl-form select {
+    line-height: inherit;
+    display: inline;
+    cursor: pointer;
+    border-bottom: 1px dashed rgba(3, 108, 182, 0.3);
+    font-size: 1.2em;
+  }
+
+  .nl-field ul {
+    position: absolute;
+    background: #036cb6;
+    padding-left: 2em;
+    font-size: .9em;
+    top: 50%;
+    opacity: 1;
+    -webkit-transform: translateY(-40%) scale(0.9);
+    -moz-transform: translateY(-40%) scale(0.9);
+    transform: translateY(-40%) scale(0.9);
+    -webkit-transition: visibility 0s 0.3s, opacity 0.3s, -webkit-transform 0.3s;
+    -moz-transition: visibility 0s 0.3s, opacity 0.3s, -moz-transform 0.3s;
+    transition: visibility 0s 0.3s, opacity 0.3s, transform 0.3s;
+  }
+
+
+  .nl-overlay {
+    visibility: visible;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(3, 108, 182, 0.5);
+    opacity: 1;
+    z-index: 9998;
+    -webkit-transition: visibility 0s 0.3s, opacity 0.3s;
+    -moz-transition: visibility 0s 0.3s, opacity 0.3s;
+    transition: visibility 0s 0.3s, opacity 0.3s;
+  }
+
+  .nl-field.nl-field-open ul {
+    visibility: visible;
+    opacity: 1;
+    z-index: 9999;
+    -webkit-transform: translateY(-50%) scale(1);
+    -moz-transform: translateY(-50%) scale(1);
+    transform: translateY(-50%) scale(1);
+    -webkit-transition: visibility 0s 0s, opacity 0.3s, -webkit-transform 0.3s;
+    -moz-transition: visibility 0s 0s, opacity 0.3s, -moz-transform 0.3s;
+    transition: visibility 0s 0s, opacity 0.3s, transform 0.3s;
+    border-radius: 3px;
+    list-style: none;
+  }
+
+  /* line 748, /app/views/scss/style.scss */
+  .nl-field ul li a,
+  .nl-field ul li {
+    color: #fff;
+    position: relative;
+  }
+
+  /* line 753, /app/views/scss/style.scss */
+  .nl-dd ul li {
+    padding: .2em 1.5em .2em 0.5em;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 1.5em;
+  }
+
+  /* line 760, /app/views/scss/style.scss */
+  .nl-dd ul li.nl-dd-checked {
+    color: #bedeff;
+  }
+
+  /* line 764, /app/views/scss/style.scss */
+  .no-touch .nl-dd ul li:hover
+  .no-touch .nl-dd ul li a:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  /* line 768, /app/views/scss/style.scss */
+  .no-touch .nl-dd ul li:hover:before{
+    content: '▶';
+    position: absolute;
+    right: 1em;
+    font-size: 50%;
+    line-height: 3;
+  }
+
+  /* line 776, /app/views/scss/style.scss */
+  .no-touch .nl-dd ul li:hover:active {
+    color: #444;
+  }
+
+  /* icons for some elements */
+  /* line 783, /app/views/scss/style.scss */
+  .nl-dd ul li.nl-dd-checked:before,
+  .nl-submit:before,
+  .nl-field-go:before {
+    font-family: 'nlicons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+  }
+}
