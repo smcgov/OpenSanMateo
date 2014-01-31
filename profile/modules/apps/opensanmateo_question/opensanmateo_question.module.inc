@@ -59,13 +59,11 @@ function opensanmateo_question_entity_view_alter(&$build, $type) {
         // Use Drupal url() function to ensure we have a properly-formed URL (note the absolute for possible external URLs)
         $url = url($link['field_question_links_url'][0]['#element']['url'], array('absolute' => TRUE));
       }
-
       // Otherwise, check for a node reference and use it
       elseif (!empty($link['field_question_links_node_ref'][0]['#href'])) {
         // User Drupal url() to convert internal "node/123" type URL to fully-qualified URL using alias
-        $url = url($link['field_question_links_node_ref'][0]['#href']);
+        $url = $link['field_question_links_node_ref'][0]['#href'];
       }
-
       // Fall-through
       else {
         $url = NULL;
