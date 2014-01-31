@@ -6,8 +6,8 @@ package = Fields
 dependencies[] = field
 
 
-; Information added by drush on 2014-01-17
+; Information added by drush on 2014-01-31
 version = "1559b04ff4c6fb2c6c2ef832bc364a9861c4f3d6"
 project = "textformatter"
-datestamp = "1389982415"
+datestamp = "1391189064"
 
