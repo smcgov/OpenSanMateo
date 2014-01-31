@@ -294,7 +294,7 @@ function opensanmateo_search_default_search_api_index() {
     "item_type" : "file",
     "options" : {
       "index_directly" : 1,
-      "cron_limit" : "50",
+      "cron_limit" : "0",
       "fields" : {
         "fid" : { "type" : "integer" },
         "name" : { "type" : "string" },
@@ -385,7 +385,7 @@ function opensanmateo_search_default_search_api_index() {
     "item_type" : "node",
     "options" : {
       "index_directly" : 1,
-      "cron_limit" : "50",
+      "cron_limit" : "0",
       "fields" : {
         "title" : { "type" : "string" },
         "url" : { "type" : "uri" },
