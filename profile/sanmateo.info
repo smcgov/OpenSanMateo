@@ -84,6 +84,7 @@ dependencies[] = term_ref_autocomplete
 dependencies[] = metatag
 dependencies[] = metatag_context
 dependencies[] = panels_interface
+dependencies[] = jreject
 
 ; OpenPublic
 
