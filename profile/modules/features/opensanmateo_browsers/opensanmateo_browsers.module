@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OpenSanMateo Browsers feature.
+ */
+
+include_once 'opensanmateo_browsers.features.inc';
