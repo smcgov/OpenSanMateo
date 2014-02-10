@@ -72,7 +72,7 @@ function opensanmateo_location_address_lookup($location) {
       'city' => $item['search_api_multi_aggregation_7'],
     );
   }
-  $address = isset($rtn[0]) ? $rtn[0] : stdClass();
+  $address = isset($rtn[0]) ? $rtn[0] : new stdClass();
   drupal_json_output($address);
 }
 

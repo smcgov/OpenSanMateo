@@ -518,3 +518,11 @@ projects[XHProf][version] = 1.x-dev
 projects[shs][type] = module
 projects[shs][subdir] = contrib
 projects[shs][version] = 1.6
+
+projects[jreject][type] = module
+projects[jreject][subdir] = contrib
+projects[jreject][version] = 2.0-beta1
+
+libraries[jreject][download][type] = git
+libraries[jreject][download][url] = https://github.com/TurnWheel/jReject.git
+libraries[jreject][download][revision] = 4d5f3651c0dda9b7741189d528567b8054b2fb0a

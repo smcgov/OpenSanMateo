@@ -84,6 +84,7 @@ dependencies[] = term_ref_autocomplete
 dependencies[] = metatag
 dependencies[] = metatag_context
 dependencies[] = panels_interface
+dependencies[] = jreject
 
 ; OpenPublic
 
@@ -123,3 +124,4 @@ dependencies[] = opensanmateo_security
 dependencies[] = opensanmateo_contact
 ; Do workflow last, since it depends on content types being available.
 ;dependencies[] = opensanmateo_workflow
+dependencies[] = opensanmateo_browsers
