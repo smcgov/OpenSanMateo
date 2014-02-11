@@ -6955,6 +6955,8 @@ a.do-not-accept-terms {
   font-size: 1em;
   line-height: 1;
   display: inline-block;
+  margin-top: 0;
+  margin-left: 0;
   margin-right: 1%;
   margin-bottom: 1%;
   -webkit-transition: all 0.3s;
@@ -6986,6 +6988,11 @@ a.do-not-accept-terms {
   .addtocal:active {
     *background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
+
+span.date-display-single {
+  display: inline-block;
+  width: 50%;
+}
 
 /* line 264, ../scss/elements/buttons.scss */
 ul.button-test {

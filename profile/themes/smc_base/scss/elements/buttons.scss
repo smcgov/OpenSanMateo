@@ -257,8 +257,14 @@ a.do-not-accept-terms {
   @include button();
   @include buttonBlue;
   @include buttonSmall;
+  margin-top: 0;
+  margin-left: 0;
 }
 
+span.date-display-single {
+  display: inline-block;
+  width: 50%;
+}
 
 // test content 
 ul.button-test {
