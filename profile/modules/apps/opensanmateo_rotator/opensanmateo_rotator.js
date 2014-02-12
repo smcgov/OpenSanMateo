@@ -10,7 +10,9 @@
         $(this).next('.field-name-field-rotator-caption').wrap('<a href="' + link + '" />');
       });
 
-
+      advanceSpeedRotator = 5000;
+      advanceSpeedCarousel = 5000;
+      
       for (var i=0; i < Drupal.settings.OpenSanMateoRotator.length; i++) {
         var fpid = Drupal.settings.OpenSanMateoRotator[i].fpid;
         var type = Drupal.settings.OpenSanMateoRotator[i].type;
@@ -21,7 +23,8 @@
         }
 
         $('.pane-fpid-' + fpid + '.pane-bundle-rotator-panels-pane .field-collection-container').addClass(type);
-
+        //$('.pane-fpid-' + fpid + '.pane-bundle-rotator-panels-pane .field-collection-container').attr('advancespeed', Drupal.settings.OpenSanMateoRotator[i].advanceSpeed);
+        
         var controlNav = true;
         // Add thumbnail data only if we have a rotator
         if (Drupal.settings.OpenSanMateoRotator[i].type == 'rotator') {
@@ -35,14 +38,23 @@
         if (Drupal.settings.OpenSanMateoRotator[i].advance == '1') {
           $('.field-collection-container.rotator, .field-collection-container.carousel-rotator').addClass('flexslider-auto-advance');
         }
+        if (type == 'carousel-rotator') {
+          advanceSpeedCarousel = Drupal.settings.OpenSanMateoRotator[i].advanceSpeed;
+        }
+        else if (type == 'rotator') {
+          advanceSpeedRotator = Drupal.settings.OpenSanMateoRotator[i].advanceSpeed;
+        }
+        advanceSpeed = Drupal.settings.OpenSanMateoRotator[i].advanceSpeed;
       }
-
+      
+      
+      
       $('.field-collection-container.rotator').flexslider({
         selector: '.field-name-field-coll-rotator-item > .field-items > .field-item',
         controlNav: "thumbnails",
         pauseOnHover: true,
         slideshow: false,
-        slideshowSpeed: 4000,
+        slideshowSpeed: advanceSpeedRotator,
         start: function(slider){
           slider.find('.flex-control-thumbs li:eq(0)').addClass('active-item');
         },
@@ -56,7 +68,7 @@
         controlNav: false,
         pauseOnHover: true,
         slideshow: false,
-        slideshowSpeed: 4000,
+        slideshowSpeed: advanceSpeedCarousel,
       });
 
       var $advance = $('.flexslider-auto-advance');

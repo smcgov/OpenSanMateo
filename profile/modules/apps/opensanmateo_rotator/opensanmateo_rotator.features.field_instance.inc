@@ -527,15 +527,9 @@ function opensanmateo_rotator_field_default_field_instances() {
     'description' => 'If the Auto Advance option is checked, this sets the duration for which each slide is shown. Entered in milliseconds, default value is 5000 (5 sec) if not set.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 4,
       ),
     ),
