@@ -104,7 +104,6 @@ function opensanmateo_rotator_preprocess_panels_pane(&$vars) {
     }
 
     $advance = field_get_items('fieldable_panels_pane', $vars['content']['field_coll_rotator_item']['#object'], 'field_auto_advance');
-
     if ($advance) {
       $advance = reset($advance);
       $advance = $advance['value'];
@@ -112,10 +111,19 @@ function opensanmateo_rotator_preprocess_panels_pane(&$vars) {
     else {
       $advance = 0;
     }
+    
+    $advanceSpeed = field_get_items('fieldable_panels_pane', $vars['content']['field_coll_rotator_item']['#object'], 'field_auto_advance_speed');
+    if ($advanceSpeed) {
+      $advanceSpeed = reset($advanceSpeed);
+      $advanceSpeed = $advanceSpeed['value'];
+    }
+    else {
+      $advanceSpeed = 5000;
+    }
 
     $fpid = $vars['content']['field_coll_rotator_item']['#object']->fpid;
 
-    drupal_add_js(array('OpenSanMateoRotator' => array(array('type' => $type, 'fpid' => $fpid, 'advance' => $advance))), 'setting');
+    drupal_add_js(array('OpenSanMateoRotator' => array(array('type' => $type, 'fpid' => $fpid, 'advance' => $advance, 'advanceSpeed' => $advanceSpeed))), 'setting');
 
     if ($type != 'list') {
       flexslider_add();

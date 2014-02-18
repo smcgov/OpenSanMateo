@@ -515,6 +515,45 @@ function opensanmateo_rotator_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
+  // Exported field_instance: 'fieldable_panels_pane-rotator_panels_pane-field_auto_advance_speed'
+  $field_instances['fieldable_panels_pane-rotator_panels_pane-field_auto_advance_speed'] = array(
+    'bundle' => 'rotator_panels_pane',
+    'default_value' => array(
+      0 => array(
+        'value' => 5000,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'If the Auto Advance option is checked, this sets the duration for which each slide is shown. Entered in milliseconds, default value is 5000 (5 sec) if not set.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'fieldable_panels_pane',
+    'field_name' => 'field_auto_advance_speed',
+    'label' => 'Auto Advance Speed',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => -1,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'fieldable_panels_pane-rotator_panels_pane-field_coll_rotator_item'
   $field_instances['fieldable_panels_pane-rotator_panels_pane-field_coll_rotator_item'] = array(
     'bundle' => 'rotator_panels_pane',
@@ -590,9 +629,11 @@ function opensanmateo_rotator_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Auto Advance');
+  t('Auto Advance Speed');
   t('Body');
   t('Caption');
   t('Description');
+  t('If the Auto Advance option is checked, this sets the duration for which each slide is shown. Entered in milliseconds, default value is 5000 (5 sec) if not set.');
   t('Image');
   t('Link (URL)');
   t('Link (node reference)');
