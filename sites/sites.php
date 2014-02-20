@@ -80,6 +80,11 @@ $fayze2_sites = array(
   'housing' => 'housing.smcgov.org',
   'controller' => 'controller.smcgov.org',
   'taxcollector' => 'taxcollector.smcgov.org',
+  'publicworks' => 'publicworks.smcgov.org',
+  'bnc' => 'bnc.smcgov.org',
+  'countycounsel' => 'countycounsel.smcgov.org',
+  'hsa' => 'hsa.smcgov.org',
+  'dcss' => 'dcss.smcgov.org',
   'csw' => 'csw.smcgov.org',
 );
 
