@@ -94,6 +94,8 @@ foreach ($fayze2_sites as $short_name => $site_name) {
   $sites["{$short_name}.smcprd-acquia.fayze2.com"] = $site_name;
 }
 
+$sites['greensanmateo.org'] = 'green.smcgov.org'
+
 /*
  * Additional mappings for staging
  */
