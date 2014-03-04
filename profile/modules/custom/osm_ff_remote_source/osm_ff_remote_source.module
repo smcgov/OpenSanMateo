@@ -252,9 +252,11 @@ function osm_ff_remote_source_form_file_entity_admin_file($form, &$form_state) {
  *   True if the file is eligible for sharing, false otherwise.
  */
 function osm_ff_remote_source_is_sharable($file) {
-  if (!array_key_exists('type', $field) && $file['type'] === 'image') {
+  if (array_key_exists('type', $field) && 
+      $file['type'] === 'image') {
     return TRUE;
   }
+  return FALSE;
 }
 
 /**
