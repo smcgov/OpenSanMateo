@@ -18,7 +18,7 @@ function opensanmateo_overrides_features_override_default_overrides() {
   $overrides["field.node-profile-field_profile_leadership.field_config|translatable"] = 1;
   $overrides["field.node-profile-field_profile_leadership.field_instance|deleted"] = 0;
   $overrides["field.node-profile-field_profile_leadership.field_instance|description"] = 'Indicate whether or not this person is either a Department Head or an Elected Official.';
-  $overrides["field.node-profile-field_profile_leadership.field_instance|display|default|weight"] = 0;
+  $overrides["field.node-profile-field_profile_leadership.field_instance|display|default|weight"] = 1;
   $overrides["field.node-profile-field_profile_leadership.field_instance|display|editors_choice|weight"] = 11;
   $overrides["field.node-profile-field_profile_leadership.field_instance|display|teaser|weight"] = 0;
   $overrides["field.node-profile-field_profile_leadership.field_instance|label"] = 'Department Head';
@@ -30,7 +30,7 @@ function opensanmateo_overrides_features_override_default_overrides() {
   $overrides["field.node-profile-field_profile_staff.field_config|translatable"] = 1;
   $overrides["field.node-profile-field_profile_staff.field_instance|deleted"] = 0;
   $overrides["field.node-profile-field_profile_staff.field_instance|description"] = 'This is used to indicate whether this is a San Mateo County Employee. This is helpful when creating lists of profiles for staff directories, while excluding special cases such as Commissioners or Consultants.';
-  $overrides["field.node-profile-field_profile_staff.field_instance|display|default|weight"] = 7;
+  $overrides["field.node-profile-field_profile_staff.field_instance|display|default|weight"] = 21;
   $overrides["field.node-profile-field_profile_staff.field_instance|display|editors_choice|weight"] = 10;
   $overrides["field.node-profile-field_profile_staff.field_instance|display|teaser|weight"] = 0;
   $overrides["field.node-profile-field_profile_staff.field_instance|label"] = 'Employee';
@@ -41,16 +41,7 @@ function opensanmateo_overrides_features_override_default_overrides() {
   $overrides["field_instance.node-blog_entry-field_thumbnail_image.label"] = 'Main Image';
   $overrides["field_instance.node-blog_entry-field_thumbnail_image.settings|image_field_caption"] = 0;
   $overrides["field_instance.node-blog_entry-field_thumbnail_image.widget|settings|filefield_sources"] = array(
-    'filefield_sources' => array(
-      'attach' => 0,
-      'clipboard' => 0,
-      'imce' => 0,
-      'opensanmateo_search' => 0,
-      'osmremotefile' => 0,
-      'plupload' => 0,
-      'reference' => 0,
-      'remote' => 0,
-    ),
+    'filefield_sources' => array(),
     'source_attach' => array(
       'absolute' => 0,
       'attach_mode' => 'move',
