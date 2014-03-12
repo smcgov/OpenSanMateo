@@ -24,7 +24,7 @@ function smc_base_css_alter(&$css) {
 
 function smc_base_js_alter(&$js) {
  //dsm($js);
-  
+
   if (isset($js['http://fast.fonts.com/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js'])) {
     unset($js['http://fast.fonts.com/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js']);
     //$js['http://fast.fonts.com/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js']['scope'] = 'footer';
@@ -65,7 +65,7 @@ function smc_base_process_page(&$variables) {
     $link = l('OpenSanMateo Frontend', 'admin/structure/features');
     drupal_set_message('In order for the San Mateo County base theme to operate properly, please enable the <strong>' . $link . '</strong> feature module.', 'warning');
   }
-  
+
   $variables['header_logo'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-header.png';
   $variables['footer_logo'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-footer-small.png';
   $variables['footer_logo_small'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-footer.png';
@@ -386,24 +386,32 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       $vars['fields']['title']->content .= '<div class="author-data">' . $byline . '</div>';
     }
 
-    // start date
-    if (isset($vars['fields']['search_api_multi_aggregation_9']->content) && strlen($vars['fields']['search_api_multi_aggregation_9']->content) >= 1) {
-      $startdate = '<div class="node-start-date"><h5>' . t('From') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content) . '</div></div>';
-    }
-    else {
-      // remove it then
-      $startdate = '';
-      unset($vars['fields']['search_api_multi_aggregation_9']);
-    }
-    // end date
-    if (isset($vars['fields']['search_api_multi_aggregation_10']->content) && strlen($vars['fields']['search_api_multi_aggregation_10']->content) >= 1) {
-      $enddate = '<div class="node-end-date"><h5>' . t('To') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_10']->content) . '</div></div>';
-    }
-    else {
-      // remove it then
+
+    if (!empty($vars['fields']['search_api_multi_aggregation_9']) && !empty($vars['fields']['search_api_multi_aggregation_10']) && ($vars['fields']['search_api_multi_aggregation_9']->content == $vars['fields']['search_api_multi_aggregation_10']->content) && !empty($vars['fields']['search_api_multi_aggregation_9']->content)) {
+      $startdate = '<div class="node-start-date"><h5>' . t('All Day Event') . '</h5></div>';
       $enddate = '';
-      unset($vars['fields']['search_api_multi_aggregation_10']);
     }
+    else {
+      // start date
+      if (isset($vars['fields']['search_api_multi_aggregation_9']->content) && strlen($vars['fields']['search_api_multi_aggregation_9']->content) >= 1) {
+        $startdate = '<div class="node-start-date"><h5>' . t('From') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content) . '</div></div>';
+      }
+      else {
+        // remove it then
+        $startdate = '';
+        unset($vars['fields']['search_api_multi_aggregation_9']);
+      }
+      // end date
+      if (isset($vars['fields']['search_api_multi_aggregation_10']->content) && strlen($vars['fields']['search_api_multi_aggregation_10']->content) >= 1) {
+        $enddate = '<div class="node-end-date"><h5>' . t('To') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_10']->content) . '</div></div>';
+      }
+      else {
+        // remove it then
+        $enddate = '';
+        unset($vars['fields']['search_api_multi_aggregation_10']);
+      }
+    }
+
 
     // make the date into a new object that is usable
     $vars['fields']['dateinfo'] = new stdClass();
