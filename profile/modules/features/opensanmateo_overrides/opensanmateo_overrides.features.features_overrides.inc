@@ -91,10 +91,21 @@ function opensanmateo_overrides_features_override_default_overrides() {
     ),
   );
   $overrides["field_instance.node-press_release-field_thumbnail_image.workbench_access_field"] = 0;
+  $overrides["field_instance.node-profile-field_profile_address.display|default|weight"] = 9;
+  $overrides["field_instance.node-profile-field_profile_division.display|default|weight"] = 6;
+  $overrides["field_instance.node-profile-field_profile_email.display|default|label"] = 'above';
+  $overrides["field_instance.node-profile-field_profile_email.display|default|module"] = 'text';
+  $overrides["field_instance.node-profile-field_profile_email.display|default|type"] = 'text_default';
+  $overrides["field_instance.node-profile-field_profile_email.display|default|weight"] = 7;
   $overrides["field_instance.node-profile-field_profile_leadership.description"] = 'Indicate whether or not this person is either a Department Head or an Elected Official.';
   $overrides["field_instance.node-profile-field_profile_leadership.label"] = 'Department Head';
   $overrides["field_instance.node-profile-field_profile_leadership.widget|weight"] = 14;
   $overrides["field_instance.node-profile-field_profile_leadership.workbench_access_field"] = 0;
+  $overrides["field_instance.node-profile-field_profile_organization.display|default|weight"] = 5;
+  $overrides["field_instance.node-profile-field_profile_phone.display|default|label"] = 'above';
+  $overrides["field_instance.node-profile-field_profile_phone.display|default|module"] = 'text';
+  $overrides["field_instance.node-profile-field_profile_phone.display|default|type"] = 'text_default';
+  $overrides["field_instance.node-profile-field_profile_phone.display|default|weight"] = 8;
   $overrides["field_instance.node-profile-field_profile_staff.description"] = 'This is used to indicate whether this is a San Mateo County Employee. This is helpful when creating lists of profiles for staff directories, while excluding special cases such as Commissioners or Consultants.';
   $overrides["field_instance.node-profile-field_profile_staff.label"] = 'Employee';
   $overrides["field_instance.node-profile-field_profile_staff.widget|weight"] = 10;
