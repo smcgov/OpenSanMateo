@@ -7,4 +7,3 @@ dependencies[] = features
 dependencies[] = node_reference
 features[features_api][] = api:2
 features[field_base][] = field_contact
-features[field_instance][] = node-press_release-field_contact
