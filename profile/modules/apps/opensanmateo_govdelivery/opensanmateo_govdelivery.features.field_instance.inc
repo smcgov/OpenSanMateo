@@ -10,43 +10,6 @@
 function opensanmateo_govdelivery_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-site_page-field_govdelivery_topic_ref'
-  $field_instances['node-site_page-field_govdelivery_topic_ref'] = array(
-    'bundle' => 'site_page',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 16,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_govdelivery_topic_ref',
-    'label' => 'GovDelivery Topic',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 37,
-    ),
-  );
-
   // Exported field_instance: 'taxonomy_term-govdelivery_topics-field_govdelivery_topic'
   $field_instances['taxonomy_term-govdelivery_topics-field_govdelivery_topic'] = array(
     'bundle' => 'govdelivery_topics',

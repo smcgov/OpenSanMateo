@@ -35,7 +35,6 @@ features[field_instance][] = field_collection_item-field_location_address-field_
 features[field_instance][] = node-location-body
 features[field_instance][] = node-location-field_address
 features[field_instance][] = node-location-field_files
-features[field_instance][] = node-location-field_quick_search
 features[field_instance][] = node-location-field_text_hours
 features[field_instance][] = node-location-field_thumbnail_image
 features[node][] = location

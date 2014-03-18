@@ -44,8 +44,8 @@ features[views_view][] = "home_page_feature_rotator"
 files[] = "theme/home-page-rotator.css"
 
 
-; Information added by drush on 2014-01-31
+; Information added by drush on 2014-03-13
 version = "appify_services"
 project = "openpublic"
-datestamp = "1391188918"
+datestamp = "1394746058"
 

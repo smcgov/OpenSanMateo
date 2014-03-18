@@ -1,6 +1,6 @@
 <?php
-dpm($items);
-dpm($title);
+//dpm($items);
+//dpm($title);
 ?>
 <div class="hls hls-light group">
         <span class="icon-info"></span><h4 class="reverse mti_font_element"><?php print $title?></h4>
