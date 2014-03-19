@@ -9021,7 +9021,7 @@ body.page-node .node .action-links-field-collection-add {
 .page-node .node .field-name-field-thumbnail-image {
   float: left;
   clear: none;
-  margin-right: 10px;
+  margin-right: 40px;
   max-width: 40%; }
   /* line 27, ../scss/elements/node-elements.scss */
   .page-node .node .field-name-field-thumbnail-image img {
