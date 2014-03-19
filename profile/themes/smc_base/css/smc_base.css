@@ -8816,80 +8816,78 @@ table {
     .universal-teaser .node-thumbnail img {
       max-width: 100%;
       height: auto; }
-  /* line 104, ../scss/elements/teaser.scss */
+  /* line 103, ../scss/elements/teaser.scss */
+  .universal-teaser .node-location,
+  .universal-teaser .node-date {
+    margin-bottom: 20px; }
+  /* line 107, ../scss/elements/teaser.scss */
   .universal-teaser .node-location {
-    width: 50%;
-    float: left;
     padding-right: 10px; }
-    /* line 109, ../scss/elements/teaser.scss */
+    /* line 111, ../scss/elements/teaser.scss */
     .universal-teaser .node-location .location {
       padding: 0;
       margin: 0; }
-    /* line 114, ../scss/elements/teaser.scss */
+    /* line 116, ../scss/elements/teaser.scss */
     .universal-teaser .node-location ul.adr {
       margin: 0;
       padding: 0; }
-      /* line 118, ../scss/elements/teaser.scss */
+      /* line 120, ../scss/elements/teaser.scss */
       .universal-teaser .node-location ul.adr li {
         list-style-type: none;
         margin: 0;
         padding: 0;
         color: #555a5a; }
-  /* line 126, ../scss/elements/teaser.scss */
-  .universal-teaser .node-date {
-    width: 50%;
-    float: left; }
-  /* line 142, ../scss/elements/teaser.scss */
+  /* line 143, ../scss/elements/teaser.scss */
   .universal-teaser .read-more-wrapper {
     font-size: 0.9em; }
-    /* line 145, ../scss/elements/teaser.scss */
+    /* line 146, ../scss/elements/teaser.scss */
     .universal-teaser .read-more-wrapper .read-more-title {
       height: 1px;
       width: 1px;
       position: absolute;
       overflow: hidden;
       top: -10px; }
-    /* line 153, ../scss/elements/teaser.scss */
+    /* line 154, ../scss/elements/teaser.scss */
     .universal-teaser .read-more-wrapper a:after {
       content: ' \00BB'; }
-  /* line 158, ../scss/elements/teaser.scss */
+  /* line 159, ../scss/elements/teaser.scss */
   .universal-teaser.event {
     padding-left: 1em;
     padding-right: 1em;
     padding-bottom: 4em; }
-    /* line 163, ../scss/elements/teaser.scss */
+    /* line 164, ../scss/elements/teaser.scss */
     .universal-teaser.event h5 {
       text-transform: uppercase;
       font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
       font-weight: 100;
       margin-bottom: 0; }
-      /* line 170, ../scss/elements/teaser.scss */
+      /* line 171, ../scss/elements/teaser.scss */
       .universal-teaser.event h5 span {
         display: none; }
-    /* line 175, ../scss/elements/teaser.scss */
+    /* line 176, ../scss/elements/teaser.scss */
     .universal-teaser.event .node-type {
       right: 1em; }
-    /* line 180, ../scss/elements/teaser.scss */
+    /* line 181, ../scss/elements/teaser.scss */
     .universal-teaser.event .node-location:after {
       content: ".";
       height: 0;
       display: block; }
-    /* line 186, ../scss/elements/teaser.scss */
+    /* line 187, ../scss/elements/teaser.scss */
     .universal-teaser.event .node-date {
       font-size: 0.9em; }
-      /* line 189, ../scss/elements/teaser.scss */
+      /* line 190, ../scss/elements/teaser.scss */
       .universal-teaser.event .node-date:after {
         content: ".";
         height: 0;
         display: block; }
-    /* line 196, ../scss/elements/teaser.scss */
+    /* line 197, ../scss/elements/teaser.scss */
     .universal-teaser.event .node-teaser {
       border-bottom: 1px dashed rgba(56, 147, 155, 0.1);
       border-top: 1px dashed rgba(56, 147, 155, 0.1);
       padding: 1em;
       margin-left: -1em;
       margin-right: -1em; }
-    /* line 207, ../scss/elements/teaser.scss */
+    /* line 208, ../scss/elements/teaser.scss */
     .universal-teaser.event .read-more-wrapper {
       position: absolute;
       bottom: 0;
@@ -8897,7 +8895,7 @@ table {
       left: 0;
       font-size: 1em;
       margin-bottom: 0; }
-      /* line 215, ../scss/elements/teaser.scss */
+      /* line 216, ../scss/elements/teaser.scss */
       .universal-teaser.event .read-more-wrapper a {
         display: block;
         padding: 1em 0;
@@ -8907,11 +8905,11 @@ table {
         font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
         font-weight: normal;
         background-color: rgba(3, 108, 182, 0.1); }
-        /* line 225, ../scss/elements/teaser.scss */
+        /* line 226, ../scss/elements/teaser.scss */
         .universal-teaser.event .read-more-wrapper a:hover {
           background-color: rgba(3, 108, 182, 0.2); }
 
-/* line 234, ../scss/elements/teaser.scss */
+/* line 235, ../scss/elements/teaser.scss */
 .field-type-node-reference .node-profile h2 {
   color: #036cb6;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
@@ -8921,12 +8919,12 @@ table {
   margin-bottom: 0.5em;
   margin-top: 0.2em;
   display: block; }
-  /* line 244, ../scss/elements/teaser.scss */
+  /* line 245, ../scss/elements/teaser.scss */
   .field-type-node-reference .node-profile h2 a {
     color: #036cb6; }
 
 @media all and (min-width: 768px) {
-  /* line 254, ../scss/elements/teaser.scss */
+  /* line 255, ../scss/elements/teaser.scss */
   .universal-teaser.event {
     border-radius: 3px;
     background-color: white;
@@ -8935,7 +8933,7 @@ table {
     position: relative;
     display: block; }
 
-  /* line 270, ../scss/elements/teaser.scss */
+  /* line 271, ../scss/elements/teaser.scss */
   .panel-col-first .universal-teaser.event .node-teaser,
   .panel-col-first .universal-teaser.event .node-date,
   .panel-col-first .universal-teaser.event .node-location,
@@ -8943,52 +8941,66 @@ table {
   .panel-col-last .universal-teaser.event .node-date,
   .panel-col-last .universal-teaser.event .node-location {
     font-size: 0.75em; }
-  /* line 273, ../scss/elements/teaser.scss */
+  /* line 274, ../scss/elements/teaser.scss */
   .panel-col-first .universal-teaser.event .node-location ul, .panel-col-first .universal-teaser.event .node-location li,
   .panel-col-last .universal-teaser.event .node-location ul,
   .panel-col-last .universal-teaser.event .node-location li {
     font-size: 1em; }
 
-  /* line 283, ../scss/elements/teaser.scss */
+  /* line 284, ../scss/elements/teaser.scss */
   .panel-col-top .universal-teaser,
   .panel-col-bottom .universal-teaser {
     float: left;
     clear: none;
     width: 47.5%;
     margin-right: 5%; }
-    /* line 290, ../scss/elements/teaser.scss */
+    /* line 291, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+2),
     .panel-col-bottom .universal-teaser:nth-child(2n+2) {
       margin-right: 0; }
-    /* line 294, ../scss/elements/teaser.scss */
+    /* line 295, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+3),
     .panel-col-bottom .universal-teaser:nth-child(2n+3) {
-      clear: left; } }
+      clear: left; }
+    /* line 301, ../scss/elements/teaser.scss */
+    .panel-col-top .universal-teaser .node-location,
+    .panel-col-top .universal-teaser .node-date,
+    .panel-col-bottom .universal-teaser .node-location,
+    .panel-col-bottom .universal-teaser .node-date {
+      float: left;
+      width: 50%; } }
 @media all and (min-width: 800px) {
-  /* line 306, ../scss/elements/teaser.scss */
+  /* line 314, ../scss/elements/teaser.scss */
   .panel-col-top .universal-teaser,
   .panel-col-bottom .universal-teaser {
     float: left;
     clear: none;
     width: 30%;
     margin-right: 5%; }
-    /* line 313, ../scss/elements/teaser.scss */
+    /* line 321, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+2),
     .panel-col-bottom .universal-teaser:nth-child(2n+2) {
       margin-right: 5%; }
-    /* line 317, ../scss/elements/teaser.scss */
+    /* line 325, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(2n+3),
     .panel-col-bottom .universal-teaser:nth-child(2n+3) {
       clear: none; }
-    /* line 322, ../scss/elements/teaser.scss */
+    /* line 330, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(3n+3),
     .panel-col-bottom .universal-teaser:nth-child(3n+3) {
       margin-right: 0; }
-    /* line 326, ../scss/elements/teaser.scss */
+    /* line 334, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser:nth-child(3n+4),
     .panel-col-bottom .universal-teaser:nth-child(3n+4) {
       clear: left; }
-    /* line 333, ../scss/elements/teaser.scss */
+    /* line 342, ../scss/elements/teaser.scss */
+    .panel-col-top .universal-teaser.event .node-location,
+    .panel-col-top .universal-teaser.event .node-date,
+    .panel-col-bottom .universal-teaser.event .node-location,
+    .panel-col-bottom .universal-teaser.event .node-date {
+      float: none;
+      width: 100%; }
+    /* line 349, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser.event .node-teaser,
     .panel-col-top .universal-teaser.event .node-date,
     .panel-col-top .universal-teaser.event .node-location,
@@ -8996,11 +9008,19 @@ table {
     .panel-col-bottom .universal-teaser.event .node-date,
     .panel-col-bottom .universal-teaser.event .node-location {
       font-size: 0.75em; }
-    /* line 336, ../scss/elements/teaser.scss */
+    /* line 352, ../scss/elements/teaser.scss */
     .panel-col-top .universal-teaser.event .node-location ul, .panel-col-top .universal-teaser.event .node-location li,
     .panel-col-bottom .universal-teaser.event .node-location ul,
     .panel-col-bottom .universal-teaser.event .node-location li {
       font-size: 1em; } }
+@media all and (min-width: 1100px) {
+  /* line 368, ../scss/elements/teaser.scss */
+  .panel-col-top .universal-teaser.event .node-location,
+  .panel-col-top .universal-teaser.event .node-date,
+  .panel-col-bottom .universal-teaser.event .node-location,
+  .panel-col-bottom .universal-teaser.event .node-date {
+    float: left;
+    width: 50%; } }
 /* line 5, ../scss/elements/node-elements.scss */
 .node-type-location .field-name-field-address #map_canvas {
   margin-top: 1.6em; }
