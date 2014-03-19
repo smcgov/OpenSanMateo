@@ -9802,7 +9802,7 @@ body.page-node .node .action-links-field-collection-add {
         color: #FFF; }
       /* line 42, ../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li ul li a, .menu-block-subnav-menu ul li ul li a.active {
-        background-color: #38939b 0.1;
+        background-color: rgba(56, 147, 155, 0.1);
         *background-color: #EEE;
         color: #38939b;
         font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
