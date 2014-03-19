@@ -6955,8 +6955,6 @@ a.do-not-accept-terms {
   font-size: 1em;
   line-height: 1;
   display: inline-block;
-  margin-top: 0;
-  margin-left: 0;
   margin-right: 1%;
   margin-bottom: 1%;
   -webkit-transition: all 0.3s;
@@ -6968,7 +6966,9 @@ a.do-not-accept-terms {
   *background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: .85em;
-  padding: .75em 1em; }
+  padding: .75em 1em;
+  margin-top: 0;
+  margin-left: 0; }
   /* line 21, ../scss/elements/buttons.scss */
   .addtocal:hover {
     padding: .75em 1em; }
@@ -6989,21 +6989,21 @@ a.do-not-accept-terms {
     *background-color: #036cb6;
     background-color: rgba(3, 108, 182, 0.9); }
 
+/* line 264, ../scss/elements/buttons.scss */
 span.date-display-single {
   display: inline-block;
-  width: 50%;
-}
+  width: 50%; }
 
-/* line 264, ../scss/elements/buttons.scss */
+/* line 270, ../scss/elements/buttons.scss */
 ul.button-test {
   margin: 0;
   padding: 0; }
-  /* line 267, ../scss/elements/buttons.scss */
+  /* line 273, ../scss/elements/buttons.scss */
   ul.button-test li {
     margin: 0;
     padding: 0;
     list-style-type: none; }
-    /* line 272, ../scss/elements/buttons.scss */
+    /* line 278, ../scss/elements/buttons.scss */
     ul.button-test li a {
       background: none;
       background-color: none;
@@ -7033,7 +7033,7 @@ ul.button-test {
         -webkit-transition: all 0.3s;
         -moz-transition: all 0.3s;
         transition: all 0.3s; }
-      /* line 276, ../scss/elements/buttons.scss */
+      /* line 282, ../scss/elements/buttons.scss */
       ul.button-test li a.blue-cta {
         float: left;
         clear: left;
@@ -7093,7 +7093,7 @@ ul.button-test {
         ul.button-test li a.blue-cta:active {
           *background-color: #036cb6;
           background-color: rgba(3, 108, 182, 0.9); }
-      /* line 283, ../scss/elements/buttons.scss */
+      /* line 289, ../scss/elements/buttons.scss */
       ul.button-test li a.teal-cta {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
@@ -7152,7 +7152,7 @@ ul.button-test {
         ul.button-test li a.teal-cta:active {
           *background-color: #38939b;
           background-color: rgba(56, 147, 155, 0.9); }
-      /* line 289, ../scss/elements/buttons.scss */
+      /* line 295, ../scss/elements/buttons.scss */
       ul.button-test li a.green-cta {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
@@ -7211,7 +7211,7 @@ ul.button-test {
         ul.button-test li a.green-cta:active {
           *background-color: #8dc63f;
           background-color: rgba(141, 198, 63, 0.9); }
-      /* line 297, ../scss/elements/buttons.scss */
+      /* line 303, ../scss/elements/buttons.scss */
       ul.button-test li a.blue-default {
         float: left;
         clear: left;
@@ -7271,7 +7271,7 @@ ul.button-test {
         ul.button-test li a.blue-default:active {
           *background-color: #036cb6;
           background-color: rgba(3, 108, 182, 0.9); }
-      /* line 304, ../scss/elements/buttons.scss */
+      /* line 310, ../scss/elements/buttons.scss */
       ul.button-test li a.teal-default {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
@@ -7330,7 +7330,7 @@ ul.button-test {
         ul.button-test li a.teal-default:active {
           *background-color: #38939b;
           background-color: rgba(56, 147, 155, 0.9); }
-      /* line 310, ../scss/elements/buttons.scss */
+      /* line 316, ../scss/elements/buttons.scss */
       ul.button-test li a.green-default {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
@@ -7389,7 +7389,7 @@ ul.button-test {
         ul.button-test li a.green-default:active {
           *background-color: #8dc63f;
           background-color: rgba(141, 198, 63, 0.9); }
-      /* line 319, ../scss/elements/buttons.scss */
+      /* line 325, ../scss/elements/buttons.scss */
       ul.button-test li a.blue-small {
         float: left;
         clear: left;
@@ -7405,7 +7405,7 @@ ul.button-test {
         ul.button-test li a.blue-small:active {
           *background-color: #036cb6;
           background-color: rgba(3, 108, 182, 0.9); }
-      /* line 325, ../scss/elements/buttons.scss */
+      /* line 331, ../scss/elements/buttons.scss */
       ul.button-test li a.teal-small {
         float: left;
         *background-color: #38939b;
@@ -7420,7 +7420,7 @@ ul.button-test {
         ul.button-test li a.teal-small:active {
           *background-color: #38939b;
           background-color: rgba(56, 147, 155, 0.9); }
-      /* line 330, ../scss/elements/buttons.scss */
+      /* line 336, ../scss/elements/buttons.scss */
       ul.button-test li a.green-small {
         float: left;
         *background-color: #8dc63f;
@@ -8169,38 +8169,38 @@ table {
 @media all and (min-width: 768px) {
   /* line 75, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column .panel-col-first {
-    float: left;
+    float: none;
     clear: none;
-    width: 25%;
+    width: 100%;
     padding: 0;
     margin: 0;
-    margin-right: 2.5%;
+    margin-right: 0%;
     margin-bottom: 3%; }
 
   /* line 85, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column .panel-col-middle {
-    float: left;
+    float: none;
     clear: none;
-    width: 72.5%;
+    width: 100%;
     padding: 0;
     margin: 0;
     margin-bottom: 3%; }
 
   /* line 94, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-fifty-fifty .panel-col-first {
-    float: left;
+    float: none;
     clear: none;
-    width: 47.5%;
+    width: 100%;
     padding: 0;
     margin: 0;
-    margin-right: 5%;
+    margin-right: 0;
     margin-bottom: 3%; }
 
   /* line 104, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-fifty-fifty .panel-col-middle {
-    float: left;
+    float: none;
     clear: none;
-    width: 47.5%;
+    width: 100%;
     padding: 0;
     margin: 0;
     margin-bottom: 3%; } }
@@ -8209,7 +8209,7 @@ table {
   #main-wrapper .sm-two-column .panel-col-first {
     float: left;
     clear: none;
-    width: 20%;
+    width: 25%;
     padding: 0;
     margin: 0;
     margin-right: 2.5%;
@@ -8219,11 +8219,49 @@ table {
   #main-wrapper .sm-two-column .panel-col-middle {
     float: left;
     clear: none;
+    width: 72.5%;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%; }
+
+  /* line 134, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column-fifty-fifty .panel-col-first {
+    float: left;
+    clear: none;
+    width: 47.5%;
+    padding: 0;
+    margin: 0;
+    margin-right: 5%;
+    margin-bottom: 3%; }
+
+  /* line 144, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column-fifty-fifty .panel-col-middle {
+    float: left;
+    clear: none;
+    width: 47.5%;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%; }
+
+  /* line 153, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column .panel-col-first {
+    float: left;
+    clear: none;
+    width: 20%;
+    padding: 0;
+    margin: 0;
+    margin-right: 2.5%;
+    margin-bottom: 3%; }
+
+  /* line 163, ../scss/elements/layout.scss */
+  #main-wrapper .sm-two-column .panel-col-middle {
+    float: left;
+    clear: none;
     width: 77.5%;
     padding: 0;
     margin: 0;
     margin-bottom: 3%; } }
-/* line 141, ../scss/elements/layout.scss */
+/* line 179, ../scss/elements/layout.scss */
 #main-wrapper .sm-two-column-alt .panel-col-top,
 #main-wrapper .sm-two-column-alt .panel-col-first,
 #main-wrapper .sm-two-column-alt .panel-col-middle,
@@ -8239,7 +8277,7 @@ table {
   margin-bottom: 3%; }
 
 @media all and (min-width: 768px) {
-  /* line 153, ../scss/elements/layout.scss */
+  /* line 191, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-top,
   #main-wrapper .sm-two-column-alt .panel-col-bottom {
     width: 100%;
@@ -8250,7 +8288,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 164, ../scss/elements/layout.scss */
+  /* line 202, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-first {
     float: none;
     clear: none;
@@ -8260,7 +8298,7 @@ table {
     margin-right: 0;
     margin-bottom: 3%; }
 
-  /* line 174, ../scss/elements/layout.scss */
+  /* line 212, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-middle {
     float: left;
     clear: none;
@@ -8269,7 +8307,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 184, ../scss/elements/layout.scss */
+  /* line 222, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-lower-left {
     float: left;
     clear: none;
@@ -8277,7 +8315,7 @@ table {
     padding: 0;
     margin: 0; }
 
-  /* line 192, ../scss/elements/layout.scss */
+  /* line 230, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-lower-right {
     float: left;
     clear: none;
@@ -8286,7 +8324,7 @@ table {
     margin: 0;
     margin-left: 2.5%; } }
 @media all and (min-width: 800px) {
-  /* line 204, ../scss/elements/layout.scss */
+  /* line 242, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-top,
   #main-wrapper .sm-two-column-alt .panel-col-bottom {
     width: 100%;
@@ -8297,7 +8335,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 215, ../scss/elements/layout.scss */
+  /* line 253, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-first {
     float: left;
     clear: none;
@@ -8307,7 +8345,7 @@ table {
     margin-right: 2.5%;
     margin-bottom: 3%; }
 
-  /* line 225, ../scss/elements/layout.scss */
+  /* line 263, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-middle {
     float: left;
     clear: none;
@@ -8316,7 +8354,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 235, ../scss/elements/layout.scss */
+  /* line 273, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-lower-left {
     float: left;
     clear: none;
@@ -8324,7 +8362,7 @@ table {
     padding: 0;
     margin: 0; }
 
-  /* line 243, ../scss/elements/layout.scss */
+  /* line 281, ../scss/elements/layout.scss */
   #main-wrapper .sm-two-column-alt .panel-col-lower-right {
     float: left;
     clear: none;
@@ -8332,11 +8370,11 @@ table {
     padding: 0;
     margin: 0;
     margin-left: 2.5%; } }
-/* line 255, ../scss/elements/layout.scss */
+/* line 293, ../scss/elements/layout.scss */
 #main-wrapper .sm-three-column {
   margin-bottom: 5%; }
 
-/* line 263, ../scss/elements/layout.scss */
+/* line 301, ../scss/elements/layout.scss */
 #main-wrapper .sm-three-column .panel-col-top,
 #main-wrapper .sm-three-column .panel-col-first,
 #main-wrapper .sm-three-column .panel-col-middle,
@@ -8351,7 +8389,7 @@ table {
   margin-bottom: 3%; }
 
 @media all and (min-width: 768px) {
-  /* line 276, ../scss/elements/layout.scss */
+  /* line 314, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-first {
     float: none;
     width: 100%;
@@ -8359,7 +8397,7 @@ table {
     margin: 0;
     margin-bottom: 3%; }
 
-  /* line 284, ../scss/elements/layout.scss */
+  /* line 322, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-middle {
     float: left;
     clear: none;
@@ -8369,7 +8407,7 @@ table {
     margin-bottom: 3%;
     padding: 0 1em; }
 
-  /* line 294, ../scss/elements/layout.scss */
+  /* line 332, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-last {
     float: left;
     clear: none;
@@ -8380,7 +8418,7 @@ table {
     padding-right: 1em;
     margin-bottom: 3%; } }
 @media all and (min-width: 800px) {
-  /* line 308, ../scss/elements/layout.scss */
+  /* line 346, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-first {
     float: left;
     clear: none;
@@ -8389,7 +8427,7 @@ table {
     margin: 0;
     margin-right: 2.5%; }
 
-  /* line 317, ../scss/elements/layout.scss */
+  /* line 355, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-middle {
     float: left;
     clear: none;
@@ -8399,7 +8437,7 @@ table {
     margin-bottom: 3%;
     padding: 0 1em; }
 
-  /* line 327, ../scss/elements/layout.scss */
+  /* line 365, ../scss/elements/layout.scss */
   #main-wrapper .sm-three-column .panel-col-last {
     float: left;
     clear: none;
@@ -8407,16 +8445,16 @@ table {
     padding: 0;
     margin: 0;
     margin-left: 2.5%; } }
-/* line 340, ../scss/elements/layout.scss */
+/* line 378, ../scss/elements/layout.scss */
 #main-wrapper #responsive-navigation {
   display: none; }
 
-/* line 344, ../scss/elements/layout.scss */
+/* line 382, ../scss/elements/layout.scss */
 #main-wrapper #navigation-toggle {
   display: block;
   text-align: right;
   margin-bottom: 10px; }
-  /* line 349, ../scss/elements/layout.scss */
+  /* line 387, ../scss/elements/layout.scss */
   #main-wrapper #navigation-toggle a {
     display: inline-block;
     padding: .75em .5em;
@@ -8424,27 +8462,27 @@ table {
     text-align: center;
     background-color: rgba(3, 108, 182, 0.1);
     border-radius: 3px; }
-    /* line 358, ../scss/elements/layout.scss */
+    /* line 396, ../scss/elements/layout.scss */
     #main-wrapper #navigation-toggle a:before {
       padding-right: 1em;
       content: "\e006"; }
 
-/* line 372, ../scss/elements/layout.scss */
+/* line 410, ../scss/elements/layout.scss */
 .lte8 #main-wrapper #responsive-navigation {
   display: block !important; }
-/* line 375, ../scss/elements/layout.scss */
+/* line 413, ../scss/elements/layout.scss */
 .lte8 #main-wrapper #navigation-toggle, .lte8 #main-wrapper #navigation-toggle a {
   display: none !important; }
 
 @media all and (min-width: 768px) {
-  /* line 382, ../scss/elements/layout.scss */
+  /* line 420, ../scss/elements/layout.scss */
   #main-wrapper #responsive-navigation {
     display: block !important; }
 
-  /* line 386, ../scss/elements/layout.scss */
+  /* line 424, ../scss/elements/layout.scss */
   #main-wrapper #navigation-toggle {
     display: none; } }
-/* line 393, ../scss/elements/layout.scss */
+/* line 431, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column .panel-col-first {
   float: left;
   clear: none;
@@ -8453,7 +8491,7 @@ table {
   margin: 0;
   margin-right: 2.5%;
   margin-bottom: 3%; }
-/* line 403, ../scss/elements/layout.scss */
+/* line 441, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column .panel-col-middle {
   float: left;
   clear: none;
@@ -8461,7 +8499,7 @@ table {
   padding: 0;
   margin: 0;
   margin-bottom: 3%; }
-/* line 412, ../scss/elements/layout.scss */
+/* line 450, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-top,
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-bottom {
   width: 100%;
@@ -8471,7 +8509,7 @@ table {
   padding: 0;
   margin: 0;
   margin-bottom: 3%; }
-/* line 423, ../scss/elements/layout.scss */
+/* line 461, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-first {
   float: left;
   clear: none;
@@ -8480,7 +8518,7 @@ table {
   margin: 0;
   margin-right: 2.5%;
   margin-bottom: 3%; }
-/* line 433, ../scss/elements/layout.scss */
+/* line 471, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-middle {
   float: left;
   clear: none;
@@ -8488,14 +8526,14 @@ table {
   padding: 0;
   margin: 0;
   margin-bottom: 3%; }
-/* line 443, ../scss/elements/layout.scss */
+/* line 481, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-lower-left {
   float: left;
   clear: none;
   width: 65%;
   padding: 0;
   margin: 0; }
-/* line 451, ../scss/elements/layout.scss */
+/* line 489, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-two-column-alt .panel-col-lower-right {
   float: left;
   clear: none;
@@ -8503,7 +8541,7 @@ table {
   padding: 0;
   margin: 0;
   margin-left: 2.5%; }
-/* line 459, ../scss/elements/layout.scss */
+/* line 497, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-three-column .panel-col-first {
   float: left;
   clear: none;
@@ -8511,7 +8549,7 @@ table {
   padding: 0;
   margin: 0;
   margin-right: 2.5%; }
-/* line 468, ../scss/elements/layout.scss */
+/* line 506, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-three-column .panel-col-middle {
   float: left;
   clear: none;
@@ -8520,7 +8558,7 @@ table {
   margin: 0;
   margin-bottom: 3%;
   padding: 0 1em; }
-/* line 478, ../scss/elements/layout.scss */
+/* line 516, ../scss/elements/layout.scss */
 .lte8 #main-wrapper .sm-three-column .panel-col-last {
   float: left;
   clear: none;
