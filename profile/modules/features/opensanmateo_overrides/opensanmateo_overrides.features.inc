@@ -15,7 +15,7 @@ function opensanmateo_overrides_field_default_fields_alter(&$data) {
     $data['node-profile-field_profile_leadership']['field_config']['translatable'] = 1; /* WAS: 1 */
     $data['node-profile-field_profile_leadership']['field_instance']['deleted'] = 0; /* WAS: 0 */
     $data['node-profile-field_profile_leadership']['field_instance']['description'] = 'Indicate whether or not this person is either a Department Head or an Elected Official.'; /* WAS: 'Indicate whether or not this person holds a leadership position.' */
-    $data['node-profile-field_profile_leadership']['field_instance']['display']['default']['weight'] = 0; /* WAS: 0 */
+    $data['node-profile-field_profile_leadership']['field_instance']['display']['default']['weight'] = 1; /* WAS: 0 */
     $data['node-profile-field_profile_leadership']['field_instance']['display']['editors_choice']['weight'] = 11; /* WAS: 11 */
     $data['node-profile-field_profile_leadership']['field_instance']['display']['teaser']['weight'] = 0; /* WAS: 0 */
     $data['node-profile-field_profile_leadership']['field_instance']['label'] = 'Department Head'; /* WAS: 'Leadership' */
@@ -29,7 +29,7 @@ function opensanmateo_overrides_field_default_fields_alter(&$data) {
     $data['node-profile-field_profile_staff']['field_config']['translatable'] = 1; /* WAS: 1 */
     $data['node-profile-field_profile_staff']['field_instance']['deleted'] = 0; /* WAS: 0 */
     $data['node-profile-field_profile_staff']['field_instance']['description'] = 'This is used to indicate whether this is a San Mateo County Employee. This is helpful when creating lists of profiles for staff directories, while excluding special cases such as Commissioners or Consultants.'; /* WAS: 'This is used to indicate whether this is a staff member. This is helpful when creating lists of profiles for staff directories, while excluding special cases such as guest bloggers or businesses.' */
-    $data['node-profile-field_profile_staff']['field_instance']['display']['default']['weight'] = 7; /* WAS: 7 */
+    $data['node-profile-field_profile_staff']['field_instance']['display']['default']['weight'] = 24; /* WAS: 7 */
     $data['node-profile-field_profile_staff']['field_instance']['display']['editors_choice']['weight'] = 10; /* WAS: 10 */
     $data['node-profile-field_profile_staff']['field_instance']['display']['teaser']['weight'] = 0; /* WAS: 0 */
     $data['node-profile-field_profile_staff']['field_instance']['label'] = 'Employee'; /* WAS: 'Staff Member' */
@@ -70,18 +70,6 @@ function opensanmateo_overrides_field_default_field_instances_alter(&$data) {
     ); /* WAS: '' */
     $data['node-blog_entry-field_thumbnail_image']['workbench_access_field'] = 0; /* WAS: '' */
   }
-  if (isset($data['node-location-field_files'])) {
-    $data['node-location-field_files']['settings']['description_field'] = 1; /* WAS: 0 */
-    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['attach'] = 0; /* WAS: '' */
-    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['clipboard'] = 0; /* WAS: '' */
-    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['imce'] = 0; /* WAS: '' */
-    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['opensanmateo_search'] = 0; /* WAS: '' */
-    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['osmremotefile'] = 0; /* WAS: '' */
-    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['plupload'] = 0; /* WAS: '' */
-    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['reference'] = 0; /* WAS: '' */
-    $data['node-location-field_files']['widget']['settings']['filefield_sources']['filefield_sources']['remote'] = 0; /* WAS: '' */
-    $data['node-location-field_files']['workbench_access_field'] = 0; /* WAS: '' */
-  }
   if (isset($data['node-press_release-field_thumbnail_image'])) {
     $data['node-press_release-field_thumbnail_image']['label'] = 'Main Image'; /* WAS: 'Thumbnail Image' */
     $data['node-press_release-field_thumbnail_image']['settings']['image_field_caption'] = 0; /* WAS: '' */
@@ -110,11 +98,32 @@ function opensanmateo_overrides_field_default_field_instances_alter(&$data) {
     ); /* WAS: '' */
     $data['node-press_release-field_thumbnail_image']['workbench_access_field'] = 0; /* WAS: '' */
   }
+  if (isset($data['node-profile-field_profile_address'])) {
+    $data['node-profile-field_profile_address']['display']['default']['weight'] = 9; /* WAS: 12 */
+  }
+  if (isset($data['node-profile-field_profile_division'])) {
+    $data['node-profile-field_profile_division']['display']['default']['weight'] = 6; /* WAS: 14 */
+  }
+  if (isset($data['node-profile-field_profile_email'])) {
+    $data['node-profile-field_profile_email']['display']['default']['label'] = 'above'; /* WAS: 'hidden' */
+    $data['node-profile-field_profile_email']['display']['default']['module'] = 'text'; /* WAS: '' */
+    $data['node-profile-field_profile_email']['display']['default']['type'] = 'text_default'; /* WAS: 'hidden' */
+    $data['node-profile-field_profile_email']['display']['default']['weight'] = 7; /* WAS: 10 */
+  }
   if (isset($data['node-profile-field_profile_leadership'])) {
     $data['node-profile-field_profile_leadership']['description'] = 'Indicate whether or not this person is either a Department Head or an Elected Official.'; /* WAS: 'Indicate whether or not this person holds a leadership position.' */
     $data['node-profile-field_profile_leadership']['label'] = 'Department Head'; /* WAS: 'Leadership' */
     $data['node-profile-field_profile_leadership']['widget']['weight'] = 14; /* WAS: 13 */
     $data['node-profile-field_profile_leadership']['workbench_access_field'] = 0; /* WAS: '' */
+  }
+  if (isset($data['node-profile-field_profile_organization'])) {
+    $data['node-profile-field_profile_organization']['display']['default']['weight'] = 5; /* WAS: 11 */
+  }
+  if (isset($data['node-profile-field_profile_phone'])) {
+    $data['node-profile-field_profile_phone']['display']['default']['label'] = 'above'; /* WAS: 'hidden' */
+    $data['node-profile-field_profile_phone']['display']['default']['module'] = 'text'; /* WAS: '' */
+    $data['node-profile-field_profile_phone']['display']['default']['type'] = 'text_default'; /* WAS: 'hidden' */
+    $data['node-profile-field_profile_phone']['display']['default']['weight'] = 8; /* WAS: 4 */
   }
   if (isset($data['node-profile-field_profile_staff'])) {
     $data['node-profile-field_profile_staff']['description'] = 'This is used to indicate whether this is a San Mateo County Employee. This is helpful when creating lists of profiles for staff directories, while excluding special cases such as Commissioners or Consultants.'; /* WAS: 'This is used to indicate whether this is a staff member. This is helpful when creating lists of profiles for staff directories, while excluding special cases such as guest bloggers or businesses.' */
