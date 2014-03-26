@@ -23,8 +23,8 @@ features[field_base][] = field_release_date
 features[field_base][] = field_summary
 
 
-; Information added by drush on 2014-03-25
+; Information added by drush on 2014-03-26
 version = "appify_services"
 project = "openpublic"
-datestamp = "1395764520"
+datestamp = "1395845700"
 

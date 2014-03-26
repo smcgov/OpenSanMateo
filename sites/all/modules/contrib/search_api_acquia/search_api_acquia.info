@@ -11,8 +11,8 @@ files[] = includes/SearchApiAcquiaSearchHttpTransport.php
 files[] = includes/SearchApiAcquiaSearchService.php
 
 
-; Information added by drush on 2014-03-25
+; Information added by drush on 2014-03-26
 version = "1967e867e0df80a476e218a120d30327034766d9"
 project = "search_api_acquia"
-datestamp = "1395764264"
+datestamp = "1395845577"
 
