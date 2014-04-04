@@ -10979,7 +10979,7 @@ footer {
       text-align: center;
       margin: 1em auto;
       min-height: 40px;
-      padding: 20px 0; }
+      padding: 20px 0 20px 120px; }
       /* line 113, ../scss/elements/footer.scss */
       footer .seal img {
         max-width: 100%;
@@ -10998,24 +10998,24 @@ footer {
       border: none; }
     /* line 131, ../scss/elements/footer.scss */
     footer nav ul, footer nav ul.menu {
-      width: 55%;
-      float: right;
+      width: 100%;
       margin-bottom: 0; }
-      /* line 137, ../scss/elements/footer.scss */
+      /* line 136, ../scss/elements/footer.scss */
       footer nav ul li,
       footer nav ul li.leaf, footer nav ul.menu li,
       footer nav ul.menu li.leaf {
         float: left;
         list-style-type: none;
-        width: 33%;
-        margin-bottom: 2%; }
+        margin-bottom: 10px;
+        margin-right: 50px;
+        width: auto; }
         /* line 143, ../scss/elements/footer.scss */
         footer nav ul li a,
         footer nav ul li.leaf a, footer nav ul.menu li a,
         footer nav ul.menu li.leaf a {
           color: white;
           display: block;
-          font-size: .8em;
+          font-size: 1em;
           text-align: left;
           padding: 0;
           border: none;
@@ -11029,7 +11029,7 @@ footer {
 @media all and (min-width: 800px) {
   /* line 164, ../scss/elements/footer.scss */
   footer nav ul, footer nav ul.menu {
-    width: 45%; }
+    width: 100%; }
 
   /* line 169, ../scss/elements/footer.scss */
   #__dimScreen .message {
@@ -11057,10 +11057,9 @@ footer {
     border: none; }
   /* line 198, ../scss/elements/footer.scss */
   .lte8 footer nav ul, .lte8 footer nav ul.menu {
-    width: 45%;
-    float: right;
+    width: 100%;
     margin-bottom: 0; }
-    /* line 204, ../scss/elements/footer.scss */
+    /* line 203, ../scss/elements/footer.scss */
     .lte8 footer nav ul li,
     .lte8 footer nav ul li.leaf, .lte8 footer nav ul.menu li,
     .lte8 footer nav ul.menu li.leaf {
@@ -11068,7 +11067,7 @@ footer {
       list-style-type: none;
       width: 33%;
       margin-bottom: 2%; }
-      /* line 210, ../scss/elements/footer.scss */
+      /* line 209, ../scss/elements/footer.scss */
       .lte8 footer nav ul li a,
       .lte8 footer nav ul li.leaf a, .lte8 footer nav ul.menu li a,
       .lte8 footer nav ul.menu li.leaf a {
@@ -11080,7 +11079,7 @@ footer {
         border: none;
         min-height: 0;
         font-weight: 100; }
-      /* line 221, ../scss/elements/footer.scss */
+      /* line 220, ../scss/elements/footer.scss */
       .lte8 footer nav ul li a:hover,
       .lte8 footer nav ul li.leaf a:hover, .lte8 footer nav ul.menu li a:hover,
       .lte8 footer nav ul.menu li.leaf a:hover {

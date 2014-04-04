@@ -1,60 +1,8 @@
-
+// Import custom variables from subtheme
 @import "variables.scss";
 
+// Import all styles from SMC Base Theme, using overwritten variables
 @import "../../smc_base/scss/smc_base.scss";
-/*
-@import "../../smc_base/scss/elements/editor.scss";
-// Drupal admin toolbar adjustments
-@import "../../smc_base/scss/elements/toolbar.scss";
-// button mixins
-@import "../../smc_base/scss/elements/buttons.scss";
-// Header
-@import "../../smc_base/scss/elements/header.scss";
-// Webforms
-@import "../../smc_base/scss/elements/webform.scss";
-// Drupal admin tabs adjustments
-@import "../../smc_base/scss/elements/tabs.scss";
-// system (font) icons
-@import "../../smc_base/scss/elements/icons.scss";
-// Twitter Pull
-@import "../../smc_base/scss/elements/tables.scss";
-// sitewide layout and responsive
-@import "../../smc_base/scss/elements/layout.scss";
-// rotator box/panels pane "block"
-@import "../../smc_base/scss/elements/rotator-box.scss";
-// cross-site alerts
-@import "../../smc_base/scss/elements/alerts.scss";
-// cross-site teasers
-@import "../../smc_base/scss/elements/teaser.scss";
-// Detail page elements
-@import "../../smc_base/scss/elements/node-elements.scss";
-// site follow links (pane)
-@import "../../smc_base/scss/elements/follow.scss";
-// shared department menu
-@import "../../smc_base/scss/elements/dept-menu.scss";
-// primary navigation menu
-@import "../../smc_base/scss/elements/main-menu.scss";
-// primary navigation menu
-@import "../../smc_base/scss/elements/sub-menu-block.scss";
-// department branding/promo block
-@import "../../smc_base/scss/elements/dept-promo.scss";
-// custom promo block(s)
-@import "../../smc_base/scss/elements/promo-boxes.scss";
-// pagers
-@import "../../smc_base/scss/elements/pagers.scss";
-// breadcrumbs
-@import "../../smc_base/scss/elements/breadcrumb.scss";
-// search box
-@import "../../smc_base/scss/elements/search.scss";
-// Curated lists
-@import "../../smc_base/scss/elements/curated-lists.scss";
-// Twitter Pull
-@import "../../smc_base/scss/elements/twitter.scss";
-// footer elements
-@import "../../smc_base/scss/elements/footer.scss";
-*/
-
-
 
 body {
   background: $primaryBlue;

@@ -108,7 +108,7 @@ footer {
 		text-align: center;
 		margin: 1em auto;
 		min-height: 40px;
-		padding: 20px 0;
+		padding: 20px 0 20px 120px;
 		
 		img {
   		max-width: 100%;
@@ -129,27 +129,27 @@ footer {
 	nav {border: none;}
 
 	nav ul, nav ul.menu {
-		width: 55%; 
-		float: right; 
+		width: 100%; 
 		margin-bottom: 0;
 	
 		li,
 		li.leaf {
 			float: left;
 			list-style-type: none; 
-			width: 33%; 
-			margin-bottom: 2%;
+			margin-bottom: 10px;
+			margin-right: 50px; 
+			width: auto;
 			
 			a {
 				color: white;
 				display: block;
-				font-size: .8em;
+				font-size: 1em;
 				text-align: left;
 				padding: 0;
 				border: none;
 				min-height: 0;
 				font-weight: 100;				
-				}
+		  }
 				
 			a:hover {
 			  color: rgba(255,255,255, .8);
@@ -162,7 +162,7 @@ footer {
 @media all and (min-width: $desktop) {
   footer {
   	nav ul, nav ul.menu {
-  	  width: 45%;
+  	  width: 100%;
     }
   }
   
@@ -196,8 +196,7 @@ footer {
 	nav {border: none;}
 
 	nav ul, nav ul.menu {
-		width: 45%;
-		float: right; 
+		width: 100%;
 		margin-bottom: 0;
 	
 		li,
