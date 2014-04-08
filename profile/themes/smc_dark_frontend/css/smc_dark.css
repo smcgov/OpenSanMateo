@@ -8572,15 +8572,29 @@ table {
 /* line 2, ../../smc_base/scss/elements/rotator-box.scss */
 .flexslider {
   box-shadow: none;
-  border-bottom: 0; }
-  /* line 6, ../../smc_base/scss/elements/rotator-box.scss */
+  border-bottom: 0;
+  border: none; }
+  /* line 7, ../../smc_base/scss/elements/rotator-box.scss */
+  .flexslider .slides {
+    padding-left: 0; }
+  /* line 10, ../../smc_base/scss/elements/rotator-box.scss */
   .flexslider .field-items .field-item {
     margin-bottom: 0; }
-  /* line 9, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 13, ../../smc_base/scss/elements/rotator-box.scss */
   .flexslider ul.field-collection-view-links {
     display: none; }
+  /* line 19, ../../smc_base/scss/elements/rotator-box.scss */
+  .flexslider .flex-control-nav {
+    padding: 1em;
+    position: relative;
+    text-align: center;
+    width: 100%; }
+  /* line 25, ../../smc_base/scss/elements/rotator-box.scss */
+  .flexslider .flex-caption {
+    background: none;
+    padding: 1em; }
 
-/* line 21, ../../smc_base/scss/elements/rotator-box.scss */
+/* line 35, ../../smc_base/scss/elements/rotator-box.scss */
 .pane-bundle-rotator-panels-pane {
   width: 100%;
   background-image: -webkit-linear-gradient(rgba(3, 108, 182, 0.05) 0%, rgba(3, 108, 182, 0) 50%, rgba(3, 108, 182, 0.025) 100%);
@@ -8589,34 +8603,34 @@ table {
   margin: 0 auto 5%;
   border-radius: 3px;
   background-color: transparent; }
-  /* line 31, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 45, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .field-collection-container {
     margin-bottom: 0; }
-  /* line 35, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 49, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .field-collection-view {
     position: relative; }
-    /* line 38, ../../smc_base/scss/elements/rotator-box.scss */
+    /* line 52, ../../smc_base/scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .field-collection-view .content {
       display: block; }
-  /* line 43, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 57, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .field-collection-view > a.rotator-wrap-link {
     position: relative;
     display: block;
     height: 100%;
     width: 100%; }
-  /* line 49, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 63, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows {
     z-index: 10; }
-  /* line 51, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 65, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows a:after, .pane-bundle-rotator-panels-pane .flex-control-thumbs a:after, .pane-bundle-rotator-panels-pane .rs-slider li a:after {
     content: none; }
-  /* line 55, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 69, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows a {
     background-color: rgba(0, 0, 0, 0.8); }
-  /* line 59, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 73, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows a:hover {
     background-color: black; }
-  /* line 63, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 77, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-caption {
     background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%) !important;
     background-color: rgba(0, 0, 0, 0.7) !important;
@@ -8627,7 +8641,7 @@ table {
     right: 0;
     width: 100% !important;
     font-size: inherit !important; }
-    /* line 74, ../../smc_base/scss/elements/rotator-box.scss */
+    /* line 88, ../../smc_base/scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .flex-caption h3 {
       text-transform: none;
       font-size: 1.5em;
@@ -8636,59 +8650,59 @@ table {
       margin-bottom: 1%;
       color: white;
       text-shadow: none; }
-    /* line 85, ../../smc_base/scss/elements/rotator-box.scss */
+    /* line 99, ../../smc_base/scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .flex-caption p {
       color: #EEEEEE;
       font-size: 1em;
       line-height: 1.3em;
       text-shadow: none; }
-      /* line 91, ../../smc_base/scss/elements/rotator-box.scss */
+      /* line 105, ../../smc_base/scss/elements/rotator-box.scss */
       .pane-bundle-rotator-panels-pane .flex-caption p:last-child {
         margin-bottom: 0; }
-  /* line 97, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 111, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-slider > li img {
     width: 100%; }
-  /* line 99, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 113, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs {
     margin-top: 10px !important;
     padding: 0 0.5em; }
-  /* line 104, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 118, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs li {
     border: 5px solid #eee;
     width: 22.75%;
     margin-left: 3%; }
-    /* line 109, ../../smc_base/scss/elements/rotator-box.scss */
+    /* line 123, ../../smc_base/scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .flex-control-thumbs li:first-child {
       margin-left: 0; }
-  /* line 114, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 128, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs li.active-item {
     border: 5px solid rgba(3, 108, 182, 0.2); }
-  /* line 118, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 132, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs li:hover {
     border: 5px solid #036cb6; }
-  /* line 126, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 140, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-caption.rs-bottom > a {
     color: white; }
-  /* line 130, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 144, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-prev {
     left: 0;
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px; }
-  /* line 136, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 150, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-next {
     right: 0;
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px; }
 
-/* line 146, ../../smc_base/scss/elements/rotator-box.scss */
+/* line 160, ../../smc_base/scss/elements/rotator-box.scss */
 .lte8 .pane-bundle-rotator-panels-pane .flex-caption {
   background: rgba(0, 0, 0, 0.5) !important; }
 
 @media all and (min-width: 768px) {
-  /* line 157, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 171, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-caption h3 {
     font-size: 2.5em; }
-  /* line 161, ../../smc_base/scss/elements/rotator-box.scss */
+  /* line 175, ../../smc_base/scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-caption p {
     font-size: 1.3em;
     line-height: 1.3em; } }
@@ -10981,7 +10995,7 @@ footer {
       text-align: center;
       margin: 1em auto;
       min-height: 40px;
-      padding: 20px 0; }
+      padding: 20px 0 20px 120px; }
       /* line 113, ../../smc_base/scss/elements/footer.scss */
       footer .seal img {
         max-width: 100%;
@@ -11000,24 +11014,24 @@ footer {
       border: none; }
     /* line 131, ../../smc_base/scss/elements/footer.scss */
     footer nav ul, footer nav ul.menu {
-      width: 55%;
-      float: right;
+      width: 100%;
       margin-bottom: 0; }
-      /* line 137, ../../smc_base/scss/elements/footer.scss */
+      /* line 136, ../../smc_base/scss/elements/footer.scss */
       footer nav ul li,
       footer nav ul li.leaf, footer nav ul.menu li,
       footer nav ul.menu li.leaf {
         float: left;
         list-style-type: none;
-        width: 33%;
-        margin-bottom: 2%; }
+        margin-bottom: 10px;
+        margin-right: 50px;
+        width: auto; }
         /* line 143, ../../smc_base/scss/elements/footer.scss */
         footer nav ul li a,
         footer nav ul li.leaf a, footer nav ul.menu li a,
         footer nav ul.menu li.leaf a {
           color: white;
           display: block;
-          font-size: .8em;
+          font-size: 1em;
           text-align: left;
           padding: 0;
           border: none;
@@ -11031,7 +11045,7 @@ footer {
 @media all and (min-width: 800px) {
   /* line 164, ../../smc_base/scss/elements/footer.scss */
   footer nav ul, footer nav ul.menu {
-    width: 45%; }
+    width: 100%; }
 
   /* line 169, ../../smc_base/scss/elements/footer.scss */
   #__dimScreen .message {
@@ -11059,10 +11073,9 @@ footer {
     border: none; }
   /* line 198, ../../smc_base/scss/elements/footer.scss */
   .lte8 footer nav ul, .lte8 footer nav ul.menu {
-    width: 45%;
-    float: right;
+    width: 100%;
     margin-bottom: 0; }
-    /* line 204, ../../smc_base/scss/elements/footer.scss */
+    /* line 203, ../../smc_base/scss/elements/footer.scss */
     .lte8 footer nav ul li,
     .lte8 footer nav ul li.leaf, .lte8 footer nav ul.menu li,
     .lte8 footer nav ul.menu li.leaf {
@@ -11070,7 +11083,7 @@ footer {
       list-style-type: none;
       width: 33%;
       margin-bottom: 2%; }
-      /* line 210, ../../smc_base/scss/elements/footer.scss */
+      /* line 209, ../../smc_base/scss/elements/footer.scss */
       .lte8 footer nav ul li a,
       .lte8 footer nav ul li.leaf a, .lte8 footer nav ul.menu li a,
       .lte8 footer nav ul.menu li.leaf a {
@@ -11082,7 +11095,7 @@ footer {
         border: none;
         min-height: 0;
         font-weight: 100; }
-      /* line 221, ../../smc_base/scss/elements/footer.scss */
+      /* line 220, ../../smc_base/scss/elements/footer.scss */
       .lte8 footer nav ul li a:hover,
       .lte8 footer nav ul li.leaf a:hover, .lte8 footer nav ul.menu li a:hover,
       .lte8 footer nav ul.menu li.leaf a:hover {
@@ -11220,6 +11233,6 @@ ul.facetapi-facetapi-checkbox-links {
   margin-top: 0.2em;
   display: block; }
 
-/* line 59, ../scss/smc_dark.scss */
+/* line 7, ../scss/smc_dark.scss */
 body {
   background: black; }
