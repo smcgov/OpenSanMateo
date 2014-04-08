@@ -621,6 +621,26 @@ function opensanmateo_search_views_default_views() {
     7 => 0,
   );
   $handler->display->display_options['filters']['search_api_multi_aggregation_8']['expose']['reduce'] = 0;
+  /* Filter criterion: Author: Title (indexed) */
+  $handler->display->display_options['filters']['field_blog_author_title']['id'] = 'field_blog_author_title';
+  $handler->display->display_options['filters']['field_blog_author_title']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['filters']['field_blog_author_title']['field'] = 'field_blog_author_title';
+  $handler->display->display_options['filters']['field_blog_author_title']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_blog_author_title']['expose']['operator_id'] = 'field_blog_author_title_op';
+  $handler->display->display_options['filters']['field_blog_author_title']['expose']['label'] = 'Author';
+  $handler->display->display_options['filters']['field_blog_author_title']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['field_blog_author_title']['expose']['operator'] = 'field_blog_author_title_op';
+  $handler->display->display_options['filters']['field_blog_author_title']['expose']['identifier'] = 'field_blog_author_title';
+  $handler->display->display_options['filters']['field_blog_author_title']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_blog_author_title']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    6 => 0,
+    5 => 0,
+    7 => 0,
+  );
   $handler->display->display_options['pane_category']['name'] = 'Lists';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 'use_pager';
