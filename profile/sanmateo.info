@@ -105,6 +105,7 @@ dependencies[] = openpublic_accessibility
 
 ;dependencies[] = opensanmateo_location
 dependencies[] = opensanmateo_roles
+dependencies[] = opensanmateo_pages
 ;dependencies[] = opensanmateo_event
 dependencies[] = opensanmateo_google_analytics
 dependencies[] = opensanmateo_layout

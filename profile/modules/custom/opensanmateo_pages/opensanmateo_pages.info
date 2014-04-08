@@ -1,0 +1,4 @@
+name = OpenSanMateo Pages
+description = Implementions of various one-off pages in the San Mateo space
+core = 7.x
+package = OpenSanMateo
