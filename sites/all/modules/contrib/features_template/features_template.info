@@ -7,8 +7,8 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 
 
-; Information added by drush on 2014-03-13
+; Information added by drush on 2014-03-26
 version = "1a164f75d5f389d79b36ad3b9d3ed6593a466386"
 project = "features_template"
-datestamp = "1394746206"
+datestamp = "1395845580"
 

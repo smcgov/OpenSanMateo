@@ -1,0 +1,130 @@
+<?php
+
+/**
+ * @file
+ * @brief jReject install file
+ *
+ * This file contains all the installation functions used by the module.
+ * Mostly it sets sane defaults.
+ *
+ * @author Domenic Santangelo (entendu) http://drupal.org/user/173461
+ *
+ */
+
+/**
+ * Implements hook_install().
+ */
+function jreject_install() {
+  //Set some sensible defaults.
+  $reject = array (
+                  'msie' => 
+                  array (
+                    5 => 1,
+                    6 => 1,
+                    7 => 1,
+                    8 => 0,
+                    9 => 0,
+                  ),
+                  'firefox' => 
+                  array (
+                    2 => 1,
+                    3 => 1,
+                    4 => 1,
+                    5 => 1,
+                    6 => 1,
+                    7 => 1,
+                    8 => 1,
+                    9 => 1,
+                    10 => 0,
+                    11 => 0,
+                    12 => 0,
+                  ),
+                  'chrome' => 
+                  array (
+                    1 => 1,
+                    2 => 1,
+                    3 => 1,
+                    4 => 1,
+                    5 => 1,
+                    6 => 1,
+                    7 => 1,
+                    8 => 1,
+                    9 => 1,
+                    10 => 1,
+                    11 => 1,
+                    12 => 1,
+                    13 => 1,
+                    14 => 1,
+                    15 => 1,
+                    16 => 0,
+                    17 => 0,
+                    18 => 0,
+                  ),
+                  'safari' => 
+                  array (
+                    1 => 1,
+                    2 => 1,
+                    3 => 1,
+                    4 => 1,
+                    5 => 0,
+                  ),
+                  'opera' => 
+                  array (
+                    1 => 1,
+                    2 => 1,
+                    3 => 1,
+                    4 => 1,
+                    5 => 1,
+                    6 => 1,
+                    7 => 1,
+                    8 => 1,
+                    9 => 1,
+                    10 => 0,
+                  ),
+                );
+  variable_set('jreject_browser_config', $reject);
+  
+  $options_alpha = array (
+                            'enable' => 1,
+                            'header' => 'Did you know that your Internet Browser is out of date?',
+                            'paragraph1' => 'Your browser is out of date, and may not be compatible with our website. A list of the most popular web browsers can be found below.',
+                            'paragraph2' => 'Just click on the icons to get to the download page:',
+                            'closeMessage' => 'By closing this window you acknowledge that your experience on this website may be degraded.',
+                            'closeLink' => 'Close This Window',
+                            'closeURL' => '#',
+                          );
+  variable_set('jreject_options_alpha', $options_alpha);
+  
+  $options_beta = array (
+                          'close' => 1,
+                          'closeESC' => 1,
+                          'closeCookie' => 0,
+                          'overlayBgColor' => '#000',
+                          'overlayOpacity' => '0.8',
+                          'fadeInTime' => 'fast',
+                          'fadeOutTime' => 'fast',
+                        );
+  variable_set('jreject_options_beta', $options_beta);
+  
+  $alts = array (
+                  'msie' => 1,
+                  'firefox' => 1,
+                  'safari' => 1,
+                  'opera' => 1,
+                  'chrome' => 1,
+                  'gcf' => 1,
+                );
+  variable_set('jreject_browser_alternatives', $alts);
+}
+
+
+/**
+ * Implements hook_uninstall().
+ */
+function jreject_uninstall() {
+  variable_del('jreject_browser_config');
+  variable_del('jreject_options_alpha');
+  variable_del('jreject_options_beta');
+  variable_del('jreject_browser_alternatives');
+  variable_del('jreject_enable');
+}

@@ -1,0 +1,183 @@
+<?php
+
+/**
+ * @file
+ * @brief jReject Drupal integration module.
+ *
+ * @author Domenic Santangelo (entendu) http://drupal.org/user/173461
+ * @see https://github.com/TurnWheel/jReject
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function jreject_menu() {
+  $items['admin/config/system/jreject'] = array(
+    'title' => 'jReject Configuration',
+    'description' => 'Configure jReject integration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('jreject_configure_system'),
+    'access arguments' => array('administer users'),
+    'file' => 'jreject.admin.inc',
+  );
+  $items['admin/config/system/jreject/configure'] = array(
+    'title' => 'General Configuration',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+  $items['admin/config/system/jreject/options'] = array(
+    'title' => 'Options',
+    'description' => 'Configure jReject Options',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('jreject_configure_options'),
+    'access arguments' => array('administer users'),
+    'file' => 'jreject.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => -5,
+  );
+  $items['admin/config/system/jreject/browsers'] = array(
+    'title' => 'Browser Configuration',
+    'description' => 'Configure jReject Browser Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('jreject_configure_browsers'),
+    'access arguments' => array('administer users'),
+    'file' => 'jreject.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => -4,
+  );
+  $items['admin/config/system/jreject/alternatives'] = array(
+    'title' => 'Browser Alternatives',
+    'description' => 'Configure jReject Browser Alternatives',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('jreject_configure_alternatives'),
+    'access arguments' => array('administer users'),
+    'file' => 'jreject.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => -3,
+  );
+  return $items;
+}
+
+/**
+ * Retrieve the rejection settings for use in hook_init()
+*/
+function jreject_get_rejects() {
+  $conf = variable_get('jreject_browser_config', array());
+  $out = array();
+  foreach ($conf as $browser => $details) {
+    foreach ($details as $version => $reject) {
+      if ($reject) {
+        $out[] = $browser . $version . ": true";
+      }
+    }
+  }
+  return implode(", ", $out);
+}
+
+/**
+ * Retrieve the jReject options for use in hook_init()
+*/
+function jreject_get_options() {
+  $conf = variable_get('jreject_options_alpha', array()) + variable_get('jreject_options_beta', array());
+  $out = array();
+
+  // Translation for some configs.
+  $to_translate = array('header', 'paragraph1', 'paragraph2', 'closeMessage', 'closeLink');
+  foreach($conf as $ci => $cv) {
+    if(in_array($ci, $to_translate)) {
+      $conf[$ci] = t($conf[$ci]);
+    }
+  }
+  foreach ($conf as $param => $value) {
+    if (is_int($value)) {
+      $value = $value ? "true" : "false"; //for javascript
+    }
+    else {
+      $value = is_numeric($value) ? $value : '"' . $value . '"';
+    }
+    $out[] = $param . ": " . str_replace(array("\r\n", "\n", "\r"), "<br />", $value);
+  }
+  return implode(", ", $out);
+}
+
+/**
+ * Retrieve the browser alternative settings for use in hook_init()
+*/
+function jreject_get_browser_alternatives() {
+  $conf = variable_get('jreject_browser_alternatives', array());
+  $out = array();
+  foreach ($conf as $browser => $enabled) {
+    if ($enabled) {
+      $out[] = '"' . $browser . '"';
+    }
+  }
+  return implode(", ", $out);
+}
+
+/**
+ * Implements hook_libraries_info().
+ *
+ * For defining external libraries.
+ */
+function jreject_libraries_info() {
+  $libraries['jreject'] = array(
+    'name' => 'jReject',
+    'vendor url' => 'http://jreject.turnwheel.com/',
+    'download url' => 'https://github.com/TurnWheel/jReject',
+    // 1.0.2
+    'version arguments' => array(
+      'file' => 'js/jquery.reject.js',
+      'pattern' => '/Version (\d+)/',
+      'lines' => 3,
+    ),
+    'files' => array(
+      'js' => array(
+        'js/jquery.reject.js',
+      ),
+      'css' => array(
+        'css/jquery.reject.css',
+      ),
+    ),
+  );
+  return $libraries;
+}
+
+
+/**
+ * Implements hook_init()
+*/
+function jreject_init() {
+  //Always bail if the killswitch is engaged.
+  if (!variable_get('jreject_enable', FALSE)) {
+    return;
+  }
+  $library = libraries_load('jreject');
+  if ($library && !empty($library['loaded'])) {
+    $path = $library['library path'];
+    $rejects = jreject_get_rejects();
+    $opts = jreject_get_options();
+    $browser_alternatives = jreject_get_browser_alternatives();
+    $js = <<<EOT
+    (function($) {
+      Drupal.behaviors.jReject = {
+        attach: function (context, settings) {
+          $.reject({
+          display: [$browser_alternatives],
+            reject: {  
+                $rejects
+            },
+            imagePath: '/$path/images/',
+            $opts
+          }); 
+          return false;  
+        }
+      }
+    })(jQuery);
+EOT;
+    drupal_add_js($js, array("type" => "inline"));
+  }
+  elseif (php_sapi_name() != "cli") {
+    $message = t('Missing or incomplete installation of the jReject library! Please follow the instructions from README.txt to get it.');
+    drupal_set_message($message, 'error');
+  }
+}
