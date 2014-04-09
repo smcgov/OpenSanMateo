@@ -114,6 +114,9 @@ body.page-node .node .action-links-field-collection-add {
 }
 
 .field-type-file {
+  @include clearfix();
+  clear: both;
+  float: none;
   
   .file {
   

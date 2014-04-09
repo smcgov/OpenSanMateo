@@ -9136,61 +9136,73 @@ body.page-node .node .action-links-field-collection-add {
 .page-node div.panel-pane .node .field-name-field-location-address .field-name-field-address {
   line-height: 1.4; }
 
-/* line 120, ../scss/elements/node-elements.scss */
-.field-type-file .file a {
-  width: 100%;
-  float: left;
-  border-top: 1px solid rgba(85, 90, 90, 0.1);
-  padding: .5em 0;
-  display: block; }
-/* line 128, ../scss/elements/node-elements.scss */
-.field-type-file .file .file-type {
-  color: #555a5a;
-  width: 10%;
-  background-color: rgba(85, 90, 90, 0.05);
-  font-size: .5em;
-  padding: .5em;
-  border-radius: 3px;
-  text-align: center;
-  display: inline-block;
-  text-transform: uppercase; }
-/* line 141, ../scss/elements/node-elements.scss */
-.field-type-file .file .file-size {
-  color: #555a5a;
-  width: 20%;
-  font-size: .5em;
-  float: right;
-  padding: .5em;
-  border-radius: 3px;
-  text-align: right; }
-/* line 151, ../scss/elements/node-elements.scss */
-.field-type-file .file .file-name {
-  padding-left: .5em; }
-/* line 155, ../scss/elements/node-elements.scss */
-.field-type-file .field-items {
-  border-bottom: 1px solid rgba(85, 90, 90, 0.1);
-  margin-bottom: 20px; }
-  /* line 159, ../scss/elements/node-elements.scss */
-  .field-type-file .field-items:after {
-    clear: both;
-    content: ".";
-    display: block;
-    height: 0;
-    visibility: hidden; }
-  /* line 167, ../scss/elements/node-elements.scss */
-  .field-type-file .field-items .field-item:after, .field-type-file .field-items .file:after {
-    clear: both;
-    content: ".";
-    display: block;
-    height: 0;
-    visibility: hidden; }
+/* line 116, ../scss/elements/node-elements.scss */
+.field-type-file {
+  *zoom: 1;
+  clear: both;
+  float: none; }
+  /* line 121, ../scss/foundation/components/_global.scss */
+  .field-type-file:before, .field-type-file:after {
+    content: " ";
+    display: table; }
+  /* line 122, ../scss/foundation/components/_global.scss */
+  .field-type-file:after {
+    clear: both; }
+  /* line 123, ../scss/elements/node-elements.scss */
+  .field-type-file .file a {
+    width: 100%;
+    float: left;
+    border-top: 1px solid rgba(85, 90, 90, 0.1);
+    padding: .5em 0;
+    display: block; }
+  /* line 131, ../scss/elements/node-elements.scss */
+  .field-type-file .file .file-type {
+    color: #555a5a;
+    width: 10%;
+    background-color: rgba(85, 90, 90, 0.05);
+    font-size: .5em;
+    padding: .5em;
+    border-radius: 3px;
+    text-align: center;
+    display: inline-block;
+    text-transform: uppercase; }
+  /* line 144, ../scss/elements/node-elements.scss */
+  .field-type-file .file .file-size {
+    color: #555a5a;
+    width: 20%;
+    font-size: .5em;
+    float: right;
+    padding: .5em;
+    border-radius: 3px;
+    text-align: right; }
+  /* line 154, ../scss/elements/node-elements.scss */
+  .field-type-file .file .file-name {
+    padding-left: .5em; }
+  /* line 158, ../scss/elements/node-elements.scss */
+  .field-type-file .field-items {
+    border-bottom: 1px solid rgba(85, 90, 90, 0.1);
+    margin-bottom: 20px; }
+    /* line 162, ../scss/elements/node-elements.scss */
+    .field-type-file .field-items:after {
+      clear: both;
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden; }
+    /* line 170, ../scss/elements/node-elements.scss */
+    .field-type-file .field-items .field-item:after, .field-type-file .field-items .file:after {
+      clear: both;
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden; }
 
 @media all and (min-width: 768px) {
-  /* line 182, ../scss/elements/node-elements.scss */
+  /* line 185, ../scss/elements/node-elements.scss */
   .field-type-file .file .file-type, .field-type-file .file .file-size {
     font-size: 0.75em; } }
 @media all and (min-width: 800px) {
-  /* line 192, ../scss/elements/node-elements.scss */
+  /* line 195, ../scss/elements/node-elements.scss */
   .node-type-location .field-name-field-address #map_canvas {
     float: right;
     margin-top: 0;
