@@ -40,6 +40,7 @@ function opensanmateo_media_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'media_full',
   );
 
   // Exported image style: media_thumbnail.
@@ -62,6 +63,7 @@ function opensanmateo_media_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'media_thumbnail',
   );
 
   return $styles;

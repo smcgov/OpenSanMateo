@@ -8,8 +8,17 @@ function smc_base_preprocess_html(&$variables) {
       'content' => 'width=device-width, initial-scale=1, maximum-scale=2, minimum-scale=1, user-scalable=yes'
     ),
   );
-
   drupal_add_html_head($meta, 'viewport');
+  
+  $google_webmasters_verification = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'google-site-verification',
+      'content' => 'juh1PRGi6_1jrLmH_l5n10psg5y6DGYskQjYVQL-GR8',
+    )
+  );
+  drupal_add_html_head($google_webmasters_verification, 'google_webmasters_verification');
 }
 function smc_base_process_html(&$variables) {
   //dsm($variables);
@@ -67,6 +76,7 @@ function smc_base_process_page(&$variables) {
   }
 
   $variables['header_logo'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-header.png';
+  $variables['smclink'] = 'http://smcgov.org';
   $variables['footer_logo'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-footer-small.png';
   $variables['footer_logo_small'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-footer.png';
   //krumo($variables);

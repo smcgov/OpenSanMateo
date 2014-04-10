@@ -30,7 +30,7 @@ function opensanmateo_overrides_features_override_default_overrides() {
   $overrides["field.node-profile-field_profile_staff.field_config|translatable"] = 1;
   $overrides["field.node-profile-field_profile_staff.field_instance|deleted"] = 0;
   $overrides["field.node-profile-field_profile_staff.field_instance|description"] = 'This is used to indicate whether this is a San Mateo County Employee. This is helpful when creating lists of profiles for staff directories, while excluding special cases such as Commissioners or Consultants.';
-  $overrides["field.node-profile-field_profile_staff.field_instance|display|default|weight"] = 21;
+  $overrides["field.node-profile-field_profile_staff.field_instance|display|default|weight"] = 24;
   $overrides["field.node-profile-field_profile_staff.field_instance|display|editors_choice|weight"] = 10;
   $overrides["field.node-profile-field_profile_staff.field_instance|display|teaser|weight"] = 0;
   $overrides["field.node-profile-field_profile_staff.field_instance|label"] = 'Employee';
@@ -41,7 +41,16 @@ function opensanmateo_overrides_features_override_default_overrides() {
   $overrides["field_instance.node-blog_entry-field_thumbnail_image.label"] = 'Main Image';
   $overrides["field_instance.node-blog_entry-field_thumbnail_image.settings|image_field_caption"] = 0;
   $overrides["field_instance.node-blog_entry-field_thumbnail_image.widget|settings|filefield_sources"] = array(
-    'filefield_sources' => array(),
+    'filefield_sources' => array(
+      'attach' => 0,
+      'clipboard' => 0,
+      'imce' => 0,
+      'opensanmateo_search' => 0,
+      'osmremotefile' => 0,
+      'plupload' => 0,
+      'reference' => 0,
+      'remote' => 0,
+    ),
     'source_attach' => array(
       'absolute' => 0,
       'attach_mode' => 'move',
@@ -55,16 +64,6 @@ function opensanmateo_overrides_features_override_default_overrides() {
     ),
   );
   $overrides["field_instance.node-blog_entry-field_thumbnail_image.workbench_access_field"] = 0;
-  $overrides["field_instance.node-location-field_files.settings|description_field"] = 1;
-  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|attach"] = 0;
-  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|clipboard"] = 0;
-  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|imce"] = 0;
-  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|opensanmateo_search"] = 0;
-  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|osmremotefile"] = 0;
-  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|plupload"] = 0;
-  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|reference"] = 0;
-  $overrides["field_instance.node-location-field_files.widget|settings|filefield_sources|filefield_sources|remote"] = 0;
-  $overrides["field_instance.node-location-field_files.workbench_access_field"] = 0;
   $overrides["field_instance.node-press_release-field_thumbnail_image.label"] = 'Main Image';
   $overrides["field_instance.node-press_release-field_thumbnail_image.settings|image_field_caption"] = 0;
   $overrides["field_instance.node-press_release-field_thumbnail_image.widget|settings|filefield_sources"] = array(

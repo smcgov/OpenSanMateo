@@ -73,6 +73,46 @@
 
 @media all and (min-width: $tablet) {
   #main-wrapper .sm-two-column .panel-col-first { 
+    float: none; 
+    clear: none;
+    width: 100%; 
+    padding: 0;
+    margin: 0;
+    margin-right: 0%;
+    margin-bottom: 3%;
+  }
+  
+  #main-wrapper .sm-two-column .panel-col-middle { 
+    float: none; 
+    clear: none;
+    width: 100%; 
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+  }
+  
+  #main-wrapper .sm-two-column-fifty-fifty .panel-col-first { 
+    float: none; 
+    clear: none;
+    width: 100%; 
+    padding: 0;
+    margin: 0;
+    margin-right: 0;
+    margin-bottom: 3%;
+  }
+  
+  #main-wrapper .sm-two-column-fifty-fifty .panel-col-middle { 
+    float: none; 
+    clear: none;
+    width: 100%; 
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+  }
+}
+
+@media all and (min-width: $desktop) {
+  #main-wrapper .sm-two-column .panel-col-first { 
     float: left; 
     clear: none;
     width: 25%; 
@@ -109,9 +149,7 @@
     margin: 0;
     margin-bottom: 3%;
   }
-}
-
-@media all and (min-width: $desktop) {
+  
   #main-wrapper .sm-two-column .panel-col-first { 
     float: left; 
     clear: none;

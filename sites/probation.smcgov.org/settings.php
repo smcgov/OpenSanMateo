@@ -565,3 +565,4 @@ if (!empty($_ENV['AH_SITE_GROUP']) && !empty($_ENV['AH_SITE_ENVIRONMENT'])) {
   $conf['file_private_path'] = smc_settings_file_private_path(__DIR__);
 }
 
+ini_set('memory_limit', '2048M');

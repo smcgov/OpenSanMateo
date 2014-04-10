@@ -2,7 +2,11 @@
 .flexslider {
   box-shadow: none;
   border-bottom: 0;
+  border: none;
   
+  .slides {
+    padding-left: 0;
+  }
   .field-items .field-item {
     margin-bottom: 0;
   }
@@ -11,6 +15,16 @@
   }
   .flex-control-thumbs {
     //position: relative;
+  }
+  .flex-control-nav {
+    padding: 1em; 
+    position: relative; 
+    text-align: center; 
+    width: 100%;
+  }
+  .flex-caption {
+    background: none; 
+    padding: 1em;
   }
   .field-name-field-rotator-description {
     // this seems to be empty anyway

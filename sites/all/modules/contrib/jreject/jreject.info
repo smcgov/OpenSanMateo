@@ -1,0 +1,16 @@
+name = jReject
+description = Integrate the jReject javascript library with Drupal
+core = 7.x
+package = "Interface"
+
+files[] = jreject.admin.inc
+files[] = jreject.install
+files[] = jreject.module
+
+dependencies[] = libraries (2.x)
+; Information added by drupal.org packaging script on 2013-10-08
+version = "7.x-2.0-beta1"
+core = "7.x"
+project = "jreject"
+datestamp = "1381254737"
+

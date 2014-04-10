@@ -99,11 +99,13 @@
 		
   }
   
-  
-  
+  .node-location,
+  .node-date {
+    margin-bottom: 20px;
+  }
+    
   .node-location {
-    width: 50%;
-    float: left;
+    
     padding-right: 10px;
     
     .location {
@@ -124,8 +126,7 @@
     }  
   }
   .node-date {
-    width: 50%;
-    float: left;
+    
     
     .label {
       
@@ -294,6 +295,13 @@
       &:nth-child(2n+3) {
         clear: left;
       }
+      
+      // inline location/date
+      .node-location,
+      .node-date {
+        float: left;
+        width: 50%;
+      }
     }
   }
   
@@ -328,6 +336,14 @@
       }
       // shrink text on events
       &.event {
+        
+        // block location/date
+        .node-location,
+        .node-date {
+          float: none;
+          width: 100%;
+        }
+        
         .node-teaser,
         .node-date,
         .node-location {
@@ -341,3 +357,19 @@
   }
 }
 
+@media all and (min-width: $fullWidth) {
+  
+  .panel-col-top,
+  .panel-col-bottom {
+    .universal-teaser {
+      &.event {
+        // inline location/date
+        .node-location,
+        .node-date {
+          float: left;
+          width: 50%;
+        }
+      }
+    }
+  }
+}
