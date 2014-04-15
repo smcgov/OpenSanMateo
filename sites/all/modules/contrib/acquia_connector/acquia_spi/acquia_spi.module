@@ -1270,7 +1270,7 @@ function acquia_spi_get_admin_count() {
               WHERE u.uid = ur.uid
                 AND ur.rid = p.rid
                 AND u.status = 1
-                AND (p.permission LIKE '%administer permissions%' OR p.permission LIKE '%administer users%')";
+                AND (p.permission = 'administer permissions' OR p.permission = 'administer users')";
   $result = db_query($sql)->fetchObject();
 
   return (isset($result->count) && is_numeric($result->count)) ? $result->count : NULL;

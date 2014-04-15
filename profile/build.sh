@@ -69,7 +69,7 @@ if [ "$TYPE" = 'acquia' ]; then
   cd $TARGET
   git checkout $BRANCH
   if [ $GITPULL ]; then
-    git pull
+    git pull origin $BRANCH
   fi
 
   # copy in our profile (this is our source repo)

@@ -505,9 +505,9 @@ function acquia_agent_settings_form($form, &$form_state, $banner) {
     $acquia_network_address = acquia_agent_settings('acquia_network_address');
     if (!acquia_agent_valid_credentials($identifier, $key, $acquia_network_address)) {
       $error_message = acquia_agent_connection_error_message();
-      $ssl_available = in_array('ssl', stream_get_transports(), TRUE) && !defined('ACQUIA_DEVELOPMENT_NOSSL') && variable_get('acquia_agent_verify_peer', 1);
+      $ssl_available = in_array('ssl', stream_get_transports(), TRUE) && !defined('ACQUIA_DEVELOPMENT_NOSSL') && variable_get('acquia_agent_verify_peer', 0);
       if (empty($error_message) && $ssl_available) {
-        $error_message = 'There was an error in validating your subscription credentials. You may want to try disabling enhanced SSL security.';
+        $error_message = 'There was an error in validating your subscription credentials. You may want to try disabling SSL peer verification by setting the variable acquia_agent_verify_peer to false.';
       }
       drupal_set_message(t($error_message), 'error', FALSE);
     }
@@ -530,13 +530,6 @@ function acquia_agent_settings_form($form, &$form_state, $banner) {
     '#type' => 'checkbox',
     '#title' => t('Receive updates from Acquia Network'),
     '#default_value' => variable_get('acquia_dynamic_banner', FALSE),
-  );
-  $ssl_available = (in_array('ssl', stream_get_transports(), TRUE) && !defined('ACQUIA_DEVELOPMENT_NOSSL'));
-  $form['connection']['acquia_agent_verify_peer'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Enhanced SSL security <a href="!url">Learn more</a>.', array('!url' => $help_url)),
-    '#default_value' => (int) (variable_get('acquia_agent_verify_peer', 1) && $ssl_available),
-    '#disabled' => !$ssl_available,
   );
 
   $collapsed = FALSE;
@@ -580,7 +573,6 @@ function acquia_agent_settings_form($form, &$form_state, $banner) {
  * Submit acquia_agent_settings ssl setting.
  */
 function acquia_agent_settings_submit($form, &$form_state) {
-  variable_set('acquia_agent_verify_peer', $form_state['values']['acquia_agent_verify_peer']);
   variable_set('acquia_dynamic_banner', $form_state['values']['acquia_dynamic_banner']);
   drupal_set_message(t('The configuration options have been saved.'));
 }
