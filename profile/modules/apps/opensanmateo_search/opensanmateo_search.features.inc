@@ -78,9 +78,9 @@ function opensanmateo_search_default_search_api_index() {
         "author:name" : { "type" : "text" },
         "author:url" : { "type" : "uri" },
         "body:value" : { "type" : "text" },
-        "field_topic:name" : { "type" : "list\\u003Cstring\\u003E" },
         "field_sub_type:name" : { "type" : "text" },
         "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_topic:name" : { "type" : "list\\u003Cstring\\u003E" },
         "field_address:locality" : { "type" : "string" },
         "field_event_calendar:name" : { "type" : "text" },
         "field_event_date:value" : { "type" : "date" },
@@ -88,8 +88,7 @@ function opensanmateo_search_default_search_api_index() {
         "field_blog_author:title" : { "type" : "list\\u003Cstring\\u003E" },
         "field_thumbnail_image:file:url" : { "type" : "string" },
         "field_thumbnail_image:file:field_file_image_alt_text" : { "type" : "string" },
-        "field_thumbnail_image:file:field_file_image_title_text" : { "type" : "string" },
-        "field_location_address:field_address:postal_code" : { "type" : "list\\u003Cstring\\u003E" }
+        "field_thumbnail_image:file:field_file_image_title_text" : { "type" : "string" }
       },
       "data_alter_callbacks" : {
         "site_index" : { "status" : 1, "weight" : "-50", "settings" : [] },
@@ -244,11 +243,7 @@ function opensanmateo_search_default_search_api_index() {
         },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_opensanmateo_summary" : {
-          "status" : 1,
-          "weight" : "999",
-          "settings" : { "trim_length" : "200" }
-        }
+        "search_opensanmateo_summary" : { "status" : 1, "weight" : "999", "settings" : { "trim_length" : "200" } }
       },
       "processors" : {
         "search_api_case_ignore" : {
