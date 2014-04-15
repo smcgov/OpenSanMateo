@@ -71,8 +71,8 @@ features_exclude[field][node-blog_entry-field_release_date] = node-blog_entry-fi
 features_exclude[field][node-blog_entry-field_files] = node-blog_entry-field_files
 
 
-; Information added by drush on 2014-03-26
+; Information added by drush on 2014-04-15
 version = "appify_services"
 project = "openpublic"
-datestamp = "1395845700"
+datestamp = "1397534605"
 
