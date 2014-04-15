@@ -125,3 +125,4 @@ dependencies[] = opensanmateo_contact
 ; Do workflow last, since it depends on content types being available.
 ;dependencies[] = opensanmateo_workflow
 dependencies[] = opensanmateo_browsers
+dependencies[] = opensanmateo_feeds
