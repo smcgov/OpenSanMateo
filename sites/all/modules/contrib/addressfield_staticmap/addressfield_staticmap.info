@@ -9,5 +9,5 @@ dependencies[] = addressfield
 ; Information added by drush on 2014-04-16
 version = "f9f1d97b025ddc0f02af3b39a88da662fcf5d15d"
 project = "addressfield_staticmap"
-datestamp = "1397651371"
+datestamp = "1397653891"
 
