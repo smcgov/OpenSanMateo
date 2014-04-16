@@ -179,7 +179,7 @@ projects[site_map][patch][] = http://drupal.org/files/site_map-alter_hooks-15889
 
 projects[acquia_connector][type] = module
 projects[acquia_connector][subdir] = contrib
-projects[acquia_connector][version] = 2.12
+projects[acquia_connector][version] = 2.14
 
 projects[memcache][type] = module
 projects[memcache][subdir] = contrib
