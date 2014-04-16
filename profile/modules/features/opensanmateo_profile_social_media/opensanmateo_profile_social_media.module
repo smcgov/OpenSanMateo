@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Opensanmateo Profile Social Media feature.
+ */
+
+include_once 'opensanmateo_profile_social_media.features.inc';
