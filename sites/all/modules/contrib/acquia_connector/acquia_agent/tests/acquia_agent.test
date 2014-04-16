@@ -136,7 +136,6 @@ class AcquiaAgentTestCase extends DrupalWebTestCase {
     $this->drupalGet($this->settings_path);
     $this->assertText($this->acquiaAgentStrings('subscription'), 'Subscription connected with key and identifier');
     $this->assertLinkByHref($this->setup_path, 0, 'Link to change subscription exists');
-    $this->assertLinkByHref($this->help_path, 0, 'Link to help page exists');
     $this->assertText($this->acquiaAgentStrings('migrate'), 'Acquia Cloud Migrate description exists');
     // Connect via automatic setup.
     variable_del('acquia_identifier');
@@ -313,7 +312,6 @@ class AcquiaAgentTestCase extends DrupalWebTestCase {
     $variable_keys = array('maintenance_mode', 'cache', 'block_cache');
 
     $test_data = array(
-      'timestamp' => 1361434801,
       'active' => 1,
       'href' => $test_url,
     );
@@ -334,7 +332,6 @@ class AcquiaAgentTestCase extends DrupalWebTestCase {
     $query = array(
       'key' => hash('sha1', "{$key}:test"),
       'nonce' => 'test',
-      'stamp' => REQUEST_TIME,
     );
     $json = $this->drupalGetAJAX('system/acquia-connector-status', array('query' => $query));
 
@@ -358,17 +355,8 @@ class AcquiaAgentTestCase extends DrupalWebTestCase {
       $this->assertEqual($json['data'][$variable], variable_get($variable));
     }
 
-    // Test some invalid query string parameters for access.
-    $query['stamp'] = $query['stamp'] + 500;
-    // The timestamp should be too new, so access should fail.
-    $this->drupalGetAJAX('system/acquia-connector-status', array('query' => $query));
-    $this->assertResponse(403);
-    $query['stamp'] = $query['stamp'] - 2000;
-    // The timestamp should be too old, so access should fail.
-    $this->drupalGetAJAX('system/acquia-connector-status', array('query' => $query));
-    $this->assertResponse(403);
-    // A random key value should fail too.
-    $query['stamp'] = REQUEST_TIME;
+    // Test invalid query string parameters for access.
+    // A random key value should fail.
     $query['key'] = $this->randomString(16);
     $this->drupalGetAJAX('system/acquia-connector-status', array('query' => $query));
     $this->assertResponse(403);
