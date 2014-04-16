@@ -3,9 +3,9 @@ description = Add sitewide and per user links to social network profiles.
 core = 7.x
 
 
-; Information added by drush on 2014-04-15
+; Information added by drush on 2014-04-16
 version = "7.x-1.0-alpha1+0-dev"
 core = "7.x"
 project = "follow"
-datestamp = "1397534635"
+datestamp = "1397653991"
 
