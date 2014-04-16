@@ -102,19 +102,13 @@ function acquia_agent_menu_site_status_alter(&$menu_site_status, $path) {
  */
 function acquia_agent_site_status_access() {
   // If we don't have all the query params, leave now.
-  if (!isset($_GET['key'], $_GET['nonce'], $_GET['stamp'])) {
+  if (!isset($_GET['key'], $_GET['nonce'])) {
     return FALSE;
   }
 
   $sub_data = acquia_agent_settings('acquia_subscription_data');
   $sub_uuid = _acquia_agent_get_id_from_sub($sub_data);
   if (!empty($sub_uuid)) {
-    // If the timestamp is 'newer' or more than 1 minute old.
-    $elapsed_time = REQUEST_TIME - (int) $_GET['stamp'];
-    if ($elapsed_time < 0 || $elapsed_time > 60) {
-      return FALSE;
-    }
-
     $expected_hash = hash('sha1', "{$sub_uuid}:{$_GET['nonce']}");
     // If the generated hash matches the hash from $_GET['key'], we're good.
     if ($_GET['key'] === $expected_hash) {
@@ -254,7 +248,7 @@ function acquia_agent_theme() {
  * This check also sends a heartbeat to the Acquia Network unless
  * $params['no_heartbeat'] == 1.
  *
- * @return FALSE, integer (xmlrpc error number), or subscription data
+ * @return xmlrpc error number int or subscription data
  */
 function acquia_agent_check_subscription($params = array()) {
   $current_subscription = acquia_agent_settings('acquia_subscription_data');
@@ -281,6 +275,10 @@ function acquia_agent_check_subscription($params = array()) {
           return $current_subscription;
       }
     }
+    elseif ($subscription === FALSE) {
+      // Occurs when response validation failed so do not invoke status update.
+      return $current_subscription;
+    }
     variable_set('acquia_subscription_data', $subscription);
     // Check if our main subscription is active
     if ($subscription) {
@@ -302,7 +300,7 @@ function acquia_agent_check_subscription($params = array()) {
 function acquia_agent_get_subscription($params = array(), $identifier = NULL, $key = NULL, $acquia_network_address = NULL) {
   // There is an identifier and key, so attempt communication.
   $subscription = array();
-  $subscription['timestamp'] = REQUEST_TIME;
+  $subscription['timestamp'] = time();
 
   // Include version number information.
   acquia_agent_load_versions();
@@ -540,16 +538,7 @@ function acquia_agent_help($path, $arg) {
       $output .= '<dt>' . t('Data collection and examination') . '</dt>';
       $output .= '<dd>' . t('Upon cron (or if configured to run manually) information about your site will be sent and analyzed as part of the Acquia Insight service. You can optionally exclude information about admin privileges, content and user count, and watchdog logs.');
       $output .= '<dt>' . t('Source code analysis') . '</dt>';
-      $output .= '<dd>' . t('If enhanced SSL security is enabled for your site and outside connections are allowed, Acquia Insight will examine the source code of your site to detect alterations and provide code diffs and update recommentations.');
-      $output .= '<dt>' . t('Enhanced SSL security') . '</dt>';
-      $output .= '<dd>' . t('The Acquia Connector will attempt to verify Acquia server identities before sending data if SSL is avaliable. May cause communication to fail, however, depending on your local configuration.');
-      $ssl_available = (in_array('ssl', stream_get_transports(), TRUE) && !defined('ACQUIA_DEVELOPMENT_NOSSL'));
-      if ($ssl_available) {
-        $output .= ' <div class="messages ok">' . t('PHP has SSL support and may support this feature.') . '</div></dd>';
-      }
-      else {
-        $output .= ' <div class="messages error">' . t('Your installation of PHP does not have SSL support. Please enable the SSL extension or compile PHP with SSL to use this feature, see: <a href="http://php.net/manual/en/book.openssl.php" target="_blank">http://php.net/manual/en/book.openssl.php</a>.') . '</div></dd>';
-      }
+      $output .= '<dd>' . t('If your site supports external SSL connections, Acquia Insight will examine the source code of your site to detect alterations and provide code diffs and update recommentations.');
       $output .= '<dt>' . t('Receive updates from Acquia Network') . '</dt>';
       $output .= '<dd>' . t('Receive dynamic updates on the Network Settings page from Acquia.com about your subscription and new features.') . '</dd>';
       $output .= '<dt>' . t('Allow Insight to update list of approved variables.') . '</dt>';
@@ -742,7 +731,7 @@ function acquia_agent_form_system_modules_alter(&$form, &$form_state) {
 function acquia_agent_stream_context_create($url, $module = 'acquia_agent') {
   $opts = array();
   $uri = parse_url($url);
-  $ssl_available = in_array('ssl', stream_get_transports(), TRUE) && !defined('ACQUIA_DEVELOPMENT_NOSSL') && variable_get('acquia_agent_verify_peer', 1);
+  $ssl_available = in_array('ssl', stream_get_transports(), TRUE) && !defined('ACQUIA_DEVELOPMENT_NOSSL') && variable_get('acquia_agent_verify_peer', 0);
   if (isset($uri['scheme']) && ($uri['scheme'] == 'https') && $ssl_available) {
     // Look for a local certificate to validate the server identity.
     $pem_file = drupal_get_path('module', $module) . '/' . $uri['host'] . '.pem';
@@ -821,7 +810,7 @@ function _acquia_agent_authenticator($params = array(), $identifier = NULL, $key
   if (empty($key)) {
     $key = acquia_agent_settings('acquia_key');
   }
-  $time = REQUEST_TIME;
+  $time = time();
   $nonce = base64_encode(hash('sha256', drupal_random_bytes(55), TRUE));
   $authenticator['identifier'] = $identifier;
   $authenticator['time'] = $time;
@@ -863,7 +852,7 @@ function _acquia_agent_hmac($key, $time, $nonce, $params) {
  */
 function _acquia_agent_create_authenticator($body, $pass = NULL) {
   $auth = array();
-  $auth['time'] = REQUEST_TIME;
+  $auth['time'] = time();
   $auth['nonce'] = base64_encode(hash('sha256', drupal_random_bytes(55), TRUE));
   if (isset($pass)) {
     $auth['hash'] = _acquia_agent_hmac($pass, $auth['time'], $auth['nonce'], $body);

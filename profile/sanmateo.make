@@ -145,7 +145,7 @@ projects[lock_session][download][revision] = cc94f8c634b1d6f9a3f551c8e8b082f549b
 
 libraries[flexslider][download][type] = git
 libraries[flexslider][download][url] = https://github.com/woothemes/FlexSlider.git
-libraries[flexslider][download][revision] = a4647edaf7d44a32b1d568cef570128b8d28403b
+libraries[flexslider][download][revision] = ce5441b214a46322424a32c92d77baaadeed9688
 
 libraries[ckeditor][download][type] = get
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.3/ckeditor_3.6.3.tar.gz
@@ -179,7 +179,7 @@ projects[site_map][patch][] = http://drupal.org/files/site_map-alter_hooks-15889
 
 projects[acquia_connector][type] = module
 projects[acquia_connector][subdir] = contrib
-projects[acquia_connector][version] = 2.12
+projects[acquia_connector][version] = 2.14
 
 projects[memcache][type] = module
 projects[memcache][subdir] = contrib

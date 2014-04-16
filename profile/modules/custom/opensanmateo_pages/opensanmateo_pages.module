@@ -1,0 +1,93 @@
+<?php
+/**
+ * @file
+ * Code for the OpenSanMateo Pages module.
+ */
+
+
+/**
+ * Implements hook_menu().
+ */
+function opensanmateo_pages_menu() {
+  $items = array();
+  
+  $items['departments'] = array(
+    'title' => 'Departments',
+    'page callback' => 'opensanmateo_pages_department_menu_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+
+  $items['admin/config/opensanmateo_pages'] = array(
+    'title' => 'Configure Open San Mateo Pages',
+    'description' => 'Configure parameters for one-off pages.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('opensanmateo_pages_admin_config'),
+    'access arguments' => array('administer site configuration'),
+  );
+  
+  return $items;
+}
+
+
+/**
+ * Display the Departments menu as a page.
+ */
+function opensanmateo_pages_admin_config($form, &$form_state) {
+  
+  $form = array();
+  
+  $form['opensanmateo_pages_departement'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Department Page Settings'), 
+    '#collapsible' => TRUE, 
+    '#collapsed' => FALSE,
+  );
+  
+  $form['opensanmateo_pages_departement']['opensanmateo_pages_departement_menu'] = array(
+    '#type' => 'select',
+    '#title' => t('Department Menu'),
+    '#options' => menu_get_menus(),
+    '#default_value' => variable_get('opensanmateo_pages_departement_menu', 'menu-department-menu'),
+    '#description' => t(
+      'Select the menu to use to populate the !link page.',
+      array(
+        '!link' => l(
+          'Departments',
+          'departments'
+        ),
+      )
+    ),
+  );
+  
+  return system_settings_form($form);
+}
+
+
+/**
+ * Display the Departments menu as a page.
+ */
+function opensanmateo_pages_department_menu_page() {
+  $menu_name = variable_get('opensanmateo_pages_departement_menu', 'menu-department-menu');
+  $menu = menu_tree($menu_name);
+  
+  if (empty($menu)) {
+    if (user_access('administer site configuration')) {
+      return t(
+        'No valid menu selected for Departments page; please set this in the Departent section of the !link admin.',
+        array(
+          '!link' => l(
+            'Configure Open San Mateo Pages',
+            'admin/config/opensanmateo_pages'
+          ),
+        )
+      );
+    } else {
+      return t('We\'re sorry; the department listings page is not yet available.');
+    }
+    
+  }
+  
+  $menuhtml = drupal_render($menu);
+  return $menuhtml;
+}
