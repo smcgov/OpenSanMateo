@@ -81,7 +81,6 @@ function opensanmateo_profile_social_media_field_default_field_bases() {
         'linkedin' => 'LinkedIn',
         'pinterest' => 'Pinterest',
         'tumblr' => 'Tumblr',
-        'instagram' => 'Instagram',
         'url' => 'Other (URL)',
       ),
       'allowed_values_function' => '',

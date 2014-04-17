@@ -18,10 +18,10 @@ function opensanmateo_profile_social_media_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 2,
       ),
     ),
@@ -52,10 +52,10 @@ function opensanmateo_profile_social_media_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'list_key',
         'weight' => 0,
       ),
     ),
@@ -83,10 +83,10 @@ function opensanmateo_profile_social_media_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 1,
       ),
     ),
@@ -117,7 +117,7 @@ function opensanmateo_profile_social_media_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'field_collection',
         'settings' => array(
           'add' => 'Add',
@@ -128,7 +128,7 @@ function opensanmateo_profile_social_media_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
-        'weight' => 17,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',

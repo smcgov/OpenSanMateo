@@ -11,7 +11,6 @@ function opensanmateo_profile_social_media_defaultconfig_features() {
   return array(
     'opensanmateo_profile_social_media' => array(
       'field_default_fields' => 'field_default_fields',
-      'strongarm' => 'strongarm',
     ),
   );
 }
@@ -58,10 +57,10 @@ function opensanmateo_profile_social_media_defaultconfig_field_default_fields() 
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => 2,
         ),
       ),
@@ -110,7 +109,6 @@ function opensanmateo_profile_social_media_defaultconfig_field_default_fields() 
           'linkedin' => 'LinkedIn',
           'pinterest' => 'Pinterest',
           'tumblr' => 'Tumblr',
-          'instagram' => 'Instagram',
           'url' => 'Other (URL)',
         ),
         'allowed_values_function' => '',
@@ -125,10 +123,10 @@ function opensanmateo_profile_social_media_defaultconfig_field_default_fields() 
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'list',
           'settings' => array(),
-          'type' => 'list_default',
+          'type' => 'list_key',
           'weight' => 0,
         ),
       ),
@@ -185,10 +183,10 @@ function opensanmateo_profile_social_media_defaultconfig_field_default_fields() 
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => 1,
         ),
       ),
@@ -237,7 +235,7 @@ function opensanmateo_profile_social_media_defaultconfig_field_default_fields() 
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'field_collection',
           'settings' => array(
             'add' => 'Add',
@@ -248,7 +246,7 @@ function opensanmateo_profile_social_media_defaultconfig_field_default_fields() 
             'view_mode' => 'full',
           ),
           'type' => 'field_collection_view',
-          'weight' => 17,
+          'weight' => 2,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -282,30 +280,4 @@ function opensanmateo_profile_social_media_defaultconfig_field_default_fields() 
   t('Type');
 
   return $fields;
-}
-
-/**
- * Implements hook_defaultconfig_strongarm().
- */
-function opensanmateo_profile_social_media_defaultconfig_strongarm() {
-  $export = array();
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_field_collection_item__field_social_media';
-  $strongarm->value = array(
-    'view_modes' => array(),
-    'extra_fields' => array(
-      'form' => array(
-        'redirect' => array(
-          'weight' => '30',
-        ),
-      ),
-      'display' => array(),
-    ),
-  );
-  $export['field_bundle_settings_field_collection_item__field_social_media'] = $strongarm;
-
-  return $export;
 }
