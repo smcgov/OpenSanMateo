@@ -93,6 +93,8 @@ foreach ($fayze2_sites as $short_name => $site_name) {
   $sites["{$short_name}.smcstg-acquia.fayze2.com"] = $site_name;
   $sites["{$short_name}.smcprd-acquia.fayze2.com"] = $site_name;
 }
+//added www.smcgov.org to point at main site
+$sites["www.smcgov.org"] = "smcgov.org";
 
 /*
  * Additional mappings for staging
