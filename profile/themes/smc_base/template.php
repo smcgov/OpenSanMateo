@@ -142,7 +142,10 @@ function smc_base_preprocess_node(&$variables) {
 
     $author = node_load($author_field);
     $author_link = l($author->title, 'node/' . $author->nid);
-    $date = smc_base_format_timestamp($variables['created']);
+    $date = 
+      !empty($variables['field_release_date']) && !empty($variables['field_release_date'][0]['value'])
+      ? smc_base_format_timestamp(strtotime($variables['field_release_date'][0]['value']), FALSE)
+      : smc_base_format_timestamp($variables['created']);
 
     $byline = t('Posted by ') . $author_link . ' on ' . $date;
 
