@@ -86,6 +86,9 @@ $fayze2_sites = array(
   'hsa' => 'hsa.smcgov.org',
   'dcss' => 'dcss.smcgov.org',
   'csw' => 'csw.smcgov.org',
+  'first5' => 'first5.smcgov.org',
+  'lafco' => 'lafco.smcgov.org',
+  'childrensfund' => 'childrensfund.smcgov.org',
 );
 
 foreach ($fayze2_sites as $short_name => $site_name) {
