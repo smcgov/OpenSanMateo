@@ -1,0 +1,40 @@
+diff --git a/assets/js/flexslider.load.js b/assets/js/flexslider.load.js
+index fddc835..d74c083 100644
+--- a/assets/js/flexslider.load.js
++++ b/assets/js/flexslider.load.js
+@@ -40,22 +40,22 @@
+         // Add events that developers can use to interact.
+         $(this).flexslider($.extend(optionset, {
+           start: function(slider) {
+-            slider.trigger('start', [slider]);
++            slider.trigger('start');
+           },
+           before: function(slider) {
+-            slider.trigger('before', [slider]);
++            slider.trigger('before');
+           },
+           after: function(slider) {
+-            slider.trigger('after', [slider]);
++            slider.trigger('after');
+           },
+           end: function(slider) {
+-            slider.trigger('end', [slider]);
++            slider.trigger('end');
+           },
+           added: function(slider) {
+-            slider.trigger('added', [slider]);
++            slider.trigger('added');
+           },
+           removed: function(slider) {
+-            slider.trigger('removed', [slider]);
++            slider.trigger('removed');
+           }
+         }));
+       } else {
+@@ -63,5 +63,5 @@
+       }
+     });
+   }
+-  
++
+ }(jQuery));
