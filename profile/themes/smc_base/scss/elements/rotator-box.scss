@@ -29,6 +29,15 @@
     // this seems to be empty anyway
     //display: none;
   }
+  ul.slides {
+    li {
+      img {
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
 }
 
 .pane-bundle-rotator-panels-pane {
