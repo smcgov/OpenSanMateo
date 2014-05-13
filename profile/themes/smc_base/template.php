@@ -389,7 +389,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       if (isset($vars['fields']['search_api_multi_aggregation_18']->content) && strlen($vars['fields']['search_api_multi_aggregation_18']->content) >= 1) {
         // we have a release date field, so let's add that to the byline
         $release_date = smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_18']->content);
-
+        $release_date = preg_replace('/ at [0-9:]* [ap]m$/', '', $release_date);
         $byline = $byline . ' ' . t('on') . ' ' . $release_date;
       }
 
