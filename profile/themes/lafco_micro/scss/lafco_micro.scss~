@@ -1,0 +1,9 @@
+// Import custom variables from subtheme
+@import "variables.scss";
+
+// Import all styles from SMC Base Theme, using overwritten variables
+@import "../../smc_base/scss/smc_base.scss";
+
+body {
+  background: $primaryBlue;
+}

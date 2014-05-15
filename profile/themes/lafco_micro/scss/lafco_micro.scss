@@ -1,0 +1,27 @@
+// Import custom variables from subtheme
+@import "variables.scss";
+
+// Import all styles from SMC Base Theme, using overwritten variables
+@import "../../smc_base/scss/smc_base.scss";
+
+body {
+  background: $primaryBlue;
+}
+
+/* LafCO Promo Boxes */
+.promo-pane-default {
+  background-color:#243d85;
+}
+.promo-pane-green {
+  background-color: #42854a;
+}
+.promo-pane-purple {
+  background-color: #682266;
+}
+.promo-pane-orange {
+  background-color: #ee9f3b;
+}
+
+
+
+
