@@ -99,7 +99,7 @@ foreach ($fayze2_sites as $short_name => $site_name) {
 //added www.smcgov.org to point at main site
 $sites["www.smcgov.org"] = "smcgov.org";
 
-$sites['greensanmateo.org'] = 'green.smcgov.org'
+$sites['greensanmateo.org'] = 'green.smcgov.org';
 
 /*
  * Additional mappings for staging
