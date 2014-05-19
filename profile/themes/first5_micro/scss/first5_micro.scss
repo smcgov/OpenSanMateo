@@ -1,0 +1,40 @@
+// Import custom variables from subtheme
+@import "variables.scss";
+
+// Import all styles from SMC Base Theme, using overwritten variables
+@import "../../smc_base/scss/smc_base.scss";
+
+body {
+  background: $primaryBlue;
+}
+
+/* LafCO Promo Boxes */
+.promo-pane-default {
+  background-color:#840f33;
+}
+.promo-pane-green {
+  background-color: #999a0f;
+}
+.promo-pane-purple {
+  background-color: #660c67;
+}
+.promo-pane-orange {
+  background-color: #f7990d;
+}
+
+input[type=text] {
+  	background: $searchMobileDefaultBG;
+  	border: none;
+  	box-shadow: none;
+  	color: rgba(56, 56, 56, .9);
+  	padding: 0.25em 0.75em;
+  	font-size: 1em;
+  	-webkit-transition: all 0.3s;
+  	-moz-transition: all 0.3s;
+  	transition: all 0.3s;
+  	border-radius: 3px;
+  	font-family: $reg;
+  	font-weight: 300;
+  	
+  	margin:0;
+  }

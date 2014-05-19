@@ -44,7 +44,7 @@
   	background: $searchMobileDefaultBG;
   	border: none;
   	box-shadow: none;
-  	color: rgba($primaryTeal, .9);
+  	color: rgba($56, 56, 56, .9);
   	padding: 0.25em 0.75em;
   	font-size: 1em;
   	-webkit-transition: all 0.3s;
