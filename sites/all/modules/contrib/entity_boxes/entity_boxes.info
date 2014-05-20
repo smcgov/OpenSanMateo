@@ -15,8 +15,8 @@ files[] = views/entity_boxes_handler_entity_boxes_operations_field.inc
 
 
 
-; Information added by drush on 2014-04-16
+; Information added by drush on 2014-05-20
 version = "c7c670b3cc6c37f61176ad0c20adbcfc3f4b02a8"
 project = "entity_boxes"
-datestamp = "1397653943"
+datestamp = "1400561249"
 
