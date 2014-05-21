@@ -223,4 +223,11 @@ function sanmateo_update_7020() {
 function sanmateo_update_7021() {
   module_enable(array('opensanmateo_pages'));
 }
+/**
+ * Replace purge with acquia_purge.
+ */
+function sanmateo_update_7022() {
+  module_disable(array('purge'));
+  module_enable(array('acquia_purge'));
+}
 // End of file sanmateo.install
