@@ -9,5 +9,5 @@ core = 7.x
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "quick_search"
-datestamp = "1400561195"
+datestamp = "1400623236"
 

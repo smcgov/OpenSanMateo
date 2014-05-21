@@ -14,5 +14,5 @@ files[] = includes/SearchApiAcquiaSearchService.php
 ; Information added by drush on 2014-05-20
 version = "1967e867e0df80a476e218a120d30327034766d9"
 project = "search_api_acquia"
-datestamp = "1400561193"
+datestamp = "1400623234"
 

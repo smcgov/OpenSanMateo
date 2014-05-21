@@ -187,8 +187,11 @@ projects[memcache][version] = 1.0
 
 projects[purge][type] = module
 projects[purge][subdir] = contrib
-projects[purge][version] = 1.5-rc1
-projects[purge][patch][] = http://drupal.org/files/purge-proxy_url_base-1551232-5.patch
+projects[purge][version] = 1.6
+
+projects[acquia_purge][type] = module
+projects[acquia_purge][subdir] = contrib
+projects[acquia_purge][version] = 1.0-beta2
 
 projects[expire][type] = module
 projects[expire][subdir] = contrib

@@ -1,0 +1,97 @@
+<?php
+
+/**
+ * @file
+ * Installation file for the Acquia Purge module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function acquia_purge_install() {
+
+  // Install our queuing queue using Drupal's Queue API.
+  $queue = DrupalQueue::get('acquia_purge', TRUE);
+  $queue->createQueue();
+
+  // Enable Expire 7.x-2.x's most important expiration rules by default.
+  $defaults = array(
+    'expire_node_actions' => array(1, 2, 3),
+    'expire_node_front_page' => 1,
+    'expire_node_term_pages' => 1,
+    'expire_comment_actions' => array(1, 2, 3, 4, 5),
+    'expire_comment_front_page' => 1,
+    'expire_comment_node_term_pages' => 1,
+    'expire_user_actions' => array(1, 2, 3, 4),
+    'expire_user_front_page' => 1,
+    'expire_file_actions' => array(1, 2),
+    'expire_file_front_page' => 1,
+  );
+  foreach ($defaults as $variable => $values) {
+    $value = is_array($values) ? array() : $values;
+    if (is_array($values)) {
+      foreach ($values as $int) {
+        $value[(string) $int] = (string) $int;
+      }
+    }
+    variable_set($variable, $value);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function acquia_purge_uninstall() {
+
+  // Remove traces from our usage of the Queue API.
+  variable_del('acquia_purge_queue_counter');
+  variable_del('acquia_purge_queue_owners');
+  $queue = DrupalQueue::get('acquia_purge', TRUE);
+  $queue->deleteQueue();
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function acquia_purge_requirements($phase) {
+  if ($phase == 'runtime') {
+    $requirements = _acquia_purge_get_diagnosis();
+
+    // Remove ACQUIA_PURGE_SEVLEVEL_OK results, they'll be too noisy.
+    foreach ($requirements as $name => $result) {
+      if ($result['severity'] === ACQUIA_PURGE_SEVLEVEL_OK) {
+        unset($requirements[$name]);
+      }
+    }
+
+    // Remove the status test once ERROR level results have been detected.
+    if (!_acquia_purge_are_we_allowed_to_purge()) {
+      unset($requirements['acquia_purge_status']);
+    }
+
+    return $requirements;
+  }
+  return array();
+}
+
+/**
+ * Remove the 'acquia_purge_reportpurges' variable.
+ *
+ * The variable disappeared as of version 7.x-1.0-beta2. Its functionality has
+ * been replaced by the 'purge notification' permission. Which is more granular
+ * and increases simplicity.
+ */
+function acquia_purge_update_7100(&$sandbox) {
+  variable_del('acquia_purge_reportpurges');
+}
+
+/**
+ * Rename variable 'acquia_purge_queue_owner' to 'acquia_purge_queue_owners'.
+ *
+ * Because we are allowing multiple users to trigger purges concurrently as of
+ * version 7.x-1.0-beta2.
+ */
+function acquia_purge_update_7101(&$sandbox) {
+  variable_del('acquia_purge_queue_owner');
+  variable_set('acquia_purge_queue_owners', array());
+}

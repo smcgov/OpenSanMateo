@@ -8,5 +8,5 @@ dependencies[] = flexslider
 ; Information added by drush on 2014-05-20
 version = "068df89"
 project = "flexslider"
-datestamp = "1400561235"
+datestamp = "1400623278"
 
