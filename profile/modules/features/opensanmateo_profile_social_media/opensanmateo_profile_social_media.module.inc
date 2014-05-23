@@ -347,6 +347,8 @@ function opensanmateo_profile_social_media_theme_registry_alter(&$theme_registry
   foreach ($reg as &$r) {
     $r['type'] = 'module';
   }
+  
+// drupal_set_message('<pre>' . print_r($reg, 1) . '</pre>');
   $theme_registry += $reg;
 }
 

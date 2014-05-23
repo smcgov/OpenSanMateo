@@ -223,4 +223,11 @@ function sanmateo_update_7020() {
 function sanmateo_update_7021() {
   module_enable(array('opensanmateo_pages'));
 }
+
+/**
+ * Enable geo_filter module (and its dependent 'contact' module)
+ */
+function sanmateo_update_7022() {
+  module_enable(array('contact', 'geo_filter'));
+}
 // End of file sanmateo.install

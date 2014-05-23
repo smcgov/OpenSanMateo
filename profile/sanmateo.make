@@ -209,6 +209,10 @@ projects[globalredirect][type] = module
 projects[globalredirect][subdir] = contrib
 projects[globalredirect][version] = 1.4
 
+projects[geo_filter][type] = module
+projects[geo_filter][subdir] = contrib
+projects[geo_filter][version] = 1.1
+
 projects[custom_pagers][type] = module
 projects[custom_pagers][subdir] = contrib
 projects[custom_pagers][download][type] = git
