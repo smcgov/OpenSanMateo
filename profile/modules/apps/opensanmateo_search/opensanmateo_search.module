@@ -306,6 +306,7 @@ function opensanmateo_search_header_search_form($form, $form_state) {
     ),
     '#value' => t('Search'),
   );
+  $form['#action'] = url('');
 
   return $form;
 }
