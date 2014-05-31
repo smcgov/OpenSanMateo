@@ -123,9 +123,8 @@ class MyCrawler extends PHPCrawler
 }
 
 function opensanmateo_crawler_node_view_alter($node) {
-dpm($node['#node']);
-$s = feeds_source("opensanmateo_crawler", 2);
-dpm($s->getConfig());
-
+  dpm($node['#node']);
+  $s = feeds_source("opensanmateo_crawler", 2);
+  dpm($s->getConfig());
 }
 

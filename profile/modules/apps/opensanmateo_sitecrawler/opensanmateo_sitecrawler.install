@@ -1,0 +1,109 @@
+<?php
+/**
+ * @file
+ * Install and uninstall functions for the opensanmateo sitecrawler module.
+ *
+ */
+
+/**
+ * Implements hook_schema().
+ *
+ * This defines the database table which will hold the example item info.
+ *
+ * @ingroup opensanmateo_sitecrawler
+ */
+function opensanmateo_sitecrawler_schema() {
+  $schema['opensanmateo_sitecrawler_sites'] = array(
+    'description' => 'Stores settings for each of the target crawl sites.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary identifier for each item',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'Administrative name for crawl target',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'description' => array(
+        'description' => 'Description of crawl target',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'enabled' => array(
+        'description' => 'Boolean indicating whether the crawl is enabled.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+      'weight' => array(
+        'description' => 'The sortable weight for this item',
+        'type' => 'int',
+        'length' => 11,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'url' => array(
+        'description' => 'URL of crawl target',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'options' => array(
+        'description' => 'Options of crawl target',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'size_limit' => array(
+        'description' => 'Size limit of crawl target',
+        'type' => 'varchar',
+        'length' => 8,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'traffic_limit' => array(
+        'description' => 'Traffic limit of crawl target',
+        'type' => 'varchar',
+        'length' => 8,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'page_limit' => array(
+        'description' => 'Page limit of crawl target',
+        'type' => 'varchar',
+        'length' => 8,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'request_delay' => array(
+        'description' => 'Request delay for crawl target',
+        'type' => 'varchar',
+        'length' => 8,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * This removes the example data when the module is uninstalled.
+ *
+ * @ingroup opensanmateo_sitecrawler
+ */
+function opensanmateo_sitecrawler_uninstall() {
+  db_drop_table('opensanmateo_sitecrawler_sites');
+}

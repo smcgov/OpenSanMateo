@@ -1,0 +1,6 @@
+name = OpenSanMateo Site Crawler
+description = Crawles companion sites in order to populate site search with pages from other domains.
+core = 7.x
+package = OpenSanMateo
+php = 5.2.4
+version = 7.x-1.0
