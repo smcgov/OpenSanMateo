@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 projects[drupal][type] = core
-projects[drupal][version] = 7.26
+projects[drupal][version] = 7.28
 projects[drupal][patch][] = http://drupal.org/files/issues/object_conversion_menu_router_build-972536-1.patch
 ;projects[drupal][patch][] = http://drupal.org/files/issues/992540-3-reset_flood_limit_on_password_reset-drush.patch
 projects[drupal][patch][] = http://drupal.org/files/1355984-timeout_on_install_with_drush_si-make.patch
@@ -189,8 +189,11 @@ projects[memcache][version] = 1.0
 
 projects[purge][type] = module
 projects[purge][subdir] = contrib
-projects[purge][version] = 1.5-rc1
-projects[purge][patch][] = http://drupal.org/files/purge-proxy_url_base-1551232-5.patch
+projects[purge][version] = 1.6
+
+projects[acquia_purge][type] = module
+projects[acquia_purge][subdir] = contrib
+projects[acquia_purge][version] = 1.0-beta2
 
 projects[expire][type] = module
 projects[expire][subdir] = contrib

@@ -1,0 +1,58 @@
+/* COPY/PASTE following lines to each new scss file
+
+// default variables
+@import "vars.scss";
+
+// All default/mobile styles will appear before the following media queries.
+
+@media all and (min-width: $tablet) {
+
+}
+
+@media all and (min-width: $desktop) {
+
+}
+
+*/
+
+@function primaryBlue($o:1.0) {
+  @return rgba(106, 120, 51, $o);
+}
+
+@function primaryTeal($o:1.0) {
+  @return primaryBlue(0.65);
+}
+
+@function altGreen($o:1.0) {
+  @return rgba(141, 198, 63, $o);
+}
+
+$primaryBlue: primaryBlue();
+$primaryTeal: primaryTeal();
+
+$primaryGray: primaryBlue(0.5);
+$altBlue: #0d66a1;
+$altPurple: #6b699e;
+
+$altGreen: altGreen();
+
+$altOrange: #e98a41;
+$altRed: #852432;
+
+$searchDefaultBG: primaryBlue(0.2);
+$searchFocusBG: primaryBlue(0.85);
+
+$searchMobileDefaultBG: #FFFFFF;
+
+
+/* Fonts */
+$light: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica;
+$reg: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+$bold:"Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+$lightOb: "TradeGothicW01-LightObl", "Helvetica Neue", Arial, Helvetica;  
+
+/* Media Queries */
+$mobile: 320px;
+$mobile-only: 767px;
+$tablet: 768px;
+$desktop: 800px; 
