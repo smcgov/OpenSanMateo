@@ -76,7 +76,7 @@ function smc_base_process_page(&$variables) {
   }
 
   $variables['header_logo'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-header.png';
-  $variables['smclink'] = 'http://smcgov.org';
+  $variables['smclink'] = variable_get("smclink", 'http://www.smcgov.org');
   $variables['footer_logo'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-footer-small.png';
   $variables['footer_logo_small'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-footer.png';
   //krumo($variables);
@@ -142,7 +142,10 @@ function smc_base_preprocess_node(&$variables) {
 
     $author = node_load($author_field);
     $author_link = l($author->title, 'node/' . $author->nid);
-    $date = smc_base_format_timestamp($variables['created']);
+    $date = 
+      !empty($variables['field_release_date']) && !empty($variables['field_release_date'][0]['value'])
+      ? smc_base_format_timestamp(strtotime($variables['field_release_date'][0]['value']), FALSE)
+      : smc_base_format_timestamp($variables['created']);
 
     $byline = t('Posted by ') . $author_link . ' on ' . $date;
 
@@ -386,7 +389,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       if (isset($vars['fields']['search_api_multi_aggregation_18']->content) && strlen($vars['fields']['search_api_multi_aggregation_18']->content) >= 1) {
         // we have a release date field, so let's add that to the byline
         $release_date = smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_18']->content);
-
+        $release_date = preg_replace('/ at [0-9:]* [ap]m$/', '', $release_date);
         $byline = $byline . ' ' . t('on') . ' ' . $release_date;
       }
 

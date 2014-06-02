@@ -9,8 +9,8 @@ core = 6.x
 files[] = hs_taxonomy_views_handler_filter_term_node_tid.inc
 
 
-; Information added by drush on 2014-04-16
+; Information added by drush on 2014-05-30
 version = "aac15cd"
 project = "hierarchical_select"
-datestamp = "1397653826"
+datestamp = "1401470256"
 

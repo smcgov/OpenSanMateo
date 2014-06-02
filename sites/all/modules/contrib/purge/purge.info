@@ -8,9 +8,9 @@ files [] = purge.module
 files [] = purge.inc
 configure = admin/config/development/performance/purge
 
-; Information added by drupal.org packaging script on 2012-03-18
-version = "7.x-1.5-rc1"
+; Information added by drupal.org packaging script on 2013-01-24
+version = "7.x-1.6"
 core = "7.x"
 project = "purge"
-datestamp = "1332080748"
+datestamp = "1358998406"
 

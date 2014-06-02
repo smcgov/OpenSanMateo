@@ -57,7 +57,7 @@
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
   <!-- IE Fix for HTML5 Tags -->
-	<!--[if lt IE 9]>
+	<!--[if lt IE 8]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
 	<![endif]-->

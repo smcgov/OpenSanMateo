@@ -18,7 +18,6 @@
   }
   .flex-control-nav {
     padding: 1em; 
-    position: relative; 
     text-align: center; 
     width: 100%;
   }
@@ -29,6 +28,24 @@
   .field-name-field-rotator-description {
     // this seems to be empty anyway
     //display: none;
+  }
+  ul.slides {
+    li {
+      img {
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+  ol.flex-control-thumbs {
+    width: auto;
+    text-align: center;
+    li {
+      width: auto;
+      float: none;
+      margin: 0 2px;
+    }
   }
 }
 

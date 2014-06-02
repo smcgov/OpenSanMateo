@@ -86,6 +86,9 @@ $fayze2_sites = array(
   'hsa' => 'hsa.smcgov.org',
   'dcss' => 'dcss.smcgov.org',
   'csw' => 'csw.smcgov.org',
+  'first5' => 'first5.smcgov.org',
+  'lafco' => 'lafco.smcgov.org',
+  'childrensfund' => 'childrensfund.smcgov.org',
 );
 
 foreach ($fayze2_sites as $short_name => $site_name) {
@@ -93,6 +96,10 @@ foreach ($fayze2_sites as $short_name => $site_name) {
   $sites["{$short_name}.smcstg-acquia.fayze2.com"] = $site_name;
   $sites["{$short_name}.smcprd-acquia.fayze2.com"] = $site_name;
 }
+//added www.smcgov.org to point at main site
+$sites["www.smcgov.org"] = "smcgov.org";
+
+$sites['greensanmateo.org'] = 'green.smcgov.org';
 
 /*
  * Additional mappings for staging

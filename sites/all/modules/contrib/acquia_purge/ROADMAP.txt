@@ -1,0 +1,10 @@
+
+Roadmap (in non-prioritized order)
+================================================================================
+  * 2100327: add experimental HTTPS support.
+  * 2049235: AJAX processor is displayed when adding a video with Media.module.
+  * Improving domain detection with improvements to Acquia's platform internals.
+  * Integrate Varnish hit/miss statistics to better visualize the effectiveness.
+  * D8 port and a D6 backport if demand is high enough for it.
+  * Expire 2 impact analysis.
+  * Become a plugin depending on Purge once Purge 2.X suits our needs and works.

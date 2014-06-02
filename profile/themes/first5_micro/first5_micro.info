@@ -1,0 +1,26 @@
+name = First 5 San Mateo County Microsite Theme
+description = First 5 San Mateo County Microsite Theme (Testing Subtheme Creation).
+core = 7.x
+engine = phptemplate
+base theme = smc_base 
+
+
+; CHANGE TO APPROPRIATELY RENAMED CSS & JS FILES BELOW
+stylesheets[all][] = css/first5_micro.css
+scripts[] = js/first5_micro.js
+
+regions[header] = Header
+regions[highlighted] = Highlighted
+regions[help] = Help
+regions[content] = Content
+regions[footer] = Footer
+
+features[] = logo
+features[] = name
+features[] = slogan
+features[] = node_user_picture
+features[] = comment_user_picture
+features[] = comment_user_verification
+features[] = favicon
+features[] = main_menu
+features[] = secondary_menu

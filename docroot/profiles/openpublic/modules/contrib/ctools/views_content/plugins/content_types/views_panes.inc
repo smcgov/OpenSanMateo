@@ -457,7 +457,7 @@ function views_content_views_panes_content_type_edit_form($form, &$form_state) {
       '#default_value' => $conf['items_per_page'],
       '#title' => t('Num items'),
       '#size' => 4,
-      '#description' => t('Select the number of items to display, or 0 to display all results.'),
+      '#description' => t('Select the number of items to display, or leave blank to display all results.'),
     );
   }
   if ($allow['offset']) {
