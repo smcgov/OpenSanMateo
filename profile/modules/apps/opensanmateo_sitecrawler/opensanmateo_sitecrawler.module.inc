@@ -4,6 +4,20 @@
  * Contains module-level code we don't want to risk Features overwriting if something went wrong with a Feature update or recreate
  */
 
+/**
+ * Shows this block on every page except the listed pages.
+ */
+define('PATH_IMPORT_NOTLISTED', 0);
+
+/**
+ * Shows this block on only the listed pages.
+ */
+define('PATH_IMPORT_LISTED', 1);
+
+/**
+ * Shows this block if the associated PHP code returns TRUE.
+ */
+define('PATH_IMPORT_PHP', 2);
 
 /**
  * Tell Drupal to also look for template files in the modules folder
@@ -217,6 +231,55 @@ function opensanmateo_sitecrawler_admin_item_form($form, $form_state, $id = FALS
   }
   $form['actions']['cancel'] = array('#markup' => l(t('Cancel'), 'admin/config/opensanmateo_sitecrawler'),);
   
+  // Per-path visibility.
+  $form['path'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Pages'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#group' => 'visibility',
+  );
+
+  $access = user_access('use PHP for settings');
+  if (isset($block->visibility) && $block->visibility == PATH_IMPORT_PHP && !$access) {
+    $form['path']['path_visibility'] = array(
+      '#type' => 'value',
+      '#value' => PATH_IMPORT_PHP,
+    );
+    $form['path']['path_pages'] = array(
+      '#type' => 'value',
+      '#value' => isset($block->pages) ? $block->pages : '',
+    );
+  }
+  else {
+    $options = array(
+      PATH_IMPORT_NOTLISTED => t('All paths except those listed'),
+      PATH_IMPORT_LISTED => t('Only the listed paths'),
+    );
+    $description = t("Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*'));
+
+    if (module_exists('php') && $access) {
+      $options += array(PATH_IMPORT_PHP => t('Paths on which this PHP code returns <code>TRUE</code> (experts only)'));
+      $title = t('Paths or PHP code');
+      $description .= ' ' . t('If the PHP option is chosen, enter PHP code between %php. Note that executing incorrect PHP code can break your Drupal site.', array('%php' => '<?php ?>'));
+    }
+    else {
+      $title = t('Paths');
+    }
+    $form['path']['path_visibility'] = array(
+      '#type' => 'radios',
+      '#title' => t('Show block on specific pages'),
+      '#options' => $options,
+      '#default_value' => isset($block->visibility) ? $block->visibility : PATH_IMPORT_NOTLISTED,
+    );
+    $form['path']['path_pages'] = array(
+      '#type' => 'textarea',
+      '#title' => '<span class="element-invisible">' . $title . '</span>',
+      '#default_value' => isset($block->pages) ? $block->pages : '',
+      '#description' => $description,
+    );
+  }
+  
   return $form;
 }
 
@@ -366,6 +429,12 @@ function opensanmateo_sitecrawler_run_crawler($crawler_id) {
   $crawler->enableCookieHandling(!!$record['options']['cookies']);
   $crawler->setFollowRedirects(!!$record['options']['redirects']);
   $crawler->setFollowRedirectsTillContent(!!$record['options']['redirectsfollow']);
+  $crawler->setUrlCacheType(PHPCrawlerUrlCacheTypes::URLCACHE_SQL);
+  $crawler->setDatabaseConnectionObject(
+    Database::getConnection(),
+    db_prefix_tables('{opensanmateo_sitecrawler_url_cache}'),
+    db_prefix_tables('{opensanmateo_sitecrawler_cookie_cache}')
+  );
 
   $crawler->addContentTypeReceiveRule("#text/html#");
 
@@ -663,4 +732,10 @@ function opensanmateo_sitecrawler_get_crawler($id) {
     $record['options'] = unserialize($record['options']);
   }
   return $record;
+}
+
+function opensanmateo_sitecrawler_apachesolr_update_index($document, $node, $namespace) {
+  if ($node->type == 'sitecrawler_page') {
+//TODO: overwrite document URL field with the $node->field_sitecrawler_url['xxx'] field.
+  }
 }

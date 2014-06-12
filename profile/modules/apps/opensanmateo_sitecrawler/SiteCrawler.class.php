@@ -13,9 +13,18 @@ class SiteCrawler extends PHPCrawler {
   /**
    * Initiates a new crawler.
    */
-  public function __construct($crawler_id) { 
+  public function __construct($crawler_id) {
     $this->crawler_id = $crawler_id;
-    // delete all nodes with that crawler id? only delete ones that aren't newly imported?
+    
+    // Include needed class-files
+    $classpath = dirname(__FILE__);
+    if (!class_exists("PHPCrawlerSQLiteCookieCache")) {
+      include_once($classpath."/PHPCrawlerSQCookieCache.class.php");
+    }
+    if (!class_exists("PHPCrawlerSQLiteURLCache")) {
+      include_once($classpath."/PHPCrawlerSQURLCache.class.php");
+    }
+    
     parent::__construct();
   }
 

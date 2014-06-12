@@ -136,6 +136,27 @@ class PHPCrawler
   protected $working_base_directory;
   
   /**
+   * database connection object
+   *
+   * @var PHP resource
+   */
+  protected $database_connection;
+  
+  /**
+   * database url cache table
+   *
+   * @var string
+   */
+  protected $database_url_cache_table;
+  
+  /**
+   * database cookie cache table
+   *
+   * @var string
+   */
+  protected $database_cookie_cache_table;
+  
+  /**
    * Complete path to the temporary directory
    *
    * @var string
@@ -297,20 +318,41 @@ class PHPCrawler
     // Setup url-cache
     if ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE) 
       $this->LinkCache = new PHPCrawlerSQLiteURLCache($this->working_directory."urlcache.db3", true);
+    elseif ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQL) 
+      $this->LinkCache = new PHPCrawlerSQLURLCache(
+        $this->database_connection,
+        $this->database_url_cache_table,
+        $this->crawler_uniqid
+      );
     else
       $this->LinkCache = new PHPCrawlerMemoryURLCache();
     
     // Perge/cleanup SQLite-urlcache for resumed crawling-processes (only ONCE!)
-    if ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE && $this->urlcache_purged == false)
+    if (
+      (
+        $this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE
+        || $this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQL
+      )
+      && $this->urlcache_purged == false)
     {
       $this->LinkCache->purgeCache();
       $this->urlcache_purged = true;
     }
     
     // Setup cookie-cache (use SQLite-cache if crawler runs multi-processed)
-    if ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE)
+    if ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE) {
       $this->CookieCache = new PHPCrawlerSQLiteCookieCache($this->working_directory."cookiecache.db3", true);
-    else $this->CookieCache = new PHPCrawlerMemoryCookieCache();
+    } 
+    elseif ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQL) {
+      $this->CookieCache = new PHPCrawlerSQLCookieCache(
+        $this->database_connection,
+        $this->database_cookie_cache_table,
+        $this->crawler_uniqid
+      );
+    } 
+    else {
+      $this->CookieCache = new PHPCrawlerMemoryCookieCache();
+    }
     
     // ProcessHandler
     $this->ProcessHandler = new PHPCrawlerProcessHandler($this->crawler_uniqid, $this->working_directory);
@@ -440,7 +482,9 @@ class PHPCrawler
     PHPCrawlerBenchmark::start("crawling_process");
     
     // Set url-cache-type to sqlite.
-    $this->url_cache_type = PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE;
+    if ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_MEMORY) {
+      $this->url_cache_type = PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE;
+    }
     
     // Init process
     $this->initCrawlerProcess();
@@ -1713,6 +1757,31 @@ class PHPCrawler
   }
   
   /**
+   * Sets the database object the crawler should use for storing temporary data.
+   *
+   * Example:
+   * <code>
+   * $crawler->setDatabaseConnectionObject();
+   * </code>
+   *
+   * @param object $dbobject the database connection object
+   * @param string $url_cache_table name of the table to store url cache data in
+   * @param string $cookie_cache_url name of the table to store cookie cache data in
+   * @return bool             TRUE on success, otherwise false.
+   * @section 1 Basic settings
+   */
+  public function setDatabaseConnectionObject($conn, $url_cache_table, $cookie_cache_table)
+  {
+    if (mysql_ping($conn)) {
+      $this->database_connection = $conn;
+      $this->database_url_cache_table = $url_cache_table;
+      $this->database_cookie_cache_table = $cookie_cache_table;
+      return true;
+    }
+    else return false;
+  }
+  
+  /**
    * Assigns a proxy-server the crawler should use for all HTTP-Requests.
    *
    * @param string $proxy_host     Hostname or IP of the proxy-server
@@ -1979,7 +2048,9 @@ class PHPCrawler
   public function enableResumption()
   {
     $this->resumtion_enabled = true;
-    $this->setUrlCacheType(PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE);
+    if ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_MEMORY) {
+      $this->setUrlCacheType(PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE);
+    }
   }
   
   /**

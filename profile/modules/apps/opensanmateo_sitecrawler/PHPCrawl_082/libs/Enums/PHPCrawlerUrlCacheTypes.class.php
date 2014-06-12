@@ -15,4 +15,9 @@ class PHPCrawlerUrlCacheTypes
    * URLs get cached in a SQLite-database-file. Recommended for spidering huge websites.
    */
   const URLCACHE_SQLITE = 2;
+  
+  /**
+   * URLs get cached in a SQLite-database-file. Recommended for spidering huge websites.
+   */
+  const URLCACHE_SQL = 3;
 }

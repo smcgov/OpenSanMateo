@@ -91,9 +91,194 @@ function opensanmateo_sitecrawler_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
+      'path_visibility' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => 'Flag to indicate how to "path_pages" (0 = Use all paths except listed pages, 1 = Use only the listed paths, 2 = Use custom PHP code to determine path use)',
+      ),
+      'path_pages' => array(
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+        'description' => 'Contents of the "Pages" block; contains either a list of paths on which to include/exclude the paths or PHP code, depending on "path_visibility" setting.',
+      ),
     ),
     'primary key' => array('id'),
   );
+  
+  $schema['opensanmateo_sitecrawler_url_cache'] = array(
+    'description' => 'Storage of URL cache for sitecrawler.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary identifier for each item',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'crawler_id' => array(
+        'description' => 'ID of the crawler object',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'in_process' => array(
+        'description' => 'Boolean indicating whether the crawl is in progress.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+      'processed' => array(
+        'description' => 'Boolean indicating whether the crawl has been processed.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+      'priority_level' => array(
+        'description' => 'priority level of this URL',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+      'distinct_hash' => array(
+        'description' => 'Unique hash of this URL',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'link_raw' => array(
+        'description' => 'Raw URL',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'linkcode' => array(
+        'description' => '',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+      'linktext' => array(
+        'description' => '',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'refering_url' => array(
+        'description' => '',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'url_rebuild' => array(
+        'description' => '',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'is_redirect_url' => array(
+        'description' => 'Boolean indicating whether the URL was redirected.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+      
+    ),
+    'indexes' => array(
+      'priority_level' => array('priority_level'),
+      'distinct_hash' => array('distinct_hash'),
+      'in_process' => array('in_process'),
+      'processed' => array('processed'),
+      'crawler_id' => array('crawler_id'),
+    ),
+    'primary key' => array('id'),
+  );
+  
+  $schema['opensanmateo_sitecrawler_cookie_cache'] = array(
+    'description' => 'Storage of cookie cache for sitecrawler.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary identifier for each item',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'crawler_id' => array(
+        'description' => 'ID of the crawler object',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'cookie_hash' => array(
+        'description' => 'Unique hash of this cookie',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'source_domain' => array(
+        'description' => 'Source domain of cookie URL',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'source_url' => array(
+        'description' => 'Source URL of cookie',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'name' => array(
+        'description' => 'Name of cookie',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'value' => array(
+        'description' => 'Value of cookie',
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+      ),
+      'domain' => array(
+        'description' => 'Domain of cookie',
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+      ),
+      'path' => array(
+        'description' => 'Path of cookie',
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+      ),
+      'expires' => array(
+        'description' => 'Expire date of cookie as original text',
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+      ),
+      'expire_timestamp' => array(
+        'description' => 'Expirition date of cookie',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'cookie_send_time' => array(
+        'description' => 'Send time of cookie',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'indexes' => array(
+      'cookie_hash' => array('cookie_hash'),
+      'crawler_id' => array('crawler_id'),
+    ),
+    'primary key' => array('id'),
+  );
+  
   return $schema;
 }
 
