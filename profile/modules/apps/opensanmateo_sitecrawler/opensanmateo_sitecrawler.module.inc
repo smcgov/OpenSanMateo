@@ -732,7 +732,22 @@ function opensanmateo_sitecrawler_get_crawler($id) {
 }
 
 function opensanmateo_sitecrawler_apachesolr_update_index($document, $node, $namespace) {
+drupal_set_message('opensanmateo_sitecrawler_apachesolr_update_indexL ' . print_r($node->title,1));
   if ($node->type == 'sitecrawler_page') {
     $document->ss_url = $node->field_sitecrawler_url[$node->language][0]['url'];
+  }
+}
+
+
+/**
+ * implements hook_search_api_index_items_alter
+ *
+ * we do not know the index id in the allCallback object so we need to jump in here and add the value for the id
+ */
+function search_opensanmateo_sitecrawler_search_api_index_items_alter(array &$items, SearchApiIndex $index) {
+  foreach ($items as $id => $item) {
+drupal_set_message('opensanmateo_sitecrawler_apachesolr_update_indexL ' . print_r($item->title,1));
+    $hash = search_api_site_hash();
+    $item->search_api_site_id = "{$index->machine_name}-{$id}-{$hash}";
   }
 }
