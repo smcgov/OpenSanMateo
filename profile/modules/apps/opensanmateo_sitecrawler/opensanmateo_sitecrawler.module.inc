@@ -747,7 +747,7 @@ drupal_set_message('opensanmateo_sitecrawler_apachesolr_update_indexL ' . print_
  */
 function opensanmateo_sitecrawler_search_api_index_items_alter(array &$items, SearchApiIndex $index) {
   foreach ($items as $id => $item) {
-if ('PHP: Variables - Manual' == $item->title) {
+if (FALSE !== strstr($item->title, 'PHP') {
   drupal_set_message('opensanmateo_sitecrawler_apachesolr_update_index ' . print_r($item,1));
 }
     $hash = search_api_site_hash();
