@@ -350,7 +350,7 @@ function opensanmateo_sitecrawler_admin_item_delete_form_submit($form, &$form_st
  */
 function opensanmateo_sitecrawler_admin_item_run_form($form, $form_state, $id = FALSE) {
   $record = opensanmateo_sitecrawler_get_crawler($id);
-drupal_set_message('<pre>' . print_r($record, 1) . '</pre>');
+// drupal_set_message('<pre>' . print_r($record, 1) . '</pre>');
   
   if (!$record) {
     drupal_goto('admin/config/opensanmateo_sitecrawler');
