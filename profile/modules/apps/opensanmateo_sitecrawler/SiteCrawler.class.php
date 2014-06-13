@@ -54,10 +54,14 @@ class SiteCrawler extends PHPCrawler {
     $node->field_sitecrawler_url[$node->language][0]['url'] = $DocInfo->url;
       
 //     $node->field_sitecrawler_summary[$node->language][0]['value'] = 
-    $node->body = 
+    $node_body = 
       preg_match('#<body.*?>(.*?)</body>#is', $DocInfo->source, $matches)
       ? $matches[1]
       : $DocInfo->source;
+    $node->body[$node->language][0]['value'] = $node_body;
+    $node->body[$node->language][0]['summary'] = text_summary($node_body);
+    $node->body[$node->language][0]['format']  = filter_default_format();
+    
       
     // store the Drupal crawler ID from the opensanmateo_sitecrawler_sites table
     $node->field_sitecrawler_id[$node->language][0]['value'] = $this->crawler_id;
