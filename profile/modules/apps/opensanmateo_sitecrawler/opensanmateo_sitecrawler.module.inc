@@ -745,7 +745,7 @@ drupal_set_message('opensanmateo_sitecrawler_apachesolr_update_indexL ' . print_
  *
  * we do not know the index id in the allCallback object so we need to jump in here and add the value for the id
  */
-function search_opensanmateo_sitecrawler_search_api_index_items_alter(array &$items, SearchApiIndex $index) {
+function opensanmateo_sitecrawler_search_api_index_items_alter(array &$items, SearchApiIndex $index) {
 die('killed by opensanmateo_sitecrawler_apachesolr_update_index');
   foreach ($items as $id => $item) {
 drupal_set_message('opensanmateo_sitecrawler_apachesolr_update_indexL ' . print_r($item->title,1));
