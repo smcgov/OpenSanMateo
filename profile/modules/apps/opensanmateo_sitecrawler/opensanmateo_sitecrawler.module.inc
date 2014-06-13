@@ -748,7 +748,7 @@ drupal_set_message('opensanmateo_sitecrawler_apachesolr_update_indexL ' . print_
 function opensanmateo_sitecrawler_search_api_index_items_alter(array &$items, SearchApiIndex $index) {
   foreach ($items as $id => $item) {
 if (FALSE !== strstr($item->title, 'PHP')) {
-  drupal_set_message('opensanmateo_sitecrawler_apachesolr_update_index ' . print_r($item,1));
+  drupal_set_message('opensanmateo_sitecrawler_apachesolr_update_index <pre>' . print_r($item,1) . '</pre>);
 }
     $hash = search_api_site_hash();
     $item->search_api_site_id = "{$index->machine_name}-{$id}-{$hash}";
