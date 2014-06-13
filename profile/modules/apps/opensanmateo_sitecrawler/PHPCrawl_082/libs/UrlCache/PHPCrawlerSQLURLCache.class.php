@@ -21,6 +21,7 @@ class PHPCrawlerSQLURLCache extends PHPCrawlerURLCacheBase
    */
   public function __construct($conn, $table, $crawler_id)
   {
+// drupal_set_message('<pre>CONSTRUCTED PHPCrawlerSQLURLCache table ' . print_r($table, 1) . '</pre>');
     $this->table = $table;
     $this->conn = $conn;
     $this->crawler_id = $crawler_id;
@@ -28,6 +29,8 @@ class PHPCrawlerSQLURLCache extends PHPCrawlerURLCacheBase
   
   public function getUrlCount()
   {
+// die('getUrlCount');
+// drupal_set_message('<pre>PHPCrawlerSQLURLCache::getUrlCount ' . print_r('', 1) . '</pre>');
     return $this->conn->query("SELECT count(id) AS sum FROM " . $this->table . " WHERE processed = 0 AND crawler_id = '" . $this->crawler_id . "';")->fetchField();
   }
   
@@ -39,6 +42,7 @@ class PHPCrawlerSQLURLCache extends PHPCrawlerURLCacheBase
    */
   public function getNextUrl()
   {
+// drupal_set_message('<pre>PHPCrawlerSQLURLCache::getNextUrl ' . print_r('', 1) . '</pre>');
     PHPCrawlerBenchmark::start("fetching_next_url_from_sqlcache"); 
     
     // Get row with max priority-level
@@ -49,11 +53,12 @@ class PHPCrawlerSQLURLCache extends PHPCrawlerURLCacheBase
       return null;
     }
     
+// drupal_set_message('<pre>PHPCrawlerSQLURLCache::getNextUrl ' . print_r('inside', 1) . '</pre>');
 
     $row = $this->conn->query("SELECT * FROM " . $this->table . " WHERE priority_level = ".$max_priority_level." AND in_process = 0 AND processed = 0 AND crawler_id = '" . $this->crawler_id . "';")->fetchAssoc();
      
     // Update row (set in process-flag)
-    $this->conn->query("UPDATE " . $this->table . " SET in_process = 1 WHERE id = ".$row["id"].";")
+    $this->conn->query("UPDATE " . $this->table . " SET in_process = 1 WHERE id = ".$row["id"].";");
     
     PHPCrawlerBenchmark::stop("fetching_next_url_from_sqlcache");
      
@@ -66,6 +71,7 @@ class PHPCrawlerSQLURLCache extends PHPCrawlerURLCacheBase
    */
   public function getAllURLs()
   {
+// die('getAllURLs');
   }
   
   /**
@@ -73,6 +79,8 @@ class PHPCrawlerSQLURLCache extends PHPCrawlerURLCacheBase
    */
   public function clear()
   {
+// die('clear');
+// drupal_set_message('<pre>PHPCrawlerSQLURLCache::clear ' . print_r('', 1) . '</pre>');
     $this->conn->query("DELETE FROM " . $this->table . " WHERE crawler_id = '" . $this->crawler_id . "';");
   }
   
@@ -83,6 +91,7 @@ class PHPCrawlerSQLURLCache extends PHPCrawlerURLCacheBase
    */
   public function addURL(PHPCrawlerURLDescriptor $UrlDescriptor)
   {
+// drupal_set_message('<pre>PHPCrawlerSQLURLCache::addURL ' . print_r($UrlDescriptor, 1) . '</pre>');
     if ($UrlDescriptor == null) return;
     
     // Hash of the URL
@@ -90,32 +99,27 @@ class PHPCrawlerSQLURLCache extends PHPCrawlerURLCacheBase
     
     // Get priority of URL
     $priority_level = $this->getUrlPriority($UrlDescriptor->url_rebuild);
-    
-    $this->conn->query(
-      "INSERT INTO " . $this->table
-      . " ("
-        . "crawler_id,"
-        . "priority_level,"
-        . "distinct_hash,"
-        . "link_raw,"
-        . "linkcode,"
-        . "linktext,"
-        . "refering_url,"
-        . "url_rebuild,"
-        . "is_redirect_url"
-      . ") "
-      . "VALUES"
-      . " ("
-        . "'" . $this->crawler_id . "',"
-        . "'" . $priority_level . "',"
-        . "'" . $map_key . "',"
-        . "'" . $UrlDescriptor->link_raw . "',"
-        . "'" . $UrlDescriptor->linkcode . "',"
-        . "'" . $UrlDescriptor->linktext . "',"
-        . "'" . $UrlDescriptor->refering_url . "',"
-        . "'" . $UrlDescriptor->url_rebuild . "',"
-        . "'" . $UrlDescriptor->is_redirect_url) . "'"
-      . ");";
+        
+    try
+    {
+      db_insert($this->table)
+        ->fields(array(
+          'crawler_id' => $this->crawler_id,
+          'priority_level' => $priority_level,
+          'distinct_hash' => $map_key,
+          'link_raw' => !!$UrlDescriptor->link_raw ? $UrlDescriptor->link_raw : '',
+          'linkcode' => !!$UrlDescriptor->linkcode ? $UrlDescriptor->linkcode : '',
+          'linktext' => !!$UrlDescriptor->linktext ? $UrlDescriptor->linktext : '',
+          'refering_url' => !!$UrlDescriptor->refering_url ? $UrlDescriptor->refering_url : '',
+          'url_rebuild' => !!$UrlDescriptor->url_rebuild ? $UrlDescriptor->url_rebuild : '',
+          'is_redirect_url' => !!$UrlDescriptor->is_redirect_url ? 1 : 0,
+        ))
+        ->execute();
+    }
+    catch (Exception $e)
+    {
+      drupal_set_message('PHPCrawlerSQLURLCache::addURL ERROR: ' . $e->getMessage(), 'error');
+    }
   }
   
   /**
@@ -125,6 +129,8 @@ class PHPCrawlerSQLURLCache extends PHPCrawlerURLCacheBase
    */
   public function addURLs($urls)
   {
+// die('addURLs');
+// drupal_set_message('<pre>PHPCrawlerSQLURLCache::addURLs ' . print_r($urls, 1) . '</pre>');
     PHPCrawlerBenchmark::start("adding_urls_to_sqlcache"); 
     
     
@@ -148,10 +154,12 @@ class PHPCrawlerSQLURLCache extends PHPCrawlerURLCacheBase
    */
   public function markUrlAsFollowed(PHPCrawlerURLDescriptor $UrlDescriptor)
   {
-    PHPCrawlerBenchmark::start("marking_url_as_followes");
+// die('markUrlAsFollowed');
+// drupal_set_message('<pre>PHPCrawlerSQLURLCache::markUrlAsFollowed ' . print_r($UrlDescriptor, 1) . '</pre>');
+    PHPCrawlerBenchmark::start("marking_url_as_followed");
     $hash = md5($UrlDescriptor->url_rebuild);
-    $this->conn->query("UPDATE " . $this->table . " SET processed = 1, in_process = 0 WHERE distinct_hash = '".$hash."' AND crawler_id = '" . $this->crawler_id . "';")
-    PHPCrawlerBenchmark::stop("marking_url_as_followes"); 
+    $this->conn->query("UPDATE " . $this->table . " SET processed = 1, in_process = 0 WHERE distinct_hash = '".$hash."' AND crawler_id = '" . $this->crawler_id . "';");
+    PHPCrawlerBenchmark::stop("marking_url_as_followed"); 
   }
   
   /**
@@ -161,6 +169,7 @@ class PHPCrawlerSQLURLCache extends PHPCrawlerURLCacheBase
    */
   public function containsURLs()
   {
+// drupal_set_message('<pre>PHPCrawlerSQLURLCache::containsURLs ' . print_r('', 1) . '</pre>');
     PHPCrawlerBenchmark::start("checking_for_urls_in_cache");
     
     $has_columns = $this->conn->query("SELECT id FROM " . $this->table . " WHERE (processed = 0 OR in_process = 1) AND crawler_id = '" . $this->crawler_id . "' LIMIT 1;")->fetchField();
@@ -175,8 +184,9 @@ class PHPCrawlerSQLURLCache extends PHPCrawlerURLCacheBase
    */
   public function purgeCache()
   {
+// drupal_set_message('<pre>PHPCrawlerSQLURLCache::purgeCache ' . print_r('', 1) . '</pre>');
     // Set "in_process" to 0 for all URLs
-    $this->conn->query("UPDATE " . $this->table . " SET in_process = 0 WHERE crawler_id = '" . $this->crawler_id . "';")
+    $this->conn->query("UPDATE " . $this->table . " SET in_process = 0 WHERE crawler_id = '" . $this->crawler_id . "';");
   }
   
   /**
@@ -184,6 +194,8 @@ class PHPCrawlerSQLURLCache extends PHPCrawlerURLCacheBase
    */
   public function cleanup()
   {
+// die('cleanup');
+// drupal_set_message('<pre>PHPCrawlerSQLURLCache::cleanup ' . print_r('', 1) . '</pre>');
     $this->clear();
   }
 }

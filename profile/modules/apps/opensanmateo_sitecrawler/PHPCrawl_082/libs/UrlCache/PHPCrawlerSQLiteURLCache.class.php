@@ -33,6 +33,7 @@ class PHPCrawlerSQLiteURLCache extends PHPCrawlerURLCacheBase
    */
   public function __construct($file, $create_tables = false)
   {
+drupal_set_message('<pre>CONSTRUCTED PHPCrawlerSQLiteURLCache ' . print_r($crawler_id, 1) . '</pre>');
     $this->sqlite_db_file = $file;
     $this->openConnection($create_tables);
   }

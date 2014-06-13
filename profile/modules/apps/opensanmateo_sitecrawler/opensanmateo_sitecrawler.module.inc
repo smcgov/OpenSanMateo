@@ -232,7 +232,7 @@ function opensanmateo_sitecrawler_admin_item_form($form, $form_state, $id = FALS
   $form['actions']['cancel'] = array('#markup' => l(t('Cancel'), 'admin/config/opensanmateo_sitecrawler'),);
   
   // Per-path visibility.
-  $form['path'] = array(
+  $form['opensanmateo_sitecrawler_path'] = array(
     '#type' => 'fieldset',
     '#title' => t('Pages'),
     '#collapsible' => TRUE,
@@ -242,13 +242,13 @@ function opensanmateo_sitecrawler_admin_item_form($form, $form_state, $id = FALS
 
   $access = user_access('use PHP for settings');
   if (isset($block->visibility) && $block->visibility == PATH_IMPORT_PHP && !$access) {
-    $form['path']['path_visibility'] = array(
+    $form['opensanmateo_sitecrawler_path']['opensanmateo_sitecrawler_path_visibility'] = array(
       '#type' => 'value',
       '#value' => PATH_IMPORT_PHP,
     );
-    $form['path']['path_pages'] = array(
+    $form['opensanmateo_sitecrawler_path']['opensanmateo_sitecrawler_path_pages'] = array(
       '#type' => 'value',
-      '#value' => isset($block->pages) ? $block->pages : '',
+      '#value' => (!$new ? $record['path_pages'] : ''),
     );
   }
   else {
@@ -266,16 +266,16 @@ function opensanmateo_sitecrawler_admin_item_form($form, $form_state, $id = FALS
     else {
       $title = t('Paths');
     }
-    $form['path']['path_visibility'] = array(
+    $form['opensanmateo_sitecrawler_path']['opensanmateo_sitecrawler_path_visibility'] = array(
       '#type' => 'radios',
       '#title' => t('Show block on specific pages'),
       '#options' => $options,
-      '#default_value' => isset($block->visibility) ? $block->visibility : PATH_IMPORT_NOTLISTED,
+      '#default_value' => (!$new ? $record['path_visibility'] : PATH_IMPORT_NOTLISTED),
     );
-    $form['path']['path_pages'] = array(
+    $form['opensanmateo_sitecrawler_path']['opensanmateo_sitecrawler_path_pages'] = array(
       '#type' => 'textarea',
       '#title' => '<span class="element-invisible">' . $title . '</span>',
-      '#default_value' => isset($block->pages) ? $block->pages : '',
+      '#default_value' => (!$new ? $record['path_pages'] : ''),
       '#description' => $description,
     );
   }
@@ -301,6 +301,8 @@ function opensanmateo_sitecrawler_admin_item_form_submit($form, &$form_state) {
         'traffic_limit',
         'page_limit',
         'request_delay',
+        'path_pages',
+        'path_visibility',
       ) as $field_name) {
         $record[$field_name] = $form_state['values']['opensanmateo_sitecrawler_' . $field_name];
       }
@@ -317,7 +319,8 @@ function opensanmateo_sitecrawler_admin_item_form_submit($form, &$form_state) {
       drupal_goto('admin/config/opensanmateo_sitecrawler/delete/' . $form_state['values']['opensanmateo_sitecrawler_id']);
       return;
   }
-
+// drupal_set_message('<pre>$record ' . print_r($record,1) . '</pre>');
+  
   drupal_write_record('opensanmateo_sitecrawler_sites', $record, $primary_keys);
 }
 
@@ -421,6 +424,13 @@ function opensanmateo_sitecrawler_run_crawler($crawler_id) {
   set_time_limit(10000);
 
   $crawler = new SiteCrawler($record['id']);
+  $crawler->setUrlCacheType(PHPCrawlerUrlCacheTypes::URLCACHE_SQL);
+  $dbconnection = Database::getConnection();
+  $crawler->setDatabaseConnectionObject(
+    $dbconnection,
+    $dbconnection->prefixTables('{opensanmateo_sitecrawler_url_cache}'),
+    $dbconnection->prefixTables('{opensanmateo_sitecrawler_cookie_cache}')
+  );
 
   $crawler->setURL($record['url']);
   $crawler->obeyNoFollowTags(!!$record['options']['nofollow']);
@@ -429,12 +439,6 @@ function opensanmateo_sitecrawler_run_crawler($crawler_id) {
   $crawler->enableCookieHandling(!!$record['options']['cookies']);
   $crawler->setFollowRedirects(!!$record['options']['redirects']);
   $crawler->setFollowRedirectsTillContent(!!$record['options']['redirectsfollow']);
-  $crawler->setUrlCacheType(PHPCrawlerUrlCacheTypes::URLCACHE_SQL);
-  $crawler->setDatabaseConnectionObject(
-    Database::getConnection(),
-    db_prefix_tables('{opensanmateo_sitecrawler_url_cache}'),
-    db_prefix_tables('{opensanmateo_sitecrawler_cookie_cache}')
-  );
 
   $crawler->addContentTypeReceiveRule("#text/html#");
 
@@ -457,6 +461,15 @@ function opensanmateo_sitecrawler_run_crawler($crawler_id) {
   $crawler->enableResumption();
   
   $crawler_id_variable = 'opensanmateo_sitecrawler_crawler_id_' . $record['id'];
+
+//                                   variable_set($crawler_id_variable, FALSE);
+//                                   try {
+//                                     $dbconnection->query("DELETE FROM opensanmateo_sitecrawler_url_cache;");
+//                                     $dbconnection->query("DELETE FROM opensanmateo_sitecrawler_cookie_cache;");
+//                                   } catch (Exception $e) {
+//                                     drupal_set_message($e->getMessage(), 'error');
+//                                   }
+
   if (FALSE != ($crawler_ID = variable_get($crawler_id_variable, FALSE))) {
     try {
       $crawler->resume($crawler_ID);
@@ -474,6 +487,7 @@ function opensanmateo_sitecrawler_run_crawler($crawler_id) {
 //     $crawler->goMultiProcessed(5);
   } catch (Exception $e) {
     drupal_set_message($e->getMessage(), 'error');
+    return;
   }
   
   if (

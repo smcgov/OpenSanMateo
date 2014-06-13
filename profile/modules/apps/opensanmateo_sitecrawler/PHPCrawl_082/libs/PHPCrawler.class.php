@@ -18,6 +18,8 @@ class PHPCrawler
    */
   protected $PageRequest;
   
+  protected $SQLiteAvailable;
+  
   /**
    * The PHPCrawlerLinkCache-Object
    *
@@ -231,6 +233,8 @@ class PHPCrawler
     // Create uniqid for this crawlerinstance
     $this->crawler_uniqid = getmypid().time();
     
+    $this->SQLiteAvailable = function_exists('sqlite_open');
+    
     // Include needed class-files
     $classpath = dirname(__FILE__);
     
@@ -240,7 +244,8 @@ class PHPCrawler
     // URL-Cache-classes
     if (!class_exists("PHPCrawlerURLCacheBase")) include_once($classpath."/UrlCache/PHPCrawlerURLCacheBase.class.php");
     if (!class_exists("PHPCrawlerMemoryURLCache")) include_once($classpath."/UrlCache/PHPCrawlerMemoryURLCache.class.php");
-    if (!class_exists("PHPCrawlerSQLiteURLCache")) include_once($classpath."/UrlCache/PHPCrawlerSQLiteURLCache.class.php");
+    if ($this->SQLiteAvailable && !class_exists("PHPCrawlerSQLiteURLCache")) include_once($classpath."/UrlCache/PHPCrawlerSQLiteURLCache.class.php");
+    if (!class_exists("PHPCrawlerSQLURLCache")) include_once($classpath."/UrlCache/PHPCrawlerSQLURLCache.class.php");
     
     // PageRequest-class
     if (!class_exists("PHPCrawlerHTTPRequest")) include_once($classpath."/PHPCrawlerHTTPRequest.class.php");
@@ -250,7 +255,8 @@ class PHPCrawler
     // Cookie-Cache-class
     if (!class_exists("PHPCrawlerCookieCacheBase")) include_once($classpath."/CookieCache/PHPCrawlerCookieCacheBase.class.php");
     if (!class_exists("PHPCrawlerMemoryCookieCache")) include_once($classpath."/CookieCache/PHPCrawlerMemoryCookieCache.class.php");
-    if (!class_exists("PHPCrawlerSQLiteCookieCache")) include_once($classpath."/CookieCache/PHPCrawlerSQLiteCookieCache.class.php");
+    if ($this->SQLiteAvailable && !class_exists("PHPCrawlerSQLiteCookieCache")) include_once($classpath."/CookieCache/PHPCrawlerSQLiteCookieCache.class.php");
+    if (!class_exists("PHPCrawlerSQLCookieCache")) include_once($classpath."/CookieCache/PHPCrawlerSQLCookieCache.class.php");
     
     // URL-filter-class
     if (!class_exists("PHPCrawlerURLFilter")) include_once($classpath."/PHPCrawlerURLFilter.class.php");
@@ -316,21 +322,24 @@ class PHPCrawler
     $this->createWorkingDirectory();
     
     // Setup url-cache
-    if ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE) 
+    if ($this->SQLiteAvailable && $this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE) {
       $this->LinkCache = new PHPCrawlerSQLiteURLCache($this->working_directory."urlcache.db3", true);
-    elseif ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQL) 
+    }
+    elseif ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQL) {
       $this->LinkCache = new PHPCrawlerSQLURLCache(
         $this->database_connection,
         $this->database_url_cache_table,
         $this->crawler_uniqid
       );
-    else
+    }
+    else {
       $this->LinkCache = new PHPCrawlerMemoryURLCache();
+    }
     
     // Perge/cleanup SQLite-urlcache for resumed crawling-processes (only ONCE!)
     if (
       (
-        $this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE
+        ($this->SQLiteAvailable && $this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE)
         || $this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQL
       )
       && $this->urlcache_purged == false)
@@ -340,7 +349,7 @@ class PHPCrawler
     }
     
     // Setup cookie-cache (use SQLite-cache if crawler runs multi-processed)
-    if ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE) {
+    if ($this->SQLiteAvailable && $this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE) {
       $this->CookieCache = new PHPCrawlerSQLiteCookieCache($this->working_directory."cookiecache.db3", true);
     } 
     elseif ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQL) {
@@ -482,7 +491,7 @@ class PHPCrawler
     PHPCrawlerBenchmark::start("crawling_process");
     
     // Set url-cache-type to sqlite.
-    if ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_MEMORY) {
+    if ($this->SQLiteAvailable && $this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_MEMORY) {
       $this->url_cache_type = PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE;
     }
     
@@ -620,14 +629,17 @@ class PHPCrawler
     { 
       // Get next URL from cache
       $UrlDescriptor = $this->LinkCache->getNextUrl();
+// die('startChildProcessLoop $UrlDescriptor');
       
       // Process URL
       if ($UrlDescriptor != null)
       {
         $stop_crawling = $this->processUrl($UrlDescriptor);
+// die('startChildProcessLoop processUrl');
       }
       else
       {
+// die('startChildProcessLoop sleep');
         usleep(500000);
       }
       
@@ -648,6 +660,7 @@ class PHPCrawler
     // Loop enden gere. If child-process -> kill it
     if ($this->is_chlid_process == true)
     {
+// die('startChildProcessLoop KILL');
       if ($this->multiprocess_mode == PHPCrawlerMultiProcessModes::MPMODE_PARENT_EXECUTES_USERCODE) return;
       else exit;
     }
@@ -660,8 +673,10 @@ class PHPCrawler
     // Stop benchmark (if single-processed)
     if ($this->is_chlid_process == false)
     {
+// die('startChildProcessLoop STOP');
       PHPCrawlerBenchmark::stop("crawling_process");
     }
+// die('startChildProcessLoop');
   }
   
   /**
@@ -673,6 +688,7 @@ class PHPCrawler
   protected function processUrl(PHPCrawlerURLDescriptor $UrlDescriptor)
   { 
     PHPCrawlerBenchmark::start("processing_url");
+// drupal_set_message('<pre>processUrl ' . print_r($UrlDescriptor, 1) . '</pre>');
     
     // Setup HTTP-request
     $this->PageRequest->setUrl($UrlDescriptor);
@@ -695,6 +711,7 @@ class PHPCrawler
       $this->PageRequest->addPostData($post_key, $post_value);
     }
     
+
     // Do request
     $this->delayRequest();
     $PageInfo = $this->PageRequest->sendRequest();
@@ -1772,7 +1789,10 @@ class PHPCrawler
    */
   public function setDatabaseConnectionObject($conn, $url_cache_table, $cookie_cache_table)
   {
-    if (mysql_ping($conn)) {
+    if (
+      $conn->schema()->tableExists($url_cache_table)
+      && $conn->schema()->tableExists($cookie_cache_table)
+    ) {
       $this->database_connection = $conn;
       $this->database_url_cache_table = $url_cache_table;
       $this->database_cookie_cache_table = $cookie_cache_table;
@@ -1905,12 +1925,14 @@ class PHPCrawler
    */
   public function setUrlCacheType($url_cache_type)
   {
-    if (preg_match("#[1-2]#", $url_cache_type))
+    if (PHPCrawlerUrlCacheTypes::isValidCacheType($url_cache_type))
     {
       $this->url_cache_type = $url_cache_type;
       return true;
     }
-    else return false;
+    else {
+      return false;
+    }
   }
   
   /**
@@ -2048,7 +2070,7 @@ class PHPCrawler
   public function enableResumption()
   {
     $this->resumtion_enabled = true;
-    if ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_MEMORY) {
+    if ($this->SQLiteAvailable && $this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_MEMORY) {
       $this->setUrlCacheType(PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE);
     }
   }
@@ -2127,4 +2149,3 @@ class PHPCrawler
     return false;
   }
 }
-?>

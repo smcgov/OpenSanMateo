@@ -27,37 +27,21 @@ class PHPCrawlerSQLCookieCache extends PHPCrawlerCookieCacheBase
    */
   public function addCookie(PHPCrawlerCookieDescriptor $Cookie)
   {
-    /// NOTE: this needs to be an insert or update operation
-    $this->conn->query(
-      "INSERT INTO " . $this->table
-      . " ("
-        . "crawler_id,"
-        . "cookie_hash,"
-        . "source_domain,"
-        . "source_url,"
-        . "name,"
-        . "value,"
-        . "domain,"
-        . "path,"
-        . "expires,"
-        . "expire_timestamp,"
-        . "cookie_send_time"
-      . ") "
-      . "VALUES"
-      . " ("
-        . "'" . $this->crawler_id . "',"
-        . "'" . md5($Cookie->domain."_".$Cookie->path."_".$Cookie->name) . "',"
-        . "'" . $Cookie->source_domain . "',"
-        . "'" . $Cookie->source_url . "',"
-        . "'" . $Cookie->name . "',"
-        . "'" . $Cookie->value . "',"
-        . "'" . $Cookie->domain . "',"
-        . "'" . $Cookie->path . "',"
-        . "'" . $Cookie->expires . "',"
-        . "'" . $Cookie->expire_timestamp . "',"
-        . "'" . $Cookie->cookie_send_time . "'"
-      . ");";
-      
+    db_merge($this->table)
+      ->key(array('cookie_hash' => md5($Cookie->domain.'_'.$Cookie->path.'_'.$Cookie->name)))
+      ->fields(array(
+        'crawler_id' => $this->crawler_id,
+        'source_domain' => $Cookie->source_domain,
+        'source_url' => $Cookie->source_url,
+        'name' => $Cookie->name,
+        'value' => $Cookie->value,
+        'domain' => $Cookie->domain,
+        'path' => $Cookie->path,
+        'expires' => $Cookie->expires,
+        'expire_timestamp' => $Cookie->expire_timestamp,
+        'cookie_send_time' => $Cookie->cookie_send_time,
+      ))
+      ->execute();
   }
   
   /**
@@ -93,6 +77,7 @@ class PHPCrawlerSQLCookieCache extends PHPCrawlerCookieCacheBase
     $return_cookies = array();
 
     $rows = $this->conn->query("SELECT * FROM " . $this->table . " WHERE source_domain = '".$url_parts["domain"]."' AND crawler_id = '" . $this->crawler_id . "';")->fetchAllAssoc('id');
+// drupal_set_message('<pre>PHPCrawlerSQLCookieCache::getCookiesForUrl ' . print_r($rows, 1) . '</pre>');
     
     $cnt = count($rows);
     for ($x=0; $x<$cnt; $x++)
@@ -100,12 +85,12 @@ class PHPCrawlerSQLCookieCache extends PHPCrawlerCookieCacheBase
       // Does the cookie-domain match?
       // Tail-matching, see http://curl.haxx.se/rfc/cookie_spec.html:
       // A domain attribute of "acme.com" would match host names "anvil.acme.com" as well as "shipping.crate.acme.com"
-      if ($rows[$x]["domain"] == $url_parts["host"] || preg_match("#".preg_quote($rows[$x]["domain"])."$#", $url_parts["host"]))
+      if ($rows[$x]->domain == $url_parts["host"] || preg_match("#".preg_quote($rows[$x]->domain)."$#", $url_parts["host"]))
       {
         // Does the path match?
-        if (preg_match("#^".preg_quote($rows[$x]["path"])."#", $url_parts["path"]))
+        if (preg_match("#^".preg_quote($rows[$x]->path)."#", $url_parts->path))
         {
-          $Cookie = new PHPCrawlerCookieDescriptor($rows[$x]["source_url"], $rows[$x]["name"], $rows[$x]["value"], $rows[$x]["expires"], $rows[$x]["path"], $rows[$x]["domain"]);
+          $Cookie = new PHPCrawlerCookieDescriptor($rows[$x]->source_url, $rows[$x]->name, $rows[$x]->value, $rows[$x]->expires, $rows[$x]->path, $rows[$x]->domain);
           $return_cookies[$Cookie->name] = $Cookie; // Use cookie-name as index to avoid double-cookies
         }
       }

@@ -128,19 +128,19 @@ function opensanmateo_sitecrawler_schema() {
         'description' => 'Boolean indicating whether the crawl is in progress.',
         'type' => 'int',
         'not null' => TRUE,
-        'default' => 1,
+        'default' => 0,
       ),
       'processed' => array(
         'description' => 'Boolean indicating whether the crawl has been processed.',
         'type' => 'int',
         'not null' => TRUE,
-        'default' => 1,
+        'default' => 0,
       ),
       'priority_level' => array(
         'description' => 'priority level of this URL',
         'type' => 'int',
         'not null' => TRUE,
-        'default' => 1,
+        'default' => 0,
       ),
       'distinct_hash' => array(
         'description' => 'Unique hash of this URL',
@@ -181,7 +181,7 @@ function opensanmateo_sitecrawler_schema() {
         'description' => 'Boolean indicating whether the URL was redirected.',
         'type' => 'int',
         'not null' => TRUE,
-        'default' => 1,
+        'default' => 0,
       ),
       
     ),

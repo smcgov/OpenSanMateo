@@ -16,20 +16,21 @@ class SiteCrawler extends PHPCrawler {
   public function __construct($crawler_id) {
     $this->crawler_id = $crawler_id;
     
-    // Include needed class-files
-    $classpath = dirname(__FILE__);
-    if (!class_exists("PHPCrawlerSQLiteCookieCache")) {
-      include_once($classpath."/PHPCrawlerSQCookieCache.class.php");
-    }
-    if (!class_exists("PHPCrawlerSQLiteURLCache")) {
-      include_once($classpath."/PHPCrawlerSQURLCache.class.php");
-    }
+//     // Include needed class-files
+//     $classpath = dirname(__FILE__);
+//     if (!class_exists("PHPCrawlerSQLiteCookieCache")) {
+//       include_once($classpath."/PHPCrawlerSQCookieCache.class.php");
+//     }
+//     if (!class_exists("PHPCrawlerSQLiteURLCache")) {
+//       include_once($classpath."/PHPCrawlerSQURLCache.class.php");
+//     }
     
     parent::__construct();
   }
 
   function handleDocumentInfo($DocInfo) {
     $this->urls_processed[$DocInfo->http_status_code][] = $DocInfo->url;
+// drupal_set_message('<pre>$DocInfo->url ' . print_r($DocInfo->url, 1) . '</pre>');
     
     if (200 != $DocInfo->http_status_code) {
       return;
@@ -63,8 +64,8 @@ class SiteCrawler extends PHPCrawler {
       
     $node->field_sitecrawler_summary[$node->language][0]['value'] = 
       preg_match('#<body.*?>(.*?)</body>#is', $DocInfo->source, $matches)
-      ? $matches[1]
-      : $DocInfo->source;
+      ? check_plain($matches[1])
+      : check_plain($DocInfo->source);
       
     // store the Drupal crawler ID from the opensanmateo_sitecrawler_sites table
     $node->field_sitecrawler_id[$node->language][0]['value'] = $this->crawler_id;
@@ -85,6 +86,14 @@ class SiteCrawler extends PHPCrawler {
   public function getCurrentAbortStatus() {
     $crawler_status = $this->CrawlerStatusHandler->getCrawlerStatus();
     return $crawler_status->abort_reason;
+    
+//     if (
+//       ($crawler_status = $this->CrawlerStatusHandler)
+//       && ($crawler_status = $crawler_status->getCrawlerStatus())
+//     ) {
+//       return $crawler_status->abort_reason;
+//     }
+//     return NULL;
   }
   
   /**
@@ -95,6 +104,14 @@ class SiteCrawler extends PHPCrawler {
   public function getPreviousAbortStatus() {
     $crawler_status = $this->CrawlerStatusHandler->getCrawlerStatus();
     return $crawler_status->previous_abort_reason;
+    
+//     if (
+//       ($crawler_status = $this->CrawlerStatusHandler)
+//       && ($crawler_status = $crawler_status->getCrawlerStatus())
+//     ) {
+//       return $crawler_status->previous_abort_reason;
+//     }
+//     return NULL;
   }
   
 }

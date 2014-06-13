@@ -20,4 +20,14 @@ class PHPCrawlerUrlCacheTypes
    * URLs get cached in a SQLite-database-file. Recommended for spidering huge websites.
    */
   const URLCACHE_SQL = 3;
+  
+  /**
+   * Returns whether the provided value is a valid PHPCrawlerUrlCacheTypes enum value.
+   *
+   * @return bool
+   */
+  public static function isValidCacheType($url_cache_type)
+  {
+    return preg_match("#[1-3]#", $url_cache_type);
+  }
 }
