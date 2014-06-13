@@ -234,52 +234,31 @@ function opensanmateo_sitecrawler_admin_item_form($form, $form_state, $id = FALS
   // Per-path visibility.
   $form['opensanmateo_sitecrawler_path'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Pages'),
+    '#title' => t('Path Rules'),
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
     '#group' => 'visibility',
   );
 
-  $access = user_access('use PHP for settings');
-  if (isset($block->visibility) && $block->visibility == PATH_IMPORT_PHP && !$access) {
-    $form['opensanmateo_sitecrawler_path']['opensanmateo_sitecrawler_path_visibility'] = array(
-      '#type' => 'value',
-      '#value' => PATH_IMPORT_PHP,
-    );
-    $form['opensanmateo_sitecrawler_path']['opensanmateo_sitecrawler_path_pages'] = array(
-      '#type' => 'value',
-      '#value' => (!$new ? $record['path_pages'] : ''),
-    );
-  }
-  else {
-    $options = array(
-      PATH_IMPORT_NOTLISTED => t('All paths except those listed'),
-      PATH_IMPORT_LISTED => t('Only the listed paths'),
-    );
-    $description = t("Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*'));
-
-    if (module_exists('php') && $access) {
-      $options += array(PATH_IMPORT_PHP => t('Paths on which this PHP code returns <code>TRUE</code> (experts only)'));
-      $title = t('Paths or PHP code');
-      $description .= ' ' . t('If the PHP option is chosen, enter PHP code between %php. Note that executing incorrect PHP code can break your Drupal site.', array('%php' => '<?php ?>'));
-    }
-    else {
-      $title = t('Paths');
-    }
-    $form['opensanmateo_sitecrawler_path']['opensanmateo_sitecrawler_path_visibility'] = array(
-      '#type' => 'radios',
-      '#title' => t('Show block on specific pages'),
-      '#options' => $options,
-      '#default_value' => (!$new ? $record['path_visibility'] : PATH_IMPORT_NOTLISTED),
-    );
-    $form['opensanmateo_sitecrawler_path']['opensanmateo_sitecrawler_path_pages'] = array(
-      '#type' => 'textarea',
-      '#title' => '<span class="element-invisible">' . $title . '</span>',
-      '#default_value' => (!$new ? $record['path_pages'] : ''),
-      '#description' => $description,
-    );
-  }
-  
+  $form['opensanmateo_sitecrawler_path']['opensanmateo_sitecrawler_path_type_rules'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Content Type Rules'),
+    '#default_value' => (!$new ? $record['path_type_rules'] : '#text/html#'),
+    '#description' => t('<p>Adds a rule to the list of rules that decides which pages or files - regarding their content-type - should be received. After receiving the HTTP-header of a followed URL, the crawler check\'s - based on the given rules - whether the content of that URL should be received. If no rule matches with the content-type of the document, the content won\'t be received. By default, if no rule was added to the list, the crawler receives all content.</p><p>Examples:<ul><li>#text/html#</li><li>#text/css#</li></ul></p>'),
+  );
+  $form['opensanmateo_sitecrawler_path']['opensanmateo_sitecrawler_path_filter_rules'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Filter Rules'),
+    '#default_value' => (!$new ? $record['path_filter_rules'] : '#[.](jpg|jpeg|gif|png|css|js|ico|xml)([?].*)?$# i'),
+    '#description' => t('<p>Adds a rule to the list of rules that decide which URLs found on a page should be ignored by the crawler. If the crawler finds a URL and this URL matches with one of the given regular-expressions, the crawler will ignore this URL and won\'t follow it.</p><p>Examples:<ul><li>#(jpg|jpeg|gif|png|bmp)$# i</li><li>#(css|js)$# i</li></ul></p>'),
+  );
+  $form['opensanmateo_sitecrawler_path']['opensanmateo_sitecrawler_path_follow_rules'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Follow Rules'),
+    '#default_value' => (!$new ? $record['path_follow_rules'] : ''),
+    '#description' => t('<p>Adds a rule to the list of rules that decide which URLs found on a page should be followd explicitly. If the crawler finds an URL and this URL doesn\'t match with any of the given regular-expressions, the crawler will ignore this URL and won\'t follow it.</p><p>Examples:<ul><li>#(htm|html)$# i</li><li>#(php|php3|php4|php5)$# i</li></ul></p>'),
+  );
+    
   return $form;
 }
 
@@ -301,8 +280,9 @@ function opensanmateo_sitecrawler_admin_item_form_submit($form, &$form_state) {
         'traffic_limit',
         'page_limit',
         'request_delay',
-        'path_pages',
-        'path_visibility',
+        'path_type_rules',
+        'path_filter_rules',
+        'path_follow_rules',
       ) as $field_name) {
         $record[$field_name] = $form_state['values']['opensanmateo_sitecrawler_' . $field_name];
       }
@@ -370,6 +350,7 @@ function opensanmateo_sitecrawler_admin_item_delete_form_submit($form, &$form_st
  */
 function opensanmateo_sitecrawler_admin_item_run_form($form, $form_state, $id = FALSE) {
   $record = opensanmateo_sitecrawler_get_crawler($id);
+drupal_set_message('<pre>' . print_r($record, 1) . '</pre>');
   
   if (!$record) {
     drupal_goto('admin/config/opensanmateo_sitecrawler');
@@ -419,17 +400,16 @@ function opensanmateo_sitecrawler_run_crawler($crawler_id) {
     );
     return;
   }
+// drupal_set_message('<pre>' . print_r(opensanmateo_sitecrawler_get_crawler($crawler_id), 1) . '</pre>');
   
   // It may take a while to crawl a site ...
   set_time_limit(10000);
 
   $crawler = new SiteCrawler($record['id']);
-  $crawler->setUrlCacheType(PHPCrawlerUrlCacheTypes::URLCACHE_SQL);
-  $dbconnection = Database::getConnection();
+  $crawler->setUrlCacheType(PHPCrawlerUrlCacheTypes::URLCACHE_D7);
   $crawler->setDatabaseConnectionObject(
-    $dbconnection,
-    $dbconnection->prefixTables('{opensanmateo_sitecrawler_url_cache}'),
-    $dbconnection->prefixTables('{opensanmateo_sitecrawler_cookie_cache}')
+    'opensanmateo_sitecrawler_url_cache',
+    'opensanmateo_sitecrawler_cookie_cache'
   );
 
   $crawler->setURL($record['url']);
@@ -440,10 +420,21 @@ function opensanmateo_sitecrawler_run_crawler($crawler_id) {
   $crawler->setFollowRedirects(!!$record['options']['redirects']);
   $crawler->setFollowRedirectsTillContent(!!$record['options']['redirectsfollow']);
 
-  $crawler->addContentTypeReceiveRule("#text/html#");
-
-  // Ignore links to pictures/css/js; dont even request them
-  $crawler->addURLFilterRule("#\.(jpg|jpeg|gif|png|css|js|ico|xml)([?].*)?$# i");
+  foreach(preg_split('/$\R?^/m', $record['path_type_rules']) as $rule) {
+    if (!empty($rule)) {
+      $crawler->addContentTypeReceiveRule($rule);
+    }
+  }
+  foreach(preg_split('/$\R?^/m', $record['path_filter_rules']) as $rule) {
+    if (!empty($rule)) {
+      $crawler->addURLFilterRule($rule);
+    }
+  }
+  foreach(preg_split('/$\R?^/m', $record['path_follow_rules']) as $rule) {
+    if (!empty($rule)) {
+      $crawler->addURLFollowRule($rule);
+    }
+  }
 
 
   // convert strings to size in bytes
@@ -461,14 +452,6 @@ function opensanmateo_sitecrawler_run_crawler($crawler_id) {
   $crawler->enableResumption();
   
   $crawler_id_variable = 'opensanmateo_sitecrawler_crawler_id_' . $record['id'];
-
-//                                   variable_set($crawler_id_variable, FALSE);
-//                                   try {
-//                                     $dbconnection->query("DELETE FROM opensanmateo_sitecrawler_url_cache;");
-//                                     $dbconnection->query("DELETE FROM opensanmateo_sitecrawler_cookie_cache;");
-//                                   } catch (Exception $e) {
-//                                     drupal_set_message($e->getMessage(), 'error');
-//                                   }
 
   if (FALSE != ($crawler_ID = variable_get($crawler_id_variable, FALSE))) {
     try {
@@ -750,6 +733,6 @@ function opensanmateo_sitecrawler_get_crawler($id) {
 
 function opensanmateo_sitecrawler_apachesolr_update_index($document, $node, $namespace) {
   if ($node->type == 'sitecrawler_page') {
-//TODO: overwrite document URL field with the $node->field_sitecrawler_url['xxx'] field.
+    $document->url = $node->field_sitecrawler_url[$node->language][0]['url'];
   }
 }

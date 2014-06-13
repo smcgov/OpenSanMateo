@@ -17,9 +17,9 @@ class PHPCrawlerUrlCacheTypes
   const URLCACHE_SQLITE = 2;
   
   /**
-   * URLs get cached in a SQLite-database-file. Recommended for spidering huge websites.
+   * URLs get cached via DB calls to D7. Recommended for spidering huge websites.
    */
-  const URLCACHE_SQL = 3;
+  const URLCACHE_D7 = 3;
   
   /**
    * Returns whether the provided value is a valid PHPCrawlerUrlCacheTypes enum value.

@@ -91,18 +91,23 @@ function opensanmateo_sitecrawler_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
-      'path_visibility' => array(
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-        'size' => 'tiny',
-        'description' => 'Flag to indicate how to "path_pages" (0 = Use all paths except listed pages, 1 = Use only the listed paths, 2 = Use custom PHP code to determine path use)',
-      ),
-      'path_pages' => array(
+      'path_type_rules' => array(
         'type' => 'text',
         'size' => 'medium',
         'not null' => TRUE,
-        'description' => 'Contents of the "Pages" block; contains either a list of paths on which to include/exclude the paths or PHP code, depending on "path_visibility" setting.',
+        'description' => 'Restrictions on content types accepted/evaluated.',
+      ),
+      'path_filter_rules' => array(
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+        'description' => 'URL patterns for crawler to ignore when crawling.',
+      ),
+      'path_follow_rules' => array(
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+        'description' => 'URL patterns for crawler to explicity follow.',
       ),
     ),
     'primary key' => array('id'),

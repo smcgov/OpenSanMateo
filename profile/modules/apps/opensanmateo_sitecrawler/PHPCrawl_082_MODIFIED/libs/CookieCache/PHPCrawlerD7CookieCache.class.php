@@ -1,22 +1,22 @@
 <?php
 /**
- * Class for storing/caching cookies in a SQL-db-file.
+ * Class for storing/caching cookies in a D7's database.
  *
  * @package phpcrawl
  * @internal
  */
-class PHPCrawlerSQLCookieCache extends PHPCrawlerCookieCacheBase
+class PHPCrawlerD7CookieCache extends PHPCrawlerCookieCacheBase
 {
   protected $table = false;
   
-  protected $conn = false;
+//   protected $conn = false;
   
   protected $crawler_id = false;
   
-  public function __construct($conn, $table, $crawler_id)
+  public function __construct($table, $crawler_id)
   {
     $this->table = $table;
-    $this->conn = $conn;
+//     $this->conn = $conn;
     $this->crawler_id = $crawler_id;
   }
    
@@ -76,8 +76,12 @@ class PHPCrawlerSQLCookieCache extends PHPCrawlerCookieCacheBase
     
     $return_cookies = array();
 
-    $rows = $this->conn->query("SELECT * FROM " . $this->table . " WHERE source_domain = '".$url_parts["domain"]."' AND crawler_id = '" . $this->crawler_id . "';")->fetchAllAssoc('id');
-// drupal_set_message('<pre>PHPCrawlerSQLCookieCache::getCookiesForUrl ' . print_r($rows, 1) . '</pre>');
+    $result = db_query("SELECT * FROM {" . $this->table . "} WHERE source_domain = '".$url_parts["domain"]."' AND crawler_id = '" . $this->crawler_id . "';");
+    $rows = $result->fetchAllAssoc('id');
+//     $rows = $this->conn->query("SELECT * FROM " . $this->table . " WHERE source_domain = '".$url_parts["domain"]."' AND crawler_id = '" . $this->crawler_id . "';")->fetchAllAssoc('id');
+    
+    
+// drupal_set_message('<pre>PHPCrawlerD7CookieCache::getCookiesForUrl ' . print_r($rows, 1) . '</pre>');
     
     $cnt = count($rows);
     for ($x=0; $x<$cnt; $x++)
@@ -109,6 +113,9 @@ class PHPCrawlerSQLCookieCache extends PHPCrawlerCookieCacheBase
    */
   public function cleanup()
   {
-    $this->conn->query("DELETE FROM " . $this->table . " WHERE crawler_id = '" . $this->crawler_id . "';");
+//     $this->conn->query("DELETE FROM " . $this->table . " WHERE crawler_id = '" . $this->crawler_id . "';");
+    db_delete($this->table)
+      ->condition('crawler_id', $this->crawler_id)
+      ->execute();
   }
 }

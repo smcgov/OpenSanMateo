@@ -9,7 +9,7 @@
  */
 class PHPCrawler
 {
-  public $class_version = "0.82";
+  public $class_version = "0.82.modified";
   
   /**
    * The PHPCrawlerHTTPRequest-Object
@@ -138,13 +138,6 @@ class PHPCrawler
   protected $working_base_directory;
   
   /**
-   * database connection object
-   *
-   * @var PHP resource
-   */
-  protected $database_connection;
-  
-  /**
    * database url cache table
    *
    * @var string
@@ -245,7 +238,7 @@ class PHPCrawler
     if (!class_exists("PHPCrawlerURLCacheBase")) include_once($classpath."/UrlCache/PHPCrawlerURLCacheBase.class.php");
     if (!class_exists("PHPCrawlerMemoryURLCache")) include_once($classpath."/UrlCache/PHPCrawlerMemoryURLCache.class.php");
     if ($this->SQLiteAvailable && !class_exists("PHPCrawlerSQLiteURLCache")) include_once($classpath."/UrlCache/PHPCrawlerSQLiteURLCache.class.php");
-    if (!class_exists("PHPCrawlerSQLURLCache")) include_once($classpath."/UrlCache/PHPCrawlerSQLURLCache.class.php");
+    if (!class_exists("PHPCrawlerD7URLCache")) include_once($classpath."/UrlCache/PHPCrawlerD7URLCache.class.php");
     
     // PageRequest-class
     if (!class_exists("PHPCrawlerHTTPRequest")) include_once($classpath."/PHPCrawlerHTTPRequest.class.php");
@@ -256,7 +249,7 @@ class PHPCrawler
     if (!class_exists("PHPCrawlerCookieCacheBase")) include_once($classpath."/CookieCache/PHPCrawlerCookieCacheBase.class.php");
     if (!class_exists("PHPCrawlerMemoryCookieCache")) include_once($classpath."/CookieCache/PHPCrawlerMemoryCookieCache.class.php");
     if ($this->SQLiteAvailable && !class_exists("PHPCrawlerSQLiteCookieCache")) include_once($classpath."/CookieCache/PHPCrawlerSQLiteCookieCache.class.php");
-    if (!class_exists("PHPCrawlerSQLCookieCache")) include_once($classpath."/CookieCache/PHPCrawlerSQLCookieCache.class.php");
+    if (!class_exists("PHPCrawlerD7CookieCache")) include_once($classpath."/CookieCache/PHPCrawlerD7CookieCache.class.php");
     
     // URL-filter-class
     if (!class_exists("PHPCrawlerURLFilter")) include_once($classpath."/PHPCrawlerURLFilter.class.php");
@@ -325,9 +318,8 @@ class PHPCrawler
     if ($this->SQLiteAvailable && $this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE) {
       $this->LinkCache = new PHPCrawlerSQLiteURLCache($this->working_directory."urlcache.db3", true);
     }
-    elseif ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQL) {
-      $this->LinkCache = new PHPCrawlerSQLURLCache(
-        $this->database_connection,
+    elseif ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_D7) {
+      $this->LinkCache = new PHPCrawlerD7URLCache(
         $this->database_url_cache_table,
         $this->crawler_uniqid
       );
@@ -340,7 +332,7 @@ class PHPCrawler
     if (
       (
         ($this->SQLiteAvailable && $this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE)
-        || $this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQL
+        || $this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_D7
       )
       && $this->urlcache_purged == false)
     {
@@ -352,9 +344,8 @@ class PHPCrawler
     if ($this->SQLiteAvailable && $this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQLITE) {
       $this->CookieCache = new PHPCrawlerSQLiteCookieCache($this->working_directory."cookiecache.db3", true);
     } 
-    elseif ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_SQL) {
-      $this->CookieCache = new PHPCrawlerSQLCookieCache(
-        $this->database_connection,
+    elseif ($this->url_cache_type == PHPCrawlerUrlCacheTypes::URLCACHE_D7) {
+      $this->CookieCache = new PHPCrawlerD7CookieCache(
         $this->database_cookie_cache_table,
         $this->crawler_uniqid
       );
@@ -1787,13 +1778,12 @@ class PHPCrawler
    * @return bool             TRUE on success, otherwise false.
    * @section 1 Basic settings
    */
-  public function setDatabaseConnectionObject($conn, $url_cache_table, $cookie_cache_table)
+  public function setDatabaseConnectionObject($url_cache_table, $cookie_cache_table)
   {
     if (
-      $conn->schema()->tableExists($url_cache_table)
-      && $conn->schema()->tableExists($cookie_cache_table)
+      db_table_exists($url_cache_table)
+      && db_table_exists($cookie_cache_table)
     ) {
-      $this->database_connection = $conn;
       $this->database_url_cache_table = $url_cache_table;
       $this->database_cookie_cache_table = $cookie_cache_table;
       return true;
