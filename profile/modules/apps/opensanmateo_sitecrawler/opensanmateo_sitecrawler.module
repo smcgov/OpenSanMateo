@@ -1,8 +1,9 @@
 <?php
 /**
  * @file
- * Code for the OpenSanMateo Crawler feature.
+ * Code for the OpenSanMateo Site Crawler feature.
  */
-
+ 
 include_once 'SiteCrawler.class.php';
 include_once 'opensanmateo_sitecrawler.module.inc';
+include_once 'opensanmateo_sitecrawler.features.inc';
