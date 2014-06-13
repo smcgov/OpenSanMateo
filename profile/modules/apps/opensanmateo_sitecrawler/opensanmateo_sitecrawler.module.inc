@@ -733,6 +733,6 @@ function opensanmateo_sitecrawler_get_crawler($id) {
 
 function opensanmateo_sitecrawler_apachesolr_update_index($document, $node, $namespace) {
   if ($node->type == 'sitecrawler_page') {
-    $document->url = $node->field_sitecrawler_url[$node->language][0]['url'];
+    $document->ss_url = $node->field_sitecrawler_url[$node->language][0]['url'];
   }
 }

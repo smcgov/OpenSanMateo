@@ -53,7 +53,8 @@ class SiteCrawler extends PHPCrawler {
     $node->field_sitecrawler_url[$node->language][0]['title'] = $node->title;
     $node->field_sitecrawler_url[$node->language][0]['url'] = $DocInfo->url;
       
-    $node->field_sitecrawler_summary[$node->language][0]['value'] = 
+//     $node->field_sitecrawler_summary[$node->language][0]['value'] = 
+    $node->body = 
       preg_match('#<body.*?>(.*?)</body>#is', $DocInfo->source, $matches)
       ? $matches[1]
       : $DocInfo->source;
