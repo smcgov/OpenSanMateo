@@ -5,6 +5,7 @@
  * bundle.
  */
 // class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback {
+class OpenSanMateoSiteCrawlerExternalURLs {
 
 //   public function supportsIndex(SearchApiIndex $index) {
 // //     return $index->getEntityType() && ($info = entity_get_info($index->getEntityType())) && self::hasBundles($info);
@@ -71,4 +72,4 @@
 //     return !empty($entity_info['entity keys']['bundle']) && !empty($entity_info['bundles']);
 //   }
 
-// }
+}
