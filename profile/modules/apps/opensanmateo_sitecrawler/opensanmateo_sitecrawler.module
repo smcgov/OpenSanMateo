@@ -6,4 +6,5 @@
  
 include_once 'SiteCrawler.class.php';
 include_once 'opensanmateo_sitecrawler.module.inc';
+include_once 'includes/callback_fix_sitecrawler_url.inc';
 include_once 'opensanmateo_sitecrawler.features.inc';
