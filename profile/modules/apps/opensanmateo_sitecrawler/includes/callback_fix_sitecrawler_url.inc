@@ -4,7 +4,7 @@
  * Search API data alteration callback that filters out items based on their
  * bundle.
  */
-class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback {
+// class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback {
 
 //   public function supportsIndex(SearchApiIndex $index) {
 // //     return $index->getEntityType() && ($info = entity_get_info($index->getEntityType())) && self::hasBundles($info);
@@ -71,4 +71,4 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
 //     return !empty($entity_info['entity keys']['bundle']) && !empty($entity_info['bundles']);
 //   }
 
-}
+// }
