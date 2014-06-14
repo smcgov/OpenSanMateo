@@ -731,13 +731,13 @@ function opensanmateo_sitecrawler_get_crawler($id) {
   return $record;
 }
 
-function opensanmateo_sitecrawler_apachesolr_update_index($document, $node, $namespace) {
-die('killed by opensanmateo_sitecrawler_apachesolr_update_index');
-drupal_set_message('opensanmateo_sitecrawler_apachesolr_update_indexL ' . print_r($node->title,1));
-  if ($node->type == 'sitecrawler_page') {
-    $document->ss_url = $node->field_sitecrawler_url[$node->language][0]['url'];
-  }
-}
+// function opensanmateo_sitecrawler_apachesolr_update_index($document, $node, $namespace) {
+// die('killed by opensanmateo_sitecrawler_apachesolr_update_index');
+// drupal_set_message('opensanmateo_sitecrawler_apachesolr_update_indexL ' . print_r($node->title,1));
+//   if ($node->type == 'sitecrawler_page') {
+//     $document->ss_url = $node->field_sitecrawler_url[$node->language][0]['url'];
+//   }
+// }
 
 
 /**
@@ -751,3 +751,19 @@ drupal_set_message('opensanmateo_sitecrawler_apachesolr_update_indexL ' . print_
 // }
 //   }
 // }
+
+
+/**
+ * Implements hook_search_api_alter_callback_info().
+ */
+function search_api_search_api_alter_callback_info() {
+  $callbacks = array();
+  
+  $callbacks['opensanmateo_sitecrawler_alter_sitecrawler_page_url'] = array(
+    'name' => t('Alter Sitecrawler Page URLs'),
+    'description' => t("Modifies Sitecrawler Page item's URLs to the external location."),
+    'class' => 'OpenSanMateoSiteCrawlerExternalURLs',
+  );
+
+  return $callbacks;
+}
