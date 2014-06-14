@@ -761,7 +761,7 @@ function opensanmateo_sitecrawler_search_api_alter_callback_info() {
   
   $callbacks['opensanmateo_sitecrawler_alter_sitecrawler_page_url'] = array(
     'name' => t('Alter Sitecrawler Page URLs'),
-    'description' => t("Modifies Sitecrawler Page item's URLs to the external location."),
+    'description' => t("Modifies Sitecrawler Page item's URLs to their external location."),
     'class' => 'OpenSanMateoSiteCrawlerExternalURLs',
   );
 
