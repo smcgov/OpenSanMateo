@@ -748,11 +748,13 @@ function opensanmateo_sitecrawler_get_crawler($id) {
 function opensanmateo_sitecrawler_search_api_alter_callback_info() {
   $callbacks = array();
   
+  
   $callbacks['opensanmateo_sitecrawler_alter_sitecrawler_page_url'] = array(
     'name' => t('Alter Sitecrawler Page URLs'),
     'description' => t("Modifies Sitecrawler Page item's URLs to their external location."),
     'class' => 'OpenSanMateoSiteCrawlerExternalURLs',
   );
 
+drupal_set_message('<pre>opensanmateo_sitecrawler_search_api_alter_callback_info' . print_r($callbacks,1) . '</pre>');
   return $callbacks;
 }
