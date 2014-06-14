@@ -756,7 +756,7 @@ function opensanmateo_sitecrawler_get_crawler($id) {
 /**
  * Implements hook_search_api_alter_callback_info().
  */
-function search_api_search_api_alter_callback_info() {
+function opensanmateo_sitecrawler_search_api_alter_callback_info() {
   $callbacks = array();
   
   $callbacks['opensanmateo_sitecrawler_alter_sitecrawler_page_url'] = array(
