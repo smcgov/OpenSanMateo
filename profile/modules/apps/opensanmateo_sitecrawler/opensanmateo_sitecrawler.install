@@ -288,12 +288,31 @@ function opensanmateo_sitecrawler_schema() {
 }
 
 /**
- * Implements hook_uninstall().
- *
- * This removes the example data when the module is uninstalled.
+ * Implements hook_install().
  *
  * @ingroup opensanmateo_sitecrawler
  */
 function opensanmateo_sitecrawler_uninstall() {
-  db_drop_table('opensanmateo_sitecrawler_sites');
+  $weight = db_select('system', 's')
+              ->fields('s', array('weight'))
+              ->condition('name', 'search_api', '=')
+              ->execute()
+              ->fetchField();
+              
+  db_update('system')
+    ->fields(array('weight' => $weight + 1))
+    ->condition('name', 'opensanmateo_sitecrawler', '=')
+    ->execute();
+  
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * @ingroup opensanmateo_sitecrawler
+ */
+function opensanmateo_sitecrawler_uninstall() {
+  foreach (opensanmateo_sitecrawler_schema() as $table => $data) {
+    db_drop_table($table);
+  }
 }
