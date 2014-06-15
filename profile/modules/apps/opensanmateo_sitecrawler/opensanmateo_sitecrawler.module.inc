@@ -756,17 +756,10 @@ function opensanmateo_sitecrawler_get_crawler($id) {
 
 
 /**
- * Implements hook_search_api_item_type_info().
+ * Implements hook_search_api_item_type_info_alter().
  *
  */
-function opensanmateo_sitecrawler_search_api_item_type_info() {
-  $types = array();
+function opensanmateo_sitecrawler_search_api_item_type_info_alter(&$types) {
 die('opensanmateo_sitecrawler_search_api_item_type_info');
-  $types['sitecrawler_page'] = array(
-    'name' => 'SiteCrawler Page',
-    'datasource controller' => 'OpenSanMateoSiteCrawlerEntityDataSourceController',
-    'entity_type' => 'sitecrawler_page',
-  );
-
-  return $types;
+  $types['sitecrawler_page']['datasource controller'] = 'OpenSanMateoSiteCrawlerEntityDataSourceController';
 }
