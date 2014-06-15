@@ -16,7 +16,7 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
     return true;
   }
 
-//   public function alterItems(array &$items) {
+  public function alterItems(array &$items) {
 //     $info = entity_get_info($this->index->getEntityType());
 //     if (self::hasBundles($info) && isset($this->options['bundles'])) {
 //       $bundles = array_flip($this->options['bundles']);
@@ -28,7 +28,7 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
 //         }
 //       }
 //     }
-//   }
+  }
 
 //   public function configurationForm() {
 //     $info = entity_get_info($this->index->getEntityType());
