@@ -2,7 +2,7 @@
 
 
 
-module_load_include('inc', 'search_api', 'includes/callback');
+// module_load_include('inc', 'search_api', 'includes/callback');
 /**
  * Search API data alteration callback that filters out items based on their
  * bundle.
@@ -71,8 +71,8 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
    * Helper method for figuring out if the entities with the given entity info
    * can be filtered by bundle.
    */
-  protected static function hasBundles(array $entity_info) {
+//   protected static function hasBundles(array $entity_info) {
 //     return !empty($entity_info['entity keys']['bundle']) && !empty($entity_info['bundles']);
-  }
+//   }
 
 }
