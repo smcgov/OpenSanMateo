@@ -12,6 +12,7 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
 watchdog('actions', '<pre>supportsIndex: ' . print_r($index->getEntityType(),1) . '</pre>');
 // die('<pre>supportsIndex: ' . print_r($index->getEntityType(),1) . '</pre>');
     drupal_set_message($index->getEntityType());
+    drupal_set_message(entity_get_info($index->getEntityType()));
     return true;
   }
 
