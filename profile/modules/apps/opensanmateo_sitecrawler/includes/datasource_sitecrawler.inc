@@ -18,6 +18,7 @@ class OpenSanMateoSiteCrawlerEntityDataSourceController extends SearchApiEntityD
    *   item has no URL of its own.
    */
   public function getItemUrl($item) {
+drupal_set_message('BEFORE opensanmateo_sitecrawler_search_api_item_type_info_alter <pre>' . print_r($item->uri,1) . '</pre>');
     return array(
       'path' => 'http://www.emanaton.com/',
       'options' => array(
