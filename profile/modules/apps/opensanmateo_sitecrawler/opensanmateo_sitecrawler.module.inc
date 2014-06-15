@@ -755,6 +755,5 @@ function opensanmateo_sitecrawler_search_api_alter_callback_info() {
     'class' => 'OpenSanMateoSiteCrawlerExternalURLs',
   );
 
-drupal_set_message('<pre>opensanmateo_sitecrawler_search_api_alter_callback_info' . print_r($callbacks,1) . '</pre>');
   return $callbacks;
 }
