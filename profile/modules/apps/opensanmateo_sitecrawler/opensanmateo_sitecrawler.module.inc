@@ -760,6 +760,6 @@ function opensanmateo_sitecrawler_get_crawler($id) {
  *
  */
 function opensanmateo_sitecrawler_search_api_item_type_info_alter(&$types) {
-die('opensanmateo_sitecrawler_search_api_item_type_info');
+// die('opensanmateo_sitecrawler_search_api_item_type_info');
   $types['sitecrawler_page']['datasource controller'] = 'OpenSanMateoSiteCrawlerEntityDataSourceController';
 }
