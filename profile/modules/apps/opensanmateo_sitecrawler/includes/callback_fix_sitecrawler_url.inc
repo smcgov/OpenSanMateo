@@ -10,7 +10,7 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
   public function supportsIndex(SearchApiIndex $index) {
 //     return $index->getEntityType() && ($info = entity_get_info($index->getEntityType())) && self::hasBundles($info);
 watchdog('actions', '<pre>supportsIndex: ' . print_r($index->getEntityType(),1) . '</pre>');
-die('<pre>supportsIndex: ' . print_r($index->getEntityType(),1) . '</pre>');
+// die('<pre>supportsIndex: ' . print_r($index->getEntityType(),1) . '</pre>');
     drupal_set_message($index->getEntityType());
     return true;
   }
