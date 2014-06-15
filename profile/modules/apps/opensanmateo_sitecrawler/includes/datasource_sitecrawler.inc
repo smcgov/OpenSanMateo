@@ -3,7 +3,7 @@
 /**
  * 
  */
-class OpenSanMateoSiteCrawlerEntityDataSourceController extends SearchApiEntityDataSourceController {
+class OpenSanMateoSiteCrawlerEntityDataSourceController extends SearchApiExternalDataSourceController {
 
   
   /**
