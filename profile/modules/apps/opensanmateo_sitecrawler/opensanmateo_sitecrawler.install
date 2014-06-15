@@ -292,7 +292,7 @@ function opensanmateo_sitecrawler_schema() {
  *
  * @ingroup opensanmateo_sitecrawler
  */
-function opensanmateo_sitecrawler_uninstall() {
+function opensanmateo_sitecrawler_install() {
   $weight = db_select('system', 's')
               ->fields('s', array('weight'))
               ->condition('name', 'search_api', '=')
