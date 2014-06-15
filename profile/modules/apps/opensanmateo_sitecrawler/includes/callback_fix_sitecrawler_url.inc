@@ -17,6 +17,7 @@ watchdog('actions', '<pre>supportsIndex: ' . print_r($index->getEntityType(),1) 
   public function alterItems(array &$items) {
     $info = entity_get_info($this->index->getEntityType());
 watchdog('actions', '<pre>alterItems: ' . print_r($info,1) . '</pre>');
+die('<pre>alterItems: ' . print_r($info,1) . '</pre>');
 drupal_set_message('<pre>alterItems: ' . print_r($info,1) . '</pre>');
 //     if (self::hasBundles($info) && isset($this->options['bundles'])) {
 //       $bundles = array_flip($this->options['bundles']);
