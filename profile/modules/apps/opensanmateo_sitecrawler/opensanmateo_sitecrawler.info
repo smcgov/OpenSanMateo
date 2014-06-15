@@ -5,6 +5,7 @@ package = OpenSanMateo
 version = 7.x-0.1
 project = opensanmateo_sitecrawler
 files[] = includes/callback_fix_sitecrawler_url.inc
+dependencies[] = search_api
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = link
