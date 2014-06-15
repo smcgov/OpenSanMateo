@@ -15,6 +15,7 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
 
   public function alterItems(array &$items) {
     $info = entity_get_info($this->index->getEntityType());
+watchdog('actions', '<pre>alterItems: %info</pre>', array('%info' => print_r($info,1)));
 drupal_set_message('<pre>alterItems: ' . print_r($info,1) . '</pre>');
 //     if (self::hasBundles($info) && isset($this->options['bundles'])) {
 //       $bundles = array_flip($this->options['bundles']);
