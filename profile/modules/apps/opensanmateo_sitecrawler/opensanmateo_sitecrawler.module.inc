@@ -759,7 +759,7 @@ function opensanmateo_sitecrawler_search_api_alter_callback_info() {
  * Implements hook_search_api_item_type_info().
  *
  */
-function search_api_search_api_item_type_info() {
+function opensanmateo_sitecrawler_search_api_item_type_info() {
   $types = array();
 
   $types['sitecrawler_page'] = array(
