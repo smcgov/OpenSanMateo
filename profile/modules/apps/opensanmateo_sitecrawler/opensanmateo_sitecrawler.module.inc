@@ -761,6 +761,6 @@ function opensanmateo_sitecrawler_get_crawler($id) {
  */
 function opensanmateo_sitecrawler_search_api_item_type_info_alter(&$types) {
 // die('opensanmateo_sitecrawler_search_api_item_type_info');
-// drupal_set_message('opensanmateo_sitecrawler_search_api_item_type_info_alter <pre>' . print_r($types['sitecrawler_page'],1) . '</pre>');
+drupal_set_message('opensanmateo_sitecrawler_search_api_item_type_info_alter <pre>' . print_r($types,1) . '</pre>');
   $types['sitecrawler_page']['datasource controller'] = 'OpenSanMateoSiteCrawlerEntityDataSourceController';
 }
