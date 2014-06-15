@@ -2,7 +2,7 @@
 
 
 
-// module_load_include('inc', 'search_api', 'includes/callback');
+module_load_include('inc', 'search_api', 'includes/callback');
 /**
  * Search API data alteration callback that filters out items based on their
  * bundle.
