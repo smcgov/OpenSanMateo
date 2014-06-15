@@ -1,8 +1,5 @@
 <?php
 
-
-
-// module_load_include('inc', 'search_api', 'includes/callback');
 /**
  * Search API data alteration callback that filters out items based on their
  * bundle.
@@ -10,11 +7,11 @@
 class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback {
 // class OpenSanMateoSiteCrawlerExternalURLs {
 
-  public function supportsIndex(SearchApiIndex $index) {
+//   public function supportsIndex(SearchApiIndex $index) {
 //     return $index->getEntityType() && ($info = entity_get_info($index->getEntityType())) && self::hasBundles($info);
-    drupal_set_message($index->getEntityType());
-    return true;
-  }
+//     drupal_set_message($index->getEntityType());
+//     return true;
+//   }
 
   public function alterItems(array &$items) {
 //     $info = entity_get_info($this->index->getEntityType());

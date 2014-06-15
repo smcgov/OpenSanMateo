@@ -4,10 +4,6 @@
  * Contains module-level code we don't want to risk Features overwriting if something went wrong with a Feature update or recreate
  */
  
-function opensanmateo_sitecrawler_init() {
-  module_load_include('inc', 'search_api', 'includes/callback');
-}
-
 /**
  * Tell Drupal to also look for template files in the modules folder
  *
