@@ -18,7 +18,12 @@ class OpenSanMateoSiteCrawlerEntityDataSourceController extends SearchApiEntityD
    *   item has no URL of its own.
    */
   public function getItemUrl($item) {
-    return 'http://www.emanaton.com/';
+    return array(
+      'path' => 'http://www.emanaton.com/',
+      'options' => array(
+        'external' => TRUE,
+      ),
+    );
 //     if ($this->entityType == 'file') {
 //       return array(
 //         'path' => file_create_url($item->uri),
