@@ -30,7 +30,7 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
 //     }
   }
 
-  public function configurationForm() {
+//   public function configurationForm() {
 //     $info = entity_get_info($this->index->getEntityType());
 //     if (self::hasBundles($info)) {
 //       $options = array();
@@ -65,7 +65,7 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
 //       );
 //     }
 //     return $form;
-  }
+//   }
 
   /**
    * Helper method for figuring out if the entities with the given entity info
