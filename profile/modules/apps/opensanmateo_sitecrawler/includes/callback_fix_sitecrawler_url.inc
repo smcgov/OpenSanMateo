@@ -10,13 +10,13 @@ module_load_include('inc', 'search_api', 'includes/callback');
 class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback {
 // class OpenSanMateoSiteCrawlerExternalURLs {
 
-//   public function supportsIndex(SearchApiIndex $index) {
-// //     return $index->getEntityType() && ($info = entity_get_info($index->getEntityType())) && self::hasBundles($info);
-//     drupal_set_message($index->getEntityType());
-//     return true;
-//   }
+  public function supportsIndex(SearchApiIndex $index) {
+//     return $index->getEntityType() && ($info = entity_get_info($index->getEntityType())) && self::hasBundles($info);
+    drupal_set_message($index->getEntityType());
+    return true;
+  }
 
-//   public function alterItems(array &$items) {
+  public function alterItems(array &$items) {
 //     $info = entity_get_info($this->index->getEntityType());
 //     if (self::hasBundles($info) && isset($this->options['bundles'])) {
 //       $bundles = array_flip($this->options['bundles']);
@@ -28,9 +28,9 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
 //         }
 //       }
 //     }
-//   }
+  }
 
-//   public function configurationForm() {
+  public function configurationForm() {
 //     $info = entity_get_info($this->index->getEntityType());
 //     if (self::hasBundles($info)) {
 //       $options = array();
@@ -65,14 +65,14 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
 //       );
 //     }
 //     return $form;
-//   }
+  }
 
   /**
    * Helper method for figuring out if the entities with the given entity info
    * can be filtered by bundle.
    */
-//   protected static function hasBundles(array $entity_info) {
+  protected static function hasBundles(array $entity_info) {
 //     return !empty($entity_info['entity keys']['bundle']) && !empty($entity_info['bundles']);
-//   }
+  }
 
 }
