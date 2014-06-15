@@ -761,7 +761,7 @@ function opensanmateo_sitecrawler_search_api_alter_callback_info() {
  */
 function opensanmateo_sitecrawler_search_api_item_type_info() {
   $types = array();
-
+die('opensanmateo_sitecrawler_search_api_item_type_info');
   $types['sitecrawler_page'] = array(
     'name' => 'SiteCrawler Page',
     'datasource controller' => 'OpenSanMateoSiteCrawlerEntityDataSourceController',
