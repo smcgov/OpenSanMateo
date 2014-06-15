@@ -7,11 +7,12 @@
 class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback {
 // class OpenSanMateoSiteCrawlerExternalURLs {
 
-//   public function supportsIndex(SearchApiIndex $index) {
+  public function supportsIndex(SearchApiIndex $index) {
 //     return $index->getEntityType() && ($info = entity_get_info($index->getEntityType())) && self::hasBundles($info);
-//     drupal_set_message($index->getEntityType());
-//     return true;
-//   }
+watchdog('actions', '<pre>supportsIndex: ' . print_r($index->getEntityType(),1) . '</pre>');
+    drupal_set_message($index->getEntityType());
+    return true;
+  }
 
   public function alterItems(array &$items) {
     $info = entity_get_info($this->index->getEntityType());
