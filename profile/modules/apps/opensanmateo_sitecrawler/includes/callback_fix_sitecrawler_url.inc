@@ -8,6 +8,7 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
 // class OpenSanMateoSiteCrawlerExternalURLs {
 
   public function supportsIndex(SearchApiIndex $index) {
+    return TRUE;
     return 
       $index->getEntityType() 
       && ($info = entity_get_info($index->getEntityType())) 
@@ -16,9 +17,9 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
 
   public function alterItems(array &$items) {
 //     $info = entity_get_info($this->index->getEntityType());
-// watchdog('actions', '<pre>alterItems: ' . print_r($info,1) . '</pre>');
-// die('<pre>alterItems: ' . print_r($info,1) . '</pre>');
-// drupal_set_message('<pre>alterItems: ' . print_r($info,1) . '</pre>');
+watchdog('actions', '<pre>alterItems: ' . print_r($info,1) . '</pre>');
+die('<pre>alterItems: ' . print_r($info,1) . '</pre>');
+drupal_set_message('<pre>alterItems: ' . print_r($info,1) . '</pre>');
 //     if (self::hasBundles($info) && isset($this->options['bundles'])) {
 //       $bundles = array_flip($this->options['bundles']);
 //       $default = (bool) $this->options['default'];

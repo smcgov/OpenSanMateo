@@ -739,18 +739,18 @@ function opensanmateo_sitecrawler_get_crawler($id) {
 /**
  * Implements hook_search_api_alter_callback_info().
  */
-// function opensanmateo_sitecrawler_search_api_alter_callback_info() {
-//   $callbacks = array();
-//   
-//   
-//   $callbacks['opensanmateo_sitecrawler_alter_sitecrawler_page_url'] = array(
-//     'name' => t('Alter Sitecrawler Page URLs'),
-//     'description' => t("Modifies Sitecrawler Page item's URLs to their external location."),
-//     'class' => 'OpenSanMateoSiteCrawlerExternalURLs',
-//   );
-// 
-//   return $callbacks;
-// }
+function opensanmateo_sitecrawler_search_api_alter_callback_info() {
+  $callbacks = array();
+  
+  
+  $callbacks['opensanmateo_sitecrawler_alter_sitecrawler_page_url'] = array(
+    'name' => t('Alter Sitecrawler Page URLs'),
+    'description' => t("Modifies Sitecrawler Page item's URLs to their external location."),
+    'class' => 'OpenSanMateoSiteCrawlerExternalURLs',
+  );
+
+  return $callbacks;
+}
 
 /**
  * Implements hook_search_api_item_type_info_alter().
