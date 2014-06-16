@@ -770,7 +770,7 @@ function opensanmateo_sitecrawler_search_api_item_type_info_alter(&$types) {
 function opensanmateo_sitecrawler_url_outbound_alter(&$path, &$options, $original_path) {
 $phppath = !!strstr($path, 'php');
 if ($phppath) {
-  drupal_set_message('BEFORE: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options,1) . '</pre>');
+//   drupal_set_message('BEFORE: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options,1) . '</pre>');
 }
   if (
 //     preg_match('|^node/([0-9]+)?|', $path, $matches)
@@ -779,12 +779,13 @@ if ($phppath) {
     ($node = menu_get_object())
     && 'sitecrawler_page' == $node->type
   ) {
+  drupal_set_message('PROCESS: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options,1) . '</pre>');
     $path = 'http://emanaton.com/';
     $options['external'] = TRUE;
   }
   
 if ($phppath) {
-  drupal_set_message('AFTER: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options,1) . '</pre>');
+//   drupal_set_message('AFTER: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options,1) . '</pre>');
 }
 
 }
