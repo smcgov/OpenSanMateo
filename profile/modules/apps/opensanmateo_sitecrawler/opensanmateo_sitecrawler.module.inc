@@ -716,72 +716,68 @@ function opensanmateo_sitecrawler_get_crawler($id) {
   return $record;
 }
 
-// function opensanmateo_sitecrawler_apachesolr_update_index($document, $node, $namespace) {
-// die('killed by opensanmateo_sitecrawler_apachesolr_update_index');
-// drupal_set_message('opensanmateo_sitecrawler_apachesolr_update_indexL ' . print_r($node->title,1));
-//   if ($node->type == 'sitecrawler_page') {
-//     $document->ss_url = $node->field_sitecrawler_url[$node->language][0]['url'];
-//   }
-// }
-
 /**
- * implements hook_search_api_index_items_alter
+ * Implements hook_url_outbound_alter().
+ * 
+ * OK, this is *NOT* the way I wanted to do this, but it worked after everything 
+ * else failed, so here it is. The goal was to get the URL stored in SOLR to be 
+ * the external URL of the crawled content rather than the stored Drupal 
+ * internal URL. Changing the view URL across the board is undesirable because 
+ * that interferes with normal use of the node internal to drupal (e.g. if an 
+ * admin wanted to view the node).
+ * 
+ * The following options were considered and rejected before deciding on this
+ * hook:
+ * 
+ *  * hook_apachesolr_update_index: Provides an array of entity objects being 
+ *    passed to SOLR, and is a handy place to add or alter content before it's 
+ *    indexed. However, the content URL is not a field that's available to 
+ *    overwrite on entity objects.
+ * 
+ *  * hook_search_api_index_items_alter: Same problem as 
+ *    hook_apachesolr_update_index.
+ * 
+ *  * hook_search_api_alter_callback_info: The thinking here was that we could 
+ *    provide a custom callback that would modify URL on the object. However, as
+ *    with the update_index and search_api_index_items_alter hooks, the URL is 
+ *    not set at this point so cannot be modified. There was some false hope to 
+ *    the contrary given the exising SearchApiAlterAddUrl object (ref: 
+ *    callback_add_url.inc), which calls getItemUrl() off of the datasource, 
+ *    but this is setting the value to an arbitrary field in the solr index and 
+ *    is not setting the URL stored in SOLR for this item. Further, the 
+ *    getItemUrl() methos is only ever called by the SearchApiAlterAddUrl 
+ *    object, and is not used by the underlying system to fetch and store the 
+ *    URL.
+ * 
+ *  * hook_search_api_item_type_info_alter: The existence of getItemUrl() here 
+ *    gave some false hope regarding how that method might be being used by the 
+ *    underlying syste, but this turned out to be false (see discussion on 
+ *    hook_search_api_alter_callback_info above). As before, there doesn't 
+ *    appear to be a way to override the existing URL from the context of the 
+ *    datasource object (even though this seems to be implied by the existence 
+ *    and description of the SearchApiExternalDataSourceController object).
  *
+ * So, failing all of that, this implementation of hook_url_outbound_alter is 
+ * being used instead. A specific check is being made to determine if this URL 
+ * is in the context of a search_api request; an exhaustive check has not been 
+ * done to determine if this check actually limits it to just calls from the 
+ * search_api, but various test runs seem to indicate that this is the case. As 
+ * you can see, when the entity is a sitecrawler_page, then the URL value stored 
+ * in field_sitecrawler_url at the time the content was is substituted for the 
+ * URL of the content.
  */
-// function opensanmateo_sitecrawler_search_api_index_items_alter(array &$items, SearchApiIndex $index) {
-//   foreach ($items as $id => $item) {
-// if (FALSE !== strstr($item->title, 'PHP')) {
-//   drupal_set_message('opensanmateo_sitecrawler_apachesolr_update_index <pre>' . print_r($item,1) . '</pre>');
-// }
-//   }
-// }
-
-/**
- * Implements hook_search_api_alter_callback_info().
- */
-// function opensanmateo_sitecrawler_search_api_alter_callback_info() {
-//   $callbacks = array();
-//   
-//   
-//   $callbacks['opensanmateo_sitecrawler_alter_sitecrawler_page_url'] = array(
-//     'name' => t('Alter Sitecrawler Page URLs'),
-//     'description' => t("Modifies Sitecrawler Page item's URLs to their external location."),
-//     'class' => 'OpenSanMateoSiteCrawlerExternalURLs',
-//   );
-// 
-//   return $callbacks;
-// }
-
-/**
- * Implements hook_search_api_item_type_info_alter().
- *
- */
-// function opensanmateo_sitecrawler_search_api_item_type_info_alter(&$types) {
-// // die('opensanmateo_sitecrawler_search_api_item_type_info');
-// // drupal_set_message('opensanmateo_sitecrawler_search_api_item_type_info_alter <pre>' . print_r($types,1) . '</pre>');
-// // drupal_set_message('BEFORE opensanmateo_sitecrawler_search_api_item_type_info_alter <pre>' . print_r($types['node'],1) . '</pre>');
-// 
-//   foreach ($types as &$type) {
-//     $type['datasource controller'] = 'OpenSanMateoSiteCrawlerEntityDataSourceController';
-//   }
-// // drupal_set_message('AFTER opensanmateo_sitecrawler_search_api_item_type_info_alter <pre>' . print_r($types['node'],1) . '</pre>');
-// }
 
 function opensanmateo_sitecrawler_url_outbound_alter(&$path, &$options, $original_path) {
   if (
     !empty($options['entity'])
     && isset($options['entity']->search_api_site_id)
     && 'sitecrawler_page' == $options['entity']->type
-//     && !empty($options['entity']->field_sitecrawler_url[$options['entity']->language][0]['url'])
   ) {
-drupal_set_message('PROCESS: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options['entity']->field_sitecrawler_url[$options['entity']->language][0]['url'],1) . '</pre>');
     $path = $options['entity']->field_sitecrawler_url[$options['entity']->language][0]['url'];
     $options['external'] = TRUE;
   }
   
 }
 
-// hook_entity_info_alter
-// alter entity info for a node to change the uri callback paramater to your own function
 
 
