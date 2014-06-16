@@ -778,9 +778,10 @@ function opensanmateo_sitecrawler_url_outbound_alter(&$path, &$options, $origina
     !empty($options['entity'])
     && isset($options['entity']->search_api_site_id)
     && 'sitecrawler_page' == $options['entity']->type
+    && !empty($options['entity']->field_sitecrawler_url[$options['entity']->language][0]['url'])
   ) {
-drupal_set_message('PROCESS: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options['entity'],1) . '</pre>');
-    $path = 'http://emanaton.com/cv';
+drupal_set_message('PROCESS: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options['entity']->field_sitecrawler_url[$options['entity']->language][0]['url'],1) . '</pre>');
+    $path = $options['entity']->field_sitecrawler_url[$options['entity']->language][0]['url'];
     $options['external'] = TRUE;
   }
   
