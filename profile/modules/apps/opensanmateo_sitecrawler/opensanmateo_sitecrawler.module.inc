@@ -777,8 +777,8 @@ if ($phppath) {
 //     && is_int($matches[1])
 //     && ($node = node_load($matches[1]))
 //     ($node = menu_get_object())
-//     !empty($options['entity'])
-    !empty($options['entity']['search_api_site_id'])
+    !empty($options['entity'])
+    && !empty($options['entity']['search_api_site_id'])
     && 'sitecrawler_page' == $options['entity']->type
   ) {
 drupal_set_message('PROCESS: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options['entity']['search_api_site_id'],1) . '</pre>');
