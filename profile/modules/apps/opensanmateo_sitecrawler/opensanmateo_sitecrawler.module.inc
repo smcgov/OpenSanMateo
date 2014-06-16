@@ -767,23 +767,23 @@ function opensanmateo_sitecrawler_get_crawler($id) {
 // // drupal_set_message('AFTER opensanmateo_sitecrawler_search_api_item_type_info_alter <pre>' . print_r($types['node'],1) . '</pre>');
 // }
 
-// function opensanmateo_sitecrawler_url_outbound_alter(&$path, &$options, $original_path) {
-// //   drupal_set_message('BEFORE: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options,1) . '</pre>');
-// 
-//   if (
-// //     preg_match('|^node/([0-9]+)?|', $path, $matches)
-// //     && is_int($matches[1])
-// //     && ($node = node_load($matches[1]))
-// //     ($node = menu_get_object())
-//     !empty($options['entity'])
-//     && !empty($options['entity']['search_api_site_id'])
-//     && 'sitecrawler_page' == $options['entity']->type
-//   ) {
-// drupal_set_message('PROCESS: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options['entity']['search_api_site_id'],1) . '</pre>');
-// //     $path = 'http://emanaton.com/';
-// //     $options['external'] = TRUE;
-//   }
-//   
-// //   drupal_set_message('AFTER: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options,1) . '</pre>');
-// 
-// }
+function opensanmateo_sitecrawler_url_outbound_alter(&$path, &$options, $original_path) {
+//   drupal_set_message('BEFORE: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options,1) . '</pre>');
+
+  if (
+//     preg_match('|^node/([0-9]+)?|', $path, $matches)
+//     && is_int($matches[1])
+//     && ($node = node_load($matches[1]))
+//     ($node = menu_get_object())
+    !empty($options['entity'])
+    && !empty($options['entity']['search_api_site_id'])
+    && 'sitecrawler_page' == $options['entity']->type
+  ) {
+drupal_set_message('PROCESS: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options['entity']['search_api_site_id'],1) . '</pre>');
+//     $path = 'http://emanaton.com/';
+//     $options['external'] = TRUE;
+  }
+  
+//   drupal_set_message('AFTER: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options,1) . '</pre>');
+
+}
