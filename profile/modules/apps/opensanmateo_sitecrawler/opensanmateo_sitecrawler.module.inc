@@ -769,6 +769,7 @@ function opensanmateo_sitecrawler_search_api_item_type_info_alter(&$types) {
 
 function opensanmateo_sitecrawler_url_outbound_alter(&$path, &$options, $original_path) {
   
+drupal_set_message('BEFORE opensanmateo_sitecrawler_url_outbound_alter <pre>' . print_r($path,1) . '</pre>');
   if (
     preg_match('|^node/([0-9]+)?|', $path, $matches)
     && is_int($matches[1])
