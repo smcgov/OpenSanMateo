@@ -20,13 +20,13 @@ class OpenSanMateoSiteCrawlerEntityDataSourceController extends SearchApiEntityD
   public function getItemUrl($item) {
     if ('sitecrawler_page' == $item->type) {
       drupal_set_message('OpenSanMateoSiteCrawlerEntityDataSourceController getItemUrl sitecrawler_page <pre>' . print_r($item->nid,1) . '</pre>');
-      watchdog('actions', '<pre>getItemUrl: ' . print_r($item,1) . '</pre>');
-      return array(
-        'path' => 'http://php.net/',
-        'options' => array(
-          'external' => TRUE,
-        ),
-      );
+//       watchdog('actions', '<pre>getItemUrl: ' . print_r($item,1) . '</pre>');
+//       return array(
+//         'path' => 'http://php.net/',
+//         'options' => array(
+//           'external' => TRUE,
+//         ),
+//       );
     }
     
     return parent::getItemUrl($item);
