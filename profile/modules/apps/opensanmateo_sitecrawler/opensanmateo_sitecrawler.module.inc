@@ -775,6 +775,7 @@ function opensanmateo_sitecrawler_url_outbound_alter(&$path, &$options, $origina
     && ($node = node_load($matches[1]))
     && 'sitecrawler_page' == $node->type
   ) {
+drupal_set_message('opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options,1) . '</pre>');
     $path = 'http://emanaton.com/';
     $options['external'] = TRUE;
   }
