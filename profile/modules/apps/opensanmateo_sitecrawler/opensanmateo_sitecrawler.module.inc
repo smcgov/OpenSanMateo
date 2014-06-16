@@ -778,6 +778,3 @@ function opensanmateo_sitecrawler_url_outbound_alter(&$path, &$options, $origina
   }
   
 }
-
-
-
