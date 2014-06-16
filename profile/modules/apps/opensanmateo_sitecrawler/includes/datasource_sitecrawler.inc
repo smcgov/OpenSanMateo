@@ -22,7 +22,7 @@ class OpenSanMateoSiteCrawlerEntityDataSourceController extends SearchApiEntityD
       drupal_set_message('OpenSanMateoSiteCrawlerEntityDataSourceController getItemUrl sitecrawler_page <pre>' . print_r($item->nid,1) . '</pre>');
       watchdog('actions', '<pre>getItemUrl: ' . print_r($item,1) . '</pre>');
       return array(
-        'path' => 'http://www.emanaton.com/',
+        'path' => 'http://php.net/',
         'options' => array(
           'external' => TRUE,
         ),
