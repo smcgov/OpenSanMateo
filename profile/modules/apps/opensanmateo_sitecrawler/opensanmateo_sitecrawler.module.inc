@@ -724,7 +724,6 @@ function opensanmateo_sitecrawler_get_crawler($id) {
 //   }
 // }
 
-
 /**
  * implements hook_search_api_index_items_alter
  *
@@ -736,7 +735,6 @@ function opensanmateo_sitecrawler_get_crawler($id) {
 // }
 //   }
 // }
-
 
 /**
  * Implements hook_search_api_alter_callback_info().
@@ -753,7 +751,6 @@ function opensanmateo_sitecrawler_get_crawler($id) {
 // 
 //   return $callbacks;
 // }
-
 
 /**
  * Implements hook_search_api_item_type_info_alter().
