@@ -760,6 +760,9 @@ function opensanmateo_sitecrawler_search_api_item_type_info_alter(&$types) {
 // die('opensanmateo_sitecrawler_search_api_item_type_info');
 drupal_set_message('opensanmateo_sitecrawler_search_api_item_type_info_alter <pre>' . print_r($types,1) . '</pre>');
 // drupal_set_message('BEFORE opensanmateo_sitecrawler_search_api_item_type_info_alter <pre>' . print_r($types['node'],1) . '</pre>');
-  $types['node']['datasource controller'] = 'OpenSanMateoSiteCrawlerEntityDataSourceController';
+
+  foreach ($types as &$type) {
+    $types['node'][$type] = 'OpenSanMateoSiteCrawlerEntityDataSourceController';
+  }
 // drupal_set_message('AFTER opensanmateo_sitecrawler_search_api_item_type_info_alter <pre>' . print_r($types['node'],1) . '</pre>');
 }
