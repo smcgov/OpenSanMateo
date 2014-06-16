@@ -773,7 +773,7 @@ function opensanmateo_sitecrawler_url_outbound_alter(&$path, &$options, $origina
     preg_match('|^node/([0-9]+)?|', $path, $matches)
     && is_int($matches[1])
     && ($node = node_load($matches[1]))
-    && 'sitecrawler_page' == $node->type)
+    && 'sitecrawler_page' == $node->type
   ) {
     $path = 'http://emanaton.com/';
     $options['external'] = TRUE;
