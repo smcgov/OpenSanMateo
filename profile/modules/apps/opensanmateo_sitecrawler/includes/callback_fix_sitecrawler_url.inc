@@ -26,7 +26,7 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
 //       $default = (bool) $this->options['default'];
 //       $bundle_prop = $info['entity keys']['bundle'];
       foreach ($items as $id => $item) {
-if ($once) {
+if ($once && 'sitecrawler_page' == $item->type) {
   watchdog('actions', '<pre>alterItems: ' . print_r($item,1) . '</pre>');
   $once = FALSE;
 }
