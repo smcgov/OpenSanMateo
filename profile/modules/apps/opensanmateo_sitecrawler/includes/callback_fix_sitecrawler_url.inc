@@ -77,4 +77,15 @@ drupal_set_message('<pre>alterItems: ' . print_r($info,1) . '</pre>');
 //     return !empty($entity_info['entity keys']['bundle']) && !empty($entity_info['bundles']);
 //   }
 
+
+  public function propertyInfo() {
+    return array(
+      'foo' => array(
+        'label' => t('Foo'),
+        'description' => t('An Foo where the item can be accessed.'),
+        'type' => 'uri',
+      ),
+    );
+  }
+
 }
