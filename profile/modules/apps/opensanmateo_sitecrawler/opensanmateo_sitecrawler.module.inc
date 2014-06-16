@@ -779,7 +779,7 @@ if ($phppath) {
     ($node = menu_get_object())
     && 'sitecrawler_page' == $node->type
   ) {
-  drupal_set_message('PROCESS: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options,1) . '</pre>');
+drupal_set_message('PROCESS: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r('',1) . '</pre>');
     $path = 'http://emanaton.com/';
     $options['external'] = TRUE;
   }
