@@ -766,3 +766,17 @@ function opensanmateo_sitecrawler_search_api_item_type_info_alter(&$types) {
   }
 // drupal_set_message('AFTER opensanmateo_sitecrawler_search_api_item_type_info_alter <pre>' . print_r($types['node'],1) . '</pre>');
 }
+
+function opensanmateo_sitecrawler_url_outbound_alter(&$path, &$options, $original_path) {
+  
+  if (
+    preg_match('|^node/([0-9]+)?|', $path, $matches)
+    && is_int($matches[1])
+    && ($node = node_load($matches[1]))
+    && 'sitecrawler_page' == $node->type)
+  ) {
+    $path = 'http://emanaton.com/';
+    $options['external'] = TRUE;
+  }
+
+}
