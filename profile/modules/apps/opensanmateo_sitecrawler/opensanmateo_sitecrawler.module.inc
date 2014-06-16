@@ -780,8 +780,8 @@ function opensanmateo_sitecrawler_url_outbound_alter(&$path, &$options, $origina
     && 'sitecrawler_page' == $options['entity']->type
   ) {
 // drupal_set_message('PROCESS: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r('',1) . '</pre>');
-//     $path = 'http://emanaton.com/';
-//     $options['external'] = TRUE;
+    $path = 'http://emanaton.com/';
+    $options['external'] = TRUE;
   }
   
 //   drupal_set_message('AFTER: opensanmateo_sitecrawler_url_outbound_alter <pre>' . $path . ' :: ' . $original_path . ' :: ' . print_r($options,1) . '</pre>');
