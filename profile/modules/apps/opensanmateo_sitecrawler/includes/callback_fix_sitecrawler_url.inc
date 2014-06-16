@@ -16,7 +16,7 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
   }
 
   public function alterItems(array &$items) {
-    static $once = TRUE;
+//     static $once = TRUE;
 //     $info = entity_get_info($this->index->getEntityType());
 // watchdog('actions', '<pre>alterItems: ' . print_r($info,1) . '</pre>');
 // die('<pre>alterItems: ' . print_r($info,1) . '</pre>');
@@ -25,15 +25,15 @@ class OpenSanMateoSiteCrawlerExternalURLs extends SearchApiAbstractAlterCallback
 //       $bundles = array_flip($this->options['bundles']);
 //       $default = (bool) $this->options['default'];
 //       $bundle_prop = $info['entity keys']['bundle'];
-      foreach ($items as $id => $item) {
-if ($once && 'sitecrawler_page' == $item->type) {
-  watchdog('actions', '<pre>alterItems: ' . print_r($item,1) . '</pre>');
-  $once = FALSE;
-}
+//       foreach ($items as $id => $item) {
+// if ($once && 'sitecrawler_page' == $item->type) {
+//   watchdog('actions', '<pre>alterItems: ' . print_r($item,1) . '</pre>');
+//   $once = FALSE;
+// }
 //         if (isset($bundles[$item->$bundle_prop]) == $default) {
 //           unset($items[$id]);
 //         }
-      }
+//       }
 //     }
   }
 
