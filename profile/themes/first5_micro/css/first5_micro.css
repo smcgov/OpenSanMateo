@@ -9313,7 +9313,7 @@ body.page-node .node .action-links-field-collection-add {
     margin: 0 auto;
     width: 100%;
     max-height: 0; }
-    /* line 38, ../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+    /* line 38, ../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
     .flexnav:after {
       content: "";
       display: table;
@@ -11248,24 +11248,28 @@ ul.facetapi-facetapi-checkbox-links {
 body {
   background: #6a7833; }
 
+/* line 11, ../scss/first5_micro.scss */
+p {
+  color: black; }
+
 /* LafCO Promo Boxes */
-/* line 12, ../scss/first5_micro.scss */
+/* line 16, ../scss/first5_micro.scss */
 .promo-pane-default {
   background-color: #840f33; }
 
-/* line 15, ../scss/first5_micro.scss */
+/* line 19, ../scss/first5_micro.scss */
 .promo-pane-green {
   background-color: #999a0f; }
 
-/* line 18, ../scss/first5_micro.scss */
+/* line 22, ../scss/first5_micro.scss */
 .promo-pane-purple {
   background-color: #660c67; }
 
-/* line 21, ../scss/first5_micro.scss */
+/* line 25, ../scss/first5_micro.scss */
 .promo-pane-orange {
   background-color: #f7990d; }
 
-/* line 25, ../scss/first5_micro.scss */
+/* line 29, ../scss/first5_micro.scss */
 input[type=text] {
   background: white;
   border: none;
