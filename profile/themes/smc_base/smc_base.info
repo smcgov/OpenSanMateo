@@ -4,6 +4,7 @@ core = 7.x
 engine = phptemplate
 
 stylesheets[all][] = css/smc_base.css
+stylesheets-conditional[lt IE 9][all][] = css/ie.css
 
 scripts[] = js/foundation/modernizr.foundation.js
 scripts[] = js/showHide.js

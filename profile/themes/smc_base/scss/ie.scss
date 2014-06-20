@@ -3,3 +3,69 @@
  * <!--[if IE]>
  *   <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
  * <![endif]--> */
+
+
+/* Header Search */
+#block-opensanmateo-search-header-search {
+  display: block !important;
+  border-radius: 3px;
+  margin: 0 auto 0;
+  position: absolute;
+  right: 0;
+  left: auto;
+  top: -50px !important;
+  width: 30%;
+  background-color: transparent;
+  padding: 0;
+  z-index: 10;
+  
+  #opensanmateo-search-header-search-form {
+    float: left;
+      width: 80%;
+      margin-right: 3%;
+      margin-bottom: 0;
+  }
+
+  input[type=text] {
+    
+    background: $searchDefaultBG;
+      border: none;
+      box-shadow: none;
+      color: white;
+      
+      font-size: .85em;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      border-radius: 3px;
+      font-family: $reg;
+      margin: 0;
+      }
+      
+  input[type=text]:focus {
+      box-shadow: none;
+      background: $searchFocusBG;
+      color: white;   
+      font-family: $bold;
+      font-weight: normal;
+  }
+  
+  input[type=text]:focus::-webkit-input-placeholder {color: white;}
+  input[type=text]:focus::-moz-placeholder {color: white;}
+  input[type=text]:focus::-ms-input-placeholder {color: white;}
+  
+  .search-button {
+      width: 17%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      border: none;
+      display: block;
+      text-align: center;
+      margin-right: 0;
+      }
+
+  .search-button:after {content: none;}
+  /* End Header Search */
+}
