@@ -19,11 +19,11 @@ function acquia_purge_extras_form_alter(&$form, &$form_state, $form_id) {
       '#collapsible' => TRUE,
       '#weight' => -1,
     );
-    $form['acquia_purge_extras']['acquia_purge_enable_message'] = array(
+    $form['acquia_purge_extras']['acquia_purge_exras_disable_message'] = array(
       '#type' => 'checkbox', 
-      '#title' => t('Enable Purge Message on Publish'),
+      '#title' => t('Disable Purge Message on Publish'),
       '#description' => t('By default, when publishing content, the Acquia Purge module will display a message at the top of the content, but this has been hidden (by default) by enabling the Acquia Purge Extras module. Enabling this option will cause that message to be displayed again. <strong>NOTE:</strong> it may be necessary to clear caches for this change to take effect.'),
-      '#default_value' => variable_get('acquia_purge_enable_message', TRUE),
+      '#default_value' => variable_get('acquia_purge_exras_disable_message', TRUE),
     );
     $form['actions']['submit']['#submit'][] = 'acquia_purge_extras_acquia_agent_settings_form_submit';
   }
@@ -33,7 +33,7 @@ function acquia_purge_extras_form_alter(&$form, &$form_state, $form_id) {
  * Callback for acquia_agent_settings_form submit
  */
 function acquia_purge_extras_acquia_agent_settings_form_submit($form, &$form_state) {
-  variable_set('acquia_purge_enable_message', !!$form_state['values']['acquia_purge_enable_message']);
+  variable_set('acquia_purge_exras_disable_message', !!$form_state['values']['acquia_purge_exras_disable_message']);
 }
 
 /**
@@ -45,7 +45,7 @@ function acquia_purge_extras_acquia_agent_settings_form_submit($form, &$form_sta
  * clear caches afterwards.
  */
 function acquia_purge_extras_init() {
-  if (variable_get('acquia_purge_enable_message', TRUE)) {
+  if (variable_get('acquia_purge_exras_disable_message', TRUE)) {
     drupal_add_css(
       drupal_get_path('module', 'acquia_purge_extras') . '/assets/css/acquia_purge_extras.css', 
       array(
