@@ -128,3 +128,4 @@ dependencies[] = opensanmateo_contact
 ;dependencies[] = opensanmateo_workflow
 dependencies[] = opensanmateo_browsers
 dependencies[] = opensanmateo_feeds
+dependencies[] = acquia_purge_extras

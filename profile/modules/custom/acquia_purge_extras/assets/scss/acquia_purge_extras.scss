@@ -1,0 +1,8 @@
+
+/* Hide acquia purge messages when content is published. The dreaded 
+ * "!important" tag is being used here in order to overcome a "display: block" 
+ * "!added to the message container by jQuery.
+ */
+body div#console .acquia_purge_messages {
+  display: none !important;
+}

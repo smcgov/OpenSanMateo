@@ -1,0 +1,4 @@
+
+body div#console .acquia_purge_messages {
+  display: none !important;
+}
