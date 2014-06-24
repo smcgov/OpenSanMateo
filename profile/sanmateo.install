@@ -233,7 +233,7 @@ function sanmateo_update_7022() {
 /**
  * Enable acquia_purge_extras module.
  */
-function sanmateo_update_7023() {
+function sanmateo_update_7024() {
   module_enable(array('acquia_purge_extras'));
 }
 // End of file sanmateo.install
