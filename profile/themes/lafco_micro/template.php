@@ -8,75 +8,86 @@
  * Implements template_preprocess_html
  */
 function lafco_micro_preprocess_html(&$variables) {
-  
+
 }
 
 /**
  * Implements template_process_html
  */
 function lafco_micro_process_html(&$variables) {
-  
+
 }
 
 /**
  * Implements template_preprocess_page
  */
 function lafco_micro_preprocess_page(&$variables) {
-  
+
 }
 
 /**
  * Implements template_process_page
  */
 function lafco_micro_process_page(&$variables) {
-  
+
 }
 
 /**
  * Implements template_preprocess_node
  */
 function lafco_micro_preprocess_node(&$variables) {
-  
+
 }
 
 /**
  * Implements template_process_node
  */
 function lafco_micro_process_node(&$variables) {
-  
+
 }
 
 /**
  * Implements template_process_block
  */
 function lafco_micro_preprocess_block(&$variables) {
-  
+
 }
 
 /**
  * Implements template_process_block
  */
 function lafco_micro_process_block(&$variables) {
-  
+
 }
 
 /**
  * Implements hook_page_alter
  */
 function lafco_micro_page_alter(&$page) {
-  
+
 }
 
 /**
  * Implements hook_css_alter
  */
 function lafco_micro_css_alter(&$css) {
-  
+
 }
 
 /**
  * Implements hook_js_alter
  */
 function lafco_micro_js_alter(&$js) {
- 
+
+}
+
+/**
+ * Implements hook_form_alter
+  *
+ * Replacing "Search All Documents" as placeholder text.
+ */
+function lafco_micro_form_alter(&$form, &$form_state, $form_id) {
+  if ('opensanmateo_search_header_search_form' == $form_id) {
+  $form['search']['#attributes']['placeholder'] = 'Search';
+  }
 }
