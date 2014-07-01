@@ -6,9 +6,26 @@
 
 body {
   background: $primaryBlue;
+  color:$primaryBlue;
 }
-p{
-  color:black;
+
+p {
+    color:$primaryBlue;
+}
+
+ul li, ol li{
+    color:$primaryBlue;
+}
+
+a:hover, a:focus{
+    color:$primaryTeal;
+}
+.node-webform .form-submit{
+    background:rgba(40,44,116, 0.8);
+}
+
+.universal-teaser.event, .read-more-wrapper a{
+    background-color: rgba(40,44,116, 0.2)
 }
 /* LafCO Promo Boxes */
 .promo-pane-default {

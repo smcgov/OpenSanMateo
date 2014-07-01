@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * @see template_preprocess()
@@ -8,26 +7,22 @@
  * @see bartik_process_page()
  * @see html.tpl.php
  */
- 
 ?>
 <div id="wrapper" class="wrapper page-wrapper group">
   <?php if ($page['highlighted']): ?>
     <?php print render($page['highlighted']); ?>
   <?php endif; ?>
-
   <header id="header" class="group clearfix">
       <div class="inner clearfix">
-    		<a class="dept-link show_hide icon-eye" rel="#dept-switch" href="">View Cities and Special Districts</a>
-    		
+    		<!--<a class="dept-link show_hide icon-eye" rel="#dept-switch" href="">View Cities and Special Districts</a>-->
     		<div class="lockup group clearfix">
     		  <div class="site-seal"><a href="<?php print $smclink; ?>" title="<?php print t('Local Agency Formation Commission County'); ?>"><img src="<?php print $header_logo; ?>" alt="<?php print t('Local Agency Formation Commission County'); ?>" /></a></div>
-    		  
     			<?php if ($site_name): ?>
-      			<a href="<?php print $smclink; ?>" title="<?php print t('Local Agency Formation Commission County'); ?>"><h2 class="county-name">Local Agency Formation Commission<span class="tiny"></span></h2></a>
-            <a href="<?php print $front_page; ?>" title="<?php print $site_name; ?>" rel="home"><h2 id="site-name" class="dept-name"><?php print $site_name; ?></h2></a>
+      			<a href="<?php print $smclink; ?>" title="<?php print t('Local Agency Formation Commission County'); ?>"><h2 class="county-name">San Mateo LAFCO</h2></a>
+            <a href="<?php print $front_page; ?>" title="<!--<?php print $site_name; ?>" rel="home"><h2 id="site-name" class="dept-name">Local Agency Formation Commission</h2></a>
+            <!--<a href="<?php print $front_page; ?>" <?php print $site_name; ?> rel="home"><h2 id="site-name" class="dept-name"><?php print $site_name; ?></h2></a>-->
     			<?php endif; ?>
     		</div>
-
     <?php print render($page['header']); ?>
     <?php if ($messages): ?>
       <div id="messages" class="clearfix"><div class="section clearfix">
@@ -36,18 +31,12 @@
     <?php endif; ?>
     </div><!-- / inner -->
   </header> <!-- /.section, /#header -->
-
-  
-
   <div id="main-wrapper" class="body clearfix">
-
     <?php if ($breadcrumb): ?>
       <div id="breadcrumb"><?php print $breadcrumb; ?></div>
     <?php endif; ?>
-
     <div id="content" class="clearfix">
       <div class="section">
-      
         <a id="main-content"></a>
         <?php print render($title_prefix); ?>
         <?php if ($title && !$is_front): ?>
@@ -69,13 +58,12 @@
         <?php endif; ?>
         <?php print render($page['content']); ?>
         <?php print $feed_icons; ?>
-
       </div>
-    </div> 
+    </div>
   </div>
   <?php if ($page['footer']): ?>
-  <div id="footer-wrapper">  
-    <footer id="footer" class="clearfix group">    
+  <div id="footer-wrapper">
+    <footer id="footer" class="clearfix group">
       <div class="limiter clearfix">
         <div class="seal clearfix">
           <img class="mobile-only" src="<?php print $footer_logo; ?>" />
@@ -86,5 +74,4 @@
     </footer>
   </div>
   <?php endif; ?>
-
 </div> <!-- /#wrapper -->
