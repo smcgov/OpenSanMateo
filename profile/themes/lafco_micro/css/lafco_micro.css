@@ -9313,7 +9313,11 @@ body.page-node .node .action-links-field-collection-add {
     margin: 0 auto;
     width: 100%;
     max-height: 0; }
+<<<<<<< HEAD
     /* line 38, ../../../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+=======
+    /* line 38, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+>>>>>>> 8c73915c11cca8f9583a503fb755f6e55e61034e
     .flexnav:after {
       content: "";
       display: table;
@@ -11249,6 +11253,7 @@ body {
   background: #282c74;
   color: #282c74; }
 
+<<<<<<< HEAD
 /* line 12, ../scss/lafco_micro.scss */
 p {
   color: #282c74; }
@@ -11283,5 +11288,25 @@ a:hover, a:focus {
   background-color: #682266; }
 
 /* line 40, ../scss/lafco_micro.scss */
+=======
+/* line 10, ../scss/lafco_micro.scss */
+p {
+  color: black; }
+
+/* LafCO Promo Boxes */
+/* line 14, ../scss/lafco_micro.scss */
+.promo-pane-default {
+  background-color: #243d85; }
+
+/* line 17, ../scss/lafco_micro.scss */
+.promo-pane-green {
+  background-color: #42854a; }
+
+/* line 20, ../scss/lafco_micro.scss */
+.promo-pane-purple {
+  background-color: #682266; }
+
+/* line 23, ../scss/lafco_micro.scss */
+>>>>>>> 8c73915c11cca8f9583a503fb755f6e55e61034e
 .promo-pane-orange {
   background-color: #ee9f3b; }

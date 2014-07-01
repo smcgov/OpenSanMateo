@@ -12,3 +12,10 @@ settings.local.inc
 .DS_Store
 tmp
 private
+/profile/themes/lafco_micro/css/ie.css
+/profile/themes/lafco_micro/css/print.css
+/profile/themes/lafco_micro/css/screen.css
+/profile/themes/lafco_micro/scss/ie.scss
+/profile/themes/lafco_micro/scss/print.scss
+/profile/themes/lafco_micro/scss/screen.scss
+/profile/themes/lafco_micro/template/block--distributed_blocks--d-b--menu-department-menu.tpl.php
