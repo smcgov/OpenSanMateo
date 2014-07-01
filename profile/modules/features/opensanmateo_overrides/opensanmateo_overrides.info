@@ -71,6 +71,7 @@ features[features_overrides][] = field_instance.node-profile-field_profile_staff
 features[features_overrides][] = field_instance.node-profile-field_profile_staff.label
 features[features_overrides][] = field_instance.node-profile-field_profile_staff.widget|weight
 features[features_overrides][] = field_instance.node-profile-field_profile_staff.workbench_access_field
+features[features_overrides][] = field_instance.node-site_page-body.settings|display_summary
 features[features_overrides][] = field_instance.node-site_page-field_files.settings|description_field
 features[features_overrides][] = field_instance.node-site_page-field_files.widget|settings|filefield_sources
 features[features_overrides][] = field_instance.node-site_page-field_thumbnail_image.label
