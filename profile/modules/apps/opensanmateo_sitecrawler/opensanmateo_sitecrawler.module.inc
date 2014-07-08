@@ -28,7 +28,7 @@ function opensanmateo_sitecrawler_theme_registry_alter(&$theme_registry) {
 function opensanmateo_sitecrawler_menu() {
   $items = array();
   
-  $items['admin/config/opensanmateo_sitecrawler'] = array(
+  $items['admin/config/system/opensanmateo_sitecrawler'] = array(
     'title' => 'Open SanMateo Site Crawler',
     'description' => 'Configure sites to crawl for content.',
     'page callback' => 'drupal_get_form',
@@ -37,31 +37,31 @@ function opensanmateo_sitecrawler_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
   
-  $items['admin/config/opensanmateo_sitecrawler/%'] = array(
+  $items['admin/config/system/opensanmateo_sitecrawler/%'] = array(
     'title' => 'Open SanMateo Site Crawler',
     'description' => 'Configure sites to crawl for content.',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('opensanmateo_sitecrawler_admin_item_form', 3),
+    'page arguments' => array('opensanmateo_sitecrawler_admin_item_form', 4),
     'access arguments' => array('administer site configuration'),
-    'type' => MENU_LOCAL_TASK,
+    'type' => MENU_NORMAL_ITEM,
   );
   
-  $items['admin/config/opensanmateo_sitecrawler/delete/%'] = array(
+  $items['admin/config/system/opensanmateo_sitecrawler/delete/%'] = array(
     'title' => 'Open SanMateo Delete Site Crawler',
     'description' => 'Delete existing crawler.',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('opensanmateo_sitecrawler_admin_item_delete_form', 4),
+    'page arguments' => array('opensanmateo_sitecrawler_admin_item_delete_form', 5),
     'access arguments' => array('administer site configuration'),
-    'type' => MENU_LOCAL_TASK,
+    'type' => MENU_NORMAL_ITEM,
   );
   
-  $items['admin/config/opensanmateo_sitecrawler/run/%'] = array(
+  $items['admin/config/system/opensanmateo_sitecrawler/run/%'] = array(
     'title' => 'Open SanMateo Delete Site Crawler',
     'description' => 'Delete existing crawler.',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('opensanmateo_sitecrawler_admin_item_run_form', 4),
+    'page arguments' => array('opensanmateo_sitecrawler_admin_item_run_form', 5),
     'access arguments' => array('administer site configuration'),
-    'type' => MENU_LOCAL_TASK,
+    'type' => MENU_NORMAL_ITEM,
   );
    
   return $items;
@@ -126,6 +126,13 @@ function opensanmateo_sitecrawler_admin_item_form($form, $form_state, $id = FALS
       'deletemissing' => t('Delete Missing Content'),
     ),
     '#default_value' => (!$new ? $record['options'] : array('nofollow','robots','cookies','redirects','deletemissing',)),
+  );
+  
+  $form['opensanmateo_sitecrawler_body_xpaths'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Body XPaths'),
+    '#default_value' => (!$new ? $record['body_xpaths'] : '/html/body'),
+    '#description' => t('<p>Enter xpaths to try to locate the body content with. For each page, each of these xpaths will be tried until a match is found, and the content at that xpath will be used. If no matches are found, then the content of the &lt;body&gt; tag will be used.</p><p>Examples:<ul><li>xxxxxxxxxxxx</li><li>zzzzzzzzzz</li></ul></p>'),
   );
   
   $form['opensanmateo_sitecrawler_size_limit'] = array(
@@ -214,7 +221,7 @@ function opensanmateo_sitecrawler_admin_item_form($form, $form_state, $id = FALS
   if (!$new) {
     $form['actions']['delete'] = array('#type' => 'submit', '#value' => t('Delete'));
   }
-  $form['actions']['cancel'] = array('#markup' => l(t('Cancel'), 'admin/config/opensanmateo_sitecrawler'),);
+  $form['actions']['cancel'] = array('#markup' => l(t('Cancel'), 'admin/config/system/opensanmateo_sitecrawler'),);
   
   // Per-path visibility.
   $form['opensanmateo_sitecrawler_path'] = array(
@@ -261,6 +268,7 @@ function opensanmateo_sitecrawler_admin_item_form_submit($form, &$form_state) {
         'description',
         'enabled',
         'url',
+        'body_xpaths',
         'size_limit',
         'traffic_limit',
         'page_limit',
@@ -281,7 +289,7 @@ function opensanmateo_sitecrawler_admin_item_form_submit($form, &$form_state) {
       }
       break;
     case t('Delete'):
-      drupal_goto('admin/config/opensanmateo_sitecrawler/delete/' . $form_state['values']['opensanmateo_sitecrawler_id']);
+      drupal_goto('admin/config/system/opensanmateo_sitecrawler/delete/' . $form_state['values']['opensanmateo_sitecrawler_id']);
       return;
   }
 // drupal_set_message('<pre>$record ' . print_r($record,1) . '</pre>');
@@ -296,7 +304,7 @@ function opensanmateo_sitecrawler_admin_item_delete_form($form, $form_state, $id
   $record = opensanmateo_sitecrawler_get_crawler($id);
   
   if (!$record) {
-    drupal_goto('admin/config/opensanmateo_sitecrawler');
+    drupal_goto('admin/config/system/opensanmateo_sitecrawler');
     return;
   }
   
@@ -313,7 +321,7 @@ function opensanmateo_sitecrawler_admin_item_delete_form($form, $form_state, $id
         '%name' => $record['name'],
       )
     ),
-    'admin/config/opensanmateo_sitecrawler/' . $id
+    'admin/config/system/opensanmateo_sitecrawler/' . $id
   );
 }
 
@@ -338,7 +346,7 @@ function opensanmateo_sitecrawler_admin_item_run_form($form, $form_state, $id = 
 // drupal_set_message('<pre>' . print_r($record, 1) . '</pre>');
   
   if (!$record) {
-    drupal_goto('admin/config/opensanmateo_sitecrawler');
+    drupal_goto('admin/config/system/opensanmateo_sitecrawler');
     return;
   }
   
@@ -355,7 +363,7 @@ function opensanmateo_sitecrawler_admin_item_run_form($form, $form_state, $id = 
         '%name' => $record['name'],
       )
     ),
-    'admin/config/opensanmateo_sitecrawler'
+    'admin/config/system/opensanmateo_sitecrawler'
   );
   
 }
@@ -390,7 +398,7 @@ function opensanmateo_sitecrawler_run_crawler($crawler_id) {
   // It may take a while to crawl a site ...
   set_time_limit(10000);
 
-  $crawler = new SiteCrawler($record['id']);
+  $crawler = new SiteCrawler($record['id'], preg_split('/$\R?^/m', $record['body_xpaths']));
   $crawler->setUrlCacheType(PHPCrawlerUrlCacheTypes::URLCACHE_D7);
   $crawler->setDatabaseConnectionObject(
     'opensanmateo_sitecrawler_url_cache',
@@ -411,7 +419,15 @@ function opensanmateo_sitecrawler_run_crawler($crawler_id) {
     }
   }
   foreach(preg_split('/$\R?^/m', $record['path_filter_rules']) as $rule) {
-    if (!empty($rule)) {
+    if (
+      !empty($rule)
+      && (
+        // check if this is a valid regex
+        FALSE !== @preg_match($rule, 'xxx')
+        // and if it's not a valid regex, try to convert it to one
+        || FALSE !== @preg_match($rule = '#' . $rule . '# i', 'xxx')
+      )
+    ) {
       $crawler->addURLFilterRule($rule);
     }
   }
@@ -457,6 +473,20 @@ function opensanmateo_sitecrawler_run_crawler($crawler_id) {
     drupal_set_message($e->getMessage(), 'error');
     return;
   }
+  
+  $report = $crawler->getProcessReport();
+  drupal_set_message(
+    t('Sitecrawler @name Batch Run Summary: ', array('@name' => $record['name']))
+    . theme('item_list', array('items' => array(
+      t('Links followed: !val', array('!val' => $report->links_followed)),
+      t('Documents received: !val', array('!val' => $report->files_received)),
+      t('Bytes received: !val bytes', array('!val' => $report->bytes_received)),
+      t('Process runtime: !val sec', array('!val' => $report->process_runtime)),
+      t('Nodes created: !val', array('!val' => $crawler->nodes_created)),
+      t('Nodes updated: !val', array('!val' => $crawler->nodes_updated)),
+    )))
+  );
+  
   
   if (
     !$crawler->getPreviousAbortStatus()
@@ -554,10 +584,10 @@ function opensanmateo_sitecrawler_admin_form($form, $form_state) {
   if (0 == count($form['crawlers'])) {
     drupal_set_message(t('There are no crawlers defined yet.'));
     drupal_goto(
-      'admin/config/opensanmateo_sitecrawler/add',
+      'admin/config/system/opensanmateo_sitecrawler/add',
       array(
         'query' => array(
-          'destination' => 'admin/config/opensanmateo_sitecrawler'
+          'destination' => 'admin/config/system/opensanmateo_sitecrawler'
         )
       )
     );
@@ -570,6 +600,7 @@ function opensanmateo_sitecrawler_admin_form($form, $form_state) {
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array('#type' => 'submit', '#value' => t('Save Changes'));
+// drupal_set_message('<pre>$form ' . print_r($form,1) . '</pre>');
   return $form;
 }
 
@@ -614,10 +645,10 @@ function theme_opensanmateo_sitecrawler_admin_form($variables) {
     '<div>'
     . l(
       'Add Another Crawl',
-      'admin/config/opensanmateo_sitecrawler/add',
+      'admin/config/system/opensanmateo_sitecrawler/add',
       array(
         'query' => array(
-          'destination' => 'admin/config/opensanmateo_sitecrawler'
+          'destination' => 'admin/config/system/opensanmateo_sitecrawler'
         )
       )
     )
@@ -641,30 +672,30 @@ function theme_opensanmateo_sitecrawler_admin_form($variables) {
         drupal_render($form['crawlers'][$id]['enabled']),
         l(
           'edit',
-          'admin/config/opensanmateo_sitecrawler/' . $id,
+          'admin/config/system/opensanmateo_sitecrawler/' . $id,
           array(
             'query' => array(
-              'destination' => 'admin/config/opensanmateo_sitecrawler'
+              'destination' => 'admin/config/system/opensanmateo_sitecrawler'
             )
           )
         )
         . ' '
         . l(
           'delete',
-          'admin/config/opensanmateo_sitecrawler/delete/' . $id,
+          'admin/config/system/opensanmateo_sitecrawler/delete/' . $id,
           array(
             'query' => array(
-              'destination' => 'admin/config/opensanmateo_sitecrawler'
+              'destination' => 'admin/config/system/opensanmateo_sitecrawler'
             )
           )
         )
         . ' '
         . l(
           'run',
-          'admin/config/opensanmateo_sitecrawler/run/' . $id,
+          'admin/config/system/opensanmateo_sitecrawler/run/' . $id,
           array(
             'query' => array(
-              'destination' => 'admin/config/opensanmateo_sitecrawler'
+              'destination' => 'admin/config/system/opensanmateo_sitecrawler'
             )
           )
         ),

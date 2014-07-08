@@ -10,7 +10,9 @@ class PHPCrawlerHTTPRequest
   /**
    * The user-agent-string
    */
-  public $userAgentString = "PHPCrawl";
+//   public $userAgentString = "PHPCrawl";
+//   public $userAgentString = "Mozilla/5.0 Firefox/3.6.12";
+  public $userAgentString = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36";
   
   /**
    * The HTTP protocol version to use.
@@ -905,7 +907,8 @@ class PHPCrawlerHTTPRequest
     
     $headerlines[] = "Host: ".$this->url_parts["host"]."\r\n";
     
-    $headerlines[] = "User-Agent: ".str_replace("\n", "", $this->userAgentString)."\r\n";    $headerlines[] = "Accept: */*\r\n";
+    $headerlines[] = "User-Agent: ".str_replace("\n", "", $this->userAgentString)."\r\n";
+    $headerlines[] = "Accept: */*\r\n";
     
     // Request GZIP-content
     if ($this->request_gzip_content == true)
