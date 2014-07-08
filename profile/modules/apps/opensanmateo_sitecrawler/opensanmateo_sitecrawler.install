@@ -1,0 +1,324 @@
+<?php
+/**
+ * @file
+ * Install and uninstall functions for the opensanmateo sitecrawler module.
+ *
+ */
+
+/**
+ * Implements hook_schema().
+ *
+ * This defines the database table which will hold the example item info.
+ *
+ * @ingroup opensanmateo_sitecrawler
+ */
+function opensanmateo_sitecrawler_schema() {
+  $schema['opensanmateo_sitecrawler_sites'] = array(
+    'description' => 'Stores settings for each of the target crawl sites.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary identifier for each item',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'Administrative name for crawl target',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'description' => array(
+        'description' => 'Description of crawl target',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'enabled' => array(
+        'description' => 'Boolean indicating whether the crawl is enabled.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+      'weight' => array(
+        'description' => 'The sortable weight for this item',
+        'type' => 'int',
+        'length' => 11,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'url' => array(
+        'description' => 'URL of crawl target',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'options' => array(
+        'description' => 'Options of crawl target',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'body_xpaths' => array(
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+        'description' => 'XPaths to locate page content.',
+      ),
+      'size_limit' => array(
+        'description' => 'Size limit of crawl target',
+        'type' => 'varchar',
+        'length' => 8,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'traffic_limit' => array(
+        'description' => 'Traffic limit of crawl target',
+        'type' => 'varchar',
+        'length' => 8,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'page_limit' => array(
+        'description' => 'Page limit of crawl target',
+        'type' => 'varchar',
+        'length' => 8,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'request_delay' => array(
+        'description' => 'Request delay for crawl target',
+        'type' => 'varchar',
+        'length' => 8,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'path_type_rules' => array(
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+        'description' => 'Restrictions on content types accepted/evaluated.',
+      ),
+      'path_filter_rules' => array(
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+        'description' => 'URL patterns for crawler to ignore when crawling.',
+      ),
+      'path_follow_rules' => array(
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+        'description' => 'URL patterns for crawler to explicity follow.',
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+  
+  $schema['opensanmateo_sitecrawler_url_cache'] = array(
+    'description' => 'Storage of URL cache for sitecrawler.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary identifier for each item',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'crawler_id' => array(
+        'description' => 'ID of the crawler object',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'in_process' => array(
+        'description' => 'Boolean indicating whether the crawl is in progress.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'processed' => array(
+        'description' => 'Boolean indicating whether the crawl has been processed.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'priority_level' => array(
+        'description' => 'priority level of this URL',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'distinct_hash' => array(
+        'description' => 'Unique hash of this URL',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'link_raw' => array(
+        'description' => 'Raw URL',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'linkcode' => array(
+        'description' => '',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+      'linktext' => array(
+        'description' => '',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'refering_url' => array(
+        'description' => '',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'url_rebuild' => array(
+        'description' => '',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'is_redirect_url' => array(
+        'description' => 'Boolean indicating whether the URL was redirected.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      
+    ),
+    'indexes' => array(
+      'priority_level' => array('priority_level'),
+      'distinct_hash' => array('distinct_hash'),
+      'in_process' => array('in_process'),
+      'processed' => array('processed'),
+      'crawler_id' => array('crawler_id'),
+    ),
+    'primary key' => array('id'),
+  );
+  
+  $schema['opensanmateo_sitecrawler_cookie_cache'] = array(
+    'description' => 'Storage of cookie cache for sitecrawler.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary identifier for each item',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'crawler_id' => array(
+        'description' => 'ID of the crawler object',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'cookie_hash' => array(
+        'description' => 'Unique hash of this cookie',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'source_domain' => array(
+        'description' => 'Source domain of cookie URL',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'source_url' => array(
+        'description' => 'Source URL of cookie',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'name' => array(
+        'description' => 'Name of cookie',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'medium',
+      ),
+      'value' => array(
+        'description' => 'Value of cookie',
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+      ),
+      'domain' => array(
+        'description' => 'Domain of cookie',
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+      ),
+      'path' => array(
+        'description' => 'Path of cookie',
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+      ),
+      'expires' => array(
+        'description' => 'Expire date of cookie as original text',
+        'type' => 'text',
+        'size' => 'medium',
+        'not null' => TRUE,
+      ),
+      'expire_timestamp' => array(
+        'description' => 'Expirition date of cookie',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'cookie_send_time' => array(
+        'description' => 'Send time of cookie',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'indexes' => array(
+      'cookie_hash' => array('cookie_hash'),
+      'crawler_id' => array('crawler_id'),
+    ),
+    'primary key' => array('id'),
+  );
+  
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ *
+ * @ingroup opensanmateo_sitecrawler
+ */
+function opensanmateo_sitecrawler_install() {
+  $weight = db_select('system', 's')
+              ->fields('s', array('weight'))
+              ->condition('name', 'search_api', '=')
+              ->execute()
+              ->fetchField();
+              
+  db_update('system')
+    ->fields(array('weight' => $weight + 1))
+    ->condition('name', 'opensanmateo_sitecrawler', '=')
+    ->execute();
+  
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * @ingroup opensanmateo_sitecrawler
+ */
+function opensanmateo_sitecrawler_uninstall() {
+  foreach (opensanmateo_sitecrawler_schema() as $table => $data) {
+    db_drop_table($table);
+  }
+}
