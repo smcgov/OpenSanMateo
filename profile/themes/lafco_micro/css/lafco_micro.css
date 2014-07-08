@@ -11266,7 +11266,7 @@ a:hover, a:focus {
   background: rgba(40, 44, 116, 0.8); }
 
 /* line 27, ../scss/lafco_micro.scss */
-.universal-teaser.event, .read-more-wrapper a {
+.universal-teaser.event .read-more-wrapper a {
   background-color: rgba(40, 44, 116, 0.2); }
 
 /* LafCO Promo Boxes */
