@@ -53,8 +53,8 @@ features[variable][] = node_submitted_photo
 features[views_view][] = media_gallery
 
 
-; Information added by drush on 2014-05-30
+; Information added by drush on 2014-07-08
 version = "appify_services"
 project = "openpublic"
-datestamp = "1401470332"
+datestamp = "1404844173"
 
