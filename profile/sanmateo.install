@@ -229,6 +229,7 @@ function sanmateo_update_7021() {
  */
 function sanmateo_update_7023() {
   module_enable(array('contact', 'geo_filter'));
+}
 /**
  * Replace purge with acquia_purge.
  */
