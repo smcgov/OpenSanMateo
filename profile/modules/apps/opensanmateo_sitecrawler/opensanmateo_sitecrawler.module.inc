@@ -132,7 +132,16 @@ function opensanmateo_sitecrawler_admin_item_form($form, $form_state, $id = FALS
     '#type' => 'textarea',
     '#title' => t('Body XPaths'),
     '#default_value' => (!$new ? $record['body_xpaths'] : '/html/body'),
-    '#description' => t('<p>Enter xpaths to try to locate the body content with. For each page, each of these xpaths will be tried until a match is found, and the content at that xpath will be used. If no matches are found, then the content of the &lt;body&gt; tag will be used.</p><p>Examples:<ul><li>xxxxxxxxxxxx</li><li>zzzzzzzzzz</li></ul></p>'),
+    '#description' => t(
+      '<p>Enter !xpaths to try to locate the body content with. For each page, each of these xpaths will be tried until a match is found, and the content at that xpath will be used. If no matches are found, then the content of the &lt;body&gt; tag will be used.</p><p>Examples:<ul><li>//div[@id="layout"]</li><li>/html/body</li></ul></p>',
+      array(
+        '!xpaths' => l(
+          'xpaths',
+          'http://www.w3schools.com/XPath/',
+          array('attributes' => array('target'=>'_blank'))
+        )
+      )
+    ),
   );
   
   $form['opensanmateo_sitecrawler_size_limit'] = array(

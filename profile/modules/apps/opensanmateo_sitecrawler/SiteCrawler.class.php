@@ -70,16 +70,11 @@ class SiteCrawler extends PHPCrawler {
       // $body = $xpath->query('//div[@id="layout"]');
       $body = $xpath->query($body_xpath);
       if (!is_null($body)) {
-        break;
-      }
-    }
-
-    if (!is_null($body)) {
-      foreach ($body as $i => $element) {
-        $node_body = $element->nodeValue;
-        if (!empty($node_body)) {
-// drupal_set_message('<pre style="border: 1px solid black;">$body $element: ' . print_r($element->nodeValue,1) . '</pre>');
-          break;
+        foreach ($body as $i => $element) {
+          $node_body = $element->nodeValue;
+          if (!empty($node_body)) {
+            break 2;
+          }
         }
       }
     }
