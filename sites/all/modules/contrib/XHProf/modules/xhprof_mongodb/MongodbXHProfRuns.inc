@@ -1,13 +1,5 @@
 <?php
 
-/**
- * @file
- * Definition of MongodbXHProfRuns.
- */
-
-/**
- * Defines a MongoDB storage backend for XHProf.
- */
 class MongodbXHProfRuns implements XHProfRunsInterface {
 
   private $dir = '';
@@ -25,7 +17,7 @@ class MongodbXHProfRuns implements XHProfRunsInterface {
     return $file;
   }
 
-  public function __construct($dir = NULL) {
+  public function __construct($dir = null) {
   }
 
   /**
@@ -74,8 +66,8 @@ class MongodbXHProfRuns implements XHProfRunsInterface {
     return $run['run_data'];
   }
 
-  public function save_run($xhprof_data, $type, $run_id = NULL) {
-    if ($run_id === NULL) {
+  public function save_run($xhprof_data, $type, $run_id = null) {
+    if ($run_id === null) {
       $run_id = $this->gen_run_id($type);
     }
 

@@ -11,8 +11,8 @@ features_exclude[dependencies][defaultcontent] = defaultcontent
 project path = /tmp/
 
 
-; Information added by drush on 2014-07-08
+; Information added by drush on 2014-07-09
 version = "appify_services"
 project = "openpublic"
-datestamp = "1404844173"
+datestamp = "1404939488"
 
