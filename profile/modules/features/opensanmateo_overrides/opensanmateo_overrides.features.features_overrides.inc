@@ -109,6 +109,7 @@ function opensanmateo_overrides_features_override_default_overrides() {
   $overrides["field_instance.node-profile-field_profile_staff.label"] = 'Employee';
   $overrides["field_instance.node-profile-field_profile_staff.widget|weight"] = 10;
   $overrides["field_instance.node-profile-field_profile_staff.workbench_access_field"] = 0;
+  $overrides["field_instance.node-site_page-body.settings|display_summary"] = 0;
   $overrides["field_instance.node-site_page-field_files.settings|description_field"] = 1;
   $overrides["field_instance.node-site_page-field_files.widget|settings|filefield_sources"] = array(
     'filefield_sources' => array(),
