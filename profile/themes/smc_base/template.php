@@ -96,25 +96,18 @@ function smc_base_preprocess_flexslider(&$variables) {
 }
 
 function smc_base_preprocess_node(&$variables) {
+drupal_set_message('<pre>$variables[type]: ' . print_r($variables['type'], 1) . '</pre>');
   //krumo($variables);
   // remove the release date field
   unset($variables['content']['field_release_date']);
 
   switch($variables['type']) {
 
-    default:
-      // hide display info by default
-      $display_byline = FALSE;
-      $author_field = FALSE;
-
-      $variables['display_submitted'] = FALSE;
-    break;
-
     case 'blog_entry':
       //$display_byline = isset($variables['field_blog_show_author_info']) ? $variables['field_blog_show_author_info']['und'][0]['value'] : FALSE;
       $display_byline = TRUE;
-      $author_field = isset($variables['field_blog_author']) ? $variables['field_blog_author']['und'][0]['nid'] : FALSE;
-    break;
+      $author_field = isset($variables['field_blog_author']) ? $variables['field_blog_author'][$variables['language']][0]['nid'] : FALSE;
+      break;
 
     case 'document':
       $docs = element_children($variables['content']['field_document_attachment']);
@@ -128,7 +121,15 @@ function smc_base_preprocess_node(&$variables) {
       }
       $display_byline = $variables['display_submitted'];
       $author_field = isset($variables['field_document_author'][0]) ? $variables['field_document_author'][0]['nid'] : FALSE;
-    break;
+      break;
+
+    default:
+      // hide display info by default
+      $display_byline = FALSE;
+      $author_field = FALSE;
+
+      $variables['display_submitted'] = FALSE;
+      break;
   }
 
   // Unset language info if it's trying to sneak it's way in.
@@ -142,7 +143,10 @@ function smc_base_preprocess_node(&$variables) {
 
     $author = node_load($author_field);
     $author_link = l($author->title, 'node/' . $author->nid);
-    $date = smc_base_format_timestamp($variables['created']);
+    $date = 
+      !empty($variables['field_release_date']) && !empty($variables['field_release_date'][0]['value'])
+      ? smc_base_format_timestamp(strtotime($variables['field_release_date'][0]['value']), FALSE)
+      : smc_base_format_timestamp($variables['created']);
 
     $byline = t('Posted by ') . $author_link . ' on ' . $date;
 

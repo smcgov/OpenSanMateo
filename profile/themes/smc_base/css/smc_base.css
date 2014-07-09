@@ -5480,7 +5480,7 @@ h1 {
 
 /* Optional - remove captions at smaller screen widths
 @media screen and (max-width: 480px) {
-	.rs-caption { opacity: 0!important; }
+  .rs-caption { opacity: 0!important; }
 }
 */
 /* line 177, ../scss/_carousel.scss */
@@ -5781,7 +5781,7 @@ h4 {
 
 /* line 456, ../scss/_carousel.scss */
 .rs-caption > * {
-  /* 	font-weight: bold; */
+  /*  font-weight: bold; */
   text-shadow: 0 3px 3px rgba(0, 0, 0, 0.8);
   color: white;
   margin: 0; }
@@ -9067,9 +9067,9 @@ body.page-node .node .action-links-field-collection-add {
 
 /* line 21, ../scss/elements/node-elements.scss */
 .page-node .node .field-name-field-thumbnail-image {
-  float: left;
+  float: right;
   clear: none;
-  margin-right: 40px;
+  margin-left: 25px;
   max-width: 40%; }
   /* line 27, ../scss/elements/node-elements.scss */
   .page-node .node .field-name-field-thumbnail-image img {
@@ -9396,8 +9396,8 @@ body.page-node .node .action-links-field-collection-add {
       height: 50px;
       display: inline-block;
       /*
-      		background: #acaca1;
-      		background: rgba(0,0,0,.05);
+          background: #acaca1;
+          background: rgba(0,0,0,.05);
       */
       text-align: center;
       border-radius: 6px; }
