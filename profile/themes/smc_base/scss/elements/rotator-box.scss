@@ -38,6 +38,15 @@
       }
     }
   }
+  ol.flex-control-thumbs {
+    width: auto;
+    text-align: center;
+    li {
+      width: auto;
+      float: none;
+      margin: 0 2px;
+    }
+  }
 }
 
 .pane-bundle-rotator-panels-pane {
