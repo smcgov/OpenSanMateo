@@ -38,8 +38,8 @@ features[variable][] = node_options_document
 features[views_view][] = documents
 
 
-; Information added by drush on 2014-07-09
+; Information added by drush on 2014-07-18
 version = "appify_services"
 project = "openpublic"
-datestamp = "1404939488"
+datestamp = "1405707639"
 

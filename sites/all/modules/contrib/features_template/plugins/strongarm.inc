@@ -7,7 +7,7 @@ $plugin = array(
 );
 function features_template_strongarm_info(&$info, $datum) {
   $key = features_template_strongarm_key($datum);
-  if(!isset($info['features']['variable']) || !in_array($key, $info['features']['variable'])) {
+  if (!isset($info['features']['variable']) || !in_array($key, $info['features']['variable'])) {
     $info['features']['variable'][] = $key;
   }
 }
