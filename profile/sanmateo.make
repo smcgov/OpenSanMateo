@@ -297,13 +297,18 @@ projects[quick_search][download][branch] = 7.x-1.x
 projects[quick_search][download][url] = http://git.drupal.org/sandbox/jec006/1524412.git
 
 projects[search_api_solr][type] = module
+projects[search_api_solr][type] = module
 projects[search_api_solr][subdir] = contrib
 projects[search_api_solr][version] = 1.0
 projects[search_api_solr][patch][] =  http://drupal.org/files/1776534.patch
 
 projects[search_api_acquia][type] = module
 projects[search_api_acquia][subdir] = contrib
-projects[search_api_acquia][version] = 2.1
+projects[search_api_acquia][download][type] = git
+projects[search_api_acquia][download][url] = http://git.drupal.org/project/search_api_acquia.git
+projects[search_api_acquia][download][revision] = 1967e867e0df80a476e218a120d30327034766d9
+projects[search_api_acquia][patch][1977510] = http://drupal.org/files/1977510-14--remove_SolrPhpClient.patch
+projects[search_api_acquia][patch][2087141] = http://drupal.org/files/search_api_acquia-acquia_search_host_precedence-2087141-1.patch
 
 projects[search_api_solr_overrides][type] = module
 projects[search_api_solr_overrides][subdir] = contrib
