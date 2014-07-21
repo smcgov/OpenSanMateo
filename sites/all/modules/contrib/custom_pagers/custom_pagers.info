@@ -8,8 +8,8 @@ files[] = views/custom_pagers_plugin_display_simple.inc
 files[] = views/custom_pagers_plugin_style_php_array.inc
 
 
-; Information added by drush on 2014-07-09
+; Information added by drush on 2014-07-18
 version = "dcc774741f5152a8c6a10d21a70399d77794cfa2"
 project = "custom_pagers"
-datestamp = "1404939438"
+datestamp = "1405707603"
 

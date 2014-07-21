@@ -6,9 +6,9 @@ dependencies[] = facetapi
 files[] = plugins/facetapi_select_dropdowns.inc
 
 
-; Information added by drush on 2014-07-09
+; Information added by drush on 2014-07-18
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "facetapi_select"
-datestamp = "1404939423"
+datestamp = "1405707584"
 

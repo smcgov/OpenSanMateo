@@ -7,7 +7,7 @@ $plugin = array(
 );
 function features_template_panelizer_info(&$info, $datum) {
   $key = features_template_panelizer_key($datum);
-  if(!isset($info['features']['panelizer_defaults']) || !in_array($key, $info['features']['panelizer_defaults'])) {
+  if (!isset($info['features']['panelizer_defaults']) || !in_array($key, $info['features']['panelizer_defaults'])) {
     $info['features']['panelizer_defaults'][] = $key;
   }
 }

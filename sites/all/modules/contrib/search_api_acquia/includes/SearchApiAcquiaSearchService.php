@@ -5,44 +5,34 @@
  * Contains SearchApiAcquiaSearchService.
  */
 
-
 /**
  * Search API service class for Acquia Search.
  */
 class SearchApiAcquiaSearchService extends SearchApiSolrService {
 
   /**
-   * The connection class used by this service.
-   *
-   * Must implement SearchApiSolrConnectionInterface.
-   *
-   * @var string
+   * Overrides SearchApiSolrService::connection_class.
    */
   protected $connection_class = 'SearchApiAcquiaSearchConnection';
 
   /**
-   * Create a connection to the Solr server as configured in $this->options.
+   * Overrides SearchApiSolrService::connect().
    */
   protected function connect() {
-    $this->setConnectionOptions();
-
     if (!$this->solr) {
       if (!class_exists($this->connection_class)) {
         throw new SearchApiException(t('Invalid class @class set as Solr connection class.', array('@class' => $this->connection_class)));
       }
+
+      // Set our special overrides if applicable
+      $this->setConnectionOptions();
+      // Set the solr connection object.
       $options = $this->options + array('server' => $this->server->machine_name);
-
-
       $this->solr = new $this->connection_class($options);
       if (!($this->solr instanceof SearchApiSolrConnectionInterface)) {
         $this->solr = NULL;
         throw new SearchApiException(t('Invalid class @class set as Solr connection class.', array('@class' => $this->connection_class)));
       }
-    }
-
-    // allow the connection to override the derived key
-    if (isset($this->options['derived_key'])) {
-      $this->solr->setDerivedKey($this->options['derived_key']);
     }
   }
 
@@ -56,11 +46,11 @@ class SearchApiAcquiaSearchService extends SearchApiSolrService {
     $this->setConnectionOptions();
 
     $options = $this->options;
-    $url = $options['scheme'] . '://' . $options['host'] . ':' . $options['port'] . $options['path'];
+    $url = 'http://' . $options['host'] . ':' . $options['port'] . $options['path'];
     $output .= "<dl>\n  <dt>";
     $output .= t('Acquia Search Server');
     $output .= "</dt>\n  <dd>";
-    $output .= $url;
+    $output .= l($url, $url);
     $output .= '</dd>';
     if ($options['http_user']) {
       $output .= "\n  <dt>";
@@ -85,17 +75,19 @@ class SearchApiAcquiaSearchService extends SearchApiSolrService {
     $identifier = acquia_agent_settings('acquia_identifier');
     $subscription = acquia_agent_settings('acquia_subscription_data');
 
-    // Get our override if we have one. Otherwise use the default.
-    $search_host = variable_get('acquia_search_host', 'search.acquia.com');
+    $search_host = variable_get('acquia_search_host', '');
     if (!empty($subscription['heartbeat_data']['search_service_colony'])) {
       $search_host = $subscription['heartbeat_data']['search_service_colony'];
     }
 
+    // Get our default port
+    $search_port = variable_get('acquia_search_port', '80');
     // Get our solr path
     $search_path = variable_get('acquia_search_path', '/solr/' . $identifier);
 
     $this->options['host'] = $search_host;
     $this->options['path'] = $search_path;
+    $this->options['port'] = $search_port;
 
     // We can also have overrides per server setting.
     // Apply the overrides in the "search_api_acquia_overrides" variable.
@@ -119,8 +111,10 @@ class SearchApiAcquiaSearchService extends SearchApiSolrService {
 
     $options = $this->options += array(
       'edismax' => 0,
+      'host' => $search_host,
+      'port' => '80',
+      'path' => variable_get('acquia_search_path', '/solr/' . $identifier),
       'modify_acquia_connection' => FALSE,
-      'scheme' => 'http',
     );
 
     // HTTP authentication is not needed since Acquia Search uses an HMAC
@@ -143,17 +137,9 @@ class SearchApiAcquiaSearchService extends SearchApiSolrService {
       '#weight' => -20,
     );
 
-    // Disable any port configuration option as Acquia will always be in
-    //control of those ports
-    $form['port']['#access'] = FALSE;
-    // Disable the http method that is selected as Acquia will always be https
-    // unless ACQUIA_DEVELOPMENT_NOSSL was set.
-    $form['scheme']['#access'] = FALSE;
-
-    $form['clean_ids_form']['#weight'] = 10;
-
     // Re-sets defaults with Acquia information.
     $form['host']['#default_value'] = $options['host'];
+    $form['port']['#default_value'] = $options['port'];
     $form['path']['#default_value'] = $options['path'];
 
     // Only display fields if we are modifying the connection parameters to the
@@ -164,23 +150,17 @@ class SearchApiAcquiaSearchService extends SearchApiSolrService {
       ),
     );
     $form['host']['#states'] = $states;
+    $form['port']['#states'] = $states;
     $form['path']['#states'] = $states;
-
-    if ($this->options['scheme'] == 'https') {
-      $this->options['port'] = '443';
-    }
-    else {
-      $this->options['port'] = '80';
-    }
 
     // We cannot connect directly to the Solr instance, so don't make it a link.
     if (isset($form['server_description'])) {
-      $url = $this->options['scheme'] . '://' . $this->options['host'] . ':' . $this->options['port'] . $this->options['path'];
+      $url = 'http://' . $this->options['host'] . ':' . $this->options['port'] . $this->options['path'];
       $form['server_description'] = array(
         '#type' => 'item',
         '#title' => t('Acquia Search URI'),
         '#description' => check_plain($url),
-        '#weight' => -40,
+        '#weight' => 10,
       );
     }
 
@@ -248,7 +228,7 @@ class SearchApiAcquiaSearchService extends SearchApiSolrService {
     // Set the qt to eDisMax if we have keywords and either the configuration
     // is set to always use eDisMax or the keys contain a wildcard (* or ?).
     $keys = $query->getOriginalKeys();
-    if ($keys && is_scalar($keys) && (($wildcard = preg_match('/\S+[*?]/', $keys)) || $this->options['edismax'])) {
+    if ($keys && (($wildcard = preg_match('/\S+[*?]/', $keys)) || $this->options['edismax'])) {
       $params['defType'] = 'edismax';
       if ($wildcard) {
         // Converts keys to lower case, reset keys in query and replaces param.
