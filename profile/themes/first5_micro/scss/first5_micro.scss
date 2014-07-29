@@ -17,14 +17,14 @@ ul li, ol li{
 }
 
 a:hover, a:focus{
-    color:$primaryTeal;
+    color: rgba($primaryTeal, 0.2);
 }
 .node-webform .form-submit{
     background:rgba(40,44,116, 0.8);
 }
 
 .universal-teaser.event .read-more-wrapper a{
-    background-color: rgba(40,44,116, 0.2);
+    background-color: rgba($primaryTeal, 0.2);
 }
 /* First 5 Promo Boxes */
 .promo-pane-default {           //Aqua

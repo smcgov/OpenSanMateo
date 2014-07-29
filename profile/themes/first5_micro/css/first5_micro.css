@@ -11272,7 +11272,7 @@ ul li, ol li {
 
 /* line 19, ../scss/first5_micro.scss */
 a:hover, a:focus {
-  color: rgba(106, 120, 51, 0.65); }
+  color: rgba(106, 120, 51, 0.2); }
 
 /* line 22, ../scss/first5_micro.scss */
 .node-webform .form-submit {
@@ -11280,7 +11280,7 @@ a:hover, a:focus {
 
 /* line 26, ../scss/first5_micro.scss */
 .universal-teaser.event .read-more-wrapper a {
-  background-color: rgba(40, 44, 116, 0.2); }
+  background-color: rgba(106, 120, 51, 0.2); }
 
 /* First 5 Promo Boxes */
 /* line 30, ../scss/first5_micro.scss */
