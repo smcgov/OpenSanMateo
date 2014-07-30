@@ -76,7 +76,7 @@ $master_host = $common_settings_url_prefix . '-acquia.fayze2.com';
 if (empty($conf['sanmateo_is_master'])) {
   $conf['sanmateo_master_is'] = $master_host;
 }
-$conf['distributed_blocks_master_url'] = 'http://' . $master_host;
+$conf['distributed_blocks_master_url'] = 'prod' == $_ENV['AH_SITE_ENVIRONMENT'] ? 'http://www.smcgov.org'  : 'http://' . $master_host;
 $conf['distributed_blocks_update_freq'] = 1;
 
 // Set default shield module config so all we have to do is flip it on and off
