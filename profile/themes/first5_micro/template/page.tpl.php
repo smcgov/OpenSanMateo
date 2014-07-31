@@ -20,8 +20,8 @@
     		<!--<a class="dept-link show_hide icon-eye" rel="#dept-switch" href="">View Cities and Special Districts</a>-->
     		
     		<div class="lockup group clearfix">
-    		  <div class="site-seal"><a href="<?php print $smclink; ?>" title="<?php print t('First 5 San Mateo County'); ?>"><img src="<?php print $header_logo; ?>" alt="<?php print t('First 5 San Mateo County'); ?>" /></a></div>
-          <img src="../profile/themes/first5_micro/images/seal-header.png" alt="<?php print t('First 5 San Mateo County'); ?>" /></a></div>
+    		  <div class="site-seal"><a href="<?php print $smclink; ?>" title="<?php print t('First 5 San Mateo County'); ?>"><img src="<?php print $header_logo; ?>" alt="<?php print t('First 5 San Mateo County'); ?>" /></a>
+          </div>
     		  
     			<?php if ($site_name): ?>
       			<a href="<?php print $smclink; ?>" title="<?php print t('First 5 of San Mateo County'); ?>"><h2 class="county-name">First 5 San Mateo County</h2></a>
