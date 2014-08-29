@@ -1,9 +1,11 @@
 name = OpenSanMateo Roles
 core = 7.x
 package = OpenSanMateo
+php = 5.2.4
 version = 7.x-1.0-alpha
 project = opensanmateo_roles
 dependencies[] = features
+dependencies[] = view_unpublished
 features[features_api][] = api:2
 features[user_role][] = content creator
 features[user_role][] = editor
