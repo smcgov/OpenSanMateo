@@ -96,8 +96,6 @@ function smc_base_preprocess_flexslider(&$variables) {
 }
 
 function smc_base_preprocess_node(&$variables) {
-drupal_set_message('<pre>$variables[type]: ' . print_r($variables['type'], 1) . '</pre>');
-  //krumo($variables);
   // remove the release date field
   unset($variables['content']['field_release_date']);
 
@@ -106,7 +104,7 @@ drupal_set_message('<pre>$variables[type]: ' . print_r($variables['type'], 1) . 
     case 'blog_entry':
       //$display_byline = isset($variables['field_blog_show_author_info']) ? $variables['field_blog_show_author_info']['und'][0]['value'] : FALSE;
       $display_byline = TRUE;
-      $author_field = isset($variables['field_blog_author']) ? $variables['field_blog_author'][$variables['language']][0]['nid'] : FALSE;
+      $author_field = !empty($variables['field_blog_author']) ? $variables['field_blog_author'][$variables['language']][0]['nid'] : FALSE;
       break;
 
     case 'document':
