@@ -291,8 +291,8 @@ projects[search_api_site][download][url] = http://git.drupal.org/sandbox/e2thex/
 projects[features_template][type] = module
 projects[features_template][subdir] = contrib
 projects[features_template][download][type] = git
-projects[features_template][download][url] = http://git.drupal.org/sandbox/e2thex/2042669.git
-projects[features_template][download][revision] = 1a164f75d5f389d79b36ad3b9d3ed6593a466386
+projects[features_template][download][url] = http://git.drupal.org/project/features_template.git
+projects[features_template][download][revision] =   6ed792a0ad0555f24516a804a8dfe05ea275910c
 
 projects[quick_search][type] = module
 projects[quick_search][subdir] = contrib
@@ -522,7 +522,7 @@ projects[shield][download][revision] = d0d4d8ba32ac128d15c758fe29dbc022223a1270
 
 projects[XHProf][type] = module
 projects[XHProf][subdir] = contrib
-projects[XHProf][version] = 1.x-dev
+projects[XHProf][version] = 1.0-beta3
 
 projects[shs][type] = module
 projects[shs][subdir] = contrib

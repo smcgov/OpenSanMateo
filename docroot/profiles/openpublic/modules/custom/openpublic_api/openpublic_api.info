@@ -5,8 +5,8 @@ package = OpenPublic
 core = 7.x
 
 
-; Information added by drush on 2014-05-30
+; Information added by drush on 2014-07-18
 version = "appify_services"
 project = "openpublic"
-datestamp = "1401470332"
+datestamp = "1405707639"
 

@@ -6076,7 +6076,7 @@ input:focus::-ms-input-placeholder {
 
   /* line 137, ../../smc_base/scss/style.scss */
   p {
-    color: rgba(40, 44, 116, 0.5); }
+    color: rgba(40, 44, 116, 0.8); }
 
   /* line 141, ../../smc_base/scss/style.scss */
   .main-content ul {
@@ -6112,7 +6112,7 @@ input:focus::-ms-input-placeholder {
   */
 /* line 20, ../../smc_base/scss/elements/editor.scss */
 body {
-  color: rgba(40, 44, 116, 0.5);
+  color: rgba(40, 44, 116, 0.8);
   font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
 
 /* line 25, ../../smc_base/scss/elements/editor.scss */
@@ -6175,7 +6175,7 @@ ul, ol {
   font-size: .9em; }
   /* line 85, ../../smc_base/scss/elements/editor.scss */
   ul li, ol li {
-    color: rgba(40, 44, 116, 0.5); }
+    color: rgba(40, 44, 116, 0.8); }
 
 /* line 2, ../../smc_base/scss/elements/toolbar.scss */
 #toolbar {
@@ -7787,7 +7787,7 @@ ul.button-test {
     box-shadow: none;
     border-color: #282c74;
     background-color: white;
-    color: rgba(40, 44, 116, 0.5);
+    color: rgba(40, 44, 116, 0.8);
     font-weight: normal; }
 /* line 35, ../../smc_base/scss/elements/webform.scss */
 .node-webform .form-textarea {
@@ -7801,7 +7801,7 @@ ul.button-test {
 .node-webform .form-checkboxes label {
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-weight: normal;
-  color: rgba(40, 44, 116, 0.5);
+  color: rgba(40, 44, 116, 0.8);
   text-transform: none; }
 /* line 51, ../../smc_base/scss/elements/webform.scss */
 .node-webform .form-radios .form-radio,
@@ -8695,7 +8695,7 @@ table {
 
 /* line 159, ../../smc_base/scss/elements/rotator-box.scss */
 .lte8 .pane-bundle-rotator-panels-pane .flex-caption {
-  background: rgba(40, 44, 116, 0.5) !important; }
+  background: rgba(40, 44, 116, 0.8) !important; }
 
 @media all and (min-width: 768px) {
   /* line 170, ../../smc_base/scss/elements/rotator-box.scss */
@@ -8784,7 +8784,7 @@ table {
     display: inline-block;
     border: 1px solid rgba(40, 44, 116, 0.2);
     padding: .25em .75em .25em .5em;
-    color: rgba(40, 44, 116, 0.5);
+    color: rgba(40, 44, 116, 0.8);
     margin-bottom: 0; }
   /* line 41, ../../smc_base/scss/elements/teaser.scss */
   .universal-teaser .node-type {
@@ -8805,12 +8805,12 @@ table {
   .universal-teaser .author-data {
     margin-top: 0;
     font-size: .75em;
-    color: rgba(40, 44, 116, 0.5);
+    color: rgba(40, 44, 116, 0.8);
     margin-bottom: 0.5em;
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
     /* line 72, ../../smc_base/scss/elements/teaser.scss */
     .universal-teaser .author-data a {
-      color: rgba(40, 44, 116, 0.5); }
+      color: rgba(40, 44, 116, 0.8); }
   /* line 77, ../../smc_base/scss/elements/teaser.scss */
   .universal-teaser .node-teaser {
     display: block;
@@ -8851,7 +8851,7 @@ table {
         list-style-type: none;
         margin: 0;
         padding: 0;
-        color: rgba(40, 44, 116, 0.5); }
+        color: rgba(40, 44, 116, 0.8); }
   /* line 143, ../../smc_base/scss/elements/teaser.scss */
   .universal-teaser .read-more-wrapper {
     font-size: 0.9em; }
@@ -9158,7 +9158,7 @@ body.page-node .node .action-links-field-collection-add {
     display: block; }
   /* line 131, ../../smc_base/scss/elements/node-elements.scss */
   .field-type-file .file .file-type {
-    color: rgba(40, 44, 116, 0.5);
+    color: rgba(40, 44, 116, 0.8);
     width: 10%;
     background-color: rgba(40, 44, 116, 0.05);
     font-size: .5em;
@@ -9169,7 +9169,7 @@ body.page-node .node .action-links-field-collection-add {
     text-transform: uppercase; }
   /* line 144, ../../smc_base/scss/elements/node-elements.scss */
   .field-type-file .file .file-size {
-    color: rgba(40, 44, 116, 0.5);
+    color: rgba(40, 44, 116, 0.8);
     width: 20%;
     font-size: .5em;
     float: right;
@@ -9313,7 +9313,11 @@ body.page-node .node .action-links-field-collection-add {
     margin: 0 auto;
     width: 100%;
     max-height: 0; }
-    /* line 38, ../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+<<<<<<< HEAD
+    /* line 38, ../../../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+=======
+    /* line 38, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+>>>>>>> 8c73915c11cca8f9583a503fb755f6e55e61034e
     .flexnav:after {
       content: "";
       display: table;
@@ -9954,7 +9958,7 @@ body.page-node .node .action-links-field-collection-add {
     float: left;
     width: 100%;
     font-size: 1em;
-    color: rgba(40, 44, 116, 0.5);
+    color: rgba(40, 44, 116, 0.8);
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
     padding: 0 1em 1em;
     margin-bottom: 0;
@@ -10007,7 +10011,7 @@ body.page-node .node .action-links-field-collection-add {
       float: left;
       width: 100%;
       font-size: 1em;
-      color: rgba(40, 44, 116, 0.5);
+      color: rgba(40, 44, 116, 0.8);
       font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
       padding: 1em 0;
       margin-bottom: 0;
@@ -10857,7 +10861,7 @@ body.page-node .node .action-links-field-collection-add {
     margin-bottom: 20px;
     border-bottom: 1px solid rgba(3, 108, 182, 0.1);
     padding-bottom: 10px;
-    color: rgba(40, 44, 116, 0.5); }
+    color: rgba(40, 44, 116, 0.8); }
     /* line 17, ../../smc_base/scss/elements/twitter.scss */
     .pane-twitter-pull-pane ul.tweets-pulled-listing li a {
       color: #282c74; }
@@ -10896,7 +10900,7 @@ body.page-node .node .action-links-field-collection-add {
       text-align: right; }
       /* line 62, ../../smc_base/scss/elements/twitter.scss */
       .pane-twitter-pull-pane ul.tweets-pulled-listing li .tweet-footer a {
-        color: rgba(40, 44, 116, 0.5); }
+        color: rgba(40, 44, 116, 0.8); }
         /* line 65, ../../smc_base/scss/elements/twitter.scss */
         .pane-twitter-pull-pane ul.tweets-pulled-listing li .tweet-footer a:hover {
           color: rgba(40, 44, 116, 0.65); }
@@ -11246,21 +11250,63 @@ ul.facetapi-facetapi-checkbox-links {
 
 /* line 7, ../scss/lafco_micro.scss */
 body {
-  background: #282c74; }
+  background: #282c74;
+  color: #282c74; }
+
+<<<<<<< HEAD
+/* line 12, ../scss/lafco_micro.scss */
+p {
+  color: #282c74; }
+
+/* line 16, ../scss/lafco_micro.scss */
+ul li, ol li {
+  color: #282c74; }
+
+/* line 20, ../scss/lafco_micro.scss */
+a:hover, a:focus {
+  color: rgba(40, 44, 116, 0.65); }
+
+/* line 23, ../scss/lafco_micro.scss */
+.node-webform .form-submit {
+  background: rgba(40, 44, 116, 0.8); }
+
+/* line 27, ../scss/lafco_micro.scss */
+.universal-teaser.event .read-more-wrapper a {
+  background-color: rgba(40, 44, 116, 0.2); }
 
 /* LafCO Promo Boxes */
-/* line 12, ../scss/lafco_micro.scss */
+/* line 31, ../scss/lafco_micro.scss */
 .promo-pane-default {
   background-color: #243d85; }
 
-/* line 15, ../scss/lafco_micro.scss */
+/* line 34, ../scss/lafco_micro.scss */
 .promo-pane-green {
   background-color: #42854a; }
 
-/* line 18, ../scss/lafco_micro.scss */
+/* line 37, ../scss/lafco_micro.scss */
 .promo-pane-purple {
   background-color: #682266; }
 
-/* line 21, ../scss/lafco_micro.scss */
+/* line 40, ../scss/lafco_micro.scss */
+=======
+/* line 10, ../scss/lafco_micro.scss */
+p {
+  color: black; }
+
+/* LafCO Promo Boxes */
+/* line 14, ../scss/lafco_micro.scss */
+.promo-pane-default {
+  background-color: #243d85; }
+
+/* line 17, ../scss/lafco_micro.scss */
+.promo-pane-green {
+  background-color: #42854a; }
+
+/* line 20, ../scss/lafco_micro.scss */
+.promo-pane-purple {
+  background-color: #682266; }
+
+/* line 23, ../scss/lafco_micro.scss */
+>>>>>>> 8c73915c11cca8f9583a503fb755f6e55e61034e
 .promo-pane-orange {
   background-color: #ee9f3b; }

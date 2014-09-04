@@ -8602,7 +8602,6 @@ table {
     text-align: center; }
     /* line 44, ../scss/elements/rotator-box.scss */
     .flexslider ol.flex-control-thumbs li {
-      width: auto;
       float: none;
       margin: 0 2px; }
 

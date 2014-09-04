@@ -1,0 +1,8 @@
+name = OpenSanMateo Webform Captcha
+description = Conditionally apply CAPTCHA to Webforms.
+core = 7.x
+package = OpenSanMateo
+dependencies[] = captcha
+dependencies[] = list
+dependencies[] = options
+dependencies[] = webform

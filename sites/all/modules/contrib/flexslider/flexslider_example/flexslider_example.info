@@ -32,8 +32,8 @@ features[variable][] = field_bundle_settings_node__flexslider_example
 features[views_view][] = flexslider_views_example
 
 
-; Information added by drush on 2014-05-30
+; Information added by drush on 2014-07-18
 version = "068df89"
 project = "flexslider"
-datestamp = "1401470318"
+datestamp = "1405707624"
 

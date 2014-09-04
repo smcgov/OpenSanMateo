@@ -30,6 +30,7 @@ function theme_flexslider_list(&$vars) {
 
       $output .= theme('flexslider_list_item', array(
         'item' => $item['slide'],
+        'thumbnail_url' => isset($item['thumbnail_url']) ? $item['thumbnail_url'] : FALSE,
         'settings' => array(
           'optionset' => $optionset,
         ),
@@ -134,13 +135,10 @@ function template_process_flexslider_list_item(&$vars) {
 
   // Generated thumbnail support
   if (isset($settings['optionset']->options['controlNav']) and $settings['optionset']->options['controlNav'] === "thumbnails") {
-    // If the thumbnails are enabled in the option set, scan for the first img
-    // tag and extract the src attribute to set as the thumbnail data
-    $src = array();
-    preg_match("<img.+?src=[\"'](.+?)[\"'].+?>", $item, $src);
-
-    if (!empty($src[1])) {
-      $attributes['data-thumb'] = $src[1];
+    // If the thumbnails are enabled in the option set, check to see if a
+    // thumbnail url has been provided and set that as the thumbnail data.
+    if ($vars['thumbnail_url']) {
+      $attributes['data-thumb'] = $vars['thumbnail_url'];
     }
   }
 

@@ -40,22 +40,22 @@
         // Add events that developers can use to interact.
         $(this).flexslider($.extend(optionset, {
           start: function(slider) {
-            slider.trigger('start');
+            slider.trigger('start', [slider]);
           },
           before: function(slider) {
-            slider.trigger('before');
+            slider.trigger('before', [slider]);
           },
           after: function(slider) {
-            slider.trigger('after');
+            slider.trigger('after', [slider]);
           },
           end: function(slider) {
-            slider.trigger('end');
+            slider.trigger('end', [slider]);
           },
           added: function(slider) {
-            slider.trigger('added');
+            slider.trigger('added', [slider]);
           },
           removed: function(slider) {
-            slider.trigger('removed');
+            slider.trigger('removed', [slider]);
           }
         }));
       } else {

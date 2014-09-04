@@ -5,8 +5,8 @@ core = 7.x
 
 dependencies[] = block
 
-; Information added by drush on 2014-05-30
+; Information added by drush on 2014-07-18
 version = "501219b163acda942c06d3c0017655fba7695b3c"
 project = "distributed_blocks"
-datestamp = "1401470270"
+datestamp = "1405707575"
 

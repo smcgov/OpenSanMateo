@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Main file for the features template module
+ */
+
 include_once 'features_template.features.inc';
 /**
  * Implements hook_ctools_plugin_type()
@@ -37,7 +42,7 @@ function features_template_get_template($plugin = NULL) {
 function features_template_implement($plugin, $data) {
   $template_plugin = features_template_get_template($plugin);
   $features = array();
-  foreach($data as $datum) {
+  foreach ($data as $datum) {
     $template = $datum['template']();
     if (($cb =  $template_plugin['implement callback']) && function_exists($cb)) {
       $features = $features + $cb($template, $datum);
@@ -61,7 +66,7 @@ function features_template_field_default_field_instances() {
  */
 function features_template_strongarm() {
   $data = features_template_infos('strongarm');
-  if($data) {
+  if ($data) {
     return features_template_implement('strongarm', $data);
   }
 }
@@ -78,8 +83,8 @@ function features_template_panelizer_defaults() {
 function features_template_infos($plugin = FALSE) {
   $raw_data = module_invoke_all("features_template_info");
   $data = array();
-  if($plugin) {
-    foreach($raw_data as $datum) {
+  if ($plugin) {
+    foreach ($raw_data as $datum) {
       if ($datum['plugin'] == $plugin) {
         $data[] = $datum;
       }
@@ -98,10 +103,10 @@ function features_template_infos($plugin = FALSE) {
  */
 function features_template_system_info_alter(&$info, $file, $type) {
   $data = features_template_infos();
-  foreach($data as $datum) {
-    if(!$datum['deleted']) {
+  foreach ($data as $datum) {
+    if (!$datum['deleted']) {
       $plugin = features_template_get_template($datum['plugin']);
-      if($file->name == $plugin['module']) {
+      if ($file->name == $plugin['module']) {
         $plugin['features info callback']($info, $datum);
       }
     }
@@ -125,8 +130,8 @@ function features_template_revert() {
   $data = features_template_infos();
   $reverts = array();
   $deletes = array();
-  foreach($data as $datum) {
-    if(!$datum['deleted']) {
+  foreach ($data as $datum) {
+    if (!$datum['deleted']) {
       $plugin = features_template_get_template($datum['plugin']);
       $reverts[] = $plugin['component'];
     }
@@ -134,8 +139,8 @@ function features_template_revert() {
   //make sure we are not duplicating the component
   $reverts = array_unique($reverts);
   features_revert(array('features_template' => $reverts));
-  foreach($data as $datum) {
-    if($datum['deleted']) {
+  foreach ($data as $datum) {
+    if ($datum['deleted']) {
       $plugin = features_template_get_template($datum['plugin']);
       $plugin['deleted callback']($datum);
       $deletes[] = $datum;

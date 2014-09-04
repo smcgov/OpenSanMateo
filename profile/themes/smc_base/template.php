@@ -96,6 +96,7 @@ function smc_base_preprocess_flexslider(&$variables) {
 }
 
 function smc_base_preprocess_node(&$variables) {
+  //krumo($variables);
   // remove the release date field
   unset($variables['content']['field_release_date']);
 

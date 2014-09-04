@@ -6,19 +6,37 @@
 
 body {
   background: $primaryBlue;
+  color:$primaryBlue;
+}
+p {
+    color:$primaryBlue;
 }
 
-/* LafCO Promo Boxes */
-.promo-pane-default {
+ul li, ol li{
+    color:$primaryBlue;
+}
+
+a:hover, a:focus{
+    color: rgba($primaryTeal, 0.2);
+}
+.node-webform .form-submit{
+    background:rgba(40,44,116, 0.8);
+}
+
+.universal-teaser.event .read-more-wrapper a{
+    background-color: rgba($primaryTeal, 0.2);
+}
+/* First 5 Promo Boxes */
+.promo-pane-default {           //Aqua
   background-color:#840f33;
 }
-.promo-pane-green {
+.promo-pane-green {             //Green
   background-color: #999a0f;
 }
-.promo-pane-purple {
+.promo-pane-purple {            //Purple
   background-color: #660c67;
 }
-.promo-pane-orange {
+.promo-pane-orange {            //Orange
   background-color: #f7990d;
 }
 

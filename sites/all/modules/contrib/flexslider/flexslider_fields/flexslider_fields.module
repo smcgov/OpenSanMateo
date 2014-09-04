@@ -159,6 +159,12 @@ function flexslider_fields_field_formatter_view($entity_type, $entity, $field, $
         $item['caption'] = filter_xss($item['item']['title']);
       }
 
+      // Add the thumbnail url according to the optionset confirguration.
+      $optionset = flexslider_optionset_load($display['settings']['optionset']);
+      if ($optionset->imagestyle_thumbnail) {
+        $item['thumbnail_url'] = image_style_url($optionset->imagestyle_thumbnail, $item['item']['uri']);
+      }
+
       $items[$key] = $item;
     }
 

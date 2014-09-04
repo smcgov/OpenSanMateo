@@ -1,0 +1,22 @@
+<?php
+/**
+ * @file
+ * Install hooks for the OpenSanMateo Overrides feature.
+ */
+
+
+/**
+ * Implements hook_install
+ */
+function opensanmateo_overrides_install() {
+  opensanmateo_overrides_update_7001();
+}
+
+/**
+ * Delete the field_published_date off of the document content type.
+ */
+function opensanmateo_overrides_update_7001() {
+  if ($instance = field_info_instance('node', 'field_published_date', 'document')) {
+    field_delete_instance($instance);
+  }
+}

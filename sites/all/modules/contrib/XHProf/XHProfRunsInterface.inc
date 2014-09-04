@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Definition of XHProfRunsInterace.
- */
-
 interface XHProfRunsInterface {
   /**
   * This function gets runs based on passed parameters, column data as key, value as the value. Values
@@ -17,6 +12,6 @@ interface XHProfRunsInterface {
   public function getRuns($stats, $limit = 50, $skip = 0);
   public function getCount();
   public function get_run($run_id, $type, &$run_desc);
-  public function save_run($xhprof_data, $type, $run_id = NULL);
+  public function save_run($xhprof_data, $type, $run_id = null);
 }
 
