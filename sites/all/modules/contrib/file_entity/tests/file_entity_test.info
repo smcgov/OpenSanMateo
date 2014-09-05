@@ -6,8 +6,8 @@ dependencies[] = file_entity
 hidden = TRUE
 
 
-; Information added by drush on 2014-07-18
+; Information added by drush on 2014-09-05
 version = "208ae95"
 project = "file_entity"
-datestamp = "1405707568"
+datestamp = "1409940953"
 
