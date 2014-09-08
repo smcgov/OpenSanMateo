@@ -136,16 +136,18 @@ function smc_base_preprocess_node(&$variables) {
     unset($variables['content']['language']);
   }
 
-  // author info turned on
-  if ($display_byline && $author_field) {
-    // load the author node
-
-    $author = node_load($author_field);
-    $author_link = l($author->title, 'node/' . $author->nid);
-    $date = 
+  if ($display_byline) {
+    // Define the 'Author'.
+    $author_link = $variables['name'];
+    // Author info turned on?
+    if ($author_field) {
+      $author = node_load($author_field);
+      $author_link = l($author->title, 'node/' . $author->nid);
+    }
+    $date =
       !empty($variables['field_release_date']) && !empty($variables['field_release_date'][0]['value'])
-      ? smc_base_format_timestamp(strtotime($variables['field_release_date'][0]['value']), FALSE)
-      : smc_base_format_timestamp($variables['created']);
+        ? smc_base_format_timestamp(strtotime($variables['field_release_date'][0]['value']), FALSE)
+        : smc_base_format_timestamp($variables['created']);
 
     $byline = t('Posted by ') . $author_link . ' on ' . $date;
 
