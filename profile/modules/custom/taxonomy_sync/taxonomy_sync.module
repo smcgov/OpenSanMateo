@@ -507,23 +507,52 @@ function taxonomy_sync_form_taxonomy_form_vocabulary_alter(&$form) {
   $form['taxonomy_sync'] = array(
     '#type' => 'fieldset',
     '#title' => 'Taxonomy Sync',
-
   );
   $form['taxonomy_sync'][TAXONOMY_SYNC_MASTER_PREFIX . $name] = array(
     '#type' => 'checkbox',
     '#description' => t('Checking this box will expose this vocabulary for syncing at %url.', array('%url' => url("taxonomy-sync/list/$name", array('absolute'=>TRUE)))),
     '#default_value' =>  variable_get(TAXONOMY_SYNC_MASTER_PREFIX . $name, FALSE),
     '#title' => t("Is a Master Vocabulary"),
-
+    '#states' => array(
+      'invisible' => array(
+        ':input[name="' . TAXONOMY_SYNC_MASTER_PREFIX . $name . '"]' => array('checked' => FALSE),
+        ':input[name="' . TAXONOMY_SYNC_CLIENT_PREFIX . $name . '"]' => array('!value' => ''),
+      ),
+    ),
   );
   $form['taxonomy_sync'][TAXONOMY_SYNC_CLIENT_PREFIX . $name] = array(
     '#type' => 'textfield',
     '#description' => t('If this vocaulary is a client then the url for the master should be place here (You can find the url on the taxonomy edit screen of the master site'),
     '#default_value' =>  variable_get(TAXONOMY_SYNC_CLIENT_PREFIX . $name, FALSE),
     '#title' => t("URI of Master site"),
-
+    '#states' => array(
+      'invisible' => array(
+        ':input[name="' . TAXONOMY_SYNC_MASTER_PREFIX . $name . '"]' => array('checked' => TRUE),
+        ':input[name="' . TAXONOMY_SYNC_CLIENT_PREFIX . $name . '"]' => array('value' => ''),
+      ),
+    ),
   );
   $form['#submit'][] = 'taxonomy_sync_form_taxonomy_form_vocabulary_sumbit';
+  $form['#validate'][] = 'taxonomy_sync_form_taxonomy_form_vocabulary_validate';
+}
+
+
+/**
+ * Form validation handler for taxonomy_sync_form_taxonomy_form_vocabulary_alter().
+ *
+ * @param $form
+ * @param $form_state
+ * @param array $edit
+ */
+function taxonomy_sync_form_taxonomy_form_vocabulary_validate($form, &$form_state, $edit = array()) {
+  // Ensure that the taxonomy_sync module cannot be configured as both slave
+  // and master.
+  $name = $form['#vocabulary']->machine_name;
+  $client = TAXONOMY_SYNC_CLIENT_PREFIX . $name;
+  $master = TAXONOMY_SYNC_MASTER_PREFIX . $name;
+  if ($form_state['values'][$client] && $form_state['values'][$master]) {
+    form_set_error($client, t('Taxonomy sync cannot be configured as both a master and a client.'));
+  }
 }
 
 /**
