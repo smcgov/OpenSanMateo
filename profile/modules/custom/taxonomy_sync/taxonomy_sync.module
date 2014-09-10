@@ -545,6 +545,8 @@ function taxonomy_sync_form_taxonomy_form_vocabulary_alter(&$form) {
  * @param array $edit
  */
 function taxonomy_sync_form_taxonomy_form_vocabulary_validate($form, &$form_state, $edit = array()) {
+  // Ensure that the taxonomy_sync module cannot be configured as both slave
+  // and master.
   $name = $form['#vocabulary']->machine_name;
   $client = TAXONOMY_SYNC_CLIENT_PREFIX . $name;
   $master = TAXONOMY_SYNC_MASTER_PREFIX . $name;
