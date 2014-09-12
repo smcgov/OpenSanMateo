@@ -535,3 +535,12 @@ projects[jreject][version] = 2.0-beta1
 libraries[jreject][download][type] = git
 libraries[jreject][download][url] = https://github.com/TurnWheel/jReject.git
 libraries[jreject][download][revision] = 4d5f3651c0dda9b7741189d528567b8054b2fb0a
+
+projects[view_unpublished][type] = module
+projects[view_unpublished][subdir] = contrib
+projects[view_unpublished][version] = 1.x-dev
+projects[view_unpublished][download][type] = git
+projects[view_unpublished][download][url] = http://git.drupal.org/project/view_unpublished.git
+projects[view_unpublished][download][revision] = e9df1d3f33b93410bb62e65f70981286db2007bd
+projects[view_unpublished][patch][] = https://www.drupal.org/files/issues/view_unpublished-content_admin_fix-1192074-75.patch
+

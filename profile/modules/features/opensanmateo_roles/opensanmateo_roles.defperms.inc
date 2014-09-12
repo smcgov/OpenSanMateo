@@ -9,6 +9,44 @@
  */
 function _opensanmateo_roles_def_perms() {
   $def_perms = array (
+    'view_unpublished' => array(
+      'view any unpublished profile content' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => false,
+        'site manager' => true,
+      ),
+      'view any unpublished blog_entry content' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'view any unpublished site_page content' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+      'view any unpublished webform content' => array(
+        'anonymous user' => false,
+        'authenticated user' => false,
+        'administrator' => true,
+        'content creator' => false,
+        'event creator' => false,
+        'editor' => true,
+        'site manager' => true,
+      ),
+    ),
     'xmlsitemap' => array(
       'administer xmlsitemap' => array(
         'anonymous user' => false,
