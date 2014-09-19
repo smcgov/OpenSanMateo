@@ -1,0 +1,36 @@
+<?php
+/**
+ * @file
+ * OpenSanMateo .module file.
+ */
+
+/**
+ * Implements hook_node_presave();
+ */
+function opensanmateo_webform_captcha_node_presave($node) {
+  /* Conditionally enable or disable CAPTCHA for Webforms. The field
+     'field_captch' needs to be added to the Webform node types we wish to
+     respond to. */
+  if (in_array($node->type, variable_get('webform_node_types', array('webform')))) {
+    // Load CAPTCHA API.
+    module_load_include('inc', 'captcha');
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    $enabled = $node_wrapper->field_captcha->value();
+    // We need the form_id of the Webform--not the node.
+    // Webform builds the ID as: 'webform_client_form_' . $node->nid.
+    $form_id = 'webform_client_form_' . $node->nid;
+    // Get CAPTCHA type and module for given form_id.
+    $captcha_point = captcha_get_form_id_setting($form_id);
+    if ($enabled) {
+      // CAPTCHA has been enabled for this Webform.
+      if (!$captcha_point || $captcha_point->captcha_type === NULL) {
+        // Enable CAPTCHA for this node.
+        captcha_set_form_id_setting($form_id, 'default');
+      }
+    }
+    else {
+      // CAPTCHA is disabled for the Webform.
+      captcha_set_form_id_setting($form_id, NULL);
+    }
+  }
+}

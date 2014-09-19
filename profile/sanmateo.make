@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 projects[drupal][type] = core
-projects[drupal][version] = 7.28
+projects[drupal][version] = 7.31
 projects[drupal][patch][] = http://drupal.org/files/issues/object_conversion_menu_router_build-972536-1.patch
 ;projects[drupal][patch][] = http://drupal.org/files/issues/992540-3-reset_flood_limit_on_password_reset-drush.patch
 projects[drupal][patch][] = http://drupal.org/files/1355984-timeout_on_install_with_drush_si-make.patch
@@ -213,6 +213,10 @@ projects[maxlength][version] = 3.0-beta1
 projects[globalredirect][type] = module
 projects[globalredirect][subdir] = contrib
 projects[globalredirect][version] = 1.4
+
+projects[geo_filter][type] = module
+projects[geo_filter][subdir] = contrib
+projects[geo_filter][version] = 1.1
 
 projects[custom_pagers][type] = module
 projects[custom_pagers][subdir] = contrib

@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Acquia Purge, Top-notch Varnish purging on Acquia Cloud!
+ */
+
+ 
+/**
+ * Implementation of hook_form_alter().
+ * 
+ * If this is the Acquia Settings Form, then add a new group for the Acquia Purge Extras module.
+ */
+function acquia_purge_extras_form_alter(&$form, &$form_state, $form_id) {
+  if ('acquia_agent_settings_form' == $form_id) {
+    $form['acquia_purge_extras'] = array(
+      '#type' => 'fieldset',
+      '#title' => 'Acquia Purge Extras',
+      '#collapsible' => TRUE,
+      '#weight' => -1,
+    );
+    $form['acquia_purge_extras']['acquia_purge_exras_disable_message'] = array(
+      '#type' => 'checkbox', 
+      '#title' => t('Disable Purge Message on Publish'),
+      '#description' => t('By default, when publishing content, the Acquia Purge module will display a message at the top of the content, but this has been hidden (by default) by enabling the Acquia Purge Extras module. Enabling this option will cause that message to be displayed again. <strong>NOTE:</strong> it may be necessary to clear caches for this change to take effect.'),
+      '#default_value' => variable_get('acquia_purge_exras_disable_message', TRUE),
+    );
+    $form['actions']['submit']['#submit'][] = 'acquia_purge_extras_acquia_agent_settings_form_submit';
+  }
+}
+
+/**
+ * Callback for acquia_agent_settings_form submit
+ */
+function acquia_purge_extras_acquia_agent_settings_form_submit($form, &$form_state) {
+  variable_set('acquia_purge_exras_disable_message', !!$form_state['values']['acquia_purge_exras_disable_message']);
+}
+
+/**
+ * Implementation of hook_init().
+ * 
+ * Conditionally add CSS to suppress the box. Passing the "every_page" flag here 
+ * on the assumption that this is not something that's going to be flipped back 
+ * and forth very often, and that if someone DOES flip it that they know to 
+ * clear caches afterwards.
+ */
+function acquia_purge_extras_init() {
+  if (variable_get('acquia_purge_exras_disable_message', TRUE)) {
+    drupal_add_css(
+      drupal_get_path('module', 'acquia_purge_extras') . '/assets/css/acquia_purge_extras.css', 
+      array(
+        'group' => CSS_DEFAULT,
+        'every_page' => TRUE,
+      )
+    );
+  }
+}

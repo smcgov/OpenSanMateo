@@ -1,0 +1,17 @@
+
+.field-name-field-social-media-type {
+  clear: left;
+}
+
+.field-name-field-social-media .form-submit,
+.field-name-field-social-media-title,
+.field-name-field-social-media-type,
+.field-name-field-social-media-value {
+  float: left;
+  margin-right: 1em;
+}
+
+.field-name-field-social-media .form-submit {
+  margin-top: 2.8ex;
+}
+

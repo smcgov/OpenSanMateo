@@ -1,0 +1,50 @@
+
+.profile-social-media-links {
+  clear: both
+}
+.profile-social-media-link {
+  float: left;
+  width: auto;
+  padding: 0;
+  margin: 0 6px 0 0;
+  
+  background-repeat:no-repeat;
+  background-position: 4px 4px;
+  
+  position: relative;
+  zoom: 1;
+  border: 1px solid silver;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+.profile-social-media-link a {
+  display: block;
+  padding: 4px 6px 4px 24px;
+}
+
+.profile-social-media-email {
+  background-image: url(../images/email.png);
+}
+.profile-social-media-googleplus {
+  background-image: url(../images/googleplus.png);
+}
+.profile-social-media-facebook {
+  background-image: url(../images/facebook.png);
+}
+.profile-social-media-twitter {
+  background-image: url(../images/twitter.png);
+}
+.profile-social-media-linkedin {
+  background-image: url(../images/linkedin.png);
+}
+.profile-social-media-pinterest {
+  background-image: url(../images/pinterest.png);
+}
+.profile-social-media-tumblr {
+  background-image: url(../images/tumblr.png);
+}
+.profile-social-media-url {
+  background-image: url(../images/url.png);
+}
