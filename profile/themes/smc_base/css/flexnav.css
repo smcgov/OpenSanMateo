@@ -1,4 +1,20 @@
 /* Flexnav Base Styles */
+/* COPY/PASTE following lines to each new scss file
+
+// default variables
+@import "vars.scss";
+
+// All default/mobile styles will appear before the following media queries.
+
+@media all and (min-width: $tablet) {
+
+}
+
+@media all and (min-width: $desktop) {
+
+}
+
+*/
 /* Fonts */
 /* Media Queries */
 /* line 12, ../scss/flexnav.scss */
@@ -8,16 +24,16 @@
   margin: 0 auto;
   width: 100%;
   max-height: 0; }
-  /* line 38, ../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+  /* line 38, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.0/stylesheets/compass/utilities/general/_clearfix.scss */
   .flexnav:after {
     content: "";
     display: table;
     clear: both; }
   /* line 19, ../scss/flexnav.scss */
   .flexnav.show {
-    -webkit-transition: 0.4s;
     -moz-transition: 0.4s;
     -o-transition: 0.4s;
+    -webkit-transition: 0.4s;
     transition: 0.4s;
     max-height: 1000px;
     position: fixed;
@@ -165,7 +181,7 @@
       display: block;
       top: 3.1em;
       position: absolute; }
-    /* line 172, ../scss/flexnav.scss */
+    /* line 171, ../scss/flexnav.scss */
     .flexnav.lg-screen li:hover > ul, .flexnav.sm-screen li:hover > ul {
       display: none; }
     /* line 175, ../scss/flexnav.scss */

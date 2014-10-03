@@ -1,5 +1,7 @@
+// default variables
+@import "../vars.scss";
+@import "buttons.scss";
 
-// All default/mobile styles will appear before the following media queries.
 .region-header {
   position: relative;
 }

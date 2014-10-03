@@ -1,4 +1,20 @@
 @charset "UTF-8";
+/* COPY/PASTE following lines to each new scss file
+
+// default variables
+@import "vars.scss";
+
+// All default/mobile styles will appear before the following media queries.
+
+@media all and (min-width: $tablet) {
+
+}
+
+@media all and (min-width: $desktop) {
+
+}
+
+*/
 /* Fonts */
 /* Media Queries */
 /* line 6, ../../scss/elements/extra-unused.scss */
@@ -15,7 +31,7 @@
   padding: 0; }
 
 /* normalize the input elements, make them look like everything else */
-/* line 22, ../../scss/elements/extra-unused.scss */
+/* line 20, ../../scss/elements/extra-unused.scss */
 .nl-form input,
 .nl-form select,
 .nl-form button {
@@ -47,7 +63,7 @@
   z-index: 10000; }
 
 /* the toggle is the visible part in the form */
-/* line 54, ../../scss/elements/extra-unused.scss */
+/* line 52, ../../scss/elements/extra-unused.scss */
 .nl-field-toggle,
 .nl-form input,
 .nl-form select {
@@ -127,7 +143,7 @@
   color: #444; }
 
 /* icons for some elements */
-/* line 134, ../../scss/elements/extra-unused.scss */
+/* line 132, ../../scss/elements/extra-unused.scss */
 .nl-dd ul li.nl-dd-checked:before,
 .nl-submit:before,
 .nl-field-go:before {
@@ -183,7 +199,7 @@
 
 /* line 186, ../../scss/elements/extra-unused.scss */
 .nl-ti-text ul li.nl-ti-example em {
-  color: white; }
+  color: #fff; }
 
 /* submit button */
 /* line 191, ../../scss/elements/extra-unused.scss */
@@ -212,7 +228,7 @@
   margin: 0 0.8em 0 0;
   background: #69B1A9; }
 
-/* line 218, ../../scss/elements/extra-unused.scss */
+/* line 217, ../../scss/elements/extra-unused.scss */
 .no-touch .nl-form .nl-submit:hover,
 .no-touch .nl-form .nl-submit:active {
   background: #69B1A9; }
@@ -447,7 +463,7 @@
       margin: 0;
       float: right;
       width: auto; }
-    /* line 487, ../../scss/elements/extra-unused.scss */
+    /* line 485, ../../scss/elements/extra-unused.scss */
     .main-content .hls .nl-field-toggle,
     .main-content .hls .nl-form input,
     .main-content .hls .nl-form select {

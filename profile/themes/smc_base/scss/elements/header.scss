@@ -1,3 +1,12 @@
+// default variables
+@import "../vars.scss";
+@import "buttons.scss";
+
+// All default/mobile styles will appear before the following media queries.
+
+@media all and (min-width: $tablet) {
+
+}
 
 .wrapper {
 	overflow: hidden;
@@ -19,8 +28,6 @@
   text-align: center;
   
   a {
-   
-
     @include button();
     @include buttonArrow;
     @include buttonGreen;
