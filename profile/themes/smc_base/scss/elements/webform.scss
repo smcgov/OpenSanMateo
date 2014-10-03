@@ -1,5 +1,7 @@
+// default variables
+@import "../vars.scss";
+@import "buttons.scss";
 
-// All default/mobile styles will appear before the following media queries.
 .node-webform {
   label {
     color: $primaryBlue;
@@ -7,7 +9,7 @@
     font-weight: normal;
     text-transform: uppercase;
     margin-bottom: 0.5em;
-  }  
+  }
   .form-text,
   .form-textarea {
     border: 1px solid rgba($primaryBlue, .2);
