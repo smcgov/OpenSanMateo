@@ -10534,8 +10534,8 @@ div.tabs ul.secondary {
 /* Media Queries */
 @font-face {
   font-family: "SanMateoIcon";
-  src: url("../../fonts/SanMateoIcon.eot");
-  src: url("../../fonts/SanMateoIcon.eot?#iefix") format("embedded-opentype"), url("../../fonts/SanMateoIcon.woff") format("woff"), url("../../fonts/SanMateoIcon.ttf") format("truetype"), url("../../fonts/SanMateoIcon.svg#SanMateoIcon") format("svg");
+  src: url("../fonts/SanMateoIcon.eot");
+  src: url("../fonts/SanMateoIcon.eot?#iefix") format("embedded-opentype"), url("../fonts/SanMateoIcon.woff") format("woff"), url("../fonts/SanMateoIcon.ttf") format("truetype"), url("../fonts/SanMateoIcon.svg#SanMateoIcon") format("svg");
   font-weight: normal;
   font-style: normal; }
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
@@ -11276,8 +11276,11 @@ table {
     .flexslider ol.flex-control-thumbs li {
       float: none;
       margin: 0 2px; }
+  /* line 53, ../scss/elements/rotator-box.scss */
+  .flexslider ul.flex-direction-nav > li > a {
+    height: auto; }
 
-/* line 54, ../scss/elements/rotator-box.scss */
+/* line 58, ../scss/elements/rotator-box.scss */
 .pane-bundle-rotator-panels-pane {
   width: 100%;
   background-image: -webkit-linear-gradient(rgba(3, 108, 182, 0.05) 0%, rgba(3, 108, 182, 0) 50%, rgba(3, 108, 182, 0.025) 100%);
@@ -11286,34 +11289,34 @@ table {
   margin: 0 auto 5%;
   border-radius: 3px;
   background-color: transparent; }
-  /* line 64, ../scss/elements/rotator-box.scss */
+  /* line 68, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .field-collection-container {
     margin-bottom: 0; }
-  /* line 68, ../scss/elements/rotator-box.scss */
+  /* line 72, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .field-collection-view {
     position: relative; }
-    /* line 71, ../scss/elements/rotator-box.scss */
+    /* line 75, ../scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .field-collection-view .content {
       display: block; }
-  /* line 76, ../scss/elements/rotator-box.scss */
+  /* line 80, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .field-collection-view > a.rotator-wrap-link {
     position: relative;
     display: block;
     height: 100%;
     width: 100%; }
-  /* line 82, ../scss/elements/rotator-box.scss */
+  /* line 86, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows {
     z-index: 10; }
-  /* line 84, ../scss/elements/rotator-box.scss */
+  /* line 88, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows a:after, .pane-bundle-rotator-panels-pane .flex-control-thumbs a:after, .pane-bundle-rotator-panels-pane .rs-slider li a:after {
     content: none; }
-  /* line 88, ../scss/elements/rotator-box.scss */
+  /* line 92, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows a {
     background-color: rgba(0, 0, 0, 0.8); }
-  /* line 92, ../scss/elements/rotator-box.scss */
+  /* line 96, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-arrows a:hover {
     background-color: black; }
-  /* line 96, ../scss/elements/rotator-box.scss */
+  /* line 100, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-caption {
     background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.9) 100%) !important;
     background-color: rgba(85, 90, 90, 0.7) !important;
@@ -11324,7 +11327,7 @@ table {
     right: 0;
     width: 100% !important;
     font-size: inherit !important; }
-    /* line 107, ../scss/elements/rotator-box.scss */
+    /* line 111, ../scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .flex-caption h3 {
       text-transform: none;
       font-size: 1.5em;
@@ -11333,59 +11336,59 @@ table {
       margin-bottom: 1%;
       color: white;
       text-shadow: none; }
-    /* line 118, ../scss/elements/rotator-box.scss */
+    /* line 122, ../scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .flex-caption p {
       color: #EEEEEE;
       font-size: 1em;
       line-height: 1.3em;
       text-shadow: none; }
-      /* line 124, ../scss/elements/rotator-box.scss */
+      /* line 128, ../scss/elements/rotator-box.scss */
       .pane-bundle-rotator-panels-pane .flex-caption p:last-child {
         margin-bottom: 0; }
-  /* line 130, ../scss/elements/rotator-box.scss */
+  /* line 134, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-slider > li img {
     width: 100%; }
-  /* line 132, ../scss/elements/rotator-box.scss */
+  /* line 136, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs {
     margin-top: 10px !important;
     padding: 0 0.5em; }
-  /* line 137, ../scss/elements/rotator-box.scss */
+  /* line 141, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs li {
     border: 5px solid #eee;
     width: 22.75%;
     margin-left: 3%; }
-    /* line 142, ../scss/elements/rotator-box.scss */
+    /* line 146, ../scss/elements/rotator-box.scss */
     .pane-bundle-rotator-panels-pane .flex-control-thumbs li:first-child {
       margin-left: 0; }
-  /* line 147, ../scss/elements/rotator-box.scss */
+  /* line 151, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs li.active-item {
     border: 5px solid rgba(3, 108, 182, 0.2); }
-  /* line 151, ../scss/elements/rotator-box.scss */
+  /* line 155, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-control-thumbs li:hover {
     border: 5px solid #036cb6; }
-  /* line 159, ../scss/elements/rotator-box.scss */
+  /* line 163, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-caption.rs-bottom > a {
     color: white; }
-  /* line 163, ../scss/elements/rotator-box.scss */
+  /* line 167, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-prev {
     left: 0;
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px; }
-  /* line 169, ../scss/elements/rotator-box.scss */
+  /* line 173, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .rs-next {
     right: 0;
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px; }
 
-/* line 179, ../scss/elements/rotator-box.scss */
+/* line 183, ../scss/elements/rotator-box.scss */
 .lte8 .pane-bundle-rotator-panels-pane .flex-caption {
   background: #555a5a !important; }
 
 @media all and (min-width: 768px) {
-  /* line 190, ../scss/elements/rotator-box.scss */
+  /* line 194, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-caption h3 {
     font-size: 2.5em; }
-  /* line 194, ../scss/elements/rotator-box.scss */
+  /* line 198, ../scss/elements/rotator-box.scss */
   .pane-bundle-rotator-panels-pane .flex-caption p {
     font-size: 1.3em;
     line-height: 1.3em; } }
