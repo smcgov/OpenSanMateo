@@ -1,0 +1,44 @@
+/* COPY/PASTE following lines to each new scss file
+
+// default variables
+@import "vars.scss";
+
+// All default/mobile styles will appear before the following media queries.
+
+@media all and (min-width: $tablet) {
+
+}
+
+@media all and (min-width: $desktop) {
+
+}
+
+*/
+/* Fonts */
+/* Media Queries */
+/* line 14, ../../scss/elements/follow.scss */
+.follow-links {
+  font-size: 1em;
+  line-height: 1em;
+  margin-bottom: 40px; }
+  /* line 19, ../../scss/elements/follow.scss */
+  .follow-links a.follow-link {
+    float: left;
+    color: white;
+    height: 32px;
+    width: 32px;
+    font-size: 1.25em;
+    padding: .5em;
+    border-radius: 3px;
+    display: inline-block;
+    line-height: 1em;
+    margin: 0 5% 5% 0; }
+    /* line 32, ../../scss/elements/follow.scss */
+    .follow-links a.follow-link .follow-link-text {
+      display: none; }
+
+@media all and (min-width: 768px) {
+  /* line 42, ../../scss/elements/follow.scss */
+  .follow-links a.follow-link {
+    font-size: 1em;
+    padding: .5em; } }
