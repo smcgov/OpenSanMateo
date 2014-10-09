@@ -65,7 +65,7 @@ a:hover {
 
 /* line 76, ../scss/collage.scss */
 .rs-caption {
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
+  background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
   padding: 3em 1em 1em; }
 
 /* line 80, ../scss/collage.scss */
@@ -953,7 +953,7 @@ h5 span {
   padding: 0; }
 
 /* normalize the input elements, make them look like everything else */
-/* line 945, ../scss/collage.scss */
+/* line 943, ../scss/collage.scss */
 .nl-form input,
 .nl-form select,
 .nl-form button {
@@ -985,7 +985,7 @@ h5 span {
   z-index: 10000; }
 
 /* the toggle is the visible part in the form */
-/* line 977, ../scss/collage.scss */
+/* line 975, ../scss/collage.scss */
 .nl-field-toggle,
 .nl-form input,
 .nl-form select {
@@ -1064,7 +1064,7 @@ h5 span {
   color: #444; }
 
 /* icons for some elements */
-/* line 1053, ../scss/collage.scss */
+/* line 1051, ../scss/collage.scss */
 .nl-dd ul li.nl-dd-checked:before,
 .nl-submit:before,
 .nl-field-go:before {
@@ -1123,7 +1123,7 @@ h5 span {
 input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 1111, ../scss/collage.scss */
+/* line 1110, ../scss/collage.scss */
 input:active::-webkit-input-placeholder,
 input:focus::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.2); }
@@ -1132,7 +1132,7 @@ input:focus::-webkit-input-placeholder {
 input::-moz-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 1120, ../scss/collage.scss */
+/* line 1119, ../scss/collage.scss */
 input:active::-moz-placeholder,
 input:focus::-moz-placeholder {
   color: rgba(255, 255, 255, 0.2); }
@@ -1141,7 +1141,7 @@ input:focus::-moz-placeholder {
 input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 1129, ../scss/collage.scss */
+/* line 1128, ../scss/collage.scss */
 input:active::-ms-input-placeholder,
 input:focus::-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.2); }
@@ -1158,7 +1158,7 @@ input:focus::-ms-input-placeholder {
 
 /* line 1143, ../scss/collage.scss */
 .nl-ti-text ul li.nl-ti-example em {
-  color: white; }
+  color: #fff; }
 
 /* submit button */
 /* line 1148, ../scss/collage.scss */
@@ -1187,7 +1187,7 @@ input:focus::-ms-input-placeholder {
   margin: 0 0.8em 0 0;
   background: #69B1A9; }
 
-/* line 1175, ../scss/collage.scss */
+/* line 1174, ../scss/collage.scss */
 .no-touch .nl-form .nl-submit:hover,
 .no-touch .nl-form .nl-submit:active {
   background: #69B1A9; }
@@ -1226,7 +1226,6 @@ input:focus::-ms-input-placeholder {
   src: url("./fonts/icomoon.eot?#iefix") format("embedded-opentype"), url("./fonts/icomoon.woff") format("woff"), url("./fonts/icomoon.ttf") format("truetype"), url("./fonts/icomoon.svg#icomoon") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 /* line 1219, ../scss/collage.scss */
 .icon-search {
   font-family: 'icomoon';

@@ -1,0 +1,77 @@
+/* COPY/PASTE following lines to each new scss file
+
+// default variables
+@import "vars.scss";
+
+// All default/mobile styles will appear before the following media queries.
+
+@media all and (min-width: $tablet) {
+
+}
+
+@media all and (min-width: $desktop) {
+
+}
+
+*/
+/* Fonts */
+/* Media Queries */
+/* line 4, ../../scss/elements/dept-menu.scss */
+#dept-switch {
+  display: none; }
+
+@media all and (min-width: 768px) {
+  /* line 10, ../../scss/elements/dept-menu.scss */
+  #dept-switch {
+    background-color: #036cb6;
+    padding: 1em;
+    display: none;
+    width: 100%; }
+    /* line 16, ../../scss/elements/dept-menu.scss */
+    #dept-switch .close {
+      position: absolute;
+      top: 1%;
+      right: 3%;
+      color: white;
+      font-size: 1.5em; }
+    /* line 24, ../../scss/elements/dept-menu.scss */
+    #dept-switch .close:hover {
+      color: rgba(255, 255, 255, 0.5); }
+    /* line 26, ../../scss/elements/dept-menu.scss */
+    #dept-switch h2 {
+      color: rgba(255, 255, 255, 0.7);
+      padding: 0 .25em .25em .25em;
+      text-transform: uppercase; }
+    /* line 32, ../../scss/elements/dept-menu.scss */
+    #dept-switch ul.menu {
+      -webkit-column-count: 4;
+      -moz-column-count: 4;
+      margin-bottom: 0;
+      padding-left: 0; }
+      /* line 38, ../../scss/elements/dept-menu.scss */
+      #dept-switch ul.menu li,
+      #dept-switch ul.menu li.leaf,
+      #dept-switch ul.menu li.collapsed {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        list-style-image: none; }
+        /* line 46, ../../scss/elements/dept-menu.scss */
+        #dept-switch ul.menu li a,
+        #dept-switch ul.menu li.leaf a,
+        #dept-switch ul.menu li.collapsed a {
+          color: white;
+          font-weight: bold;
+          font-size: .8em;
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          transition: all 0.3s;
+          padding: .25em .75em;
+          display: inline-block;
+          border-radius: 3px;
+          position: relative; }
+        /* line 59, ../../scss/elements/dept-menu.scss */
+        #dept-switch ul.menu li a:hover,
+        #dept-switch ul.menu li.leaf a:hover,
+        #dept-switch ul.menu li.collapsed a:hover {
+          background-color: rgba(255, 255, 255, 0.1); } }

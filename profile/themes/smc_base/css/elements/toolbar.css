@@ -1,0 +1,48 @@
+/* COPY/PASTE following lines to each new scss file
+
+// default variables
+@import "vars.scss";
+
+// All default/mobile styles will appear before the following media queries.
+
+@media all and (min-width: $tablet) {
+
+}
+
+@media all and (min-width: $desktop) {
+
+}
+
+*/
+/* Fonts */
+/* Media Queries */
+/* line 4, ../../scss/elements/toolbar.scss */
+#toolbar {
+  display: block; }
+  /* line 7, ../../scss/elements/toolbar.scss */
+  #toolbar strong {
+    display: inline; }
+  /* line 11, ../../scss/elements/toolbar.scss */
+  #toolbar #toolbar-home,
+  #toolbar #toolbar-user {
+    display: none; }
+  /* line 17, ../../scss/elements/toolbar.scss */
+  #toolbar div.toolbar-menu {
+    padding: 0; }
+    /* line 19, ../../scss/elements/toolbar.scss */
+    #toolbar div.toolbar-menu .toolbar-inner {
+      position: relative;
+      padding: 5px 35px 5px 0; }
+    /* line 24, ../../scss/elements/toolbar.scss */
+    #toolbar div.toolbar-menu a.toggle {
+      bottom: 0;
+      right: 5px; }
+
+@media all and (min-width: 800px) {
+  /* line 33, ../../scss/elements/toolbar.scss */
+  #toolbar {
+    display: block; }
+    /* line 36, ../../scss/elements/toolbar.scss */
+    #toolbar #toolbar-home,
+    #toolbar #toolbar-user {
+      display: block; } }

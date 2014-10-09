@@ -1,0 +1,154 @@
+<?php
+// Constant definitions for english-language text replacements
+// changing these requires updating the javascript regex
+define('GEO_FILTER_AT_SYMBOL', t('[at]'));
+define('GEO_FILTER_DOT_SYMBOL', t('[dot]'));
+
+/**
+ * Implementation of hook_init()
+ *
+ * This will load the email unhiding javascript for each page
+ */
+function geo_filter_init() {
+  drupal_add_js(drupal_get_path('module', 'geo_filter') .'/geo_filter.js');
+}
+
+/**
+ * Implementation of hook_menu()
+ *
+ * Adds the contact module customization
+ */
+function geo_filter_menu() {
+  $items = array();
+
+  // menu callback for contact form builder
+  $items['contact/%/%/%'] = array(
+    'title' => 'Email',
+    'page callback' => 'geo_filter_contact_redirect',
+    'page arguments' => array(1,2,3),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Page callback for contact form builder
+ *
+ * Checks if the email address exists on the contact form, if it doesn't then it adds it. 
+ * Redirects user to the contact page
+ *
+ * @param string $name the name portion of the email address
+ * @param string $domain the domain name portion of the email address
+ * @param string $tld the top-level domain of the domain name
+ * @return void
+ */
+function geo_filter_contact_redirect($name, $domain, $tld) {
+  $hidestring = $name . GEO_FILTER_AT_SYMBOL . $domain . GEO_FILTER_DOT_SYMBOL . $tld;
+  $realstring = $name . '@' . $domain . '.' . $tld;
+  $cid = db_query('SELECT cid FROM {contact} WHERE category = :cid', array(':cid' => $hidestring))->fetchField();
+  if (!$cid) {
+    drupal_goto('contact', array(), 301);
+  }
+  drupal_goto('contact', array('query' => array('edit[cid]' => $cid)), 301);
+}
+
+/**
+ * Implementation of hook_filter_info()
+ */
+function geo_filter_filter_info () {
+  $filters['geo_filter_filter'] = array(
+    'title' => t('Email link obfuscator'),
+    'description' => t('Email addresses and mailto: links will be obfuscated to hide them from spambots but still be readable to javascript-enabled browsers.'),
+    'process callback' => 'geo_filter_obfuscate',
+    'settings callback' => '_geo_filter_filter_settings',
+    'default settings' => array(
+      'geo_filter_show_not_exists' => FALSE,
+    ),
+    'tips callback'  => 'geo_filter_filter_tips',
+    'cache' => FALSE,
+  );
+  return $filters;
+}
+
+/**
+ * Implementation of hook_filter_tips().
+ *
+ * http://api.drupal.org/api/drupal/modules--filter--filter.api.php/function/hook_filter_FILTER_tips/7
+ *
+ * @param $filter An object representing the filter.
+ * @param $format An object representing the text format the filter is contained in.
+ * @param $long Whether this callback should return a short tip ...
+ */
+function geo_filter_filter_tips ( $filter, $format, $long = FALSE ) {
+  if ($long) {
+    return t('Email addresses and mailto: links will be obfuscated to hide them from spambots but still be readable to javascript-enabled browsers.');
+  }
+  else {
+    return t('Email addresses and links will be obfuscated');
+  }
+}
+
+/**
+ * Settings form for the geo_filter_filter_info() filter
+ *
+ * @param int $format
+ * @return array
+ */
+function _geo_filter_filter_settings($form, &$form_state, $filter, $format, $defaults) {
+  $filter->settings += $defaults;
+  $settings['geo_filter_show_not_exists'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Display notification on new email'),
+    '#default_value' => $filter->settings['geo_filter_show_not_exists'],
+    '#description' => t('When this is selected, the user will be notified each time they create a mailto: link to an email address that has not been added to the contact form.'),
+  );
+  return $settings;
+}
+
+/**
+ * Performs text processing
+ *
+ * Uses regex to perform replacement detailed in geo_filter_filter_info()
+ *
+ * http://api.drupal.org/api/drupal/modules--filter--filter.api.php/function/hook_filter_FILTER_process/7
+ * 
+ * @param $text The text string to be filtered.
+ * @param $filter The filter object containing settings for the given format.
+ * @param Object $format The text format object assigned to the text to be filtered.
+ * @param $langcode The language code of the text to be filtered.
+ * @param $cache A Boolean indicating whether the filtered text is going to be cached in {cache_filter}.
+ * @param $cache_id The ID of the filtered text in {cache_filter}, if $cache is TRUE.
+ * 
+ * @see geo_filter_filter_info()
+ * @todo make strings translatable (currently obfuscation reversal is dependant on strings being static)
+ */
+function geo_filter_obfuscate($text, $filter, $format, $langcode, $cache, $cache_id) {
+  /**
+   * Replace callback for mailto link regex
+   *
+   * Using lamda function because it depends on the $filter variable which cannot be passed via preg_replace_callback
+   * 
+   * @param array $matches the matched elements from the regex search
+   * @return string 
+   */
+  if ($filter->settings['geo_filter_show_not_exists']) {
+    $showerror = 'TRUE';
+  } 
+  else {
+    $showerror = 'FALSE';
+  }
+  $geo_filter_replace_callback = create_function( '$matches',
+    '$hidestring = $matches[1] . GEO_FILTER_AT_SYMBOL . $matches[2] . GEO_FILTER_DOT_SYMBOL . $matches[3]; '
+    . '$realstring = $matches[1] . "@" . $matches[2] . "." . $matches[3]; '
+    . '$cid = db_query("SELECT cid FROM {contact} WHERE category = :cid", array(":cid" => $hidestring))->fetchField(); '
+    . 'if (!$cid && ' . $showerror . ' && user_access("administer site-wide contact form")) { '
+    . 'drupal_set_message(t("!email does not exist in the contact form. In order to best support non-javascript browsers you should add it !link", array("!email" => $realstring, "!link" => "<a href=\"" . url("admin/structure/contact/add", array("query" => array("edit[category]" => $hidestring, "edit[recipients]" => $realstring))) . "\">here</a>")), "warning"); '
+    . '} '
+    . 'return "/contact/" . $matches[1] . "/" . $matches[2] . "/" . $matches[3] . $matches[4]; ' 
+  );
+  $text = preg_replace_callback("/\"mailto:([A-Za-z0-9._%-]+)\@([A-Za-z0-9._%-]+)\.([A-Za z]{2,4})(\??[^\"]*)\"/i", $geo_filter_replace_callback, $text);
+  $text = preg_replace("/([A-Za-z0-9._%-]+)\@([A-Za-z0-9._%-]+)\.([A-Za z]{2,4})/i", "$1" . GEO_FILTER_AT_SYMBOL . "$2" . GEO_FILTER_DOT_SYMBOL . "$3", $text);
+  return $text;
+}

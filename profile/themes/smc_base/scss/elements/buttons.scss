@@ -1,3 +1,5 @@
+// default variables
+@import "../vars.scss";
 
 @mixin button {
   background: none;
@@ -165,19 +167,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // classes here provided to be used via WYSIWYG editor
 
 // Call to Actions
@@ -340,15 +329,4 @@ ul.button-test {
       }
     }
   }
-}
-
-
-// All default/mobile styles will appear before the following media queries.
-
-@media all and (min-width: $tablet) {
-
-}
-
-@media all and (min-width: $desktop) {
-
 }
