@@ -1,0 +1,10 @@
+name = Graceful Email Obfuscation Filter
+discription = Filter email addresses to hide them from web crawlers
+package = Input filters
+dependencies[] = contact
+; Information added by drupal.org packaging script on 2012-08-09
+version = "7.x-1.1"
+core = "7.x"
+project = "geo_filter"
+datestamp = "1344532024"
+
