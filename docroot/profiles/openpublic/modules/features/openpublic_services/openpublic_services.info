@@ -38,8 +38,8 @@ features_exclude[field][node-services-field_files] = node-services-field_files
 features_exclude[dependencies][openpublic_defaults] = openpublic_defaults
 
 
-; Information added by drush on 2014-10-09
+; Information added by drush on 2014-10-16
 version = "appify_services"
 project = "openpublic"
-datestamp = "1412861489"
+datestamp = "1413417822"
 

@@ -5,9 +5,9 @@ package = Context
 core = 7.x
 
 
-; Information added by drush on 2014-10-09
+; Information added by drush on 2014-10-16
 version = "7.x-3.0-beta4+2-dev"
 core = "7.x"
 project = "context"
-datestamp = "1412861535"
+datestamp = "1413417858"
 
