@@ -5,7 +5,7 @@
  * When enabled and configured, provides vocabulary synchronization support between a master site and client sites
  */
 
-require_once('taxonomy_sync.constants.inc');
+require_once 'taxonomy_sync.constants.inc';
 define('TAXONOMY_SYNC_MASTER_PREFIX', 'taxonomy_sync_is_master_for_');
 define('TAXONOMY_SYNC_CLIENT_PREFIX', 'taxonomy_sync_is_client_for_');
 
@@ -37,7 +37,7 @@ function taxonomy_sync_menu() {
  */
 function taxonomy_sync_list_access($name) {
   $is_master = taxonomy_sync_is_master($name);
-  if(!$is_master) {
+  if (!$is_master) {
     $client_ip = $_SERVER["REMOTE_ADDR"];
     watchdog(TAXONOMY_SYNC_WATCHDOG, 'Term list requested for non-master vocabulary @name by client @client_ip', array('@name' => $name, '@client_ip' => $client_ip), WATCHDOG_WARNING);
   }
@@ -74,17 +74,17 @@ function taxonomy_sync_is_master($name) {
   return variable_get(TAXONOMY_SYNC_MASTER_PREFIX . $name, FALSE);
 }
 
-/*
+/**
  * Function to pull a tree of data on a machine name
  */
 function taxonomy_sync_get_tree($name) {
-   if($voc = taxonomy_vocabulary_machine_name_load($name)) {
-     $tree = taxonomy_get_tree($voc->vid);
-     return $tree;
-   }
-   else {
+  if ($voc = taxonomy_vocabulary_machine_name_load($name)) {
+    $tree = taxonomy_get_tree($voc->vid);
+    return $tree;
+  }
+  else {
     throw new TaxonomySyncMissingVocabulary("No vocabulary $name");
-   }
+  }
 }
 
 
@@ -96,7 +96,7 @@ function taxonomy_sync_get_tree($name) {
  */
 function taxonomy_sync_get_master($name, $return_false = FALSE) {
   $url = variable_get(TAXONOMY_SYNC_CLIENT_PREFIX . $name, FALSE);
-  if($url) {
+  if ($url) {
     return $url;
   }
   else {
@@ -114,13 +114,13 @@ function taxonomy_sync_cron() {
 }
 
 /**
- * THis function sync all vocabularys
+ * THis function sync all vocabularies
  *
  * It catch all exceptions and logs them to watch dog
  */
 function taxonomy_sync_sync() {
   $vocs = taxonomy_vocabulary_get_names();
-  foreach($vocs as $name => $voc) {
+  foreach ($vocs as $name => $voc) {
     try {
       $url = taxonomy_sync_get_master($name);
       watchdog(TAXONOMY_SYNC_WATCHDOG, "$name - $url");
@@ -155,7 +155,7 @@ function taxonomy_sync_pull_data($url) {
   if (200 == $resp->code) {
     // Decode JSON and make sure we have a valid response
     $resp_array = drupal_json_decode($resp->data);
-    if($resp_array) {
+    if ($resp_array) {
       if ($resp_array['error']) {
         throw new TaxonomySyncRequestFail($resp_array['error_message']);
       }
@@ -164,14 +164,14 @@ function taxonomy_sync_pull_data($url) {
       }
     }
     else {
-      throw new TaxonomySyncRequestFail(format_string('Failed to decode JSON data retrieved from master @url', array('@url'=> $url)));
+      throw new TaxonomySyncRequestFail(format_string('Failed to decode JSON data retrieved from master @url', array('@url' => $url)));
     }
   }
   else if (403 == $resp->code) {
     throw new TaxonomySyncMissingVocabulary("Master $url nodes not provide vocabulary $name");
   }
   else {
-    throw new TaxonomySyncRequestFail(t('the @url failed with code @code', array('@url'=>$url, '@code' => $resp->code)) );
+    throw new TaxonomySyncRequestFail(t('the @url failed with code @code', array('@url' => $url, '@code' => $resp->code)) );
   }
 }
 
@@ -211,17 +211,16 @@ class TaxonomySyncData{
         $this->vid = $voc->vid;
       }
       else {
-        throw new TaxonomySyncMissingVocabulary("No vocabulary $name");
+        throw new TaxonomySyncMissingVocabulary("No vocabulary {$vocabulary->$name}");
       }
     }
-
   }
 
   /**
    * sets master data in an array keyed by master tid
    */
   protected function set_master_data($master_data) {
-    foreach($master_data as $datum) {
+    foreach ($master_data as $datum) {
       $datum = (object) $datum;
       $datum->TAXONOMY_SYNC_COL_LAST_UPDATE_HASH = $this->term_hash($datum);
       $this->master_data[$datum->tid] = $datum;
@@ -246,8 +245,8 @@ class TaxonomySyncData{
    * return a map of master tid to a hash
    */
   protected function get_hash_map() {
-    if(!$this->cache_hash_map) {
-      foreach($this->master_data as $id => $datum) {
+    if (!$this->cache_hash_map) {
+      foreach ($this->master_data as $id => $datum) {
         $this->cache_hash_map[$id] = $datum->TAXONOMY_SYNC_COL_LAST_UPDATE_HASH;
       }
     }
@@ -255,15 +254,15 @@ class TaxonomySyncData{
   }
 
   /**
-   * returns and array of master tid => local tid that are canidates for updates
+   * returns and array of master tid => local tid that are candidates for updates
    */
   protected function get_update_ids() {
     if (!$this->updates) {
       $query = db_select(TAXONOMY_SYNC_TABLE, 't');
-      $query->fields('t',array(TAXONOMY_SYNC_COL_MASTER_TID, TAXONOMY_SYNC_COL_LOCAL_TID));
+      $query->fields('t', array(TAXONOMY_SYNC_COL_MASTER_TID, TAXONOMY_SYNC_COL_LOCAL_TID));
       $query->condition(TAXONOMY_SYNC_COL_MASTER_TID, $this->get_master_ids(), 'IN');
       $query->condition(TAXONOMY_SYNC_COL_LAST_UPDATE_HASH, $this->get_hash_map(), 'NOT IN');
-      $this->updates= $query->execute()->fetchAllKeyed();
+      $this->updates = $query->execute()->fetchAllKeyed();
     }
     return $this->updates;
   }
@@ -274,7 +273,7 @@ class TaxonomySyncData{
   protected function get_insert_ids() {
     if (!$this->inserts) {
       $query = db_select(TAXONOMY_SYNC_TABLE, 't');
-      $query->fields('t',array(TAXONOMY_SYNC_COL_MASTER_TID, TAXONOMY_SYNC_COL_LOCAL_TID));
+      $query->fields('t', array(TAXONOMY_SYNC_COL_MASTER_TID, TAXONOMY_SYNC_COL_LOCAL_TID));
       $query->condition(TAXONOMY_SYNC_COL_MASTER_TID, $this->get_master_ids(), 'IN');
       $query->condition(TAXONOMY_SYNC_COL_LOCAL_VID, $this->vid, '=');
       $existing = $query->execute()->fetchAllKeyed();
@@ -288,8 +287,7 @@ class TaxonomySyncData{
    * return array of Local tids for deletion
    */
   protected function get_delete_ids() {
-    return;
-    if (!$this->deletes){
+    if (!$this->deletes) {
       $query = db_select(TAXONOMY_SYNC_TABLE, 't');
       $query->fields('t', array(TAXONOMY_SYNC_COL_LOCAL_TID, TAXONOMY_SYNC_COL_LOCAL_TID));
       $query->condition(TAXONOMY_SYNC_COL_MASTER_TID, $this->get_master_ids(), 'NOT IN');
@@ -318,12 +316,11 @@ class TaxonomySyncData{
       TAXONOMY_SYNC_TABLE,
       's',
         's.' . TAXONOMY_SYNC_COL_LOCAL_TID . ' = t.tid AND s.' . TAXONOMY_SYNC_COL_LOCAL_VID . ' = t.vid');
-    $query->fields('t', array('tid', 'tid'));
+    $query->fields('t', array('tid', 'vid'));
     $query->condition('t.vid', $this->vid, '=');
     $query->isNull('s.' .TAXONOMY_SYNC_COL_LOCAL_VID);
     $results = $query->execute()->fetchAllKeyed();
-    foreach($results as $tid) {
-    #foreach($query->execute()->fetchAllKeyed() as $tid) {
+    foreach ($results as $tid) {
       try {
         $this->delete_term($tid);
       }
@@ -332,7 +329,24 @@ class TaxonomySyncData{
       }
     }
 
-
+    // Remove terms that don't exist.
+    $purge_query = db_select(TAXONOMY_SYNC_TABLE, 's');
+    $purge_query->fields('s');
+    $purge_query->leftJoin('taxonomy_term_data',
+      't',
+        't.tid = s.' . TAXONOMY_SYNC_COL_LOCAL_TID . ' AND s.' . TAXONOMY_SYNC_COL_LOCAL_VID . ' = t.vid');
+    $purge_query->isNull('t.tid');
+    $purge_results = $purge_query->execute()->fetchAll();
+    if (!empty($purge_results)) {
+      foreach ($purge_results as $result) {
+        try {
+          $this->delete_term($result->local_tid);
+        }
+        catch (TaxonomySyncDeleteFailedDelete $e) {
+          watchdog_exception(TAXONOMY_SYNC_WATCHDOG, $e);
+        }
+      }
+    }
   }
   /**
    * process all updates
@@ -352,7 +366,7 @@ class TaxonomySyncData{
    * process all inserts
    */
   public function process_inserts() {
-    foreach($this->get_insert_ids() as $master_id) {
+    foreach ($this->get_insert_ids() as $master_id) {
       try {
         $this->merge_term($this->get_master_term($master_id));
       }
@@ -366,7 +380,7 @@ class TaxonomySyncData{
    * process all deletes
    */
   public function process_deletes() {
-    foreach($this->get_delete_ids() as $tid) {
+    foreach ($this->get_delete_ids() as $tid) {
       try {
         $this->delete_term($tid);
       }
@@ -380,7 +394,7 @@ class TaxonomySyncData{
    * process all missing parents
    */
   public function process_missing_parents() {
-    foreach($this->get_missing_parents_ids() as $master_id => $local_tid) {
+    foreach ($this->get_missing_parents_ids() as $master_id => $local_tid) {
       try {
         $this->merge_term($this->get_master_term($master_id), taxonomy_term_load($local_tid));
       }
@@ -400,13 +414,13 @@ class TaxonomySyncData{
    * get a local tid based on its maping to a master tid
    */
   protected function get_local_tid($master_tid) {
-    if(!isset($this->cache_tid_map[$master_tid])) {
+    if (!isset($this->cache_tid_map[$master_tid])) {
       $query = db_select(TAXONOMY_SYNC_TABLE, 't');
       $query->fields('t', array(TAXONOMY_SYNC_COL_LOCAL_TID));
       $query->condition(TAXONOMY_SYNC_COL_MASTER_TID, $master_tid, '=');
       $this->cache_tid_map[$master_tid] = $query->execute()->fetchField();
     }
-    if(!$this->cache_tid_map[$master_tid] && $master_tid != 0) {
+    if (!$this->cache_tid_map[$master_tid] && $master_tid != 0) {
       throw new TaxonomySyncNoLocal("There is no local tid for master tid $master_tid");
     }
     return $this->cache_tid_map[$master_tid];
@@ -424,7 +438,7 @@ class TaxonomySyncData{
    */
   protected function get_missing_parents_ids() {
     $map = array();
-    foreach($this->missing_parent as $master_id) {
+    foreach ($this->missing_parent as $master_id) {
       $map[$master_id] = $this->get_local_tid($master_id);
     }
     return $map;
@@ -498,9 +512,9 @@ class TaxonomySyncData{
 }
 
 /**
- * implements hook_form_taxonomy_form_vocablary_alter()
+ * Implements hook_form_taxonomy_form_vocabulary_alter()
  *
- * Add taxonomy sync fields to vocablary form
+ * Add taxonomy sync fields to vocabulary form
  */
 function taxonomy_sync_form_taxonomy_form_vocabulary_alter(&$form) {
   $name = $form['#vocabulary']->machine_name;
@@ -510,7 +524,7 @@ function taxonomy_sync_form_taxonomy_form_vocabulary_alter(&$form) {
   );
   $form['taxonomy_sync'][TAXONOMY_SYNC_MASTER_PREFIX . $name] = array(
     '#type' => 'checkbox',
-    '#description' => t('Checking this box will expose this vocabulary for syncing at %url.', array('%url' => url("taxonomy-sync/list/$name", array('absolute'=>TRUE)))),
+    '#description' => t('Checking this box will expose this vocabulary for syncing at %url.', array('%url' => url("taxonomy-sync/list/$name", array('absolute' => TRUE)))),
     '#default_value' =>  variable_get(TAXONOMY_SYNC_MASTER_PREFIX . $name, FALSE),
     '#title' => t("Is a Master Vocabulary"),
     '#states' => array(
@@ -532,7 +546,7 @@ function taxonomy_sync_form_taxonomy_form_vocabulary_alter(&$form) {
       ),
     ),
   );
-  $form['#submit'][] = 'taxonomy_sync_form_taxonomy_form_vocabulary_sumbit';
+  $form['#submit'][] = 'taxonomy_sync_form_taxonomy_form_vocabulary_submit';
   $form['#validate'][] = 'taxonomy_sync_form_taxonomy_form_vocabulary_validate';
 }
 
@@ -556,9 +570,9 @@ function taxonomy_sync_form_taxonomy_form_vocabulary_validate($form, &$form_stat
 }
 
 /**
- * the submit handler add in  taxonomy_sync_form_taxonomy_form_vocabulary_alter()
+ * Submit handler for taxonomy_sync_form_taxonomy_form_vocabulary_alter()
  */
-function taxonomy_sync_form_taxonomy_form_vocabulary_sumbit($form, $form_state)  {
+function taxonomy_sync_form_taxonomy_form_vocabulary_submit($form, $form_state) {
   $name = $form['#vocabulary']->machine_name;
   variable_set(TAXONOMY_SYNC_MASTER_PREFIX . $name, $form_state['values'][TAXONOMY_SYNC_MASTER_PREFIX . $name]);
   variable_set(TAXONOMY_SYNC_CLIENT_PREFIX . $name, $form_state['values'][TAXONOMY_SYNC_CLIENT_PREFIX . $name]);
