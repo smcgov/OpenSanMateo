@@ -131,9 +131,6 @@ function opensanmateo_overrides_field_default_field_instances_alter(&$data) {
     $data['node-profile-field_profile_staff']['widget']['weight'] = 10; /* WAS: 11 */
     $data['node-profile-field_profile_staff']['workbench_access_field'] = 0; /* WAS: '' */
   }
-  if (isset($data['node-site_page-body'])) {
-    $data['node-site_page-body']['settings']['display_summary'] = 0; /* WAS: 1 */
-  }
   if (isset($data['node-site_page-field_files'])) {
     $data['node-site_page-field_files']['settings']['description_field'] = 1; /* WAS: 0 */
     $data['node-site_page-field_files']['widget']['settings']['filefield_sources'] = array(
