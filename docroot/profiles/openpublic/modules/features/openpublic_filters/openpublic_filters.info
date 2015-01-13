@@ -9,8 +9,8 @@ features[user_permission][] = use text format filtered_html
 features[user_permission][] = use text format full_html
 
 
-; Information added by drush on 2014-10-16
+; Information added by drush on 2015-01-12
 version = "appify_services"
 project = "openpublic"
-datestamp = "1413417822"
+datestamp = "1421096336"
 

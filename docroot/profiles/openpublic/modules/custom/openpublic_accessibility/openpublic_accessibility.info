@@ -3,8 +3,8 @@ description = "OpenPublic Accessibility"
 core = 7.x
 files[] = openpublic_accessibility.module
 
-; Information added by drush on 2014-10-16
+; Information added by drush on 2015-01-12
 version = "appify_services"
 project = "openpublic"
-datestamp = "1413417822"
+datestamp = "1421096336"
 
