@@ -6,10 +6,3 @@ core = 7.x
 dependencies[] = picture
 dependencies[] = flexslider (2.x)
 dependencies[] = flexslider_fields (2.x)
-
-
-; Information added by drush on 2015-01-12
-version = "3d9fe6c4b5fc5e48fcee225853cd32b6e5f61242"
-project = "picture"
-datestamp = "1421096535"
-

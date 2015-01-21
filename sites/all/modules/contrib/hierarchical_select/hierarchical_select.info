@@ -5,10 +5,3 @@ package = Form Elements
 core = 7.x
 
 files[] = tests/internals.test
-
-
-; Information added by drush on 2015-01-12
-version = "aac15cd"
-project = "hierarchical_select"
-datestamp = "1421096577"
-

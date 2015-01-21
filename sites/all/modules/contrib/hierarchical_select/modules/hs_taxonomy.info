@@ -5,10 +5,3 @@ dependencies[] = taxonomy
 package = Form Elements
 
 core = 7.x
-
-
-; Information added by drush on 2015-01-12
-version = "aac15cd"
-project = "hierarchical_select"
-datestamp = "1421096577"
-

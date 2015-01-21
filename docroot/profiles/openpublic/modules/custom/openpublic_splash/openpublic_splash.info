@@ -7,10 +7,3 @@ dependencies[] = context
 package = OpenPublic
 core = 7.x
 files[] = openpublic_splash.module
-
-
-; Information added by drush on 2015-01-12
-version = "appify_services"
-project = "openpublic"
-datestamp = "1421096336"
-

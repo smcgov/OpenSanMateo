@@ -7,11 +7,3 @@ configure = admin/structure/context
 
 files[] = context.module
 files[] = tests/context_ui.test
-
-
-; Information added by drush on 2015-01-12
-version = "7.x-3.0-beta4+2-dev"
-core = "7.x"
-project = "context"
-datestamp = "1421096344"
-

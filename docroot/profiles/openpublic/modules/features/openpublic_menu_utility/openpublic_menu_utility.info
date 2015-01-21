@@ -8,10 +8,3 @@ features[menu_links][] = "menu-utility:user/logout"
 name = "OpenPublic Utility Menu"
 package = "OpenPublic"
 php = "5.2.4"
-
-
-; Information added by drush on 2015-01-12
-version = "appify_services"
-project = "openpublic"
-datestamp = "1421096336"
-

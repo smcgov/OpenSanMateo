@@ -36,10 +36,3 @@ features[variable][] = comment_preview_document
 features[variable][] = comment_subject_field_document
 features[variable][] = node_options_document
 features[views_view][] = documents
-
-
-; Information added by drush on 2015-01-12
-version = "appify_services"
-project = "openpublic"
-datestamp = "1421096336"
-

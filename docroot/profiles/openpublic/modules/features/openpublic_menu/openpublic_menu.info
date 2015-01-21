@@ -13,10 +13,3 @@ features[menu_links][] = main-menu:press-releases
 features[menu_links][] = main-menu:staff-directory
 features[menu_links][] = main-menu:staff-directory/leadership
 features[user_permission][] = administer menu
-
-
-; Information added by drush on 2015-01-12
-version = "appify_services"
-project = "openpublic"
-datestamp = "1421096336"
-

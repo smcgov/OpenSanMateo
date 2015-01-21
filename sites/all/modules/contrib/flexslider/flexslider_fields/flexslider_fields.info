@@ -4,9 +4,3 @@ core = 7.x
 package = FlexSlider
 
 dependencies[] = flexslider
-
-; Information added by drush on 2015-01-12
-version = "068df89"
-project = "flexslider"
-datestamp = "1421096424"
-

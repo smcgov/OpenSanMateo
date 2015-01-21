@@ -12,10 +12,3 @@ features[content][] = this_is_an_example_of_press_release
 features[content][] = whitehouse_issues_open_government_directive
 features[features_api][] = api:1
 features_exclude[dependencies][defaultcontent] = defaultcontent
-
-
-; Information added by drush on 2015-01-12
-version = "appify_services"
-project = "openpublic"
-datestamp = "1421096336"
-

@@ -42,10 +42,3 @@ regions[help] = Help
 features[] = main_menu
 features[] = logo
 features[] = name
-
-
-; Information added by drush on 2015-01-12
-version = "appify_services"
-project = "openpublic"
-datestamp = "1421096336"
-

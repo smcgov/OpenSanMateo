@@ -5,10 +5,3 @@ features[ctools][] = page_manager:pages_default:1
 features[ctools][] = panelizer:panelizer:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-
-
-; Information added by drush on 2015-01-12
-version = "6ed792a0ad0555f24516a804a8dfe05ea275910c"
-project = "features_template"
-datestamp = "1421096489"
-

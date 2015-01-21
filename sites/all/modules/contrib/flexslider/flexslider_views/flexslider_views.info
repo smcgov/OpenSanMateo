@@ -9,9 +9,3 @@ dependencies[] = flexslider
 files[] = flexslider_views.module
 files[] = flexslider_views.views.inc
 files[] = flexslider_views_plugin_style_flexslider.inc
-
-; Information added by drush on 2015-01-12
-version = "068df89"
-project = "flexslider"
-datestamp = "1421096424"
-
