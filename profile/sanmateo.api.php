@@ -32,3 +32,4 @@ function hook_sanmateo_is_master_set($is_master) {
     module_disable(array('openid_provider'));
   }
 }
+
