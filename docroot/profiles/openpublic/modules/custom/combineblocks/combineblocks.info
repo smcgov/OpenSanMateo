@@ -2,10 +2,3 @@
 name = "Combine Blocks"
 description = "Use js to combine two blocks in a tab view."
 core = 7.x
-
-
-; Information added by drush on 2014-10-16
-version = "appify_services"
-project = "openpublic"
-datestamp = "1413417822"
-

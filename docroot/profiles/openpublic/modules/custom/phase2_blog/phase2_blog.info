@@ -69,10 +69,3 @@ features_exclude[field][node-blog_entry-field_blog_teaser] = node-blog_entry-fie
 features_exclude[field][node-blog_entry-field_blog_terms] = node-blog_entry-field_blog_terms
 features_exclude[field][node-blog_entry-field_release_date] = node-blog_entry-field_release_date
 features_exclude[field][node-blog_entry-field_files] = node-blog_entry-field_files
-
-
-; Information added by drush on 2014-10-16
-version = "appify_services"
-project = "openpublic"
-datestamp = "1413417822"
-

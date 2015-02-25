@@ -3,10 +3,3 @@ name = OpenPublic API
 description = Adds a block showing the current status of 3rd party api config
 package = OpenPublic
 core = 7.x
-
-
-; Information added by drush on 2014-10-16
-version = "appify_services"
-project = "openpublic"
-datestamp = "1413417822"
-

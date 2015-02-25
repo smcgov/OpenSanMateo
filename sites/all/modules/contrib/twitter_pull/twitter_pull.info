@@ -7,10 +7,3 @@ files[] = twitter_pull.module
 files[] = twitter_pull.install
 files[] = plugins/twitter_pull_box.inc
 files[] = twitter_pull.class.inc
-
-
-; Information added by drush on 2014-10-16
-version = "46b6f89568aa50654295ad8e192673744afa4d35"
-project = "twitter_pull"
-datestamp = "1413417725"
-

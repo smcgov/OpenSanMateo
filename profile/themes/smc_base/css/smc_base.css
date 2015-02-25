@@ -17963,3 +17963,9 @@ ul.facetapi-facetapi-checkbox-links {
   margin-bottom: 0.5em;
   margin-top: 0.2em;
   display: block; }
+
+/*SMC-912*/
+.menu-block-wrapper ul li.collapsed{
+list-style-image:none;
+list-style-type: none;
+}

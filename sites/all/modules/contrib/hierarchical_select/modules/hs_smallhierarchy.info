@@ -3,10 +3,3 @@ description = Allows Hierarchical Select to be used for a hardcoded hierarchy. W
 dependencies[] = hierarchical_select
 package = Form Elements
 core = 7.x
-
-
-; Information added by drush on 2014-10-16
-version = "aac15cd"
-project = "hierarchical_select"
-datestamp = "1413417699"
-

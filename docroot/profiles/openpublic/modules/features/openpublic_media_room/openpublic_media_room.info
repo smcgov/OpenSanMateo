@@ -7,10 +7,3 @@ features[page_manager_pages][] = "media_room"
 name = "openpublic_media_room"
 package = "OpenPublic"
 php = "5.2.4"
-
-
-; Information added by drush on 2014-10-16
-version = "appify_services"
-project = "openpublic"
-datestamp = "1413417822"
-

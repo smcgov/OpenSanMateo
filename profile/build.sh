@@ -36,14 +36,14 @@ export GIT_SSL_NO_VERIFY
 MAKEFILE='sanmateo.make'
 # Initialize variables based on target environment
 if [ "$1" = "--acquia" ]; then
-  DRUSH_OPTS=''
+  DRUSH_OPTS='--no-gitinfofile'
   TYPE='acquia'
   TARGET="$ABS_CALLPATH/../"
   BRANCH=$3
   NOMAKE=0
   GIT_REPO='sanmateo@svn-2314.prod.hosting.acquia.com:sanmateo.git'
 else
-  #DRUSH_OPTS='-v'
+  DRUSH_OPTS='--no-gitinfofile'
   TARGET=$1
 fi
 
