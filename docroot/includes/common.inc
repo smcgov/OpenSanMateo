@@ -2214,14 +2214,20 @@ function url($path = NULL, array $options = array()) {
     'prefix' => ''
   );
 
+  // A duplicate of the code from url_is_external() to avoid needing another
+  // function call, since performance inside url() is critical.
   if (!isset($options['external'])) {
-    // Return an external link if $path contains an allowed absolute URL. Only
-    // call the slow drupal_strip_dangerous_protocols() if $path contains a ':'
-    // before any / ? or #. Note: we could use url_is_external($path) here, but
-    // that would require another function call, and performance inside url() is
-    // critical.
+    // Return an external link if $path contains an allowed absolute URL. Avoid
+    // calling drupal_strip_dangerous_protocols() if there is any slash (/),
+    // hash (#) or question_mark (?) before the colon (:) occurrence - if any -
+    // as this would clearly mean it is not a URL. If the path starts with 2
+    // slashes then it is always considered an external URL without an explicit
+    // protocol part.
     $colonpos = strpos($path, ':');
-    $options['external'] = ($colonpos !== FALSE && !preg_match('![/?#]!', substr($path, 0, $colonpos)) && drupal_strip_dangerous_protocols($path) == $path);
+    $options['external'] = (strpos($path, '//') === 0)
+      || ($colonpos !== FALSE
+        && !preg_match('![/?#]!', substr($path, 0, $colonpos))
+        && drupal_strip_dangerous_protocols($path) == $path);
   }
 
   // Preserve the original path before altering or aliasing.
@@ -2258,6 +2264,11 @@ function url($path = NULL, array $options = array()) {
     // Reassemble.
     return $path . $options['fragment'];
   }
+
+  // Strip leading slashes from internal paths to prevent them becoming external
+  // URLs without protocol. /example.com should not be turned into
+  // //example.com.
+  $path = ltrim($path, '/');
 
   global $base_url, $base_secure_url, $base_insecure_url;
 
@@ -2336,10 +2347,15 @@ function url($path = NULL, array $options = array()) {
  */
 function url_is_external($path) {
   $colonpos = strpos($path, ':');
-  // Avoid calling drupal_strip_dangerous_protocols() if there is any
-  // slash (/), hash (#) or question_mark (?) before the colon (:)
-  // occurrence - if any - as this would clearly mean it is not a URL.
-  return $colonpos !== FALSE && !preg_match('![/?#]!', substr($path, 0, $colonpos)) && drupal_strip_dangerous_protocols($path) == $path;
+  // Avoid calling drupal_strip_dangerous_protocols() if there is any slash (/),
+  // hash (#) or question_mark (?) before the colon (:) occurrence - if any - as
+  // this would clearly mean it is not a URL. If the path starts with 2 slashes
+  // then it is always considered an external URL without an explicit protocol
+  // part.
+  return (strpos($path, '//') === 0)
+    || ($colonpos !== FALSE
+      && !preg_match('![/?#]!', substr($path, 0, $colonpos))
+      && drupal_strip_dangerous_protocols($path) == $path);
 }
 
 /**
@@ -2636,7 +2652,10 @@ function drupal_deliver_html_page($page_callback_result) {
 
         // Keep old path for reference, and to allow forms to redirect to it.
         if (!isset($_GET['destination'])) {
-          $_GET['destination'] = $_GET['q'];
+          // Make sure that the current path is not interpreted as external URL.
+          if (!url_is_external($_GET['q'])) {
+            $_GET['destination'] = $_GET['q'];
+          }
         }
 
         $path = drupal_get_normal_path(variable_get('site_404', ''));
@@ -2665,7 +2684,10 @@ function drupal_deliver_html_page($page_callback_result) {
 
         // Keep old path for reference, and to allow forms to redirect to it.
         if (!isset($_GET['destination'])) {
-          $_GET['destination'] = $_GET['q'];
+          // Make sure that the current path is not interpreted as external URL.
+          if (!url_is_external($_GET['q'])) {
+            $_GET['destination'] = $_GET['q'];
+          }
         }
 
         $path = drupal_get_normal_path(variable_get('site_403', ''));
@@ -2810,11 +2832,7 @@ function drupal_map_assoc($array, $function = NULL) {
  * @ingroup php_wrappers
  */
 function drupal_set_time_limit($time_limit) {
-  $static_time_limit = &drupal_static(__FUNCTION__);
-  if (function_exists('set_time_limit') &&
-      ($static_time_limit !== 0) &&
-      (($time_limit > $static_time_limit) || ($time_limit === 0)) ) {
-    $static_time_limit = $time_limit;
+  if (function_exists('set_time_limit')) {
     @set_time_limit($time_limit);
   }
 }
@@ -5365,37 +5383,6 @@ function drupal_cron_cleanup() {
 }
 
 /**
- * recusive function to find listing paths from profiles and their parents
- *
- * @param string $profile
- *   the name of the profile to search
- * @param string $directory 
- *   The subdirectory name in which the files are found. For example,
- *   'modules' will search in sub-directories of the top-level /modules
- *   directory, sub-directories of /sites/all/modules/, etc.
- * @param array $searchdir 
- *   the searchdir already found and to which to add before returning
- *
- * @return array
- *   an array of paths that should be searched. Starting with param $searchdir and any 
- *   items added from the profile and parents
- */
-function drupal_system_listing_profile($profile, $directory, $searchdir = array()) {
-  $info  = drupal_parse_info_file("profiles/$profile/$profile.info");
-  if(isset($info['base'])) {
-    $bases = is_array($info['base']) ? $info['base'] : array($info['base']);
-    foreach($info['base'] as $base) {
-      $searchdir = drupal_system_listing_profile($base, $directory, $searchdir);
-    }
-  }
-  if (file_exists("profiles/$profile/$directory")) {
-    $searchdir[] = "profiles/$profile/$directory";
-  }
-    
-  return $searchdir;
-}
-
-/**
  * Returns information about system object files (modules, themes, etc.).
  *
  * This function is used to find all or some system object files (module files,
@@ -5468,9 +5455,11 @@ function drupal_system_listing($mask, $directory, $key = 'name', $min_depth = 1)
   // profile always has precedence.
   $profiles[] = $profile;
   foreach ($profiles as $profile) {
-    $searchdir = drupal_system_listing_profile($profile, $directory, $searchdir);
+    if (file_exists("profiles/$profile/$directory")) {
+      $searchdir[] = "profiles/$profile/$directory";
+    }
   }
-  
+
   // Always search sites/all/* as well as the global directories.
   $searchdir[] = 'sites/all/' . $directory;
 
