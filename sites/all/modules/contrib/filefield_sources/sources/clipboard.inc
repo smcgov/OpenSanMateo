@@ -21,6 +21,7 @@ function filefield_source_clipboard_info() {
     'process' => 'filefield_source_clipboard_process',
     'value' => 'filefield_source_clipboard_value',
     'weight' => 1,
+    'file' => 'includes/clipboard.inc',
   );
   return $source;
 }

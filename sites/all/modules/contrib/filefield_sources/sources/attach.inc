@@ -21,6 +21,7 @@ function filefield_source_attach_info() {
     'process' => 'filefield_source_attach_process',
     'value' => 'filefield_source_attach_value',
     'weight' => 3,
+    'file' => 'includes/attach.inc',
   );
   return $source;
 }
@@ -63,10 +64,12 @@ function filefield_source_attach_settings($op, $instance) {
       '#maxlength' => 128,
       '#description' => t('The directory within the <em>File attach location</em> that will contain attachable files.'),
     );
-    $return['source_attach']['tokens'] = array(
-      '#theme' => 'token_tree',
-      '#token_types' => array('user'),
-    );
+    if (module_exists('token')) {
+      $return['source_attach']['tokens'] = array(
+        '#theme' => 'token_tree',
+        '#token_types' => array('user'),
+      );
+    }
     $return['source_attach']['absolute'] = array(
       '#type' => 'radios',
       '#title' => t('File attach location'),
@@ -149,7 +152,7 @@ function filefield_source_attach_process($element, &$form_state, $form) {
     $attach_description = t('Please check your settings for the %field field.',  array('%field' => $instance['label']));
   }
   elseif (!count($options)) {
-    $attach_message = t('There currently no files to attach.');
+    $attach_message = t('There currently are no files to attach.');
     $attach_description = $description;
   }
 
@@ -197,7 +200,7 @@ function _filefield_source_attach_options($path) {
   }
 
   $options = array();
-  $file_attach = file_scan_directory($path, '/.*/', array('.', '..', 'CVS', '.svn'), 0, TRUE, 'filename', 0, 0);
+  $file_attach = file_scan_directory($path, '/.*/', array('key' => 'filename'), 0);
 
   if (count($file_attach)) {
     $options = array('' => t('-- Select file --'));

@@ -26,6 +26,7 @@ function filefield_source_imce_info() {
     'process' => 'filefield_source_imce_process',
     'value' => 'filefield_source_imce_value',
     'weight' => -1,
+    'file' => 'includes/imce.inc',
   );
   return $source;
 }
@@ -114,10 +115,9 @@ function filefield_source_imce_process($element, &$form_state, $form) {
     // textfield and hide it from display.
     '#type' => 'textfield',
     '#value' => '',
-    '#disabled' => TRUE,
     '#attributes' => array(
       'id' => $filepath_id,
-      'onchange' => "if (this.value.length > 0) { jQuery(this).attr('disabled', ''); jQuery('#$select_id').triggerHandler('mousedown'); }",
+      'onblur' => "if (this.value.length > 0) { jQuery('#$select_id').triggerHandler('mousedown'); }",
       'style' => 'position:absolute; left: -9999em',
     ),
   );
@@ -158,7 +158,7 @@ function filefield_source_imce_value($element, &$item) {
 
     $scheme = $field['settings']['uri_scheme'];
     $wrapper = file_stream_wrapper_get_instance_by_scheme($scheme);
-    $file_directory_prefix = $wrapper->getDirectoryPath();
+    $file_directory_prefix = $scheme == 'private' ? 'system/files' : $wrapper->getDirectoryPath();
     $uri = preg_replace('/^' . preg_quote(base_path() . $file_directory_prefix . '/', '/') . '/', $scheme . '://', $item['filefield_imce']['file_path']);
 
     // Resolve the file path to an FID.
