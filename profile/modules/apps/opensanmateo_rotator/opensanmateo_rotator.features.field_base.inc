@@ -55,7 +55,7 @@ function opensanmateo_rotator_field_default_field_bases() {
   // Exported field_base: 'field_coll_rotator_item'
   $field_bases['field_coll_rotator_item'] = array(
     'active' => 1,
-    'cardinality' => 4,
+    'cardinality' => FIELD_CARDINALITY_UNLIMITED,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_coll_rotator_item',
