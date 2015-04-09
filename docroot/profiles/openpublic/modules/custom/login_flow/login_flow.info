@@ -3,10 +3,3 @@ description = Modifies the Login Sequence to have two steps and a temporary ban
 core = 7.x
 files[] = login_flow.module
 
-
-
-; Information added by drush on 2014-10-16
-version = "appify_services"
-project = "openpublic"
-datestamp = "1413417822"
-

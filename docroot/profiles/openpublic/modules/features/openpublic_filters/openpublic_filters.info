@@ -7,10 +7,3 @@ dependencies[] = features
 features[features_api][] = api:1
 features[user_permission][] = use text format filtered_html
 features[user_permission][] = use text format full_html
-
-
-; Information added by drush on 2014-10-16
-version = "appify_services"
-project = "openpublic"
-datestamp = "1413417822"
-

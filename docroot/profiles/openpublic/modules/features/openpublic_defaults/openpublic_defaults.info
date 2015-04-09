@@ -160,10 +160,3 @@ features[variable][] = admin_theme
 features[variable][] = image_jpeg_quality
 features[variable][] = node_admin_theme
 features[variable][] = pathauto_node_pattern
-
-
-; Information added by drush on 2014-10-16
-version = "appify_services"
-project = "openpublic"
-datestamp = "1413417822"
-

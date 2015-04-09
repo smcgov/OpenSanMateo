@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 projects[drupal][type] = core
-projects[drupal][version] = 7.32
+projects[drupal][version] = 7.34
 projects[drupal][patch][] = http://drupal.org/files/issues/object_conversion_menu_router_build-972536-1.patch
 ;projects[drupal][patch][] = http://drupal.org/files/issues/992540-3-reset_flood_limit_on_password_reset-drush.patch
 projects[drupal][patch][] = http://drupal.org/files/1355984-timeout_on_install_with_drush_si-make.patch
@@ -520,9 +520,9 @@ projects[shield][download][type] = git
 projects[shield][download][url] = http://git.drupal.org/project/shield.git
 projects[shield][download][revision] = d0d4d8ba32ac128d15c758fe29dbc022223a1270
 
-projects[XHProf][type] = module
-projects[XHProf][subdir] = contrib
-projects[XHProf][version] = 1.0-beta3
+projects[xhprof][type] = module
+projects[xhprof][subdir] = contrib
+projects[xhprof][version] = 1.0-beta3
 
 projects[shs][type] = module
 projects[shs][subdir] = contrib

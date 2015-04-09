@@ -30,10 +30,3 @@ features[menu_custom][] = menu-flexslider-example
 features[node][] = flexslider_example
 features[variable][] = field_bundle_settings_node__flexslider_example
 features[views_view][] = flexslider_views_example
-
-
-; Information added by drush on 2014-10-16
-version = "068df89"
-project = "flexslider"
-datestamp = "1413417776"
-

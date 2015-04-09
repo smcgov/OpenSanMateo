@@ -252,7 +252,7 @@ function osm_ff_remote_source_form_file_entity_admin_file($form, &$form_state) {
  *   True if the file is eligible for sharing, false otherwise.
  */
 function osm_ff_remote_source_is_sharable($file) {
-  if (array_key_exists('type', $field) && 
+  if (isset($file['type']) &&
       $file['type'] === 'image') {
     return TRUE;
   }
@@ -273,16 +273,24 @@ function osm_ff_remote_source_node_presave($node) {
     $f = file_load($file['fid']);
     if (osm_ff_remote_source_is_sharable((array) $f)) {
       $wrapper = entity_metadata_wrapper('file', $f);
-      $wrapper->field_share->set($file['share_fieldset']['field_share']);
+      if (property_exists($wrapper, 'field_share')) {
+        $wrapper->field_share->set($file['share_fieldset']['field_share']);
+      }
 
-      if (!empty($file['share_fieldset']['field_subject'])) {
-        $wrapper->field_subject->set(array($file['share_fieldset']['field_subject']));
+      if (property_exists($wrapper, 'field_subject')) {
+        if (!empty($file['share_fieldset']['field_subject'])) {
+          $wrapper->field_subject->set(array($file['share_fieldset']['field_subject']));
+        }
+        else {
+          // unset the term.
+          $wrapper->field_subject->set(array());
+        }
       }
-      else {
-        // unset the term.
-        $wrapper->field_subject->set(array());
+
+      if (property_exists($wrapper, 'field_summary')) {
+        $wrapper->field_summary->set($file['share_fieldset']['field_summary']);
       }
-      $wrapper->field_summary->set($file['share_fieldset']['field_summary']);
+
       $wrapper->save();
     }
   }
