@@ -22,7 +22,9 @@ projects[redirect][patch][] = http://drupal.org/files/redirect_entity_type_disab
 
 projects[backup_migrate][type] = module
 projects[backup_migrate][subdir] = contrib
-projects[backup_migrate][version] = 2.2
+projects[backup_migrate][download][type] = git
+projects[backup_migrate][download][url] = http://git.drupal.org/project/backup_migrate.git
+projects[backup_migrate][download][revision] = 342bce1
 
 projects[devel][type] = module
 projects[devel][subdir] = contrib
