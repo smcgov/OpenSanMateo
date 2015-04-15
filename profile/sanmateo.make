@@ -542,6 +542,11 @@ libraries[jreject][download][type] = git
 libraries[jreject][download][url] = https://github.com/TurnWheel/jReject.git
 libraries[jreject][download][revision] = 4d5f3651c0dda9b7741189d528567b8054b2fb0a
 
+libraries[amazon-s3-php-class][download][type] = git
+libraries[amazon-s3-php-class][download][url] = https://github.com/tpyo/amazon-s3-php-class.git
+libraries[amazon-s3-php-class][download][revision] = f363dd4c89af8da1b6fe3aab92b8e2fc52e57c63
+libraries[amazon-s3-php-class][directory_name] = s3-php5-curl
+
 projects[view_unpublished][type] = module
 projects[view_unpublished][subdir] = contrib
 projects[view_unpublished][version] = 1.x-dev
