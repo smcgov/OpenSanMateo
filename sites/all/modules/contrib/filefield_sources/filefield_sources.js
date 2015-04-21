@@ -29,17 +29,13 @@ Drupal.behaviors.fileFieldSources.attach = function(context, settings) {
       // Add the active class.
       $(this).addClass('active');
       Drupal.fileFieldSources.updateHintText($fileFieldElement.get(0));
-    });
+    }).first().triggerHandler('click');
 
     // Clipboard support.
     $fileFieldElement.find('.filefield-source-clipboard-capture')
       .bind('paste', Drupal.fileFieldSources.pasteEvent)
       .bind('focus', Drupal.fileFieldSources.pasteFocus)
       .bind('blur', Drupal.fileFieldSources.pasteBlur);
-
-    // Hide all the other upload mechanisms on page load.
-    $fileFieldElement.find('div.filefield-source', this).css('display', 'none');
-    $(this).find('a:first').addClass('active');
   });
 
   if (context === document) {

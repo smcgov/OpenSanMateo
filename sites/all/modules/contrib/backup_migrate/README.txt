@@ -1,6 +1,6 @@
 
 -------------------------------------------------------------------------------
-Backup and Migrate 2 for Drupal 6.x
+Backup and Migrate 2 for Drupal 7.x
   by Ronan Dowling, Gorton Studios - ronan (at) gortonstudios (dot) com
 -------------------------------------------------------------------------------
 
@@ -21,20 +21,33 @@ such as phpMyAdmin or the command-line mysql client.
 -------------------------------------------------------------------------------
 
 INSTALLATION:
-* Put the module in your drupal modules directory and enable it in 
+* Put the module in your Drupal modules directory and enable it in 
   admin/modules. 
 * Go to admin/people/permissions and grant permission to any roles that need to be 
-  able to backup or restore the databse.
+  able to backup or restore the database.
 * Configure and use the module at admin/config/system/backup_migrate
 
 OPTIONAL:
 * Enable token.module to allow token replacement in backup file names.
+* To Backup to Amazon S3:
+    - Download the S3 library from http://undesigned.org.za/2007/10/22/amazon-s3-php-class
+      and place the file 'S3.php' in the includes directory in this module.
+      The stable version (0.4.0 – 20th Jul 2009) works best with Backup and Migrate.
 
 LIGHTTPD USERS:
 Add the following code to your lighttp.conf to secure your backup directories:
   $HTTP["url"] =~ "^/sites/default/files/backup_migrate/" {
        url.access-deny = ( "" )
   }
+You may need to adjust the path to reflect the actual path to the files.
+
+IIS 7 USERS:
+Add the following code to your web.config code to secure your backup directories:
+<rule name="postinst-redirect" stopProcessing="true">
+   <match url="sites/default/files/backup_migrate" />
+   <action type="Rewrite" url=""/>
+</rule>
+You may need to adjust the path to reflect the actual path to the files.
 
 -------------------------------------------------------------------------------
 
@@ -53,8 +66,8 @@ A failed restore can destroy your database and therefore your entire Drupal
 installation. ALWAYS TEST BACKUP FILES ON A TEST ENVIRONMENT FIRST. If in doubt
 do not use this module.
 
-This module has only be tested with MySQL and does not work with anyother dbms. 
-If you have experiences with Postres or any other dbms and are willing to help 
+This module has only been tested with MySQL and does not work with any other dbms. 
+If you have experiences with Postgres or any other dbms and are willing to help 
 test and modify the module to work with it, please contact the developer at 
 ronan (at) gortonstudios (dot) com.
 

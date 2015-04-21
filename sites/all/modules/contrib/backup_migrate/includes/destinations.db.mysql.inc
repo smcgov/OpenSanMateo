@@ -79,6 +79,23 @@ class backup_migrate_destination_db_mysql extends backup_migrate_destination_db 
   }
 
   /**
+   * Get the form for the backup settings for this destination.
+   */
+  function backup_settings_form($settings) {
+    $form = parent::backup_settings_form($settings);
+
+    $form['use_mysqldump'] = array(
+      "#type" => "checkbox",
+      "#title" => t("Use mysqldump command"),
+      "#default_value" => !empty($settings['use_mysqldump']),
+      "#description" => t("Use the mysqldump command line tool if available. This can be faster for large databases but will not work on all servers. Also exporting SQL views is not really solid with this option. EXPERIMENTAL"),
+    );
+
+    return $form;
+  }
+
+
+  /**
    * Backup the databases to a file.
    *
    *  Returns a list of sql commands, one command per line.
@@ -86,12 +103,18 @@ class backup_migrate_destination_db_mysql extends backup_migrate_destination_db 
    *  The files are a little harder to read, but human-readability is not a priority
    */
   function _backup_db_to_file($file, $settings) {
+    if (!empty($settings->filters['use_mysqldump']) && $this->_backup_db_to_file_mysqldump($file, $settings)) {
+      return TRUE;
+    }
+
     $lines = 0;
     $exclude = !empty($settings->filters['exclude_tables']) ? $settings->filters['exclude_tables'] : array();
     $nodata = !empty($settings->filters['nodata_tables']) ? $settings->filters['nodata_tables'] : array();
     if ($file->open(TRUE)) {
       $file->write($this->_get_sql_file_header());
       $alltables = $this->_get_tables();
+      $allviews = $this->_get_views();
+
       foreach ($alltables as $table) {
         if (_backup_migrate_check_timeout()) {
           return FALSE;
@@ -104,6 +127,15 @@ class backup_migrate_destination_db_mysql extends backup_migrate_destination_db 
           }
         }
       }
+      foreach ($allviews as $view) {
+        if (_backup_migrate_check_timeout()) {
+          return FALSE;
+        }
+        if ($view['name'] && !isset($exclude[$view['name']])) {
+          $file->write($this->_get_view_create_sql($view));
+        }
+
+      }
       $file->write($this->_get_sql_file_footer());
       $file->close();
       return $lines;
@@ -111,6 +143,54 @@ class backup_migrate_destination_db_mysql extends backup_migrate_destination_db 
     else {
       return FALSE;
     }
+  }
+
+
+  /**
+   * Backup the databases to a file using the mysqldump command.
+   */
+  function _backup_db_to_file_mysqldump($file, $settings) {
+    $success = FALSE;
+    $nodata_tables = array();
+    $alltables = $this->_get_tables();
+
+
+    $command = 'mysqldump --result-file=%file --opt -Q --host=%host --port=%port --user=%user --password=%pass %db';
+    $args = array(
+      '%file' => $file->filepath(),
+      '%host' => $this->dest_url['host'],
+      '%port' => !empty($this->dest_url['port']) ? $this->dest_url['port'] : '3306',
+      '%user' => $this->dest_url['user'],
+      '%pass' => $this->dest_url['pass'],
+      '%db' => $this->dest_url['path'],
+    );
+
+    // Ignore the excluded and no-data tables.
+    $db = $this->dest_url['path'];
+    if (!empty($settings->filters['exclude_tables'])) {
+      foreach ((array)$settings->filters['exclude_tables'] as $table) {
+        if (isset($alltables[$table])) {
+          $command .= ' --ignore-table='. $db .'.'. $table;
+        }
+      }
+    }
+    if (!empty($settings->filters['nodata_tables'])) {
+      foreach ((array)$settings->filters['nodata_tables'] as $table) {
+        if (isset($alltables[$table])) {
+          $nodata_tables[] = $table;
+          $command .= ' --ignore-table='. $db .'.'. $table;
+        }
+      }
+    }
+    $success = backup_migrate_exec($command, $args);
+
+    // Get the nodata tables.
+    if ($success && !empty($nodata_tables)) {
+      $tables = implode(' ', array_unique($nodata_tables));
+      $command = "mysqldump --no-data --opt -Q --host=%host --port=%port --user=%user --password=%pass %db $tables >> %file";
+      $success = backup_migrate_exec($command, $args);
+    }
+    return $success;
   }
 
   /**
@@ -121,12 +201,10 @@ class backup_migrate_destination_db_mysql extends backup_migrate_destination_db 
 
     if ($file->open() && $conn = $this->_get_db_connection()) {
       // Read one line at a time and run the query.
-      while ($line = $file->read()) {
+      while ($line = $this->_read_sql_command_from_file($file)) {
         if (_backup_migrate_check_timeout()) {
           return FALSE;
         }
-  
-        $line = trim($line);
         if ($line) {
           // Prepeare and exexute the statement instead of the api function to avoid substitution of '{' etc.
           $stmt = $conn->prepare($line);
@@ -144,6 +222,30 @@ class backup_migrate_destination_db_mysql extends backup_migrate_destination_db 
     return $num;
   }
 
+
+  /**
+   * Read a multiline sql command from a file.
+   *
+   * Supports the formatting created by mysqldump, but won't handle multiline comments.
+   */
+  function _read_sql_command_from_file($file) {
+    $out = '';
+    while ($line = $file->read()) {
+      $first2 = substr($line, 0, 2);
+      $first3 = substr($line, 0, 2);
+
+      // Ignore single line comments. This function doesn't support multiline comments or inline comments.
+      if ($first2 != '--' && ($first2 != '/*' || $first3 == '/*!')) {
+        $out .= ' ' . trim($line);
+        // If a line ends in ; or */ it is a sql command.
+        if (substr($out, strlen($out) - 1, 1) == ';') {
+          return trim($out);
+        }
+      }
+    }
+    return trim($out);
+  }
+
   /**
    * Get a list of tables in the database.
    */
@@ -151,6 +253,17 @@ class backup_migrate_destination_db_mysql extends backup_migrate_destination_db 
     $out = array();
     foreach ($this->_get_tables() as $table) {
       $out[$table['name']] = $table['name'];
+    }
+    return $out;
+  }
+
+  /**
+   * Get a list of views in the database.
+   */
+  function _get_view_names() {
+    $out = array();
+    foreach ($this->_get_views() as $view) {
+      $out[$view['name']] = $view['name'];
     }
     return $out;
   }
@@ -183,7 +296,30 @@ class backup_migrate_destination_db_mysql extends backup_migrate_destination_db 
     // get auto_increment values and names of all tables
     $tables = $this->query("show table status", array(), array('fetch' => PDO::FETCH_ASSOC));
     foreach ($tables as $table) {
-      $out[$table['name']] = $table;
+      // Lowercase the keys because between Drupal 7.12 and 7.13/14 the default query behavior was changed.
+      // See: http://drupal.org/node/1171866
+      $table = array_change_key_case($table);
+      if (!empty($table['engine'])) {
+        $out[$table['name']] = $table;
+      }
+    }
+    return $out;
+  }
+
+  /**
+   * Get a list of views in the db.
+   */
+  function _get_views() {
+    $out = array();
+    // get auto_increment values and names of all tables
+    $tables = $this->query("show table status", array(), array('fetch' => PDO::FETCH_ASSOC));
+    foreach ($tables as $table) {
+      // Lowercase the keys because between Drupal 7.12 and 7.13/14 the default query behavior was changed.
+      // See: http://drupal.org/node/1171866
+      $table = array_change_key_case($table);
+      if (empty($table['engine'])) {
+        $out[$table['name']] = $table;
+      }
     }
     return $out;
   }
@@ -195,6 +331,9 @@ class backup_migrate_destination_db_mysql extends backup_migrate_destination_db 
     $out = "";
     $result = $this->query("SHOW CREATE TABLE `". $table['name'] ."`", array(), array('fetch' => PDO::FETCH_ASSOC));
     foreach ($result as $create) {
+      // Lowercase the keys because between Drupal 7.12 and 7.13/14 the default query behavior was changed.
+      // See: http://drupal.org/node/1171866
+      $create = array_change_key_case($create);
       $out .= "DROP TABLE IF EXISTS `". $table['name'] ."`;\n";
       // Remove newlines and convert " to ` because PDO seems to convert those for some reason.
       $out .= strtr($create['create table'], array("\n" => ' ', '"' => '`'));
@@ -206,6 +345,25 @@ class backup_migrate_destination_db_mysql extends backup_migrate_destination_db 
     return $out;
   }
   
+  /**
+   * Get the sql for the structure of the given table.
+   */
+  function _get_view_create_sql($view) {
+    $out = "";
+    // Switch SQL mode to get rid of "CREATE ALGORITHM..." what requires more permissions + troubles with the DEFINER user
+    $sql_mode = $this->query("SELECT @@SESSION.sql_mode")->fetchField();
+    $this->query("SET sql_mode = 'ANSI'");
+    $result = $this->query("SHOW CREATE VIEW `" . $view['name'] . "`", array(), array('fetch' => PDO::FETCH_ASSOC));
+    $this->query("SET SQL_mode = :mode", array(':mode' => $sql_mode));
+    foreach ($result as $create) {
+      $out .= "DROP VIEW IF EXISTS `". $view['name'] ."`;\n";
+      $out .= "SET sql_mode = 'ANSI';\n";
+      $out .= strtr($create['Create View'], "\n", " ") . ";\n";
+      $out .= "SET sql_mode = '$sql_mode';\n";
+    }
+    return $out;
+  }
+
   /**
    *  Get the sql to insert the data for a given table
    */
@@ -317,4 +475,3 @@ SET NAMES utf8;
 ";
   }
 }
-
