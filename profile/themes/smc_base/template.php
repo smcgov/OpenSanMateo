@@ -296,7 +296,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
   //krumo($vars);
   if ($view->name == 'opensanmateo_search') {
-    //krumo($vars['fields']);
+    // krumo($vars['fields']);
 
     // Legend for (wonky) field names
     // There is a chance the variable names may need changed later, hence this fancy legend
@@ -330,6 +330,12 @@ function smc_base_preprocess_views_view_fields(&$vars) {
 
     // build the real thumbnail from the data parts (2, 15, 16)
     //dsm($vars['fields']['search_api_multi_aggregation_9']);
+
+    if (!empty($vars['fields']['search_api_multi_aggregation_9_1']->content)) {
+       $stamp = strip_tags($vars['fields']['search_api_multi_aggregation_9_1']->content);
+	$format_stamp = format_date($stamp, 'custom' , 'F j, Y');
+	$vars['fields']['search_api_multi_aggregation_9_1']->content = str_replace($stamp, $format_stamp, $vars['fields']['search_api_multi_aggregation_9_1']->content);
+    }
 
     if (isset($vars['fields']['search_api_multi_aggregation_2']->content) && strlen($vars['fields']['search_api_multi_aggregation_2']->content) >= 1) {
       $img = theme('image', array(
@@ -414,7 +420,8 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     else {
       // start date
       if (isset($vars['fields']['search_api_multi_aggregation_9']->content) && strlen($vars['fields']['search_api_multi_aggregation_9']->content) >= 1) {
-        $startdate = '<div class="node-start-date"><h5>' . t('From') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content) . '</div></div>';
+        //$startdate = '<div class="node-start-date"><h5>' . t('From') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content) . '</div></div>';
+        $startdate =  '<div class=“wrapper"><span><img src=“” title=“pending-image-clock"></img></span><div>' . format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'g:i a');
       }
       else {
         // remove it then
@@ -423,7 +430,8 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       }
       // end date
       if (isset($vars['fields']['search_api_multi_aggregation_10']->content) && strlen($vars['fields']['search_api_multi_aggregation_10']->content) >= 1) {
-        $enddate = '<div class="node-end-date"><h5>' . t('To') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_10']->content) . '</div></div>';
+        //$enddate = '<div class="node-end-date"><h5>' . t('To') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_10']->content) . '</div></div>';
+        $enddate = ' - ' . format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'g:i a');
       }
       else {
         // remove it then
