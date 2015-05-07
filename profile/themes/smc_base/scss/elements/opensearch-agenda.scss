@@ -1,7 +1,16 @@
 .pane-opensanmateo-search-panel-pane-4 {
   .views-field-search-api-multi-aggregation-9-1 {
-    font-weight: bold;
-    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+    /*font-weight: bold;
+    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; */
+    background-color: lightgray;
+    padding: 10px;
+
+    .time {
+      margin-right: 5px;
+      color: #036cb6;
+      padding-bottom: inherit;
+      line-height: inherit;
+    }
   }
   .read-more-wrapper {
     border-top-style: dashed;
