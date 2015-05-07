@@ -17881,14 +17881,17 @@ footer {
   border-top-style: dashed;
   line-height: normal;
   border-top-width: 1px; }
-/* line 48, ../scss/elements/opensearch-agenda.scss */
+  /* line 48, ../scss/elements/opensearch-agenda.scss */
+  .pane-opensanmateo-search-panel-pane-4 .read-more-wrapper a:after {
+    content: none; }
+/* line 52, ../scss/elements/opensearch-agenda.scss */
 .pane-opensanmateo-search-panel-pane-4 .views-field-search-api-multi-aggregation-1 {
   font-size: 10px; }
-/* line 51, ../scss/elements/opensearch-agenda.scss */
+/* line 55, ../scss/elements/opensearch-agenda.scss */
 .pane-opensanmateo-search-panel-pane-4 a {
   font-size: 13px; }
 
-/* line 58, ../scss/elements/opensearch-agenda.scss */
+/* line 62, ../scss/elements/opensearch-agenda.scss */
 .universal-teaser.event .read-more-wrapper a {
   background-color: inherit; }
 
