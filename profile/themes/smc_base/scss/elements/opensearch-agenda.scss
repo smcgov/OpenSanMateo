@@ -4,7 +4,7 @@
     .event-page, event-add-calendar {
       padding: 10px;
     margin: 0 10px;
-    background-color: 136DB5;
+    background-color: #136DB5;
     text-align: center;
     }
   }
@@ -53,11 +53,12 @@
   }
 
   .read-more-wrapper {
-    border-top-style: dashed;
     line-height: normal;
     border-top-width: 1px;
+    background-color: #136DB5;
 
     a:after {
+      background-color: inherit;
       content: none;
     }
   }
