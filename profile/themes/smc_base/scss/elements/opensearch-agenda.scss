@@ -1,4 +1,16 @@
 .pane-opensanmateo-search-panel-pane-4 {
+  .event-more-info {
+    display: none;
+    .event-page, event-add-calendar {
+      padding: 10px;
+    margin: 0 10px;
+    background-color: 136DB5;
+    text-align: center;
+    }
+  }
+  .event-hide-more-info {
+    background-color: #EEEEF7;
+  }
 
   h4, .node-location {
     margin-left: 15px;
