@@ -1,4 +1,15 @@
 .pane-opensanmateo-search-panel-pane-4 {
+
+  .universal-teaser.event {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+  }
+
+  .universal-teaser {
+    padding: 0;
+  }
+
   .views-field-search-api-multi-aggregation-9-1 {
     /*font-weight: bold;
     font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; */
@@ -17,6 +28,11 @@
     display: block;
     clear: both;
     width: 100%;
+
+    img {
+      margin: 0 auto;
+      display: block;
+    }
   }
 
   .read-more-wrapper {
@@ -28,7 +44,7 @@
       font-size: 10px;
   }
   a {
-    font-size: 17px;
+    font-size: 13px;
   }
 }
 
