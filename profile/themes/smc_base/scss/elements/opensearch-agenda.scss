@@ -2,7 +2,7 @@
   .views-field-search-api-multi-aggregation-9-1 {
     /*font-weight: bold;
     font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; */
-    background-color: lightgray;
+    background-color: #F5F5F5;
     padding: 10px;
 
     .time {
@@ -12,6 +12,13 @@
       line-height: inherit;
     }
   }
+
+  .aggregated-node-thumbnail  {
+    display: block;
+    clear: both;
+    width: 100%;
+  }
+
   .read-more-wrapper {
     border-top-style: dashed;
     line-height: normal;
