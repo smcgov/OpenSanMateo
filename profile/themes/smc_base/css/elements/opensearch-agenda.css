@@ -2,7 +2,7 @@
 .pane-opensanmateo-search-panel-pane-4 .event-more-info {
   display: none; }
   /* line 4, ../../scss/elements/opensearch-agenda.scss */
-  .pane-opensanmateo-search-panel-pane-4 .event-more-info .event-page, .pane-opensanmateo-search-panel-pane-4 .event-more-info event-add-calendar {
+  .pane-opensanmateo-search-panel-pane-4 .event-more-info .event-page, .pane-opensanmateo-search-panel-pane-4 .event-more-info .event-add-calendar {
     padding: 10px;
     margin: 0 10px;
     background-color: #136DB5;
@@ -47,7 +47,7 @@
 .pane-opensanmateo-search-panel-pane-4 .read-more-wrapper {
   line-height: normal;
   border-top-width: 1px;
-  background-color: #136DB5; }
+  background-color: #EEEEF7; }
   /* line 60, ../../scss/elements/opensearch-agenda.scss */
   .pane-opensanmateo-search-panel-pane-4 .read-more-wrapper a:after {
     background-color: inherit;
