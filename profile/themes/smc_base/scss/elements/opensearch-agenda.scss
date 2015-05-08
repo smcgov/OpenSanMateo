@@ -129,6 +129,14 @@
         float: left;
         display: block;
       }
+      span {
+        float: left;
+        margin-left: 5px;
+
+        .wrapper {
+          line-height: 30px;
+        }
+      }
     }
   }
 }

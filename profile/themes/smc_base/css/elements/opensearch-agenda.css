@@ -113,3 +113,10 @@
     .view-opensanmateo-search .right-col .node-date h5 {
       float: left;
       display: block; }
+    /* line 132, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search .right-col .node-date span {
+      float: left;
+      margin-left: 5px; }
+      /* line 136, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search .right-col .node-date span .wrapper {
+        line-height: 30px; }
