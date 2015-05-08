@@ -99,17 +99,20 @@
   }
   .left-col {
     width: 15%;
+    float: left;
     .time {
       color: #036cb6;
     }
   }
   .right-col {
     width: 85%;
+    float: left;
     .node-location {
+      float: left;
       h5 {
         float: left;
         margin-right: 10px;
-        height: 60px;
+        min-height: 90px;
       }
     }
     .node-date {
