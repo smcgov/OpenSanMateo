@@ -296,7 +296,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
   //krumo($vars);
   if ($view->name == 'opensanmateo_search') {
-    // krumo($vars['fields']);
+    //krumo($vars['fields']);
 
     // Legend for (wonky) field names
     // There is a chance the variable names may need changed later, hence this fancy legend
@@ -333,7 +333,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
 
     if (!empty($vars['fields']['search_api_multi_aggregation_9_1']->content)) {
        $stamp = strip_tags($vars['fields']['search_api_multi_aggregation_9_1']->content);
-	$format_stamp = format_date($stamp, 'custom' , 'F j, Y');
+	$format_stamp = '<span class="time">' . format_date($stamp, 'custom' , 'g:s a') . '</span><span class="date">' . format_date($stamp, 'custom' , 'M j') . '<span>';
 	$vars['fields']['search_api_multi_aggregation_9_1']->content = str_replace($stamp, $format_stamp, $vars['fields']['search_api_multi_aggregation_9_1']->content);
     }
 
@@ -350,13 +350,13 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       ));
 
       // apply the image
-      $vars['fields']['search_api_multi_aggregation_2']->content = '<div class="node-thumbnail">' . $img . '</div>';
+      $vars['fields']['search_api_multi_aggregation_2']->content = '<div class="aggregated-node-thumbnail">' . $img . '</div>';
 
 
       // now let's wrap the thumbnail and teaser into a single wrapper
-      $vars['fields']['search_api_multi_aggregation_1']->content = $vars['fields']['search_api_multi_aggregation_2']->content . $vars['fields']['search_api_multi_aggregation_1']->content;
+      //$vars['fields']['search_api_multi_aggregation_1']->content = $vars['fields']['search_api_multi_aggregation_2']->content . $vars['fields']['search_api_multi_aggregation_1']->content;
       // since we've combined the two fields, unset the "original" thumbnail
-      unset($vars['fields']['search_api_multi_aggregation_2']);
+      //unset($vars['fields']['search_api_multi_aggregation_2']);
     }
     else {
       // then remove it completely
@@ -421,7 +421,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       // start date
       if (isset($vars['fields']['search_api_multi_aggregation_9']->content) && strlen($vars['fields']['search_api_multi_aggregation_9']->content) >= 1) {
         //$startdate = '<div class="node-start-date"><h5>' . t('From') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content) . '</div></div>';
-        $startdate =  '<div class=“wrapper"><span><img src=“” title=“pending-image-clock"></img></span><div>' . format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'g:i a');
+        $startdate =  '<div class=“wrapper"><span><img src=“” title=“pending-image-clock"></img></span>' . format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'g:i a');
       }
       else {
         // remove it then
@@ -431,32 +431,39 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       // end date
       if (isset($vars['fields']['search_api_multi_aggregation_10']->content) && strlen($vars['fields']['search_api_multi_aggregation_10']->content) >= 1) {
         //$enddate = '<div class="node-end-date"><h5>' . t('To') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_10']->content) . '</div></div>';
-        $enddate = ' - ' . format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'g:i a');
-      }
+        $enddate = ' - ' . format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'g:i a') . '</div>';
+     }
       else {
         // remove it then
-        $enddate = '';
+        //$enddate = '</div>';
         unset($vars['fields']['search_api_multi_aggregation_10']);
       }
     }
 
 
     // make the date into a new object that is usable
-    $vars['fields']['dateinfo'] = new stdClass();
+    /* $vars['fields']['dateinfo'] = new stdClass();
     $vars['fields']['dateinfo']->content = '<div class="node-date clearfix">' . $startdate . $enddate . '</div>';
     $vars['fields']['dateinfo']->label_html = '';
     $vars['fields']['dateinfo']->wrapper_prefix = '';
-    $vars['fields']['dateinfo']->wrapper_suffix = '';
+    $vars['fields']['dateinfo']->wrapper_suffix = ''; */
+    unset($vars['fields']['dateinfo']);
     // unset the original date field(s)
     unset($vars['fields']['search_api_multi_aggregation_9']);
     unset($vars['fields']['search_api_multi_aggregation_10']);
 
     // make the more link actually an object that is expected
+    $more_info = "<div class=\"event-more-info\">
+	<div class=\"event-page\"><a href=\"" . strip_tags($vars['fields']['url']->content) . "\">Visit Event page</a></div>
+	<div class=\"event-add-calendar\"><a href=\"\">Add to Calendar</a></div>
+	<div class=\"event-hide-more-info\"><a href=\"\">Hide info</a></div>
+</div>";
+    unset($vars['fields']['url']);
     $vars['fields']['readmore'] = new stdClass();
-    $vars['fields']['readmore']->content = $vars['fields']['more_link'];
+    $vars['fields']['readmore']->content = $vars['fields']['more_link'] . $more_info; 
     $vars['fields']['readmore']->label_html = '';
     $vars['fields']['readmore']->wrapper_prefix = '';
-    $vars['fields']['readmore']->wrapper_suffix = '';
+    $vars['fields']['readmore']->wrapper_suffix = ''; 
 
     // Now we need to unset the readmore link on certain display modes
     // Curated List Display Mode
