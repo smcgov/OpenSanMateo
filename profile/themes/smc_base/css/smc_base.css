@@ -17934,16 +17934,17 @@ footer {
 /* line 107, ../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .right-col {
   width: 85%;
-  float: left; }
-  /* line 110, ../scss/elements/opensearch-agenda.scss */
+  float: left;
+  margin-left: 15px; }
+  /* line 111, ../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .right-col .node-location {
     float: left; }
-    /* line 112, ../scss/elements/opensearch-agenda.scss */
+    /* line 113, ../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-location h5 {
       float: left;
       margin-right: 10px;
       min-height: 90px; }
-  /* line 118, ../scss/elements/opensearch-agenda.scss */
+  /* line 119, ../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .right-col .node-date {
     float: left;
     margin-left: 15px; }
