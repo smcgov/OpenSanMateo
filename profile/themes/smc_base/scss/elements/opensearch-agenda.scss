@@ -105,7 +105,7 @@
     }
   }
   .right-col {
-    width: 70%;
+    width: 85%;
     float: left;
     margin-left: 15px;
     .node-location {
@@ -119,6 +119,16 @@
     .node-date {
       float: left;
       margin-left: 15px;
+      width: 35%;
+      .start, .end {
+        clear: both;
+        overflow: hidden;
+        display: block;
+      }
+      h5  {
+        float: left;
+        display: block;
+      }
     }
   }
 }
