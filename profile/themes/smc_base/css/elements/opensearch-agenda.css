@@ -75,3 +75,13 @@
 /* line 90, ../../scss/elements/opensearch-agenda.scss */
 .universal-teaser.event .read-more-wrapper a {
   background-color: inherit; }
+
+/* line 97, ../../scss/elements/opensearch-agenda.scss */
+.view-opensanmateo-search .views-row {
+  widht: 70%; }
+/* line 100, ../../scss/elements/opensearch-agenda.scss */
+.view-opensanmateo-search .left {
+  width: 15%; }
+/* line 103, ../../scss/elements/opensearch-agenda.scss */
+.view-opensanmateo-search .right {
+  width: 85%; }
