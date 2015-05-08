@@ -9,10 +9,3 @@ dependencies[] = "features"
 dependencies[] = "menu"
 features[menu_custom][] = "menu-footer-utility"
 
-
-
-; Information added by drush on 2014-10-16
-version = "appify_services"
-project = "openpublic"
-datestamp = "1413417822"
-

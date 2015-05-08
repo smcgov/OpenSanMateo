@@ -9,10 +9,3 @@ features[content][] = five_recent _abcs_agency_achievements_you_should_know_abou
 features[features_api][] = api:1
 features_exclude[dependencies][defaultcontent] = defaultcontent
 project path = /tmp/
-
-
-; Information added by drush on 2014-10-16
-version = "appify_services"
-project = "openpublic"
-datestamp = "1413417822"
-

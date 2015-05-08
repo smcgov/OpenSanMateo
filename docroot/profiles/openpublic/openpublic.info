@@ -137,10 +137,3 @@ files[] = openpublic.profile
 
 ;stylesheets[all][] = css/menu.css
 ;scripts[] = js/menu.js
-
-
-; Information added by drush on 2014-10-16
-version = "appify_services"
-project = "openpublic"
-datestamp = "1413417822"
-

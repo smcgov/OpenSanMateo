@@ -1,5 +1,13 @@
 <?php
 /**
+ * Enable Drupal 7 core "fast 404" behavior per Acquia:
+ * https://docs.acquia.com/articles/using-fast-404-drupal
+ */
+if (function_exists('drupal_fast_404')) {
+  drupal_fast_404();
+}
+
+/**
  * The following items are settings common to all OpenSanMateo platform sites
  * For env var reference: https://docs.acquia.com/cloud/configure/env-variable
  */

@@ -38,10 +38,3 @@ features[variable][] = "node_submitted_editors_choice"
 features[variable][] = "nodeblock_editors_choice"
 features[variable][] = "show_diff_inline_editors_choice"
 features[variable][] = "show_preview_changes_editors_choice"
-
-
-; Information added by drush on 2014-10-16
-version = "appify_services"
-project = "openpublic"
-datestamp = "1413417822"
-

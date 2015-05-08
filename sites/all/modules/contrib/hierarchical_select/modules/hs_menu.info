@@ -4,10 +4,3 @@ dependencies[] = hierarchical_select
 dependencies[] = menu
 package = Form Elements
 core = 7.x
-
-
-; Information added by drush on 2014-10-16
-version = "aac15cd"
-project = "hierarchical_select"
-datestamp = "1413417699"
-

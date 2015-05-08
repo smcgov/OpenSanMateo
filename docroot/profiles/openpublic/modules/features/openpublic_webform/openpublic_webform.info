@@ -21,10 +21,3 @@ features[variable][] = "menu_parent_webform"
 features[variable][] = "node_options_webform"
 features[variable][] = "node_preview_webform"
 features[variable][] = "node_submitted_webform"
-
-
-; Information added by drush on 2014-10-16
-version = "appify_services"
-project = "openpublic"
-datestamp = "1413417822"
-
