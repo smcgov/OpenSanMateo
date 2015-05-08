@@ -17926,14 +17926,14 @@ footer {
   width: 70%; }
 /* line 100, ../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .left-col {
-  width: 15%;
+  width: 10%;
   float: left; }
   /* line 103, ../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .left-col .time {
     color: #036cb6; }
 /* line 107, ../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .right-col {
-  width: 85%;
+  width: 70%;
   float: left;
   margin-left: 15px; }
   /* line 111, ../scss/elements/opensearch-agenda.scss */
