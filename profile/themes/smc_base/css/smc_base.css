@@ -17923,23 +17923,23 @@ footer {
 
 /* line 97, ../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .views-row {
-  widht: 70%; }
+  width: 70%; }
 /* line 100, ../scss/elements/opensearch-agenda.scss */
-.view-opensanmateo-search .left {
+.view-opensanmateo-search .left-col {
   width: 15%; }
   /* line 102, ../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .left .time {
+  .view-opensanmateo-search .left-col .time {
     color: #036cb6; }
 /* line 106, ../scss/elements/opensearch-agenda.scss */
-.view-opensanmateo-search .right {
+.view-opensanmateo-search .right-col {
   width: 85%; }
   /* line 109, ../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .right .node-location h5 {
+  .view-opensanmateo-search .right-col .node-location h5 {
     float: left;
     margin-right: 10px;
     height: 60px; }
   /* line 115, ../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .right .node-date {
+  .view-opensanmateo-search .right-col .node-date {
     float: left;
     margin-left: 15px; }
 
