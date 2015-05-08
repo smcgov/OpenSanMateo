@@ -99,8 +99,22 @@
   }
   .left {
     width: 15%;
+    .time {
+      color: #036cb6;
+    }
   }
   .right {
     width: 85%;
+    .node-location {
+      h5 {
+        float: left;
+        margin-right: 10px;
+        height: 60px;
+      }
+    }
+    .node-date {
+      float: left;
+      margin-left: 15px;
+    }
   }
 }
