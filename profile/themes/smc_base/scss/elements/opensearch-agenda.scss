@@ -92,3 +92,51 @@
     }
   }
 }
+
+.view-opensanmateo-search {
+  .views-row {
+    width: 70%;
+  }
+  .left-col {
+    width: 10%;
+    float: left;
+    .time {
+      color: #036cb6;
+    }
+  }
+  .right-col {
+    width: 85%;
+    float: left;
+    margin-left: 15px;
+    .node-location {
+      float: left;
+      h5 {
+        float: left;
+        margin-right: 10px;
+        min-height: 90px;
+      }
+    }
+    .node-date {
+      float: left;
+      margin-left: 15px;
+      width: 35%;
+      .start, .end {
+        clear: both;
+        overflow: hidden;
+        display: block;
+      }
+      h5  {
+        float: left;
+        display: block;
+      }
+      span {
+        float: left;
+        margin-left: 5px;
+
+        .wrapper {
+          line-height: 30px;
+        }
+      }
+    }
+  }
+}
