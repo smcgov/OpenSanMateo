@@ -342,7 +342,15 @@ function opensanmateo_search_preprocess_views_view_fields(&$vars) {
         'html' => TRUE,
       );
 
-      $vars['fields']['more_link'] = "<div class='read-more-wrapper clearfix'>" . l(t('View') . $read_more, $vars['row']->_entity_properties['url'], $link_options) . "</div>";
+      if($view->current_display == 'panel_pane_4') {
+        $more_link_text = t('View info');
+        drupal_add_js(drupal_get_path('module', 'opensanmateo_search') . '/js/events.js');
+      }
+      else {
+        $more_link_text = t('View');
+      }
+
+      $vars['fields']['more_link'] = "<div class='read-more-wrapper clearfix'>" . l($more_link_text . $read_more, $vars['row']->_entity_properties['url'], $link_options) . "</div>";
     }
   }
 }
@@ -733,6 +741,13 @@ function opensanmateo_search_default_search_api_server_alter(array &$defaults) {
       "rdf_mapping" : []
     }');
   }
+}
+
+/**
+ * Implements hook_date_views_extra_tables().
+ */
+function opensanmateo_search_date_views_extra_tables() {
+  return array('search_api_index_san_mateo_content_index' => 'search_api_index_san_mateo_content_index');
 }
 
 /**

@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 projects[drupal][type] = core
-projects[drupal][version] = 7.34
+projects[drupal][version] = 7.35
 projects[drupal][patch][] = http://drupal.org/files/issues/object_conversion_menu_router_build-972536-1.patch
 ;projects[drupal][patch][] = http://drupal.org/files/issues/992540-3-reset_flood_limit_on_password_reset-drush.patch
 projects[drupal][patch][] = http://drupal.org/files/1355984-timeout_on_install_with_drush_si-make.patch
@@ -46,7 +46,7 @@ projects[views_bulk_operations][version] = 3.0-rc1
 
 projects[filefield_sources][type] = module
 projects[filefield_sources][subdir] = contrib
-projects[filefield_sources][version] = 1.7
+projects[filefield_sources][version] = 1.9
 
 projects[libraries][type] = module
 projects[libraries][subdir] = contrib
@@ -181,11 +181,11 @@ projects[site_map][patch][] = http://drupal.org/files/site_map-alter_hooks-15889
 
 projects[acquia_connector][type] = module
 projects[acquia_connector][subdir] = contrib
-projects[acquia_connector][version] = 2.14
+projects[acquia_connector][version] = 2.15
 
 projects[memcache][type] = module
 projects[memcache][subdir] = contrib
-projects[memcache][version] = 1.0
+projects[memcache][version] = 1.5
 
 projects[purge][type] = module
 projects[purge][subdir] = contrib
@@ -255,7 +255,7 @@ projects[pathauto_persist][version] = 1.2
 
 projects[print][type] = module
 projects[print][subdir] = contrib
-projects[print][version] = 1.1
+projects[print][version] = 2.0
 
 projects[role_delegation][type] = module
 projects[role_delegation][subdir] = contrib
@@ -265,6 +265,10 @@ projects[role_delegation][patch][] = http://drupal.org/files/1156414-prevent-edi
 projects[navigation404][type] = module
 projects[navigation404][subdir] = contrib
 projects[navigation404][version] = 1.0
+
+projects[webform][type] = module
+projects[webform][subdir] = contrib
+projects[webform][version] = 4.5
 
 projects[webform_deter][type] = module
 projects[webform_deter][subdir] = contrib
