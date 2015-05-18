@@ -108,12 +108,24 @@
     width: 85%;
     float: left;
     margin-left: 15px;
+    header {
+      width: 84%;
+      float: left;
+    }
+    .aggregated-node-thumbnail {
+      float: right;
+      margin-top: 0px;
+    }
     .node-location {
       float: left;
+      width: 45%;
       h5 {
         float: left;
         margin-right: 10px;
         min-height: 90px;
+      }
+      ul {
+        margin-top: 4px;
       }
     }
     .node-date {
@@ -136,6 +148,9 @@
         .wrapper {
           line-height: 30px;
         }
+      }
+      .event-more-info {
+        clear: both;
       }
     }
   }

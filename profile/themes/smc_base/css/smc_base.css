@@ -17937,34 +17937,49 @@ footer {
   float: left;
   margin-left: 15px; }
   /* line 111, ../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .right-col .node-location {
+  .view-opensanmateo-search .right-col header {
+    width: 84%;
     float: left; }
-    /* line 113, ../scss/elements/opensearch-agenda.scss */
+  /* line 115, ../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search .right-col .aggregated-node-thumbnail {
+    float: right;
+    margin-top: 0px; }
+  /* line 119, ../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search .right-col .node-location {
+    float: left;
+    width: 45%; }
+    /* line 122, ../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-location h5 {
       float: left;
       margin-right: 10px;
       min-height: 90px; }
-  /* line 119, ../scss/elements/opensearch-agenda.scss */
+    /* line 127, ../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search .right-col .node-location ul {
+      margin-top: 4px; }
+  /* line 131, ../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .right-col .node-date {
     float: left;
     margin-left: 15px;
     width: 35%; }
-    /* line 123, ../scss/elements/opensearch-agenda.scss */
+    /* line 135, ../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-date .start, .view-opensanmateo-search .right-col .node-date .end {
       clear: both;
       overflow: hidden;
       display: block; }
-    /* line 128, ../scss/elements/opensearch-agenda.scss */
+    /* line 140, ../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-date h5 {
       float: left;
       display: block; }
-    /* line 132, ../scss/elements/opensearch-agenda.scss */
+    /* line 144, ../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-date span {
       float: left;
       margin-left: 5px; }
-      /* line 136, ../scss/elements/opensearch-agenda.scss */
+      /* line 148, ../scss/elements/opensearch-agenda.scss */
       .view-opensanmateo-search .right-col .node-date span .wrapper {
         line-height: 30px; }
+    /* line 152, ../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search .right-col .node-date .event-more-info {
+      clear: both; }
 
 /* line 62, ../scss/smc_base.scss */
 html {
