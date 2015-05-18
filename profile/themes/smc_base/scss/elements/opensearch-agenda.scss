@@ -150,7 +150,20 @@
         }
       }
       .event-more-info {
+        display: none;
         clear: both;
+        .event-page, .event-add-calendar {
+          padding: 10px;
+          margin: 0 10px 10px;
+          background-color: #136DB5;
+          text-align: center;
+
+          a {
+            color: white;
+            font-weight: bold;
+            font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+          }
+        }
       }
     }
   }

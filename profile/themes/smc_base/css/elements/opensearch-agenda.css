@@ -134,4 +134,16 @@
         line-height: 30px; }
     /* line 152, ../../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-date .event-more-info {
+      display: none;
       clear: both; }
+      /* line 155, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search .right-col .node-date .event-more-info .event-page, .view-opensanmateo-search .right-col .node-date .event-more-info .event-add-calendar {
+        padding: 10px;
+        margin: 0 10px 10px;
+        background-color: #136DB5;
+        text-align: center; }
+        /* line 161, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search .right-col .node-date .event-more-info .event-page a, .view-opensanmateo-search .right-col .node-date .event-more-info .event-add-calendar a {
+          color: white;
+          font-weight: bold;
+          font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
