@@ -761,22 +761,41 @@ class SearchApiRenderedImage extends SearchApiAbstractAlterCallback {
   public function configurationForm() {
     $form = array();
 
-    // Offer up image styles
+    // Collect image styles.
     $styles = image_styles();
-    $options = array();
+    $style_options = array();
     foreach ($styles as $key => $style) {
-      $options[$key] = $style['name'];
+      $style_options[$key] = $style['name'];
     }
-    asort($options);
+    asort($style_options);
+
+    // Collect node types.
+    $node_types = node_type_get_names();
+
+    // Offer up image styles
     $form['image_style'] = array(
+     '#tree' => TRUE,
+    );
+    $form['image_style']['__default'] = array(
       '#type' => 'select',
-      '#title' => t('Select image style to apply to thumbnail image'),
+      '#title' => t('Select default image style to apply to thumbnail image for nodes'),
       '#multiple' => FALSE,
       '#required' => FALSE,
       '#empty_option' => t('- None -'),
-      '#options' => $options,
-      '#default_value' => !empty($this->options['image_style']) ? array($this->options['image_style']) : array(),
+      '#options' => $style_options,
+      '#default_value' => !empty($this->options['image_style']['__default']) ? array($this->options['image_style']['__default']) : '',
     );
+    foreach ($node_types as $node_type => $name) {
+      $form['image_style'][$node_type] = array(
+        '#type' => 'select',
+        '#title' => t('Select image style override for %node_type', array('%node_type' => $name)),
+        '#multiple' => FALSE,
+        '#required' => FALSE,
+        '#empty_option' => t('- Default -'),
+        '#options' => $style_options,
+        '#default_value' => !empty($this->options['image_style'][$node_type]) ? array($this->options['image_style'][$node_type]) : '',
+      );
+    }
 
     return $form;
   }
@@ -786,16 +805,21 @@ class SearchApiRenderedImage extends SearchApiAbstractAlterCallback {
    */
   public function alterItems(array &$items) {
     foreach ($items as $id => &$item) {
+      // Get image style we are to use for this node type.
+      $image_style = !empty($this->options['image_style'][$item->type]) ? $this->options['image_style'][$item->type] : $this->options['image_style']['__default'];
+
       // If we have a valid thumbnail field, use the first image as the styled teaser URL
       $thumb = field_get_items('node', $item, 'field_thumbnail_image');
       if (!empty($thumb[0]['uri'])) {
-        $item->opensanmateo_search_style_url = image_style_url($this->options['image_style'], $thumb[0]['uri']);
+        // If image style provided, use it - otherwise raw image URL.
+        $item->opensanmateo_search_style_url = !empty($image_style) ? image_style_url($image_style, $thumb[0]['uri']) : $thumb[0]['uri'];
       }
 
       // Use a profile image if it exists.
       $profile = field_get_items('node', $item, 'field_profile_photo');
       if (!empty($profile[0]['uri'])) {
-        $item->opensanmateo_search_style_url = image_style_url($this->options['image_style'], $profile[0]['uri']);
+        // If image style provided, use it - otherwise raw image URL.
+        $item->opensanmateo_search_style_url = !empty($image_style) ? image_style_url($image_style, $profile[0]['uri']) : $profile[0]['uri'];
       }
     }
   }
