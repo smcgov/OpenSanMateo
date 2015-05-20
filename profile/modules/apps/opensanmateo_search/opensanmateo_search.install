@@ -48,10 +48,9 @@ function opensanmateo_search_update_7004() {
   if ($item) {
     $node_types = node_type_get_names();
     $old_image_style = $item->options['data_alter_callbacks']['search_opensanmateo_image']['settings']['image_style'];
-    $item->options['data_alter_callbacks']['search_opensanmateo_image']['settings']['image_style'] = array();
-    foreach (array_keys($node_types) as $type) {
-      $item->options['data_alter_callbacks']['search_opensanmateo_image']['settings']['image_style'][$type] = $old_image_style;
-    }
+    $item->options['data_alter_callbacks']['search_opensanmateo_image']['settings']['image_style'] = array(
+      '__default' => $old_image_style,
+    );
     entity_save('search_api_index', $item);
   }
 }

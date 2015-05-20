@@ -96,12 +96,7 @@ function opensanmateo_search_default_search_api_index() {
           "status" : 1,
           "weight" : "-50",
           "settings" : { "image_style" : {
-            "blog_entry" : "list-page-thumbnail",
-            "event" : "list-page-thumbnail",
-            "location" : "list-page-thumbnail",
-            "profile" : "list-page-thumbnail",
-            "site_page" : "list-page-thumbnail",
-            "webform" : "list-page-thumbnail"
+            "__default" : "list-page-thumbnail"
           } }
         },
         "search_api_alter_bundle_filter" : {
