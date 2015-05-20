@@ -465,6 +465,13 @@ function smc_base_preprocess_views_view_fields(&$vars) {
 	<div class=\"event-hide-more-info\"><a href=\"\">Hide info</a></div>
 </div>";
     unset($vars['fields']['url']);
+
+    if($view->current_display == 'page_1') {
+      // Addded extra image for event day - replace for new image from SOLR pending
+      //$vars['fields']['search_api_multi_aggregation_2_1'] = $vars['fields']['search_api_multi_aggregation_2'];
+      unset($vars['fields']['more_link']);
+    }
+
     $vars['fields']['readmore'] = new stdClass();
     $vars['fields']['readmore']->content = $vars['fields']['more_link'] . $more_info; 
     $vars['fields']['readmore']->label_html = '';

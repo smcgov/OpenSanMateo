@@ -95,7 +95,9 @@ function opensanmateo_search_default_search_api_index() {
         "search_opensanmateo_image" : {
           "status" : 1,
           "weight" : "-50",
-          "settings" : { "image_style" : "list-page-thumbnail" }
+          "settings" : { "image_style" : {
+            "__default" : "list-page-thumbnail"
+          } }
         },
         "search_api_alter_bundle_filter" : {
           "status" : 0,
