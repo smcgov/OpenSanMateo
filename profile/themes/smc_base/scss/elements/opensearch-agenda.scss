@@ -115,8 +115,15 @@
     float: left;
     margin-left: 15px;
     .event-more-info {
-      /*display: none;*/
+      display: none;
       clear: both;
+      .event-hide-more-info {
+        padding: 10px;
+        margin: 0 10px 10px;
+        background-color: #EEEEF7;
+        text-align: center;
+        width: 130px;
+      }
       .event-page, .event-add-calendar {
         padding: 10px;
         margin: 0 10px 10px;
