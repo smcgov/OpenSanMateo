@@ -88,7 +88,7 @@ dependencies[] = jreject
 
 ; OpenPublic
 
-dependencies[] = phase2_profile
+dependencies[] = openpublic_person
 ;dependencies[] = openpublic_breaking_news
 dependencies[] = openpublic_comments
 dependencies[] = openpublic_base_fields

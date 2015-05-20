@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 projects[drupal][type] = core
-projects[drupal][version] = 7.35
+projects[drupal][version] = 7.37
 projects[drupal][patch][] = http://drupal.org/files/issues/object_conversion_menu_router_build-972536-1.patch
 ;projects[drupal][patch][] = http://drupal.org/files/issues/992540-3-reset_flood_limit_on_password_reset-drush.patch
 projects[drupal][patch][] = http://drupal.org/files/1355984-timeout_on_install_with_drush_si-make.patch
@@ -13,7 +13,8 @@ projects[drupal][patch][] = http://drupal.org/files/issues/autocomplete_popup_po
 projects[openpublic][type] = profile
 projects[openpublic][download][type] = git
 projects[openpublic][download][url] = http://git.drupal.org/project/openpublic.git
-projects[openpublic][download][revision] = appify_services
+projects[openpublic][download][revision] = 7.x-1.5
+projects[openpublic][patch][] = patches/openpublic-update-views-311.patch
 
 projects[redirect][type] = module
 projects[redirect][subdir] = contrib
@@ -22,7 +23,9 @@ projects[redirect][patch][] = http://drupal.org/files/redirect_entity_type_disab
 
 projects[backup_migrate][type] = module
 projects[backup_migrate][subdir] = contrib
-projects[backup_migrate][version] = 2.2
+projects[backup_migrate][download][type] = git
+projects[backup_migrate][download][url] = http://git.drupal.org/project/backup_migrate.git
+projects[backup_migrate][download][revision] = 342bce1
 
 projects[devel][type] = module
 projects[devel][subdir] = contrib
@@ -539,6 +542,11 @@ projects[jreject][version] = 2.0-beta1
 libraries[jreject][download][type] = git
 libraries[jreject][download][url] = https://github.com/TurnWheel/jReject.git
 libraries[jreject][download][revision] = 4d5f3651c0dda9b7741189d528567b8054b2fb0a
+
+libraries[amazon-s3-php-class][download][type] = git
+libraries[amazon-s3-php-class][download][url] = https://github.com/tpyo/amazon-s3-php-class.git
+libraries[amazon-s3-php-class][download][revision] = f363dd4c89af8da1b6fe3aab92b8e2fc52e57c63
+libraries[amazon-s3-php-class][directory_name] = s3-php5-curl
 
 projects[view_unpublished][type] = module
 projects[view_unpublished][subdir] = contrib
