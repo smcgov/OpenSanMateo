@@ -26,9 +26,9 @@ function sanmateo_install_tasks($install_state) {
   $server = array(
     'machine name' => 'openpublic',
     'default apps' => array(
-      'phase2_page',
+      'openpublic_site_page',
       'opensanmateo_search',
-      'phase2_document',
+      'openpublic_document',
       'openpublic_service',
       'opensanmateo_event',
       'opensanmateo_location',
