@@ -342,8 +342,8 @@ function opensanmateo_search_preprocess_views_view_fields(&$vars) {
         'html' => TRUE,
       );
 
-      if($view->current_display == 'panel_pane_4') {
-        $more_link_text = t('View info');
+      if(in_array($view->current_display, array('panel_pane_4', 'page_1'))) {
+        if($view->current_display == 'panel_pane_4') { $more_link_text = t('View info');}
         drupal_add_js(drupal_get_path('module', 'opensanmateo_search') . '/js/events.js');
       }
       else {
