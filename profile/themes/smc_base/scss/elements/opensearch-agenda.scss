@@ -115,6 +115,11 @@
     width: 85%;
     float: left;
     margin-left: 15px;
+    .node-teaser {
+      display: none;
+      border-top: none;
+      border-bottom: none;
+    }
     .event-more-info {
       display: none;
       clear: both;
