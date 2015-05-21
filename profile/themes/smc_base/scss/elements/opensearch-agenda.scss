@@ -103,16 +103,19 @@
   .views-row {
     width: 70%;
     padding-bottom: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
   }
   .left-col {
     width: 10%;
     float: left;
+    padding-top: 16px;
     .time {
       color: #036cb6;
     }
   }
   .right-col {
-    width: 85%;
+    width: 90%;
     float: left;
     margin-left: 15px;
     .node-teaser {
@@ -149,6 +152,7 @@
     header {
       width: 72%;
       float: left;
+      padding-top: 16px;
 
       h4 {
         font-size: 1.15em;
