@@ -17944,8 +17944,7 @@ footer {
 /* line 117, ../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .right-col {
   width: 90%;
-  float: left;
-  margin-left: 15px; }
+  float: left; }
   /* line 121, ../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .right-col .node-teaser {
     display: none;
