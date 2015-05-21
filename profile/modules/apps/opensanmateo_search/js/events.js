@@ -29,13 +29,14 @@
         $(this).css("background-color", "white");
         $(this).find('.event-more-info').show();
         $(this).find('.node-teaser').show();
-	$(this).find('.aggregated-node-thumbnail').hide();
+	$(this).find('.aggregated-node-thumbnail').addClass('aggregated-node-thumbnail-selected');
       });
 
       $(".view-opensanmateo-search .views-row .event-hide-more-info a").click(function(){
         $(this).parent().parent().hide();
         $(this).parent().parent().parent().find('.node-teaser').hide();
-        $(this).parent().parent().parent().find('.aggregated-node-thumbnail').show();
+        $(this).parent().parent().parent().find('.aggregated-node-thumbnail').removeClass('aggregated-node-thumbnail-selected');
+
       });
     }
   };

@@ -414,10 +414,21 @@ function smc_base_preprocess_views_view_fields(&$vars) {
 
     if (!empty($vars['fields']['search_api_multi_aggregation_9']) && !empty($vars['fields']['search_api_multi_aggregation_10']) && ($vars['fields']['search_api_multi_aggregation_9']->content == $vars['fields']['search_api_multi_aggregation_10']->content) && !empty($vars['fields']['search_api_multi_aggregation_9']->content)) {
       if (format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'g:i a') != '12:00 am') {
-        $startdate = '<div class="node-start-date"><h5>' . t('Starting') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content) . '</div></div>';
+          if($view->current_display == 'page_1') {
+   	    $stamp = strip_tags($vars['fields']['search_api_multi_aggregation_9']->content);
+            $startdate = '<span class="time">' . format_date($stamp, 'custom' , 'g:s a') . '</span>';
+          }
+          else {
+	    $startdate = '<div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content) . '</div></div>';
+         }
       }
       else {
-        $startdate = '<div class="node-start-date"><h5>' . t('All Day Event') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content, FALSE) . '</div></div>';
+        if($view->current_display == 'page_1') {
+          $startdate = '<div class="wrapper">' . t('All Day Event') . '</div>';
+        }
+        else {
+          $startdate = '<div class="node-start-date"><h5>' . t('All Day Event') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content, FALSE) . '</div></div>';
+        }
       }
       $enddate = '';
     }

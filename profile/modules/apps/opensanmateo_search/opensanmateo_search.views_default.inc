@@ -180,12 +180,12 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['label'] = '';
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['alter']['text'] = '<h5><span class="icon-location"> </span>Location</h5>
-        <ul class="adr">
-        <li>[search_api_multi_aggregation_6]</li>
-        <li>[search_api_multi_aggregation_17]</li>
-        <li>[search_api_multi_aggregation_7], [search_api_multi_aggregation_4]
-         [search_api_multi_aggregation_5]</li>
-        </ul>';
+      <ul class="adr">
+      <li>[search_api_multi_aggregation_6]</li>
+      <li>[search_api_multi_aggregation_17]</li>
+      <li>[search_api_multi_aggregation_7], [search_api_multi_aggregation_4]
+       [search_api_multi_aggregation_5]</li>
+      </ul>';
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['element_type'] = '0';
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['element_wrapper_class'] = 'node-location clearfix';
@@ -590,7 +590,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['arguments']['field_subject_name']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_subject_name']['default_argument_type'] = 'php';
   $handler->display->display_options['arguments']['field_subject_name']['default_argument_options']['code'] = '$term = taxonomy_term_load($view->args[0]);
-            return $term->name;';
+          return $term->name;';
   $handler->display->display_options['arguments']['field_subject_name']['summary']['format'] = 'default_summary';
 
   /* Display: Taxonomy Page:Sub Type */
@@ -611,7 +611,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['arguments']['field_sub_type_name']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_sub_type_name']['default_argument_type'] = 'php';
   $handler->display->display_options['arguments']['field_sub_type_name']['default_argument_options']['code'] = '$term = taxonomy_term_load($view->args[0]);
-            return $term->name;';
+          return $term->name;';
   $handler->display->display_options['arguments']['field_sub_type_name']['summary']['format'] = 'default_summary';
 
   /* Display: Lookup Title Only Block */
@@ -665,7 +665,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['arguments']['field_topic_name']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_topic_name']['default_argument_type'] = 'php';
   $handler->display->display_options['arguments']['field_topic_name']['default_argument_options']['code'] = '$term = taxonomy_term_load($view->args[0]);
-            return $term->name;';
+          return $term->name;';
   $handler->display->display_options['arguments']['field_topic_name']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_topic_name']['break_phrase'] = 0;
   $handler->display->display_options['arguments']['field_topic_name']['not'] = 0;
@@ -944,12 +944,12 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['label'] = '';
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['alter']['text'] = '<h5><span class="icon-location"> </span>Location</h5>
-        <ul class="adr">
-        <li>[search_api_multi_aggregation_6]</li>
-        <li>[search_api_multi_aggregation_17]</li>
-        <li>[search_api_multi_aggregation_7], [search_api_multi_aggregation_4]
-         [search_api_multi_aggregation_5]</li>
-        </ul>';
+      <ul class="adr">
+      <li>[search_api_multi_aggregation_6]</li>
+      <li>[search_api_multi_aggregation_17]</li>
+      <li>[search_api_multi_aggregation_7], [search_api_multi_aggregation_4]
+       [search_api_multi_aggregation_5]</li>
+      </ul>';
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['element_type'] = '0';
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['element_wrapper_class'] = 'node-location clearfix';
@@ -1129,11 +1129,20 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['url']['table'] = 'search_api_index_san_mateo_content_index';
   $handler->display->display_options['fields']['url']['field'] = 'url';
   $handler->display->display_options['fields']['url']['label'] = '';
-  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['element_wrapper_class'] = 'node-url';
   $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
   $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
+  /* Field: Indexed Node: Aggregated Thumbnail */
+  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['id'] = 'search_api_multi_aggregation_2';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['field'] = 'search_api_multi_aggregation_2';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['label'] = '';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['element_type'] = '0';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['element_class'] = 'node-thumbnail';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['link_to_entity'] = 0;
   /* Field: Indexed Node: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_san_mateo_content_index';
@@ -1167,16 +1176,6 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_3']['element_wrapper_type'] = 'div';
   $handler->display->display_options['fields']['search_api_multi_aggregation_3']['element_wrapper_class'] = 'node-author';
   $handler->display->display_options['fields']['search_api_multi_aggregation_3']['link_to_entity'] = 0;
-  /* Field: Indexed Node: Aggregated Thumbnail */
-  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['id'] = 'search_api_multi_aggregation_2';
-  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['table'] = 'search_api_index_san_mateo_content_index';
-  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['field'] = 'search_api_multi_aggregation_2';
-  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['label'] = '';
-  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['element_type'] = '0';
-  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['element_class'] = 'node-thumbnail';
-  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['element_wrapper_type'] = '0';
-  $handler->display->display_options['fields']['search_api_multi_aggregation_2']['link_to_entity'] = 0;
   /* Field: Indexed Node: aggregated Release Date */
   $handler->display->display_options['fields']['search_api_multi_aggregation_18']['id'] = 'search_api_multi_aggregation_18';
   $handler->display->display_options['fields']['search_api_multi_aggregation_18']['table'] = 'search_api_index_san_mateo_content_index';
@@ -1212,7 +1211,6 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['table'] = 'search_api_index_san_mateo_content_index';
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['field'] = 'search_api_multi_aggregation_1';
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['label'] = '';
-  $handler->display->display_options['fields']['search_api_multi_aggregation_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['element_type'] = '0';
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['element_wrapper_class'] = 'node-teaser clearfix';
@@ -1262,12 +1260,12 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['label'] = '';
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['alter']['text'] = '<h5><span class="icon-location"> </span>Location</h5>
-        <ul class="adr">
-        <li>[search_api_multi_aggregation_6]</li>
-        <li>[search_api_multi_aggregation_17]</li>
-        <li>[search_api_multi_aggregation_7], [search_api_multi_aggregation_4]
-         [search_api_multi_aggregation_5]</li>
-        </ul>';
+      <ul class="adr">
+      <li>[search_api_multi_aggregation_6]</li>
+      <li>[search_api_multi_aggregation_17]</li>
+      <li>[search_api_multi_aggregation_7], [search_api_multi_aggregation_4]
+       [search_api_multi_aggregation_5]</li>
+      </ul>';
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['element_type'] = '0';
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_6']['element_wrapper_class'] = 'node-location clearfix';
@@ -1366,12 +1364,12 @@ function opensanmateo_search_views_default_views() {
     t('last »'),
     t('No results'),
     t('<h5><span class="icon-location"> </span>Location</h5>
-        <ul class="adr">
-        <li>[search_api_multi_aggregation_6]</li>
-        <li>[search_api_multi_aggregation_17]</li>
-        <li>[search_api_multi_aggregation_7], [search_api_multi_aggregation_4]
-         [search_api_multi_aggregation_5]</li>
-        </ul>'),
+      <ul class="adr">
+      <li>[search_api_multi_aggregation_6]</li>
+      <li>[search_api_multi_aggregation_17]</li>
+      <li>[search_api_multi_aggregation_7], [search_api_multi_aggregation_4]
+       [search_api_multi_aggregation_5]</li>
+      </ul>'),
     t('Date'),
     t('Alphabetic'),
     t('True'),
@@ -1404,7 +1402,7 @@ function opensanmateo_search_views_default_views() {
     t('Lookup List'),
     t('Calendar day'),
   );
-
+  
   $export['opensanmateo_search'] = $view;
 
   return $export;

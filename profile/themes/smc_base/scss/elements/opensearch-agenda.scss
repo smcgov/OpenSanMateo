@@ -103,18 +103,21 @@
   .views-row {
     width: 70%;
     padding-bottom: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
   }
   .left-col {
     width: 10%;
     float: left;
+    padding-top: 16px;
     .time {
       color: #036cb6;
     }
   }
   .right-col {
-    width: 85%;
+    width: 90%;
     float: left;
-    margin-left: 15px;
+
     .node-teaser {
       display: none;
       border-top: none;
@@ -147,12 +150,25 @@
       }
     }
     header {
-      width: 84%;
+      width: 72%;
       float: left;
+      padding-top: 16px;
+
+      h4 {
+        font-size: 1.15em;
+      }
     }
     .aggregated-node-thumbnail {
       float: right;
       margin-top: 0px;
+      width: 170px;
+      height: 160px;
+    }
+    .aggregated-node-thumbnail-selected {
+      float: none;
+      margin-top: 0px;
+      width: 100%;
+      height: auto;
     }
     .node-location {
       float: left;
