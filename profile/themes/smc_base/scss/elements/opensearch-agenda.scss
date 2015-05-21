@@ -147,14 +147,18 @@
       }
     }
     header {
-      width: 75%;
+      width: 72%;
       float: left;
+
+      h4 {
+        font-size: 1.15em;
+      }
     }
     .aggregated-node-thumbnail {
       float: right;
       margin-top: 0px;
-      width: 156px;
-      height: 170px;
+      width: 170px;
+      height: 160px;
     }
     .node-location {
       float: left;
