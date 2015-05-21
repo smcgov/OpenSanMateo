@@ -17990,36 +17990,42 @@ footer {
     width: 170px;
     height: 160px; }
   /* line 167, ../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search .right-col .aggregated-node-thumbnail-selected {
+    float: none;
+    margin-top: 0px;
+    width: 100%;
+    height: auto; }
+  /* line 173, ../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .right-col .node-location {
     float: left;
     width: 45%; }
-    /* line 170, ../scss/elements/opensearch-agenda.scss */
+    /* line 176, ../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-location h5 {
       float: left;
       margin-right: 10px;
       min-height: 90px; }
-    /* line 175, ../scss/elements/opensearch-agenda.scss */
+    /* line 181, ../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-location ul {
       margin-top: 4px; }
-  /* line 179, ../scss/elements/opensearch-agenda.scss */
+  /* line 185, ../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .right-col .node-date {
     float: left;
     margin-left: 15px;
     width: 35%; }
-    /* line 183, ../scss/elements/opensearch-agenda.scss */
+    /* line 189, ../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-date .start, .view-opensanmateo-search .right-col .node-date .end {
       clear: both;
       overflow: hidden;
       display: block; }
-    /* line 188, ../scss/elements/opensearch-agenda.scss */
+    /* line 194, ../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-date h5 {
       float: left;
       display: block; }
-    /* line 192, ../scss/elements/opensearch-agenda.scss */
+    /* line 198, ../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-date span {
       float: left;
       margin-left: 5px; }
-      /* line 196, ../scss/elements/opensearch-agenda.scss */
+      /* line 202, ../scss/elements/opensearch-agenda.scss */
       .view-opensanmateo-search .right-col .node-date span .wrapper {
         line-height: 30px; }
 
