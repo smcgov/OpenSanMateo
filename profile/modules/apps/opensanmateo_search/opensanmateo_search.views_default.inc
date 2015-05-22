@@ -1402,7 +1402,7 @@ function opensanmateo_search_views_default_views() {
     t('Lookup List'),
     t('Calendar day'),
   );
-  
+
   $export['opensanmateo_search'] = $view;
 
   return $export;

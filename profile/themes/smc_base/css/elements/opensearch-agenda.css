@@ -1,7 +1,7 @@
 /* line 2, ../../scss/elements/opensearch-agenda.scss */
 .pane-opensanmateo-search-panel-pane-4 header {
   position: relative;
-  padding-bottom: 25px; }
+  padding-bottom: 42px; }
 /* line 7, ../../scss/elements/opensearch-agenda.scss */
 .pane-opensanmateo-search-panel-pane-4 .event-more-info {
   display: none; }
@@ -18,7 +18,7 @@
       font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
   /* line 21, ../../scss/elements/opensearch-agenda.scss */
   .pane-opensanmateo-search-panel-pane-4 .event-more-info .event-add-calendar {
-    margin-bottom: 20px; }
+    margin-bottom: 0px; }
 /* line 25, ../../scss/elements/opensearch-agenda.scss */
 .pane-opensanmateo-search-panel-pane-4 .event-hide-more-info {
   background-color: #EEEEF7;
