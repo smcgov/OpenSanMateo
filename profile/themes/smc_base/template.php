@@ -331,6 +331,10 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     // build the real thumbnail from the data parts (2, 15, 16)
     //dsm($vars['fields']['search_api_multi_aggregation_9']);
 
+    if( $view->current_display == 'panel_pane_5') {
+      return;
+    } 
+
     if (!empty($vars['fields']['search_api_multi_aggregation_9_1']->content)) {
        $stamp = strip_tags($vars['fields']['search_api_multi_aggregation_9_1']->content);
 	if($view->current_display == 'panel_pane_4') {
