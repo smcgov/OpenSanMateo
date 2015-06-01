@@ -743,6 +743,72 @@ function opensanmateo_search_default_search_api_server_alter(array &$defaults) {
   }
 }
 
+function opensanmateo_search_search_api_query_alter(SearchApiQueryInterface $query) {
+  if(arg(0) == 'events' && arg(1) == 'day') {
+    if(arg(2) != '' and arg(2) != 'all') {
+      $selected_day = strtotime(arg(2));
+      $query->condition('event_start_day', $selected_day, '<=');
+      $query->condition('event_end_day', $selected_day, '>=');
+    }
+    else if(arg(2) == 'all') {
+      $selected_day = strtotime(date('Y-m-d'));
+      // Select events in progress
+      $left_filter = $query->createFilter('AND');
+      $left_filter->condition('event_start_day', $selected_day, '<=');
+      $left_filter->condition('event_end_day', $selected_day, '>=');
+     
+      // Select events with a start date in the future
+      $right_filter = $query->createFilter('AND');
+      $right_filter->condition('event_start_day', time(), '>=');
+
+      $main_filter = $query->createFilter('OR');
+      $main_filter->filter($left_filter);
+      $main_filter->filter($right_filter);
+      
+      $query->filter($main_filter);
+     }
+  } 
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function opensanmateo_search_entity_property_info_alter(&$info) {
+  $info['node']['properties']['event_start_day'] = array(
+    'type' => 'text',
+    'label' => t('Event Start Day'),
+    'sanitized' => TRUE,
+    'getter callback' => 'opensanmateo_search_search_api_property_event_start_day_getter_callback',
+  );
+  $info['node']['properties']['event_end_day'] = array(
+    'type' => 'text',
+    'label' => t('Event End Day'),
+    'sanitized' => TRUE,
+    'getter callback' => 'opensanmateo_search_search_api_property_event_end_day_getter_callback',
+  );
+}
+
+/**
+ * Getter callback for event start day.
+ */
+function opensanmateo_search_search_api_property_event_start_day_getter_callback($item) {
+  return strtotime(substr($item->field_event_date[LANGUAGE_NONE][0]['value'], 0, 10)); 
+}
+ 
+/**
+ * Getter callback for event end day.
+ */
+function opensanmateo_search_search_api_property_event_end_day_getter_callback($item) {
+  // Set time at midnight of end day of event
+  if($item->field_event_date[LANGUAGE_NONE][0]['value2'] != '') {
+    return strtotime(substr($item->field_event_date[LANGUAGE_NONE][0]['value2'], 0, 10)) + 86399;
+  }
+  else {
+    return strtotime(substr($item->field_event_date[LANGUAGE_NONE][0]['value'], 0, 10)) + 86399;
+  }
+}
+ 
+
 /**
  * Implements hook_date_views_extra_tables().
  */
@@ -870,3 +936,4 @@ class SearchApiNodeSummary extends SearchApiAbstractAlterCallback {
   }
 
 }
+
