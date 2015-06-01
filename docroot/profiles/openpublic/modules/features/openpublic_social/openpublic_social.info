@@ -1,0 +1,6 @@
+name = OpenPublic Social
+description = Provides social media integration for openpublic.
+core = 7.x
+package = OpenPublic
+dependencies[] = addthis
+dependencies[] = follow
