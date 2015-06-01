@@ -98,6 +98,7 @@ $conf['shield_pass'] = 'smc';
 function smc_settings_file_private_path($sitedir) {
   global $_ENV;
 
-  $smc_site = array_pop(explode('/', $sitedir));
+  $path_parts = explode('/', $sitedir);
+  $smc_site = array_pop($path_parts);
   return "/mnt/files/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/sites/{$smc_site}/files-private";
 }
