@@ -67,6 +67,7 @@ function draw_calendar($month,$year, $events = array()){
 			/* add in the day number */
 			$calendar.= '<div class="day-number">';
 			if(isset($events["$year-$month-$list_day"])) {
+                          if($month > 10) $month = '0' . $month;
 			  $calendar.= "<a href='/events/day/$year-$month-$list_day'>" . $list_day . "</a>";
 			}
 			else {
