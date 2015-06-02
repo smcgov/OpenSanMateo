@@ -27,7 +27,7 @@
 <?php $left_completed = 0; ?>
 <?php foreach ($fields as $id => $field): ?>
   <?php if (!empty($field->separator)): ?>
-  <?php endif; ?>
+ <?php endif; ?>
   <?php
      if($id == 'search_api_multi_aggregation_9_1') {
        print "<div class=\"left-col\">";
