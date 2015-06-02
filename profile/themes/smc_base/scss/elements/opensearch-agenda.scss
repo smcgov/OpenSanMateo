@@ -84,12 +84,11 @@
     }
   }
   .views-field-search-api-multi-aggregation-1 {
-      font-size: 10px;
-      display: none;
-      border-bottom: none;
-      border-top: none;
-      margin-left: 5px;
-      margin-right: 5px;
+      display: none !important;
+      border-bottom: none !important;
+      border-top: none !important;
+      margin-left: 5px !important;
+      margin-right: 5px !important;
   }
   a {
     font-size: 13px;
