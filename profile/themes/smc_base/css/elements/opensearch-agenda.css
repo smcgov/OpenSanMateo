@@ -73,7 +73,7 @@
     content: none; }
 /* line 86, ../../scss/elements/opensearch-agenda.scss */
 .pane-opensanmateo-search-panel-pane-4 .views-field-search-api-multi-aggregation-1 {
-  display: none !important;
+  display: none;
   border-bottom: none !important;
   border-top: none !important;
   margin-left: 5px !important;
