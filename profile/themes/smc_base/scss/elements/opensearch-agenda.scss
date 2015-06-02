@@ -115,19 +115,20 @@
 
     .day-of-week {
       float: left;
+      color: #036cb6
     }
 
     .date {
-      float: left;
       color: #38939b;
       text-transform: uppercase;
       font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
       font-weight: 100;
       margin-bottom: 0;
       padding-top: 3px;
+      margin-left: 85px;
     }
   }
-  
+
   .views-row {
     width: 70%;
     padding-bottom: 0px;
