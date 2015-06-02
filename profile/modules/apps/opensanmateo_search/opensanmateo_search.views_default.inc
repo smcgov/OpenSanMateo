@@ -840,6 +840,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['type']['table'] = 'search_api_index_san_mateo_content_index';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['type']['element_type'] = 'p';
   $handler->display->display_options['fields']['type']['element_class'] = 'meta node-type';
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
@@ -861,7 +862,6 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['table'] = 'search_api_index_san_mateo_content_index';
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['field'] = 'search_api_multi_aggregation_1';
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['label'] = '';
-  $handler->display->display_options['fields']['search_api_multi_aggregation_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['element_type'] = '0';
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_1']['element_wrapper_class'] = 'node-teaser clearfix';
@@ -1110,6 +1110,22 @@ function opensanmateo_search_views_default_views() {
 
   /* Display: Calendar day */
   $handler = $view->new_display('page', 'Calendar day', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Events';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['grouping'] = array(
+      0 => array(
+          'field' => 'search_api_multi_aggregation_9_1',
+          'rendered' => 0,
+          'rendered_strip' => 1,
+      ),
+  );
+  $handler->display->display_options['style_options']['row_class'] = 'universal-teaser clearfix [type_1]';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Indexed Node: Address */
   $handler->display->display_options['relationships']['field_location_address']['id'] = 'field_location_address';
@@ -1438,11 +1454,12 @@ function opensanmateo_search_views_default_views() {
       t('[url] '),
       t('Lookup List'),
       t('Calendar day'),
+      t('Events'),
       t('Mini calendar'),
       t('Calendar'),
       t('View panes'),
   );
-  
+
   $export['opensanmateo_search'] = $view;
 
   return $export;
