@@ -336,6 +336,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     } 
 
     if (!empty($vars['fields']['search_api_multi_aggregation_9_1']->content)) {
+       // Store start date in raw value
        $stamp = strip_tags($vars['fields']['search_api_multi_aggregation_9_1']->content);
 	if($view->current_display == 'panel_pane_4') {
 	  $format_stamp = '<span class="time">' . format_date($stamp, 'custom' , 'g:s a') . '</span><span class="date">' . format_date($stamp, 'custom' , 'M j') . '<span>';
