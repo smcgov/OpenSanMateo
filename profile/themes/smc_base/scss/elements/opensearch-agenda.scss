@@ -129,6 +129,13 @@
     }
   }
 
+  .universal-teaser {
+    border-top: none;
+
+    .event {
+      border: none;
+    }
+  }
   .views-row {
     width: 70%;
     padding-bottom: 0px;
@@ -146,6 +153,8 @@
   .right-col {
     width: 90%;
     float: left;
+    border: 1px solid rgba(3, 108, 182, 0.1);
+    border-top: 1px solid rgba(3, 108, 182, 0.1);
 
     .node-teaser {
       display: none;
