@@ -1461,6 +1461,6 @@ function opensanmateo_search_views_default_views() {
   );
 
   $export['opensanmateo_search'] = $view;
-
+  
   return $export;
 }
