@@ -109,6 +109,22 @@
     float: right;
   }
 
+  .views-exposed-form {
+    .container-inline-date {
+      clear: none;
+      float: left;
+      padding-top: 17px;
+
+      label.mti_font_element {
+        display: block;
+      }
+    }
+
+    .views-submit-button {
+      width: 340px;
+    }
+  }
+
   .view-content {
     float: left;
     width: 70%;
