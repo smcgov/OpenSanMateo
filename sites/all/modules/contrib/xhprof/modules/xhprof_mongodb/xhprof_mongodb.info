@@ -1,4 +1,3 @@
-; $Id:
 name = XHProf MongoDB
 description = UI for xhprof runs.
 package = Development
@@ -8,9 +7,9 @@ core = 7.x
 
 files[] = MongodbXHProfRuns.inc
 
-; Information added by drupal.org packaging script on 2011-11-23
-version = "7.x-1.0-beta2"
+; Information added by Drupal.org packaging script on 2014-04-19
+version = "7.x-1.0-beta3"
 core = "7.x"
-project = "XHProf"
-datestamp = "1322014244"
+project = "xhprof"
+datestamp = "1397947728"
 
