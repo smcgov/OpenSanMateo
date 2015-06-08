@@ -775,13 +775,13 @@ function opensanmateo_search_search_api_query_alter(SearchApiQueryInterface $que
  */
 function opensanmateo_search_entity_property_info_alter(&$info) {
   $info['node']['properties']['event_start_day'] = array(
-    'type' => 'text',
+    'type' => 'integer',
     'label' => t('Event Start Day'),
     'sanitized' => TRUE,
     'getter callback' => 'opensanmateo_search_search_api_property_event_start_day_getter_callback',
   );
   $info['node']['properties']['event_end_day'] = array(
-    'type' => 'text',
+    'type' => 'integer',
     'label' => t('Event End Day'),
     'sanitized' => TRUE,
     'getter callback' => 'opensanmateo_search_search_api_property_event_end_day_getter_callback',
