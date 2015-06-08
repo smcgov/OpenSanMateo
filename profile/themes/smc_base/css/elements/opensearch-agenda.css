@@ -95,7 +95,7 @@
   float: left;
   padding-top: 17px; }
   /* line 118, ../../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .views-exposed-form .container-inline-date label.mti_font_element:first-child {
+  .view-opensanmateo-search .views-exposed-form .container-inline-date label[for=edit-start-date], .view-opensanmateo-search .views-exposed-form .container-inline-date label[for=edit-end-date] {
     display: block; }
 /* line 123, ../../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .views-exposed-form .views-submit-button {

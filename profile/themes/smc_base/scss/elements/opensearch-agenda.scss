@@ -115,7 +115,7 @@
       float: left;
       padding-top: 17px;
 
-      label.mti_font_element:first-child {
+      label[for=edit-start-date], label[for=edit-end-date] {
         display: block;
       }
     }
