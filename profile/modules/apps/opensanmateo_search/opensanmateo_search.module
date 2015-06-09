@@ -626,6 +626,31 @@ function opensanmateo_search_permission() {
  * Disables the Quick Search tags field if the permission isn't set.
  */
 function opensanmateo_search_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'views_exposed_form' && $form['#id'] =='views-exposed-form-opensanmateo-search-page-1') {
+    $parameters = drupal_get_query_parameters(); 
+    $start_day = isset($parameters['start_date']['date'])?$parameters['start_date']['date']:arg(2);
+    $end_day = isset($parameters['end_date']['date'])?$parameters['end_date']['date']:arg(3);
+    if ($start_day == 'all') {
+      $start_day = date('Y-m-d');
+      $end_day = date('Y-m-d');
+    }
+
+    if ($end_day == 'all') {
+      $end_day = date('Y-m-d');
+    }
+
+    $form['start_date']['#type'] = 'date_popup';
+    $form['start_date']['#size'] = '16';  
+    $form['start_date']['#title'] = 'From';  
+    $form['start_date']['#date_format'] = 'Y-m-d';
+    $form['start_date']['#default_value'] = $start_day;
+    $form['end_date']['#type'] = 'date_popup';
+    $form['end_date']['#size'] = '16';  
+    $form['end_date']['#title'] = 'To';  
+    $form['end_date']['#date_format'] = 'Y-m-d';
+    $form['end_date']['#default_value'] = $end_day;
+  } 
+  
   if (!isset($form['field_quick_search'])) {
     return;
   }
@@ -744,18 +769,28 @@ function opensanmateo_search_default_search_api_server_alter(array &$defaults) {
 }
 
 function opensanmateo_search_search_api_query_alter(SearchApiQueryInterface $query) {
-  if(arg(0) == 'events' && arg(1) == 'day') {
-    if(arg(2) != '' and arg(2) != 'all') {
-      $selected_day = strtotime(arg(2));
-      $query->condition('event_start_day', $selected_day, '<=');
-      $query->condition('event_end_day', $selected_day, '>=');
+  if(arg(0) == 'events' && arg(1) == 'list') {
+    $parameters = drupal_get_query_parameters();
+    
+    $start_day = isset($parameters['start_date']['date'])?$parameters['start_date']['date']:arg(2);
+    $end_day = isset($parameters['end_date']['date'])?$parameters['end_date']['date']:arg(3);
+    if($start_day != '' and $start_day != 'all' and $end_day == 'all') {
+      $start_day = strtotime($start_day);
+      $query->condition('event_start_day', $start_day, '<=');
+      $query->condition('event_end_day', $start_day, '>=');
     }
-    else if(arg(2) == 'all') {
-      $selected_day = strtotime(date('Y-m-d'));
+    else if($end_day != 'all') {
+      $start_day = strtotime($start_day);
+      $end_day = strtotime($end_day);
+      $query->condition('event_start_day', $start_day, '>=');
+      $query->condition('event_end_day', $end_day, '<=');
+    }
+    else if($start_day == 'all') {
+      $start_day = strtotime(date('Y-m-d'));
       // Select events in progress
       $left_filter = $query->createFilter('AND');
-      $left_filter->condition('event_start_day', $selected_day, '<=');
-      $left_filter->condition('event_end_day', $selected_day, '>=');
+      $left_filter->condition('event_start_day', $start_day, '<=');
+      $left_filter->condition('event_end_day', $start_day, '>=');
      
       // Select events with a start date in the future
       $right_filter = $query->createFilter('AND');

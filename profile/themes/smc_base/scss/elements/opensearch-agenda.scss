@@ -84,7 +84,11 @@
     }
   }
   .views-field-search-api-multi-aggregation-1 {
-      font-size: 10px;
+      display: none;
+      border-bottom: none !important;
+      border-top: none !important;
+      margin-left: 5px !important;
+      margin-right: 5px !important;
   }
   a {
     font-size: 13px;
@@ -100,8 +104,63 @@
 }
 
 .view-opensanmateo-search {
-  .views-row {
+
+  .attachment-before {
+    float: right;
+  }
+
+  .views-exposed-form {
+    .container-inline-date {
+      clear: none;
+      float: left;
+      padding-top: 17px;
+
+      label[for=edit-start-date], label[for=edit-end-date] {
+        display: block;
+        margin: 5px;
+        padding-top: 5px;
+        float: left;
+      }
+    }
+
+    .views-submit-button {
+      width: 410px;
+    }
+  }
+
+  .view-content {
+    float: left;
     width: 70%;
+  }
+  .group-by-day {
+
+    width: 30%;
+    margin-bottom: 15px;
+    padding-left: 5px;
+    font-weight: bold;
+    font-size: 1.15em;
+    font-family: 'Trade Gothic W01 Roman', 'Helvetica Neue', Arial, Helvetica;
+
+    .day-of-week {
+      float: left;
+      color: #036cb6
+    }
+
+    .date {
+      color: #38939b;
+      text-transform: uppercase;
+      font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+      font-weight: 100;
+      margin-bottom: 0;
+      padding-top: 3px;
+      margin-left: 85px;
+    }
+  }
+
+  .universal-teaser {
+    border: none;
+  }
+  .views-row {
     padding-bottom: 0px;
     padding-top: 0px;
     padding-right: 0px;
@@ -117,6 +176,8 @@
   .right-col {
     width: 90%;
     float: left;
+    border: 1px solid rgba(3, 108, 182, 0.1);
+    border-top: 1px solid rgba(3, 108, 182, 0.1);
 
     .node-teaser {
       display: none;
@@ -153,6 +214,7 @@
       width: 72%;
       float: left;
       padding-top: 16px;
+      margin-left: 10px;
 
       h4 {
         font-size: 1.15em;
