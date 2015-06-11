@@ -627,7 +627,23 @@ function opensanmateo_search_permission() {
  */
 function opensanmateo_search_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'views_exposed_form' && $form['#id'] =='views-exposed-form-opensanmateo-search-page-1') {
-    $parameters = drupal_get_query_parameters(); 
+    // Type filter
+    $form['type']['#type'] = 'select';
+    $form['type']['#title']= t('Type');
+    $taxonomy_subject = taxonomy_vocabulary_machine_name_load('subject');
+    $terms = taxonomy_get_tree($taxonomy_subject->vid);
+    $type_options = array('0' => t('None'));
+    foreach ($terms as $data) {
+      $term_name = $data->name;
+      if($data->parents[0] != 0) {
+        $term_name = '--' . $term_name;
+      }
+      $type_options[$data->name] = $term_name;
+    }
+    $form['type']['#options'] = $type_options;
+
+    // Start and end date filters
+    $parameters = drupal_get_query_parameters();
     $start_day = isset($parameters['start_date']['date'])?$parameters['start_date']['date']:arg(2);
     $end_day = isset($parameters['end_date']['date'])?$parameters['end_date']['date']:arg(3);
     if ($start_day == 'all') {
@@ -641,12 +657,12 @@ function opensanmateo_search_form_alter(&$form, &$form_state, $form_id) {
 
     $form['start_date']['#type'] = 'date_popup';
     $form['start_date']['#size'] = '16';  
-    $form['start_date']['#title'] = 'From';  
+    $form['start_date']['#title'] = t(''From');
     $form['start_date']['#date_format'] = 'Y-m-d';
     $form['start_date']['#default_value'] = $start_day;
     $form['end_date']['#type'] = 'date_popup';
     $form['end_date']['#size'] = '16';  
-    $form['end_date']['#title'] = 'To';  
+    $form['end_date']['#title'] = t('To');
     $form['end_date']['#date_format'] = 'Y-m-d';
     $form['end_date']['#default_value'] = $end_day;
   } 
@@ -771,7 +787,12 @@ function opensanmateo_search_default_search_api_server_alter(array &$defaults) {
 function opensanmateo_search_search_api_query_alter(SearchApiQueryInterface $query) {
   if(arg(0) == 'events' && arg(1) == 'list') {
     $parameters = drupal_get_query_parameters();
-    
+
+    //Filter content by type
+    if($parameters['type']) {
+      $query->condition('search_api_multi_aggregation_14', $parameters['type'], '=');
+    }
+
     $start_day = isset($parameters['start_date']['date'])?$parameters['start_date']['date']:arg(2);
     $end_day = isset($parameters['end_date']['date'])?$parameters['end_date']['date']:arg(3);
     if($start_day != '' and $start_day != 'all' and $end_day == 'all') {
