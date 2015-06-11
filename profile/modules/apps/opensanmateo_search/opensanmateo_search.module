@@ -823,10 +823,6 @@ function opensanmateo_search_search_api_query_alter(SearchApiQueryInterface $que
       
       $query->filter($main_filter);
      }
-     
-     /*print "<pre>";
-     print_r($query);
-     exit();*/
   } 
 }
 
