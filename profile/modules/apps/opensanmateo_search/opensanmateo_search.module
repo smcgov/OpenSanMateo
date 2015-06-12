@@ -787,7 +787,7 @@ function opensanmateo_search_default_search_api_server_alter(array &$defaults) {
 function opensanmateo_search_search_api_query_alter(SearchApiQueryInterface $query) {
   if(arg(0) == 'events' && arg(1) == 'list') {
     $parameters = drupal_get_query_parameters();
-   
+
     //Filter content by type
     if($parameters['type']) {
       $query->condition('search_api_multi_aggregation_14', $parameters['type'], '=');
