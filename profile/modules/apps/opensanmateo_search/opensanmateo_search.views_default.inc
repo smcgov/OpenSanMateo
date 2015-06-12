@@ -1323,6 +1323,10 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_19']['element_type'] = '0';
   $handler->display->display_options['fields']['search_api_multi_aggregation_19']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_19']['link_to_entity'] = 0;
+  /* Field: Indexed Node: Site Hash */
+  $handler->display->display_options['fields']['search_api_site_hash']['id'] = 'search_api_site_hash';
+  $handler->display->display_options['fields']['search_api_site_hash']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['fields']['search_api_site_hash']['field'] = 'search_api_site_hash';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Indexed Node: Aggregated Sort Date */
   $handler->display->display_options['sorts']['search_api_aggregation_1']['id'] = 'search_api_aggregation_1';
@@ -1344,6 +1348,11 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['filters']['event_start_day']['field'] = 'event_start_day';
   $handler->display->display_options['filters']['event_start_day']['operator'] = '>';
   $handler->display->display_options['filters']['event_start_day']['value'] = '0';
+  /* Filter criterion: Indexed Node: Site Hash */
+  $handler->display->display_options['filters']['search_api_site_hash']['id'] = 'search_api_site_hash';
+  $handler->display->display_options['filters']['search_api_site_hash']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['filters']['search_api_site_hash']['field'] = 'search_api_site_hash';
+  $handler->display->display_options['filters']['search_api_site_hash']['value'] = '2';
   $handler->display->display_options['path'] = 'events/list/%/%';
 
   /* Display: Mini calendar */
@@ -1519,6 +1528,7 @@ function opensanmateo_search_views_default_views() {
       t('Lookup List'),
       t('Calendar day'),
       t('Events'),
+      t('Site Hash'),
       t('Mini calendar'),
       t('Calendar'),
       t('View panes'),
