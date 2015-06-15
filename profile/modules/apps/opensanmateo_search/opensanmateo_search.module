@@ -640,10 +640,10 @@ function opensanmateo_search_form_alter(&$form, &$form_state, $form_id) {
       }
       $type_options[$data->name] = $term_name;
     }
-    $form['type']['#options'] = $type_options;
+    $form['type']['#options'] = $type_options; 
 
     // Start and end date filters
-    $parameters = drupal_get_query_parameters();
+    $parameters = drupal_get_query_parameters(); 
     $start_day = isset($parameters['start_date']['date'])?$parameters['start_date']['date']:arg(2);
     $end_day = isset($parameters['end_date']['date'])?$parameters['end_date']['date']:arg(3);
     if ($start_day == 'all') {
@@ -662,7 +662,7 @@ function opensanmateo_search_form_alter(&$form, &$form_state, $form_id) {
     $form['start_date']['#default_value'] = $start_day;
     $form['end_date']['#type'] = 'date_popup';
     $form['end_date']['#size'] = '16';  
-    $form['end_date']['#title'] = t('To');
+    $form['end_date']['#title'] = t('To');  
     $form['end_date']['#date_format'] = 'Y-m-d';
     $form['end_date']['#default_value'] = $end_day;
   } 
@@ -792,7 +792,7 @@ function opensanmateo_search_search_api_query_alter(SearchApiQueryInterface $que
     if($parameters['type']) {
       $query->condition('search_api_multi_aggregation_14', $parameters['type'], '=');
     }
-
+   
     $start_day = isset($parameters['start_date']['date'])?$parameters['start_date']['date']:arg(2);
     $end_day = isset($parameters['end_date']['date'])?$parameters['end_date']['date']:arg(3);
     if($start_day != '' and $start_day != 'all' and $end_day == 'all') {
