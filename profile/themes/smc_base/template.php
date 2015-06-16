@@ -331,7 +331,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     // build the real thumbnail from the data parts (2, 15, 16)
     //dsm($vars['fields']['search_api_multi_aggregation_9']);
 
-    if( $view->current_display == 'panel_pane_5') {
+    if( in_array($view->current_display, array('panel_pane_5', 'attachment_1'))) {
       return;
     } 
 
@@ -341,7 +341,9 @@ function smc_base_preprocess_views_view_fields(&$vars) {
 	if($view->current_display == 'panel_pane_4') {
 	  $format_stamp = '<span class="time">' . format_date($stamp, 'custom' , 'g:s a') . '</span><span class="date">' . format_date($stamp, 'custom' , 'M j') . '<span>';
   	} else {
-	  $format_stamp = '<span class="time">' . format_date($stamp, 'custom' , 'g:s a') . '</span>';
+          if (format_date($stamp, 'custom', 'g:i a') != '12:00 am') {
+	    $format_stamp = '<span class="time">' . format_date($stamp, 'custom' , 'g:s a') . '</span>';
+          }
 	}
         $vars['fields']['search_api_multi_aggregation_9_1']->content = str_replace($stamp, $format_stamp, $vars['fields']['search_api_multi_aggregation_9_1']->content);
     }
@@ -415,8 +417,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       // We actually won't use the above assignment, but will append this to the header title
       $vars['fields']['title']->content .= '<div class="author-data">' . $byline . '</div>';
     }
-
-
+    
     if (!empty($vars['fields']['search_api_multi_aggregation_9']) && !empty($vars['fields']['search_api_multi_aggregation_10']) && ($vars['fields']['search_api_multi_aggregation_9']->content == $vars['fields']['search_api_multi_aggregation_10']->content) && !empty($vars['fields']['search_api_multi_aggregation_9']->content)) {
       if (format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'g:i a') != '12:00 am') {
           if($view->current_display == 'page_1') {
@@ -440,7 +441,15 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     else {
       // start date
       if (isset($vars['fields']['search_api_multi_aggregation_9']->content) && strlen($vars['fields']['search_api_multi_aggregation_9']->content) >= 1) {
-        $startdate =  '<div class="wrapper">' . format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'g:i a') . "</div>";
+        if (format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'g:i a') == '12:00 am') {
+          $all_day_event = '<div class="date-data">'. format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'l, M j, Y') . ' (' . t('All Day') . ')</div></div>';
+        }
+        else if (isset($vars['fields']['search_api_multi_aggregation_10']->content) && strlen($vars['fields']['search_api_multi_aggregation_10']->content) >= 1 and format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'Y-m-d') != format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'Y-m-d')) {
+          $all_day_event = '</h5><div class="date-data">'. format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'l, M j, Y g:i:a') . '</div></div>';
+        }
+        else {
+          $startdate =  '<div class="wrapper">' . format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'g:i a') . "</div>";
+        } 
       }
       else {
         // remove it then
@@ -449,8 +458,18 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       }
       // end date
       if (isset($vars['fields']['search_api_multi_aggregation_10']->content) && strlen($vars['fields']['search_api_multi_aggregation_10']->content) >= 1) {
-        $enddate = '<div class="wrapper">' . format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'g:i a') . '</div>';
-     }
+        if (format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'Y-m-d') != format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'Y-m-d')) {
+          if (format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'g:i a') == '12:00 am') {
+            $all_day_event.= ' ' . t('to') . ' <div class="date-data">'. format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'l, M j, Y') . ' (' . t('All Day') . ')</div></div>';
+          }   
+          else {
+            $all_day_event.= t('to') . ' <div class="date-data">'. format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'l, M j, Y g:i:a')  . '</div></div>';
+          } 
+        }
+        else {
+          $enddate = '<div class="wrapper">' . format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'g:i a') . '</div>';
+       }
+      }
       else {
         // remove it then
         unset($vars['fields']['search_api_multi_aggregation_10']);
@@ -465,7 +484,15 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     else {
       // make the date into a new object that is usable
       $vars['fields']['dateinfo'] = new stdClass();
-      $vars['fields']['dateinfo']->content = '<div class="node-date clearfix"><div class="start"><h5>' . t('Start Time') . ':</h5><span>' . $startdate . '</span></div><div class="end"><h5>' .  t('End') . ':</h5><span>'. $enddate . '</span></div></div>';
+      if(empty($all_day_event)) {
+        $vars['fields']['dateinfo']->content = '<div class="node-date clearfix"><div class="start"><h5>' . t('Start Time') . ':</h5><span>' . $startdate . '</span></div>';
+        if(!empty($enddate)) { 
+          $vars['fields']['dateinfo']->content.= '<div class="end"><h5>' .  t('End') . ':</h5><span>'. $enddate . '</span></div></div>';
+        }
+      }
+      else {
+          $vars['fields']['dateinfo']->content = '<div class="node-date clearfix"><div class="start"><h5>' . t('Date') . ':</h5><div class="node-date clearfix"><div class="start">' . $all_day_event . '</div></div></div>';
+      }
       $vars['fields']['dateinfo']->label_html = '';
       $vars['fields']['dateinfo']->wrapper_prefix = '';
       $vars['fields']['dateinfo']->wrapper_suffix = ''; 
