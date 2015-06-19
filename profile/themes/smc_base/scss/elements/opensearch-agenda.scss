@@ -103,11 +103,21 @@
   }
 }
 
+
+.page-event {
+  .view-opensanmateo-search {
+    .view-content {
+      width: 70%;
+    }
+  }
+}
+
 .view-opensanmateo-search {
 
   .attachment-before {
     float: right;
   }
+
 
   .views-exposed-form {
     .container-inline-date {
@@ -135,7 +145,7 @@
 
   .view-content {
     float: left;
-    width: 70%;
+    width: 100%;
   }
   .group-by-day {
 
