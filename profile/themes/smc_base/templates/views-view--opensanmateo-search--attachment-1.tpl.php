@@ -127,9 +127,6 @@ function draw_calendar($month,$year, $events = array()){
 
   <?php if ($attachment_before): ?>
     <div class="attachment attachment-before">
-      <div class="date">Jun 23 2015</div>
-      <div class="left-arrow"></div>
-      <div class="right-arrow"></div>
       <?php print $attachment_before; ?>
     </div>
   <?php endif; ?>
