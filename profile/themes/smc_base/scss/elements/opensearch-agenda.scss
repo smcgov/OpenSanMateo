@@ -116,6 +116,12 @@
 
   .attachment-before {
     float: right;
+    width: 25%;
+
+    .view-content {
+      width: 100%;
+      float: none;
+    }
   }
 
 
@@ -293,4 +299,6 @@
     float: left;
     width: inherit;
   }
+
+
 }
