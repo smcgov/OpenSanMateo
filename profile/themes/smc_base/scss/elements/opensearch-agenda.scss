@@ -130,7 +130,7 @@
           padding: 1em;
         }
 
-        p.mti-font-element {
+        p.mti_font_element {
           display: none;
         }
       }
@@ -259,6 +259,12 @@
       margin-top: 0px;
       width: 170px;
       height: 160px;
+      overflow: hidden;
+
+      img {
+        height: 100%;
+        max-width: inherit;
+      }
     }
     .aggregated-node-thumbnail-selected {
       float: none;
