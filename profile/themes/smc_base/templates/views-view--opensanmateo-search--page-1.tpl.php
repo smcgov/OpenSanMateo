@@ -44,7 +44,7 @@
   <?php endif; ?>
 
   <?php if ($attachment_before): ?>
-    <div> class="attachment attachment-before">
+    <div class="attachment attachment-before">
       <div class="group-by-day">
         <div class="date">Jun 23 2015</div>
       </div>
