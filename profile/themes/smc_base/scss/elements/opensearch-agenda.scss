@@ -112,7 +112,7 @@
   }
 }
 
-.view-opensanmateo-search {
+//.view-opensanmateo-search {
 
   .attachment-before {
     float: right;
@@ -147,8 +147,8 @@
     float: left;
     width: 100%;
   }
-  .group-by-day {
 
+  .group-by-day {
     width: 30%;
     margin-bottom: 15px;
     padding-left: 5px;
@@ -281,5 +281,15 @@
         }
       }
     }
+  }
+//}
+
+.page-events {
+  .tabs {
+    position: absolute;
+  }
+
+  #page-title {
+    float: left;
   }
 }
