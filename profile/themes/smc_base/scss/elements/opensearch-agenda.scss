@@ -128,7 +128,8 @@
     width: 25%;
 
     .group-by-day {
-      width: inherit;
+      width: auto;
+      float: left;
 
       .date {
         margin-left: 0;
@@ -137,9 +138,10 @@
     }
 
     .controls {
-      width: 10px;
-      height: 10px;
-      background: blue;
+      float: right;
+      width: 15px;
+      height: 15px;
+      background: rgba(3, 108, 182, 0.95);
     }
 
     .arrow-left {
