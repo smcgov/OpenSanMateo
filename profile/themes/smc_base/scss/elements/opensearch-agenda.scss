@@ -121,6 +121,19 @@
     .view-content {
       width: 100%;
       float: none;
+
+      .calendar {
+        width: 100%;
+
+
+        .calendar-day {
+          padding: 1em;
+        }
+
+        p.mti-font-element {
+          display: none;
+        }
+      }
     }
   }
 
