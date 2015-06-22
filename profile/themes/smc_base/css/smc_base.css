@@ -18081,7 +18081,8 @@ footer {
   position: absolute; }
 /* line 292, ../scss/elements/opensearch-agenda.scss */
 .page-events #page-title {
-  float: left; }
+  float: left;
+  width: inherit; }
 
 /* line 62, ../scss/smc_base.scss */
 html {
