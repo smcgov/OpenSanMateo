@@ -127,6 +127,25 @@
     float: right;
     width: 25%;
 
+    .group-by-day {
+      width: inherit;
+
+      .date {
+        margin-left: 0;
+        text-transform: none;
+      }
+    }
+
+    .controls {
+      width: 10px;
+      height: 10px;
+      background: blue;
+    }
+
+    .arrow-left {
+
+    }
+
     .view-content {
       width: 100%;
       float: none;

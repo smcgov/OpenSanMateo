@@ -44,10 +44,12 @@
   <?php endif; ?>
 
   <?php if ($attachment_before): ?>
-    <div class="attachment attachment-before">
-      <div class="date">Jun 23 2015</div>
-      <div class="left-arrow"></div>
-      <div class="right-arrow"></div>
+    <div> class="attachment attachment-before">
+      <div class="group-by-day">
+        <div class="date">Jun 23 2015</div>
+      </div>
+      <div class="controls left-arrow"></div>
+      <div class="controls right-arrow"></div>
       <?php print $attachment_before; ?>
     </div>
   <?php endif; ?>
