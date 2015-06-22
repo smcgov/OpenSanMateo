@@ -114,6 +114,15 @@
 
 .view-opensanmateo-search {
 
+  .view-filters {
+    padding-left: 140px;
+    padding-top: 10px;
+
+    .form-item {
+      float: left;
+    }
+  }
+
   .attachment-before {
     float: right;
     width: 25%;
@@ -137,6 +146,10 @@
     }
   }
 
+  .time {
+    padding-left: 0;
+  }
+
 
   .views-exposed-form {
     .container-inline-date {
@@ -153,7 +166,7 @@
     }
 
     .views-submit-button {
-      width: 410px;
+      width: 100%; //410px; -- old value. possibly still needed
     }
 
     .views-widget-sort-by {
