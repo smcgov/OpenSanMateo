@@ -161,10 +161,12 @@
 
       .calendar {
         width: 100%;
-
+        border-bottom: 0;
+        border-right: 0;
 
         .calendar-day,
-        .calendar-day-head {
+        .calendar-day-head,
+        .calendar-day-np {
           padding: .75em;
           border-right: 1px solid rgba(3, 108, 182, 0.1);
           border-bottom: 1px solid rgba(3, 108, 182, 0.1);
