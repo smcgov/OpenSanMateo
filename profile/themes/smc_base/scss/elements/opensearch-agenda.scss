@@ -143,10 +143,15 @@
       height: 25px;
       background: rgba(3, 108, 182, 0.95);
       margin: 0 1px;
+      background-repeat: no-repeat;
     }
 
-    .arrow-left {
+    .left-arrow {
+      background-image: url("../images/left_arrow.png");
+    }
 
+    .right-arrow {
+      background-image: url("../images/right_arrow.png");
     }
 
     .view-content {
