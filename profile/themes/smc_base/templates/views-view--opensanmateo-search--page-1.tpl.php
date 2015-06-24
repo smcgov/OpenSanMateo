@@ -48,8 +48,8 @@
       <div class="group-by-day">
         <div class="date">Jun 23 2015</div>
       </div>
-      <div class="controls left-arrow"></div>
       <div class="controls right-arrow"></div>
+      <div class="controls left-arrow"></div>
       <?php print $attachment_before; ?>
     </div>
   <?php endif; ?>
