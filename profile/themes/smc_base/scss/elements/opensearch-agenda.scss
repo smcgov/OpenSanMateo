@@ -130,10 +130,12 @@
     .group-by-day {
       width: auto;
       float: left;
+      margin-left: 0;
 
       .date {
         margin-left: 0;
         text-transform: none;
+        position: relative;
       }
     }
 
