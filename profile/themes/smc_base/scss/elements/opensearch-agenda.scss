@@ -167,9 +167,16 @@
         .calendar-day,
         .calendar-day-head,
         .calendar-day-np {
-          padding: .75em;
           border-right: 1px solid rgba(3, 108, 182, 0.1);
           border-bottom: 1px solid rgba(3, 108, 182, 0.1);
+        }
+
+        .day-number {
+          padding: .75em;
+
+          &:hover {
+
+          }
         }
 
         p.mti_font_element {
@@ -214,16 +221,19 @@
   }
 
   .group-by-day {
-    width: 30%;
+    width: 90%;
     margin-bottom: 15px;
-    padding-left: 5px;
+    padding-left: 1em;
+    margin-left: 10%;
     font-weight: bold;
     font-size: 1.15em;
     font-family: 'Trade Gothic W01 Roman', 'Helvetica Neue', Arial, Helvetica;
+    position: relative;
 
     .day-of-week {
       float: left;
-      color: #036cb6
+      color: #036cb6;
+      transform: translateX(-125%);
     }
 
     .date {
@@ -233,7 +243,7 @@
       font-weight: 100;
       margin-bottom: 0;
       padding-top: 3px;
-      margin-left: 85px;
+      position: absolute;
     }
   }
 
