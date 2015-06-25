@@ -173,12 +173,9 @@
           border-bottom: 1px solid rgba(3, 108, 182, 0.1);
         }
 
-        .day-number {
+        .day-number,
+        .calendar-day-head{
           padding: .75em;
-
-          &:hover {
-
-          }
         }
 
         p.mti_font_element {

@@ -142,36 +142,37 @@
         border-right: 1px solid rgba(3, 108, 182, 0.1);
         border-bottom: 1px solid rgba(3, 108, 182, 0.1); }
       /* line 176, ../../scss/elements/opensearch-agenda.scss */
-      .view-opensanmateo-search .attachment-before .view-content .calendar .day-number {
+      .view-opensanmateo-search .attachment-before .view-content .calendar .day-number,
+      .view-opensanmateo-search .attachment-before .view-content .calendar .calendar-day-head {
         padding: .75em; }
-      /* line 184, ../../scss/elements/opensearch-agenda.scss */
+      /* line 181, ../../scss/elements/opensearch-agenda.scss */
       .view-opensanmateo-search .attachment-before .view-content .calendar p.mti_font_element {
         display: none; }
-/* line 191, ../../scss/elements/opensearch-agenda.scss */
+/* line 188, ../../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .time {
   padding-left: 0; }
-/* line 197, ../../scss/elements/opensearch-agenda.scss */
+/* line 194, ../../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .views-exposed-form .container-inline-date {
   clear: none;
   float: left;
   padding-top: 17px; }
-  /* line 202, ../../scss/elements/opensearch-agenda.scss */
+  /* line 199, ../../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .views-exposed-form .container-inline-date label[for=edit-start-date], .view-opensanmateo-search .views-exposed-form .container-inline-date label[for=edit-end-date] {
     display: block;
     margin: 5px;
     padding-top: 5px;
     float: left; }
-/* line 210, ../../scss/elements/opensearch-agenda.scss */
+/* line 207, ../../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .views-exposed-form .views-submit-button {
   width: 100%; }
-/* line 214, ../../scss/elements/opensearch-agenda.scss */
+/* line 211, ../../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .views-exposed-form .views-widget-sort-by {
   display: none; }
-/* line 220, ../../scss/elements/opensearch-agenda.scss */
+/* line 217, ../../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .view-content {
   float: left;
   width: 100%; }
-/* line 225, ../../scss/elements/opensearch-agenda.scss */
+/* line 222, ../../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .group-by-day {
   width: 90%;
   margin-bottom: 15px;
@@ -181,12 +182,12 @@
   font-size: 1.15em;
   font-family: 'Trade Gothic W01 Roman', 'Helvetica Neue', Arial, Helvetica;
   position: relative; }
-  /* line 235, ../../scss/elements/opensearch-agenda.scss */
+  /* line 232, ../../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .group-by-day .day-of-week {
     float: left;
     color: #036cb6;
     transform: translateX(-125%); }
-  /* line 241, ../../scss/elements/opensearch-agenda.scss */
+  /* line 238, ../../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .group-by-day .date {
     color: #38939b;
     text-transform: uppercase;
@@ -195,46 +196,46 @@
     margin-bottom: 0;
     padding-top: 3px;
     position: absolute; }
-/* line 252, ../../scss/elements/opensearch-agenda.scss */
+/* line 249, ../../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .universal-teaser {
   border: none; }
-/* line 255, ../../scss/elements/opensearch-agenda.scss */
+/* line 252, ../../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .views-row {
   padding-bottom: 0px;
   padding-top: 0px;
   padding-right: 0px; }
-/* line 260, ../../scss/elements/opensearch-agenda.scss */
+/* line 257, ../../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .left-col {
   width: 10%;
   float: left;
   padding-top: 16px; }
-  /* line 264, ../../scss/elements/opensearch-agenda.scss */
+  /* line 261, ../../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .left-col .time {
     color: #036cb6; }
-/* line 268, ../../scss/elements/opensearch-agenda.scss */
+/* line 265, ../../scss/elements/opensearch-agenda.scss */
 .view-opensanmateo-search .right-col {
   width: 90%;
   float: left;
   border: 1px solid rgba(3, 108, 182, 0.1);
   border-top: 1px solid rgba(3, 108, 182, 0.1); }
-  /* line 274, ../../scss/elements/opensearch-agenda.scss */
+  /* line 271, ../../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .right-col .node-teaser {
     display: none;
     border-top: none;
     border-bottom: none;
     clear: left; }
-  /* line 280, ../../scss/elements/opensearch-agenda.scss */
+  /* line 277, ../../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .right-col .event-more-info {
     display: none;
     clear: both; }
-    /* line 283, ../../scss/elements/opensearch-agenda.scss */
+    /* line 280, ../../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .event-more-info .event-hide-more-info {
       padding: 10px;
       margin: 0 10px 10px;
       background-color: #EEEEF7;
       text-align: center;
       width: 130px; }
-    /* line 290, ../../scss/elements/opensearch-agenda.scss */
+    /* line 287, ../../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .event-more-info .event-page, .view-opensanmateo-search .right-col .event-more-info .event-add-calendar {
       padding: 10px;
       margin: 0 10px 10px;
@@ -242,75 +243,75 @@
       text-align: center;
       width: 130px;
       float: right; }
-      /* line 298, ../../scss/elements/opensearch-agenda.scss */
+      /* line 295, ../../scss/elements/opensearch-agenda.scss */
       .view-opensanmateo-search .right-col .event-more-info .event-page a, .view-opensanmateo-search .right-col .event-more-info .event-add-calendar a {
         color: white;
         font-weight: bold;
         font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
-  /* line 305, ../../scss/elements/opensearch-agenda.scss */
+  /* line 302, ../../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .right-col header {
     width: 72%;
     float: left;
     padding-top: 16px;
     margin-left: 10px; }
-    /* line 311, ../../scss/elements/opensearch-agenda.scss */
+    /* line 308, ../../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col header h4 {
       font-size: 1.15em; }
-  /* line 315, ../../scss/elements/opensearch-agenda.scss */
+  /* line 312, ../../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .right-col .aggregated-node-thumbnail {
     float: right;
     margin-top: 0px;
     width: 170px;
     height: 160px;
     overflow: hidden; }
-    /* line 322, ../../scss/elements/opensearch-agenda.scss */
+    /* line 319, ../../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .aggregated-node-thumbnail img {
       height: 100%;
       max-width: inherit; }
-  /* line 327, ../../scss/elements/opensearch-agenda.scss */
+  /* line 324, ../../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .right-col .aggregated-node-thumbnail-selected {
     float: none;
     margin-top: 0px;
     width: 100%;
     height: auto; }
-  /* line 333, ../../scss/elements/opensearch-agenda.scss */
+  /* line 330, ../../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .right-col .node-location {
     float: left;
     width: 45%; }
-    /* line 336, ../../scss/elements/opensearch-agenda.scss */
+    /* line 333, ../../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-location h5 {
       float: left;
       margin-right: 10px;
       min-height: 90px; }
-    /* line 341, ../../scss/elements/opensearch-agenda.scss */
+    /* line 338, ../../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-location ul {
       margin-top: 4px; }
-  /* line 345, ../../scss/elements/opensearch-agenda.scss */
+  /* line 342, ../../scss/elements/opensearch-agenda.scss */
   .view-opensanmateo-search .right-col .node-date {
     float: left;
     margin-left: 15px;
     width: 35%; }
-    /* line 349, ../../scss/elements/opensearch-agenda.scss */
+    /* line 346, ../../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-date .start, .view-opensanmateo-search .right-col .node-date .end {
       clear: both;
       overflow: hidden;
       display: block; }
-    /* line 354, ../../scss/elements/opensearch-agenda.scss */
+    /* line 351, ../../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-date h5 {
       float: left;
       display: block; }
-    /* line 358, ../../scss/elements/opensearch-agenda.scss */
+    /* line 355, ../../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .right-col .node-date span {
       float: left;
       margin-left: 5px; }
-      /* line 362, ../../scss/elements/opensearch-agenda.scss */
+      /* line 359, ../../scss/elements/opensearch-agenda.scss */
       .view-opensanmateo-search .right-col .node-date span .wrapper {
         line-height: 30px; }
 
-/* line 371, ../../scss/elements/opensearch-agenda.scss */
+/* line 368, ../../scss/elements/opensearch-agenda.scss */
 .page-events .tabs {
   position: absolute; }
-/* line 375, ../../scss/elements/opensearch-agenda.scss */
+/* line 372, ../../scss/elements/opensearch-agenda.scss */
 .page-events #page-title {
   float: left;
   width: inherit; }
