@@ -17938,11 +17938,11 @@ footer {
     .view-opensanmateo-search .view-filters .form-item:after {
       content: "";
       background-repeat: no-repeat;
-      background-image: url("../images/left_arrow.png");
+      background-image: url("../images/down_arrow.png");
       position: absolute;
       right: 5px;
       top: 40%;
-      width: 15px;
+      width: 16px;
       height: 16px; }
     /* line 138, ../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search .view-filters .form-item input {
