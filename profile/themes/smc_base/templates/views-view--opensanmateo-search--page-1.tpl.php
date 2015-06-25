@@ -48,8 +48,36 @@
       <div class="group-by-day">
         <div class="date">Jun 23 2015</div>
       </div>
-      <div class="controls right-arrow"></div>
-      <div class="controls left-arrow"></div>
+      <?php
+        if (arg(2) == 'all') {
+          $last_month_ini = new DateTime("first day of last month");
+          $last_month_end = new DateTime("last day of last month");
+        
+          $next_month_ini = new DateTime("first day of next month");
+          $next_month_end = new DateTime("last day of next month");
+        }
+        else {
+          $last_month_ini = new DateTime(); 
+   	  $last_month_ini->setTimestamp(strtotime(arg(2)));
+          $last_month_ini->modify('first day of last month');
+ 	  
+          $last_month_end = new DateTime($last_month_ini->format(DateTime::ISO8601));
+          $last_month_end->modify('last day of this month');
+
+          $next_month_ini = new DateTime();
+	  $next_month_ini->setTimestamp(strtotime(arg(2)));
+  	  $next_month_ini->modify('first day of next month');	
+
+          $next_month_end = new DateTime($next_month_ini->format(DateTime::ISO8601));
+  	  $next_month_end->modify('last day of this month');
+	}
+
+	$parameters = drupal_get_query_parameters();
+        $last_month_link = '/events/list/' . $last_month_ini->format('Y-m-d') . '/' . $last_month_end->format('Y-m-d') . '?' . http_build_query($parameters);
+        $next_month_link = '/events/list/' . $next_month_ini->format('Y-m-d') . '/' . $next_month_end->format('Y-m-d') . '?' . http_build_query($parameters);;
+      ?>
+      <div class="controls left-arrow"><a href='<?php print $last_month_link; ?>'>back</a></div>
+      <div class="controls right-arrow"><a href='<?php print $next_month_link; ?>'>next</a></div>
       <?php print $attachment_before; ?>
     </div>
   <?php endif; ?>
