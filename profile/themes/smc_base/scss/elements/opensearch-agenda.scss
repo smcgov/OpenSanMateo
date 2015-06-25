@@ -1,3 +1,5 @@
+@import "vars.scss";
+
 .pane-opensanmateo-search-panel-pane-4 {
   header {
     position: relative;
@@ -123,6 +125,7 @@
       background: #f0f5f9;
       height: 37px;
       position: relative;
+      margin-left: 15px;
 
       &:after {
         content: "";
@@ -133,6 +136,20 @@
         top: 40%;
         width: 16px;
         height: 16px;
+        z-index: 0;
+      }
+
+      &.form-type-select {
+
+        padding-top: 7px;
+
+        label {
+          display: inline-block;
+        }
+
+        select {
+          width: 75%;
+        }
       }
 
       input {
@@ -140,7 +157,13 @@
         border: 0;
         background: transparent;
         box-shadow: none;
+        position: relative;
+        z-index: 1;
       }
+    }
+
+    .form-submit {
+      margin-top: .25em;
     }
   }
 
@@ -168,6 +191,13 @@
       margin: 0 1px;
       background-repeat: no-repeat;
       background-position: center;
+      font-size: 0;
+
+      a {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
     }
 
     .left-arrow {
@@ -215,7 +245,6 @@
     .container-inline-date {
       clear: none;
       float: left;
-      padding-top: 17px;
 
       label[for=edit-start-date], label[for=edit-end-date] {
         display: block;
@@ -393,6 +422,8 @@
   #page-title {
     float: left;
     width: inherit;
+    color: $primaryTeal;
+    font-weight: 100;
   }
 
 
