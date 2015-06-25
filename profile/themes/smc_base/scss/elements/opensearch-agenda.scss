@@ -120,6 +120,27 @@
 
     .form-item {
       float: left;
+      background: #f0f5f9;
+      height: 37px;
+      position: relative;
+
+      &:after {
+        content: "";
+        background-repeat: no-repeat;
+        background-image: url("../images/left_arrow.png");
+        position: absolute;
+        right: 5px;
+        top: 40%;
+        width: 15px;
+        height: 16px;
+      }
+
+      input {
+        margin-bottom: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+      }
     }
   }
 
@@ -173,12 +194,9 @@
           border-bottom: 1px solid rgba(3, 108, 182, 0.1);
         }
 
-        .day-number {
+        .day-number,
+        .calendar-day-head{
           padding: .75em;
-
-          &:hover {
-
-          }
         }
 
         p.mti_font_element {
