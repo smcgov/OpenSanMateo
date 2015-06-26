@@ -260,4 +260,13 @@ function sanmateo_update_7025() {
   array_walk($new_modules, 'features_revert_module');
 }
 
+/**
+ * SMC-932: Set default shield user-pass previously set in common settings file.
+ */
+function sanmateo_update_7026() {
+  variable_set('shield_enabled', 1);
+  variable_set('shield_user', 'smc');
+  variable_set('shield_pass', 'smc');
+}
+
 // End of file sanmateo.install
