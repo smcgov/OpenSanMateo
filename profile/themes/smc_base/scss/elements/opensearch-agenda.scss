@@ -133,10 +133,11 @@
         background-image: url("../images/down_arrow.png");
         position: absolute;
         right: 5px;
-        top: 40%;
+        top: 30%;
         width: 16px;
-        height: 16px;
+        height: 20px;
         z-index: 0;
+        background-color: #f0f5f9;
       }
 
       &.form-type-select {
@@ -148,7 +149,15 @@
         }
 
         select {
-          width: 75%;
+          width: 86%;
+          border: 0;
+          background: transparent;
+          cursor: pointer;
+
+          &:hover,
+          &:focus {
+            border: 0;
+          }
         }
       }
 
@@ -224,13 +233,21 @@
           border-bottom: 1px solid rgba(3, 108, 182, 0.1);
         }
 
+        .calendar-day-head {
+          background: #f0f5f9;
+        }
+
         .day-number,
         .calendar-day-head{
-          padding: .75em;
+          padding: .75em .75em .75em 1em;
         }
 
         p.mti_font_element {
           display: none;
+        }
+
+        tr:nth-child(2n+2) {
+          background: transparent;
         }
       }
     }
@@ -362,7 +379,7 @@
     .aggregated-node-thumbnail {
       float: right;
       margin-top: 0px;
-      width: 170px;
+      width: 22%;
       height: 160px;
       overflow: hidden;
 
@@ -380,6 +397,8 @@
     .node-location {
       float: left;
       width: 45%;
+      margin-left: 10px;
+
       h5 {
         float: left;
         margin-right: 10px;
@@ -392,7 +411,7 @@
     .node-date {
       float: left;
       margin-left: 15px;
-      width: 35%;
+      width: 25%;
       .start, .end {
         clear: both;
         overflow: hidden;
