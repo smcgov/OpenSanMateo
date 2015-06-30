@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 projects[drupal][type] = core
-projects[drupal][version] = 7.35
+projects[drupal][version] = 7.37
 projects[drupal][patch][] = http://drupal.org/files/issues/object_conversion_menu_router_build-972536-1.patch
 ;projects[drupal][patch][] = http://drupal.org/files/issues/992540-3-reset_flood_limit_on_password_reset-drush.patch
 projects[drupal][patch][] = http://drupal.org/files/1355984-timeout_on_install_with_drush_si-make.patch
@@ -13,7 +13,8 @@ projects[drupal][patch][] = http://drupal.org/files/issues/autocomplete_popup_po
 projects[openpublic][type] = profile
 projects[openpublic][download][type] = git
 projects[openpublic][download][url] = http://git.drupal.org/project/openpublic.git
-projects[openpublic][download][revision] = appify_services
+projects[openpublic][download][revision] = 7.x-1.5
+projects[openpublic][patch][] = patches/openpublic-update-views-311.patch
 
 projects[redirect][type] = module
 projects[redirect][subdir] = contrib
