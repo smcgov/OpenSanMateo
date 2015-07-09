@@ -46,7 +46,7 @@
   <?php if ($attachment_before): ?>
     <div class="attachment attachment-before">
       <div class="group-by-day">
-        <div class="date">Jun 23 2015</div>
+        <div class="date">June 2015</div>
       </div>
       <?php
         if (arg(2) == 'all') {
@@ -76,8 +76,8 @@
         $last_month_link = '/events/list/' . $last_month_ini->format('Y-m-d') . '/' . $last_month_end->format('Y-m-d') . '?' . http_build_query($parameters);
         $next_month_link = '/events/list/' . $next_month_ini->format('Y-m-d') . '/' . $next_month_end->format('Y-m-d') . '?' . http_build_query($parameters);;
       ?>
-      <div class="controls left-arrow"><a href='<?php print $last_month_link; ?>'>back</a></div>
       <div class="controls right-arrow"><a href='<?php print $next_month_link; ?>'>next</a></div>
+      <div class="controls left-arrow"><a href='<?php print $last_month_link; ?>'>back</a></div>
       <?php print $attachment_before; ?>
     </div>
   <?php endif; ?>

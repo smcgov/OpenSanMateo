@@ -138,6 +138,8 @@
         height: 20px;
         z-index: 0;
         background-color: #f0f5f9;
+        pointer-events: none;
+        cursor: pointer;
       }
 
       &.form-type-select {
@@ -153,6 +155,7 @@
           border: 0;
           background: transparent;
           cursor: pointer;
+          color: $primaryBlue;
 
           &:hover,
           &:focus {
@@ -168,6 +171,8 @@
         box-shadow: none;
         position: relative;
         z-index: 1;
+        cursor: pointer;
+        color: $primaryBlue;
       }
     }
 
@@ -298,7 +303,7 @@
 
     .day-of-week {
       float: left;
-      color: #036cb6;
+      color: #38939b;
       transform: translateX(-125%);
     }
 
@@ -334,6 +339,11 @@
     float: left;
     border: 1px solid rgba(3, 108, 182, 0.1);
     border-top: 1px solid rgba(3, 108, 182, 0.1);
+
+    &:hover {
+      background: #E7EDED;
+      cursor: pointer;
+    }
 
     .node-teaser {
       display: none;
@@ -386,6 +396,7 @@
       img {
         height: 100%;
         max-width: inherit;
+        float: right;
       }
     }
     .aggregated-node-thumbnail-selected {
@@ -431,6 +442,19 @@
       }
     }
   }
+
+  .views-row-selected {
+    .aggregated-node-thumbnail {
+      max-height: 250px;
+    }
+
+    .right-col {
+      &:hover {
+        background: #fff;
+      }
+    }
+  }
+
 }
 
 .page-events {
