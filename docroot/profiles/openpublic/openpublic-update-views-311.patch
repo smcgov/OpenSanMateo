@@ -1,0 +1,13 @@
+diff --git a/drupal-org.make b/drupal-org.make
+index 5ff69f1..5e1142a 100644
+--- a/drupal-org.make
++++ b/drupal-org.make
+@@ -133,7 +133,7 @@ projects[twitter][version] = 5.8
+ 
+ projects[twitter_pull][version] = 2.0-alpha2
+ 
+-projects[views][version] = 3.10
++projects[views][version] = 3.11
+ 
+ projects[views_boxes][version] = 1.0
+ 

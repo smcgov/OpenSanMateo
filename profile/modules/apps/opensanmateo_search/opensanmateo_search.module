@@ -32,6 +32,32 @@ function opensanmateo_search_search_api_query_alter($query) {
 */
 
 /**
+ * Determines the value for a multi-valued textfield form element.
+ *
+ * @param $element
+ *   The form element whose value is being populated.
+ * @param $input
+ *   The incoming input to populate the form element. If this is FALSE,
+ *   the element's default value should be returned.
+ *
+ * @return
+ *   The data that will appear in the $element_state['values'] collection
+ *   for this element. Return nothing to use the default.
+ */
+function opensanmateo_form_type_textfield_value($element, $input = FALSE) {
+  if ($input !== FALSE && $input !== NULL) {
+    // This overrides Drupal core's form_type_textfield_value function, and
+    // allows an array to be used instead of a string.
+    // See https://www.drupal.org/node/2462723 for security notice regarding
+    // why this is no longer allowed in Drupal core. Also see #value_callback
+    // in 'plugins/views/opensanmateo_search_views_autocomplete.inc' for the
+    // use case. This is custom logic to allow multiple search terms via an
+    // autocomplete textfield. (Views is expecting to accept an array.)
+    return str_replace(array("\r", "\n"), '', $input);
+  }
+}
+
+/**
  * Implements hook_menu().
  */
 function opensanmateo_search_menu() {
@@ -172,6 +198,7 @@ function opensanmateo_search_form_views_content_views_panes_content_type_edit_fo
 
     // Set type to textfield and unset the options array.
     $element['#type'] = 'textfield';
+    $element['#value_callback'] = 'opensanmateo_form_type_textfield_value';
     unset($element['#options']);
 
     // Process stored values (if any) into something suitable for an autocomplete (comma delimited list).

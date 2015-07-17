@@ -24,6 +24,7 @@ class OpenSanMateoSearchViewsAutocomplete extends SearchApiViewsHandlerFilterOpt
   public function value_form(&$form, &$form_state) {
     $form['value'] = array(
       '#type' => 'textfield',
+      '#value_callback' => 'opensanmateo_form_type_textfield_value',
       '#title' => empty($form_state['exposed']) ? t('Value') : '',
       '#multiple' => TRUE,
       '#size' => min(4, count($this->definition['options'])),
