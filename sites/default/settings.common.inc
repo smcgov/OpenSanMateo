@@ -87,17 +87,13 @@ if (empty($conf['sanmateo_is_master'])) {
 $conf['distributed_blocks_master_url'] = 'prod' == $_ENV['AH_SITE_ENVIRONMENT'] ? 'http://www.smcgov.org'  : 'http://' . $master_host;
 $conf['distributed_blocks_update_freq'] = 1;
 
-// Set default shield module config so all we have to do is flip it on and off
-$conf['shield_enabled'] = 1;
-$conf['shield_user'] = 'smc';
-$conf['shield_pass'] = 'smc';
-
 /**
  * Util function to derive private filesystem patch from the site settings path and env vars
  */
 function smc_settings_file_private_path($sitedir) {
   global $_ENV;
 
-  $smc_site = array_pop(explode('/', $sitedir));
+  $path_parts = explode('/', $sitedir);
+  $smc_site = array_pop($path_parts);
   return "/mnt/files/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/sites/{$smc_site}/files-private";
 }
