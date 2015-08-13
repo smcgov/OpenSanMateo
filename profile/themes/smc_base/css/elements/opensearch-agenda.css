@@ -1859,7 +1859,10 @@ ul.button-test {
 /* line 618, ../../scss/elements/opensearch-agenda.scss */
 .page-events .tabs {
   position: absolute; }
-/* line 622, ../../scss/elements/opensearch-agenda.scss */
+/* line 621, ../../scss/elements/opensearch-agenda.scss */
+.page-events #block-system-main {
+  min-height: 400px; }
+/* line 624, ../../scss/elements/opensearch-agenda.scss */
 .page-events #page-title {
   float: left;
   width: inherit;

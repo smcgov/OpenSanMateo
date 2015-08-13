@@ -618,7 +618,9 @@
   .tabs {
     position: absolute;
   }
-
+  #block-system-main {
+    min-height: 400px;
+  }
   #page-title {
     float: left;
     width: inherit;
