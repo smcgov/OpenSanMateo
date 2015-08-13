@@ -14,24 +14,6 @@ include_once 'opensanmateo_search.features.field_instance_topic.inc';
 include_once 'opensanmateo_search.features.field_instance_sub_type.inc';
 
 /**
- * Implements hook_search_api_query_alter().
- *
- * Restricts the search results to the content types selected in the app
- */
-/*
-function opensanmateo_search_search_api_query_alter($query) {
-  $types = array_filter(variable_get('opesanmateo_search_content_types_to_index', array()));
-  $exclude_types = array_diff(array_map(function($i) {return $i->type;}, node_type_get_types()), $types);
-
-  $filter = $query->createFilter('AND');
-  foreach ($exclude_types as $type) {
-    $filter->condition('type', $type, '<>');
-  }
-  $query->filter($filter);
-}
-*/
-
-/**
  * Determines the value for a multi-valued textfield form element.
  *
  * @param $element
@@ -379,6 +361,10 @@ function opensanmateo_search_preprocess_views_view_fields(&$vars) {
 
       $vars['fields']['more_link'] = "<div class='read-more-wrapper clearfix'>" . l($more_link_text . $read_more, $vars['row']->_entity_properties['url'], $link_options) . "</div>";
     }
+    // The Calendar page gets a generic link "Visit Event Page".
+    if ($view->current_display == 'page_1') {
+      $vars['fields']['more_link'] = "<div class='read-more-wrapper clearfix'>" . l('Visit Event Page', $vars['row']->_entity_properties['url'], $link_options) . "</div>";
+    }
   }
 }
 
@@ -650,56 +636,81 @@ function opensanmateo_search_permission() {
 /**
  * Implements hook_form_alter().
  *
- * Disables the Quick Search tags field if the permission isn't set.
+ * Adds Event type options filter, and Start and End date fields to the Calendar
+ * exposed filter form.
+ *
+ * Also disables the Quick Search tags field if the permission isn't set.
  */
 function opensanmateo_search_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'views_exposed_form' && $form['#id'] =='views-exposed-form-opensanmateo-search-page-1') {
-    // Type filter
-    $form['type']['#type'] = 'select';
-    $form['type']['#title']= t('Type');
-    $taxonomy_subject = taxonomy_vocabulary_machine_name_load('subject');
-    $terms = taxonomy_get_tree($taxonomy_subject->vid);
-    $type_options = array('0' => t('None'));
-    foreach ($terms as $data) {
-      $term_name = $data->name;
-      if($data->parents[0] != 0) {
-        $term_name = '--' . $term_name;
-      }
-      $type_options[$data->name] = $term_name;
-    }
-    $form['type']['#options'] = $type_options; 
+
+    // This field is not used on any of the events. Does it make sense?
+    // Commenting it out for now...
+    //$taxonomy_subject = taxonomy_vocabulary_machine_name_load('subject');
+    //$terms = taxonomy_get_tree($taxonomy_subject->vid);
+    //$type_options = array('' => t('- Any -'));
+    //foreach ($terms as $data) {
+    //  $term_name = $data->name;
+    //  if($data->parents[0] != 0) {
+    //    $term_name = '--' . $term_name;
+    //  }
+    //  $type_options[$data->name] = $term_name;
+    //}
+    //$form['subject']['#type'] = 'select';
+    //unset($form['subject']['#size']);
+    //$form['subject']['#title'] = t('Type');
+    //$form['subject']['#options'] = $type_options;
+    //$form['subject']['#multiple'] = FALSE;
 
     // Start and end date filters
-    $parameters = drupal_get_query_parameters(); 
-    $start_day = isset($parameters['start_date']['date'])?$parameters['start_date']['date']:arg(2);
-    $end_day = isset($parameters['end_date']['date'])?$parameters['end_date']['date']:arg(3);
-    if ($start_day == 'all') {
-      $start_day = date('Y-m-d');
-      $end_day = date('Y-m-d');
+    $parameters = drupal_get_query_parameters();
+    if (isset($parameters['subject'])) {
+      $form['subject']['default_value'] = $parameters['subject'];
     }
 
-    if ($end_day == 'all') {
-      $end_day = date('Y-m-d');
-    }
+    // If no start date is provided, default to today (show only future events).
+    $start_day = isset($parameters['start_date']['date']) ? $parameters['start_date']['date'] : date('Y-m-d');
+    // Don't provide a default end date filter value (show all upcoming events).
+    $end_day = isset($parameters['end_date']['date']) ? $parameters['end_date']['date'] : '';
 
     $form['start_date']['#type'] = 'date_popup';
     $form['start_date']['#size'] = '16';  
     $form['start_date']['#title'] = t('From');
     $form['start_date']['#date_format'] = 'Y-m-d';
     $form['start_date']['#default_value'] = $start_day;
-    $form['end_date']['#type'] = 'date_popup';
-    $form['end_date']['#size'] = '16';  
-    $form['end_date']['#title'] = t('To');  
-    $form['end_date']['#date_format'] = 'Y-m-d';
-    $form['end_date']['#default_value'] = $end_day;
-  } 
-  
+
+    $form['to_date']['#type'] = 'date_popup';
+    $form['to_date']['#size'] = '16';
+    $form['to_date']['#title'] = t('To');
+    $form['to_date']['#date_format'] = 'Y-m-d';
+    $form['to_date']['#default_value'] = $end_day;
+    // This function converts the date popup format to the timestamp value that
+    // the Views filter expects.
+    $form['#validate'][] = 'opensanmateo_search_timestamp_convert';
+    // Add a label for the Department filter.
+    if (isset($form['search_api_site_hash'])) {
+      $form['search_api_site_hash']['#title'] = 'Dept';
+    }
+  }
+
   if (!isset($form['field_quick_search'])) {
     return;
   }
 
   if (!user_access('edit quick search tags')) {
     $form['field_quick_search']['#disabled'] = TRUE;
+  }
+}
+
+/**
+ * Validation function to transform date_popup values into timestamps.
+ */
+function opensanmateo_search_timestamp_convert($form, &$form_state) {
+  if (isset($form_state['values']['start_date'])) {
+    $form_state['values']['start_date'] = strtotime($form_state['values']['start_date']);
+  }
+  if (isset($form_state['values']['end_date'])) {
+    $form_state['values']['end_date'] = strtotime($form_state['values']['end_date']);
   }
 }
 
@@ -809,48 +820,6 @@ function opensanmateo_search_default_search_api_server_alter(array &$defaults) {
       "rdf_mapping" : []
     }');
   }
-}
-
-function opensanmateo_search_search_api_query_alter(SearchApiQueryInterface $query) {
-  if(arg(0) == 'events' && arg(1) == 'list') {
-    $parameters = drupal_get_query_parameters();
-
-    //Filter content by type
-    if($parameters['type']) {
-      $query->condition('search_api_multi_aggregation_14', $parameters['type'], '=');
-    }
-   
-    $start_day = isset($parameters['start_date']['date'])?$parameters['start_date']['date']:arg(2);
-    $end_day = isset($parameters['end_date']['date'])?$parameters['end_date']['date']:arg(3);
-    if($start_day != '' and $start_day != 'all' and $end_day == 'all') {
-      $start_day = strtotime($start_day);
-      $query->condition('event_start_day', $start_day, '<=');
-      $query->condition('event_end_day', $start_day, '>=');
-    }
-    else if($end_day != 'all') {
-      $start_day = strtotime($start_day);
-      $end_day = strtotime($end_day);
-      $query->condition('event_start_day', $start_day, '>=');
-      $query->condition('event_end_day', $end_day, '<=');
-    }
-    else if($start_day == 'all') {
-      $start_day = strtotime(date('Y-m-d'));
-      // Select events in progress
-      $left_filter = $query->createFilter('AND');
-      $left_filter->condition('event_start_day', $start_day, '<=');
-      $left_filter->condition('event_end_day', $start_day, '>=');
-     
-      // Select events with a start date in the future
-      $right_filter = $query->createFilter('AND');
-      $right_filter->condition('event_start_day', time(), '>=');
-
-      $main_filter = $query->createFilter('OR');
-      $main_filter->filter($left_filter);
-      $main_filter->filter($right_filter);
-      
-      $query->filter($main_filter);
-     }
-  } 
 }
 
 /**
