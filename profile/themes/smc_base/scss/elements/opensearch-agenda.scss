@@ -296,26 +296,36 @@
     }
   }
 
-  .time {
-    padding-left: 0;
-  }
-
-
   .views-exposed-form {
     .container-inline-date {
       clear: none;
       float: left;
 
-      label[for=edit-start-date], label[for=edit-end-date] {
+      label[for=edit-start-date], label[for=edit-to-date] {
+        display: block;
+        margin: 5px;
+        padding-top: 5px;
+        float: left;
+        font-weight: 100;
+      }
+    }
+    .views-exposed-widget {
+      float: left;
+      padding-top: 0;
+
+      label[for=edit-subject] {
         display: block;
         margin: 5px;
         padding-top: 5px;
         float: left;
       }
+      .form-type-select select {
+        width: 83%;
+      }
     }
 
     .views-submit-button {
-      width: 100%; //410px; -- old value. possibly still needed
+
     }
 
     .views-widget-sort-by {
