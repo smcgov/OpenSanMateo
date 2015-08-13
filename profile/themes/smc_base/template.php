@@ -58,6 +58,9 @@ function smc_base_html_head_alter(&$head_elements) {
 }
 
 function smc_base_process_page(&$variables) {
+
+  global $conf;
+
   // Always print the site name and slogan, but if they are toggled off, we'll
   // just hide them visually.
   $variables['hide_site_name']   = theme_get_setting('toggle_name') ? FALSE : TRUE;
@@ -76,7 +79,14 @@ function smc_base_process_page(&$variables) {
   }
 
   $variables['header_logo'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-header.png';
-  $variables['smclink'] = variable_get("smclink", 'http://www.smcgov.org');
+
+  if ($conf['smc_logo_link']) {
+    $variables['smclink'] = $conf['smc_logo_link'];
+  }
+  else {
+    $variables['smclink'] = variable_get("smclink", 'http://www.smcgov.org');
+  }
+
   $variables['footer_logo'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-footer-small.png';
   $variables['footer_logo_small'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-footer.png';
   //krumo($variables);

@@ -29,7 +29,7 @@ function first5_micro_preprocess_page(&$variables) {
  * Implements template_process_page
  */
 function first5_micro_process_page(&$variables) {
-$variables['header_logo'] = drupal_get_path("theme", "first5_micro") . "/images/seal-header.png";
+$variables['header_logo'] = url(drupal_get_path("theme", "first5_micro"), array('absolute'=>TRUE)) . "/images/seal-header.png";
 }
 
 /**
