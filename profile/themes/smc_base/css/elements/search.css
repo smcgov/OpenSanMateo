@@ -1337,6 +1337,7 @@ ul.button-test {
     display: block;
     text-align: center;
     margin-right: 0;
+    margin-top: 0;
     background-color: #036cb6;
     color: white;
     font-size: 1em;
@@ -1347,28 +1348,28 @@ ul.button-test {
     transition: all 0.3s;
     font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
     font-weight: normal !important; }
-    /* line 99, ../../scss/elements/search.scss */
+    /* line 100, ../../scss/elements/search.scss */
     #block-opensanmateo-search-header-search .search-button span {
       font-weight: normal !important; }
-  /* line 104, ../../scss/elements/search.scss */
+  /* line 105, ../../scss/elements/search.scss */
   #block-opensanmateo-search-header-search .search-button:after {
     content: none; }
 
-/* line 113, ../../scss/elements/search.scss */
+/* line 114, ../../scss/elements/search.scss */
 .view-opensanmateo-search .view-filters #edit-field-event-date-value-wrapper {
   clear: left; }
-/* line 116, ../../scss/elements/search.scss */
+/* line 117, ../../scss/elements/search.scss */
 .view-opensanmateo-search .view-filters #edit-field-event-date-value-wrapper,
 .view-opensanmateo-search .view-filters #edit-field-event-date-value2-wrapper {
   padding: 0; }
-/* line 121, ../../scss/elements/search.scss */
+/* line 122, ../../scss/elements/search.scss */
 .view-opensanmateo-search .view-filters .container-inline-date label,
 .view-opensanmateo-search .view-filters .container-inline-date div.description {
   display: none; }
-/* line 127, ../../scss/elements/search.scss */
+/* line 128, ../../scss/elements/search.scss */
 .view-opensanmateo-search .view-filters .views-submit-button {
   padding: 0; }
-/* line 130, ../../scss/elements/search.scss */
+/* line 131, ../../scss/elements/search.scss */
 .view-opensanmateo-search .view-filters .form-submit {
   background: none;
   background-color: none;
@@ -1417,7 +1418,7 @@ ul.button-test {
 
 @media all and (min-width: 768px) {
   /* Header Search */
-  /* line 148, ../../scss/elements/search.scss */
+  /* line 146, ../../scss/elements/search.scss */
   #block-opensanmateo-search-header-search {
     display: block !important;
     border-radius: 3px;
@@ -1431,13 +1432,13 @@ ul.button-test {
     padding: 0;
     z-index: 10;
     /* End Header Search */ }
-    /* line 161, ../../scss/elements/search.scss */
+    /* line 159, ../../scss/elements/search.scss */
     #block-opensanmateo-search-header-search #opensanmateo-search-header-search-form {
       float: left;
       width: 80%;
       margin-right: 3%;
       margin-bottom: 0; }
-    /* line 168, ../../scss/elements/search.scss */
+    /* line 166, ../../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text] {
       background: #d7e9eb;
       border: none;
@@ -1450,23 +1451,23 @@ ul.button-test {
       border-radius: 3px;
       font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
       margin: 0; }
-    /* line 184, ../../scss/elements/search.scss */
+    /* line 182, ../../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus {
       box-shadow: none;
       background: #67adb3;
       color: white;
       font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
       font-weight: normal; }
-    /* line 192, ../../scss/elements/search.scss */
+    /* line 190, ../../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus::-webkit-input-placeholder {
       color: white; }
-    /* line 193, ../../scss/elements/search.scss */
+    /* line 191, ../../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus::-moz-placeholder {
       color: white; }
-    /* line 194, ../../scss/elements/search.scss */
+    /* line 192, ../../scss/elements/search.scss */
     #block-opensanmateo-search-header-search input[type=text]:focus::-ms-input-placeholder {
       color: white; }
-    /* line 196, ../../scss/elements/search.scss */
+    /* line 194, ../../scss/elements/search.scss */
     #block-opensanmateo-search-header-search .search-button {
       width: 17%;
       position: absolute;
@@ -1477,6 +1478,6 @@ ul.button-test {
       display: block;
       text-align: center;
       margin-right: 0; }
-    /* line 208, ../../scss/elements/search.scss */
+    /* line 206, ../../scss/elements/search.scss */
     #block-opensanmateo-search-header-search .search-button:after {
       content: none; } }
