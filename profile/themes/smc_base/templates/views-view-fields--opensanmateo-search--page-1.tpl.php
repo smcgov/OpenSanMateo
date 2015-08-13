@@ -23,26 +23,34 @@
  *
  * @ingroup views_templates
  */
+
+$classes = ($view->row_index == 0) ? 'first-row views-row' : 'views-row';
+$title = $fields['title']->content;
+$location = $fields['search_api_multi_aggregation_6']->content;
+$date = $fields['dateinfo']->content;
+$time_of_day = format_date($fields['search_api_multi_aggregation_9']->content, 'custom', 'g:ia');
+// All Day Event start time is likely not 12am... ditch it.
+if (strpos($date, 'All Day Event')) {
+  $time_of_day = '';
+}
+$description = $fields['search_api_multi_aggregation_1']->content;
+$image = $fields['search_api_multi_aggregation_2']->content;
+$readmore = $fields['readmore']->content;
 ?>
-<?php $left_completed = 0; ?>
-<?php foreach ($fields as $id => $field): ?>
-  <?php if (!empty($field->separator)): ?>
- <?php endif; ?>
-  <?php
-     if($id == 'search_api_multi_aggregation_9_1') {
-       print "<div class=\"left-col\">";
-       $left_completed = 1;
-    }
-   ?>
-  <?php print $field->wrapper_prefix; ?>
-    <?php print $field->label_html; ?>
-   <?php print $field->separator; ?>
-    <?php print $field->content; ?>
-  <?php print $field->wrapper_suffix; ?>
-  <?php if($left_completed == 1 ) {
-      print '</div><div class="right-col">';
-      $left_completed++;
-    }
-  ?>
-<?php endforeach; ?>
-<?php print '</div>'; ?>
+<div class="<?php print $classes; ?>">
+  <div class="left-col">
+    <?php print $time_of_day; ?>
+  </div>
+  <div class="right-col">
+    <?php print $image; ?>
+    <header class="group clearfix">
+      <?php print $title; ?>
+    </header>
+
+    <div class="description"><?php print $description; ?></div>
+    <?php print $department; ?>
+    <span class="location"><?php print $location; ?></span>
+    <?php print $date; ?>
+    <?php print $readmore; ?>
+  </div>
+</div>

@@ -24,7 +24,31 @@
  * - $more: A link to view more, if any
  *
  * @ingroup views_templates
+ *
+ * This template file is used to render the pervious and next month arrows, as
+ * well as the selected start-date month above the mini-calendar attachment.
  */
+$parameters = drupal_get_query_parameters();
+$start_day = isset($parameters['start_date']['date']) ? $parameters['start_date']['date'] : date('Y-m-d');
+$current_date = new DateTime($start_day);
+$month = date_format($current_date, 'F');
+
+$last_month = new DateTime($start_day);
+$last_month->modify('first day of last month');
+$last_month = date_format($last_month, 'Y-m-d');
+$last_month_params = drupal_get_query_parameters();
+$last_month_params['start_date'] = array('date' => $last_month);
+unset($last_month_params['to_date']);
+$last_month_link = '/events/list?' . drupal_http_build_query($last_month_params);
+
+$next_month = new DateTime($start_day);
+$next_month->modify('first day of next month');
+$next_month = date_format($next_month, 'Y-m-d');
+$next_month_params = drupal_get_query_parameters();
+$next_month_params['start_date'] = array('date' => $next_month);
+unset($next_month_params['to_date']);
+$next_month_link = '/events/list?' . drupal_http_build_query($next_month_params);
+
 ?>
 <div class="<?php print $classes; ?>">
   <?php print render($title_prefix); ?>
@@ -46,36 +70,8 @@
   <?php if ($attachment_before): ?>
     <div class="attachment attachment-before">
       <div class="group-by-day">
-        <div class="date">June 2015</div>
+        <div class="date"><?php print $month; ?></div>
       </div>
-      <?php
-        if (arg(2) == 'all') {
-          $last_month_ini = new DateTime("first day of last month");
-          $last_month_end = new DateTime("last day of last month");
-        
-          $next_month_ini = new DateTime("first day of next month");
-          $next_month_end = new DateTime("last day of next month");
-        }
-        else {
-          $last_month_ini = new DateTime(); 
-   	  $last_month_ini->setTimestamp(strtotime(arg(2)));
-          $last_month_ini->modify('first day of last month');
- 	  
-          $last_month_end = new DateTime($last_month_ini->format(DateTime::ISO8601));
-          $last_month_end->modify('last day of this month');
-
-          $next_month_ini = new DateTime();
-	  $next_month_ini->setTimestamp(strtotime(arg(2)));
-  	  $next_month_ini->modify('first day of next month');	
-
-          $next_month_end = new DateTime($next_month_ini->format(DateTime::ISO8601));
-  	  $next_month_end->modify('last day of this month');
-	}
-
-	$parameters = drupal_get_query_parameters();
-        $last_month_link = '/events/list/' . $last_month_ini->format('Y-m-d') . '/' . $last_month_end->format('Y-m-d') . '?' . http_build_query($parameters);
-        $next_month_link = '/events/list/' . $next_month_ini->format('Y-m-d') . '/' . $next_month_end->format('Y-m-d') . '?' . http_build_query($parameters);;
-      ?>
       <div class="controls right-arrow"><a href='<?php print $next_month_link; ?>'>next</a></div>
       <div class="controls left-arrow"><a href='<?php print $last_month_link; ?>'>back</a></div>
       <?php print $attachment_before; ?>
