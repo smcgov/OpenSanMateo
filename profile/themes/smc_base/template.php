@@ -331,23 +331,6 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     // build the real thumbnail from the data parts (2, 15, 16)
     //dsm($vars['fields']['search_api_multi_aggregation_9']);
 
-    if( in_array($view->current_display, array('panel_pane_5', 'attachment_1'))) {
-      return;
-    } 
-
-    if (!empty($vars['fields']['search_api_multi_aggregation_9_1']->content)) {
-       // Store start date in raw value
-       $stamp = strip_tags($vars['fields']['search_api_multi_aggregation_9_1']->content);
-	if($view->current_display == 'panel_pane_4') {
-	  $format_stamp = '<span class="time">' . format_date($stamp, 'custom' , 'g:s a') . '</span><span class="date">' . format_date($stamp, 'custom' , 'M j') . '<span>';
-  	} else {
-          if (format_date($stamp, 'custom', 'g:i a') != '12:00 am') {
-	    $format_stamp = '<span class="time">' . format_date($stamp, 'custom' , 'g:s a') . '</span>';
-          }
-	}
-        $vars['fields']['search_api_multi_aggregation_9_1']->content = str_replace($stamp, $format_stamp, $vars['fields']['search_api_multi_aggregation_9_1']->content);
-    }
-
     if (isset($vars['fields']['search_api_multi_aggregation_2']->content) && strlen($vars['fields']['search_api_multi_aggregation_2']->content) >= 1) {
       $img = theme('image', array(
         'path' => $vars['fields']['search_api_multi_aggregation_2']->content,
@@ -361,13 +344,15 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       ));
 
       // apply the image
-      $vars['fields']['search_api_multi_aggregation_2']->content = '<div class="aggregated-node-thumbnail">' . $img . '</div>';
+      $vars['fields']['search_api_multi_aggregation_2']->content = '<div class="node-thumbnail">' . $img . '</div>';
 
-
-      // now let's wrap the thumbnail and teaser into a single wrapper
-      //$vars['fields']['search_api_multi_aggregation_1']->content = $vars['fields']['search_api_multi_aggregation_2']->content . $vars['fields']['search_api_multi_aggregation_1']->content;
-      // since we've combined the two fields, unset the "original" thumbnail
-      //unset($vars['fields']['search_api_multi_aggregation_2']);
+      // We do not want to combine these for the calendar page.
+      if ($view->current_display != 'page_1') {
+        // now let's wrap the thumbnail and teaser into a single wrapper
+        $vars['fields']['search_api_multi_aggregation_1']->content = $vars['fields']['search_api_multi_aggregation_2']->content . $vars['fields']['search_api_multi_aggregation_1']->content;
+        // since we've combined the two fields, unset the "original" thumbnail
+        unset($vars['fields']['search_api_multi_aggregation_2']);
+      }
     }
     else {
       // then remove it completely
@@ -393,7 +378,6 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     $vars['fields']['type']->wrapper_suffix = $vars['fields']['type']->wrapper_suffix . '</header>';
 
     // Format byline
-
     if (isset($vars['fields']['search_api_multi_aggregation_3']->content) && strlen($vars['fields']['search_api_multi_aggregation_3']->content) >= 1) {
       // let's manipulate the author name data to give us a full byline
       $author = $vars['fields']['search_api_multi_aggregation_3']->content;
@@ -417,114 +401,74 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       // We actually won't use the above assignment, but will append this to the header title
       $vars['fields']['title']->content .= '<div class="author-data">' . $byline . '</div>';
     }
-    
-    if (!empty($vars['fields']['search_api_multi_aggregation_9']) && !empty($vars['fields']['search_api_multi_aggregation_10']) && ($vars['fields']['search_api_multi_aggregation_9']->content == $vars['fields']['search_api_multi_aggregation_10']->content) && !empty($vars['fields']['search_api_multi_aggregation_9']->content)) {
-      if (format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'g:i a') != '12:00 am') {
-          if($view->current_display == 'page_1') {
-   	    $stamp = strip_tags($vars['fields']['search_api_multi_aggregation_9']->content);
-            $startdate = '<span class="time">' . format_date($stamp, 'custom' , 'g:s a') . '</span>';
+    // Both start and end times are required for events. These are aggregated,
+    // so the field will exist, but the "content" property will be NULL.
+    $start_time = $vars['fields']['search_api_multi_aggregation_9']->content;
+    $end_time = $vars['fields']['search_api_multi_aggregation_10']->content;
+    // Only perform this if we have time data (events only).
+    if ($start_time && $end_time) {
+      // If start and end date are the same.
+      if ($start_time == $end_time) {
+        // Start time is NOT midnight.
+        if (format_date($start_time, 'custom', 'g:i a') != '12:00 am') {
+          $startdate = '<div class="node-start-date"><h5>' . t('Starting') . '</h5><div class="date-data">'. smc_base_format_timestamp($start_time) . '</div></div>';
+          // The calendar page should only display time here.
+          if ($view->current_display == 'page_1') {
+            $startdate = '<div class="node-start-date"><h5>' . t('Start Time') . '</h5><div class="date-data">'. format_date($start_time, 'custom', 'g:ia') . '</div></div>';
           }
-          else {
-	    $startdate = '<div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content) . '</div></div>';
-         }
-      }
-      else {
-        if($view->current_display == 'page_1') {
-          $startdate = '<div class="wrapper">' . t('All Day Event') . '</div>';
         }
+        // So this is an "All Day" event.
         else {
-          $startdate = '<div class="node-start-date"><h5>' . t('All Day Event') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content, FALSE) . '</div></div>';
+          $startdate = '<div class="node-start-date"><h5>' . t('All Day Event') . '</h5><div class="date-data">'. smc_base_format_timestamp($start_time, FALSE) . '</div></div>';
+          // On the calendar, it should say "All Day Event", no need to repeat the date.
+          if ($view->current_display == 'page_1') {
+            $startdate = '<div class="wrapper date-data"><h5 class="all-day">' . t('All Day Event') . '</h5></div>';
+          }
         }
+        // In either case, end date is not shown.
+        $enddate = '';
       }
-      $enddate = '';
-    }
-    else {
-      // start date
-      if (isset($vars['fields']['search_api_multi_aggregation_9']->content) && strlen($vars['fields']['search_api_multi_aggregation_9']->content) >= 1) {
-        if (format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'g:i a') == '12:00 am') {
-          $all_day_event = '<div class="date-data">'. format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'l, M j, Y') . ' (' . t('All Day') . ')</div></div>';
-        }
-        else if (isset($vars['fields']['search_api_multi_aggregation_10']->content) && strlen($vars['fields']['search_api_multi_aggregation_10']->content) >= 1 and format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'Y-m-d') != format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'Y-m-d')) {
-          $all_day_event = '</h5><div class="date-data">'. format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'l, M j, Y g:i:a') . '</div></div>';
-        }
-        else {
-          $startdate =  '<div class="wrapper">' . format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'g:i a') . "</div>";
-        } 
-      }
+      // Start time is different than end time.
       else {
-        // remove it then
-        $startdate = '';
-        unset($vars['fields']['search_api_multi_aggregation_9']);
-      }
-      // end date
-      if (isset($vars['fields']['search_api_multi_aggregation_10']->content) && strlen($vars['fields']['search_api_multi_aggregation_10']->content) >= 1) {
-        if (format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'Y-m-d') != format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'Y-m-d')) {
-          if (format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'g:i a') == '12:00 am') {
-            $all_day_event.= ' ' . t('to') . ' <div class="date-data">'. format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'l, M j, Y') . ' (' . t('All Day') . ')</div></div>';
-          }   
-          else {
-            $all_day_event.= t('to') . ' <div class="date-data">'. format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'l, M j, Y g:i:a')  . '</div></div>';
-          } 
+        $startdate = '<div class="node-start-date"><h5>' . t('From') . '</h5><div class="date-data">'. smc_base_format_timestamp($start_time) . '</div></div>';
+        $enddate = '<div class="node-end-date"><h5>' . t('To') . '</h5><div class="date-data">'. smc_base_format_timestamp($end_time) . '</div></div>';
+        // The calendar page has slightly different markup, and only displays time.
+        if ($view->current_display == 'page_1') {
+          $startdate = '<div class="node-start-date"><h5>' . t('Start Time') . '</h5><div class="date-data">'. format_date($start_time, 'custom', 'g:ia') . '</div></div>';
+          $enddate = '<div class="node-end-date"><h5>' . t('End') . '</h5><div class="date-data">'. format_date($end_time, 'custom', 'g:ia') . '</div></div>';
         }
-        else {
-          $enddate = '<div class="wrapper">' . format_date($vars['fields']['search_api_multi_aggregation_10']->content, 'custom', 'g:i a') . '</div>';
-       }
-      }
-      else {
-        // remove it then
-        unset($vars['fields']['search_api_multi_aggregation_10']);
       }
     }
 
-
-    if($view->current_display == 'panel_pane_4') {
-      unset($vars['fields']['dateinfo']);
-      // unset the original date field(s)
-    }
-    else {
-      // make the date into a new object that is usable
-      $vars['fields']['dateinfo'] = new stdClass();
-      if(empty($all_day_event)) {
-        $vars['fields']['dateinfo']->content = '<div class="node-date clearfix"><div class="start"><h5>' . t('Start Time') . ':</h5><span>' . $startdate . '</span></div>';
-        if(!empty($enddate)) { 
-          $vars['fields']['dateinfo']->content.= '<div class="end"><h5>' .  t('End') . ':</h5><span>'. $enddate . '</span></div></div>';
-        }
-      }
-      else {
-          $vars['fields']['dateinfo']->content = '<div class="node-date clearfix"><div class="start"><h5>' . t('Date') . ':</h5><div class="node-date clearfix"><div class="start">' . $all_day_event . '</div></div></div>';
-      }
-      $vars['fields']['dateinfo']->label_html = '';
-      $vars['fields']['dateinfo']->wrapper_prefix = '';
-      $vars['fields']['dateinfo']->wrapper_suffix = ''; 
-    }
-
-    unset($vars['fields']['search_api_multi_aggregation_9']);
-    unset($vars['fields']['search_api_multi_aggregation_10']);
+    // make the date into a new object that is usable
+    $vars['fields']['dateinfo'] = new stdClass();
+    $vars['fields']['dateinfo']->content = '<div class="node-date clearfix">' . $startdate . $enddate . '</div>';
+    $vars['fields']['dateinfo']->label_html = '';
+    $vars['fields']['dateinfo']->wrapper_prefix = '';
+    $vars['fields']['dateinfo']->wrapper_suffix = '';
 
     // make the more link actually an object that is expected
-    $more_info = "<div class=\"event-more-info\">
-	<div class=\"event-page\"><a href=\"" . strip_tags($vars['fields']['url']->content) . "\">Visit Event page</a></div>
-	<div class=\"event-add-calendar\"><a href=\"\">Add to Calendar</a></div>
-	<div class=\"event-hide-more-info\"><a href=\"\">Hide info</a></div>
-</div>";
-    unset($vars['fields']['url']);
-
-    if($view->current_display == 'page_1') {
-      // Addded extra image for event day - replace for new image from SOLR pending
-      //$vars['fields']['search_api_multi_aggregation_2_1'] = $vars['fields']['search_api_multi_aggregation_2'];
-      unset($vars['fields']['more_link']);
-    }
-
     $vars['fields']['readmore'] = new stdClass();
-    $vars['fields']['readmore']->content = $vars['fields']['more_link'] . $more_info; 
+    $vars['fields']['readmore']->content = $vars['fields']['more_link'];
     $vars['fields']['readmore']->label_html = '';
     $vars['fields']['readmore']->wrapper_prefix = '';
-    $vars['fields']['readmore']->wrapper_suffix = ''; 
+    $vars['fields']['readmore']->wrapper_suffix = '';
 
     // Now we need to unset the readmore link on certain display modes
     // Curated List Display Mode
     if ($view->current_display == 'block_2') {
       unset($vars['fields']['readmore']);
+    }
+
+    // The Calendar display template uses a lot of the unset variables below.
+    if ($view->current_display == 'page_1') {
+      // Click-expanding behavior js.
+      drupal_add_js(drupal_get_path('module', 'opensanmateo_search') . '/js/events.js');
+
+      // Get out of this overbearing preprocess function before all the fields
+      // are unset.
+
+      return;
     }
 
     // we need to ensure that in the panels pane these items are removed
@@ -537,6 +481,9 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     unset($vars['fields']['search_api_multi_aggregation_19']); // author url
     unset($vars['fields']['search_api_multi_aggregation_3']); // author name
     unset($vars['fields']['nothing']); // wtf
+    // unset the original date field(s)
+    unset($vars['fields']['search_api_multi_aggregation_9']);
+    unset($vars['fields']['search_api_multi_aggregation_10']);
 
     // get rid of the original more link as we've formatted it above as an object to properly render.
     unset($vars['fields']['more_link']); // morelink
