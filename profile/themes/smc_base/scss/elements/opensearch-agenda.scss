@@ -1,4 +1,7 @@
 @import "vars.scss";
+@import "compass/css3/transition";
+@import "compass/css3/border-radius";
+@import "compass/css3/appearance";
 
 .pane-opensanmateo-search-panel-pane-4 {
   header {
@@ -114,18 +117,22 @@
   }
 }
 
-.view-opensanmateo-search {
 
+// Calendar Page
+.view-opensanmateo-search.view-display-id-page_1 {
+  position: relative;
   .view-filters {
     padding-left: 140px;
     padding-top: 10px;
-
+    .views-exposed-widget {
+      padding-right: 0;
+    }
     .form-item {
       float: left;
       background: #f0f5f9;
       height: 37px;
       position: relative;
-      margin-left: 15px;
+      margin: 0 0 10px 10px;
 
       &:after {
         content: "";
@@ -175,15 +182,34 @@
         color: $primaryBlue;
       }
     }
-
+    .form-item-search-api-site-hash {
+      width: 165px;
+      label {
+        display: inline-block;
+        padding: 0 5px;
+        font-weight: 100;
+        .form-required {
+          display: none;
+        }
+      }
+      select#edit-search-api-site-hash {
+        display: inline-block;
+        width: 115px;
+        @include appearance(none);
+        font-size: .9em;
+      }
+    }
     .form-submit {
       margin-top: .25em;
+      margin-left: 8px;
     }
   }
 
   .attachment-before {
-    float: right;
-    width: 25%;
+    position: absolute;
+    right: 0;
+    width: 280px;
+    z-index: 100;
 
     .group-by-day {
       width: auto;
@@ -193,20 +219,22 @@
       .date {
         margin-left: 0;
         text-transform: none;
-        position: relative;
+        font-weight: 100;
+        font-size: 1.5em;
+        font-family: 'Trade Gothic W01 Roman', 'Helvetica Neue', Arial, Helvetica;
+        color: #38939b;
+        line-height: 1.5em;
       }
     }
 
     .controls {
       float: right;
-      width: 25px;
-      height: 25px;
-      background: rgba(3, 108, 182, 0.95);
+      width: 40px;
+      height: 40px;
+      background: rgba(3, 108, 182, 0.95) no-repeat center;
       margin: 0 1px;
-      background-repeat: no-repeat;
-      background-position: center;
       font-size: 0;
-
+      @include border-radius(3px);
       a {
         width: 100%;
         height: 100%;
@@ -220,6 +248,10 @@
 
     .right-arrow {
       background-image: url("../images/right_arrow.png");
+    }
+    .view-display-id-attachment_1 {
+      clear: right;
+      padding-top: 15px;
     }
 
     .view-content {
@@ -246,7 +278,13 @@
         .calendar-day-head{
           padding: .75em .75em .75em 1em;
         }
-
+        .day-number:hover {
+          background-color: $primaryTeal;
+          color: white;
+          a, a:hover, a:focus {
+            color: white;
+          }
+        }
         p.mti_font_element {
           display: none;
         }
@@ -291,58 +329,61 @@
     width: 100%;
   }
 
-  .group-by-day {
-    width: 90%;
-    margin-bottom: 15px;
-    padding-left: 1em;
-    margin-left: 10%;
-    font-weight: bold;
-    font-size: 1.15em;
-    font-family: 'Trade Gothic W01 Roman', 'Helvetica Neue', Arial, Helvetica;
+  .view-content > h3 {
     position: relative;
+    margin-top: 24px;
+    font-weight: bold;
+    font-size: 1.5em;
+    font-family: 'Trade Gothic W01 Roman', 'Helvetica Neue', Arial, Helvetica;
+    color: #38939b;
+    text-transform: none;
 
     .day-of-week {
-      float: left;
+      display: inline-block;
+      margin-right: 15px;
       color: #38939b;
-      transform: translateX(-125%);
+      //transform: translateX(-125%);
+      font-weight: bold;
     }
 
     .date {
-      color: #38939b;
-      text-transform: uppercase;
+      display: inline-block;  
       font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
       font-weight: 100;
-      margin-bottom: 0;
-      padding-top: 3px;
-      position: absolute;
     }
   }
 
   .universal-teaser {
     border: none;
   }
-  .views-row {
+  div.views-row {
     padding-bottom: 0px;
     padding-top: 0px;
     padding-right: 0px;
   }
   .left-col {
-    width: 10%;
+    width: 12%;
+    min-width: 100px;
     float: left;
     padding-top: 16px;
-    .time {
-      color: #036cb6;
-    }
+    padding-bottom: 24px;
+    color: $primaryBlue;
+    font-size: 1.2em;
   }
+  
   .right-col {
-    width: 90%;
+    width: 58%;
     float: left;
     border: 1px solid rgba(3, 108, 182, 0.1);
     border-top: 1px solid rgba(3, 108, 182, 0.1);
+    @include transition-property(all);
+    @include transition-duration(0.5s);
 
     &:hover {
       background: #E7EDED;
       cursor: pointer;
+      @include transition-property(all);
+      @include transition-duration(0.2s);
     }
 
     .node-teaser {
@@ -377,84 +418,188 @@
       }
     }
     header {
-      width: 72%;
-      float: left;
       padding-top: 16px;
-      margin-left: 10px;
+      margin-left: 24px;
+      float: left;
 
       h4 {
-        font-size: 1.15em;
+        font-size: 1.2em;
       }
     }
-    .aggregated-node-thumbnail {
-      float: right;
-      margin-top: 0px;
-      width: 22%;
-      height: 160px;
+    .node-thumbnail {
+      width: 160px;
+      height: 165px;
+      max-height: none;
       overflow: hidden;
-
+      margin: 0 0 0 12px;
+      float: right;
+      border: none;
       img {
-        height: 100%;
-        max-width: inherit;
-        float: right;
+        min-width: 100%;
+        min-height: 100%;
       }
+      @include transition-property(all);
+      @include transition-duration(0.5s);
     }
-    .aggregated-node-thumbnail-selected {
-      float: none;
-      margin-top: 0px;
-      width: 100%;
-      height: auto;
+    .description {
+      display: none;
     }
-    .node-location {
+    .location {
+      display: block;
       float: left;
-      width: 45%;
-      margin-left: 10px;
-
-      h5 {
-        float: left;
-        margin-right: 10px;
-        min-height: 90px;
+      clear: left;
+      width: 230px;
+      margin-left: 4px;
+      min-height: 10px;
+      &:after {
+        content: none;
       }
-      ul {
-        margin-top: 4px;
+      h5 {
+        width: 80px;
+        float: left;
+        margin: 0 10px 0 0;
+        min-height: 60px;
+        text-align: right;
+        text-transform: none;
+        font-size: 1em;
+        &:after {
+          content: ":";
+        }
+      }
+      ul.adr {
+        margin-top: 2px;
+        list-style: none;
+        list-style-type: none;
+        font-weight: normal;
+        li {
+          font-weight: 100;
+        }
       }
     }
     .node-date {
       float: left;
       margin-left: 15px;
-      width: 25%;
-      .start, .end {
+      width: 230px;
+      .node-start-date, .node-end-date {
         clear: both;
-        overflow: hidden;
         display: block;
       }
       h5  {
         float: left;
+        width: 80px;
+        margin: 0;
         display: block;
-      }
-      span {
-        float: left;
-        margin-left: 5px;
-
-        .wrapper {
-          line-height: 30px;
+        text-align: right;
+        text-transform: none;
+        font-size: 1em;
+        line-height: 1.5em;
+        &:after {
+          content: ":";
+        }
+        &.all-day:after {
+          content: none;
         }
       }
+      .date-data {
+        float: left;
+        margin-left: 10px;
+        line-height: 1.5em;
+        font-family: $light;
+        font-weight: 100;
+      }
+    }
+    .read-more-wrapper {
+      display: none;
     }
   }
 
   .views-row-selected {
-    .aggregated-node-thumbnail {
-      max-height: 250px;
+    .node-thumbnail {
+      float: none;
+      margin: 0 0 20px 0;
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      max-width: 100%;
+      text-align: right;
+      @include transition-property(all);
+      @include transition-duration(0.5s);
+      img {
+        right: 0;
+      }
     }
-
     .right-col {
       &:hover {
         background: #fff;
       }
     }
+    header {
+      float: none;
+    }
+    .description {
+      display: block;
+      width: 100%;
+      margin: 10px 0 24px 0;
+      padding: 0 15px;
+      line-height: 1.5em;
+      font-weight: 100;
+    }
+    .read-more-wrapper {
+      display: block;
+      position: static;
+      width: 100%;
+      padding: 0 20px 20px;
+      a.read-more {
+        @include button;
+        @include buttonBlue;
+        float: right;
+      }
+      .read-more-title {
+        width: auto;
+        height: auto;
+        position: static;
+        top: auto;
+      }
+    }
   }
 
+}
+// Hide the calendar attachment for smaller screens.
+@media screen and (max-width:1010px) {
+  .view-opensanmateo-search.view-display-id-page_1 {
+    .attachment-before {
+      position: static;
+      margin: 0 auto;
+      right: auto;
+    }
+
+    .views-row.first-row div.right-col {
+      width: 100%;
+    }
+    .views-row div.right-col {
+      width: 100%;
+    }
+  }
+}
+@media screen and (max-width:385px) {
+  .view-opensanmateo-search.view-display-id-page_1 {
+    .view-filters {
+      padding-left: 120px;
+    }
+    .attachment-before {
+      display: none;
+    }
+    .views-row {
+      padding-left: 0;
+    }
+    .right-col {
+      .node-thumbnail {
+        margin: 0;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
 }
 
 .page-events {
@@ -466,8 +611,8 @@
     float: left;
     width: inherit;
     color: $primaryTeal;
+    font-size: 2em;
     font-weight: 100;
+    text-transform: uppercase;
   }
-
-
 }
