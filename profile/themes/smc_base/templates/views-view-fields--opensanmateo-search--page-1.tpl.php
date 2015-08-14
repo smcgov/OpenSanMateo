@@ -48,7 +48,7 @@ $readmore = $fields['readmore']->content;
     </header>
 
     <div class="description"><?php print $description; ?></div>
-    <?php print $department; ?>
+
     <span class="location"><?php print $location; ?></span>
     <?php print $date; ?>
     <?php print $readmore; ?>
