@@ -561,7 +561,7 @@ if (file_exists('/var/www/site-php')) {
 $conf['sanmateo_is_master'] = FALSE;
 
 //set site homepage
-$conf['smc_logo_link'] = 'http://first5.smcgov.org';
+$conf['smclink'] = 'http://first5.smcgov.org';
 
 // Load common settings for all sites
 require('./sites/default/settings.common.inc');
