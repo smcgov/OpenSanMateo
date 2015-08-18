@@ -80,7 +80,7 @@ function smc_base_process_page(&$variables) {
 
   $variables['header_logo'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-header.png';
 
-  if ($conf['smc_logo_link']) {
+  if (isset($conf['smc_logo_link'])) {
     $variables['smclink'] = $conf['smc_logo_link'];
   }
   else {
