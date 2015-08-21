@@ -449,6 +449,8 @@
       img {
         min-width: 100%;
         min-height: 100%;
+        max-width: none;
+        max-height: 100%
       }
       @include transition-property(all);
       @include transition-duration(0.5s);
@@ -596,7 +598,8 @@
 @media screen and (max-width:385px) {
   .view-opensanmateo-search.view-display-id-page_1 {
     .view-filters {
-      padding-left: 120px;
+      clear: left;
+      padding-left: 0;
     }
     .attachment-before {
       display: none;
@@ -609,6 +612,10 @@
         margin: 0;
         width: 100%;
         height: auto;
+
+        img {
+          max-width: 100%;
+        }
       }
     }
   }
