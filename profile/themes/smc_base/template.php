@@ -378,8 +378,10 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     // Adjust the header (title and type)
     // It should be safe here to use prefix on one and suffix on the other because if
     // one is missing (type or title), there are really big problems with the node anyway
-    $vars['fields']['title']->wrapper_prefix = '<header class="group clearfix">' . $vars['fields']['type']->wrapper_prefix;
-    $vars['fields']['type']->wrapper_suffix = $vars['fields']['type']->wrapper_suffix . '</header>';
+    if (isset($vars['fields']) && isset($vars['fields']['type']) & isset($vars['fields']['title'])) {
+      $vars['fields']['title']->wrapper_prefix = '<header class="group clearfix">' . $vars['fields']['type']->wrapper_prefix;
+      $vars['fields']['type']->wrapper_suffix = $vars['fields']['type']->wrapper_suffix . '</header>';
+    }
 
     // Format byline
     if (isset($vars['fields']['search_api_multi_aggregation_3']->content) && strlen($vars['fields']['search_api_multi_aggregation_3']->content) >= 1) {
