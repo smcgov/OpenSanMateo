@@ -186,6 +186,10 @@ projects[acquia_connector][type] = module
 projects[acquia_connector][subdir] = contrib
 projects[acquia_connector][version] = 2.15
 
+projects[acquia_search_multi_subs][type] = module
+projects[acquia_search_multi_subs][subdir] = contrib
+projects[acquia_search_multi_subs][version] = 1.4
+
 projects[memcache][type] = module
 projects[memcache][subdir] = contrib
 projects[memcache][version] = 1.5
