@@ -445,6 +445,11 @@ function smc_base_preprocess_views_view_fields(&$vars) {
         }
       }
     }
+    else {
+      // Avoid php notices.
+      $startdate = '';
+      $enddate = '';
+    }
 
     // make the date into a new object that is usable
     $vars['fields']['dateinfo'] = new stdClass();
