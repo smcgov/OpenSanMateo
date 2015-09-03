@@ -411,6 +411,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     // so the field will exist, but the "content" property will be NULL.
     $start_time = $vars['fields']['search_api_multi_aggregation_9']->content;
     $end_time = $vars['fields']['search_api_multi_aggregation_10']->content;
+
     // Only perform this if we have time data (events only).
     if ($start_time && $end_time) {
       // If start and end date are the same.
@@ -482,6 +483,11 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       return;
     }
 
+    // Not sure how this is created but we don't need it.
+    if ($view->current_display == 'panel_pane_4') {
+      unset($vars['fields']['url']);
+    }
+
     // we need to ensure that in the panels pane these items are removed
     // as the views rewrite groups them all into one field (street)
     unset($vars['fields']['search_api_multi_aggregation_4']); // state
@@ -493,6 +499,7 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     unset($vars['fields']['search_api_multi_aggregation_3']); // author name
     unset($vars['fields']['nothing']); // wtf
     // unset the original date field(s)
+    unset($vars['fields']['search_api_multi_aggregation_9_1']);
     unset($vars['fields']['search_api_multi_aggregation_9']);
     unset($vars['fields']['search_api_multi_aggregation_10']);
 

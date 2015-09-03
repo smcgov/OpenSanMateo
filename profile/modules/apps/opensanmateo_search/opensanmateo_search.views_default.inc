@@ -880,7 +880,6 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_9']['table'] = 'search_api_index_san_mateo_content_index';
   $handler->display->display_options['fields']['search_api_multi_aggregation_9']['field'] = 'search_api_multi_aggregation_9';
   $handler->display->display_options['fields']['search_api_multi_aggregation_9']['label'] = '';
-  $handler->display->display_options['fields']['search_api_multi_aggregation_9']['exclude'] = TRUE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_9']['element_type'] = '0';
   $handler->display->display_options['fields']['search_api_multi_aggregation_9']['element_class'] = 'node-start-date';
   $handler->display->display_options['fields']['search_api_multi_aggregation_9']['element_label_colon'] = FALSE;
@@ -891,7 +890,6 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_10']['table'] = 'search_api_index_san_mateo_content_index';
   $handler->display->display_options['fields']['search_api_multi_aggregation_10']['field'] = 'search_api_multi_aggregation_10';
   $handler->display->display_options['fields']['search_api_multi_aggregation_10']['label'] = '';
-  $handler->display->display_options['fields']['search_api_multi_aggregation_10']['exclude'] = TRUE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_10']['element_type'] = '0';
   $handler->display->display_options['fields']['search_api_multi_aggregation_10']['element_class'] = 'node-end-date';
   $handler->display->display_options['fields']['search_api_multi_aggregation_10']['element_label_colon'] = FALSE;
