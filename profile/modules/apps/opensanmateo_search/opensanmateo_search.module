@@ -711,8 +711,8 @@ function opensanmateo_search_timestamp_convert($form, &$form_state) {
   if (isset($form_state['values']['start_date'])) {
     $form_state['values']['start_date'] = strtotime($form_state['values']['start_date']);
   }
-  if (isset($form_state['values']['end_date'])) {
-    $form_state['values']['end_date'] = strtotime($form_state['values']['end_date']);
+  if (isset($form_state['values']['to_date'])) {
+    $form_state['values']['to_date'] = strtotime($form_state['values']['to_date']);
   }
 }
 
