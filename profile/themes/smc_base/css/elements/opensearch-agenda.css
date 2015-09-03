@@ -1415,7 +1415,7 @@ ul.button-test {
     right: 0;
     top: 92px;
     width: 280px;
-    z-index: 100; }
+    z-index: 2; }
     /* line 181, ../../scss/elements/opensearch-agenda.scss */
     .view-opensanmateo-search.view-display-id-page_1 .attachment-before .group-by-day {
       width: auto;
