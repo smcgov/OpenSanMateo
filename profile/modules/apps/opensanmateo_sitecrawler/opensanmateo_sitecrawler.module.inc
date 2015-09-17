@@ -51,7 +51,7 @@ function opensanmateo_sitecrawler_menu() {
     'description' => 'Delete existing crawler.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('opensanmateo_sitecrawler_admin_item_delete_form', 5),
-    'access arguments' => array('administer site configuration'),
+    'access callback' => 'opensanmateo_user_one',
     'type' => MENU_NORMAL_ITEM,
   );
   
@@ -60,11 +60,19 @@ function opensanmateo_sitecrawler_menu() {
     'description' => 'Delete existing crawler.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('opensanmateo_sitecrawler_admin_item_run_form', 5),
-    'access arguments' => array('administer site configuration'),
+    'access callback' => 'opensanmateo_user_one',
     'type' => MENU_NORMAL_ITEM,
   );
    
   return $items;
+}
+
+/**
+ * Access callback that grants only user 1 access.
+ */
+function opensanmateo_user_one() {
+  global $user;
+  return ((int) $user->uid === 1) ? TRUE : FALSE;
 }
 
 /**
@@ -672,24 +680,19 @@ function theme_opensanmateo_sitecrawler_admin_form($variables) {
     // drupal_add_tabledrag call.
     $form['crawlers'][$id]['weight']['#attributes']['class'] = array('crawler-item-weight');
 
-    // Add each element of the $form data to the $rows array using drupal_render()
-    // to generate the final html markup for each.
-    $rows[] = array(
-      'data' => array(
-        drupal_render($form['crawlers'][$id]['name']),
-        drupal_render($form['crawlers'][$id]['url']),
-        drupal_render($form['crawlers'][$id]['enabled']),
-        l(
-          'edit',
-          'admin/config/system/opensanmateo_sitecrawler/' . $id,
-          array(
-            'query' => array(
-              'destination' => 'admin/config/system/opensanmateo_sitecrawler'
-            )
+    $links = array();
+    $links[] = l(
+      'edit',
+      'admin/config/system/opensanmateo_sitecrawler/' . $id,
+        array(
+          'query' => array(
+            'destination' => 'admin/config/system/opensanmateo_sitecrawler'
           )
         )
-        . ' '
-        . l(
+      );
+      // Only give user one access to run and delete
+      if (opensanmateo_user_one()) {
+        $links[] = l(
           'delete',
           'admin/config/system/opensanmateo_sitecrawler/delete/' . $id,
           array(
@@ -697,9 +700,9 @@ function theme_opensanmateo_sitecrawler_admin_form($variables) {
               'destination' => 'admin/config/system/opensanmateo_sitecrawler'
             )
           )
-        )
-        . ' '
-        . l(
+        );
+
+        $links[] = l(
           'run',
           'admin/config/system/opensanmateo_sitecrawler/run/' . $id,
           array(
@@ -707,7 +710,16 @@ function theme_opensanmateo_sitecrawler_admin_form($variables) {
               'destination' => 'admin/config/system/opensanmateo_sitecrawler'
             )
           )
-        ),
+        );
+      }
+    // Add each element of the $form data to the $rows array using drupal_render()
+    // to generate the final html markup for each.
+    $rows[] = array(
+      'data' => array(
+        drupal_render($form['crawlers'][$id]['name']),
+        drupal_render($form['crawlers'][$id]['url']),
+        drupal_render($form['crawlers'][$id]['enabled']),
+        implode(' ', $links),
         drupal_render($form['crawlers'][$id]['weight']),
       ),
       // To support the tabledrag behaviour, assign each <tr> of the
