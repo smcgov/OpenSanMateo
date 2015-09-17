@@ -21,6 +21,9 @@
  *     configured element type.
  * - $row: The raw result object from the query, with all data it fetched.
  *
+ * This template only differs from the default views template in that it checks
+ * for $field->content and does not print separator, wrapper, label etc.
+ *
  * @ingroup views_templates
  */
 ?>
@@ -29,12 +32,12 @@
     <?php if (!empty($field->separator)): ?>
       <?php print $field->separator; ?>
     <?php endif; ?>
-  
+
     <?php print $field->wrapper_prefix; ?>
     <?php print $field->label_html; ?>
-    
+
     <?php print $field->content; ?>
-    
+
     <?php print $field->wrapper_suffix; ?>
   <?php endif; ?>
 <?php endforeach; ?>

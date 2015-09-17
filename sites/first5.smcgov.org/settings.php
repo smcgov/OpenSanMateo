@@ -560,6 +560,9 @@ if (file_exists('/var/www/site-php')) {
 // Set master-client settings that define this as the master site
 $conf['sanmateo_is_master'] = FALSE;
 
+//set site homepage
+$conf['smclink'] = 'http://first5.smcgov.org';
+
 // Load common settings for all sites
 require('./sites/default/settings.common.inc');
 

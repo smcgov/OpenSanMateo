@@ -22,11 +22,13 @@ class OpenSanMateoSearchViewsAutocomplete extends SearchApiViewsHandlerFilterOpt
   }
 
   public function value_form(&$form, &$form_state) {
+    $min_size = isset($this->definition['options']) ? min(4, count($this->definition['options'])) : 4;
     $form['value'] = array(
       '#type' => 'textfield',
+      '#value_callback' => 'opensanmateo_form_type_textfield_value',
       '#title' => empty($form_state['exposed']) ? t('Value') : '',
       '#multiple' => TRUE,
-      '#size' => min(4, count($this->definition['options'])),
+      '#size' => $min_size,
       '#default_value' => isset($this->value) ? $this->value : array(),
     );
     // Hide the value box if operator is 'empty' or 'not empty'.

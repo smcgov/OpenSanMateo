@@ -82,6 +82,7 @@
   	
   	text-align: center;
   	margin-right: 0;
+    margin-top: 0;
   	background-color: $primaryBlue;
   	color: white;
   	font-size: 1em;
@@ -139,9 +140,6 @@
     }
   }
 }
-
-
-
 
 @media all and (min-width: $tablet) {
   /* Header Search */

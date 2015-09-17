@@ -7,20 +7,16 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function opensanmateo_search_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function opensanmateo_search_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "facetapi" && $api == "facetapi_defaults") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "panels_mini" && $api == "panels_default") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -29,7 +25,7 @@ function opensanmateo_search_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function opensanmateo_search_views_api() {
+function opensanmateo_search_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
@@ -95,9 +91,7 @@ function opensanmateo_search_default_search_api_index() {
         "search_opensanmateo_image" : {
           "status" : 1,
           "weight" : "-50",
-          "settings" : { "image_style" : {
-            "__default" : "list-page-thumbnail"
-          } }
+          "settings" : { "image_style" : { "__default" : "flexslider_full" } }
         },
         "search_api_alter_bundle_filter" : {
           "status" : 0,

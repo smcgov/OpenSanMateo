@@ -1,25 +1,1292 @@
-/* line 2, ../../scss/elements/opensearch-agenda.scss */
+/* COPY/PASTE following lines to each new scss file
+
+// default variables
+@import "vars.scss";
+
+// All default/mobile styles will appear before the following media queries.
+
+@media all and (min-width: $tablet) {
+
+}
+
+@media all and (min-width: $desktop) {
+
+}
+
+*/
+/* Fonts */
+/* Media Queries */
+/* COPY/PASTE following lines to each new scss file
+
+// default variables
+@import "vars.scss";
+
+// All default/mobile styles will appear before the following media queries.
+
+@media all and (min-width: $tablet) {
+
+}
+
+@media all and (min-width: $desktop) {
+
+}
+
+*/
+/* Fonts */
+/* Media Queries */
+/* line 173, ../../scss/elements/buttons.scss */
+a.button-blue-large {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  position: relative;
+  padding: 1.1em 5.5em 1em 1.2em;
+  overflow: hidden;
+  *background-color: #036cb6;
+  background-color: rgba(3, 108, 182, 0.95);
+  font-size: 1.1em; }
+  /* line 23, ../../scss/elements/buttons.scss */
+  a.button-blue-large:hover {
+    padding: .75em 1em; }
+  /* line 35, ../../scss/elements/buttons.scss */
+  a.button-blue-large:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 68, ../../scss/elements/buttons.scss */
+  a.button-blue-large:before {
+    z-index: 2;
+    content: '\25b6';
+    color: rgba(0, 0, 0, 0.3);
+    text-align: right;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    position: absolute;
+    height: 100%;
+    left: auto;
+    top: 0;
+    right: 8%;
+    line-height: 2.4;
+    font-size: 140%;
+    width: 60px; }
+  /* line 89, ../../scss/elements/buttons.scss */
+  a.button-blue-large:after {
+    z-index: 1;
+    width: 30%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    right: 0;
+    top: 0;
+    margin: -5px 0 0 -5px;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: rotate(-20deg);
+    -moz-transform-origin: 0 0;
+    -moz-transform: rotate(-20deg);
+    -ms-transform-origin: 0 0;
+    -ms-transform: rotate(-20deg);
+    transform-origin: 0 0;
+    transform: rotate(-20deg); }
+  /* line 108, ../../scss/elements/buttons.scss */
+  a.button-blue-large:hover {
+    padding: 1.1em 5.5em 1em 1.2em; }
+  /* line 112, ../../scss/elements/buttons.scss */
+  a.button-blue-large:hover:after {
+    width: 35%; }
+  /* line 116, ../../scss/elements/buttons.scss */
+  a.button-blue-large:hover:before {
+    right: 10%; }
+  /* line 126, ../../scss/elements/buttons.scss */
+  a.button-blue-large:hover {
+    *background-color: #036cb6;
+    background-color: #036cb6; }
+  /* line 131, ../../scss/elements/buttons.scss */
+  a.button-blue-large:active {
+    *background-color: #036cb6;
+    background-color: rgba(3, 108, 182, 0.9); }
+
+/* line 179, ../../scss/elements/buttons.scss */
+a.button-teal-large {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  position: relative;
+  padding: 1.1em 5.5em 1em 1.2em;
+  overflow: hidden;
+  *background-color: #38939b;
+  background-color: rgba(56, 147, 155, 0.95);
+  font-size: 1.1em; }
+  /* line 23, ../../scss/elements/buttons.scss */
+  a.button-teal-large:hover {
+    padding: .75em 1em; }
+  /* line 35, ../../scss/elements/buttons.scss */
+  a.button-teal-large:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 68, ../../scss/elements/buttons.scss */
+  a.button-teal-large:before {
+    z-index: 2;
+    content: '\25b6';
+    color: rgba(0, 0, 0, 0.3);
+    text-align: right;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    position: absolute;
+    height: 100%;
+    left: auto;
+    top: 0;
+    right: 8%;
+    line-height: 2.4;
+    font-size: 140%;
+    width: 60px; }
+  /* line 89, ../../scss/elements/buttons.scss */
+  a.button-teal-large:after {
+    z-index: 1;
+    width: 30%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    right: 0;
+    top: 0;
+    margin: -5px 0 0 -5px;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: rotate(-20deg);
+    -moz-transform-origin: 0 0;
+    -moz-transform: rotate(-20deg);
+    -ms-transform-origin: 0 0;
+    -ms-transform: rotate(-20deg);
+    transform-origin: 0 0;
+    transform: rotate(-20deg); }
+  /* line 108, ../../scss/elements/buttons.scss */
+  a.button-teal-large:hover {
+    padding: 1.1em 5.5em 1em 1.2em; }
+  /* line 112, ../../scss/elements/buttons.scss */
+  a.button-teal-large:hover:after {
+    width: 35%; }
+  /* line 116, ../../scss/elements/buttons.scss */
+  a.button-teal-large:hover:before {
+    right: 10%; }
+  /* line 142, ../../scss/elements/buttons.scss */
+  a.button-teal-large:hover {
+    *background-color: #38939b;
+    background-color: #38939b; }
+  /* line 147, ../../scss/elements/buttons.scss */
+  a.button-teal-large:active {
+    *background-color: #38939b;
+    background-color: rgba(56, 147, 155, 0.9); }
+
+/* line 185, ../../scss/elements/buttons.scss */
+a.button-green-large {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  position: relative;
+  padding: 1.1em 5.5em 1em 1.2em;
+  overflow: hidden;
+  *background-color: #8dc63f;
+  background-color: rgba(141, 198, 63, 0.95);
+  font-size: 1.1em; }
+  /* line 23, ../../scss/elements/buttons.scss */
+  a.button-green-large:hover {
+    padding: .75em 1em; }
+  /* line 35, ../../scss/elements/buttons.scss */
+  a.button-green-large:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 68, ../../scss/elements/buttons.scss */
+  a.button-green-large:before {
+    z-index: 2;
+    content: '\25b6';
+    color: rgba(0, 0, 0, 0.3);
+    text-align: right;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    position: absolute;
+    height: 100%;
+    left: auto;
+    top: 0;
+    right: 8%;
+    line-height: 2.4;
+    font-size: 140%;
+    width: 60px; }
+  /* line 89, ../../scss/elements/buttons.scss */
+  a.button-green-large:after {
+    z-index: 1;
+    width: 30%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    right: 0;
+    top: 0;
+    margin: -5px 0 0 -5px;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: rotate(-20deg);
+    -moz-transform-origin: 0 0;
+    -moz-transform: rotate(-20deg);
+    -ms-transform-origin: 0 0;
+    -ms-transform: rotate(-20deg);
+    transform-origin: 0 0;
+    transform: rotate(-20deg); }
+  /* line 108, ../../scss/elements/buttons.scss */
+  a.button-green-large:hover {
+    padding: 1.1em 5.5em 1em 1.2em; }
+  /* line 112, ../../scss/elements/buttons.scss */
+  a.button-green-large:hover:after {
+    width: 35%; }
+  /* line 116, ../../scss/elements/buttons.scss */
+  a.button-green-large:hover:before {
+    right: 10%; }
+  /* line 158, ../../scss/elements/buttons.scss */
+  a.button-green-large:hover {
+    *background-color: #8dc63f;
+    background-color: #8dc63f; }
+  /* line 163, ../../scss/elements/buttons.scss */
+  a.button-green-large:active {
+    *background-color: #8dc63f;
+    background-color: rgba(141, 198, 63, 0.9); }
+
+/* line 193, ../../scss/elements/buttons.scss */
+a.button-blue-default {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  position: relative;
+  padding: 1.1em 5.5em 1em 1.2em;
+  overflow: hidden;
+  *background-color: #036cb6;
+  background-color: rgba(3, 108, 182, 0.95);
+  font-size: 1em; }
+  /* line 23, ../../scss/elements/buttons.scss */
+  a.button-blue-default:hover {
+    padding: .75em 1em; }
+  /* line 35, ../../scss/elements/buttons.scss */
+  a.button-blue-default:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 68, ../../scss/elements/buttons.scss */
+  a.button-blue-default:before {
+    z-index: 2;
+    content: '\25b6';
+    color: rgba(0, 0, 0, 0.3);
+    text-align: right;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    position: absolute;
+    height: 100%;
+    left: auto;
+    top: 0;
+    right: 8%;
+    line-height: 2.4;
+    font-size: 140%;
+    width: 60px; }
+  /* line 89, ../../scss/elements/buttons.scss */
+  a.button-blue-default:after {
+    z-index: 1;
+    width: 30%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    right: 0;
+    top: 0;
+    margin: -5px 0 0 -5px;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: rotate(-20deg);
+    -moz-transform-origin: 0 0;
+    -moz-transform: rotate(-20deg);
+    -ms-transform-origin: 0 0;
+    -ms-transform: rotate(-20deg);
+    transform-origin: 0 0;
+    transform: rotate(-20deg); }
+  /* line 108, ../../scss/elements/buttons.scss */
+  a.button-blue-default:hover {
+    padding: 1.1em 5.5em 1em 1.2em; }
+  /* line 112, ../../scss/elements/buttons.scss */
+  a.button-blue-default:hover:after {
+    width: 35%; }
+  /* line 116, ../../scss/elements/buttons.scss */
+  a.button-blue-default:hover:before {
+    right: 10%; }
+  /* line 126, ../../scss/elements/buttons.scss */
+  a.button-blue-default:hover {
+    *background-color: #036cb6;
+    background-color: #036cb6; }
+  /* line 131, ../../scss/elements/buttons.scss */
+  a.button-blue-default:active {
+    *background-color: #036cb6;
+    background-color: rgba(3, 108, 182, 0.9); }
+
+/* line 199, ../../scss/elements/buttons.scss */
+a.button-teal-default {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  position: relative;
+  padding: 1.1em 5.5em 1em 1.2em;
+  overflow: hidden;
+  *background-color: #38939b;
+  background-color: rgba(56, 147, 155, 0.95);
+  font-size: 1em; }
+  /* line 23, ../../scss/elements/buttons.scss */
+  a.button-teal-default:hover {
+    padding: .75em 1em; }
+  /* line 35, ../../scss/elements/buttons.scss */
+  a.button-teal-default:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 68, ../../scss/elements/buttons.scss */
+  a.button-teal-default:before {
+    z-index: 2;
+    content: '\25b6';
+    color: rgba(0, 0, 0, 0.3);
+    text-align: right;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    position: absolute;
+    height: 100%;
+    left: auto;
+    top: 0;
+    right: 8%;
+    line-height: 2.4;
+    font-size: 140%;
+    width: 60px; }
+  /* line 89, ../../scss/elements/buttons.scss */
+  a.button-teal-default:after {
+    z-index: 1;
+    width: 30%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    right: 0;
+    top: 0;
+    margin: -5px 0 0 -5px;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: rotate(-20deg);
+    -moz-transform-origin: 0 0;
+    -moz-transform: rotate(-20deg);
+    -ms-transform-origin: 0 0;
+    -ms-transform: rotate(-20deg);
+    transform-origin: 0 0;
+    transform: rotate(-20deg); }
+  /* line 108, ../../scss/elements/buttons.scss */
+  a.button-teal-default:hover {
+    padding: 1.1em 5.5em 1em 1.2em; }
+  /* line 112, ../../scss/elements/buttons.scss */
+  a.button-teal-default:hover:after {
+    width: 35%; }
+  /* line 116, ../../scss/elements/buttons.scss */
+  a.button-teal-default:hover:before {
+    right: 10%; }
+  /* line 142, ../../scss/elements/buttons.scss */
+  a.button-teal-default:hover {
+    *background-color: #38939b;
+    background-color: #38939b; }
+  /* line 147, ../../scss/elements/buttons.scss */
+  a.button-teal-default:active {
+    *background-color: #38939b;
+    background-color: rgba(56, 147, 155, 0.9); }
+
+/* line 205, ../../scss/elements/buttons.scss */
+a.button-green-default {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  position: relative;
+  padding: 1.1em 5.5em 1em 1.2em;
+  overflow: hidden;
+  *background-color: #8dc63f;
+  background-color: rgba(141, 198, 63, 0.95);
+  font-size: 1em; }
+  /* line 23, ../../scss/elements/buttons.scss */
+  a.button-green-default:hover {
+    padding: .75em 1em; }
+  /* line 35, ../../scss/elements/buttons.scss */
+  a.button-green-default:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 68, ../../scss/elements/buttons.scss */
+  a.button-green-default:before {
+    z-index: 2;
+    content: '\25b6';
+    color: rgba(0, 0, 0, 0.3);
+    text-align: right;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    position: absolute;
+    height: 100%;
+    left: auto;
+    top: 0;
+    right: 8%;
+    line-height: 2.4;
+    font-size: 140%;
+    width: 60px; }
+  /* line 89, ../../scss/elements/buttons.scss */
+  a.button-green-default:after {
+    z-index: 1;
+    width: 30%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    right: 0;
+    top: 0;
+    margin: -5px 0 0 -5px;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: rotate(-20deg);
+    -moz-transform-origin: 0 0;
+    -moz-transform: rotate(-20deg);
+    -ms-transform-origin: 0 0;
+    -ms-transform: rotate(-20deg);
+    transform-origin: 0 0;
+    transform: rotate(-20deg); }
+  /* line 108, ../../scss/elements/buttons.scss */
+  a.button-green-default:hover {
+    padding: 1.1em 5.5em 1em 1.2em; }
+  /* line 112, ../../scss/elements/buttons.scss */
+  a.button-green-default:hover:after {
+    width: 35%; }
+  /* line 116, ../../scss/elements/buttons.scss */
+  a.button-green-default:hover:before {
+    right: 10%; }
+  /* line 158, ../../scss/elements/buttons.scss */
+  a.button-green-default:hover {
+    *background-color: #8dc63f;
+    background-color: #8dc63f; }
+  /* line 163, ../../scss/elements/buttons.scss */
+  a.button-green-default:active {
+    *background-color: #8dc63f;
+    background-color: rgba(141, 198, 63, 0.9); }
+
+/* line 213, ../../scss/elements/buttons.scss */
+a.button-blue-small {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  position: relative;
+  *background-color: #036cb6;
+  background-color: rgba(3, 108, 182, 0.95);
+  font-size: .85em;
+  padding: .75em 1em; }
+  /* line 23, ../../scss/elements/buttons.scss */
+  a.button-blue-small:hover {
+    padding: .75em 1em; }
+  /* line 35, ../../scss/elements/buttons.scss */
+  a.button-blue-small:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 126, ../../scss/elements/buttons.scss */
+  a.button-blue-small:hover {
+    *background-color: #036cb6;
+    background-color: #036cb6; }
+  /* line 131, ../../scss/elements/buttons.scss */
+  a.button-blue-small:active {
+    *background-color: #036cb6;
+    background-color: rgba(3, 108, 182, 0.9); }
+
+/* line 218, ../../scss/elements/buttons.scss */
+a.button-teal-small {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  position: relative;
+  *background-color: #38939b;
+  background-color: rgba(56, 147, 155, 0.95);
+  font-size: .85em;
+  padding: .75em 1em; }
+  /* line 23, ../../scss/elements/buttons.scss */
+  a.button-teal-small:hover {
+    padding: .75em 1em; }
+  /* line 35, ../../scss/elements/buttons.scss */
+  a.button-teal-small:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 142, ../../scss/elements/buttons.scss */
+  a.button-teal-small:hover {
+    *background-color: #38939b;
+    background-color: #38939b; }
+  /* line 147, ../../scss/elements/buttons.scss */
+  a.button-teal-small:active {
+    *background-color: #38939b;
+    background-color: rgba(56, 147, 155, 0.9); }
+
+/* line 223, ../../scss/elements/buttons.scss */
+a.button-green-small {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  position: relative;
+  *background-color: #8dc63f;
+  background-color: rgba(141, 198, 63, 0.95);
+  font-size: .85em;
+  padding: .75em 1em; }
+  /* line 23, ../../scss/elements/buttons.scss */
+  a.button-green-small:hover {
+    padding: .75em 1em; }
+  /* line 35, ../../scss/elements/buttons.scss */
+  a.button-green-small:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 158, ../../scss/elements/buttons.scss */
+  a.button-green-small:hover {
+    *background-color: #8dc63f;
+    background-color: #8dc63f; }
+  /* line 163, ../../scss/elements/buttons.scss */
+  a.button-green-small:active {
+    *background-color: #8dc63f;
+    background-color: rgba(141, 198, 63, 0.9); }
+
+/* line 230, ../../scss/elements/buttons.scss */
+a.accept-terms {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  position: relative;
+  *background-color: #8dc63f;
+  background-color: rgba(141, 198, 63, 0.95);
+  font-size: .85em;
+  padding: .75em 1em;
+  margin-top: 10px; }
+  /* line 23, ../../scss/elements/buttons.scss */
+  a.accept-terms:hover {
+    padding: .75em 1em; }
+  /* line 35, ../../scss/elements/buttons.scss */
+  a.accept-terms:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 158, ../../scss/elements/buttons.scss */
+  a.accept-terms:hover {
+    *background-color: #8dc63f;
+    background-color: #8dc63f; }
+  /* line 163, ../../scss/elements/buttons.scss */
+  a.accept-terms:active {
+    *background-color: #8dc63f;
+    background-color: rgba(141, 198, 63, 0.9); }
+
+/* line 237, ../../scss/elements/buttons.scss */
+a.do-not-accept-terms {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  position: relative;
+  *background-color: #38939b;
+  background-color: rgba(56, 147, 155, 0.95);
+  font-size: .85em;
+  padding: .75em 1em;
+  margin-top: 10px; }
+  /* line 23, ../../scss/elements/buttons.scss */
+  a.do-not-accept-terms:hover {
+    padding: .75em 1em; }
+  /* line 35, ../../scss/elements/buttons.scss */
+  a.do-not-accept-terms:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 142, ../../scss/elements/buttons.scss */
+  a.do-not-accept-terms:hover {
+    *background-color: #38939b;
+    background-color: #38939b; }
+  /* line 147, ../../scss/elements/buttons.scss */
+  a.do-not-accept-terms:active {
+    *background-color: #38939b;
+    background-color: rgba(56, 147, 155, 0.9); }
+
+/* line 245, ../../scss/elements/buttons.scss */
+.addtocal {
+  background: none;
+  background-color: none;
+  color: #f7f7f7;
+  border-radius: 3px;
+  padding: .75em 1em;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+  font-weight: normal;
+  position: relative;
+  *background-color: #036cb6;
+  background-color: rgba(3, 108, 182, 0.95);
+  font-size: .85em;
+  padding: .75em 1em;
+  margin-top: 0;
+  margin-left: 0; }
+  /* line 23, ../../scss/elements/buttons.scss */
+  .addtocal:hover {
+    padding: .75em 1em; }
+  /* line 35, ../../scss/elements/buttons.scss */
+  .addtocal:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s; }
+  /* line 126, ../../scss/elements/buttons.scss */
+  .addtocal:hover {
+    *background-color: #036cb6;
+    background-color: #036cb6; }
+  /* line 131, ../../scss/elements/buttons.scss */
+  .addtocal:active {
+    *background-color: #036cb6;
+    background-color: rgba(3, 108, 182, 0.9); }
+
+/* line 253, ../../scss/elements/buttons.scss */
+span.date-display-single {
+  display: inline-block;
+  width: 50%; }
+
+/* line 259, ../../scss/elements/buttons.scss */
+ul.button-test {
+  margin: 0;
+  padding: 0; }
+  /* line 262, ../../scss/elements/buttons.scss */
+  ul.button-test li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none; }
+    /* line 267, ../../scss/elements/buttons.scss */
+    ul.button-test li a {
+      background: none;
+      background-color: none;
+      color: #f7f7f7;
+      border-radius: 3px;
+      padding: .75em 1em;
+      text-transform: uppercase;
+      font-size: 1em;
+      line-height: 1;
+      display: inline-block;
+      margin-right: 1%;
+      margin-bottom: 1%;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+      font-weight: normal;
+      position: relative; }
+      /* line 23, ../../scss/elements/buttons.scss */
+      ul.button-test li a:hover {
+        padding: .75em 1em; }
+      /* line 35, ../../scss/elements/buttons.scss */
+      ul.button-test li a:after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s; }
+      /* line 271, ../../scss/elements/buttons.scss */
+      ul.button-test li a.blue-cta {
+        float: left;
+        clear: left;
+        padding: 1.1em 5.5em 1em 1.2em;
+        overflow: hidden;
+        *background-color: #036cb6;
+        background-color: rgba(3, 108, 182, 0.95);
+        font-size: 1.1em; }
+        /* line 68, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-cta:before {
+          z-index: 2;
+          content: '\25b6';
+          color: rgba(0, 0, 0, 0.3);
+          text-align: right;
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          transition: all 0.3s;
+          position: absolute;
+          height: 100%;
+          left: auto;
+          top: 0;
+          right: 8%;
+          line-height: 2.4;
+          font-size: 140%;
+          width: 60px; }
+        /* line 89, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-cta:after {
+          z-index: 1;
+          width: 30%;
+          height: 200%;
+          background: rgba(255, 255, 255, 0.1);
+          right: 0;
+          top: 0;
+          margin: -5px 0 0 -5px;
+          -webkit-transform-origin: 0 0;
+          -webkit-transform: rotate(-20deg);
+          -moz-transform-origin: 0 0;
+          -moz-transform: rotate(-20deg);
+          -ms-transform-origin: 0 0;
+          -ms-transform: rotate(-20deg);
+          transform-origin: 0 0;
+          transform: rotate(-20deg); }
+        /* line 108, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-cta:hover {
+          padding: 1.1em 5.5em 1em 1.2em; }
+        /* line 112, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-cta:hover:after {
+          width: 35%; }
+        /* line 116, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-cta:hover:before {
+          right: 10%; }
+        /* line 126, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-cta:hover {
+          *background-color: #036cb6;
+          background-color: #036cb6; }
+        /* line 131, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-cta:active {
+          *background-color: #036cb6;
+          background-color: rgba(3, 108, 182, 0.9); }
+      /* line 278, ../../scss/elements/buttons.scss */
+      ul.button-test li a.teal-cta {
+        float: left;
+        padding: 1.1em 5.5em 1em 1.2em;
+        overflow: hidden;
+        *background-color: #38939b;
+        background-color: rgba(56, 147, 155, 0.95);
+        font-size: 1.1em; }
+        /* line 68, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-cta:before {
+          z-index: 2;
+          content: '\25b6';
+          color: rgba(0, 0, 0, 0.3);
+          text-align: right;
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          transition: all 0.3s;
+          position: absolute;
+          height: 100%;
+          left: auto;
+          top: 0;
+          right: 8%;
+          line-height: 2.4;
+          font-size: 140%;
+          width: 60px; }
+        /* line 89, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-cta:after {
+          z-index: 1;
+          width: 30%;
+          height: 200%;
+          background: rgba(255, 255, 255, 0.1);
+          right: 0;
+          top: 0;
+          margin: -5px 0 0 -5px;
+          -webkit-transform-origin: 0 0;
+          -webkit-transform: rotate(-20deg);
+          -moz-transform-origin: 0 0;
+          -moz-transform: rotate(-20deg);
+          -ms-transform-origin: 0 0;
+          -ms-transform: rotate(-20deg);
+          transform-origin: 0 0;
+          transform: rotate(-20deg); }
+        /* line 108, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-cta:hover {
+          padding: 1.1em 5.5em 1em 1.2em; }
+        /* line 112, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-cta:hover:after {
+          width: 35%; }
+        /* line 116, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-cta:hover:before {
+          right: 10%; }
+        /* line 142, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-cta:hover {
+          *background-color: #38939b;
+          background-color: #38939b; }
+        /* line 147, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-cta:active {
+          *background-color: #38939b;
+          background-color: rgba(56, 147, 155, 0.9); }
+      /* line 284, ../../scss/elements/buttons.scss */
+      ul.button-test li a.green-cta {
+        float: left;
+        padding: 1.1em 5.5em 1em 1.2em;
+        overflow: hidden;
+        *background-color: #8dc63f;
+        background-color: rgba(141, 198, 63, 0.95);
+        font-size: 1.1em; }
+        /* line 68, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-cta:before {
+          z-index: 2;
+          content: '\25b6';
+          color: rgba(0, 0, 0, 0.3);
+          text-align: right;
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          transition: all 0.3s;
+          position: absolute;
+          height: 100%;
+          left: auto;
+          top: 0;
+          right: 8%;
+          line-height: 2.4;
+          font-size: 140%;
+          width: 60px; }
+        /* line 89, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-cta:after {
+          z-index: 1;
+          width: 30%;
+          height: 200%;
+          background: rgba(255, 255, 255, 0.1);
+          right: 0;
+          top: 0;
+          margin: -5px 0 0 -5px;
+          -webkit-transform-origin: 0 0;
+          -webkit-transform: rotate(-20deg);
+          -moz-transform-origin: 0 0;
+          -moz-transform: rotate(-20deg);
+          -ms-transform-origin: 0 0;
+          -ms-transform: rotate(-20deg);
+          transform-origin: 0 0;
+          transform: rotate(-20deg); }
+        /* line 108, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-cta:hover {
+          padding: 1.1em 5.5em 1em 1.2em; }
+        /* line 112, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-cta:hover:after {
+          width: 35%; }
+        /* line 116, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-cta:hover:before {
+          right: 10%; }
+        /* line 158, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-cta:hover {
+          *background-color: #8dc63f;
+          background-color: #8dc63f; }
+        /* line 163, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-cta:active {
+          *background-color: #8dc63f;
+          background-color: rgba(141, 198, 63, 0.9); }
+      /* line 292, ../../scss/elements/buttons.scss */
+      ul.button-test li a.blue-default {
+        float: left;
+        clear: left;
+        padding: 1.1em 5.5em 1em 1.2em;
+        overflow: hidden;
+        *background-color: #036cb6;
+        background-color: rgba(3, 108, 182, 0.95);
+        font-size: 1em; }
+        /* line 68, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-default:before {
+          z-index: 2;
+          content: '\25b6';
+          color: rgba(0, 0, 0, 0.3);
+          text-align: right;
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          transition: all 0.3s;
+          position: absolute;
+          height: 100%;
+          left: auto;
+          top: 0;
+          right: 8%;
+          line-height: 2.4;
+          font-size: 140%;
+          width: 60px; }
+        /* line 89, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-default:after {
+          z-index: 1;
+          width: 30%;
+          height: 200%;
+          background: rgba(255, 255, 255, 0.1);
+          right: 0;
+          top: 0;
+          margin: -5px 0 0 -5px;
+          -webkit-transform-origin: 0 0;
+          -webkit-transform: rotate(-20deg);
+          -moz-transform-origin: 0 0;
+          -moz-transform: rotate(-20deg);
+          -ms-transform-origin: 0 0;
+          -ms-transform: rotate(-20deg);
+          transform-origin: 0 0;
+          transform: rotate(-20deg); }
+        /* line 108, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-default:hover {
+          padding: 1.1em 5.5em 1em 1.2em; }
+        /* line 112, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-default:hover:after {
+          width: 35%; }
+        /* line 116, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-default:hover:before {
+          right: 10%; }
+        /* line 126, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-default:hover {
+          *background-color: #036cb6;
+          background-color: #036cb6; }
+        /* line 131, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-default:active {
+          *background-color: #036cb6;
+          background-color: rgba(3, 108, 182, 0.9); }
+      /* line 299, ../../scss/elements/buttons.scss */
+      ul.button-test li a.teal-default {
+        float: left;
+        padding: 1.1em 5.5em 1em 1.2em;
+        overflow: hidden;
+        *background-color: #38939b;
+        background-color: rgba(56, 147, 155, 0.95);
+        font-size: 1em; }
+        /* line 68, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-default:before {
+          z-index: 2;
+          content: '\25b6';
+          color: rgba(0, 0, 0, 0.3);
+          text-align: right;
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          transition: all 0.3s;
+          position: absolute;
+          height: 100%;
+          left: auto;
+          top: 0;
+          right: 8%;
+          line-height: 2.4;
+          font-size: 140%;
+          width: 60px; }
+        /* line 89, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-default:after {
+          z-index: 1;
+          width: 30%;
+          height: 200%;
+          background: rgba(255, 255, 255, 0.1);
+          right: 0;
+          top: 0;
+          margin: -5px 0 0 -5px;
+          -webkit-transform-origin: 0 0;
+          -webkit-transform: rotate(-20deg);
+          -moz-transform-origin: 0 0;
+          -moz-transform: rotate(-20deg);
+          -ms-transform-origin: 0 0;
+          -ms-transform: rotate(-20deg);
+          transform-origin: 0 0;
+          transform: rotate(-20deg); }
+        /* line 108, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-default:hover {
+          padding: 1.1em 5.5em 1em 1.2em; }
+        /* line 112, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-default:hover:after {
+          width: 35%; }
+        /* line 116, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-default:hover:before {
+          right: 10%; }
+        /* line 142, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-default:hover {
+          *background-color: #38939b;
+          background-color: #38939b; }
+        /* line 147, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-default:active {
+          *background-color: #38939b;
+          background-color: rgba(56, 147, 155, 0.9); }
+      /* line 305, ../../scss/elements/buttons.scss */
+      ul.button-test li a.green-default {
+        float: left;
+        padding: 1.1em 5.5em 1em 1.2em;
+        overflow: hidden;
+        *background-color: #8dc63f;
+        background-color: rgba(141, 198, 63, 0.95);
+        font-size: 1em; }
+        /* line 68, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-default:before {
+          z-index: 2;
+          content: '\25b6';
+          color: rgba(0, 0, 0, 0.3);
+          text-align: right;
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          transition: all 0.3s;
+          position: absolute;
+          height: 100%;
+          left: auto;
+          top: 0;
+          right: 8%;
+          line-height: 2.4;
+          font-size: 140%;
+          width: 60px; }
+        /* line 89, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-default:after {
+          z-index: 1;
+          width: 30%;
+          height: 200%;
+          background: rgba(255, 255, 255, 0.1);
+          right: 0;
+          top: 0;
+          margin: -5px 0 0 -5px;
+          -webkit-transform-origin: 0 0;
+          -webkit-transform: rotate(-20deg);
+          -moz-transform-origin: 0 0;
+          -moz-transform: rotate(-20deg);
+          -ms-transform-origin: 0 0;
+          -ms-transform: rotate(-20deg);
+          transform-origin: 0 0;
+          transform: rotate(-20deg); }
+        /* line 108, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-default:hover {
+          padding: 1.1em 5.5em 1em 1.2em; }
+        /* line 112, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-default:hover:after {
+          width: 35%; }
+        /* line 116, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-default:hover:before {
+          right: 10%; }
+        /* line 158, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-default:hover {
+          *background-color: #8dc63f;
+          background-color: #8dc63f; }
+        /* line 163, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-default:active {
+          *background-color: #8dc63f;
+          background-color: rgba(141, 198, 63, 0.9); }
+      /* line 314, ../../scss/elements/buttons.scss */
+      ul.button-test li a.blue-small {
+        float: left;
+        clear: left;
+        *background-color: #036cb6;
+        background-color: rgba(3, 108, 182, 0.95);
+        font-size: .85em;
+        padding: .75em 1em; }
+        /* line 126, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-small:hover {
+          *background-color: #036cb6;
+          background-color: #036cb6; }
+        /* line 131, ../../scss/elements/buttons.scss */
+        ul.button-test li a.blue-small:active {
+          *background-color: #036cb6;
+          background-color: rgba(3, 108, 182, 0.9); }
+      /* line 320, ../../scss/elements/buttons.scss */
+      ul.button-test li a.teal-small {
+        float: left;
+        *background-color: #38939b;
+        background-color: rgba(56, 147, 155, 0.95);
+        font-size: .85em;
+        padding: .75em 1em; }
+        /* line 142, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-small:hover {
+          *background-color: #38939b;
+          background-color: #38939b; }
+        /* line 147, ../../scss/elements/buttons.scss */
+        ul.button-test li a.teal-small:active {
+          *background-color: #38939b;
+          background-color: rgba(56, 147, 155, 0.9); }
+      /* line 325, ../../scss/elements/buttons.scss */
+      ul.button-test li a.green-small {
+        float: left;
+        *background-color: #8dc63f;
+        background-color: rgba(141, 198, 63, 0.95);
+        font-size: .85em;
+        padding: .75em 1em; }
+        /* line 158, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-small:hover {
+          *background-color: #8dc63f;
+          background-color: #8dc63f; }
+        /* line 163, ../../scss/elements/buttons.scss */
+        ul.button-test li a.green-small:active {
+          *background-color: #8dc63f;
+          background-color: rgba(141, 198, 63, 0.9); }
+
+/* line 8, ../../scss/elements/opensearch-agenda.scss */
 .pane-opensanmateo-search-panel-pane-4 header {
   position: relative;
   padding-bottom: 42px; }
-/* line 7, ../../scss/elements/opensearch-agenda.scss */
+/* line 13, ../../scss/elements/opensearch-agenda.scss */
 .pane-opensanmateo-search-panel-pane-4 .event-more-info {
   display: none; }
-  /* line 9, ../../scss/elements/opensearch-agenda.scss */
+  /* line 15, ../../scss/elements/opensearch-agenda.scss */
   .pane-opensanmateo-search-panel-pane-4 .event-more-info .event-page, .pane-opensanmateo-search-panel-pane-4 .event-more-info .event-add-calendar {
     padding: 10px;
     margin: 0 10px 10px;
     background-color: #136DB5;
     text-align: center; }
-    /* line 15, ../../scss/elements/opensearch-agenda.scss */
+    /* line 21, ../../scss/elements/opensearch-agenda.scss */
     .pane-opensanmateo-search-panel-pane-4 .event-more-info .event-page a, .pane-opensanmateo-search-panel-pane-4 .event-more-info .event-add-calendar a {
       color: white;
       font-weight: bold;
       font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
-  /* line 21, ../../scss/elements/opensearch-agenda.scss */
+  /* line 27, ../../scss/elements/opensearch-agenda.scss */
   .pane-opensanmateo-search-panel-pane-4 .event-more-info .event-add-calendar {
     margin-bottom: 0px; }
-/* line 25, ../../scss/elements/opensearch-agenda.scss */
+/* line 31, ../../scss/elements/opensearch-agenda.scss */
 .pane-opensanmateo-search-panel-pane-4 .event-hide-more-info {
   background-color: #EEEEF7;
   font-weight: bold;
@@ -29,212 +1296,561 @@
   position: absolute;
   bottom: 0;
   width: 100%; }
-/* line 36, ../../scss/elements/opensearch-agenda.scss */
-.pane-opensanmateo-search-panel-pane-4 h4, .pane-opensanmateo-search-panel-pane-4 .node-location {
-  margin-left: 15px;
-  margin-right: 15px; }
-/* line 41, ../../scss/elements/opensearch-agenda.scss */
-.pane-opensanmateo-search-panel-pane-4 .universal-teaser.event {
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0; }
-/* line 47, ../../scss/elements/opensearch-agenda.scss */
-.pane-opensanmateo-search-panel-pane-4 .universal-teaser {
-  padding: 0; }
-/* line 51, ../../scss/elements/opensearch-agenda.scss */
+/* line 42, ../../scss/elements/opensearch-agenda.scss */
 .pane-opensanmateo-search-panel-pane-4 .views-field-search-api-multi-aggregation-9-1 {
   /*font-weight: bold;
   font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; */
   background-color: #F5F5F5;
   padding: 10px 0px; }
-  /* line 57, ../../scss/elements/opensearch-agenda.scss */
+  /* line 48, ../../scss/elements/opensearch-agenda.scss */
   .pane-opensanmateo-search-panel-pane-4 .views-field-search-api-multi-aggregation-9-1 .time {
     margin-right: 5px;
     color: #036cb6;
     padding-bottom: inherit;
     line-height: inherit; }
-/* line 65, ../../scss/elements/opensearch-agenda.scss */
+/* line 56, ../../scss/elements/opensearch-agenda.scss */
 .pane-opensanmateo-search-panel-pane-4 .aggregated-node-thumbnail {
   display: block;
   clear: both;
   width: 100%; }
-  /* line 70, ../../scss/elements/opensearch-agenda.scss */
+  /* line 61, ../../scss/elements/opensearch-agenda.scss */
   .pane-opensanmateo-search-panel-pane-4 .aggregated-node-thumbnail img {
     margin: 0 auto;
     display: block; }
-/* line 76, ../../scss/elements/opensearch-agenda.scss */
+/* line 67, ../../scss/elements/opensearch-agenda.scss */
 .pane-opensanmateo-search-panel-pane-4 .read-more-wrapper {
   line-height: normal;
   border-top-width: 1px;
-  background-color: #EEEEF7; }
-  /* line 81, ../../scss/elements/opensearch-agenda.scss */
-  .pane-opensanmateo-search-panel-pane-4 .read-more-wrapper a:after {
-    background-color: inherit;
-    content: none; }
-/* line 86, ../../scss/elements/opensearch-agenda.scss */
-.pane-opensanmateo-search-panel-pane-4 .views-field-search-api-multi-aggregation-1 {
-  display: none;
-  border-bottom: none !important;
-  border-top: none !important;
-  margin-left: 5px !important;
-  margin-right: 5px !important; }
-/* line 93, ../../scss/elements/opensearch-agenda.scss */
-.pane-opensanmateo-search-panel-pane-4 a {
-  font-size: 13px; }
+  font-size: 1em; }
+  /* line 72, ../../scss/elements/opensearch-agenda.scss */
+  .pane-opensanmateo-search-panel-pane-4 .read-more-wrapper a {
+    font-size: 1em; }
 
-/* line 100, ../../scss/elements/opensearch-agenda.scss */
-.universal-teaser.event .read-more-wrapper a {
-  background-color: inherit; }
-
-/* line 109, ../../scss/elements/opensearch-agenda.scss */
-.page-event .view-opensanmateo-search .view-content {
+/* line 80, ../../scss/elements/opensearch-agenda.scss */
+.page-events .view-opensanmateo-search .view-content {
   width: 70%; }
 
-/* line 117, ../../scss/elements/opensearch-agenda.scss */
-.view-opensanmateo-search .attachment-before {
-  float: right; }
-/* line 123, ../../scss/elements/opensearch-agenda.scss */
-.view-opensanmateo-search .views-exposed-form .container-inline-date {
-  clear: none;
-  float: left;
-  padding-top: 17px; }
-  /* line 128, ../../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .views-exposed-form .container-inline-date label[for=edit-start-date], .view-opensanmateo-search .views-exposed-form .container-inline-date label[for=edit-end-date] {
-    display: block;
-    margin: 5px;
-    padding-top: 5px;
+/* line 88, ../../scss/elements/opensearch-agenda.scss */
+.view-opensanmateo-search.view-display-id-page_1 {
+  position: relative; }
+  /* line 90, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .view-filters {
+    padding-left: 140px;
+    padding-top: 10px; }
+    /* line 93, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .view-filters .views-exposed-widget {
+      padding-right: 0; }
+    /* line 96, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .view-filters .form-item {
+      float: left;
+      background: #f0f5f9;
+      height: 37px;
+      position: relative;
+      margin: 0 0 10px 10px; }
+      /* line 103, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .view-filters .form-item:after {
+        content: "";
+        background-repeat: no-repeat;
+        background-image: url("../images/down_arrow.png");
+        position: absolute;
+        right: 5px;
+        top: 30%;
+        width: 16px;
+        height: 20px;
+        z-index: 0;
+        background-color: #f0f5f9;
+        pointer-events: none;
+        cursor: pointer; }
+      /* line 118, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .view-filters .form-item.form-type-select {
+        padding-top: 7px; }
+        /* line 122, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search.view-display-id-page_1 .view-filters .form-item.form-type-select label {
+          display: inline-block; }
+        /* line 126, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search.view-display-id-page_1 .view-filters .form-item.form-type-select select {
+          width: 86%;
+          border: 0;
+          background: transparent;
+          cursor: pointer;
+          color: #036cb6; }
+          /* line 133, ../../scss/elements/opensearch-agenda.scss */
+          .view-opensanmateo-search.view-display-id-page_1 .view-filters .form-item.form-type-select select:hover, .view-opensanmateo-search.view-display-id-page_1 .view-filters .form-item.form-type-select select:focus {
+            border: 0; }
+      /* line 140, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .view-filters .form-item input {
+        margin-bottom: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+        color: #036cb6; }
+    /* line 151, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .view-filters .form-item-search-api-site-hash {
+      width: 165px; }
+      /* line 153, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .view-filters .form-item-search-api-site-hash label {
+        display: inline-block;
+        padding: 0 5px;
+        font-weight: 100; }
+        /* line 157, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search.view-display-id-page_1 .view-filters .form-item-search-api-site-hash label .form-required {
+          display: none; }
+      /* line 161, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .view-filters .form-item-search-api-site-hash select#edit-search-api-site-hash {
+        display: inline-block;
+        width: 115px;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        font-size: .9em; }
+    /* line 168, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .view-filters .form-submit {
+      margin-top: .25em;
+      margin-left: 8px; }
+  /* line 174, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .attachment-before {
+    position: absolute;
+    right: 0;
+    top: 92px;
+    width: 280px;
+    z-index: 2; }
+    /* line 181, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .attachment-before .group-by-day {
+      width: auto;
+      float: left;
+      margin-left: 0; }
+      /* line 186, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .attachment-before .group-by-day .date {
+        margin-left: 0;
+        text-transform: none;
+        font-weight: 100;
+        font-size: 1.5em;
+        font-family: 'Trade Gothic W01 Roman', 'Helvetica Neue', Arial, Helvetica;
+        color: #38939b;
+        line-height: 1.5em; }
+    /* line 197, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .attachment-before .controls {
+      float: right;
+      width: 40px;
+      height: 40px;
+      background: rgba(3, 108, 182, 0.95) no-repeat center;
+      margin: 0 1px;
+      font-size: 0;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      border-radius: 3px; }
+      /* line 205, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .attachment-before .controls a {
+        width: 100%;
+        height: 100%;
+        display: block; }
+    /* line 212, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .attachment-before .left-arrow {
+      background-image: url("../images/left_arrow.png"); }
+    /* line 216, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .attachment-before .right-arrow {
+      background-image: url("../images/right_arrow.png"); }
+    /* line 219, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-display-id-attachment_1 {
+      clear: right;
+      padding-top: 15px; }
+    /* line 224, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-content {
+      width: 100%;
+      float: none; }
+      /* line 228, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-content .calendar {
+        width: 100%;
+        border-bottom: 0;
+        border-right: 0; }
+        /* line 233, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-content .calendar .calendar-day,
+        .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-content .calendar .calendar-day-head,
+        .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-content .calendar .calendar-day-np {
+          border-right: 1px solid rgba(3, 108, 182, 0.1);
+          border-bottom: 1px solid rgba(3, 108, 182, 0.1); }
+        /* line 240, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-content .calendar .calendar-day-head {
+          background: #f0f5f9; }
+        /* line 244, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-content .calendar .day-number,
+        .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-content .calendar .calendar-day-head {
+          padding: .75em .75em .75em 1em; }
+        /* line 248, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-content .calendar .day-number:hover {
+          background-color: #38939b;
+          color: white; }
+          /* line 251, ../../scss/elements/opensearch-agenda.scss */
+          .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-content .calendar .day-number:hover a, .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-content .calendar .day-number:hover a:hover, .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-content .calendar .day-number:hover a:focus {
+            color: white; }
+        /* line 255, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-content .calendar p.mti_font_element {
+          display: none; }
+        /* line 259, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search.view-display-id-page_1 .attachment-before .view-content .calendar tr:nth-child(2n+2) {
+          background: transparent; }
+  /* line 267, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .views-exposed-form .container-inline-date {
+    clear: none;
     float: left; }
-/* line 136, ../../scss/elements/opensearch-agenda.scss */
-.view-opensanmateo-search .views-exposed-form .views-submit-button {
-  width: 410px; }
-/* line 141, ../../scss/elements/opensearch-agenda.scss */
-.view-opensanmateo-search .view-content {
-  float: left;
-  width: 100%; }
-/* line 145, ../../scss/elements/opensearch-agenda.scss */
-.view-opensanmateo-search .group-by-day {
-  width: 30%;
-  margin-bottom: 15px;
-  padding-left: 5px;
-  font-weight: bold;
-  font-size: 1.15em;
-  font-family: 'Trade Gothic W01 Roman', 'Helvetica Neue', Arial, Helvetica; }
-  /* line 154, ../../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .group-by-day .day-of-week {
+    /* line 271, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .views-exposed-form .container-inline-date label[for=edit-start-date], .view-opensanmateo-search.view-display-id-page_1 .views-exposed-form .container-inline-date label[for=edit-to-date] {
+      display: block;
+      margin: 5px;
+      padding-top: 5px;
+      float: left;
+      font-weight: 100; }
+  /* line 279, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .views-exposed-form .views-exposed-widget {
     float: left;
-    color: #036cb6; }
-  /* line 159, ../../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .group-by-day .date {
+    padding-top: 0; }
+    /* line 283, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .views-exposed-form .views-exposed-widget label[for=edit-subject] {
+      display: block;
+      margin: 5px;
+      padding-top: 5px;
+      float: left; }
+    /* line 289, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .views-exposed-form .views-exposed-widget .form-type-select select {
+      width: 83%; }
+  /* line 298, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .views-exposed-form .views-widget-sort-by {
+    display: none; }
+  /* line 304, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .view-content {
+    float: left;
+    width: 100%; }
+  /* line 309, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .view-content > h3 {
+    position: relative;
+    margin-top: 24px;
+    font-weight: bold;
+    font-size: 1.5em;
+    font-family: 'Trade Gothic W01 Roman', 'Helvetica Neue', Arial, Helvetica;
     color: #38939b;
-    text-transform: uppercase;
-    font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
-    font-weight: 100;
-    margin-bottom: 0;
-    padding-top: 3px;
-    margin-left: 85px; }
-/* line 170, ../../scss/elements/opensearch-agenda.scss */
-.view-opensanmateo-search .universal-teaser {
-  border: none; }
-/* line 173, ../../scss/elements/opensearch-agenda.scss */
-.view-opensanmateo-search .views-row {
-  padding-bottom: 0px;
-  padding-top: 0px;
-  padding-right: 0px; }
-/* line 178, ../../scss/elements/opensearch-agenda.scss */
-.view-opensanmateo-search .left-col {
-  width: 10%;
-  float: left;
-  padding-top: 16px; }
-  /* line 182, ../../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .left-col .time {
-    color: #036cb6; }
-/* line 186, ../../scss/elements/opensearch-agenda.scss */
-.view-opensanmateo-search .right-col {
-  width: 90%;
-  float: left;
-  border: 1px solid rgba(3, 108, 182, 0.1);
-  border-top: 1px solid rgba(3, 108, 182, 0.1); }
-  /* line 192, ../../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .right-col .node-teaser {
-    display: none;
-    border-top: none;
-    border-bottom: none;
-    clear: left; }
-  /* line 198, ../../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .right-col .event-more-info {
-    display: none;
-    clear: both; }
-    /* line 201, ../../scss/elements/opensearch-agenda.scss */
-    .view-opensanmateo-search .right-col .event-more-info .event-hide-more-info {
-      padding: 10px;
-      margin: 0 10px 10px;
-      background-color: #EEEEF7;
-      text-align: center;
-      width: 130px; }
-    /* line 208, ../../scss/elements/opensearch-agenda.scss */
-    .view-opensanmateo-search .right-col .event-more-info .event-page, .view-opensanmateo-search .right-col .event-more-info .event-add-calendar {
-      padding: 10px;
-      margin: 0 10px 10px;
-      background-color: #136DB5;
-      text-align: center;
-      width: 130px;
-      float: right; }
-      /* line 216, ../../scss/elements/opensearch-agenda.scss */
-      .view-opensanmateo-search .right-col .event-more-info .event-page a, .view-opensanmateo-search .right-col .event-more-info .event-add-calendar a {
-        color: white;
-        font-weight: bold;
-        font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
-  /* line 223, ../../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .right-col header {
-    width: 72%;
+    text-transform: none; }
+    /* line 318, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .view-content > h3 .day-of-week {
+      display: inline-block;
+      margin-right: 15px;
+      color: #38939b;
+      font-weight: bold; }
+    /* line 326, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .view-content > h3 .date {
+      display: inline-block;
+      font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+      font-weight: 100; }
+  /* line 333, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .universal-teaser {
+    border: none; }
+  /* line 336, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 div.views-row {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    background-color: transparent; }
+  /* line 342, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .left-col {
+    width: 12%;
+    min-width: 100px;
     float: left;
     padding-top: 16px;
-    margin-left: 10px; }
-    /* line 229, ../../scss/elements/opensearch-agenda.scss */
-    .view-opensanmateo-search .right-col header h4 {
-      font-size: 1.15em; }
-  /* line 233, ../../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .right-col .aggregated-node-thumbnail {
-    float: right;
-    margin-top: 0px;
-    width: 170px;
-    height: 160px; }
-  /* line 239, ../../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .right-col .aggregated-node-thumbnail-selected {
+    padding-bottom: 24px;
+    color: #036cb6;
+    font-size: 1.2em; }
+  /* line 352, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .right-col {
+    width: 58%;
+    float: left;
+    border: 1px solid rgba(3, 108, 182, 0.1);
+    border-top: 1px solid rgba(3, 108, 182, 0.1);
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    -webkit-transition-property: all;
+    transition-property: all;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s; }
+    /* line 360, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .right-col:hover {
+      background: #E7EDED;
+      cursor: pointer;
+      -moz-transition-property: all;
+      -o-transition-property: all;
+      -webkit-transition-property: all;
+      transition-property: all;
+      -moz-transition-duration: 0.2s;
+      -o-transition-duration: 0.2s;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s; }
+    /* line 367, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .right-col .node-teaser {
+      display: none;
+      border-top: none;
+      border-bottom: none;
+      clear: left; }
+    /* line 373, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .right-col .event-more-info {
+      display: none;
+      clear: both; }
+      /* line 376, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .right-col .event-more-info .event-hide-more-info {
+        padding: 10px;
+        margin: 0 10px 10px;
+        background-color: #EEEEF7;
+        text-align: center;
+        width: 130px; }
+      /* line 383, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .right-col .event-more-info .event-page, .view-opensanmateo-search.view-display-id-page_1 .right-col .event-more-info .event-add-calendar {
+        padding: 10px;
+        margin: 0 10px 10px;
+        background-color: #136DB5;
+        text-align: center;
+        width: 130px;
+        float: right; }
+        /* line 391, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search.view-display-id-page_1 .right-col .event-more-info .event-page a, .view-opensanmateo-search.view-display-id-page_1 .right-col .event-more-info .event-add-calendar a {
+          color: white;
+          font-weight: bold;
+          font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; }
+    /* line 398, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .right-col header {
+      padding-top: 16px;
+      margin-left: 24px;
+      float: left; }
+      /* line 403, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .right-col header h4 {
+        font-size: 1.2em; }
+    /* line 407, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .right-col .node-thumbnail {
+      position: relative;
+      width: 160px;
+      height: 165px;
+      max-height: none;
+      overflow: hidden;
+      margin: 0 0 0 12px;
+      float: right;
+      border: none;
+      -moz-transition-property: all;
+      -o-transition-property: all;
+      -webkit-transition-property: all;
+      transition-property: all;
+      -moz-transition-duration: 0.5s;
+      -o-transition-duration: 0.5s;
+      -webkit-transition-duration: 0.5s;
+      transition-duration: 0.5s; }
+      /* line 416, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .right-col .node-thumbnail img {
+        position: absolute;
+        top: -9999px;
+        bottom: -9999px;
+        left: -9999px;
+        right: -9999px;
+        margin: auto; }
+    /* line 427, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .right-col .description {
+      display: none; }
+    /* line 430, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .right-col .location {
+      display: block;
+      float: left;
+      clear: left;
+      width: 230px;
+      margin-left: 4px;
+      min-height: 10px; }
+      /* line 437, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .right-col .location:after {
+        content: none; }
+      /* line 440, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .right-col .location h5 {
+        width: 80px;
+        float: left;
+        margin: 0 10px 0 0;
+        min-height: 60px;
+        text-align: right;
+        text-transform: none;
+        font-size: 1em; }
+        /* line 448, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search.view-display-id-page_1 .right-col .location h5:after {
+          content: ":"; }
+      /* line 452, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .right-col .location ul.adr {
+        margin-top: 2px;
+        list-style: none;
+        list-style-type: none;
+        font-weight: normal; }
+        /* line 457, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search.view-display-id-page_1 .right-col .location ul.adr li {
+          font-weight: 100; }
+    /* line 462, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .right-col .node-date {
+      float: left;
+      margin-left: 15px;
+      width: 230px; }
+      /* line 466, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .right-col .node-date .node-start-date, .view-opensanmateo-search.view-display-id-page_1 .right-col .node-date .node-end-date {
+        clear: both;
+        display: block; }
+      /* line 470, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .right-col .node-date h5 {
+        float: left;
+        width: 80px;
+        margin: 0;
+        display: block;
+        text-align: right;
+        text-transform: none;
+        font-size: 1em;
+        line-height: 1.5em; }
+        /* line 479, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search.view-display-id-page_1 .right-col .node-date h5:after {
+          content: ":"; }
+        /* line 482, ../../scss/elements/opensearch-agenda.scss */
+        .view-opensanmateo-search.view-display-id-page_1 .right-col .node-date h5.all-day:after {
+          content: none; }
+      /* line 486, ../../scss/elements/opensearch-agenda.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .right-col .node-date .date-data {
+        float: left;
+        margin-left: 10px;
+        line-height: 1.5em;
+        font-family: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica;
+        font-weight: 100; }
+    /* line 494, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .right-col .read-more-wrapper {
+      display: none; }
+  /* line 500, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .views-row-selected .node-thumbnail {
     float: none;
-    margin-top: 0px;
+    margin: 0 0 20px 0;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    text-align: right;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    -webkit-transition-property: all;
+    transition-property: all;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s; }
+    /* line 510, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .views-row-selected .node-thumbnail img {
+      right: 0;
+      position: static; }
+  /* line 516, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .views-row-selected .right-col:hover {
+    background: #fff; }
+  /* line 520, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .views-row-selected header {
+    float: none; }
+  /* line 523, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .views-row-selected .description {
+    display: block;
+    width: 100%;
+    margin: 10px 0 24px 0;
+    padding: 0 15px;
+    line-height: 1.5em;
+    font-weight: 100; }
+  /* line 531, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .views-row-selected .read-more-wrapper {
+    display: block;
+    position: static;
+    width: 100%;
+    padding: 0 20px 20px; }
+    /* line 536, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .views-row-selected .read-more-wrapper a.read-more {
+      background: none;
+      background-color: none;
+      color: #f7f7f7;
+      border-radius: 3px;
+      padding: .75em 1em;
+      text-transform: uppercase;
+      font-size: 1em;
+      line-height: 1;
+      display: inline-block;
+      margin-right: 1%;
+      margin-bottom: 1%;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+      font-weight: normal;
+      position: relative;
+      *background-color: #036cb6;
+      background-color: rgba(3, 108, 182, 0.95);
+      float: right; }
+      /* line 23, ../../scss/elements/buttons.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .views-row-selected .read-more-wrapper a.read-more:hover {
+        padding: .75em 1em; }
+      /* line 35, ../../scss/elements/buttons.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .views-row-selected .read-more-wrapper a.read-more:after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s; }
+      /* line 126, ../../scss/elements/buttons.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .views-row-selected .read-more-wrapper a.read-more:hover {
+        *background-color: #036cb6;
+        background-color: #036cb6; }
+      /* line 131, ../../scss/elements/buttons.scss */
+      .view-opensanmateo-search.view-display-id-page_1 .views-row-selected .read-more-wrapper a.read-more:active {
+        *background-color: #036cb6;
+        background-color: rgba(3, 108, 182, 0.9); }
+    /* line 541, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .views-row-selected .read-more-wrapper .read-more-title {
+      width: auto;
+      height: auto;
+      position: static;
+      top: auto; }
+
+@media screen and (max-width: 1010px) {
+  /* line 554, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .attachment-before {
+    position: static;
+    margin: 0 auto;
+    right: auto; }
+  /* line 560, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .views-row.first-row div.right-col {
+    width: 100%; }
+  /* line 563, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .views-row div.right-col {
+    width: 100%; } }
+@media screen and (max-width: 385px) {
+  /* line 570, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .view-filters {
+    clear: left;
+    padding-left: 0; }
+  /* line 574, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .attachment-before {
+    display: none; }
+  /* line 577, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .views-row {
+    padding-left: 0; }
+  /* line 581, ../../scss/elements/opensearch-agenda.scss */
+  .view-opensanmateo-search.view-display-id-page_1 .right-col .node-thumbnail {
+    margin: 0;
     width: 100%;
     height: auto; }
-  /* line 245, ../../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .right-col .node-location {
-    float: left;
-    width: 45%; }
-    /* line 248, ../../scss/elements/opensearch-agenda.scss */
-    .view-opensanmateo-search .right-col .node-location h5 {
-      float: left;
-      margin-right: 10px;
-      min-height: 90px; }
-    /* line 253, ../../scss/elements/opensearch-agenda.scss */
-    .view-opensanmateo-search .right-col .node-location ul {
-      margin-top: 4px; }
-  /* line 257, ../../scss/elements/opensearch-agenda.scss */
-  .view-opensanmateo-search .right-col .node-date {
-    float: left;
-    margin-left: 15px;
-    width: 35%; }
-    /* line 261, ../../scss/elements/opensearch-agenda.scss */
-    .view-opensanmateo-search .right-col .node-date .start, .view-opensanmateo-search .right-col .node-date .end {
-      clear: both;
-      overflow: hidden;
-      display: block; }
-    /* line 266, ../../scss/elements/opensearch-agenda.scss */
-    .view-opensanmateo-search .right-col .node-date h5 {
-      float: left;
-      display: block; }
-    /* line 270, ../../scss/elements/opensearch-agenda.scss */
-    .view-opensanmateo-search .right-col .node-date span {
-      float: left;
-      margin-left: 5px; }
-      /* line 274, ../../scss/elements/opensearch-agenda.scss */
-      .view-opensanmateo-search .right-col .node-date span .wrapper {
-        line-height: 30px; }
+    /* line 586, ../../scss/elements/opensearch-agenda.scss */
+    .view-opensanmateo-search.view-display-id-page_1 .right-col .node-thumbnail img {
+      max-width: 100%; } }
+/* line 595, ../../scss/elements/opensearch-agenda.scss */
+.page-events .tabs {
+  position: absolute; }
+/* line 598, ../../scss/elements/opensearch-agenda.scss */
+.page-events #block-system-main {
+  min-height: 400px; }
+/* line 601, ../../scss/elements/opensearch-agenda.scss */
+.page-events #page-title {
+  float: left;
+  width: inherit;
+  color: #38939b;
+  font-size: 2em;
+  font-weight: 100;
+  text-transform: uppercase; }

@@ -68,7 +68,12 @@ function draw_calendar($month,$year, $events = array()){
 			$calendar.= '<div class="day-number">';
 			if(isset($events["$year-$month-$list_day"])) {
                           if($month > 10) $month = '0' . $month;
-			  $calendar.= "<a href='/events/list/$year-$month-$list_day/all'>" . $list_day . "</a>";
+
+        $link_parameters = drupal_get_query_parameters();
+        $link_parameters['start_date'] = array('date' => "$year-$month-$list_day");
+        $link = '/events/list?' . http_build_query($link_parameters);
+
+        $calendar.= '<a href="' . $link . '">' . $list_day . "</a>";
 			}
 			else {
 			  $calendar.=$list_day;
@@ -103,8 +108,7 @@ function draw_calendar($month,$year, $events = array()){
 	/* end the table */
 	$calendar.= '</table>';
 	
-	/* all done, return result */
-	return $calendar;
+  return $calendar;
 }
 ?>
 <div class="<?php print $classes; ?>">
