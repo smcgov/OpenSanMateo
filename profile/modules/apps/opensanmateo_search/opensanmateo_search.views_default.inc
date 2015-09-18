@@ -1006,10 +1006,6 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Indexed Node: Address */
-  $handler->display->display_options['relationships']['field_location_address']['id'] = 'field_location_address';
-  $handler->display->display_options['relationships']['field_location_address']['table'] = 'search_api_index_san_mateo_content_index';
-  $handler->display->display_options['relationships']['field_location_address']['field'] = 'field_location_address';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Indexed Node: Aggregated Start Date */
   $handler->display->display_options['fields']['search_api_multi_aggregation_9_1']['id'] = 'search_api_multi_aggregation_9_1';
@@ -1355,10 +1351,6 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Indexed Node: Address */
-  $handler->display->display_options['relationships']['field_location_address']['id'] = 'field_location_address';
-  $handler->display->display_options['relationships']['field_location_address']['table'] = 'search_api_index_san_mateo_content_index';
-  $handler->display->display_options['relationships']['field_location_address']['field'] = 'field_location_address';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Indexed Node: Aggregated Start Date */
   $handler->display->display_options['fields']['search_api_multi_aggregation_9_1']['id'] = 'search_api_multi_aggregation_9_1';
@@ -1748,68 +1740,6 @@ function opensanmateo_search_views_default_views() {
     'panel_pane_4' => 0,
     'block_6' => 0,
     'panel_pane_5' => 0,
-  );
-  $translatables['opensanmateo_search'] = array(
-    t('Master'),
-    t('search'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('No results'),
-    t('<h5><span class="icon-location"> </span>Location</h5>
-      <ul class="adr">
-      <li>[search_api_multi_aggregation_6]</li>
-      <li>[search_api_multi_aggregation_17]</li>
-      <li>[search_api_multi_aggregation_7], [search_api_multi_aggregation_4]
-       [search_api_multi_aggregation_5]</li>
-      </ul>'),
-    t('Date'),
-    t('Alphabetic'),
-    t('True'),
-    t('List w/search'),
-    t('Fulltext search'),
-    t('Lists'),
-    t('List by Type'),
-    t('Site'),
-    t('Content type'),
-    t('Terms'),
-    t('Author'),
-    t('Block'),
-    t('All'),
-    t('Calendar pane'),
-    t('Used to display events.'),
-    t('Sites'),
-    t('Start date'),
-    t('End date'),
-    t('Name (indexed)'),
-    t('Taxonomy Page:Subject'),
-    t('Taxonomy Page:Sub Type'),
-    t('Lookup Title Only Block'),
-    t('Taxonomy Page:Topic'),
-    t('List by Type for Author'),
-    t('List'),
-    t('Agenda'),
-    t('View info'),
-    t('Address'),
-    t('[url] '),
-    t('Lookup List'),
-    t('Calendar day'),
-    t('Events'),
-    t('Aggregated Sort Date'),
-    t('Mini calendar'),
-    t('Calendar'),
-    t('View panes'),
-    t('Mini Calendar Attachment'),
   );
   $export['opensanmateo_search'] = $view;
 
