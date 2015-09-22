@@ -322,3 +322,20 @@ function opensanmateo_sitecrawler_uninstall() {
     db_drop_table($table);
   }
 }
+
+/**
+ * Enable the filtered_html filter.
+ * Change sitecrawler pages to have filtered_html.
+ */
+function opensanmateo_sitecrawler_update_7001() {
+  db_update('filter_format')
+    ->fields(array(
+      'status' => 1,
+    ))
+    ->condition('format', 'filtered_html', '=')
+    ->execute();
+
+  db_query("update {field_data_body} b join {node} n on b.entity_id = n.nid  SET b.body_format = 'filtered_html' WHERE n.type = 'sitecrawler_page'");
+
+  return array();
+}
