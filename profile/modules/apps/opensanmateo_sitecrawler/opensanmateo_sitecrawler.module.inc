@@ -830,3 +830,10 @@ function opensanmateo_sitecrawler_url_outbound_alter(&$path, &$options, $origina
   }
   
 }
+function removeElementsByTagName($tagName, $document) {
+  $nodeList = $document->getElementsByTagName($tagName);
+  for ($nodeIdx = $nodeList->length; --$nodeIdx >= 0; ) {
+    $node = $nodeList->item($nodeIdx);
+    $node->parentNode->removeChild($node);
+  }
+}
