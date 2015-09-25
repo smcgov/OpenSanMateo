@@ -57,6 +57,9 @@ class SiteCrawler extends PHPCrawler {
     $node->field_sitecrawler_url[$node->language][0]['url'] = $PageInfo->url;
 
     $doc = new DOMDocument();
+    // Avoid random errors: http://stackoverflow.com/questions/30925533/php-dom-loadhtml-method-unusual-warning.
+    $source = str_replace("\0", '', $PageInfo->source);
+
     // This line throws an error if there is malformed HTML. Use a source
     // validator to correct it. Ex:
     // * An unencoded ampersand
@@ -64,7 +67,7 @@ class SiteCrawler extends PHPCrawler {
     // * Multiple identical ID attributes on the same page.
     // * Invalid tags based on the specified Doctype.
     // The @ sign disables error reporting.
-    @$doc->loadHTML($PageInfo->source);
+    @$doc->loadHTML($source);
 
     $doc->preserveWhiteSpace = FALSE;
     removeElementsByTagName('script', $doc);
