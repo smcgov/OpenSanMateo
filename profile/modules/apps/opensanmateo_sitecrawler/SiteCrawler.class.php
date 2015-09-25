@@ -24,7 +24,7 @@ class SiteCrawler extends PHPCrawler {
     parent::__construct();
   }
 
-  function handleDocumentInfo($PageInfo) {
+  function handleDocumentInfo(PHPCrawlerDocumentInfo $PageInfo) {
     $this->urls_processed[$PageInfo->http_status_code][] = $PageInfo->url;
     
     if (200 != $PageInfo->http_status_code) {
@@ -65,12 +65,12 @@ class SiteCrawler extends PHPCrawler {
     // * Invalid tags based on the specified Doctype.
     // The @ sign disables error reporting.
     @$doc->loadHTML($PageInfo->source);
-    $doc->preserveWhiteSpace = FALSE;
 
+    $doc->preserveWhiteSpace = FALSE;
     removeElementsByTagName('script', $doc);
     removeElementsByTagName('style', $doc);
     removeElementsByTagName('link', $doc);
-
+    $node_body = '';
     foreach($this->body_xpaths as $body_xpath) {
       $xpath = new DOMXpath($doc);
       // $body = $xpath->query('/html/body');
@@ -84,14 +84,12 @@ class SiteCrawler extends PHPCrawler {
           }
         }
       }
-      else {
-        watchdog('OpenSanMateo Site Crawler', 'No body content was found. Message: %message', array('%message' => 'This URL did not have body content: ' . $PageInfo->url));
-      }
     }
     // This page doesn't have the selectors of a standard page. It's likely a
     // landing page or home page that doesn't follow the standard page content
     // xpath rule. Skip it.
     if (empty($node_body)) {
+      watchdog('OpenSanMateo Site Crawler', 'No body content was found. Message: %message', array('%message' => 'This URL did not have body content, or the markup was invalid in a way to prevent DOMXpath from running: ' . $PageInfo->url));
       return;
     }
 
@@ -102,7 +100,6 @@ class SiteCrawler extends PHPCrawler {
     // Filtered HTML doesn't allow script and style tags, etc.
     $node->body[$node->language][0]['format']  = 'filtered_html';
     
-      
     // store the Drupal crawler ID from the opensanmateo_sitecrawler_sites table
     $node->field_sitecrawler_id[$node->language][0]['value'] = $this->crawler_id;
     
