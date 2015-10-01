@@ -59,6 +59,7 @@ features[field_instance][] = taxonomy_term-subject-field_view
 features[field_instance][] = taxonomy_term-topic-field_view
 features[hierarchical_select][] = taxonomy-5
 features[hierarchical_select][] = taxonomy-9
+features[image][] = scale_800_wide
 features[page_manager_pages][] = search_panel
 features[panels_mini][] = search_facets
 features[search_api_index][] = san_mateo_content_index
