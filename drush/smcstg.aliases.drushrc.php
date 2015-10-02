@@ -15,7 +15,7 @@ $smc_sites = get_smc_sites(($smc_localhost == $smc_remote_host) ? $smc_docroot :
 // Generate alias for each agency site
 foreach ($smc_sites as $site) {
   $aliases[$smc_env . '.' . $site] = array(
-    'uri' => $site,
+    'uri' => $smc_env . '.' . $site,
     'root' => $smc_docroot,
     'remote-host' => $smc_remote_host,
     'remote-user' => $smc_remote_user,
