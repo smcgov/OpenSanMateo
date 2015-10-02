@@ -14,3 +14,17 @@ function opensanmateo_wysiwyg_install() {
     filter_format_disable($fmt);
   }
 }
+
+/**
+ * Enable the filtered_html filter.
+ */
+function opensanmateo_wysiwyg_update_7001() {
+  db_update('filter_format')
+    ->fields(array(
+      'status' => 1,
+    ))
+    ->condition('format', 'filtered_html', '=')
+    ->execute();
+
+  return array();
+}
