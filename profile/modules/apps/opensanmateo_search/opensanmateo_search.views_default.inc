@@ -1543,6 +1543,12 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_multi_aggregation_19']['element_type'] = '0';
   $handler->display->display_options['fields']['search_api_multi_aggregation_19']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_multi_aggregation_19']['link_to_entity'] = 0;
+  /* Field: Indexed Node: Aggregated Department (Site name) */
+  $handler->display->display_options['fields']['search_api_aggregation_3']['id'] = 'search_api_aggregation_3';
+  $handler->display->display_options['fields']['search_api_aggregation_3']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['fields']['search_api_aggregation_3']['field'] = 'search_api_aggregation_3';
+  $handler->display->display_options['fields']['search_api_aggregation_3']['label'] = 'Dept';
+  $handler->display->display_options['fields']['search_api_aggregation_3']['link_to_entity'] = 0;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Indexed Node: Aggregated Sort Date */
   $handler->display->display_options['sorts']['search_api_aggregation_1']['id'] = 'search_api_aggregation_1';
