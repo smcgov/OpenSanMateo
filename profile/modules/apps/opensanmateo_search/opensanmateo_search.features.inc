@@ -102,8 +102,10 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_multi_aggregation_18" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_aggregation_1" : { "type" : "date" },
         "search_api_aggregation_2" : { "type" : "string" },
+        "search_api_aggregation_3" : { "type" : "text", "boost" : "0.1" },
         "search_api_site_hash" : { "type" : "uri" },
         "search_api_site_id" : { "type" : "string" },
+        "search_api_site_name" : { "type" : "string" },
         "author:name" : { "type" : "text" },
         "author:url" : { "type" : "uri" },
         "body:value" : { "type" : "text" },
@@ -149,6 +151,12 @@ function opensanmateo_search_default_search_api_index() {
                 "type" : "first",
                 "fields" : [ "title" ],
                 "description" : "A First aggregation of the following fields: Title."
+              },
+              "search_api_aggregation_3" : {
+                "name" : "Aggregated Department (Site name)",
+                "type" : "fulltext",
+                "fields" : [ "search_api_site_name" ],
+                "description" : "A Fulltext aggregation of the following fields: Site name."
               }
             }
           }
