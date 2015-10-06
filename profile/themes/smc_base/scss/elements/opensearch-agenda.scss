@@ -427,11 +427,31 @@
     .description {
       display: none;
     }
+    .department {
+      clear: left;
+      color: $primaryTeal;
+      margin-left: 4px;
+
+      .label {
+        float: left;
+        width: 80px;
+        margin: 0 10px 0 0;
+        display: block;
+        text-align: right;
+        text-transform: none;
+        font-size: 1em;
+        line-height: 1.5em;
+      }
+      .field-content {
+        float: left;
+        line-height: 1.5em;
+      }
+    }
     .location {
       display: block;
       float: left;
       clear: left;
-      width: 230px;
+      width: 210px;
       margin-left: 4px;
       min-height: 10px;
       &:after {
@@ -462,7 +482,7 @@
     .node-date {
       float: left;
       margin-left: 15px;
-      width: 230px;
+      width: 210px;
       .node-start-date, .node-end-date {
         clear: both;
         display: block;
