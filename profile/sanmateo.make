@@ -302,6 +302,7 @@ projects[search_api_site][subdir] = contrib
 projects[search_api_site][download][type] = git
 projects[search_api_site][download][branch] = 7.x-1.x
 projects[search_api_site][download][url] = http://git.drupal.org/sandbox/e2thex/2033065.git
+projects[search_api_site][patch][2581347] = https://www.drupal.org/files/issues/site-name-2581347-1.patch
 
 projects[features_override][type] = module
 projects[features_override][subdir] = contrib

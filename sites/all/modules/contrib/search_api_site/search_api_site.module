@@ -1,4 +1,32 @@
 <?php
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Adds a Site Name setting to search api (global for all indexes).
+ */
+function search_api_site_form_search_api_admin_index_edit_alter(&$form, &$form_state, $form_id) {
+  $form['search_api_site_sitename'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Site name',
+    '#default_value' => variable_get('search_api_site_sitename'),
+    '#required' => TRUE,
+    '#weight' => -1,
+    '#description' => t('This name is used when results appear on other sites'),
+  );
+
+  $form['#submit'][] = 'search_api_site_save';
+}
+
+/**
+ * Submit handler saves the search index sitename.
+ */
+function search_api_site_save($form, $form_state) {
+  if (isset($form_state['values']['search_api_site_sitename'])) {
+    variable_set('search_api_site_sitename', $form_state['values']['search_api_site_sitename']);
+  }
+}
+
 function search_api_site_hash() {
   if (!($hash = variable_get('apachesolr_site_hash', FALSE))) {
     global $base_url;
@@ -19,7 +47,6 @@ function search_api_site_search_api_alter_callback_info() {
   return $callbacks;
 }
 
-
 function search_api_site_views_data_alter(&$data) {
   foreach (search_api_index_load_multiple(FALSE) as $index) {
     // Fill in base data.
@@ -32,6 +59,7 @@ function search_api_site_views_data_alter(&$data) {
 
 /**
  * Search API data alteration callback that adds an URL field for all items.
+ * Also adds a site name field to each item.
  */
 class SearchApiSiteAddHash extends SearchApiAbstractAlterCallback {
 
@@ -40,6 +68,7 @@ class SearchApiSiteAddHash extends SearchApiAbstractAlterCallback {
     foreach ($items as $id => &$item) {
       $item->search_api_site_hash = search_api_site_hash();
       $item->search_api_id = search_api_site_hash() . $id;
+      $item->search_api_site_name = variable_get('search_api_site_sitename');
       $new_items[search_api_site_hash() . $id] = $item;
     }
     #$items = $new_items;
@@ -49,13 +78,18 @@ class SearchApiSiteAddHash extends SearchApiAbstractAlterCallback {
     return array(
       'search_api_site_hash' => array(
         'label' => t('Site Hash'),
-        'description' => t('I Hash of the site which can then be used to limit results'),
+        'description' => t('A Hash of the site which can then be used to limit results'),
         'type' => 'uri',
       ),
       'search_api_site_id' => array(
         'label' => t('Site item id'),
         'description' => t('a unique id for the item'),
         'type' => 'uri',
+      ),
+      'search_api_site_name' => array(
+        'label' => t('Site name'),
+        'description' => t('The Site Name'),
+        'type' => 'string',
       ),
     );
   }
