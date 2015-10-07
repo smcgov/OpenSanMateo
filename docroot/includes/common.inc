@@ -5153,20 +5153,24 @@ function drupal_get_private_key() {
  * @param $value
  *   An additional value to base the token on.
  *
- * The generated token is based on the session ID of the current user. Normally,
+ * The generated token is based on the session of the current user. Normally,
  * anonymous users do not have a session, so the generated token will be
  * different on every page request. To generate a token for users without a
  * session, manually start a session prior to calling this function.
  *
  * @return string
- *   A 43-character URL-safe token for validation, based on the user session ID,
+ *   A 43-character URL-safe token for validation, based on the token seed,
  *   the hash salt provided from drupal_get_hash_salt(), and the
  *   'drupal_private_key' configuration variable.
  *
  * @see drupal_get_hash_salt()
  */
 function drupal_get_token($value = '') {
-  return drupal_hmac_base64($value, session_id() . drupal_get_private_key() . drupal_get_hash_salt());
+  if (empty($_SESSION['csrf_token_seed'])) {
+    $_SESSION['csrf_token_seed'] = drupal_random_key();
+  }
+
+  return drupal_compute_token($_SESSION['csrf_token_seed'], $value);
 }
 
 /**
@@ -5185,7 +5189,28 @@ function drupal_get_token($value = '') {
  */
 function drupal_valid_token($token, $value = '', $skip_anonymous = FALSE) {
   global $user;
-  return (($skip_anonymous && $user->uid == 0) || ($token === drupal_get_token($value)));
+  if (!$skip_anonymous && empty($_SESSION['csrf_token_seed'])) {
+    return FALSE;
+  }
+
+  return (($skip_anonymous && $user->uid == 0) || ($token === drupal_compute_token($_SESSION['csrf_token_seed'], $value)));
+}
+
+/**
+ * Generates a token_based on $value, the token seed, and the private key.
+ *
+ * @param string $seed
+ *   The per-session token seed.
+ * @param string $value
+ *   (optional) An additional value to base the token on.
+ *
+ * @return string
+ *   A 43-character URL-safe token for validation, based on the token seed,
+ *   the hash salt provided by drupal_get_hash_salt(), and the
+ *   'drupal_private_key' configuration variable.
+ */
+function drupal_compute_token($seed, $value = '') {
+  return drupal_hmac_base64($value, $seed . drupal_get_private_key() . drupal_get_hash_salt());
 }
 
 function _drupal_bootstrap_full() {

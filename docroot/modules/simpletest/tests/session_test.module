@@ -60,6 +60,13 @@ function session_test_menu() {
     'access callback' => 'user_is_logged_in',
     'type' => MENU_CALLBACK,
   );
+  $items['session-test/form'] = array(
+    'title' => 'Test form',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('session_test_form'),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
 
   return $items;
 }
@@ -189,4 +196,30 @@ function session_test_drupal_goto_alter(&$path, &$options, &$http_response_code)
  */
 function _session_test_is_logged_in() {
   return t('User is logged in.');
+}
+
+/**
+ * Menu callback for the test config edit forms.
+ */
+function session_test_form($form, &$form_state) {
+  $form['input'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Input',
+    '#required' => TRUE,
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Save',
+  );
+
+  return $form;
+}
+
+/**
+ * Submit callback.
+ */
+function session_test_form_submit(&$form, &$form_state) {
+  drupal_set_message(format_string('Ok: @input', array('@input' => $form_state['values']['input'])));
 }

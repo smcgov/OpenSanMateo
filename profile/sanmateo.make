@@ -9,6 +9,7 @@ projects[drupal][patch][] = http://drupal.org/files/1369024-theme-inc-add-messag
 projects[drupal][patch][] = http://drupal.org/files/1369584-form-error-link-from-message-to-element-make-D7.patch
 projects[drupal][patch][] = http://drupal.org/files/1356276-make-D7-17.patch
 projects[drupal][patch][] = http://drupal.org/files/issues/autocomplete_popup_position-1218684-11.patch
+projects[drupal][patch][] = http://drupal.org/files/issues/2245003-use-random-seed-instead-of-session-id-for-csrf-token-d7_2.patch
 
 projects[openpublic][type] = profile
 projects[openpublic][download][type] = git

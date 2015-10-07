@@ -249,7 +249,7 @@ function drupal_session_initialize() {
     // anonymous users not use a session cookie unless something is stored in
     // $_SESSION. This allows HTTP proxies to cache anonymous pageviews.
     drupal_session_start();
-    if (!empty($user->uid) || !empty($_SESSION)) {
+    if (!empty($user->uid) || !drupal_session_obsolete()) {
       drupal_page_is_cacheable(FALSE);
     }
   }
@@ -307,7 +307,7 @@ function drupal_session_commit() {
     return;
   }
 
-  if (empty($user->uid) && empty($_SESSION)) {
+  if (empty($user->uid) && drupal_session_obsolete()) {
     // There is no session data to store, destroy the session if it was
     // previously started.
     if (drupal_session_started()) {
@@ -373,6 +373,10 @@ function drupal_session_regenerate() {
     $old_session_id = session_id();
   }
   session_id(drupal_random_key());
+
+  if (!empty($_SESSION)) {
+    unset($_SESSION['csrf_token_seed']);
+  }
 
   if (isset($old_session_id)) {
     $params = session_get_cookie_params();
@@ -530,4 +534,26 @@ function drupal_save_session($status = NULL) {
     $save_session = $status;
   }
   return $save_session;
+}
+
+/**
+ * Determines whether the session contains user data.
+ *
+ * @return bool
+ *   TRUE when the session does not contain any values and therefore can be
+ *   destroyed.
+ */
+function drupal_session_obsolete() {
+  // Return early when $_SESSION is empty or not initialized.
+  if (empty($_SESSION)) {
+    return TRUE;
+  }
+
+  // Ignore the CSRF token seed.
+  //
+  // Anonymous users should not get a CSRF token at any time, or if they do,
+  // then the originating code is responsible for cleaning up the session once
+  // obsolete. Since that is not guaranteed to be the case, this check force-
+  // ignores the CSRF token, so as to avoid performance regressions.
+  return count(array_diff_key($_SESSION, array('csrf_token_seed' => TRUE))) == 0;
 }
