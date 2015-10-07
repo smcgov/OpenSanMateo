@@ -47,6 +47,11 @@ $conf['opensanmateo_govdelivery_signup_url'] = 'https://stage-public.govdelivery
 // Set Acquia Connector keys
 // From Acquia Ticket #15066-99152: Are we able to define multiple Solr instances for the different environments?
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+  // If this is an Acquia environment, enable mixed mode HTTPS.
+  // Combined with Securepages settings, this forces Authenticated traffic to
+  // be directed to HTTPS pages, and directs anonymous traffic to HTTP.
+  $conf['https'] = 1;
+
   switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     case 'prod' :
       // Acquia production settings
