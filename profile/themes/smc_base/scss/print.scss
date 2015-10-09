@@ -1,3 +1,44 @@
 /* Welcome to Compass. Use this file to define print styles.
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
+
+body {
+  padding-top: 0 !important;
+}
+
+#toolbar {
+  display: none;
+}
+
+#header {
+  // Hide these things.
+  #block-menu-block-sanmateo-primary-menu,
+  a.dept-link {
+    display: none;
+  }
+
+  a[href]:after {
+    content: none;
+  }
+}
+
+#messages {
+  display: none;
+}
+
+#block-opensanmateo-search-header-search,
+.tabs ul.tabs {
+  display: none !important;
+}
+
+.print-link {
+  display: none;
+}
+
+ul.pager {
+  display: none;
+}
+
+#footer-wrapper {
+  display: none;
+}

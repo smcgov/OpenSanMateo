@@ -34,6 +34,7 @@ if (strpos($date, 'All Day Event')) {
   $time_of_day = '';
 }
 $description = $fields['search_api_multi_aggregation_1']->content;
+$department = $fields['search_api_aggregation_3']->content;
 $image = $fields['search_api_multi_aggregation_2']->content;
 $readmore = $fields['readmore']->content;
 ?>
@@ -48,7 +49,10 @@ $readmore = $fields['readmore']->content;
     </header>
 
     <div class="description"><?php print $description; ?></div>
-
+    <div class="department">
+      <h5 class="label">Dept:</h5>
+      <?php print $department; ?>
+    </div>
     <span class="location"><?php print $location; ?></span>
     <?php print $date; ?>
     <?php print $readmore; ?>

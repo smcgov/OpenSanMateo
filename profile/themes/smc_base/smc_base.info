@@ -5,6 +5,7 @@ engine = phptemplate
 
 stylesheets[all][] = css/smc_base.css
 stylesheets-conditional[lt IE 9][all][] = css/ie.css
+stylesheets[print][] = css/print.css
 
 scripts[] = js/foundation/modernizr.foundation.js
 scripts[] = js/showHide.js

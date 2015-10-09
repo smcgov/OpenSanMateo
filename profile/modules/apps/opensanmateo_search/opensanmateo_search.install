@@ -54,3 +54,13 @@ function opensanmateo_search_update_7004() {
     entity_save('search_api_index', $item);
   }
 }
+
+/**
+ * Set the search_api_site_sitename variable with a site_name default.
+ */
+function opensanmateo_search_update_7005() {
+  $site_name = variable_get('site_name');
+  variable_set('search_api_site_sitename', $site_name);
+
+  return array();
+}

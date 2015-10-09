@@ -45,7 +45,7 @@ projects[field_collection][patch][] = http://drupal.org/files/hide_empty_field_c
 
 projects[views_bulk_operations][type] = module
 projects[views_bulk_operations][subdir] = contrib
-projects[views_bulk_operations][version] = 3.0-rc1
+projects[views_bulk_operations][version] = 3.3
 
 projects[filefield_sources][type] = module
 projects[filefield_sources][subdir] = contrib
@@ -123,6 +123,10 @@ projects[addressfield_staticmap][download][revision] = f9f1d97b025ddc0f02af3b39a
 projects[context_entity_field][type] = module
 projects[context_entity_field][subdir] = contrib
 projects[context_entity_field][version] = 1.0
+
+projects[nodeblock][type] = module
+projects[nodeblock][subdir] = contrib
+projects[nodeblock][version] = 1.6
 
 projects[nodequeue][type] = module
 projects[nodequeue][subdir] = contrib
@@ -298,6 +302,11 @@ projects[search_api_site][subdir] = contrib
 projects[search_api_site][download][type] = git
 projects[search_api_site][download][branch] = 7.x-1.x
 projects[search_api_site][download][url] = http://git.drupal.org/sandbox/e2thex/2033065.git
+projects[search_api_site][patch][2581347] = https://www.drupal.org/files/issues/site-name-2581347-1.patch
+
+projects[features_override][type] = module
+projects[features_override][subdir] = contrib
+projects[features_override][version] = 2.0-rc2
 
 projects[features_template][type] = module
 projects[features_template][subdir] = contrib
@@ -311,7 +320,6 @@ projects[quick_search][download][type] = git
 projects[quick_search][download][branch] = 7.x-1.x
 projects[quick_search][download][url] = http://git.drupal.org/sandbox/jec006/1524412.git
 
-projects[search_api_solr][type] = module
 projects[search_api_solr][type] = module
 projects[search_api_solr][subdir] = contrib
 projects[search_api_solr][version] = 1.0

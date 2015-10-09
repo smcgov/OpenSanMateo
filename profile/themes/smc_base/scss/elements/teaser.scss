@@ -85,19 +85,19 @@
   
   .node-thumbnail {
     border: 5px solid rgba($primaryBlue, .05);
-		float: left; 
-		border-radius: 3px; 
-		margin-bottom: 2%;
+	float: left;
+	border-radius: 3px;
+	margin-bottom: 2%;
     margin-right: 2%;
-		
-		max-height: 80px;
-		width: 80px;
-		overflow: hidden;
-		
-		img {
-  		max-width: 100%;
-  		height: auto;
-		}
+	max-height: 80px;
+	width: 80px;
+	overflow: hidden;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      max-height: 100%;
+    }
 		
   }
   
