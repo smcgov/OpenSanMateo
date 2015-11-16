@@ -39,3 +39,28 @@ function opensanmateo_search_update_7003() {
     opensanmateo_search_taxonomy_vocabulary_insert($vocab);
   }
 }
+
+/**
+ * Migrates indexed thumbnail style to new per-node-type settings.
+ */
+function opensanmateo_search_update_7004() {
+  $item = entity_load_single('search_api_index', 'san_mateo_content_index');
+  if ($item) {
+    $node_types = node_type_get_names();
+    $old_image_style = $item->options['data_alter_callbacks']['search_opensanmateo_image']['settings']['image_style'];
+    $item->options['data_alter_callbacks']['search_opensanmateo_image']['settings']['image_style'] = array(
+      '__default' => $old_image_style,
+    );
+    entity_save('search_api_index', $item);
+  }
+}
+
+/**
+ * Set the search_api_site_sitename variable with a site_name default.
+ */
+function opensanmateo_search_update_7005() {
+  $site_name = variable_get('site_name');
+  variable_set('search_api_site_sitename', $site_name);
+
+  return array();
+}

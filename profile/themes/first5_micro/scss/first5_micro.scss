@@ -56,3 +56,35 @@ input[type=text] {
   	
   	margin:0;
   }
+
+body #block-opensanmateo-search-header-search input::-webkit-input-placeholder {
+  color: $primaryBlue !important;
+}
+
+body #block-opensanmateo-search-header-search input:focus::-webkit-input-placeholder {
+  color: #ffffff !important;
+}
+
+body #block-opensanmateo-search-header-search input:-moz-placeholder {
+  color: $primaryBlue !important;
+}
+
+body #block-opensanmateo-search-header-search input:focus:-moz-placeholder {
+  color: #ffffff !important;
+}
+
+body #block-opensanmateo-search-header-search input::-moz-placeholder {
+  color: $primaryBlue !important;
+}
+
+body #block-opensanmateo-search-header-search input:focus::-moz-placeholder {
+  color: #ffffff !important;
+}
+
+body #block-opensanmateo-search-header-search input:-ms-input-placeholder {
+  color: $primaryBlue !important;
+}
+
+body #block-opensanmateo-search-header-search input:focus:-ms-input-placeholder {
+  color: #ffffff !important;
+}

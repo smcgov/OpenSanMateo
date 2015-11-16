@@ -3,9 +3,9 @@
 @import "vars.scss";
 
 // WYSIWYG styles, and default HTML elements
-// Editor will also include foundation and 
+// Editor will also include foundation and
 // normalize defaults so that wysiwyg editors
-// are as accurate as possible, and those 
+// are as accurate as possible, and those
 // will no longer be imported via .info
 @import "elements/editor.scss";
 // Drupal admin toolbar adjustments
@@ -56,6 +56,8 @@
 @import "elements/twitter.scss";
 // footer elements
 @import "elements/footer.scss";
+// search box
+@import "elements/opensearch-agenda.scss";
 
 html {
   height: auto !important;
@@ -85,7 +87,7 @@ ul li.expanded {
   margin: 0;
 }
 .messages {
-  
+
   strong {
     display: inline;
   }
@@ -126,12 +128,12 @@ footer {
 /*
 #panels-layout-category-San-Mateo-Layouts-wrapper {
   padding-left: 0;
-  
+
   #panels-layout-category-San-Mateo-Layouts {
     .layout-link {
       width: 25%;
       height: auto;
-      
+
       a {
         display: block;
         height: 100%;
@@ -139,11 +141,11 @@ footer {
       img {
         margin-bottom: 5px;
       }
-      
+
       &.current-layout {
         font-weight: bold;
         img {
-          box-shadow: 3px 3px 6px rgba($primaryGray, 0.7); 
+          box-shadow: 3px 3px 6px rgba($primaryGray, 0.7);
         }
       }
     }
@@ -165,7 +167,7 @@ footer {
 
 ul.facetapi-facetapi-checkbox-links {
   padding-left: 10px;
-  
+
   input {
     margin-bottom: 0;
     margin-right: 10px;
@@ -185,12 +187,12 @@ ul.facetapi-facetapi-checkbox-links {
 
 #main .staff-page .staff-position {
   margin:0;
-  color: $primaryBlue; 
+  color: $primaryBlue;
   font-family: $bold;
   font-weight: normal;
   font-size: 1.125em;
   line-height: 1.4;
   margin-bottom: 0.5em;
-  margin-top: 0.2em;  
+  margin-top: 0.2em;
   display: block;
 }

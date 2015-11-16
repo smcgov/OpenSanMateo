@@ -7,20 +7,16 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function opensanmateo_search_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function opensanmateo_search_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "facetapi" && $api == "facetapi_defaults") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "panels_mini" && $api == "panels_default") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -29,8 +25,41 @@ function opensanmateo_search_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function opensanmateo_search_views_api() {
+function opensanmateo_search_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
+}
+
+/**
+ * Implements hook_image_default_styles().
+ */
+function opensanmateo_search_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: scale_800_wide.
+  $styles['scale_800_wide'] = array(
+    'name' => 'scale_800_wide',
+    'label' => 'scale_800_wide',
+    'effects' => array(
+      1 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 800,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
 }
 
 /**
@@ -73,8 +102,10 @@ function opensanmateo_search_default_search_api_index() {
         "search_api_multi_aggregation_18" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_aggregation_1" : { "type" : "date" },
         "search_api_aggregation_2" : { "type" : "string" },
+        "search_api_aggregation_3" : { "type" : "text", "boost" : "0.1" },
         "search_api_site_hash" : { "type" : "uri" },
         "search_api_site_id" : { "type" : "string" },
+        "search_api_site_name" : { "type" : "string" },
         "author:name" : { "type" : "text" },
         "author:url" : { "type" : "uri" },
         "body:value" : { "type" : "text" },
@@ -95,7 +126,7 @@ function opensanmateo_search_default_search_api_index() {
         "search_opensanmateo_image" : {
           "status" : 1,
           "weight" : "-50",
-          "settings" : { "image_style" : "list-page-thumbnail" }
+          "settings" : { "image_style" : { "__default" : "scale_800_wide" } }
         },
         "search_api_alter_bundle_filter" : {
           "status" : 0,
@@ -120,6 +151,12 @@ function opensanmateo_search_default_search_api_index() {
                 "type" : "first",
                 "fields" : [ "title" ],
                 "description" : "A First aggregation of the following fields: Title."
+              },
+              "search_api_aggregation_3" : {
+                "name" : "Aggregated Department (Site name)",
+                "type" : "fulltext",
+                "fields" : [ "search_api_site_name" ],
+                "description" : "A Fulltext aggregation of the following fields: Site name."
               }
             }
           }

@@ -24,46 +24,56 @@ class SiteCrawler extends PHPCrawler {
     parent::__construct();
   }
 
-  function handleDocumentInfo($DocInfo) {
-    $this->urls_processed[$DocInfo->http_status_code][] = $DocInfo->url;
+  function handleDocumentInfo(PHPCrawlerDocumentInfo $PageInfo) {
+    $this->urls_processed[$PageInfo->http_status_code][] = $PageInfo->url;
     
-    if (200 != $DocInfo->http_status_code) {
+    if (200 != $PageInfo->http_status_code) {
       return;
     }
     
     $nid = db_select('field_data_field_sitecrawler_url', 'fdfsu')
       ->fields('fdfsu', array('entity_id'))
-      ->condition('fdfsu.field_sitecrawler_url_url', $DocInfo->url)
+      ->condition('fdfsu.field_sitecrawler_url_url', $PageInfo->url)
       ->execute()
       ->fetchField();
   
     if (!!$nid) {
       $node = node_load($nid);
-      $this->nodes_updated++;
     }
     else {
       $node = new stdClass();
       $node->type = 'sitecrawler_page';
       node_object_prepare($node);
-      $this->nodes_created++;
     }
     
     $node->title = 
-      preg_match('#<head.*?<title>(.*?)</title>.*?</head>#is', $DocInfo->source, $matches)
+      preg_match('#<head.*?<title>(.*?)</title>.*?</head>#is', $PageInfo->source, $matches)
       ? $matches[1]
-      : $DocInfo->url;
+      : $PageInfo->url;
       
     $node->language = LANGUAGE_NONE;
 
     $node->field_sitecrawler_url[$node->language][0]['title'] = $node->title;
-    $node->field_sitecrawler_url[$node->language][0]['url'] = $DocInfo->url;
-      
-//     $node->field_sitecrawler_summary[$node->language][0]['value'] = 
+    $node->field_sitecrawler_url[$node->language][0]['url'] = $PageInfo->url;
 
-
-// drupal_set_message('<pre style="border: 1px solid red;">body_xpaths: ' . print_r($this->body_xpaths,1) . '</pre>');
     $doc = new DOMDocument();
-    $doc->loadHTML($DocInfo->source);
+    // Avoid random errors: http://stackoverflow.com/questions/30925533/php-dom-loadhtml-method-unusual-warning.
+    $source = str_replace("\0", '', $PageInfo->source);
+
+    // This line throws an error if there is malformed HTML. Use a source
+    // validator to correct it. Ex:
+    // * An unencoded ampersand
+    // * An unexpected element inside another, like a <table> inside a <p>
+    // * Multiple identical ID attributes on the same page.
+    // * Invalid tags based on the specified Doctype.
+    // The @ sign disables error reporting.
+    @$doc->loadHTML($source);
+
+    $doc->preserveWhiteSpace = FALSE;
+    removeElementsByTagName('script', $doc);
+    removeElementsByTagName('style', $doc);
+    removeElementsByTagName('link', $doc);
+    $node_body = '';
     foreach($this->body_xpaths as $body_xpath) {
       $xpath = new DOMXpath($doc);
       // $body = $xpath->query('/html/body');
@@ -71,40 +81,44 @@ class SiteCrawler extends PHPCrawler {
       $body = $xpath->query($body_xpath);
       if (!is_null($body)) {
         foreach ($body as $i => $element) {
-          $node_body = $element->nodeValue;
+          $node_body = trim($element->nodeValue);
           if (!empty($node_body)) {
             break 2;
           }
         }
       }
     }
-
+    // This page doesn't have the selectors of a standard page. It's likely a
+    // landing page or home page that doesn't follow the standard page content
+    // xpath rule. Skip it.
     if (empty($node_body)) {
-      $node_body = 
-        preg_match('#<body.*?>(.*?)</body>#is', $DocInfo->source, $matches)
-        && !empty($matches[1])
-        ? $matches[1]
-        : $DocInfo->source;
+      watchdog('OpenSanMateo Site Crawler', 'No body content was found. Message: %message', array('%message' => 'This URL did not have body content, or the markup was invalid in a way to prevent DOMXpath from running: ' . $PageInfo->url));
+      return;
     }
 
     $node_body = mb_check_encoding($node_body, 'UTF-8') ? $node_body : utf8_encode($node_body);
-    
+
     $node->body[$node->language][0]['value'] = $node_body;
     $node->body[$node->language][0]['summary'] = text_summary($node_body);
-    $node->body[$node->language][0]['format']  = filter_default_format();
+    // Filtered HTML doesn't allow script and style tags, etc.
+    $node->body[$node->language][0]['format']  = 'filtered_html';
     
-      
     // store the Drupal crawler ID from the opensanmateo_sitecrawler_sites table
     $node->field_sitecrawler_id[$node->language][0]['value'] = $this->crawler_id;
     
     // store the PHPCrawler ID for this pull of the site
     $node->field_sitecrawler_instance_id[$node->language][0]['value'] = $this->getCrawlerId();
-  
+
     node_save($node);
-    
-    $this->{'nodes_' . (!!$nid ? 'updated' : 'created')}[$node->nid] = $node->title . ' :: ' . $DocInfo->url;
+
+    if ((bool) $nid) {
+      $this->nodes_updated++;
+    }
+    else {
+      $this->nodes_created++;
+    }
   }
-  
+
   /**
    * Return present abort status.
    *

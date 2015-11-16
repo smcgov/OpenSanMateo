@@ -1,0 +1,629 @@
+@import "vars.scss";
+@import "compass/css3/transition";
+@import "compass/css3/border-radius";
+@import "compass/css3/appearance";
+@import "elements/buttons.scss";
+
+.pane-opensanmateo-search-panel-pane-4 {
+  header {
+    position: relative;
+    padding-bottom: 42px;
+  }
+
+  .event-more-info {
+    display: none;
+    .event-page, .event-add-calendar {
+      padding: 10px;
+      margin: 0 10px 10px;
+      background-color: #136DB5;
+      text-align: center;
+
+      a {
+        color: white;
+        font-weight: bold;
+        font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+      }
+    }
+    .event-add-calendar {
+      margin-bottom: 0px;
+    }
+  }
+  .event-hide-more-info {
+    background-color: #EEEEF7;
+    font-weight: bold;
+    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .views-field-search-api-multi-aggregation-9-1 {
+    /*font-weight: bold;
+    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; */
+    background-color: #F5F5F5;
+    padding: 10px 0px;
+
+    .time {
+      margin-right: 5px;
+      color: #036cb6;
+      padding-bottom: inherit;
+      line-height: inherit;
+    }
+  }
+
+  .aggregated-node-thumbnail  {
+    display: block;
+    clear: both;
+    width: 100%;
+
+    img {
+      margin: 0 auto;
+      display: block;
+    }
+  }
+
+  .read-more-wrapper {
+    line-height: normal;
+    border-top-width: 1px;
+    font-size: 1em;
+
+    a {
+      font-size: 1em;
+    }
+  }
+}
+
+.page-events {
+  .view-opensanmateo-search {
+    .view-content {
+      width: 70%;
+    }
+  }
+}
+
+
+// Calendar Page
+.view-opensanmateo-search.view-display-id-page_1 {
+  position: relative;
+  .view-filters {
+    padding-left: 140px;
+    padding-top: 10px;
+    .views-exposed-widget {
+      padding-right: 0;
+    }
+    .form-item {
+      float: left;
+      background: #f0f5f9;
+      height: 37px;
+      position: relative;
+      margin: 0 0 10px 10px;
+
+      &:after {
+        content: "";
+        background-repeat: no-repeat;
+        background-image: url("../images/down_arrow.png");
+        position: absolute;
+        right: 5px;
+        top: 30%;
+        width: 16px;
+        height: 20px;
+        z-index: 0;
+        background-color: #f0f5f9;
+        pointer-events: none;
+        cursor: pointer;
+      }
+
+      &.form-type-select {
+
+        padding-top: 7px;
+
+        label {
+          display: inline-block;
+        }
+
+        select {
+          width: 86%;
+          border: 0;
+          background: transparent;
+          cursor: pointer;
+          color: $primaryBlue;
+
+          &:hover,
+          &:focus {
+            border: 0;
+          }
+        }
+      }
+
+      input {
+        margin-bottom: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+        color: $primaryBlue;
+      }
+    }
+    .form-item-search-api-site-hash {
+      width: 165px;
+      label {
+        display: inline-block;
+        padding: 0 5px;
+        font-weight: 100;
+        .form-required {
+          display: none;
+        }
+      }
+      select#edit-search-api-site-hash {
+        display: inline-block;
+        width: 115px;
+        @include appearance(none);
+        font-size: .9em;
+      }
+    }
+    .form-submit {
+      margin-top: .25em;
+      margin-left: 8px;
+    }
+  }
+
+  .attachment-before {
+    position: absolute;
+    right: 0;
+    top: 92px;
+    width: 280px;
+    z-index: 2;
+
+    .group-by-day {
+      width: auto;
+      float: left;
+      margin-left: 0;
+
+      .date {
+        margin-left: 0;
+        text-transform: none;
+        font-weight: 100;
+        font-size: 1.5em;
+        font-family: 'Trade Gothic W01 Roman', 'Helvetica Neue', Arial, Helvetica;
+        color: #38939b;
+        line-height: 1.5em;
+      }
+    }
+
+    .controls {
+      float: right;
+      width: 40px;
+      height: 40px;
+      background: rgba(3, 108, 182, 0.95) no-repeat center;
+      margin: 0 1px;
+      font-size: 0;
+      @include border-radius(3px);
+      a {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+    }
+
+    .left-arrow {
+      background-image: url("../images/left_arrow.png");
+    }
+
+    .right-arrow {
+      background-image: url("../images/right_arrow.png");
+    }
+    .view-display-id-attachment_1 {
+      clear: right;
+      padding-top: 15px;
+    }
+
+    .view-content {
+      width: 100%;
+      float: none;
+
+      .calendar {
+        width: 100%;
+        border-bottom: 0;
+        border-right: 0;
+
+        .calendar-day,
+        .calendar-day-head,
+        .calendar-day-np {
+          border-right: 1px solid rgba(3, 108, 182, 0.1);
+          border-bottom: 1px solid rgba(3, 108, 182, 0.1);
+        }
+
+        .calendar-day-head {
+          background: #f0f5f9;
+        }
+
+        .day-number,
+        .calendar-day-head{
+          padding: .75em .75em .75em 1em;
+        }
+        .day-number:hover {
+          background-color: $primaryTeal;
+          color: white;
+          a, a:hover, a:focus {
+            color: white;
+          }
+        }
+        p.mti_font_element {
+          display: none;
+        }
+
+        tr:nth-child(2n+2) {
+          background: transparent;
+        }
+      }
+    }
+  }
+
+  .views-exposed-form {
+    .container-inline-date {
+      clear: none;
+      float: left;
+
+      label[for=edit-start-date], label[for=edit-to-date] {
+        display: block;
+        margin: 5px;
+        padding-top: 5px;
+        float: left;
+        font-weight: 100;
+      }
+    }
+    .views-exposed-widget {
+      float: left;
+      padding-top: 0;
+
+      label[for=edit-subject] {
+        display: block;
+        margin: 5px;
+        padding-top: 5px;
+        float: left;
+      }
+      .form-type-select select {
+        width: 83%;
+      }
+    }
+
+    .views-submit-button {
+
+    }
+
+    .views-widget-sort-by {
+      display: none;
+    }
+
+  }
+
+  .view-content {
+    float: left;
+    width: 100%;
+  }
+
+  .view-content > h3 {
+    position: relative;
+    margin-top: 24px;
+    font-weight: bold;
+    font-size: 1.5em;
+    font-family: 'Trade Gothic W01 Roman', 'Helvetica Neue', Arial, Helvetica;
+    color: #38939b;
+    text-transform: none;
+
+    .day-of-week {
+      display: inline-block;
+      margin-right: 15px;
+      color: #38939b;
+      //transform: translateX(-125%);
+      font-weight: bold;
+    }
+
+    .date {
+      display: inline-block;  
+      font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+      font-weight: 100;
+    }
+  }
+
+  .universal-teaser {
+    border: none;
+  }
+  div.views-row {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    background-color: transparent;
+  }
+  .left-col {
+    width: 12%;
+    min-width: 100px;
+    float: left;
+    padding-top: 16px;
+    padding-bottom: 24px;
+    color: $primaryBlue;
+    font-size: 1.2em;
+  }
+  
+  .right-col {
+    width: 58%;
+    float: left;
+    border: 1px solid rgba(3, 108, 182, 0.1);
+    border-top: 1px solid rgba(3, 108, 182, 0.1);
+    @include transition-property(all);
+    @include transition-duration(0.5s);
+
+    &:hover {
+      background: #E7EDED;
+      cursor: pointer;
+      @include transition-property(all);
+      @include transition-duration(0.2s);
+    }
+
+    .node-teaser {
+      display: none;
+      border-top: none;
+      border-bottom: none;
+      clear: left;
+    }
+    .event-more-info {
+      display: none;
+      clear: both;
+      .event-hide-more-info {
+        padding: 10px;
+        margin: 0 10px 10px;
+        background-color: #EEEEF7;
+        text-align: center;
+        width: 130px;
+      }
+      .event-page, .event-add-calendar {
+        padding: 10px;
+        margin: 0 10px 10px;
+        background-color: #136DB5;
+        text-align: center;
+        width: 130px;
+        float: right;
+
+        a {
+          color: white;
+          font-weight: bold;
+          font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+        }
+      }
+    }
+    header {
+      padding-top: 16px;
+      margin-left: 24px;
+      float: left;
+
+      h4 {
+        font-size: 1.2em;
+      }
+    }
+    .node-thumbnail {
+      position: relative;
+      width: 160px;
+      height: 165px;
+      max-height: none;
+      overflow: hidden;
+      margin: 0 0 0 12px;
+      float: right;
+      border: none;
+      img {
+        position: absolute;
+        top: -9999px;
+        bottom: -9999px;
+        left: -9999px;
+        right: -9999px;
+        margin: auto;
+      }
+      @include transition-property(all);
+      @include transition-duration(0.5s);
+    }
+    .description {
+      display: none;
+    }
+    .department {
+      clear: left;
+      color: $primaryTeal;
+      margin-left: 4px;
+
+      .label {
+        float: left;
+        width: 80px;
+        margin: 0 10px 0 0;
+        display: block;
+        text-align: right;
+        text-transform: none;
+        font-size: 1em;
+        line-height: 1.5em;
+      }
+      .field-content {
+        float: left;
+        line-height: 1.5em;
+      }
+    }
+    .location {
+      display: block;
+      float: left;
+      clear: left;
+      width: 210px;
+      margin-left: 4px;
+      min-height: 10px;
+      &:after {
+        content: none;
+      }
+      h5 {
+        width: 80px;
+        float: left;
+        margin: 0 10px 0 0;
+        min-height: 60px;
+        text-align: right;
+        text-transform: none;
+        font-size: 1em;
+        &:after {
+          content: ":";
+        }
+      }
+      ul.adr {
+        margin-top: 2px;
+        list-style: none;
+        list-style-type: none;
+        font-weight: normal;
+        li {
+          font-weight: 100;
+        }
+      }
+    }
+    .node-date {
+      float: left;
+      margin-left: 15px;
+      width: 210px;
+      .node-start-date, .node-end-date {
+        clear: both;
+        display: block;
+      }
+      h5  {
+        float: left;
+        width: 80px;
+        margin: 0;
+        display: block;
+        text-align: right;
+        text-transform: none;
+        font-size: 1em;
+        line-height: 1.5em;
+        &:after {
+          content: ":";
+        }
+        &.all-day:after {
+          content: none;
+        }
+      }
+      .date-data {
+        float: left;
+        margin-left: 10px;
+        line-height: 1.5em;
+        font-family: $light;
+        font-weight: 100;
+      }
+    }
+    .read-more-wrapper {
+      display: none;
+    }
+  }
+
+  .views-row-selected {
+    .node-thumbnail {
+      float: none;
+      margin: 0 0 20px 0;
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      max-width: 100%;
+      text-align: right;
+      @include transition-property(all);
+      @include transition-duration(0.5s);
+      img {
+        right: 0;
+        position: static;
+      }
+    }
+    .right-col {
+      &:hover {
+        background: #fff;
+      }
+    }
+    header {
+      float: none;
+    }
+    .description {
+      display: block;
+      width: 100%;
+      margin: 10px 0 24px 0;
+      padding: 0 15px;
+      line-height: 1.5em;
+      font-weight: 100;
+    }
+    .read-more-wrapper {
+      display: block;
+      position: static;
+      width: 100%;
+      padding: 0 20px 20px;
+      a.read-more {
+        @include button;
+        @include buttonBlue;
+        float: right;
+      }
+      .read-more-title {
+        width: auto;
+        height: auto;
+        position: static;
+        top: auto;
+      }
+    }
+  }
+
+}
+// Hide the calendar attachment for smaller screens.
+@media screen and (max-width:1010px) {
+  .view-opensanmateo-search.view-display-id-page_1 {
+    .attachment-before {
+      position: static;
+      margin: 0 auto;
+      right: auto;
+    }
+
+    .views-row.first-row div.right-col {
+      width: 100%;
+    }
+    .views-row div.right-col {
+      width: 100%;
+    }
+  }
+}
+@media screen and (max-width:385px) {
+  .view-opensanmateo-search.view-display-id-page_1 {
+    .view-filters {
+      clear: left;
+      padding-left: 0;
+    }
+    .attachment-before {
+      display: none;
+    }
+    .views-row {
+      padding-left: 0;
+    }
+    .right-col {
+      .node-thumbnail {
+        margin: 0;
+        width: 100%;
+        height: auto;
+
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.page-events {
+  .tabs {
+    position: absolute;
+  }
+  #block-system-main {
+    min-height: 400px;
+  }
+  #page-title {
+    float: left;
+    width: inherit;
+    color: $primaryTeal;
+    font-size: 2em;
+    font-weight: 100;
+    text-transform: uppercase;
+  }
+}

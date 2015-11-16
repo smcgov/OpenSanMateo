@@ -58,6 +58,7 @@ function smc_base_html_head_alter(&$head_elements) {
 }
 
 function smc_base_process_page(&$variables) {
+  
   // Always print the site name and slogan, but if they are toggled off, we'll
   // just hide them visually.
   $variables['hide_site_name']   = theme_get_setting('toggle_name') ? FALSE : TRUE;
@@ -76,7 +77,10 @@ function smc_base_process_page(&$variables) {
   }
 
   $variables['header_logo'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-header.png';
+
   $variables['smclink'] = variable_get("smclink", 'http://www.smcgov.org');
+
+
   $variables['footer_logo'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-footer-small.png';
   $variables['footer_logo_small'] = base_path() . drupal_get_path('theme', 'smc_base') . '/images/seal-footer.png';
   //krumo($variables);
@@ -346,11 +350,13 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       // apply the image
       $vars['fields']['search_api_multi_aggregation_2']->content = '<div class="node-thumbnail">' . $img . '</div>';
 
-
-      // now let's wrap the thumbnail and teaser into a single wrapper
-      $vars['fields']['search_api_multi_aggregation_1']->content = $vars['fields']['search_api_multi_aggregation_2']->content . $vars['fields']['search_api_multi_aggregation_1']->content;
-      // since we've combined the two fields, unset the "original" thumbnail
-      unset($vars['fields']['search_api_multi_aggregation_2']);
+      // We do not want to combine these for the calendar page.
+      if ($view->current_display != 'page_1') {
+        // now let's wrap the thumbnail and teaser into a single wrapper
+        $vars['fields']['search_api_multi_aggregation_1']->content = $vars['fields']['search_api_multi_aggregation_2']->content . $vars['fields']['search_api_multi_aggregation_1']->content;
+        // since we've combined the two fields, unset the "original" thumbnail
+        unset($vars['fields']['search_api_multi_aggregation_2']);
+      }
     }
     else {
       // then remove it completely
@@ -372,11 +378,12 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     // Adjust the header (title and type)
     // It should be safe here to use prefix on one and suffix on the other because if
     // one is missing (type or title), there are really big problems with the node anyway
-    $vars['fields']['title']->wrapper_prefix = '<header class="group clearfix">' . $vars['fields']['type']->wrapper_prefix;
-    $vars['fields']['type']->wrapper_suffix = $vars['fields']['type']->wrapper_suffix . '</header>';
+    if (isset($vars['fields']) && isset($vars['fields']['type']) & isset($vars['fields']['title'])) {
+      $vars['fields']['title']->wrapper_prefix = '<header class="group clearfix">' . $vars['fields']['type']->wrapper_prefix;
+      $vars['fields']['type']->wrapper_suffix = $vars['fields']['type']->wrapper_suffix . '</header>';
+    }
 
     // Format byline
-
     if (isset($vars['fields']['search_api_multi_aggregation_3']->content) && strlen($vars['fields']['search_api_multi_aggregation_3']->content) >= 1) {
       // let's manipulate the author name data to give us a full byline
       $author = $vars['fields']['search_api_multi_aggregation_3']->content;
@@ -400,38 +407,50 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       // We actually won't use the above assignment, but will append this to the header title
       $vars['fields']['title']->content .= '<div class="author-data">' . $byline . '</div>';
     }
+    // Both start and end times are required for events. These are aggregated,
+    // so the field will exist, but the "content" property will be NULL.
+    $start_time = $vars['fields']['search_api_multi_aggregation_9']->content;
+    $end_time = $vars['fields']['search_api_multi_aggregation_10']->content;
 
-
-    if (!empty($vars['fields']['search_api_multi_aggregation_9']) && !empty($vars['fields']['search_api_multi_aggregation_10']) && ($vars['fields']['search_api_multi_aggregation_9']->content == $vars['fields']['search_api_multi_aggregation_10']->content) && !empty($vars['fields']['search_api_multi_aggregation_9']->content)) {
-      if (format_date($vars['fields']['search_api_multi_aggregation_9']->content, 'custom', 'g:i a') != '12:00 am') {
-        $startdate = '<div class="node-start-date"><h5>' . t('Starting') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content) . '</div></div>';
+    // Only perform this if we have time data (events only).
+    if ($start_time && $end_time) {
+      // If start and end date are the same.
+      if ($start_time == $end_time) {
+        // Start time is NOT midnight.
+        if (format_date($start_time, 'custom', 'g:i a') != '12:00 am') {
+          $startdate = '<div class="node-start-date"><h5>' . t('Starting') . '</h5><div class="date-data">'. smc_base_format_timestamp($start_time) . '</div></div>';
+          // The calendar page should only display time here.
+          if ($view->current_display == 'page_1') {
+            $startdate = '<div class="node-start-date"><h5>' . t('Start Time') . '</h5><div class="date-data">'. format_date($start_time, 'custom', 'g:ia') . '</div></div>';
+          }
+        }
+        // So this is an "All Day" event.
+        else {
+          $startdate = '<div class="node-start-date"><h5>' . t('All Day Event') . '</h5><div class="date-data">'. smc_base_format_timestamp($start_time, FALSE) . '</div></div>';
+          // On the calendar, it should say "All Day Event", no need to repeat the date.
+          if ($view->current_display == 'page_1') {
+            $startdate = '<div class="wrapper date-data"><h5 class="all-day">' . t('All Day Event') . '</h5></div>';
+          }
+        }
+        // In either case, end date is not shown.
+        $enddate = '';
       }
+      // Start time is different than end time.
       else {
-        $startdate = '<div class="node-start-date"><h5>' . t('All Day Event') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content, FALSE) . '</div></div>';
+        $startdate = '<div class="node-start-date"><h5>' . t('From') . '</h5><div class="date-data">'. smc_base_format_timestamp($start_time) . '</div></div>';
+        $enddate = '<div class="node-end-date"><h5>' . t('To') . '</h5><div class="date-data">'. smc_base_format_timestamp($end_time) . '</div></div>';
+        // The calendar page has slightly different markup, and only displays time.
+        if ($view->current_display == 'page_1') {
+          $startdate = '<div class="node-start-date"><h5>' . t('Start Time') . '</h5><div class="date-data">'. format_date($start_time, 'custom', 'g:ia') . '</div></div>';
+          $enddate = '<div class="node-end-date"><h5>' . t('End') . '</h5><div class="date-data">'. format_date($end_time, 'custom', 'g:ia') . '</div></div>';
+        }
       }
-      $enddate = '';
     }
     else {
-      // start date
-      if (isset($vars['fields']['search_api_multi_aggregation_9']->content) && strlen($vars['fields']['search_api_multi_aggregation_9']->content) >= 1) {
-        $startdate = '<div class="node-start-date"><h5>' . t('From') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_9']->content) . '</div></div>';
-      }
-      else {
-        // remove it then
-        $startdate = '';
-        unset($vars['fields']['search_api_multi_aggregation_9']);
-      }
-      // end date
-      if (isset($vars['fields']['search_api_multi_aggregation_10']->content) && strlen($vars['fields']['search_api_multi_aggregation_10']->content) >= 1) {
-        $enddate = '<div class="node-end-date"><h5>' . t('To') . '</h5><div class="date-data">'. smc_base_format_timestamp($vars['fields']['search_api_multi_aggregation_10']->content) . '</div></div>';
-      }
-      else {
-        // remove it then
-        $enddate = '';
-        unset($vars['fields']['search_api_multi_aggregation_10']);
-      }
+      // Avoid php notices.
+      $startdate = '';
+      $enddate = '';
     }
-
 
     // make the date into a new object that is usable
     $vars['fields']['dateinfo'] = new stdClass();
@@ -439,9 +458,6 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     $vars['fields']['dateinfo']->label_html = '';
     $vars['fields']['dateinfo']->wrapper_prefix = '';
     $vars['fields']['dateinfo']->wrapper_suffix = '';
-    // unset the original date field(s)
-    unset($vars['fields']['search_api_multi_aggregation_9']);
-    unset($vars['fields']['search_api_multi_aggregation_10']);
 
     // make the more link actually an object that is expected
     $vars['fields']['readmore'] = new stdClass();
@@ -456,6 +472,22 @@ function smc_base_preprocess_views_view_fields(&$vars) {
       unset($vars['fields']['readmore']);
     }
 
+    // The Calendar display template uses a lot of the unset variables below.
+    if ($view->current_display == 'page_1') {
+      // Click-expanding behavior js.
+      drupal_add_js(drupal_get_path('module', 'opensanmateo_search') . '/js/events.js');
+
+      // Get out of this overbearing preprocess function before all the fields
+      // are unset.
+
+      return;
+    }
+
+    // Not sure how this is created but we don't need it.
+    if ($view->current_display == 'panel_pane_4') {
+      unset($vars['fields']['url']);
+    }
+
     // we need to ensure that in the panels pane these items are removed
     // as the views rewrite groups them all into one field (street)
     unset($vars['fields']['search_api_multi_aggregation_4']); // state
@@ -466,6 +498,10 @@ function smc_base_preprocess_views_view_fields(&$vars) {
     unset($vars['fields']['search_api_multi_aggregation_19']); // author url
     unset($vars['fields']['search_api_multi_aggregation_3']); // author name
     unset($vars['fields']['nothing']); // wtf
+    // unset the original date field(s)
+    unset($vars['fields']['search_api_multi_aggregation_9_1']);
+    unset($vars['fields']['search_api_multi_aggregation_9']);
+    unset($vars['fields']['search_api_multi_aggregation_10']);
 
     // get rid of the original more link as we've formatted it above as an object to properly render.
     unset($vars['fields']['more_link']); // morelink
