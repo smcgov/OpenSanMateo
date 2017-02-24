@@ -51,7 +51,10 @@ function opensanmateo_location_field_default_field_instances() {
       'active' => 1,
       'module' => 'addressfield',
       'settings' => array(
-        'available_countries' => array(),
+        'available_countries' => array(
+          'US' => 'US',
+        ),
+        'default_country' => 'US',
         'format_handlers' => array(
           'address' => 'address',
           'organisation' => 0,

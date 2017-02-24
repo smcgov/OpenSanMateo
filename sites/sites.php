@@ -56,7 +56,7 @@
 
 /*
  * Map San Mateo sites to dev, staging and prod fayze2.com hostnames
- * Acquia domains: 
+ * Acquia domains:
  *   *.smcdev-acquia.fayze.com
  *   *.smcstg-acquia.fayze.com
  *   *.smcprd-acquia.fayze.com
@@ -70,6 +70,7 @@ $fayze2_sites = array(
   'cmo' => 'cmo.smcgov.org',
   'coroner' => 'coroner.smcgov.org',
   'da' => 'da.smcgov.org',
+  'sustainability' => 'green.smgov.org',
   'green' => 'green.smcgov.org',
   'hr' => 'hr.smcgov.org',
   'isd' => 'isd.smcgov.org',
@@ -89,7 +90,7 @@ $fayze2_sites = array(
   'first5' => 'first5.smcgov.org',
   'lafco' => 'lafco.smcgov.org',
   'childrensfund' => 'childrensfund.smcgov.org',
-  'lgbtq' => 'lgbtq.smcgov.org', 
+  'lgbtq' => 'lgbtq.smcgov.org',
 );
 
 foreach ($fayze2_sites as $short_name => $site_name) {
@@ -98,15 +99,17 @@ foreach ($fayze2_sites as $short_name => $site_name) {
   $sites["{$short_name}.smcprd-acquia.fayze2.com"] = $site_name;
   // Staging sites.
   $sites["staging.{$short_name}.smcgov.org"] = $site_name;
+  $sites["dev.{$short_name}.smcgov.org"] = $site_name;
 }
 //added www.smcgov.org to point at main site
 $sites["www.smcgov.org"] = "smcgov.org";
-
-$sites['greensanmateo.org'] = 'green.smcgov.org';
+$sites["dev.smcgov.org"] = "smcgov.org";
 
 /*
  * Additional mappings for staging
  */
+$sites['greensanmateo.org'] = 'green.smcgov.org';
+$sites['sustainability.smcgov.org'] = 'green.smcgov.org';
 
 /*
  * Additional mappings for prod

@@ -16,7 +16,7 @@ How domain detection works
 --------------------------------------------------------------------------------
 The module does a good job in detecting 80% of the right domains and performs a
 series of checks and tests automatically. To better understand what data it uses
-to determine the domains its good to know what things it checks:
+to determine the domains, it's good to know what things it checks:
 
 1. Take all hardcoded domains in $conf['acquia_purge_domains'] and stop finding.
 
@@ -30,7 +30,7 @@ Listing the domains
 --------------------------------------------------------------------------------
 You can easily list the domains that will be purged using "drush ap-domains"
 or its alias "drush apdo". When you didn't hardcode domains in settings.php or
-in sites.php, the detection will use environment parameters. Therefore its
+in sites.php, the detection will use environment parameters. Therefore it's
 important to always pass --uri to Drush to simulate real-world usage:
 
   $ drush ap-domains --uri="http://www.site.com"

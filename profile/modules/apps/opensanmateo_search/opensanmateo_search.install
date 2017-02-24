@@ -64,3 +64,14 @@ function opensanmateo_search_update_7005() {
 
   return array();
 }
+
+/**
+ * SMCHC-119 Ensure that "The display mode to use when displaying a term page"
+ * is set to "Use standard drupal display."
+ */
+function opensanmateo_search_update_7006() {
+  $vocabs = taxonomy_get_vocabularies();
+  foreach ($vocabs as $vocab) {
+    variable_set('taxonomy_view_mode_' . $vocab->machine_name, 0);
+  }
+}

@@ -13,3 +13,10 @@ features[content][] = services_research_assistance
 features[features_api][] = api:2
 features_exclude[dependencies][defaultcontent] = defaultcontent
 project path = /tmp
+
+; Information added by Drupal.org packaging script on 2016-09-15
+version = "7.x-1.10"
+core = "7.x"
+project = "openpublic"
+datestamp = "1473967553"
+

@@ -26,16 +26,16 @@
 
 $classes = ($view->row_index == 0) ? 'first-row views-row' : 'views-row';
 $title = $fields['title']->content;
-$location = $fields['search_api_multi_aggregation_6']->content;
+$location = isset($fields['search_api_multi_aggregation_6']) ? $fields['search_api_multi_aggregation_6']->content : '';
 $date = $fields['dateinfo']->content;
 $time_of_day = format_date($fields['search_api_multi_aggregation_9']->content, 'custom', 'g:ia');
 // All Day Event start time is likely not 12am... ditch it.
 if (strpos($date, 'All Day Event')) {
   $time_of_day = '';
 }
-$description = $fields['search_api_multi_aggregation_1']->content;
-$department = $fields['search_api_aggregation_3']->content;
-$image = $fields['search_api_multi_aggregation_2']->content;
+$description = isset($fields['search_api_multi_aggregation_1']) ? $fields['search_api_multi_aggregation_1']->content : '';
+$department = isset($fields['search_api_aggregation_3']) ? $fields['search_api_aggregation_3']->content : '';
+$image = isset($fields['search_api_multi_aggregation_2']) ? $fields['search_api_multi_aggregation_2']->content : '';
 $readmore = $fields['readmore']->content;
 ?>
 <div class="<?php print $classes; ?>">

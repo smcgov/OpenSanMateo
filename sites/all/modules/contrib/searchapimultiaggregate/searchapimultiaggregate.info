@@ -6,9 +6,9 @@ package = Search
 
 files[] = includes/callback_add_multi_aggregation.inc
 
-; Information added by drupal.org packaging script on 2013-07-29
-version = "7.x-1.1"
+; Information added by  packaging script on 2013-11-05
+version = "7.x-1.2"
 core = "7.x"
 project = "searchapimultiaggregate"
-datestamp = "1375082181"
+datestamp = "1383644939"
 

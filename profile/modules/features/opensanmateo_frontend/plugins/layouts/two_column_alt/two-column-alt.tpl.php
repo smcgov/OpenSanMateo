@@ -15,11 +15,11 @@
  */
 ?>
 <div id="main" class="panel-display sm-two-column-alt main-body group clearfix">
-  
+
   <div class="panel-panel panel-col-top clearfix">
     <div class="inside"><?php print $content['top']; ?></div>
   </div>
-  
+
   <div class="panel-panel panel-col-first sidebar">
     <div id="navigation-toggle"><a href="#" class="icon-subnav">View More</a></div>
     <div id="responsive-navigation" class="inside sidebar-responsive-navigation">
@@ -32,16 +32,21 @@
 
   <div class="panel-panel panel-col panel-col-middle main-content">
     <div class="inside"><?php print $content['middle']; ?></div>
-    
+
     <div class="panel-panel panel-col-lower-left">
       <div class="inside"><?php print $content['lower_left']; ?></div>
     </div>
-    
+
     <div class="panel-panel panel-col-lower-right">
       <div class="inside"><?php print $content['lower_right']; ?></div>
     </div>
+
+    <div class="panel-panel panel-col-lower-middle">
+      <div class="inside"><?php print $content['lower_middle']; ?></div>
+   </div>
+
   </div>
-  
+
   <div class="panel-panel panel-col-bottom section clearfix">
     <div class="inside"><?php print $content['bottom']; ?></div>
   </div>

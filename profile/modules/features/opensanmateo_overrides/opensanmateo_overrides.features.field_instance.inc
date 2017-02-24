@@ -60,7 +60,7 @@ function opensanmateo_overrides_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 5,
+      'weight' => 2,
     ),
   );
 
@@ -134,7 +134,7 @@ function opensanmateo_overrides_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 2,
+      'weight' => 4,
     ),
     'workbench_access_field' => 0,
   );
@@ -200,7 +200,7 @@ function opensanmateo_overrides_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 42,
+      'weight' => 13,
     ),
     'workbench_access_field' => 0,
   );

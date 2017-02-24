@@ -2,25 +2,18 @@
 @import "../vars.scss";
 @import "buttons.scss";
 
-// All default/mobile styles will appear before the following media queries.
-
-@media all and (min-width: $tablet) {
-
-}
-
 .wrapper {
 	overflow: hidden;
 }
 
-.wrapper > header {
-	background-image: url('../images/uber-texture2.png'), 
-  -webkit-linear-gradient(#faffff 0%, #fdffff 100%);
-	background-image: url('../images/uber-texture2.png'), 
-  -moz-linear-gradient(#faffff 0%, #ffffff 100%);
-	border-top: 5px solid rgba($primaryBlue, .9);
-	padding: .5em 0 .75em;
-	margin-bottom: 10%;
-	box-shadow: 0 3px 6px rgba($primaryGray, 0.1);
+.region-header {
+  margin: 0;
+  padding: 0 .35em;
+  width: 100%;
+  padding-bottom: 10px;
+  z-index: 590;
+  background: #fff;
+  box-shadow: 0 0px 2px rgba(75, 70, 70, 0.4);
 }
 
 #skip-link {
@@ -41,9 +34,21 @@
 }
 .lockup {
 	display: block;
+    padding: .5em 0 .75em;
+    box-shadow: 0 0px 2px rgba(75, 70, 70, 0.4);
 }
 .site-seal {
-  display: none;
+  display: block;
+  float: left;
+  margin: 0 1em;
+  margin-top: 10px;
+  height: 49px;
+  width: 49px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .ie-logo {
@@ -56,167 +61,139 @@
   position: relative;
 }
 .btn .icon-nav {
-	font-size: 1.5em;
-	float: right;
+  font-size: 1.5em;
+  float: right;
 }
 
 .county-name, .dept-name {
-	display: inline-block;
-	padding: 0 .5em;
-	text-transform: uppercase;
+  display: block;
+  min-width: 50%;
+  padding: 0 .5em;
+  text-transform: uppercase;
+  font-family: $reg;
+  position: relative;
+  top: 15px;
 }
 
 .county-name {
-	color: $primaryBlue;
-	font-size: 1.25em;
-	font-family: 'Trade Gothic W01 Bold';
-}
-
-.county-name span {
-	font-size: .75em;
-	font-family: 'Trade Gothic W01 Roman';
-	padding: 0 0.15em 0 0.1em;
+  color: $primaryBlue;
+  font-size: 1.25em;
+  font-weight: 600;
 }
 
 .dept-name {
-	color: $primaryTeal;
-	font-family: 'Trade Gothic W01 Light';
-	font-size: 1.25em;
-	margin-bottom: 0;
-	line-height: 1em;
-	font-weight: 100;
+  color: $primaryTeal;
+  font-size: 1em;
+  margin-bottom: 0;
+  line-height: 1em;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
 }
 
 .dept-link {
   display: none;
-  
 }
 
 @media all and (min-width: $tablet) {
-  .wrapper {
-  	overflow: hidden;
-  	width: 100%;
-  	margin: auto;
-  	
-  	> header {
-  		padding: 1em 0 0;
-  		background-image: url("../images/uber-texture2.png"), 
-  		-webkit-linear-gradient(#faffff 0%, /* #ffffff 50%, */ #fdffff 100%);
-  		background-image: url("../images/uber-texture2.png"), 
-  		-moz-linear-gradient(#faffff 0%, /* #ffffff 50%, */ #ffffff 100%);
-  		border-top: 5px solid rgba($primaryBlue, .9);
-  		margin-bottom: 15px;
-  		box-shadow: 0 3px 6px rgba($primaryGray, 0.1);
-		}
-	}
-	
-	/* Header Logo/Headings */
-  .lockup {
-  	margin-bottom: 2%;
-  	width: 65%;
-  	
-  	padding-left: 5em;
-  	float: none;
+
+  .region-header {
+    box-shadow: none;
+    padding: 0;
+
   }
-  .site-seal {
-    display: block;
-    //background: url("../images/seal-header.png") no-repeat 0 0;
-  	//background-size: contain;
-    position: absolute;
-    top: 0.25em;
-    left: 1em;
-    height: 80px;
-    width: 80px;
-    
-    img {
-      max-width: 100%;
-      height: auto;
+
+  .wrapper {
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+
+    > header {
+      padding: 0;
+      margin-top: 7px;
+      margin-bottom: 15px;
+      box-shadow: 0 3px 6px rgba($primaryGray, 0.1);
     }
   }
-  
-  .county-name, .dept-name {
-  	display: block;
-  	text-transform: uppercase;
-  	text-shadow: 0px 1px 0px #fff;
+
+  /* Header Logo/Headings */
+  .lockup {
+    box-shadow: none;
+    float: none;
   }
-  
+
+  .county-name, .dept-name {
+    display: block;
+    text-transform: uppercase;
+    //text-shadow: 0px 1px 0px #fff;
+  }
+
   .county-name {
-  	color: $primaryBlue;
-  	font-size: 2em;
-  	line-height: 1em;
-  	font-family: 'Trade Gothic W01 Bold';
+    color: $primaryBlue;
+    font-size: 1.7em;
+    line-height: 1em;
     background-size: contain;
-    
-    span {
-		  font-size: .6em;
-		  font-family: 'Trade Gothic W01 Roman';
-		  padding: 0 0.2em 0 0.1em;
-	  }
+    position: relative;
+    top: 28px;
   }
 
   .county-name:hover {
-  	color: rgba($primaryTeal, 1);
+    color: rgba($primaryTeal, 1);
   }
-  
+
   .dept-name {
-  	font-size: 2em;
-  	margin: 0;
-  	line-height: 1.2em;
+    font-size: 1.65em;
+    margin: 0;
+    line-height: 1.2em;
+    position: relative;
+    top: 27px;
+  }
+
+  .site-seal {
+    height: 92px;
+    width: 92px;
   }
 
   /* View Departments Switch */
   .dept-link {
-    background-color: rgba($primaryBlue,.9);
-  	border-bottom-left-radius: 3px;
-  	border-bottom-right-radius: 3px;
-    color: white;
     display: inline-block;
-    font-size: 0.8em;
+    font-size: 1.5em;
+    font-weight: 500;
     margin-bottom: 5px;
     padding: 0.4em .9em .8em;
     position: absolute;
     right: 0;
-    top: -1.3em;
-  }
-    
-  .dept-link:hover {
-    color: rgba(white, .9);
+    top: 1px;
+    text-transform: uppercase;
   }
 
   .btn-nav {
-	  display: none;
-	}
+    display: none;
+  }
 }
 
 @media all and (min-width: $desktop) {
-
 }
 
 .lte8 {
   .wrapper {
-  	overflow: hidden;
-  	width: 100%;
-  	margin: auto;
-  	
-  	> header {
-  		padding: 1em 0 0;
-  		background-image: url("../images/uber-texture2.png"), 
-  		-webkit-linear-gradient(#faffff 0%, /* #ffffff 50%, */ #fdffff 100%);
-  		background-image: url("../images/uber-texture2.png"), 
-  		-moz-linear-gradient(#faffff 0%, /* #ffffff 50%, */ #ffffff 100%);
-  		border-top: 5px solid rgba($primaryBlue, .9);
-  		margin-bottom: 3%;
-  		box-shadow: 0 3px 6px rgba($primaryGray, 0.1);
-		}
-	}
-	
-	/* Header Logo/Headings */
-  .lockup {
-  	margin-bottom: 2%;
-  	width: 65%;
-  	float: none;
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+
+    > header {
+      padding: 1em 0 0;
+      margin-bottom: 3%;
+      box-shadow: 0 3px 6px rgba($primaryGray, 0.1);
+    }
   }
-  
+
+  /* Header Logo/Headings */
+  .lockup {
+    margin-bottom: 2%;
+    width: 65%;
+    float: none;
+  }
+
   .site-seal {
     display: block;
     float: left;
@@ -227,53 +204,53 @@
     position: relative;
     top: 0;
     left: 0;
-    
+
     img {
       height: 80px;
       width: 80px;
     }
   }
   .county-name, .dept-name {
-  	display: block;
-  	text-transform: uppercase;
-  	text-shadow: 0px 1px 0px #fff;
+    display: block;
+    text-transform: uppercase;
+    text-shadow: 0px 1px 0px #fff;
   }
-  
+
   .county-name {
-  	color: $primaryBlue;
-  	font-size: 2em;
-  	line-height: 1em;
-  	font-family: 'Trade Gothic W01 Bold';
+    color: $primaryBlue;
+    font-size: 2em;
+    line-height: 1em;
+    font-weight: 700;
     background-size: contain;
-    
+
     span {
-		  font-size: .6em;
-		  font-family: 'Trade Gothic W01 Roman';
-		  padding: 0 0.2em 0 0.1em;
-	  }
+      font-size: .6em;
+      font-weight: 400;
+      padding: 0 0.2em 0 0.1em;
+    }
   }
 
   .county-name:hover {
-  	color: rgba($primaryTeal, 1);
+    color: rgba($primaryTeal, 1);
   }
-  
+
   .dept-name {
-  	font-size: 2em;
-  	margin: 0;
-  	line-height: 1.2em;
+    font-size: 2em;
+    margin: 0;
+    line-height: 1.2em;
   }
 
   /* View Departments Switch */
   .dept-link {
     display: none;
   }
-    
+
   .dept-link:hover {
     color: white;
     color: rgba(white, .9);
   }
 
   .btn-nav {
-	  display: none;
-	}
+    display: none;
+  }
 }

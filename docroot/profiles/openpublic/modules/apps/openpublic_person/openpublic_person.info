@@ -70,3 +70,10 @@ features[views_view][] = profile_list
 features_exclude[dependencies][openpublic_defaults] = openpublic_defaults
 features_exclude[dependencies][openpublic_translation_content] = openpublic_translation_content
 features_exclude[dependencies][references_dialog] = references_dialog
+
+; Information added by Drupal.org packaging script on 2016-09-15
+version = "7.x-1.10"
+core = "7.x"
+project = "openpublic"
+datestamp = "1473967553"
+

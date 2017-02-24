@@ -4,107 +4,131 @@
 
 .region-header {
   position: relative;
+  background: #fff;
+  @include clearfix;
+}
+
+#block-opensanmateo-search-header-search #opensanmateo-search-header-search-form input[type=text]::-webkit-input-placeholder {
+  color: white;
+  font-weight: 600;
+  -webkit-font-smoothing: antialiased;
 }
 
 #block-opensanmateo-search-header-search {
-	padding: .5em;
-	position: relative;
-	border-radius: 3px;
-	margin: 10px auto 0;
-  display: none;
-  margin-top: 0;
-  
-  position: fixed;
-  top: 68px;
-  right: 0;
-  left: 0;
-  z-index: 9999;
-  
-  background: rgba($primaryTeal, .2);
-  
+  display: block !important;
+  padding: .5em 0 .3em;
+  position: relative;
+  border-radius: 3px;
+  margin: 0 auto 0;
+
   #opensanmateo-search-header-search-form {
     margin: 0;
     padding: 0;
-    
     float: left;
-  	width: 80%;
-  	margin-right: 0;
-  	margin-bottom: 0;
-    
+    width: 88%;
+
     .form-item {
       margin: 0;
       padding: 0;
     }
-    
+
     .form-submit {
       display: none;
     }
-  }
-  
 
-  input[type=text] {
-  	background: $searchMobileDefaultBG;
-  	border: none;
-  	box-shadow: none;
-  	color: rgba($primaryTeal, .9);
-  	padding: 0.25em 0.75em;
-  	font-size: 1em;
-  	-webkit-transition: all 0.3s;
-  	-moz-transition: all 0.3s;
-  	transition: all 0.3s;
-  	border-radius: 3px;
-  	font-family: $reg;
-  	font-weight: 300;
-  	
-  	margin:0;
+    input[type=text] {
+      border: none;
+      box-shadow: none;
+      color: white;
+      background: $OSMUpdateLightOrange;
+      font-size: 1.85em;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      border-radius: 3px;
+      font-family: $reg;
+      font-weight: 600;
+      margin: 0;
+      height: 41px;
+      text-transform: uppercase;
+      padding: 0 15px;
+
+      &:focus {
+        box-shadow: none;
+        background: $OSMUpdateLightOrange;
+        color: white;
+        font-weight: 500;
+
+        &::-webkit-input-placeholder,
+        &::-moz-placeholder,
+        &:-ms-input-placeholder {
+          font-family: $reg;
+          color: white;
+          font-weight: 500;
+          font-size: 1.85em;
+        }
+      }
+
+      &::-webkit-input-placeholder,
+      &::-moz-placeholder,
+      &:-ms-input-placeholder {
+        font-family: $reg;
+        color: white;
+        font-weight: 500;
+        font-size: 1.85em;
+      }
+    }
   }
-  
-  input[type=text]:focus {
-  	box-shadow: none;
-   	font-family: $bold;
-   	font-weight: normal;
-  }
-  
-  
-  input[type=text]::-webkit-input-placeholder {color: #036cb6;}
-  input[type=text]::-moz-placeholder {  /* Firefox 19+ */color: #036cb6;}
-  input[type=text]::-ms-input-placeholder {color: #036cb6;}
-  
-  
-  
+
   .search-button {
-  	width: 15%;
-  	position: absolute;
-  	right: 10px;
-  	
-  	border: none;
-  	display: block;
-  	
-  	text-align: center;
-  	margin-right: 0;
-    margin-top: 0;
-  	background-color: $primaryBlue;
-  	color: white;
-  	font-size: 1em;
-  	
-  	border-radius: 3px;
-  	padding: 0.5em 1em;
-  	//text-transform: uppercase;
-  	//font-size: 1.1em;
-  	
-  	-webkit-transition: all 0.3s;
-  	-moz-transition: all 0.3s;
-  	transition: all 0.3s;
-  	font-family: $reg;
-  	font-weight: normal !important;
-  	span {
-      font-weight: normal !important;	
-  	}
+    width: 11%;
+    height: 42px;
+    float: right;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    display: block;
+    text-align: center;
+    margin-right: 0;
+    background-color: $OSMUpdateDarkOrange;
+    background-image: url("../images/search-icon.png");
+    background-size: 35%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:after {
+      content: none;
+    }
   }
-  
+
   .search-button:after {
-  	content: none;
+    content: none;
   }
+}
+
+/* translate */
+#block-google-translator-active-languages {
+  display: block !important;
+  border-radius: 1px;
+  background-color: transparent;
+  padding: 0;
+  margin-top: 5px;
+  font-size: 1.2em;
+  font-weight: 700;
+  z-index: 10;
+  float: left;
+
+  .google-translator-switch {
+    color: white;
+    text-transform: capitalize;
+    padding: 4px 10px;
+    border-radius: 3px;
+    background-color: $OSMUpdateTeal;
+    font-size: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* End translate */
 }
 
 // search form(s)
@@ -133,7 +157,6 @@
       @include buttonBlue;
       @include buttonSmall;
       
-      margin-top: 0;
       border: 0;
       font-size: .75em;
       margin-top: 1.25em;
@@ -144,69 +167,62 @@
 @media all and (min-width: $tablet) {
   /* Header Search */
   #block-opensanmateo-search-header-search {
-    display: block !important;
     border-radius: 3px;
     margin: 0 auto 0;
     position: absolute;
     right: 0;
     left: auto;
-    top: -50px !important;
-    width: 30%;
+    top: -87px !important;
+    width: 37%;
     background-color: transparent;
     padding: 0;
     z-index: 10;
     
     #opensanmateo-search-header-search-form {
-      float: left;
-    	width: 80%;
-    	margin-right: 3%;
+    	width: 86.5%;
+    	margin-right: 2%;
     	margin-bottom: 0;
     }
-  
-    input[type=text] {
-      
-      background: $searchDefaultBG;
-    	border: none;
-    	box-shadow: none;
-    	color: white;
-    	
-    	font-size: .85em;
-    	-webkit-transition: all 0.3s;
-    	-moz-transition: all 0.3s;
-    	transition: all 0.3s;
-    	border-radius: 3px;
-    	font-family: $reg;
-    	margin: 0;
-  	}
-  	
-    input[type=text]:focus {
-    	box-shadow: none;
-     	background: $searchFocusBG;
-     	color: white;	
-     	font-family: $bold;
-     	font-weight: normal;
-    }
-    
-    input[type=text]:focus::-webkit-input-placeholder {color: white;}
-    input[type=text]:focus::-moz-placeholder {color: white;}
-    input[type=text]:focus::-ms-input-placeholder {color: white;}
-    
+
     .search-button {
-    	width: 17%;
-    	position: absolute;
-    	top: 0;
-    	right: 0;
-    	bottom: 0;
-    	border: none;
-    	display: block;
-    	text-align: center;
-    	margin-right: 0;
-  	}
-  
-    .search-button:after {content: none;}
-    /* End Header Search */
+      background-size: 55%;
+    }
+  }
+
+  /* translate */
+  #block-google-translator-active-languages {
+    margin: 0 auto 0;
+    position: absolute;
+    right: 0;
+    left: auto;
+    top: -32px !important;
+    background-color: transparent;
+    padding: 0;
+    font-size: 1 em;
+    z-index: 10;
+    max-width: 75%;
+
+    .google-translator-switch {
+      color: white;
+      text-transform: capitalize;
+      padding: 4px 10px;
+      border-radius: 3px;
+      background-color: $OSMUpdateTeal;
+      font-size: 1em;
+
+    }
+
+    /* End translate */
   }
 }
+#google_translator_element div {
+  display: block !important;
+}
+
+#__dimScreen {
+  z-index: 1100 !important;
+}
+
 
 @media all and (min-width: $desktop) {
 

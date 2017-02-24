@@ -14,13 +14,12 @@
 }
 
 */
+/* Colors */
 /* Fonts */
 /* Media Queries */
-/* line 6, ../../scss/elements/pagers.scss */
 .pager-container {
   width: auto;
   margin: 0 auto; }
-  /* line 10, ../../scss/elements/pagers.scss */
   .pager-container ul.pagination {
     list-style: none;
     margin: 0 auto;
@@ -28,7 +27,6 @@
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content; }
-  /* line 19, ../../scss/elements/pagers.scss */
   .pager-container ul.pagination li {
     float: left;
     margin-left: 0px;
@@ -36,41 +34,32 @@
     border-right: 1px solid #036cb6;
     border-bottom: 1px solid #036cb6;
     list-style-type: none; }
-  /* line 27, ../../scss/elements/pagers.scss */
   .pager-container ul.pagination li:first-child {
     border-left: 1px solid #036cb6; }
-  /* line 31, ../../scss/elements/pagers.scss */
   .pager-container ul.pagination li.link-inactive {
     border-color: #CCCCCC; }
-    /* line 34, ../../scss/elements/pagers.scss */
     .pager-container ul.pagination li.link-inactive.pager-prev {
       border-right: 1px solid #036cb6; }
-  /* line 39, ../../scss/elements/pagers.scss */
   .pager-container ul.pagination li a {
     background-color: rgba(3, 108, 182, 0.9);
     display: inline-block;
     color: white;
     padding: .5em 1em; }
-    /* line 45, ../../scss/elements/pagers.scss */
     .pager-container ul.pagination li a:hover {
       background-color: #036cb6; }
-  /* line 50, ../../scss/elements/pagers.scss */
   .pager-container ul.pagination li span {
     color: #BBBBBB;
     background-color: #EEEEEE;
     padding: .5em 1em;
     display: inline-block; }
-  /* line 57, ../../scss/elements/pagers.scss */
   .pager-container ul.pagination li.pager-info span {
     color: #036cb6;
     background-color: white; }
-  /* line 62, ../../scss/elements/pagers.scss */
   .pager-container ul.pagination li:last-child,
   .pager-container ul.pagination li:last-child a,
   .pager-container ul.pagination li:last-child span {
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px; }
-  /* line 69, ../../scss/elements/pagers.scss */
   .pager-container ul.pagination li:first-child,
   .pager-container ul.pagination li:first-child a,
   .pager-container ul.pagination li:first-child span {
@@ -78,10 +67,10 @@
     border-bottom-left-radius: 3px; }
 
 @media all and (min-width: 800px) {
-  /* line 87, ../../scss/elements/pagers.scss */
   .sidebar .pager-container {
     font-size: 0.65em; }
-    /* line 90, ../../scss/elements/pagers.scss */
     .sidebar .pager-container ul.pagination li a,
     .sidebar .pager-container ul.pagination li span {
       padding: .25em .5em; } }
+
+/*# sourceMappingURL=pagers.css.map */

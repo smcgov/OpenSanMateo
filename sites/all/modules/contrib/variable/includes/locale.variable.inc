@@ -14,7 +14,7 @@ function locale_variable_info($options) {
     'title' => t('Multilingual support'),
     'repeat' => array(
       'type' => 'enable',
-       // Set options here so translation module can add some more 
+       // Set options here so translation module can add some more
       'options' => array(t('Disabled'), t('Enabled')),
     ),
     'description' => t('Enable multilingual support for this content type. If enabled, a language selection field will be added to the editing form, allowing you to select from one of the <a href="!languages">enabled languages</a>. If disabled, new posts are saved with the default language. Existing content will not be affected by changing this option.', array('!languages' => url('admin/config/regional/language', $options)), $options),
@@ -24,7 +24,7 @@ function locale_variable_info($options) {
     'title' => t('Site default language'),
     'type' => 'select',
     'group' => 'regional_settings',
-    'options callback' => 'locale_variable_options_language', 
+    'options callback' => 'locale_variable_options_language',
     'format callback' => 'locale_variable_language_default_format',
     'element callback' => 'locale_variable_language_default_element',
     'default callback' => 'locale_variable_language_default',
@@ -57,8 +57,10 @@ function locale_variable_options_language($variable, $options) {
  */
 function locale_variable_language_default_element($variable, $options) {
   $element = variable_form_element_options($variable, $options);
-  //$element['#default_value'] = $element['#default_value']->language;
-  $element['#value_callback'] = 'locale_variable_language_element_value';
+  // Default needs to be language code for the radios to work.
+  $element['#default_value'] = $element['#default_value']->language;
+  // Since 'value callback' is useless as it is run before validation, we use validate
+  // callback to transform language code into an object.
   $element['#element_validate'][] = 'locale_variable_language_element_validate';
   return $element;
 }
@@ -77,22 +79,14 @@ function locale_variable_language_default_format($variable, $options = array()) 
   return !empty($variable['value']) ? check_plain($variable['value']->name) : t('None');
 }
 
-/**
- * Map form element value to actual value.
- */
-function locale_variable_language_element_value($element, $input = FALSE, $form_state = array()) {
-  if ($input === FALSE) {
-    return $element['#default_value']->language;
-  }
-  else {
-    return $input;
-  }
-}
 
 /**
- * Replace language code by language object on submission
+ * Replace language code by language object on submission.
+ *
+ * This runs alter default element validation so we know it is a valid checkbox option.
  */
 function locale_variable_language_element_validate($element, &$form_state, $form) {
   $languages = language_list();
-  $form_state['values'][$element['#name']] = $languages[$form_state['values'][$element['#name']]];
+  $language = $languages[$element['#value']];
+  form_set_value($element, $language, $form_state);
 }

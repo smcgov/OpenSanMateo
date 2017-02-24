@@ -14,87 +14,77 @@
 }
 
 */
+/* Colors */
 /* Fonts */
 /* Media Queries */
-/* line 5, ../../scss/elements/dept-promo.scss */
 .dept-promo {
   background-color: rgba(85, 90, 90, 0.05);
   margin-bottom: 0%; }
-  /* line 10, ../../scss/elements/dept-promo.scss */
   .dept-promo .dept-logo {
     width: 70%;
     margin: auto;
     padding: 10px; }
-    /* line 15, ../../scss/elements/dept-promo.scss */
     .dept-promo .dept-logo img {
       max-width: 100%;
       height: auto;
       display: block;
       margin: 2% auto; }
-  /* line 23, ../../scss/elements/dept-promo.scss */
   .dept-promo p {
     float: left;
     width: 100%;
     font-size: 1em;
     color: #555a5a;
-    font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+    font-family: "Trade Gothic W01", "Helvetica Neue", Arial, Helvetica;
     padding: 0 1em 1em;
     margin-bottom: 0;
     text-align: center; }
-    /* line 33, ../../scss/elements/dept-promo.scss */
     .dept-promo p .amp {
       color: rgba(85, 90, 90, 0.5); }
 
 @media all and (min-width: 768px) {
-  /* line 43, ../../scss/elements/dept-promo.scss */
   .dept-promo {
     background-color: transparent;
     margin-top: 0;
     background-color: rgba(85, 90, 90, 0.03);
     display: table;
     padding: 0 1.5em; }
-    /* line 51, ../../scss/elements/dept-promo.scss */
     .dept-promo .dept-logo {
       display: table-cell;
       width: 14%;
       margin: 0 3% 0% 0%;
       padding: 10px; }
-    /* line 63, ../../scss/elements/dept-promo.scss */
     .dept-promo p {
       text-align: left;
       width: 83%;
       display: table-cell;
       vertical-align: middle; } }
 @media all and (min-width: 800px) {
-  /* line 73, ../../scss/elements/dept-promo.scss */
   .dept-promo {
     margin-top: 0%;
     margin-bottom: 0%;
     display: block;
     background-color: transparent;
     padding: 0; }
-    /* line 80, ../../scss/elements/dept-promo.scss */
     .dept-promo .dept-logo {
       background-color: rgba(85, 90, 90, 0.05);
       width: 100%;
       margin: auto;
       padding: 1em;
       display: block; }
-      /* line 87, ../../scss/elements/dept-promo.scss */
       .dept-promo .dept-logo img {
         display: block;
         margin: auto; }
-    /* line 93, ../../scss/elements/dept-promo.scss */
     .dept-promo p {
       float: left;
       width: 100%;
       font-size: 1em;
       color: #555a5a;
-      font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+      font-family: "Trade Gothic W01", "Helvetica Neue", Arial, Helvetica;
       padding: 1em 0;
       margin-bottom: 0;
       text-align: left;
       display: block; }
-      /* line 103, ../../scss/elements/dept-promo.scss */
       .dept-promo p .amp {
         color: rgba(85, 90, 90, 0.5); } }
+
+/*# sourceMappingURL=dept-promo.css.map */

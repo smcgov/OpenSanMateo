@@ -1,6 +1,8 @@
 <?php
 
 function smc_base_preprocess_html(&$variables) {
+  drupal_add_js('http://fast.fonts.net/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js', 'external');
+
   $meta = array(
     '#tag' => 'meta',
     '#attributes' => array (
@@ -9,7 +11,7 @@ function smc_base_preprocess_html(&$variables) {
     ),
   );
   drupal_add_html_head($meta, 'viewport');
-  
+
   $google_webmasters_verification = array(
     '#type' => 'html_tag',
     '#tag' => 'meta',
@@ -19,25 +21,6 @@ function smc_base_preprocess_html(&$variables) {
     )
   );
   drupal_add_html_head($google_webmasters_verification, 'google_webmasters_verification');
-}
-function smc_base_process_html(&$variables) {
-  //dsm($variables);
-}
-
-function smc_base_page_alter(&$page) {
-  //dsm($page);
-}
-function smc_base_css_alter(&$css) {
-  //dsm($css);
-}
-
-function smc_base_js_alter(&$js) {
- //dsm($js);
-
-  if (isset($js['http://fast.fonts.com/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js'])) {
-    unset($js['http://fast.fonts.com/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js']);
-    //$js['http://fast.fonts.com/jsapi/1b4ab7ba-bb64-4f70-bd43-9f3401f4dd20.js']['scope'] = 'footer';
-  }
 }
 
 function smc_base_html_head_alter(&$head_elements) {
@@ -58,7 +41,7 @@ function smc_base_html_head_alter(&$head_elements) {
 }
 
 function smc_base_process_page(&$variables) {
-  
+
   // Always print the site name and slogan, but if they are toggled off, we'll
   // just hide them visually.
   $variables['hide_site_name']   = theme_get_setting('toggle_name') ? FALSE : TRUE;
@@ -103,8 +86,9 @@ function smc_base_preprocess_node(&$variables) {
   //krumo($variables);
   // remove the release date field
   unset($variables['content']['field_release_date']);
+  $display_author = NULL;
 
-  switch($variables['type']) {
+  switch ($variables['type']) {
 
     case 'blog_entry':
       //$display_byline = isset($variables['field_blog_show_author_info']) ? $variables['field_blog_show_author_info']['und'][0]['value'] : FALSE;
@@ -112,11 +96,16 @@ function smc_base_preprocess_node(&$variables) {
       $author_field = !empty($variables['field_blog_author']) ? $variables['field_blog_author'][$variables['language']][0]['nid'] : FALSE;
       break;
 
+    case 'press_release':
+      $display_byline = TRUE;
+      $display_author = FALSE;
+      break;
+
     case 'document':
       $docs = element_children($variables['content']['field_document_attachment']);
       // Opic automatically adds a suffix to the document attachment field, which
       // we want to get rid of.
-      foreach($docs as $doc) {
+      foreach ($docs as $doc) {
         if (!empty($variables['content']['field_document_attachment'][$doc]['#suffix'])) {
           unset($variables['content']['field_document_attachment'][$doc]['#prefix']);
           unset($variables['content']['field_document_attachment'][$doc]['#suffix']);
@@ -153,7 +142,12 @@ function smc_base_preprocess_node(&$variables) {
         ? smc_base_format_timestamp(strtotime($variables['field_release_date'][0]['value']), FALSE)
         : smc_base_format_timestamp($variables['created']);
 
-    $byline = t('Posted by ') . $author_link . ' on ' . $date;
+    if ($display_author === FALSE) {
+      $byline = t('Posted on') . ' ' . $date;
+    }
+    else {
+      $byline = t('Posted by') . ' ' . $author_link . ' on ' . $date;
+    }
 
     // assign byline to standard drupal "submitted" variable, and P2 specific "posted_by"
     $variables['submitted'] = $byline;
@@ -806,7 +800,7 @@ function smc_base_item_list($variables) {
   $title = $variables['title'];
   $type = $variables['type'];
   $attributes = $variables['attributes'];
-  $container_attributes = isset($variables['container_attributes']) ? drupal_attributes($variables['container_attributes']) : array('class' => array('item-list'));
+  $container_attributes = isset($variables['container_attributes']) ? drupal_attributes($variables['container_attributes']) : 'class="item-list"';
   // Only output the list container and title, if there are any list items.
   // Check to see whether the block title exists before adding a header.
   // Empty headers are not semantic and present accessibility challenges.

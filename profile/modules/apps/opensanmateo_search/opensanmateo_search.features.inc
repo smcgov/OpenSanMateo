@@ -292,7 +292,7 @@ function opensanmateo_search_default_search_api_index() {
           "status" : 1,
           "weight" : "10",
           "settings" : {
-            "fields" : { "title" : true },
+            "fields" : { "title" : true, "search_api_multi_aggregation_1" : true },
             "title" : 0,
             "alt" : 1,
             "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
@@ -476,34 +476,6 @@ function opensanmateo_search_default_search_api_index() {
     },
     "enabled" : "1",
     "read_only" : "0",
-    "rdf_mapping" : []
-  }');
-  return $items;
-}
-
-/**
- * Implements hook_default_search_api_server().
- */
-function opensanmateo_search_default_search_api_server() {
-  $items = array();
-  $items['san_mateo_solr_server'] = entity_import('search_api_server', '{
-    "name" : "San Mateo Solr Server",
-    "machine_name" : "san_mateo_solr_server",
-    "description" : "",
-    "class" : "search_api_solr_service",
-    "options" : {
-      "scheme" : "http",
-      "host" : "solrdev.p2devcloud.com",
-      "port" : "8080",
-      "path" : "\\/solr-sanmateo.p2devcloud.com",
-      "http_user" : "",
-      "http_pass" : "",
-      "excerpt" : 0,
-      "retrieve_data" : 1,
-      "highlight_data" : 0,
-      "http_method" : "POST"
-    },
-    "enabled" : "1",
     "rdf_mapping" : []
   }');
   return $items;

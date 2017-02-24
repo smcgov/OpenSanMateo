@@ -23,7 +23,7 @@
     		  <div class="site-seal"><a href="<?php print $smclink; ?>" title="<?php print t('County of San Mateo'); ?>"><img src="<?php print $header_logo; ?>" alt="<?php print t('County of San Mateo'); ?>" /></a></div>
     		  
     			<?php if ($site_name): ?>
-      			<a href="<?php print $smclink; ?>" title="<?php print t('County of San Mateo'); ?>"><h2 class="county-name">County<span class="tiny">of</span>San Mateo</h2></a>
+      			<a href="<?php print $smclink; ?>" title="<?php print t('County of San Mateo'); ?>"><h2 class="county-name">County of San Mateo</h2></a>
             <a href="<?php print $front_page; ?>" title="<?php print $site_name; ?>" rel="home"><h2 id="site-name" class="dept-name"><?php print $site_name; ?></h2></a>
     			<?php endif; ?>
     		</div>

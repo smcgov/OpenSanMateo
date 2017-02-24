@@ -34,7 +34,8 @@
   }
 
   .hls h4 {
-    font-family: "Trade Gothic W01 Bold", Helvetica Neue, Arial, Helvetica;
+    font-family: "Trade Gothic W01", Helvetica Neue, Arial, Helvetica;
+    font-weight: 700;
     text-transform: uppercase;
     float: left;
     margin: 0;

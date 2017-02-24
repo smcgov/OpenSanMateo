@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OpenSanMateo PublishContent feature.
+ */
+
+include_once 'opensanmateo_publishcontent.features.inc';

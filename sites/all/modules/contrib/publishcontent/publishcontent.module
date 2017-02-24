@@ -11,6 +11,10 @@ define('PUBLISHCONTENT_METHOD_ACTION_LINKS', 1);
 define('PUBLISHCONTENT_METHOD_BUTTON', 2);
 define('PUBLISHCONTENT_METHOD_TABS', 3);
 
+define('PUBLISHCONTENT_ACCESS_ALLOW', TRUE);
+define('PUBLISHCONTENT_ACCESS_DENY', FALSE);
+define('PUBLISHCONTENT_ACCESS_IGNORE', NULL);
+
 /**
  * Implements hook_menu().
  */
@@ -32,8 +36,8 @@ function publishcontent_menu() {
 
   $items['node/%publishcontent_tab/publish/%publishcontent_security_token'] = array(
     'title' => 'Publish',
-    'page callback' => 'publishcontent_toggle_status',
-    'page arguments' => array(1),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('publishcontent_toggle_status_form', 1, 2),
     'access callback' => '_publishcontent_publish_access',
     'access arguments' => array(1, 3),
     'weight' => 5,
@@ -44,8 +48,8 @@ function publishcontent_menu() {
 
   $items['node/%publishcontent_tab/unpublish/%publishcontent_security_token'] = array(
     'title' => 'Unpublish',
-    'page callback' => 'publishcontent_toggle_status',
-    'page arguments' => array(1),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('publishcontent_toggle_status_form', 1, 2),
     'access callback' => '_publishcontent_unpublish_access',
     'access arguments' => array(1, 3),
     'weight' => 5,
@@ -63,7 +67,7 @@ function publishcontent_menu() {
 function publishcontent_tab_load($nid) {
   if (is_numeric($nid)) {
     $node = node_load($nid);
-    if (variable_get('publishcontent_' . $node->type, TRUE)) {
+    if (variable_get('publishcontent_' . $node->type, FALSE)) {
       return $node;
     }
   }
@@ -87,7 +91,7 @@ function _publishcontent_publish_access($node, $token = FALSE) {
   if ($token && !drupal_valid_token($token)) {
     return FALSE;
   }
-  if (!variable_get('publishcontent_' . $node->type, TRUE)) {
+  if (!variable_get('publishcontent_' . $node->type, FALSE)) {
     return FALSE;
   }
 
@@ -104,7 +108,7 @@ function _publishcontent_unpublish_access($node, $token = FALSE) {
   if ($token && !drupal_valid_token($token)) {
     return FALSE;
   }
-  if (!variable_get('publishcontent_' . $node->type, TRUE)) {
+  if (!variable_get('publishcontent_' . $node->type, FALSE)) {
     return FALSE;
   }
 
@@ -123,24 +127,25 @@ function _publishcontent_unpublish_access($node, $token = FALSE) {
  *   TRUE if user can publish the node.
  */
 function publishcontent_publish_access($node, $account = NULL) {
+  $access = FALSE;
+
+  // Variable may be '0' or '1' or not set.
+  if (!variable_get('publishcontent_' . $node->type, FALSE)) {
+    return $access;
+  }
+
   if (empty($account)) {
     global $user;
     $account = $user;
   }
 
-  if (!variable_get('publishcontent_' . $node->type, TRUE)) {
-    return FALSE;
-  }
-
-  $access = FALSE;
-
   foreach (module_invoke_all('publishcontent_publish_access', $node, $account) as $module_access) {
     if (!is_null($module_access)) {
-      if ($module_access === FALSE) {
+      if ($module_access === PUBLISHCONTENT_ACCESS_DENY) {
         // Anything denying access gets priority.
         return FALSE;
       }
-      elseif ($module_access === TRUE) {
+      elseif ($module_access === PUBLISHCONTENT_ACCESS_ALLOW) {
         // Something grants access.
         $access = TRUE;
       }
@@ -154,7 +159,7 @@ function publishcontent_publish_access($node, $account = NULL) {
  * Implements hook_publishcontent_publish_access().
  */
 function publishcontent_publishcontent_publish_access($node, $user) {
-  return (user_access('administer nodes')
+  $access = (user_access('administer nodes')
     || user_access('publish any content')
     || (user_access('publish own content') && $user->uid == $node->uid)
     || (user_access('publish editable content') && (!isset($node->nid) || node_access('update', $node)))
@@ -162,6 +167,8 @@ function publishcontent_publishcontent_publish_access($node, $user) {
     || user_access('publish any ' . check_plain($node->type) . ' content')
     || (user_access('publish editable ' . check_plain($node->type) . ' content') && (!isset($node->nid) || node_access('update', $node)))
   );
+
+  return $access ? PUBLISHCONTENT_ACCESS_ALLOW : PUBLISHCONTENT_ACCESS_IGNORE;
 }
 
 /**
@@ -185,11 +192,11 @@ function publishcontent_unpublish_access($node, $account = NULL) {
 
   foreach (module_invoke_all('publishcontent_unpublish_access', $node, $account) as $module_access) {
     if (!is_null($module_access)) {
-      if ($module_access === FALSE) {
+      if ($module_access === PUBLISHCONTENT_ACCESS_DENY) {
         // Anything denying access gets priority.
         return FALSE;
       }
-      elseif ($module_access === TRUE) {
+      elseif ($module_access === PUBLISHCONTENT_ACCESS_ALLOW) {
         // Something grants access.
         $access = TRUE;
       }
@@ -203,7 +210,7 @@ function publishcontent_unpublish_access($node, $account = NULL) {
  * Implements hook_publishcontent_unpublish_access().
  */
 function publishcontent_publishcontent_unpublish_access($node, $user) {
-  return (user_access('administer nodes')
+  $access = (user_access('administer nodes')
     || user_access('unpublish any content')
     || (user_access('unpublish own content') && $user->uid == $node->uid)
     || (user_access('unpublish editable content') && (!isset($node->nid) || node_access('update', $node)))
@@ -211,6 +218,8 @@ function publishcontent_publishcontent_unpublish_access($node, $user) {
     || user_access('unpublish any ' . check_plain($node->type) . ' content')
     || (user_access('unpublish editable ' . check_plain($node->type) . ' content') && (!isset($node->nid) || node_access('update', $node)))
   );
+
+  return $access ? PUBLISHCONTENT_ACCESS_ALLOW : PUBLISHCONTENT_ACCESS_IGNORE;
 }
 
 /**
@@ -233,10 +242,8 @@ function publishcontent_permission() {
   );
 
   foreach (node_type_get_types() as $type) {
-    if (!variable_get('publishcontent_' . $type->type, TRUE)) {
-      continue;
-    }
-    if (isset($type->type)) {
+    // Only show permissions for activated node types.
+    if (isset($type->type) && variable_get('publishcontent_' . $type->type, FALSE)) {
       $perms['publish any ' . $type->type . ' content'] = array(
         'title' => t('Publish any @type content', array('@type' => $type->name)));
       $perms['publish own ' . $type->type . ' content'] = array(
@@ -261,6 +268,48 @@ function _publishcontent_get_message($nid, $title, $status) {
   return ($status) ?
     t('"@title" [@nid] has been published', array('@title' => $title, '@nid' => $nid)) :
     t('"@title" [@nid] has been unpublished', array('@title' => $title, '@nid' => $nid));
+}
+
+/**
+ * Form to get confirmation for publish/unpublish content
+ *
+ * @param array $form
+ * @param array $form_state
+ * @param $node
+ * @param string $toggle_title
+ *   Title of the button e.g. Publish or Unpublish
+ *
+ * @return array
+ */
+function publishcontent_toggle_status_form($form, &$form_state, $node, $toggle_title) {
+  $form['id'] = array(
+    '#type' => 'value',
+    '#value' => $node->nid,
+  );
+
+  // Set confirm form question.
+  if ($toggle_title) {
+    $question = t('Are you sure you want to %publish_state this content?', array('%publish_state' => ucfirst($toggle_title)));
+  }
+  else {
+    $question = t('Are you sure?');
+  }
+
+  $description = t('Click confirm if you want to continue.');
+
+  // Set return path if clicked on Cancel button.
+  $path = 'node/' . $node->nid;
+
+  return confirm_form($form, $question, $path, $description);
+}
+
+/**
+ * Submit handler for Publish/Unpublish confirmation form
+ */
+function publishcontent_toggle_status_form_submit($form, &$form_state) {
+  // load node using node id
+  $node = node_load($form_state['values']['id']);
+  publishcontent_toggle_status($node);
 }
 
 /**
@@ -298,7 +347,7 @@ function publishcontent_toggle_status($node) {
   // Clear the page and block caches.
   cache_clear_all();
 
-  drupal_goto($_SERVER['HTTP_REFERER']);
+  drupal_goto('node/' . $node->nid);
 }
 
 /**
@@ -307,10 +356,11 @@ function publishcontent_toggle_status($node) {
  * Allow to use the 'Publishing options' on the edit/add page.
  */
 function publishcontent_form_node_type_form_alter(&$form, &$form_state, $form_id) {
+  // Do not activate this option by default.
   $form['workflow']['publishcontent'] = array(
     '#type' => 'checkbox',
     '#title' => t('Enable publishcontent'),
-    '#default_value' => variable_get('publishcontent_' . $form['#node_type']->type, TRUE),
+    '#default_value' => variable_get('publishcontent_' . $form['#node_type']->type, FALSE),
     '#description' => t('Display publish or unpublish link for nodes of this type.'),
   );
 }
@@ -327,8 +377,8 @@ function publishcontent_form_node_form_alter(&$form, &$form_state) {
 
   $node = $form['#node'];
 
-  if (!variable_get('publishcontent_' . $node->type, TRUE)) {
-    // Publish content is disabled for this content type.
+  if (!variable_get('publishcontent_' . $node->type, FALSE)) {
+    // Publish content is not set or disabled for this content type.
     return;
   }
 
@@ -338,7 +388,7 @@ function publishcontent_form_node_form_alter(&$form, &$form_state) {
       // default setting in the content type. This setting controls the actual
       // value in $form_state.
       $form['options']['status']['#default_value'] = 0;
-      // These won't affect $form_state but also need to be updated
+      // These won't affect $form_state but also need to be updated.
       $form['#node']->status = 0;
       $node->status = 0;
     }
@@ -533,9 +583,7 @@ function og_publishcontent_publish_access($node, $account) {
     }
   }
 
-  if ($access) {
-    return TRUE;
-  }
+  return $access ? PUBLISHCONTENT_ACCESS_ALLOW : PUBLISHCONTENT_ACCESS_IGNORE;
 }
 
 /**
@@ -551,7 +599,7 @@ function og_publishcontent_unpublish_access($node, $account) {
       $group_access = $node->status &&
         (og_user_access($entity_type, $entity_id, 'administer nodes', $account)
         || og_user_access($entity_type, $entity_id, 'unpublish any content', $account)
-        || (og_user_access($entity_type, $entity_id, 'unpublish own content', $account) && $account->uid == $account->uid)
+        || (og_user_access($entity_type, $entity_id, 'unpublish own content', $account) && $account->uid == $node->uid)
         || (og_user_access($entity_type, $entity_id, 'unpublish editable content') && node_access('update', $node))
         || (og_user_access($entity_type, $entity_id, 'unpublish own ' . check_plain($node->type) . ' content', $account) && $account->uid == $node->uid)
         || og_user_access($entity_type, $entity_id, 'unpublish any ' . check_plain($node->type) . ' content', $account)
@@ -564,7 +612,5 @@ function og_publishcontent_unpublish_access($node, $account) {
     }
   }
 
-  if ($access) {
-    return TRUE;
-  }
+  return $access ? PUBLISHCONTENT_ACCESS_ALLOW : PUBLISHCONTENT_ACCESS_IGNORE;
 }

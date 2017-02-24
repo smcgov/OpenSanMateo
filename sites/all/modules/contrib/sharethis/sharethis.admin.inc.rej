@@ -1,0 +1,17 @@
+--- sharethis.admin.inc
++++ sharethis.admin.inc
+@@ -381,14 +362,4 @@
+   if (($current_location == 'content' || $new_location == 'content') && $current_location != $new_location) {
+     field_info_cache_clear();
+   }
+-  // Markup overrides for each enabled service.
+-  $enabled_services = array();
+-  foreach (explode(",", $form_state['values']['sharethis_service_option']) as $string) {
+-    $service = explode(":", drupal_substr($string, 0, -1));
+-    $enabled_services[$service[1]] = str_replace('"', '', $service[0]);
+-  }
+-  foreach ($enabled_services as $key => $service) {
+-    $override = $form_state['values']['override_' . $key];
+-    variable_set('sharethis_override_' . $key, $override);
+-  }
+ }

@@ -59,7 +59,9 @@ function image_field_caption_get_image_fields($entity_type, $bundle) {
     if ($field['deleted'] == 1) {
       continue;
     }
-    if ($field['widget']['type'] != 'image_image') {
+
+    $field_info = field_info_field($field_name);
+    if ($field_info['type'] != 'image') {
       continue;
     }
     $image_fields[$field_name] = $field;
@@ -73,7 +75,9 @@ function image_field_caption_get_image_fields($entity_type, $bundle) {
  */
 function image_field_caption_form_field_ui_field_edit_form_alter(&$form, $form_state) {
   $instance = $form['#instance'];
-  if ($instance['widget']['type'] == 'image_image') {
+  $field = $form['#field'];
+
+  if ($field['type'] == 'image') {
     $field = $form['#field'];
     if (empty($form['instance']['settings'])) {
       $form['instance']['settings'] = array();
@@ -102,8 +106,8 @@ function image_field_caption_field_widget_form_alter(&$element, &$form_state, $c
   // Add display_field setting to field because file_field_widget_form() assumes it is set.
   $instance = $context['instance'];
   $settings = $instance['settings'];
-
-  if (isset($settings['image_field_caption']) && $instance['widget']['type'] == 'image_image' && $settings['image_field_caption']) {
+  $field = $context['field'];
+  if (isset($settings['image_field_caption']) && $field['type'] == 'image' && $settings['image_field_caption']) {
     foreach (element_children($element) as $delta) {
       // Add all extra functionality provided by the image widget.
       $element[$delta]['#process'][] = 'image_field_caption_widget_process';
@@ -112,9 +116,9 @@ function image_field_caption_field_widget_form_alter(&$element, &$form_state, $c
 }
 
 /**
- * An element #process callback for the image_image field type.
+ * An element #process callback for the image field type.
  *
- * Expands the image_image type to include the alt and title fields.
+ * Expands the image type to include the alt and title fields.
  */
 function image_field_caption_widget_process($element, &$form_state, $form) {
   $item = $element['#value'];
@@ -125,7 +129,7 @@ function image_field_caption_widget_process($element, &$form_state, $form) {
     '#type' => 'text_format',
     '#default_value' => isset($item['image_field_caption']) ? $item['image_field_caption']['value'] : '',
     '#access' => (bool) $item['fid'],
-    '#format' => isset($item['image_field_caption']) ? $item['image_field_caption']['format'] : NULL,
+    '#format' => isset($item['image_field_caption']['format']) ? $item['image_field_caption']['format'] : NULL,
   );
 
   return $element;
@@ -142,14 +146,14 @@ function image_field_caption_field_info_alter(&$info) {
 }
 
 /**
- * Implements hookd_field_attach_insert().
+ * Implements hook_field_attach_insert().
  */
 function image_field_caption_field_attach_insert($entity_type, $entity) {
   image_field_caption_field_attach_update($entity_type, $entity);
 }
 
 /**
- * Implements hookd_field_attach_update().
+ * Implements hook_field_attach_update().
  */
 function image_field_caption_field_attach_update($entity_type, $entity) {
   list($id, $vid, $bundle) = entity_extract_ids($entity_type, $entity);
@@ -235,7 +239,7 @@ function image_field_caption_field_attach_update($entity_type, $entity) {
 }
 
 /**
- * Implements hookd_field_attach_load().
+ * Implements hook_field_attach_load().
  */
 function image_field_caption_field_attach_load($entity_type, $entities, $age, $options) {
   foreach ($entities as $entity) {
@@ -350,4 +354,15 @@ function image_field_caption_field_diff_view_alter(&$values, $items, $context) {
     // Allow users to optionally clean system specific characters.
     $values[$delta][] = diff_normalise_text($item['image_field_caption']['value']);
   }
+}
+
+
+/**
+ * Implementation of hook_views_api().
+ */
+function image_field_caption_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'image_field_caption') .'/views',
+  );
 }

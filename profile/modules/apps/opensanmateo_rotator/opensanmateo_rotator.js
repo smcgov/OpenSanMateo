@@ -12,7 +12,7 @@
 
       advanceSpeedRotator = 5000;
       advanceSpeedCarousel = 5000;
-      
+
       for (var i=0; i < Drupal.settings.OpenSanMateoRotator.length; i++) {
         var fpid = Drupal.settings.OpenSanMateoRotator[i].fpid;
         var type = Drupal.settings.OpenSanMateoRotator[i].type;
@@ -22,9 +22,16 @@
           type = 'carousel-rotator';
         }
 
-        $('.pane-fpid-' + fpid + '.pane-bundle-rotator-panels-pane .field-collection-container').addClass(type);
+        // There's some weirdness on the rendering side that sometimes emits
+        // pane-current-FPID, not pane-fpid-FPID.  Deal with it, since I can't
+        // figure out what's generating that class.
+        var $pane = $('.pane-fpid-' + fpid + '.pane-bundle-rotator-panels-pane .field-collection-container');
+        if ($pane.length == 0) {
+          $pane = $('.pane-current-' + fpid + '.pane-bundle-rotator-panels-pane .field-collection-container');
+        }
+        $pane.addClass(type);
         //$('.pane-fpid-' + fpid + '.pane-bundle-rotator-panels-pane .field-collection-container').attr('advancespeed', Drupal.settings.OpenSanMateoRotator[i].advanceSpeed);
-        
+
         var controlNav = true;
         // Add thumbnail data only if we have a rotator
         if (Drupal.settings.OpenSanMateoRotator[i].type == 'rotator') {
@@ -46,9 +53,9 @@
         }
         advanceSpeed = Drupal.settings.OpenSanMateoRotator[i].advanceSpeed;
       }
-      
-      
-      
+
+
+
       $('.field-collection-container.rotator').flexslider({
         selector: '.field-name-field-coll-rotator-item > .field-items > .field-item',
         controlNav: "thumbnails",

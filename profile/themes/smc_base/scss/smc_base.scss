@@ -100,6 +100,7 @@ ul li.expanded {
 nav.main-nav {
   border-top: 0;
   margin-bottom: 0;
+  margin-top: 12px;
   padding-top: 0;
   z-index: 400 !important;
 }
@@ -188,8 +189,7 @@ ul.facetapi-facetapi-checkbox-links {
 #main .staff-page .staff-position {
   margin:0;
   color: $primaryBlue;
-  font-family: $bold;
-  font-weight: normal;
+  font-weight: 700;
   font-size: 1.125em;
   line-height: 1.4;
   margin-bottom: 0.5em;

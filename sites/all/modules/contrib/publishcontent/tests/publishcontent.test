@@ -33,6 +33,22 @@ abstract class PublishContentWebTestBase extends DrupalWebTestCase {
   public abstract function assertNodeOperationAccess($nid, $op, $expected_response, $msg = '');
 
   /**
+   * Allow content type to be used with publish content.
+   */
+  public function enablePublishContentForContentType($types) {
+    if (!is_array($types)) {
+      $types = array($types);
+    }
+
+    foreach ($types as $type) {
+      variable_set('publishcontent_' . $type, TRUE);
+    }
+
+    // Rebuild SimpleTests permissions cache.
+    $this->checkPermissions(array(), TRUE);
+  }
+
+  /**
    * Assert the status of a given node.
    *
    * @param int $nid
@@ -149,6 +165,11 @@ abstract class PublishContentWebTestBase extends DrupalWebTestCase {
     $this->assertNoLink('unpublish-' . $node->nid);
     $this->clickLink('publish-' . $node->nid);
     $this->assertResponse(200);
+
+    // Submit the confirmation form.
+    $this->drupalPost($this->url, array(), 'Confirm');
+    $this->assertResponse(200);
+
     $this->assertNodeStatus($node->nid, 1);
     $this->setNodeStatus($node, $status, 'Reset status');
   }
@@ -178,6 +199,11 @@ abstract class PublishContentWebTestBase extends DrupalWebTestCase {
     $this->assertNoLink('publish-' . $node->nid);
     $this->clickLink('unpublish-' . $node->nid);
     $this->assertResponse(200);
+
+    // Submit the confirmation form.
+    $this->drupalPost($this->url, array(), 'Confirm');
+    $this->assertResponse(200);
+
     $this->assertNodeStatus($node->nid, 0);
     $this->setNodeStatus($node, $status, 'Reset status');
   }
@@ -243,7 +269,7 @@ abstract class PublishContentWebTestBase extends DrupalWebTestCase {
    */
   public function testPublishNotUnpublish() {
     $type = 'page';
-    variable_set('publishcontent_' . $type, TRUE);
+    $this->enablePublishContentForContentType($type);
 
     $web_user = $this->drupalCreateUser(array(
       'access content',
@@ -274,7 +300,8 @@ abstract class PublishContentWebTestBase extends DrupalWebTestCase {
    */
   public function testNotPublishUnpublish() {
     $type = 'page';
-    variable_set('publishcontent_' . $type, TRUE);
+    $this->enablePublishContentForContentType($type);
+
     $web_user = $this->drupalCreateUser(array(
       'access content',
       'unpublish any ' . $type . ' content',
@@ -300,7 +327,7 @@ abstract class PublishContentWebTestBase extends DrupalWebTestCase {
    */
   public function testPublishUnpublish() {
     $type = 'page';
-    variable_set('publishcontent_' . $type, TRUE);
+    $this->enablePublishContentForContentType($type);
 
     $web_user_1 = $this->drupalCreateUser(array(
       'access content',
@@ -366,8 +393,7 @@ abstract class PublishContentWebTestBase extends DrupalWebTestCase {
    */
   public function testBasicPublishCallback() {
     $type = 'page';
-    variable_set('publishcontent_' . $type, TRUE);
-    variable_set('publishcontent_article', TRUE);
+    $this->enablePublishContentForContentType(array($type, 'article'));
 
     $web_user_1 = $this->drupalCreateUser(array(
       'access content',
@@ -514,6 +540,10 @@ class PublishContentTabTests extends PublishContentWebTestBase {
       // Now visit the tab.
       $this->clickLink($tab_link_text);
 
+      // Submit the confirmation form.
+      $this->drupalPost($this->url, array(), 'Confirm');
+      $this->assertResponse(200);
+
       $node = node_load($nid);
 
       if ($op == 'publish') {
@@ -572,7 +602,7 @@ class PublishContentButtonTests extends PublishContentWebTestBase {
    * @param string $op
    *   An operation such as 'view', 'edit', 'publish', 'unpublish'
    * @param int $expected_response
-   *   The expexted response code. If the user should not be able to
+   *   The expected response code. If the user should not be able to
    *   see the 'publish' or 'unpublish' tabs, set this to 403, otherwise
    *   200.
    * @param string $msg
@@ -649,7 +679,7 @@ class PublishContentCheckboxTests extends PublishContentWebTestBase {
    * @param string $op
    *   An operation such as 'view', 'edit', 'publish', 'unpublish'
    * @param int $expected_response
-   *   The expexted response code. If the user should not be able to
+   *   The expected response code. If the user should not be able to
    *   see the 'publish' or 'unpublish' tabs, set this to 403, otherwise
    *   200.
    * @param string $msg
@@ -697,7 +727,7 @@ class PublishContentCheckboxTests extends PublishContentWebTestBase {
    */
   public function testAccessNodeAdd() {
     $type = 'page';
-    variable_set('publishcontent_' . $type, TRUE);
+    $this->enablePublishContentForContentType($type);
 
     $web_user_1 = $this->drupalCreateUser(array(
       'access content',

@@ -1,0 +1,6 @@
+name = "Elysia Cron"
+description = "Extended cron support with crontab-like scheduling and other features."
+core = 7.x
+files[] = elysia_cron_update.php
+files[] = elysia_drupalconv.php
+configure = admin/config/system/cron

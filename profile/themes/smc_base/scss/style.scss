@@ -31,7 +31,7 @@ body {
 	margin-bottom: 1%;
 	text-transform: none;
 	text-align: left;
-	font-family: $light;
+	font-weight: 100;
 	padding-left: 0;
 }
 
@@ -95,14 +95,15 @@ input:focus::-ms-input-placeholder {
 
   h1 {
   	color: $primaryTeal;
-  	font-family: 'Trade Gothic W01 Light';
+  	font-family: 'Trade Gothic W01';
   	text-transform: uppercase;
+	font-weight: 100;
   }
   
   h2 {
   	text-transform: uppercase;
   	color: $primaryTeal;
-  	font-family: 'Trade Gothic W01 Light';
+  	font-family: 'Trade Gothic W01';
   	font-size: 2em;
   	margin: 0;
   	line-height: 1.2em;
@@ -111,7 +112,6 @@ input:focus::-ms-input-placeholder {
   
   h3 {
   	color: $primaryTeal;
-  	font-family: $light; 
   	text-transform: uppercase; 
   	margin-top: 0; 
   	font-weight: 100; 
@@ -124,9 +124,8 @@ input:focus::-ms-input-placeholder {
   }
   
   h5 {
-  	color: $primaryBlue; 
-  	font-family: $bold;
-  	font-weight: normal;
+  	color: $primaryBlue;
+  	font-weight: 700;
   }
 
 

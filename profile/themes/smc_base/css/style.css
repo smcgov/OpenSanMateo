@@ -14,31 +14,27 @@
 }
 
 */
+/* Colors */
 /* Fonts */
 /* Media Queries */
-/* line 5, ../scss/style.scss */
 body {
   margin: auto;
   height: 100%;
   background: #FFFFFF !important; }
 
-/* line 11, ../scss/style.scss */
 .main-body header {
   margin-bottom: 3%; }
 
-/* line 15, ../scss/style.scss */
 .page-title {
   float: left;
   width: 65%; }
 
-/* line 20, ../scss/style.scss */
 .filter-link {
   float: right;
   font-size: .85em;
   width: 30%;
   margin-top: 5.75%; }
 
-/* line 27, ../scss/style.scss */
 #page-title {
   font-size: 1.5em;
   color: #036cb6;
@@ -46,51 +42,41 @@ body {
   margin-bottom: 1%;
   text-transform: none;
   text-align: left;
-  font-family: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica;
+  font-weight: 100;
   padding-left: 0; }
 
-/* line 38, ../scss/style.scss */
 #page-title span {
   color: #38939b; }
 
 /* custom placeholder color */
-/* line 43, ../scss/style.scss */
 input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 47, ../scss/style.scss */
 input:active::-webkit-input-placeholder,
 input:focus::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
-/* line 52, ../scss/style.scss */
 input::-moz-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 56, ../scss/style.scss */
 input:active::-moz-placeholder,
 input:focus::-moz-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
-/* line 61, ../scss/style.scss */
 input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.8); }
 
-/* line 65, ../scss/style.scss */
 input:active::-ms-input-placeholder,
 input:focus::-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.2); }
 
 @media all and (min-width: 768px) {
-  /* line 72, ../scss/style.scss */
   html, body {
     min-height: 100%; }
 
-  /* line 76, ../scss/style.scss */
   body {
     background-color: #fdfdfd !important; }
 
-  /* line 80, ../scss/style.scss */
   #page-title {
     font-size: 2.5em;
     line-height: 1.2em;
@@ -100,74 +86,62 @@ input:focus::-ms-input-placeholder {
     width: 100%;
     float: none; }
 
-  /* line 90, ../scss/style.scss */
   .sub-link {
     position: absolute;
     top: 10%;
     right: 0; }
 
-  /* line 96, ../scss/style.scss */
   h1 {
     color: #38939b;
-    font-family: 'Trade Gothic W01 Light';
-    text-transform: uppercase; }
+    font-family: 'Trade Gothic W01';
+    text-transform: uppercase;
+    font-weight: 100; }
 
-  /* line 102, ../scss/style.scss */
   h2 {
     text-transform: uppercase;
     color: #38939b;
-    font-family: 'Trade Gothic W01 Light';
+    font-family: 'Trade Gothic W01';
     font-size: 2em;
     margin: 0;
     line-height: 1.2em;
     font-weight: 100; }
 
-  /* line 112, ../scss/style.scss */
   h3 {
     color: #38939b;
-    font-family: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica;
     text-transform: uppercase;
     margin-top: 0;
     font-weight: 100;
     line-height: 1.2em; }
 
-  /* line 121, ../scss/style.scss */
   h4 {
     color: #036cb6;
-    font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica; }
+    font-family: "Trade Gothic W01", "Helvetica Neue", Arial, Helvetica; }
 
-  /* line 126, ../scss/style.scss */
   h5 {
     color: #036cb6;
-    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-    font-weight: normal; }
+    font-weight: 700; }
 
-  /* line 133, ../scss/style.scss */
   a {
     color: #036cb6; }
 
-  /* line 137, ../scss/style.scss */
   p {
     color: #555a5a; }
 
-  /* line 141, ../scss/style.scss */
   .main-content ul {
     padding-left: 2em;
     font-size: .9em; }
 
-  /* line 146, ../scss/style.scss */
   .main-content ul.flush {
     padding-left: 0; }
 
-  /* line 150, ../scss/style.scss */
   li {
     color: #6b699e; }
 
-  /* line 154, ../scss/style.scss */
   .inner {
     padding: .5em 1em 1.25em;
     position: relative; }
 
-  /* line 159, ../scss/style.scss */
   .hideme {
     opacity: 1.0; } }
+
+/*# sourceMappingURL=style.css.map */

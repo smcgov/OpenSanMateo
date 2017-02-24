@@ -23,7 +23,18 @@ function acquia_search_multi_subs_apachesolr_init() {
   $ah_site_name = isset($_ENV['AH_SITE_NAME']) ? $_ENV['AH_SITE_NAME'] : '';
   $ah_region = isset($_ENV['AH_CURRENT_REGION']) ? $_ENV['AH_CURRENT_REGION'] : '';
   $sites_foldername = substr(conf_path(), strrpos(conf_path(), '/') + 1);
-  $subscription_expected_search_cores = acquia_search_multi_subs_get_expected_search_cores($acquia_identifier, $ah_site_environment, $ah_site_name, $sites_foldername);
+  $ah_db_name = isset($GLOBALS['conf']['acquia_hosting_site_info']['db']['name']) ? $GLOBALS['conf']['acquia_hosting_site_info']['db']['name'] : '';
+
+  // Check if environment has changed comparing to last run.
+  $check_if_environment_is_same = acquia_search_multi_subs_check_and_cache_environment_detection($acquia_identifier, $ah_site_environment, $ah_site_name, $ah_region, $sites_foldername, $ah_db_name, 'apachesolr');
+  if ($check_if_environment_is_same) {
+    return;
+  }
+
+  // Environment looks different, so continue.
+
+  $subscription_expected_search_cores = acquia_search_multi_subs_get_expected_search_cores($acquia_identifier,
+    $ah_site_environment, $ah_site_name, $sites_foldername, $ah_db_name);
   // Get the search cores available in the subscription.
   $available_search_cores = acquia_search_multi_subs_get_search_cores();
 
@@ -99,9 +110,9 @@ function acquia_search_multi_subs_apachesolr_init() {
       foreach ($available_search_cores as $available_search_core) {
 
         // Checking if we need to switch to another core.
-        if ($available_search_core['core_id'] == $expected_core_name) {
+        if (strtolower($available_search_core['core_id']) == strtolower($expected_core_name)) {
           // If the core is already the same, don't do anything.
-          if ($expected_environment_core_url != $environment_core_url) {
+          if (!isset($environment['conf']['acquia_search_key']) || strtolower($expected_environment_core_url) != strtolower($environment_core_url)) {
             acquia_search_multi_subs_apachesolr_set_default_core($env_id, $available_search_core);
             watchdog('acquia_search_multi_subs', 'Switched Apache Solr environment "@env_id" from core @old_core_id to @new_core_id', array('@env_id' => $env_id, '@old_core_id' => $environment_core_url, '@new_core_id' => $expected_environment_core_url), WATCHDOG_NOTICE);
           }
@@ -154,11 +165,25 @@ function acquia_search_multi_subs_environment_edit_form_submit(array $form, arra
 
   // Only activate if the checkbox has been enabled and there is valid content.
   // Add our overrides to the configuration.
-  if(!empty($fv['conf']['acquia_override_selector']) && empty($fv['conf']['acquia_override_auto_switch'])) {
-    // Set the identifier and key.
-    $identifier = $fv['conf']['acquia_override_subscription_id'];
-    $key = $fv['conf']['acquia_override_subscription_key'];
-    $corename = $fv['conf']['acquia_override_subscription_corename'];
+  if (empty($fv['conf']['acquia_override_auto_switch'])) {
+    // If the acquia_override_selector is "Other" use user-supplied id/key/corename.
+    if ($fv['conf']['acquia_override_selector'] == 'other') {
+      $identifier = $fv['conf']['acquia_override_subscription_id'];
+      $key = $fv['conf']['acquia_override_subscription_key'];
+      $corename = $fv['conf']['acquia_override_subscription_corename'];
+    }
+    elseif ($fv['conf']['acquia_override_selector'] == 'default') {
+      // If the acquia_override_selector is "default" use default corename.
+      $identifier = acquia_agent_settings('acquia_identifier');
+      $key = acquia_agent_settings('acquia_key');
+      $corename = acquia_agent_settings('acquia_identifier');
+    }
+    else {
+      // Selected a specific core.
+      $identifier = acquia_agent_settings('acquia_identifier');
+      $key = acquia_agent_settings('acquia_key');
+      $corename = $fv['conf']['acquia_override_selector'];
+    }
 
     // Set the derived key for this environment.
     $subscription = acquia_agent_get_subscription(array(), $identifier, $key);
@@ -191,10 +216,10 @@ function acquia_search_multi_subs_environment_edit_form_submit(array $form, arra
     unset($fv['conf']['acquia_search_key']);
     unset($fv['conf']['acquia_subscription_id']);
     unset($fv['conf']['acquia_subscription_key']);
-    apachesolr_environment_variable_del($fv['name'], 'acquia_search_key');
-    apachesolr_environment_variable_del($fv['name'], 'acquia_override_subscription_id');
-    apachesolr_environment_variable_del($fv['name'], 'acquia_override_subscription_key');
-    apachesolr_environment_variable_del($fv['name'], 'acquia_override_subscription_corename');
+    apachesolr_environment_variable_del($fv['env_id'], 'acquia_search_key');
+    apachesolr_environment_variable_del($fv['env_id'], 'acquia_override_subscription_id');
+    apachesolr_environment_variable_del($fv['env_id'], 'acquia_override_subscription_key');
+    apachesolr_environment_variable_del($fv['env_id'], 'acquia_override_subscription_corename');
     $fv = array_merge($fv, acquia_search_get_environment());
   }
 }
@@ -212,9 +237,11 @@ function acquia_search_multi_subs_acquia_search_enable_alter(array &$environment
   $corename = apachesolr_environment_variable_get($env_id, 'acquia_override_subscription_corename');
 
   // Override the URL
-  $search_host = acquia_search_multi_subs_get_hostname($corename);
-  $url = 'http://' . $search_host . variable_get('acquia_search_path', '/solr/'. $corename);
-  $environment['url'] = $url;
+  if ($corename) {
+    $search_host = acquia_search_multi_subs_get_hostname($corename);
+    $url = 'http://' . $search_host . variable_get('acquia_search_path', '/solr/' . $corename);
+    $environment['url'] = $url;
+  }
 }
 
 /**
@@ -242,6 +269,7 @@ function acquia_search_multi_subs_apachesolr_set_default_core($env_id, array $se
   $url = 'http://' . $search_core['balancer'] . variable_get('acquia_search_path', '/solr/'. $search_core['core_id']);
   $apachesolr_environments = variable_get('apachesolr_environments', array());
   $apachesolr_environments[$env_id]['url'] = $url;
+  $apachesolr_environments[$env_id]['conf']['acquia_search_key'] = $derived_key;
   // Set our variable, needs two page loads to make sure it is in the system.
   // Setting the global conf variable is not valid as some calls to
   // apachesolr_load_all_environments happen too early in the process. If we set
@@ -249,5 +277,6 @@ function acquia_search_multi_subs_apachesolr_set_default_core($env_id, array $se
   // this variable only happens when the environment changes and another
   // environment which fits is found.
   variable_set('apachesolr_environments', $apachesolr_environments);
+  $GLOBALS['conf']['apachesolr_environments'] = $apachesolr_environments;
   drupal_static_reset('apachesolr_load_all_environments');
 }

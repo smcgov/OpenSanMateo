@@ -20,3 +20,10 @@ features[ctools][] = page_manager:pages_default:1
 features[features_api][] = api:2
 features[page_manager_pages][] = media_room
 features_exclude[dependencies][openpublic_promotion_demo] = openpublic_promotion_demo
+
+; Information added by Drupal.org packaging script on 2016-09-15
+version = "7.x-1.10"
+core = "7.x"
+project = "openpublic"
+datestamp = "1473967553"
+

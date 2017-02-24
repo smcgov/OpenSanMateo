@@ -1,0 +1,25 @@
+From a985c543ab797e1a7ab8f7ab9fb191d08ac5dbbe Mon Sep 17 00:00:00 2001
+From: Jesse Hofmann-Smith <jhofmann-smith@phase2technology.com>
+Date: Tue, 1 Mar 2016 16:01:04 -0800
+Subject: [PATCH] token 1.5 > 1.6
+
+---
+ drupal-org.make | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drupal-org.make b/drupal-org.make
+index e9ce5d6..e0e075d 100644
+--- a/drupal-org.make
++++ b/drupal-org.make
+@@ -129,7 +129,7 @@ projects[strongarm][version] = 2.0
+ projects[tao][version] = 3.1
+ projects[tao][subdir] = ''
+ 
+-projects[token][version] = 1.5
++projects[token][version] = 1.6
+ 
+ projects[oauth][version] = 3.2
+ 
+-- 
+2.7.0
+

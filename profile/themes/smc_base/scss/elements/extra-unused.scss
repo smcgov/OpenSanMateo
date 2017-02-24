@@ -264,7 +264,7 @@
 	
 	h4 {
 		color: white; 
-		font-family: $bold; 
+		font-weight: 700;
 		text-transform: uppercase; 
 		float: left;
 		margin-bottom: 0;
@@ -312,7 +312,7 @@
 	}
 	
 	h4 {
-		font-family: $bold;
+		font-weight: 700;
 		color: white;
 		text-transform: uppercase;
 		margin-bottom: 5%;
@@ -448,7 +448,7 @@
   	
   	h4 {
   		color: $primaryBlue; 
-  		font-family: $bold; 
+  		font-weight: 700;
   		text-transform: uppercase;
 		}
 	}
@@ -469,7 +469,7 @@
   
   		h4 {
   			color: white; 
-  			font-family: $bold;
+  			font-weight: 700;
   			text-transform: uppercase; 
   			float: left; 
   			margin: 0;
@@ -607,7 +607,8 @@
   		display: block;
   		color: #036cb6;
   		font-size: 2em;
-  		font-family: 'Trade Gothic W01 Bold';
+  		font-family: 'Trade Gothic W01';
+	  font-weight: 700;
   		padding-top: .15em;
   	}
   		
@@ -706,7 +707,7 @@
     }
   	
   	h4 {
-  		font-family: $bold;
+  		font-weight: 700;
   		color: white;
   		text-transform: uppercase;
   		margin-bottom: 3%;

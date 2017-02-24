@@ -15,11 +15,11 @@ modules shouldn't take long:
 3. Enable both modules.
    e.g.: drush en expire acquia_purge
 
-4. Assign the "purge notification" permission to editor roles to give them a
+4. Assign the "purge on-screen" permission to editor roles to give them a
    visually indicative progress bar upon saving content. Purges still happen
    without this permission on the background (triggered via AJAX).
 
-5. Its highly recommended to visit the status report page or to run
+5. It's highly recommended to visit the status report page or to run
    "drush ap-diagnosis", in which Acquia Purge will perform diagnostic tests.
 
 Do you have any questions, bugs or comments? Feel free to lookup common

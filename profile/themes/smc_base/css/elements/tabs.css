@@ -14,9 +14,9 @@
 }
 
 */
+/* Colors */
 /* Fonts */
 /* Media Queries */
-/* line 6, ../../scss/elements/tabs.scss */
 div.tabs ul.tabs {
   padding: 0;
   margin: 0;
@@ -24,12 +24,10 @@ div.tabs ul.tabs {
   white-space: normal;
   border: 0;
   font-size: 12px; }
-  /* line 14, ../../scss/elements/tabs.scss */
   div.tabs ul.tabs li {
     display: block;
     float: left;
     margin: 0 5px 5px 0; }
-    /* line 19, ../../scss/elements/tabs.scss */
     div.tabs ul.tabs li a {
       margin: 0;
       display: block;
@@ -42,23 +40,20 @@ div.tabs ul.tabs {
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
       border-radius: 5px; }
-      /* line 34, ../../scss/elements/tabs.scss */
       div.tabs ul.tabs li a:hover {
         border: 1px solid #38939b;
         color: #38939b; }
-  /* line 41, ../../scss/elements/tabs.scss */
   div.tabs ul.tabs li.active a {
     color: #38939b;
     background: #DDDDDD;
     border: 1px solid #38939b; }
-    /* line 46, ../../scss/elements/tabs.scss */
     div.tabs ul.tabs li.active a:hover {
       border: 1px solid #38939b;
       color: #38939b; }
-/* line 54, ../../scss/elements/tabs.scss */
 div.tabs ul.secondary {
   font-size: 11px; }
-  /* line 57, ../../scss/elements/tabs.scss */
   div.tabs ul.secondary li {
     padding: 0;
     border: 0; }
+
+/*# sourceMappingURL=tabs.css.map */

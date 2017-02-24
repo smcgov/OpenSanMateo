@@ -65,11 +65,24 @@ function revision_scheduler_schema() {
         'default' => 0,
         'description' => 'The UNIX timestamp of when the scheduled revision operation was executed.',
       ),
+      'uid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The {users}.uid of the account who scheduled this operation.',
+      ),
     ),
     'primary key' => array('id'),
     'indexes' => array(
       'entity_ids' => array('entity_type', 'entity_id', 'revision_id'),
       'timestamp' => array('time_scheduled', 'time_queued', 'time_executed'),
+    ),
+    'foreign keys' => array(
+      'users_uid' => array(
+        'table' => 'users',
+        'column' => array('uid' => 'uid'),
+      ),
     ),
   );
 
@@ -81,4 +94,20 @@ function revision_scheduler_schema() {
  */
 function revision_scheduler_uninstall() {
   variable_del('revision_scheduler_cron_time');
+}
+
+/**
+ * Add the {revision_scheduler}.uid column.
+ */
+function revision_scheduler_update_7100() {
+  if (!db_field_exists('revision_scheduler', 'uid')) {
+    $schema['fields']['uid'] = array(
+      'type' => 'int',
+      'unsigned' => TRUE,
+      'not null' => TRUE,
+      'default' => 0,
+      'description' => 'The {users}.uid of the account who scheduled this operation.',
+    );
+    db_add_field('revision_scheduler', 'uid', $schema['fields']['uid']);
+  }
 }

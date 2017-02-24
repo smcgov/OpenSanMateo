@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OpenSanMateo ShareThis feature.
+ */
+
+include_once 'opensanmateo_sharethis.features.inc';

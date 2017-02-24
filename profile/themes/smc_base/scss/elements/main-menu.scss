@@ -15,28 +15,13 @@
 }
 
 @media only screen and (max-width: $mobile-only) {
-  
+
 	@import "../flexnav.scss";
-	
+
 	.flexnav {
 	  z-index: 999;
 	}
-  
-  .menu-button {
-    top: 10px;
-    right: 10px;
-    height: 48px;
-    width: 48px;
-  }
-  
-  body.toolbar .menu-button {
-      top: 2em;
-  }
-  
-  body.toolbar-drawer .menu-button {
 
-  }
-  
 	.flexnav, .flexnav ul {
   	padding: 0;
   	font-size: 1em;
@@ -46,19 +31,19 @@
 	}
 	.flexnav.show {
 	  display: block;
-  	padding-top: 120px;
+  	margin-top: 188px;
   	max-height: 100%;
   	overflow-y: auto;
 	}
-	
+
 }
 
 @media all and (min-width: $tablet) {
-  
+
   .menu-button, .touch-button {
     display: none;
   }
-  
+
   .icon-menu {
     display: none;
   }
@@ -66,204 +51,197 @@
   .home {
     display: block;
   }
-  
+
   .flexnav {
     padding-top: 0 !important;
   }
-  
-  .primary {
-  	border-radius: 3px;
-  	width: 100%;
-  	background-color: rgba($primaryTeal, .05);
 
-	
+  .primary {
+    border-radius: 3px;
+    width: 100%;
+    height: 35px;
+    background-color: $OSMUpdateBlue;
+    color: white;
+    font-size: 1em;
+
     ul {
-		  margin: 0;
-  	  padding: 0;
-  	  font-size: 1em;
-		  color: $primaryBlue;
-		}
-				
-		.home a:before {
-			content: "\e003";
-			font-family: 'SanMateoIcon';
-			text-indent: 0 !important;
-			color: $primaryBlue;
-			
-			
-		}
-		.home a:hover {
-			
-			&:before {
-  		  color: #FFF;	
-			}
-			
-		}
-		li {
-			float: left;
-			list-style-type: none;
-			position: relative;
-      
-      
-      
-  		a {
-  			font-family: 'Trade Gothic W01 Roman', Helvetica Neue, Arial, Helvetica, sans-serif; 
-  			font-size: 1em;
-  			padding: 0.5em .9em;
-  			display: block;
-  			-webkit-transition: all 0.3s;
-  			-moz-transition: all 0.3s;
-  			transition: all 0.3s;
-			}
-			
-  		a:hover,
-  		&:hover > a,
-  		&.active-trail > a,
-  		&:focus,
-  		&:focus > a {
-  			background-color: rgba($primaryTeal, 1);
-  			color: white;
-  			border-radius: 3px;
-  		}
-		
-  		&.expanded > a:after {
-  			content: "\e004";
-  			font-family: 'SanMateoIcon';
-  			font-size: .5em;
-  			padding-left: 5px;
-  			color: rgba($primaryTeal, .3);
-  		}
-  		
-  		&.expanded > a:hover,
-  		&.expanded:hover > a {
-  			border-bottom-left-radius: 0px;
-  			border-bottom-right-radius: 0px;
-  		}
-  		
-  		&.expanded > a:hover:after,
-  		&.expanded:hover > a:after,
-  		&.active-trail > a:after {
-  			color: rgba(#fff, .5);
-  		}
-		
-      ul {
-			  position: absolute;
-		    top: 2.5em;
-		    font-size: 1em;
-		    width: 300%;
-        max-width: 300px;
-		    opacity: 0;
-		    background: rgba($primaryTeal, .975);
-		    margin: 0;
-    	  padding: 0;
-		    -webkit-border-radius: 0 0 5px 5px;
-		    -moz-border-radius: 0 0 5px 5px;
-		    border-radius: 0 0 5px 5px;
-		 
-		    -webkit-transition: opacity .25s ease .1s;
-		    -moz-transition: opacity .25s ease .1s;
-		    -o-transition: opacity .25s ease .1s;
-		    -ms-transition: opacity .25s ease .1s;
-		    transition: opacity .25s ease .1s;
-		    		    
-		    li {
-			    height: 0;
-			    overflow: hidden;
-			    padding: 0;
-			    width: 100%;
-			    display: inline-table;
-			    -webkit-transition: height .25s ease .1s;
-			    -moz-transition: height .25s ease .1s;
-			    -o-transition: height .25s ease .1s;
-			    -ms-transition: height .25s ease .1s;
-			    transition: height .25s ease .1s;
-			    
-			    a {
-  			    color: white;
-  			    display: block;
-  			    border-radius: 0;
-  			    padding: .5em 1em;
-  			    width: 100%;
-  				}
-  			}
-			
-  			li:last-child > a, li:last-child > a:hover {
-  				border-bottom-left-radius: 3px;
-  				border-bottom-right-radius: 3px;
-  			}
-  		}
+      margin: 0;
+      padding: 0;
+      font-size: 1em;
+      color: white;
     }
-	
+
+    .home a:before {
+      content: "\e003";
+      font-family: 'SanMateoIcon';
+      text-indent: 0 !important;
+      color: white;
+
+    }
+    .home a:hover {
+
+      &:before {
+        color: #FFF;
+      }
+
+    }
+    li {
+      float: left;
+      list-style-type: none;
+      position: relative;
+
+      a {
+        font-family: 'Trade Gothic W01', Helvetica Neue, Arial, Helvetica, sans-serif;
+        font-weight: 300;
+        -webkit-font-smoothing: antialiased;
+        font-size: 1.0em;
+        padding: 0.3em .9em;
+        display: block;
+        color: white;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+      }
+
+      a:hover,
+      &:hover > a,
+      &.active-trail > a,
+      &:focus,
+      &:focus > a {
+        background-color: rgba($OSMUpdateGray, 1);
+        color: $OSMUpdateBlue;
+      }
+
+      &.expanded > a:after {
+        content: "\e004";
+        font-family: 'SanMateoIcon';
+        font-size: .5em;
+        padding-left: 5px;
+        color: #fff;
+      }
+
+      &.expanded > a:hover,
+      &.expanded:hover > a {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+
+      &.expanded > a:hover:after,
+      &.expanded:hover > a:after,
+      &.active-trail > a:after {
+        color: rgba($primaryBlue, .5);
+      }
+
+      ul {
+        position: absolute;
+        font-size: 1em;
+        width: 300%;
+        max-width: 300px;
+        opacity: 0;
+        background: rgba($primaryBlue, .9);
+        margin: 0;
+        padding: 0;
+		  border-bottom-left-radius: 3%;
+		  border-bottom-right-radius: 3%;
+
+        -webkit-transition: opacity .25s ease .1s;
+        -moz-transition: opacity .25s ease .1s;
+        -o-transition: opacity .25s ease .1s;
+        -ms-transition: opacity .25s ease .1s;
+        transition: opacity .25s ease .1s;
+
+        li {
+          height: 0;
+          overflow: hidden;
+          padding: 0;
+          width: inherit;
+          display: inline-table;
+          -webkit-transition: height .25s ease .1s;
+          -moz-transition: height .25s ease .1s;
+          -o-transition: height .25s ease .1s;
+          -ms-transition: height .25s ease .1s;
+          transition: height .25s ease .1s;
+		  max-width: 100%;
+
+          a {
+            color: white;
+            display: block;
+            border-radius: 0;
+            padding: .5em 1em;
+            width: 100%;
+          }
+        }
+      }
+    }
+
     ul {
       margin-bottom: 0;
     }
   }
-	.primary li:hover > ul,
-	.primary li a:focus + ul {
-		opacity: 1;
-		z-index: 1000;
-	}
-		
-	.primary li:hover > ul li,
-	.primary li a:focus + ul li {
-		height: 36px;
-		overflow: visible;
-		padding: 0;
-	}
+  .primary li:hover > ul,
+  .primary li a:focus + ul {
+    opacity: 1;
+    z-index: 1000;
+  }
+
+  .primary li:hover > ul li,
+  .primary li a:focus + ul li {
+    height: 36px;
+    overflow: visible;
+    padding: 0;
+  }
 
   .sub {
-  	background-color: white;
-  	border: 1px solid rgba($primaryBlue, .05);
-  	border-radius: 3px;
-  	font-family: $reg;
-  	font-size: .85em;
-  	border-top: 5px solid rgba($primaryBlue, .05);
-  	
-  	ul {
-  	  margin: 0;
-  	  padding: 0;
-  	  font-size: 1em;
-      
+    background-color: white;
+    border: 1px solid rgba($primaryBlue, .05);
+    font-family: $reg;
+    font-size: .85em;
+    border-top: 5px solid rgba($primaryBlue, .05);
+
+    ul {
+      margin: 0;
+      padding: 0;
+      font-size: 1em;
+
       li {
-        margin: 0; 
-        padding: 0; 
+        margin: 0;
+        padding: 0;
         list-style-type: none;
-  		
+
         a {
-          display: block; 
-          padding: .75em .75em; 
-          border-bottom: 1px solid rgba($primaryBlue, .2);	
+          display: block;
+          padding: .75em .75em;
+          border-bottom: 1px solid rgba($primaryBlue, .2);
           -webkit-transition: all 0.3s;
-          -moz-transition: all 0.3s; 
+          -moz-transition: all 0.3s;
           transition: all 0.3s;
-  			}
+        }
         a:hover {
-          background-color: rgba($primaryBlue,.8); 
+          background-color: rgba($primaryBlue, .8);
           color: white;
         }
-  		}
-  		.active {
-  		  font-family: $bold;
-  		  font-weight: normal;
-  			a {
-  			  background-color: white; 
-  			  color: $primaryBlue;
-  			 }
-  			
-  			 ul li {
-           a {
-             background-color: rgba($primaryTeal, .1); 
-             color: $primaryTeal; 
-             font-family: $reg; 
-             border-color: rgba($primaryTeal,.2)
-           }
-           a:hover {
-             background-color: rgba($primaryTeal, .2);
-            }
-  				}
-  			}	
-  		}
-  	}
+      }
+      .active {
+        font-weight: 700;
+        a {
+          background-color: white;
+          color: $primaryBlue;
+        }
+
+        ul li {
+          a {
+            background-color: rgba($primaryBlue, .1);
+            color: $OSMUpdateTeal;
+            font-family: $reg;
+            border-color: rgba($primaryTeal, .2)
+          }
+          a:hover {
+            background-color: rgba($primaryTeal, .2);
+          }
+        }
+      }
+    }
+  }
 }
 
 @media all and (min-width: $desktop) {
@@ -271,210 +249,198 @@
 }
 
 .lte8 {
-  .menu-button, .touch-button {
-    display: none;
-  }
-  
-  .icon-menu {
-    display: none;
-  }
+	.menu-button, .touch-button {
+		display: none;
+	}
 
-  .home {
-    display: block;
-  }
-  
-  .flexnav {
-    padding-top: 0 !important;
-  }
-  
-  .primary {
-  	border-radius: 3px;
-  	width: 100%;
-  	background-color: rgba($primaryTeal, .05);
+	.icon-menu {
+		display: none;
+	}
 
-	
-    ul {
-		  margin: 0;
-  	  padding: 0;
-  	  font-size: 1em;
-		  color: $primaryBlue;
+	.home {
+		display: block;
+	}
+
+	.flexnav {
+		padding-top: 0 !important;
+	}
+
+	.primary {
+		border-radius: 3px;
+		width: 100%;
+		background-color: rgba($primaryTeal, .05);
+
+		ul {
+			margin: 0;
+			padding: 0;
+			font-size: 1em;
+			color: $primaryBlue;
 		}
-				
+
 		.home a:before {
 			content: "\e003";
 			font-family: 'SanMateoIcon';
 			text-indent: 0 !important;
 			color: $primaryBlue;
-			
-			
+
 		}
 		.home a:hover {
-			
+
 			&:before {
-  		  color: #FFF;	
+				color: #FFF;
 			}
-			
+
 		}
 		li {
 			float: left;
 			list-style-type: none;
 			position: relative;
-      
-      
-      
-  		a {
-  			font-family: 'Trade Gothic W01 Roman', Helvetica Neue, Arial, Helvetica, sans-serif; 
-  			font-size: 1em;
-  			padding: 0.5em .9em;
-  			display: block;
-  			-webkit-transition: all 0.3s;
-  			-moz-transition: all 0.3s;
-  			transition: all 0.3s;
+
+			a {
+				font-family: 'Trade Gothic W01', Helvetica Neue, Arial, Helvetica, sans-serif;
+				font-weight: 400;
+				font-size: 1em;
+				padding: 0.5em .9em;
+				display: block;
+				-webkit-transition: all 0.3s;
+				-moz-transition: all 0.3s;
+				transition: all 0.3s;
 			}
-			
-  		a:hover,
-  		&:hover > a,
-  		&.active-trail > a {
-  			background-color: rgba($primaryTeal, 1);
-  			color: white;
-  			border-radius: 3px;
-  		}
-		
-  		&.expanded > a:after {
-  			content: "\e004";
-  			font-family: 'SanMateoIcon';
-  			font-size: .5em;
-  			padding-left: 5px;
-  			color: rgba($primaryTeal, .3);
-  		}
-  		
-  		&.expanded > a:hover,
-  		&.expanded:hover > a {
-  			border-bottom-left-radius: 0px;
-  			border-bottom-right-radius: 0px;
-  		}
-  		
-  		&.expanded > a:hover:after,
-  		&.expanded:hover > a:after,
-  		&.active-trail > a:after {
-  			color: rgba(#fff, .5);
-  		}
-		
-      ul {
-			  position: absolute;
-		    top: 2.5em;
-		    font-size: 1em;
-		    width: 300%;
-        max-width: 300px;
-		    opacity: 0;
-		    background: $primaryTeal;
-		    background: rgba($primaryTeal, .975);
-		    margin: 0;
-    	  padding: 0;
-		    -webkit-border-radius: 0 0 5px 5px;
-		    -moz-border-radius: 0 0 5px 5px;
-		    border-radius: 0 0 5px 5px;
-		 
-		    -webkit-transition: opacity .25s ease .1s;
-		    -moz-transition: opacity .25s ease .1s;
-		    -o-transition: opacity .25s ease .1s;
-		    -ms-transition: opacity .25s ease .1s;
-		    transition: opacity .25s ease .1s;
-		    		    
-		    li {
-			    height: 0;
-			    overflow: hidden;
-			    padding: 0;
-			    width: 100%;
-			    display: inline-table;
-			    -webkit-transition: height .25s ease .1s;
-			    -moz-transition: height .25s ease .1s;
-			    -o-transition: height .25s ease .1s;
-			    -ms-transition: height .25s ease .1s;
-			    transition: height .25s ease .1s;
-			    
-			    a {
-  			    color: white;
-  			    display: block;
-  			    border-radius: 0;
-  			    padding: .5em 1em;
-  			    width: 100%;
-  				}
-  			}
-			
-  			li:last-child > a, li:last-child > a:hover {
-  				border-bottom-left-radius: 3px;
-  				border-bottom-right-radius: 3px;
-  			}
-  		}
-    }
-	
-    ul {
-      margin-bottom: 0;
-    }
-  }
+
+			a:hover,
+			&:hover > a,
+			&.active-trail > a {
+				background-color: rgba($primaryTeal, 1);
+				color: white;
+				border-radius: 3px;
+			}
+
+			&.expanded > a:after {
+				content: "\e004";
+				font-family: 'SanMateoIcon';
+				font-size: .5em;
+				padding-left: 5px;
+				color: rgba($primaryTeal, .3);
+			}
+
+			&.expanded > a:hover,
+			&.expanded:hover > a {
+				border-bottom-left-radius: 0px;
+				border-bottom-right-radius: 0px;
+			}
+
+			&.expanded > a:hover:after,
+			&.expanded:hover > a:after,
+			&.active-trail > a:after {
+				color: rgba(#fff, .5);
+			}
+
+			ul {
+				position: absolute;
+				top: 2.5em;
+				font-size: 1em;
+				width: 300%;
+				max-width: 300px;
+				opacity: 0;
+				background: $primaryTeal;
+				background: rgba($primaryTeal, .975);
+				margin: 0;
+				padding: 0;
+
+				-webkit-transition: opacity .25s ease .1s;
+				-moz-transition: opacity .25s ease .1s;
+				-o-transition: opacity .25s ease .1s;
+				-ms-transition: opacity .25s ease .1s;
+				transition: opacity .25s ease .1s;
+
+				li {
+					height: 0;
+					overflow: hidden;
+					padding: 0;
+					width: 100%;
+					display: inline-table;
+					-webkit-transition: height .25s ease .1s;
+					-moz-transition: height .25s ease .1s;
+					-o-transition: height .25s ease .1s;
+					-ms-transition: height .25s ease .1s;
+					transition: height .25s ease .1s;
+
+					a {
+						color: white;
+						display: block;
+						border-radius: 0;
+						padding: .5em 1em;
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		ul {
+			margin-bottom: 0;
+		}
+	}
 	.primary li:hover > ul {
 		opacity: 1;
 		z-index: 1000;
 	}
-		
+
 	.primary li:hover > ul li {
 		height: 36px;
 		overflow: visible;
 		padding: 0;
 	}
 
-  .sub {
-  	background-color: white;
-  	border: 1px solid rgba($primaryBlue, .05);
-  	border-radius: 3px;
-  	font-family: $reg;
-  	font-size: .85em;
-  	border-top: 5px solid rgba($primaryBlue, .05);
-  	
-  	ul {
-  	  margin: 0;
-  	  padding: 0;
-  	  font-size: 1em;
-      
-      li {
-        margin: 0; 
-        padding: 0; 
-        list-style-type: none;
-  		
-        a {
-          display: block; 
-          padding: .75em .75em; 
-          border-bottom: 1px solid rgba($primaryBlue, .2);	
-          -webkit-transition: all 0.3s;
-          -moz-transition: all 0.3s; 
-          transition: all 0.3s;
-  			}
-        a:hover {
-          background-color: rgba($primaryBlue,.8); 
-          color: white;
-        }
-  		}
-  		.active {
-  		  font-family: $bold;
-        font-weight: normal;
-  			a {
-  			  background-color: white; 
-  			  color: $primaryBlue;
-  			 }
-  			
-  			 ul li {
-           a {
-             background-color: rgba($primaryTeal, .1); 
-             color: $primaryTeal; 
-             font-family: $reg; 
-             border-color: rgba($primaryTeal,.2)
-           }
-           a:hover {
-             background-color: rgba($primaryTeal, .2);
-            }
-  				}
-  			}	
-  		}
-  	}
+	.sub {
+		background-color: white;
+		border: 1px solid rgba($primaryBlue, .05);
+		border-radius: 3px;
+		font-family: $reg;
+		font-size: .85em;
+		border-top: 5px solid rgba($primaryBlue, .05);
+
+		ul {
+			margin: 0;
+			padding: 0;
+			font-size: 1em;
+
+			li {
+				margin: 0;
+				padding: 0;
+				list-style-type: none;
+
+				a {
+					display: block;
+					padding: .75em .75em;
+					border-bottom: 1px solid rgba($primaryBlue, .2);
+					-webkit-transition: all 0.3s;
+					-moz-transition: all 0.3s;
+					transition: all 0.3s;
+				}
+				a:hover {
+					background-color: rgba($primaryBlue, .8);
+					color: white;
+				}
+			}
+			.active {
+				font-weight: 700;
+				a {
+					background-color: white;
+					color: $primaryBlue;
+				}
+
+				ul li {
+					a {
+						background-color: rgba($primaryTeal, .1);
+						color: $primaryTeal;
+						font-family: $reg;
+						border-color: rgba($primaryTeal, .2)
+					}
+					a:hover {
+						background-color: rgba($primaryTeal, .2);
+					}
+				}
+			}
+		}
+	}
 }

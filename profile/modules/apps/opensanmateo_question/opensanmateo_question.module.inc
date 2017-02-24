@@ -75,8 +75,12 @@ function opensanmateo_question_entity_view_alter(&$build, $type) {
       }
     }
 
-    // Rewrite this element as a SELECT tag using Drupal's theming system; see theme() and theme_select()
-    $build['field_question_links'] = theme('question_pane', array('items' => $options, 'title' => $fpp->title));
+    // Rewrite this element as a SELECT tag using Drupal's theming system;
+    // see theme() and theme_select().
+    $build['field_question_links'] = array(
+      '#ype' => 'markup',
+      '#markup' => theme('question_pane', array('items' => $options, 'title' => $fpp->title)),
+    );
 
     // Inject JS and CSS into page
     $module_path = drupal_get_path('module', 'opensanmateo_question');

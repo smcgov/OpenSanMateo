@@ -1,4 +1,98 @@
-OpenSanMateo
-============
+# SMCGOV Drupal platform.
 
-OpenSanMateo is an open-source, content management system (CMS) based on Drupal 7 and the OpenPublic distibution, tailored to the needs of the County government of San Mateo, CA.
+The platform is a Multi-site, meaning that each of the sites use the same codebase, but have their own databases.
+Database config, and each site's unique settings are stored in their settings.php files.
+
+
+## Two Remotes
+
+Initially, clone the repo from Acquia. This will set it to be the _origin_ remote by default.
+Because Acquia doesn't provide tools like code review and pull requests, there is a mirrored repository hosted by Bitbucket.
+These repos have to be manually kept in sync.
+
+### origin
+Acquia hosts the website, and deployments to Dev, Stage, and Prod are done via pushes to the _origin_ remote.
+
+### bitbucket
+Set up a second remote called "bitbucket":
+
+git remote add bitbucket git@bitbucket.org:phase2tech/internal_opensanmateo.git
+
+
+## Gitflow
+
+To develop new features, branch off of the _release_ branch:
+
+`git checkout release`
+
+Ensure you are up to date:
+
+`git pull bitbucket release`
+
+Branch off of the _release_ branch:
+
+`git checkout -b my-feature-branch`
+
+Work on the code to your satisfaction. When ready, submit a PR to merge the code into the integration branch.
+
+`git push bitbucket my-feature-branch`
+
+Checkout the integration branch for the latest changes that are being tested.
+
+`git checkout integration`
+
+Sync the integration branch for testing in the staging environment:
+
+`git pull bitbucket integration`
+
+`git push origin integration`
+
+When _integration_ is ready for release, merge its contents into _release_:
+
+`git checkout release; git merge integration`
+
+Tag a release in the format YYYY-MM-DD-[letter] where [letter] corresponds to the tag you created on that day (A, B, C...):
+
+`git tag 2016-01-21-A`
+
+Push the release tag to Acquia:
+
+`git push origin release --tags`
+
+Select the tag to deploy the code to Staging using the Acquia dashboard tools.
+
+### Hotfix
+
+A "hotfix" is when a change needs to bypass the integration branch and move directly to Production.
+This is usually to fix a critical bug. Follow the same Gitflow outlined above.
+Branch off of release and push your branch up to the bitbucket remote.
+Create a PR, but instead of integration, select release as the merge target.
+Pull down the release branch from bitbucket, create a tag and push it up to acquia:
+
+`git checkout release; git pull bitbucket release; git tag 2016-08-22-A`
+
+Select the release tag using Acquia's dashboard.
+
+Make sure to then merge the release branch into integration and sync with both remotes:
+
+`git checkout integration; git merge release; git push bitbucket integration; git push origin integration`
+
+
+## Combined Search
+
+Search API is used to populate a node index that is shared between all sites.
+All of the sites populate the same Solr Core with their node data.
+Search API has the feature of "aggregated fields", which this platform uses heavily.
+There are more than a dozen aggregated fields, each of which may accept field info from one or more content type fields.
+This is useful, for example, when there are two different date fields from two different content types, yet one view needs to create a listing of both content types.
+This aggregated field might be called "search_api_multi_aggregation_9", for example, though it is basically the same as if it was stored in Search API as its native date field.
+
+#### Site ID
+A unique hash is generated for each site as it is indexed.
+This field is stored in the search index, so that each indexed item can report which site it belongs to.
+This is used in the custom Views filter to show items from all sites, or "this site only".
+
+#### Images
+Images are preprocessed using custom code before being indexed by Search API in order to store an absolute URL to the re-sized image.
+This is because when displaying search results, any given site only has access to the result's site hash, and not its actual URL.
+Also, when a custom Image Size is generated for an image, a unique query hash is used by Drupal to prevent DDOS attacks, and the site needs to generate this the first time an image size is used.

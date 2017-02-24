@@ -8,7 +8,6 @@ body {
   background: $primaryBlue;
   color:$primaryBlue;
 }
-<<<<<<< HEAD
 
 p {
     color:$primaryBlue;
@@ -25,12 +24,11 @@ a:hover, a:focus{
     background:rgba(40,44,116, 0.8);
 }
 
-.universal-teaser.event .read-more-wrapper a{
-    background-color: rgba(40,44,116, 0.2)
-=======
+.universal-teaser.event .read-more-wrapper a {
+  background-color: rgba(40, 44, 116, 0.2)
+}
 p{
   color:black;
->>>>>>> 8c73915c11cca8f9583a503fb755f6e55e61034e
 }
 /* LafCO Promo Boxes */
 .promo-pane-default {
@@ -46,6 +44,9 @@ p{
   background-color: #ee9f3b;
 }
 
+#block-opensanmateo-search-header-search .search-button {
+  background-color: $OSMUpdateTeal;
+}
 
 
 

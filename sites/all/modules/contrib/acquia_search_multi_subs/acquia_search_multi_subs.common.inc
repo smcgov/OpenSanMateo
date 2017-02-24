@@ -11,6 +11,7 @@
  *
  * The generated list of expected core names is done according to Acquia Search
  * conventions, prioritized in this order:
+ * WXYZ-12345.[env].[acquia_db_name]
  * WXYZ-12345.[env].[sitefolder]
  * WXYZ-12345.[env].default
  * WXYZ-12345_[sitename][env]
@@ -32,11 +33,18 @@
  *   From $_ENV[AH_SITE_NAME]
  * @param string $sites_foldername
  *   Optional. The current site folder within [docroot]/sites/*.
- *   @see conf_path()
+ * @param string $ah_db_name
+ *   The Acquia Hosting current DB name.
  * @return array
  *   The eligible core_ids sorted by best match first.
+ * @see conf_path()
  */
-function acquia_search_multi_subs_get_expected_search_cores($acquia_identifier, $ah_site_environment, $ah_site_name, $sites_foldername = 'default') {
+function acquia_search_multi_subs_get_expected_search_cores(
+  $acquia_identifier,
+  $ah_site_environment,
+  $ah_site_name,
+  $sites_foldername = 'default',
+  $ah_db_name) {
   // Build eligible environments array.
   $ah_environments = array();
   // If we have the proper environment, add it as the first option.
@@ -49,16 +57,23 @@ function acquia_search_multi_subs_get_expected_search_cores($acquia_identifier, 
     $ah_environments['dev'] = $ah_site_name;
   }
 
+  $core_suffixes = array();
+  if (!empty($ah_db_name)) {
+    $core_suffixes[] = $ah_db_name;
+  }
+  // The possible core name suffixes are [current site folder name] and 'default'.
+  $core_suffixes = array_merge($core_suffixes, array_unique(array($sites_foldername, 'default')));
+
   $expected_core_names = array();
   foreach ($ah_environments as $site_environment => $site_name) {
-    // The possible core name suffixes are [current site folder name] and 'default'.
-    $core_suffixes = array_unique(array($sites_foldername, 'default'));
     foreach ($core_suffixes as $core_suffix) {
-      // Fix the $core_suffix: alphanumeric only, and max length == 16
+      // Fix the $core_suffix: alphanumeric only
       $core_suffix = preg_replace('@[^a-zA-Z0-9]+@', '', $core_suffix);
-      $core_suffix = substr($core_suffix, 0, 16);
-      // Add WXYZ-12345.[env].[sitefolder] option.
-      $expected_core_names[] = $acquia_identifier . '.' . $site_environment . '.' . $core_suffix;
+      // We first add a 60-char-length indexname, which is the Solr index name limit.
+      $expected_core_names[] = substr($acquia_identifier . '.' . $site_environment . '.' . $core_suffix, 0, 60);
+      // Before 17-nov-2015 (see BZ-2778) the suffix limit was 16 chars; add this as well for backwards compatibility.
+      $expected_core_names[] = $acquia_identifier . '.' . $site_environment . '.' . substr($core_suffix, 0, 16);
+
       // Add WXYZ-12345_[sitename][env] option.
       if (!empty($site_name) && $sites_foldername == 'default') {
         // Replace any weird characters that might appear in the sitegroup name or
@@ -294,24 +309,30 @@ function acquia_search_multi_subs_form_validate(array $element, &$form_state) {
     if ($form_values['acquia_override_subscription_corename'] == '') {
       $form_state['values']['acquia_override_subscription_corename'] = $form_values['acquia_override_subscription_id'];
     }
+    $identifier = $form_values['acquia_override_subscription_id'];
+    $key = $form_values['acquia_override_subscription_key'];
   }
   elseif ($form_values['acquia_override_selector'] == 'default') {
-    // Delete all possible index variables from the Acquia Multi Subs module, since
-    // we revert to default for this Search Environment
+    // Revert all acquia_override_subscription_* variables to the default for
+    // this Search Environment.
+    // TODO: Is this needed?
     $form_state['values']['acquia_override_subscription_id'] = acquia_agent_settings('acquia_identifier');
     $form_state['values']['acquia_override_subscription_key'] = acquia_agent_settings('acquia_key');
     $form_state['values']['acquia_override_subscription_corename'] = acquia_agent_settings('acquia_identifier');
+    $identifier = acquia_agent_settings('acquia_identifier');
+    $key = acquia_agent_settings('acquia_key');
   }
   else {
+    // Revert id and key overrides to match the current subscription in use,
+    // and revert the overridden corename to the selected one.
+    // TODO: Is this needed?
     $form_state['values']['acquia_override_subscription_id'] = acquia_agent_settings('acquia_identifier');
     $form_state['values']['acquia_override_subscription_key'] = acquia_agent_settings('acquia_key');
     $form_state['values']['acquia_override_subscription_corename'] = $form_values['acquia_override_selector'];
+    $identifier = acquia_agent_settings('acquia_identifier');
+    $key = acquia_agent_settings('acquia_key');
   }
-
-  // Set the identifier and key.
-  $identifier = $form_values['acquia_override_subscription_id'];
-  $key = $form_values['acquia_override_subscription_key'];
-
+  // Check if the picked subscription id/key are valid.
   $subscription = acquia_agent_get_subscription(array(), $identifier, $key);
   if (!is_array($subscription)) {
     form_error($element['acquia_override_subscription_key'], t('This combination of ID and key is not valid.'));
@@ -348,4 +369,37 @@ function acquia_search_multi_subs_get_hostname($corename) {
 function _acquia_search_multi_subs_create_derived_key($salt, $id, $key) {
   $derivation_string = $id . 'solr' . $salt;
   return hash_hmac('sha1', str_pad($derivation_string, 80, $derivation_string), $key);
+}
+
+/**
+ * Keeps an entry in cache that tracks the current environment, to avoid calling
+ * the auto-switch code on every single load.
+ * @param $module_name
+ *   Either 'apachesolr' or 'searchapisolr'.
+ * @return bool
+ *   Returns TRUE if environment was the same as cached, FALSE if different.
+ */
+function acquia_search_multi_subs_check_and_cache_environment_detection($acquia_identifier, $ah_site_environment, $ah_site_name, $ah_region, $sites_foldername, $ah_db_name, $module_name) {
+  // Note, we only accept 'apachesolr' or 'searchapisolr' as arguments.
+  if ($module_name != 'apachesolr' && $module_name != 'searchapisolr') {
+    throw new Exception('Invalid argument value.');
+  }
+
+  $cid = 'acquia_search_multi_subs_env_change_' . $module_name;
+  $env_config = array(
+    $acquia_identifier,
+    $ah_site_environment,
+    $ah_site_name,
+    $ah_region,
+    $sites_foldername,
+    $ah_db_name,
+  );
+  $cached_config = cache_get($cid);
+  if (!empty($cached_config) && $cached_config->expire > REQUEST_TIME && $cached_config->data == $env_config) {
+    // We have already initialized this site with the current environment.
+    return TRUE;
+  }
+  // Something is different about the environment, so return TRUE and keep track of this environment.
+  cache_set($cid, $env_config, 'cache', REQUEST_TIME + 300);
+  return FALSE;
 }

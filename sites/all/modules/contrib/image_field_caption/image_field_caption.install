@@ -126,7 +126,7 @@ function image_field_caption_schema() {
       'caption' => array(
         'description' => 'The caption text.',
         'type' => 'text',
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'caption_format' => array(
         'type' => 'varchar',
@@ -382,4 +382,17 @@ function image_field_caption_update_7201() {
  */
 function image_field_caption_update_7202() {
   db_drop_table('image_field_caption');
+}
+
+/**
+ * Make the revision caption field non mandatory
+ */
+function image_field_caption_update_7203(){
+  $caption_field_revision = array(
+    'description' => 'The caption text.',
+    'type' => 'text',
+    'not null' => FALSE,
+  );
+
+  db_change_field('field_image_field_caption_revision', 'caption', 'caption', $caption_field_revision);
 }

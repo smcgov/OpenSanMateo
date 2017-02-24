@@ -38,6 +38,7 @@ function opensanmateo_wysiwyg_wysiwyg_default_profiles() {
           'Link' => 1,
           'Unlink' => 1,
           'Anchor' => 1,
+          'Image' => 1,
           'Superscript' => 1,
           'Subscript' => 1,
           'Blockquote' => 1,
@@ -51,6 +52,9 @@ function opensanmateo_wysiwyg_wysiwyg_default_profiles() {
           'Format' => 1,
           'Table' => 1,
           'Maximize' => 1,
+        ),
+        'imce' => array(
+          'imce' => 1,
         ),
       ),
       'toolbar_loc' => 'top',

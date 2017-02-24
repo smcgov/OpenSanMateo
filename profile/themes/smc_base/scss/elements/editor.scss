@@ -31,7 +31,8 @@ a {
 }
 
 blockquote {
-	font-family: $lightOb;
+	font-weight: 100;
+    font-style: italic;
 	font-size: 2em;
 	color: $primaryBlue;
 	margin: 0 0 1.25em 0;
@@ -50,7 +51,7 @@ blockquote {
 
 h2 {
 	color: $primaryTeal;
-	font-family: $light;
+	font-weight: 100;
 	font-size: 2em;
 	margin: 0;
 	line-height: 1.2em;
@@ -59,7 +60,7 @@ h2 {
 
 h3 {
   color: $primaryTeal; 
-  font-family: $light; 
+  font-weight: 100;
   text-transform: uppercase; 
   margin-top: 0; 
   font-weight: 100;
@@ -73,9 +74,8 @@ h4 {
 }
 
 h5 {
-  color: $primaryBlue; 
-  font-family: $bold;
-  font-weight: normal;
+  color: $primaryBlue;
+  font-weight: 700;
 }
 
 ul, ol {

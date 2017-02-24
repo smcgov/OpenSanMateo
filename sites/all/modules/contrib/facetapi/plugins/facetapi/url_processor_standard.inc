@@ -130,7 +130,6 @@ class FacetapiUrlProcessorStandard extends FacetapiUrlProcessor {
     // Sets the breadcrumb trail with the keys and filters.
     drupal_set_breadcrumb($breadcrumb);
   }
-
   /**
    * Allows for processor specific overrides to the settings form.
    */

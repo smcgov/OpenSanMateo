@@ -27,9 +27,18 @@ include_once 'opensanmateo_search.features.field_instance_sub_type.inc';
  *   for this element. Return nothing to use the default.
  */
 function opensanmateo_form_type_textfield_value($element, $input = FALSE) {
+
+  // For the Aggregated Author field, split comma separated value into an array
+  // of multiple authors.
+  if ($element['#name'] == 'search_api_multi_aggregation_3' || $element['#name'] == 'search_api_multi_aggregation_8') {
+    if (strpos($input, ', ') !== FALSE) {
+      $input = explode(', ', $input);
+    }
+  }
   if ($input !== FALSE && $input !== NULL) {
     // This overrides Drupal core's form_type_textfield_value function, and
-    // allows an array to be used instead of a string.
+    // allows an array to be used instead of a string. (It normally forces the
+    // input to be a string.)
     // See https://www.drupal.org/node/2462723 for security notice regarding
     // why this is no longer allowed in Drupal core. Also see #value_callback
     // in 'plugins/views/opensanmateo_search_views_autocomplete.inc' for the
@@ -50,6 +59,13 @@ function opensanmateo_search_menu() {
     'page arguments' => array(2),
     'type' => MENU_CALLBACK,
   );
+  // Term autocomplete callback for list views.
+  $items['opensanmateo_search_author_autocomplete/autocomplete'] = array(
+    'page callback' => 'opensanmateo_search_aggregated_author_autocomplete_callback',
+    'access callback' => TRUE,
+    'page arguments' => array(2),
+    'type' => MENU_CALLBACK,
+  );
 
   return $items;
 }
@@ -61,15 +77,23 @@ function opensanmateo_search_views_data_alter(&$data) {
 
   // By default lists will always use SearchApiViewsHandlerFilter, which doesn't
   // allow for multi-value input, and also doesn't allow for "AND" / "OR" matching
-  // on terms.
+  // on terms. So we set a custom views handler. Note that this handler uses a
+  // callback that splits comma-delineated strings into an array.
   if (!empty($data['search_api_index_san_mateo_content_index']['search_api_multi_aggregation_8'])) {
     $field =& $data['search_api_index_san_mateo_content_index']['search_api_multi_aggregation_8'];
 
     // Set the handler to an OptionsList, which is closest to what we are doing.
     $field['filter']['handler'] = 'OpenSanMateoSearchViewsAutocomplete';
 
+    // Set the field as multi-value.
+    $field['filter']['multi-valued'] = TRUE;
+  }
+  if (!empty($data['search_api_index_san_mateo_content_index']['search_api_multi_aggregation_3'])) {
+    $field =& $data['search_api_index_san_mateo_content_index']['search_api_multi_aggregation_3'];
 
-    //$field['filter']['options'] = $matches;
+    // Set the handler to an OptionsList, which is closest to what we are doing.
+    $field['filter']['handler'] = 'OpenSanMateoSearchViewsAutocomplete';
+
     // Set the field as multi-value.
     $field['filter']['multi-valued'] = TRUE;
   }
@@ -120,7 +144,74 @@ function openansanmateo_search_termquery($regex) {
     'terms' => 'true',
     'terms.fl' => 'sm_search_api_multi_aggregation_8',
     'terms.regex' => $regex,
-    'terms.limit' => '20'
+    'terms.limit' => '20',
+    'wt' => 'json',
+    'json.nl' => 'map',
+  );
+
+  $connection = $server->getSolrConnection();
+  $response = $connection->makeServletRequest($uri, $params);
+
+  return $response;
+}
+
+/**
+ * Provide author reference autocomplete for the list by type widget.
+ */
+function opensanmateo_search_aggregated_author_autocomplete_callback($str = 0) {
+  $matches = array();
+  $current_values = explode(',', $str);
+  $num_current_values = count($current_values) - 1;
+  $search_value = trim(array_pop($current_values));
+
+  // If we have existing values, ensure those are retained with the autocomplete
+  // suggestion.
+  if ($num_current_values > 0) {
+    $existing_values = implode(',', $current_values);
+  }
+
+  $response = openansanmateo_search_authorquery('.*' . preg_quote($search_value) . '.*');
+
+  // Parse any matches we have and return the autocomplete json.
+  if ($response->code == 200) {
+    $potential_matches = drupal_json_decode($response->data);
+    if (!empty($potential_matches['terms']['sm_search_api_multi_aggregation_3'])) {
+      foreach ($potential_matches['terms']['sm_search_api_multi_aggregation_3'] as $term => $term_count) {
+        if (isset($existing_values)) {
+          $matches[$existing_values . ', ' . $term] = $term . ' (' . $term_count . ')';
+        }
+        else {
+          $matches[$term] = $term . ' (' . $term_count . ')';
+        }
+      }
+    }
+  }
+
+  drupal_json_output($matches);
+}
+
+/**
+ * Helper function to find authors given a regex search pattern.
+ *
+ * @param (string) $regex
+ *   The search string.
+ *
+ * @return mixed
+ *   An array of authors or FALSE.
+ */
+function openansanmateo_search_authorquery($regex) {
+  // Query the terms component of solr to match autocomplete. Limit to 20
+  // suggestions.
+  // @see http://wiki.apache.org/solr/TermsComponent
+  $server = search_api_server_load('san_mateo_solr_server');
+  $uri = "terms";
+  $params = array(
+    'terms' => 'true',
+    'terms.fl' => 'sm_search_api_multi_aggregation_3',
+    'terms.regex' => $regex,
+    'terms.limit' => '20',
+    'wt' => 'json',
+    'json.nl' => 'map',
   );
 
   $connection = $server->getSolrConnection();
@@ -133,13 +224,9 @@ function openansanmateo_search_termquery($regex) {
  * Validate views_content_views_panes_content_type_edit_form().
  */
 function opensanmateo_search_views_content_views_panes_content_type_edit_form_validate($form, &$form_state) {
-  // Views expects multi-value results in an array, not a comma separated list,
-  // so expand the list here.
+  // Ensure that each of the values are valid.
   if (!empty($form_state['values']['exposed']['search_api_multi_aggregation_8'])) {
     $terms = explode(',' , $form_state['values']['exposed']['search_api_multi_aggregation_8']);
-    // Unset previous value.
-    unset($form_state['values']['exposed']['search_api_multi_aggregation_8']);
-    // Format array.
     foreach ($terms as &$term) {
       $term =  trim($term);
       $response = openansanmateo_search_termquery($term);
@@ -150,7 +237,23 @@ function opensanmateo_search_views_content_views_panes_content_type_edit_form_va
           form_set_error('search_api_multi_aggregation_8', t('The term %term is invalid', array('%term' => $term)));
         }
       }
-      $form_state['values']['exposed']['search_api_multi_aggregation_8'][$term] = $term;
+    }
+  }
+  // Ensure that each of the values are valid.
+  if (!empty($form_state['values']['exposed']['search_api_multi_aggregation_3'])) {
+    $authors = explode(',' , $form_state['values']['exposed']['search_api_multi_aggregation_3']);
+
+    // Format array.
+    foreach ($authors as &$author) {
+      $author =  trim($author);
+      $response = openansanmateo_search_authorquery($author);
+
+      if ($response->code == 200) {
+        $potential_matches = drupal_json_decode($response->data);
+        if (empty($potential_matches['terms']['sm_search_api_multi_aggregation_3'][$author])) {
+          form_set_error('search_api_multi_aggregation_3', t('The author name %author is invalid', array('%author' => $author)));
+        }
+      }
     }
   }
 }
@@ -173,9 +276,8 @@ function opensanmateo_search_form_views_content_views_panes_content_type_edit_fo
   }
 
   // If the term field is present.
-  // Disable this one for future refinement w/out tossing the code
   if (!empty($form['exposed']['filter-search_api_multi_aggregation_8'])) {
-    // Alias field for eas of use.
+    // Alias field for ease of use.
     $element =& $form['exposed']['filter-search_api_multi_aggregation_8']['search_api_multi_aggregation_8'];
 
     // Set type to textfield and unset the options array.
@@ -193,6 +295,69 @@ function opensanmateo_search_form_views_content_views_panes_content_type_edit_fo
 
     // Add validation (for processing results back into the array views expects).
     $form['#validate'][] = 'opensanmateo_search_views_content_views_panes_content_type_edit_form_validate';
+    // Clarify the author exposed filter options (less than, etc makes 0 sense.
+    if (isset($form['exposed']['filter-search_api_multi_aggregation_8'])) {
+      $form['exposed']['filter-search_api_multi_aggregation_8']['search_api_multi_aggregation_8_op']['#options'] = array(
+        '=' => t('Is one of'),
+        'all of' => t('Is all of'),
+        '<>' => t('Is none of'),
+        'empty' => t('Is empty'),
+        'not empty' => t('Is not empty'),
+      );
+    }
+  }
+
+  // If the Author field is present.
+  if (!empty($form['exposed']['filter-search_api_multi_aggregation_3'])) {
+    // Alias field for ease of use.
+    $element =& $form['exposed']['filter-search_api_multi_aggregation_3']['search_api_multi_aggregation_3'];
+
+    // Set type to textfield and unset the options array.
+    $element['#type'] = 'textfield';
+    $element['#value_callback'] = 'opensanmateo_form_type_textfield_value';
+
+    // Process stored values (if any) into something suitable for an autocomplete (comma delimited list).
+    if (!empty($form_state['conf']['exposed']['search_api_multi_aggregation_3']) && is_array($form_state['conf']['exposed']['search_api_multi_aggregation_3'])) {
+      $element['#default_value'] = implode(', ', $form_state['conf']['exposed']['search_api_multi_aggregation_3']);
+    }
+
+    // Give it an autocomplete path.
+    $element['#autocomplete_path'] = 'opensanmateo_search_author_autocomplete/autocomplete';
+
+    // Add validation (for processing results back into the array views expects).
+    $form['#validate'][] = 'opensanmateo_search_views_content_views_panes_content_type_edit_form_validate';
+    // Clarify the author exposed filter options (less than, etc makes 0 sense).
+    if (isset($form['exposed']['filter-search_api_multi_aggregation_3'])) {
+      $form['exposed']['filter-search_api_multi_aggregation_3']['search_api_multi_aggregation_3_op']['#options'] = array(
+        '=' => t('Is one of'),
+        'all of' => t('Is all of'),
+        '<>' => t('Is none of'),
+        'empty' => t('Is empty'),
+        'not empty' => t('Is not empty'),
+      );
+    }
+  }
+
+
+  // If the Aggregated Subject field is present.
+  if (!empty($form['exposed']['filter-search_api_multi_aggregation_14'])) {
+    // Alias field for ease of use.
+    $element =& $form['exposed']['filter-search_api_multi_aggregation_14']['search_api_multi_aggregation_14'];
+
+    // Set type to select field and unset the size property.
+    $element['#type'] = 'select';
+    unset($element['#size']);
+    // Pull in the subject Taxonomy and set the options on the select field.
+    $vid = taxonomy_vocabulary_machine_name_load('subject')->vid;
+    $term_array = taxonomy_get_tree($vid);
+
+    $just_terms = array('' => t('- Any -'));
+    // Here we are using the term name as both the key and the label so they
+    // line up with what is in the search index.
+    foreach ($term_array as $term) {
+      $just_terms[$term->name] = $term->name;
+    }
+    $element['#options'] = $just_terms;
   }
 }
 
@@ -303,7 +468,7 @@ function opensanmateo_search_header_search_form($form, $form_state) {
   $form['search'] = array(
     '#type' => 'textfield',
     '#attributes' => array(
-      'placeholder' => t('Search All Departments'),
+      'placeholder' => t('SEARCH'),
       'class' => array('header-search-field')
     ),
   );
@@ -645,38 +810,21 @@ function opensanmateo_search_permission() {
  */
 function opensanmateo_search_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'views_exposed_form' && $form['#id'] =='views-exposed-form-opensanmateo-search-page-1') {
-
-    // This field is not used on any of the events. Does it make sense?
-    // Commenting it out for now...
-    //$taxonomy_subject = taxonomy_vocabulary_machine_name_load('subject');
-    //$terms = taxonomy_get_tree($taxonomy_subject->vid);
-    //$type_options = array('' => t('- Any -'));
-    //foreach ($terms as $data) {
-    //  $term_name = $data->name;
-    //  if($data->parents[0] != 0) {
-    //    $term_name = '--' . $term_name;
-    //  }
-    //  $type_options[$data->name] = $term_name;
-    //}
-    //$form['subject']['#type'] = 'select';
-    //unset($form['subject']['#size']);
-    //$form['subject']['#title'] = t('Type');
-    //$form['subject']['#options'] = $type_options;
-    //$form['subject']['#multiple'] = FALSE;
-
-    // Start and end date filters
+    // Subject, Start and end date filters.
     $parameters = drupal_get_query_parameters();
     if (isset($parameters['subject'])) {
-      $form['subject']['default_value'] = $parameters['subject'];
+      $form['subject']['#default_value'] = $parameters['subject'];
     }
+
 
     // If no start date is provided, default to today (show only future events).
     $start_day = isset($parameters['start_date']['date']) ? $parameters['start_date']['date'] : date('Y-m-d');
-    // Don't provide a default end date filter value (show all upcoming events).
-    $end_day = isset($parameters['end_date']['date']) ? $parameters['end_date']['date'] : '';
+    // If there is no default end date, defer to the last day of the month.
+    // PHP's t date token is the number of days in that month.
+    $end_day = isset($parameters['end_date']['date']) ? $parameters['end_date']['date'] : date('Y-m-t', strtotime($start_day));
 
     $form['start_date']['#type'] = 'date_popup';
-    $form['start_date']['#size'] = '16';  
+    $form['start_date']['#size'] = '16';
     $form['start_date']['#title'] = t('From');
     $form['start_date']['#date_format'] = 'Y-m-d';
     $form['start_date']['#default_value'] = $start_day;
@@ -692,6 +840,25 @@ function opensanmateo_search_form_alter(&$form, &$form_state, $form_id) {
     // Add a label for the Department filter.
     if (isset($form['search_api_site_hash'])) {
       $form['search_api_site_hash']['#title'] = 'Dept';
+    }
+    // Make sure there is an Event term for the Subject taxonomy.
+    if ($term = variable_get('opensanmateo_event_vocab_term')) {
+      // Use the first match found (there could theoretically be multiple).
+      $term = reset(taxonomy_get_term_by_name($term, 'subject'));
+      $terms = taxonomy_get_children($term->tid);
+      $type_options = array('' => t('- Any -'));
+      foreach ($terms as $data) {
+        $type_options[$data->name] = $data->name;
+      }
+      $form['subject']['#type'] = 'select';
+      unset($form['subject']['#size']);
+      $form['subject']['#title'] = t('Type');
+      $form['subject']['#options'] = $type_options;
+      $form['subject']['#multiple'] = FALSE;
+    }
+    else {
+      // If no Event subject term has been set, hide the filter.
+      unset($form['subject']);
     }
   }
 
@@ -791,36 +958,19 @@ function opensanmateo_search_search_api_alter_callback_info() {
 }
 
 /**
- * Implements hook_default_search_api_server_alter
- * We're using this to flip the default search server to Acquia's instances based on their hosting env vars
+ * Implements hook_search_api_solr_query_alter().
+ *
+ * The search_api_site module handles filtering based on site hash. Because of
+ * this, remove Search API Solr's default behavior that automatically filters it
+ * to only this site.
  */
-function opensanmateo_search_default_search_api_server_alter(array &$defaults) {
-  global $_ENV;
-
-  // If we have the Solr server definition already set AND we're in the Acquia Cloud, swap out server definitions
-  if (isset($defaults['san_mateo_solr_server']) && isset($_ENV['AH_SITE_ENVIRONMENT'])) {
-    $defaults['san_mateo_solr_server'] = entity_import('search_api_server', '{
-      "name" : "San Mateo Solr Server [Acquia]",
-      "machine_name" : "san_mateo_solr_server",
-      "description" : "",
-      "class" : "acquia_search_service",
-      "options" : {
-        "scheme" : "http",
-        "host" : "useast1-c1.acquia-search.com",
-        "port" : "80",
-        "path" : "\\/solr\\/' . variable_get('acquia_identifier', '') . '",
-        "edismax" : 0,
-        "modify_acquia_connection" : 0,
-        "http_user" : "",
-        "http_pass" : "",
-        "excerpt" : 0,
-        "retrieve_data" : 1,
-        "highlight_data" : 0,
-        "http_method" : "POST"
-      },
-      "enabled" : "1",
-      "rdf_mapping" : []
-    }');
+function opensanmateo_search_search_api_solr_query_alter(array &$call_args, SearchApiQueryInterface $query) {
+  if (!empty($call_args['params']['fq'])) {
+    foreach($call_args['params']['fq'] as $index => $param) {
+      if (strpos($param, 'hash') === 0) {
+        unset($call_args['params']['fq'][$index]);
+      }
+    }
   }
 }
 
@@ -846,9 +996,9 @@ function opensanmateo_search_entity_property_info_alter(&$info) {
  * Getter callback for event start day.
  */
 function opensanmateo_search_search_api_property_event_start_day_getter_callback($item) {
-  return strtotime(substr($item->field_event_date[LANGUAGE_NONE][0]['value'], 0, 10)); 
+  return strtotime(substr($item->field_event_date[LANGUAGE_NONE][0]['value'], 0, 10));
 }
- 
+
 /**
  * Getter callback for event end day.
  */
@@ -861,7 +1011,7 @@ function opensanmateo_search_search_api_property_event_end_day_getter_callback($
     return strtotime(substr($item->field_event_date[LANGUAGE_NONE][0]['value'], 0, 10)) + 86399;
   }
 }
- 
+
 
 /**
  * Implements hook_date_views_extra_tables().

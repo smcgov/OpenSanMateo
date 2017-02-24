@@ -1,0 +1,35 @@
+<?php
+/**
+ * @file
+ * Contains the install/uninstall hooks for the module
+ */
+
+/**
+ * Disable+uninstall fontyourface, which is no longer needed.
+ */
+function opensanmateo_frontend_update_7001() {
+  $modules = array(
+    'fontyourface',
+    'fontyourface_ui',
+    'fonts_com',
+  );
+  module_disable($modules, FALSE);
+  drupal_uninstall_modules($modules, FALSE);
+
+  return array();
+}
+
+/**
+ * Remove inline styles for Trade Gothic Bold.
+ */
+function opensanmateo_frontend_update_7002() {
+  // When a font weight was explicitly set.
+  db_query("UPDATE {field_data_field_custom_content} SET field_custom_content_value = REPLACE(field_custom_content_value, 'Trade Gothic W01 Bold;font-weight:normal;', 'Trade Gothic W01;font-weight:700')");
+  db_query("UPDATE {field_data_body} SET body_value = REPLACE(body_value, 'Trade Gothic W01 Bold;font-weight:normal;', 'Trade Gothic W01;font-weight:700')");
+
+  // For those that we don't know that a font-weight was explicity set.
+  db_query("UPDATE {field_data_field_custom_content} SET field_custom_content_value = REPLACE(field_custom_content_value, 'Trade Gothic W01 Bold', 'Trade Gothic W01')");
+  db_query("UPDATE {field_data_body} SET body_value = REPLACE(body_value, 'Trade Gothic W01 Bold', 'Trade Gothic W01')");
+
+  return array();
+}

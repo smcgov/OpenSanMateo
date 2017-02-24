@@ -14,30 +14,26 @@
 }
 
 */
+/* Colors */
 /* Fonts */
 /* Media Queries */
-/* line 4, ../../scss/elements/sub-menu-block.scss */
 .menu-block-subnav-menu {
   background-color: white;
   border: 1px solid rgba(3, 108, 182, 0.05);
   border-radius: 3px;
-  font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+  font-family: "Trade Gothic W01", "Helvetica Neue", Arial, Helvetica;
   font-size: .85em;
   margin-bottom: 40px; }
-  /* line 12, ../../scss/elements/sub-menu-block.scss */
   .menu-block-subnav-menu ul {
     margin: 0;
     padding: 0; }
-    /* line 16, ../../scss/elements/sub-menu-block.scss */
     .menu-block-subnav-menu ul li {
       margin: 0;
       padding: 0;
       list-style-type: none; }
-      /* line 21, ../../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li a, .menu-block-subnav-menu ul li a.active {
         display: block;
-        font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-        font-weight: normal;
+        font-weight: 700;
         padding: .75em .75em;
         border-bottom: 1px solid rgba(3, 108, 182, 0.2);
         -webkit-transition: all 0.3s;
@@ -45,75 +41,57 @@
         transition: all 0.3s;
         background-color: #036cb6;
         color: #FFF; }
-      /* line 35, ../../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li a:hover, .menu-block-subnav-menu ul li a.active:hover {
         background-color: #036cb6;
         color: #FFF; }
-      /* line 42, ../../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li ul li a, .menu-block-subnav-menu ul li ul li a.active {
         background-color: rgba(56, 147, 155, 0.1);
         *background-color: #EEE;
         color: #38939b;
-        font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+        font-family: "Trade Gothic W01", "Helvetica Neue", Arial, Helvetica;
         border-color: rgba(56, 147, 155, 0.2); }
-      /* line 51, ../../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li ul li a:hover, .menu-block-subnav-menu ul li ul li a.active:hover {
         background-color: rgba(56, 147, 155, 0.2);
         *background-color: #DDD;
         color: #38939b; }
-      /* line 58, ../../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li ul li a.active {
-        font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-        font-weight: normal; }
-      /* line 63, ../../scss/elements/sub-menu-block.scss */
+        font-weight: 700; }
       .menu-block-subnav-menu ul li ul li ul li a {
         padding-left: 1.5em; }
-      /* line 67, ../../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li ul li ul li ul li a {
         padding-left: 2.25em; }
-      /* line 71, ../../scss/elements/sub-menu-block.scss */
       .menu-block-subnav-menu ul li ul li ul li ul li ul li a {
         padding-left: 3em; }
 
 @media all and (min-width: 768px) {
-  /* line 81, ../../scss/elements/sub-menu-block.scss */
   .menu-block-subnav-menu {
     border-top: 5px solid rgba(3, 108, 182, 0.05); }
-    /* line 88, ../../scss/elements/sub-menu-block.scss */
     .menu-block-subnav-menu ul li a, .menu-block-subnav-menu ul li a.active {
       background-color: white;
       color: #036cb6; }
-    /* line 93, ../../scss/elements/sub-menu-block.scss */
     .menu-block-subnav-menu ul li a:hover, .menu-block-subnav-menu ul li a.active:hover {
       background-color: #036cb6;
       color: white; }
-    /* line 99, ../../scss/elements/sub-menu-block.scss */
     .menu-block-subnav-menu ul li ul li a, .menu-block-subnav-menu ul li ul li a.active {
       background-color: rgba(56, 147, 155, 0.1);
       color: #38939b;
-      font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+      font-family: "Trade Gothic W01", "Helvetica Neue", Arial, Helvetica;
       border-color: rgba(56, 147, 155, 0.2); }
-    /* line 106, ../../scss/elements/sub-menu-block.scss */
     .menu-block-subnav-menu ul li ul li a.active {
       color: #000000; }
-    /* line 110, ../../scss/elements/sub-menu-block.scss */
     .menu-block-subnav-menu ul li ul li a:hover, .menu-block-subnav-menu ul li ul li a.active:hover {
       background-color: rgba(56, 147, 155, 0.2);
       color: #38939b; } }
-/* line 128, ../../scss/elements/sub-menu-block.scss */
 .lte8 .menu-block-subnav-menu ul {
   margin: 0;
   padding: 0; }
-  /* line 132, ../../scss/elements/sub-menu-block.scss */
   .lte8 .menu-block-subnav-menu ul li {
     margin: 0;
     padding: 0;
     list-style-type: none; }
-    /* line 137, ../../scss/elements/sub-menu-block.scss */
     .lte8 .menu-block-subnav-menu ul li a, .lte8 .menu-block-subnav-menu ul li a.active {
       display: block;
-      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-      font-weight: normal;
+      font-weight: 700;
       padding: .75em .75em;
       border-bottom: 1px solid rgba(3, 108, 182, 0.2);
       -webkit-transition: all 0.3s;
@@ -121,17 +99,16 @@
       transition: all 0.3s;
       background-color: #EEE;
       color: #000; }
-    /* line 151, ../../scss/elements/sub-menu-block.scss */
     .lte8 .menu-block-subnav-menu ul li a:hover, .lte8 .menu-block-subnav-menu ul li a.active:hover {
       background-color: #DDD;
       color: #FFF; }
-    /* line 158, ../../scss/elements/sub-menu-block.scss */
     .lte8 .menu-block-subnav-menu ul li ul li a, .lte8 .menu-block-subnav-menu ul li ul li a.active {
       background-color: #EEE !important;
       color: #999 !important;
-      font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+      font-family: "Trade Gothic W01", "Helvetica Neue", Arial, Helvetica;
       border-color: rgba(56, 147, 155, 0.2); }
-    /* line 165, ../../scss/elements/sub-menu-block.scss */
     .lte8 .menu-block-subnav-menu ul li ul li a:hover, .lte8 .menu-block-subnav-menu ul li ul li a.active:hover {
       background-color: #DDD !important;
       color: #000 !important; }
+
+/*# sourceMappingURL=sub-menu-block.css.map */

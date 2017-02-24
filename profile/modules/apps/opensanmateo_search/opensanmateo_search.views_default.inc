@@ -77,6 +77,30 @@ function opensanmateo_search_views_default_views() {
   /* Display: All Content Types */
   $handler = $view->new_display('block', 'All Content Types', 'block_3');
   $handler->display->display_options['display_description'] = 'Returns all indexed content for a lookup view.';
+  $translatables['opensanmateo_lookup'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Node ID'),
+    t('.'),
+    t(','),
+    t('All'),
+    t('Locations'),
+    t('Events'),
+    t('All Content Types'),
+    t('Returns all indexed content for a lookup view.'),
+  );
   $export['opensanmateo_lookup'] = $view;
 
   $view = new view();
@@ -197,6 +221,27 @@ function opensanmateo_search_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'opensanmateo-media-browser';
+  $translatables['opensanmateo_media_browser'] = array(
+    t('Master'),
+    t('OpenSanMateo Media Browser'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('[url]'),
+    t('Search'),
+    t('Subject'),
+    t('Page'),
+  );
   $export['opensanmateo_media_browser'] = $view;
 
   $view = new view();
@@ -530,7 +575,7 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['sorts']['search_api_aggregation_2']['table'] = 'search_api_index_san_mateo_content_index';
   $handler->display->display_options['sorts']['search_api_aggregation_2']['field'] = 'search_api_aggregation_2';
   $handler->display->display_options['sorts']['search_api_aggregation_2']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['search_api_aggregation_2']['expose']['label'] = 'Alphabetic -- ascending means "A" is at the top';
+  $handler->display->display_options['sorts']['search_api_aggregation_2']['expose']['label'] = 'Alphabetic -- ascending means the letter A is at the top';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Indexed Node: Site Hash */
@@ -593,6 +638,25 @@ function opensanmateo_search_views_default_views() {
     7 => 0,
   );
   $handler->display->display_options['filters']['search_api_multi_aggregation_8']['expose']['reduce'] = 0;
+  /* Filter criterion: Indexed Node: Aggregated Subject */
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['id'] = 'search_api_multi_aggregation_14';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['field'] = 'search_api_multi_aggregation_14';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['group'] = 1;
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['expose']['operator_id'] = 'search_api_multi_aggregation_14_op';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['expose']['label'] = 'Aggregated Subject';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['expose']['operator'] = 'search_api_multi_aggregation_14_op';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['expose']['identifier'] = 'search_api_multi_aggregation_14';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    26 => 0,
+    21 => 0,
+    31 => 0,
+  );
   /* Filter criterion: Indexed Node: Aggregated Author */
   $handler->display->display_options['filters']['search_api_multi_aggregation_3']['id'] = 'search_api_multi_aggregation_3';
   $handler->display->display_options['filters']['search_api_multi_aggregation_3']['table'] = 'search_api_index_san_mateo_content_index';
@@ -731,32 +795,6 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['filters']['field_event_date_value_1']['field'] = 'field_event_date_value';
   $handler->display->display_options['filters']['field_event_date_value_1']['operator'] = '>';
   $handler->display->display_options['filters']['field_event_date_value_1']['value'] = 'now';
-  /* Filter criterion: Calendar: Name (indexed) */
-  $handler->display->display_options['filters']['field_event_calendar_name']['id'] = 'field_event_calendar_name';
-  $handler->display->display_options['filters']['field_event_calendar_name']['table'] = 'search_api_index_san_mateo_content_index';
-  $handler->display->display_options['filters']['field_event_calendar_name']['field'] = 'field_event_calendar_name';
-  $handler->display->display_options['filters']['field_event_calendar_name']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_event_calendar_name']['expose']['operator_id'] = 'field_event_calendar_name_op';
-  $handler->display->display_options['filters']['field_event_calendar_name']['expose']['label'] = 'Name (indexed)';
-  $handler->display->display_options['filters']['field_event_calendar_name']['expose']['operator'] = 'field_event_calendar_name_op';
-  $handler->display->display_options['filters']['field_event_calendar_name']['expose']['identifier'] = 'field_event_calendar_name';
-  $handler->display->display_options['filters']['field_event_calendar_name']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    6 => 0,
-    5 => 0,
-    7 => 0,
-  );
-  $handler->display->display_options['filters']['field_event_calendar_name']['group_info']['label'] = 'Name (indexed)';
-  $handler->display->display_options['filters']['field_event_calendar_name']['group_info']['identifier'] = 'field_event_calendar_name';
-  $handler->display->display_options['filters']['field_event_calendar_name']['group_info']['remember'] = FALSE;
-  $handler->display->display_options['filters']['field_event_calendar_name']['group_info']['group_items'] = array(
-    1 => array(),
-    2 => array(),
-    3 => array(),
-  );
   $handler->display->display_options['pane_category']['name'] = 'Lists';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 'use_pager';
@@ -778,48 +816,6 @@ function opensanmateo_search_views_default_views() {
     ),
   );
   $handler->display->display_options['inherit_panels_path'] = '1';
-
-  /* Display: Taxonomy Page:Subject */
-  $handler = $view->new_display('block', 'Taxonomy Page:Subject', 'block_3');
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Global: Null */
-  $handler->display->display_options['arguments']['null']['id'] = 'null';
-  $handler->display->display_options['arguments']['null']['table'] = 'views';
-  $handler->display->display_options['arguments']['null']['field'] = 'null';
-  $handler->display->display_options['arguments']['null']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
-  /* Contextual filter: County Subject: Name (indexed) */
-  $handler->display->display_options['arguments']['field_subject_name']['id'] = 'field_subject_name';
-  $handler->display->display_options['arguments']['field_subject_name']['table'] = 'search_api_index_san_mateo_content_index';
-  $handler->display->display_options['arguments']['field_subject_name']['field'] = 'field_subject_name';
-  $handler->display->display_options['arguments']['field_subject_name']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_subject_name']['default_argument_type'] = 'php';
-  $handler->display->display_options['arguments']['field_subject_name']['default_argument_options']['code'] = '$term = taxonomy_term_load($view->args[0]);
-          return $term->name;';
-  $handler->display->display_options['arguments']['field_subject_name']['summary']['format'] = 'default_summary';
-
-  /* Display: Taxonomy Page:Sub Type */
-  $handler = $view->new_display('block', 'Taxonomy Page:Sub Type', 'block_4');
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Global: Null */
-  $handler->display->display_options['arguments']['null']['id'] = 'null';
-  $handler->display->display_options['arguments']['null']['table'] = 'views';
-  $handler->display->display_options['arguments']['null']['field'] = 'null';
-  $handler->display->display_options['arguments']['null']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
-  /* Contextual filter: County Sub Type: Name (indexed) */
-  $handler->display->display_options['arguments']['field_sub_type_name']['id'] = 'field_sub_type_name';
-  $handler->display->display_options['arguments']['field_sub_type_name']['table'] = 'search_api_index_san_mateo_content_index';
-  $handler->display->display_options['arguments']['field_sub_type_name']['field'] = 'field_sub_type_name';
-  $handler->display->display_options['arguments']['field_sub_type_name']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_sub_type_name']['default_argument_type'] = 'php';
-  $handler->display->display_options['arguments']['field_sub_type_name']['default_argument_options']['code'] = '$term = taxonomy_term_load($view->args[0]);
-          return $term->name;';
-  $handler->display->display_options['arguments']['field_sub_type_name']['summary']['format'] = 'default_summary';
 
   /* Display: Lookup Title Only Block */
   $handler = $view->new_display('block', 'Lookup Title Only Block', 'block_2');
@@ -861,19 +857,14 @@ function opensanmateo_search_views_default_views() {
   $handler->display->display_options['arguments']['null']['id'] = 'null';
   $handler->display->display_options['arguments']['null']['table'] = 'views';
   $handler->display->display_options['arguments']['null']['field'] = 'null';
+  $handler->display->display_options['arguments']['null']['default_action'] = 'access denied';
   $handler->display->display_options['arguments']['null']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['null']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
-  /* Contextual filter: Site Topic: Name (indexed) */
-  $handler->display->display_options['arguments']['field_topic_name']['id'] = 'field_topic_name';
-  $handler->display->display_options['arguments']['field_topic_name']['table'] = 'search_api_index_san_mateo_content_index';
-  $handler->display->display_options['arguments']['field_topic_name']['field'] = 'field_topic_name';
-  $handler->display->display_options['arguments']['field_topic_name']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_topic_name']['default_argument_type'] = 'php';
-  $handler->display->display_options['arguments']['field_topic_name']['default_argument_options']['code'] = '$term = taxonomy_term_load($view->args[0]);
-          return $term->name;';
-  $handler->display->display_options['arguments']['field_topic_name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['null']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['null']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['null']['validate_options']['type'] = 'name';
 
   /* Display: List by Type for Author */
   $handler = $view->new_display('panel_pane', 'List by Type for Author', 'panel_pane_3');
@@ -1583,6 +1574,24 @@ function opensanmateo_search_views_default_views() {
     5 => 0,
     7 => 0,
   );
+  /* Filter criterion: Indexed Node: Aggregated Subject */
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['id'] = 'search_api_multi_aggregation_14';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['table'] = 'search_api_index_san_mateo_content_index';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['field'] = 'search_api_multi_aggregation_14';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['group'] = 1;
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['expose']['operator_id'] = 'search_api_multi_aggregation_14_op';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['expose']['operator'] = 'search_api_multi_aggregation_14_op';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['expose']['identifier'] = 'subject';
+  $handler->display->display_options['filters']['search_api_multi_aggregation_14']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    6 => 0,
+    5 => 0,
+    7 => 0,
+  );
   /* Filter criterion: Indexed Node: Aggregated Start Date */
   $handler->display->display_options['filters']['search_api_multi_aggregation_9']['id'] = 'search_api_multi_aggregation_9';
   $handler->display->display_options['filters']['search_api_multi_aggregation_9']['table'] = 'search_api_index_san_mateo_content_index';
@@ -1746,6 +1755,71 @@ function opensanmateo_search_views_default_views() {
     'panel_pane_4' => 0,
     'block_6' => 0,
     'panel_pane_5' => 0,
+  );
+  $translatables['opensanmateo_search'] = array(
+    t('Master'),
+    t('search'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('No results'),
+    t('<h5><span class="icon-location"> </span>Location</h5>
+      <ul class="adr">
+      <li>[search_api_multi_aggregation_6]</li>
+      <li>[search_api_multi_aggregation_17]</li>
+      <li>[search_api_multi_aggregation_7], [search_api_multi_aggregation_4]
+       [search_api_multi_aggregation_5]</li>
+      </ul>'),
+    t('Date'),
+    t('Alphabetic'),
+    t('True'),
+    t('List w/search'),
+    t('Fulltext search'),
+    t('Lists'),
+    t('List by Type'),
+    t('Ascending'),
+    t('Descending'),
+    t('Sort Date -- descending means that most recent or items furthest in the future appear at the top'),
+    t('Alphabetic -- ascending means the letter A is at the top'),
+    t('Site'),
+    t('Content type'),
+    t('Terms'),
+    t('Author'),
+    t('Block'),
+    t('All'),
+    t('Calendar pane'),
+    t('Used to display events.'),
+    t('Sites'),
+    t('Start date'),
+    t('End date'),
+    t('Lookup Title Only Block'),
+    t('Taxonomy Page:Topic'),
+    t('List by Type for Author'),
+    t('List'),
+    t('Agenda'),
+    t('View info'),
+    t('[url] '),
+    t('Sort Date -- ascending means that items closest to now (in the future) appear at the top'),
+    t('Alphabetic -- ascending means "A" is at the top'),
+    t('Lookup List'),
+    t('Calendar day'),
+    t('Events'),
+    t('Dept'),
+    t('Aggregated Sort Date'),
+    t('Mini calendar'),
+    t('Calendar'),
+    t('View panes'),
+    t('Mini Calendar Attachment'),
   );
   $export['opensanmateo_search'] = $view;
 

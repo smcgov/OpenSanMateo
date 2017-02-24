@@ -6,7 +6,6 @@
  * Correct `block` display not defined in IE 8/9.
  */
 /* line 22, ../sass/normalize.scss */
-/* line 9, ../scss/normalize.scss */
 article,
 aside,
 details,
@@ -25,7 +24,6 @@ summary {
  * Correct `inline-block` display not defined in IE 8/9.
  */
 /* line 32, ../sass/normalize.scss */
-/* line 28, ../scss/normalize.scss */
 audio,
 canvas,
 video {
@@ -36,7 +34,6 @@ video {
  * Remove excess height in iOS 5 devices.
  */
 /* line 41, ../sass/normalize.scss */
-/* line 39, ../scss/normalize.scss */
 audio:not([controls]) {
   display: none;
   height: 0; }
@@ -45,7 +42,6 @@ audio:not([controls]) {
  * Address styling not present in IE 8/9.
  */
 /* line 50, ../sass/normalize.scss */
-/* line 48, ../scss/normalize.scss */
 [hidden] {
   display: none; }
 
@@ -62,7 +58,6 @@ audio:not([controls]) {
  *    user zoom.
  */
 /* line 68, ../sass/normalize.scss */
-/* line 65, ../scss/normalize.scss */
 html {
   background: #fff;
   /* 1 */
@@ -79,7 +74,6 @@ html {
  * Remove default margin.
  */
 /* line 80, ../sass/normalize.scss */
-/* line 82, ../scss/normalize.scss */
 body {
   margin: 0; }
 
@@ -90,7 +84,6 @@ body {
  * Address `outline` inconsistency between Chrome and other browsers.
  */
 /* line 92, ../sass/normalize.scss */
-/* line 93, ../scss/normalize.scss */
 a:focus {
   outline: thin dotted; }
 
@@ -98,7 +91,6 @@ a:focus {
  * Improve readability when focused and also mouse hovered in all browsers.
  */
 /* line 101, ../sass/normalize.scss */
-/* line 101, ../scss/normalize.scss */
 a:active,
 a:hover {
   outline: 0; }
@@ -111,7 +103,6 @@ a:hover {
  * contexts in Firefox 4+, Safari 5, and Chrome.
  */
 /* line 114, ../sass/normalize.scss */
-/* line 114, ../scss/normalize.scss */
 h1 {
   font-size: 2em;
   margin: 0.67em 0; }
@@ -120,7 +111,6 @@ h1 {
  * Address styling not present in IE 8/9, Safari 5, and Chrome.
  */
 /* line 123, ../sass/normalize.scss */
-/* line 123, ../scss/normalize.scss */
 abbr[title] {
   border-bottom: 1px dotted; }
 
@@ -128,7 +118,6 @@ abbr[title] {
  * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
  */
 /* line 132, ../sass/normalize.scss */
-/* line 131, ../scss/normalize.scss */
 b,
 strong {
   font-weight: bold; }
@@ -137,7 +126,6 @@ strong {
  * Address styling not present in Safari 5 and Chrome.
  */
 /* line 140, ../sass/normalize.scss */
-/* line 140, ../scss/normalize.scss */
 dfn {
   font-style: italic; }
 
@@ -145,7 +133,6 @@ dfn {
  * Address differences between Firefox and other browsers.
  */
 /* line 148, ../sass/normalize.scss */
-/* line 148, ../scss/normalize.scss */
 hr {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
@@ -155,7 +142,6 @@ hr {
  * Address styling not present in IE 8/9.
  */
 /* line 158, ../sass/normalize.scss */
-/* line 158, ../scss/normalize.scss */
 mark {
   background: #ff0;
   color: #000; }
@@ -164,7 +150,6 @@ mark {
  * Correct font family set oddly in Safari 5 and Chrome.
  */
 /* line 170, ../sass/normalize.scss */
-/* line 167, ../scss/normalize.scss */
 code,
 kbd,
 pre,
@@ -176,7 +161,6 @@ samp {
  * Improve readability of pre-formatted text in all browsers.
  */
 /* line 179, ../sass/normalize.scss */
-/* line 179, ../scss/normalize.scss */
 pre {
   white-space: pre-wrap; }
 
@@ -184,7 +168,6 @@ pre {
  * Set consistent quote types.
  */
 /* line 187, ../sass/normalize.scss */
-/* line 187, ../scss/normalize.scss */
 q {
   quotes: "\201C" "\201D" "\2018" "\2019"; }
 
@@ -192,7 +175,6 @@ q {
  * Address inconsistent and variable font size in all browsers.
  */
 /* line 195, ../sass/normalize.scss */
-/* line 195, ../scss/normalize.scss */
 small {
   font-size: 80%; }
 
@@ -200,7 +182,6 @@ small {
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
  */
 /* line 204, ../sass/normalize.scss */
-/* line 203, ../scss/normalize.scss */
 sub,
 sup {
   font-size: 75%;
@@ -209,12 +190,10 @@ sup {
   vertical-align: baseline; }
 
 /* line 211, ../sass/normalize.scss */
-/* line 212, ../scss/normalize.scss */
 sup {
   top: -0.5em; }
 
 /* line 215, ../sass/normalize.scss */
-/* line 217, ../scss/normalize.scss */
 sub {
   bottom: -0.25em; }
 
@@ -225,7 +204,6 @@ sub {
  * Remove border when inside `a` element in IE 8/9.
  */
 /* line 227, ../sass/normalize.scss */
-/* line 228, ../scss/normalize.scss */
 img {
   border: 0; }
 
@@ -233,7 +211,6 @@ img {
  * Correct overflow displayed oddly in IE 9.
  */
 /* line 235, ../sass/normalize.scss */
-/* line 236, ../scss/normalize.scss */
 svg:not(:root) {
   overflow: hidden; }
 
@@ -244,7 +221,6 @@ svg:not(:root) {
  * Address margin not present in IE 8/9 and Safari 5.
  */
 /* line 247, ../sass/normalize.scss */
-/* line 247, ../scss/normalize.scss */
 figure {
   margin: 0; }
 
@@ -255,7 +231,6 @@ figure {
  * Define consistent border, margin, and padding.
  */
 /* line 259, ../sass/normalize.scss */
-/* line 258, ../scss/normalize.scss */
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
@@ -266,7 +241,6 @@ fieldset {
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  */
 /* line 270, ../sass/normalize.scss */
-/* line 269, ../scss/normalize.scss */
 legend {
   border: 0;
   /* 1 */
@@ -279,7 +253,6 @@ legend {
  * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
  */
 /* line 284, ../sass/normalize.scss */
-/* line 282, ../scss/normalize.scss */
 button,
 input,
 select,
@@ -296,7 +269,6 @@ textarea {
  * the UA stylesheet.
  */
 /* line 296, ../sass/normalize.scss */
-/* line 299, ../scss/normalize.scss */
 button,
 input {
   line-height: normal; }
@@ -308,7 +280,6 @@ input {
  * Correct `select` style inheritance in Firefox 4+ and Opera.
  */
 /* line 308, ../sass/normalize.scss */
-/* line 311, ../scss/normalize.scss */
 button,
 select {
   text-transform: none; }
@@ -321,7 +292,6 @@ select {
  *    `input` and others.
  */
 /* line 323, ../sass/normalize.scss */
-/* line 324, ../scss/normalize.scss */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -335,7 +305,6 @@ input[type="submit"] {
  * Re-set default cursor for disabled elements.
  */
 /* line 333, ../sass/normalize.scss */
-/* line 338, ../scss/normalize.scss */
 button[disabled],
 html input[disabled] {
   cursor: default; }
@@ -345,7 +314,6 @@ html input[disabled] {
  * 2. Remove excess padding in IE 8/9.
  */
 /* line 343, ../sass/normalize.scss */
-/* line 348, ../scss/normalize.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
@@ -359,7 +327,6 @@ input[type="radio"] {
  *    (include `-moz` to future-proof).
  */
 /* line 354, ../sass/normalize.scss */
-/* line 362, ../scss/normalize.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
@@ -373,7 +340,6 @@ input[type="search"] {
  * on OS X.
  */
 /* line 367, ../sass/normalize.scss */
-/* line 376, ../scss/normalize.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
@@ -382,7 +348,6 @@ input[type="search"]::-webkit-search-decoration {
  * Remove inner padding and border in Firefox 4+.
  */
 /* line 376, ../sass/normalize.scss */
-/* line 385, ../scss/normalize.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
@@ -393,7 +358,6 @@ input::-moz-focus-inner {
  * 2. Improve readability and alignment in all browsers.
  */
 /* line 386, ../sass/normalize.scss */
-/* line 396, ../scss/normalize.scss */
 textarea {
   overflow: auto;
   /* 1 */
@@ -407,7 +371,8 @@ textarea {
  * Remove most spacing between table cells.
  */
 /* line 399, ../sass/normalize.scss */
-/* line 410, ../scss/normalize.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0; }
+
+/*# sourceMappingURL=normalize.css.map */

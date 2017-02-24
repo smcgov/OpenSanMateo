@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Provides install functionality.
+ */
+
+/**
+ * SMCHC-160 revert opensanmateo rotator field base and instance.
+ */
+function opensanmateo_rotator_update_7000() {
+  features_revert(array('opensanmateo_rotator' => array('field_instance', 'field_base')));
+}
+
+/**
+ * SMCHC-160 apply new colors to promoboxes.
+ */
+function opensanmateo_rotator_update_7001() {
+  features_revert(array('opensanmateo_rotator' => array('field_instance', 'field_base')));
+}

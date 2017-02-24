@@ -41,24 +41,21 @@ a:hover, a:focus{
 }
 
 input[type=text] {
-  	background: $searchMobileDefaultBG;
-  	border: none;
-  	box-shadow: none;
-  	color: rgba(56, 56, 56, .9);
-  	padding: 0.25em 0.75em;
-  	font-size: 1em;
-  	-webkit-transition: all 0.3s;
-  	-moz-transition: all 0.3s;
-  	transition: all 0.3s;
-  	border-radius: 3px;
-  	font-family: $reg;
-  	font-weight: 300;
-  	
-  	margin:0;
-  }
+  background: $searchMobileDefaultBG;
+  border: none;
+  box-shadow: none;
+  color: rgba(56, 56, 56, .9);
+  padding: 0.25em 0.75em;
+  font-size: 1em;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  border-radius: 3px;
+  margin:0;
+}
 
 body #block-opensanmateo-search-header-search input::-webkit-input-placeholder {
-  color: $primaryBlue !important;
+  //color: $primaryBlue !important;
 }
 
 body #block-opensanmateo-search-header-search input:focus::-webkit-input-placeholder {
@@ -66,7 +63,7 @@ body #block-opensanmateo-search-header-search input:focus::-webkit-input-placeho
 }
 
 body #block-opensanmateo-search-header-search input:-moz-placeholder {
-  color: $primaryBlue !important;
+  //color: $primaryBlue !important;
 }
 
 body #block-opensanmateo-search-header-search input:focus:-moz-placeholder {
@@ -74,7 +71,7 @@ body #block-opensanmateo-search-header-search input:focus:-moz-placeholder {
 }
 
 body #block-opensanmateo-search-header-search input::-moz-placeholder {
-  color: $primaryBlue !important;
+  //color: $primaryBlue !important;
 }
 
 body #block-opensanmateo-search-header-search input:focus::-moz-placeholder {
@@ -82,9 +79,13 @@ body #block-opensanmateo-search-header-search input:focus::-moz-placeholder {
 }
 
 body #block-opensanmateo-search-header-search input:-ms-input-placeholder {
-  color: $primaryBlue !important;
+  //color: $primaryBlue !important;
 }
 
 body #block-opensanmateo-search-header-search input:focus:-ms-input-placeholder {
   color: #ffffff !important;
+}
+
+#block-opensanmateo-search-header-search .search-button {
+  background-color: $OSMUpdateTeal;
 }

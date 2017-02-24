@@ -1,15 +1,19 @@
 <?php
 /**
- * Enable Drupal 7 core "fast 404" behavior per Acquia:
- * https://docs.acquia.com/articles/using-fast-404-drupal
+ * @file
+ * Enable Drupal 7 core "fast 404" behavior per Acquia.
+ *
+ * See at https://docs.acquia.com/articles/using-fast-404-drupal.
  */
+
 if (function_exists('drupal_fast_404')) {
   drupal_fast_404();
 }
 
 /**
- * The following items are settings common to all OpenSanMateo platform sites
- * For env var reference: https://docs.acquia.com/cloud/configure/env-variable
+ * The following items are settings common to all OpenSanMateo platform sites.
+ *
+ * For env var reference: https://docs.acquia.com/cloud/configure/env-variable.
  */
 
 ini_set('memory_limit', '512M');
@@ -21,7 +25,7 @@ $common_settings_env_map = array(
 );
 $common_settings_url_prefix = $common_settings_env_map[$_ENV['AH_SITE_ENVIRONMENT']];
 
-// Disable poor man's cron
+// Disable poor man's cron.
 $conf['cron_safe_threshold'] = 0;
 
 if (isset($_ENV['AH_NON_PRODUCTION'])) {
@@ -33,19 +37,20 @@ if (isset($_ENV['AH_NON_PRODUCTION'])) {
 else {
   $conf['error_level'] = 0;
 
-  // Configure caching
+  // Configure caching.
   $conf['cache_backends'][] = './sites/all/modules/contrib/memcache/memcache.inc';
   $conf['cache_default_class'] = 'MemCacheDrupal';
   $conf['cache_class_form'] = 'DrupalDatabaseCache';
 }
 // Global GovDelivery Settings.
 // These may be changed below.
-$conf['opensanmateo_govdelivery_base_url']= 'https://bbowman@phase2technology.com:Simplepassword1@stage-api.govdelivery.com';
+$conf['opensanmateo_govdelivery_base_url'] = 'https://bbowman@phase2technology.com:Simplepassword1@stage-api.govdelivery.com';
 $conf['opensanmateo_govdelivery_account_name'] = 'CASMATEO';
 $conf['opensanmateo_govdelivery_signup_url'] = 'https://stage-public.govdelivery.com/accounts/CASMATEO/subscriber/new';
 
 // Set Acquia Connector keys
-// From Acquia Ticket #15066-99152: Are we able to define multiple Solr instances for the different environments?
+// From Acquia Ticket #15066-99152: Are we able to define multiple Solr
+// instances for the different environments?
 if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
   // If this is an Acquia environment, enable mixed mode HTTPS.
   // Combined with Securepages settings, this forces Authenticated traffic to
@@ -53,47 +58,34 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
   $conf['https'] = 1;
 
   switch ($_ENV['AH_SITE_ENVIRONMENT']) {
-    case 'prod' :
-      // Acquia production settings
-      $conf['acquia_identifier'] = 'DEGK-36837';
-      $conf['acquia_key'] = '5f90bbe305adff93b4ad6b1012e75183';
+    case 'prod':
 
       // Set production specific GovDelivery settings.
-      $conf['opensanmateo_govdelivery_base_url']= 'https://websupport@smcgov.org:SD6Ru4562OJ3uvp@api.govdelivery.com';
+      $conf['opensanmateo_govdelivery_base_url'] = 'https://websupport@smcgov.org:SD6Ru4562OJ3uvp@api.govdelivery.com';
       $conf['opensanmateo_govdelivery_signup_url'] = 'https://public.govdelivery.com/accounts/CASMATEO/subscriber/new';
+      $conf['plupload_temporary_uri'] = "/mnt/gfs/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/tmp";
 
       break;
-    case 'test' :
-      // Acquia test environment
-      $conf['acquia_identifier'] = 'LQUZ-41142';
-      $conf['acquia_key'] = '1af18383d04d25f92ecbd2cd1547ed01';
 
-
-      break;
-    case 'dev' :
-    default :
-      // Acquia dev and all other environments
-      $conf['acquia_identifier'] = 'JKWZ-41140';
-      $conf['acquia_key'] = '7e97476c37ef890227d54314c8444ef2';
-
-      break;
+    // No default steps need to be taken.
   }
-} else {
+}
+else {
   // Getting here means site is not inside Acquia Hosting
   // ( $_ENV['AH_SITE_ENVIRONMENT'] is not set)
   // Add any desired code here.
 }
 
-// Set master-client settings that are common across client sites
+// Set master-client settings that are common across client sites.
 $master_host = $common_settings_url_prefix . '-acquia.fayze2.com';
 if (empty($conf['sanmateo_is_master'])) {
   $conf['sanmateo_master_is'] = $master_host;
 }
-$conf['distributed_blocks_master_url'] = 'prod' == $_ENV['AH_SITE_ENVIRONMENT'] ? 'http://www.smcgov.org'  : 'http://' . $master_host;
+$conf['distributed_blocks_master_url'] = 'prod' == $_ENV['AH_SITE_ENVIRONMENT'] ? 'http://www.smcgov.org' : 'http://' . $master_host;
 $conf['distributed_blocks_update_freq'] = 1;
 
 /**
- * Util function to derive private filesystem patch from the site settings path and env vars
+ * Gets private filesystem patch from the site settings path and env vars.
  */
 function smc_settings_file_private_path($sitedir) {
   global $_ENV;

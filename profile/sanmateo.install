@@ -269,4 +269,42 @@ function sanmateo_update_7026() {
   variable_set('shield_pass', 'smc');
 }
 
-// End of file sanmateo.install
+/**
+ * SMCHC-58 enable seckit module.
+ */
+function sanmateo_update_7027() {
+  $new_modules = array(
+    'seckit',
+  );
+  module_enable($new_modules);
+  return array();
+}
+
+/**
+ * smc-85 change panelizer options
+ */
+ function sanmateo_update_7028() {
+   features_template_revert();
+ }
+
+/**
+ * SMCHC-195 enable themekey module to fix IMCE theme JS conflict.
+ */
+function sanmateo_update_7029() {
+  $new_modules = array(
+    'themekey',
+    'themekey_features',
+  );
+  module_enable($new_modules);
+
+  return array();
+}
+
+/**
+ * SMCHC-195 revert frontend feature to export themekey setting.
+ */
+function sanmateo_update_7030() {
+  features_revert(array('opensanmateo_frontend' => array('themekey_features_rule_chain')));
+
+  return array();
+}

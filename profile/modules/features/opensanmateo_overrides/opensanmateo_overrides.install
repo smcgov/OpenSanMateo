@@ -20,3 +20,243 @@ function opensanmateo_overrides_update_7001() {
     field_delete_instance($instance);
   }
 }
+
+/**
+ * Update weight of all node field instances.
+ */
+function opensanmateo_overrides_update_7002() {
+  $field_instances = array(
+    'blog_entry' => array(
+      '1' => 'body',
+      '10' => 'field_custom_layout',
+      '11' => 'field_do_not_index',
+      'delete' => array(
+        'field_blog_terms',
+        'field_blog_show_author_info',
+        'field_blog_teaser',
+        'field_review_interval',
+        'field_next_review',
+        'field_sub_type',
+      ),
+      '2' => 'field_release_date',
+      '3' => 'field_blog_author',
+      '4' => 'field_thumbnail_image',
+      '5' => 'field_files',
+      '6' => 'field_quick_search',
+      '7' => 'field_topic',
+      '8' => 'field_subject',
+      '9' => 'field_govdelivery_topic_ref',
+    ),
+    'document' => array(
+      '1' => 'body',
+      '10' => 'field_do_not_index',
+      'delete' => array(
+        'field_document_terms',
+        'field_sub_type',
+        'field_review_interval',
+        'field_next_review',
+      ),
+      '2' => 'field_release_date',
+      '3' => 'field_document_author',
+      '4' => 'field_thumbnail_image',
+      '5' => 'field_document_attachment',
+      '6' => 'field_quick_search',
+      '7' => 'field_topic',
+      '8' => 'field_subject',
+      '9' => 'field_custom_layout',
+    ),
+    'event' => array(
+      '1' => 'body',
+      '10' => 'field_custom_layout',
+      '11' => 'field_do_not_index',
+      'delete' => array(
+        'field_event_calendar',
+        'field_sub_type',
+        'field_review_interval',
+        'field_next_review',
+      ),
+      '2' => 'field_event_date',
+      '3' => 'field_thumbnail_image',
+      '4' => 'field_files',
+      '5' => 'field_event_contact',
+      '6' => 'field_location_address',
+      '7' => 'field_quick_search',
+      '8' => 'field_topic',
+      '9' => 'field_subject',
+    ),
+    'location' => array(
+      '1' => 'body',
+      '10' => 'field_do_not_index',
+      'delete' => array(
+        'field_sub_type',
+        'field_location_address',
+        'field_review_interval',
+        'field_next_review',
+      ),
+      '2' => 'field_address',
+      '3' => 'field_text_hours',
+      '4' => 'field_thumbnail_image',
+      '5' => 'field_files',
+      '6' => 'field_quick_search',
+      '7' => 'field_topic',
+      '8' => 'field_subject',
+      '9' => 'field_custom_layout',
+    ),
+    'media' => array(
+      '1' => 'body',
+      '10' => 'field_do_not_index',
+      'delete' => array(
+        'field_sub_type',
+        'field_review_interval',
+        'field_next_review',
+      ),
+      '2' => 'field_image_collection',
+      '3' => 'field_video',
+      '4' => 'field_thumbnail_image',
+      '5' => 'field_files',
+      '6' => 'field_quick_search',
+      '7' => 'field_topic',
+      '8' => 'field_subject',
+      '9' => 'field_custom_layout',
+    ),
+    'press_release' => array(
+      '1' => 'body',
+      '10' => 'field_do_not_index',
+      'delete' => array(
+        'field_release_date',
+        'field_detail_page_title',
+        'field_related_content',
+        'field_location_address',
+        'field_sub_type',
+        'field_review_interval',
+        'field_next_review',
+        'field_govdelivery_topic_ref',
+      ),
+      '2' => 'field_summary',
+      '3' => 'field_thumbnail_image',
+      '4' => 'field_files',
+      '5' => 'field_contact',
+      '6' => 'field_quick_search',
+      '7' => 'field_topic',
+      '8' => 'field_subject',
+      '9' => 'field_custom_layout',
+    ),
+    'profile' => array(
+      '1' => 'field_profile_first_name',
+      '10' => 'field_profile_social_media',
+      '11' => 'field_quick_search',
+      '12' => 'field_topic',
+      '13' => 'field_subject',
+      '14' => 'field_custom_layout',
+      '15' => 'field_do_not_index',
+      'delete' => array(
+        'field_profile_organization',
+        'field_profile_user',
+        'field_profile_address',
+        'field_profile_staff',
+        'field_profile_leadership',
+        'field_sub_type',
+        'field_review_interval',
+        'field_next_review',
+      ),
+      '2' => 'field_profile_last_name',
+      '3' => 'body',
+      '4' => 'field_profile_photo',
+      '5' => 'field_profile_department',
+      '6' => 'field_profile_division',
+      '7' => 'field_profile_job_title',
+      '8' => 'field_profile_phone',
+      '9' => 'field_profile_email',
+    ),
+    'services' => array(
+      '1' => 'body',
+      'delete' => array(
+        'field_sub_type',
+        'field_review_interval',
+        'field_next_review',
+        'field_document_attachment',
+        'field_location_address',
+      ),
+      '2' => 'field_services_photo',
+      '3' => 'field_files',
+      '4' => 'field_quick_search',
+      '5' => 'field_topic',
+      '6' => 'field_subject',
+      '7' => 'field_custom_layout',
+      '8' => 'field_do_not_index',
+    ),
+    'site_page' => array(
+      '1' => 'body',
+      '10' => 'field_do_not_index',
+      'delete' => array(
+        'field_detail_page_title',
+        'field_related_content',
+        'field_taxonomy_issues',
+        'field_sub_type',
+        'field_review_interval',
+        'field_next_review',
+      ),
+      '2' => 'field_summary',
+      '3' => 'field_thumbnail_image',
+      '4' => 'field_files',
+      '5' => 'field_quick_search',
+      '6' => 'field_topic',
+      '7' => 'field_subject',
+      '8' => 'field_govdelivery_topic_ref',
+      '9' => 'field_custom_layout',
+    ),
+    'webform' => array(
+      '1' => 'body',
+      '2' => 'field_quick_search',
+      '3' => 'field_topic',
+      '4' => 'field_subject',
+      '5' => 'field_custom_layout',
+      '6' => 'field_do_not_index',
+      'delete' => array(
+        'field_sub_type',
+        'field_review_interval',
+        'field_next_review',
+      ),
+    ),
+  );
+  foreach ($field_instances as $bundle => $field_weights) {
+    foreach ($field_weights as $weight => $field_name) {
+      // If the "weight" is "delete", remove the field instance.
+      if ($weight == 'delete') {
+        foreach ($field_name as $name) {
+          $instance = field_read_instance('node', $name, $bundle);
+          field_delete_instance($instance);
+        }
+      }
+      else {
+        $instance = field_read_instance('node', $field_name, $bundle);
+        if ($instance) {
+          $instance['widget']['weight'] = $weight;
+          field_update_instance($instance);
+        }
+      }
+    }
+  }
+  return array();
+}
+
+/**
+ * Make the US selected by default.
+ */
+function opensanmateo_overrides_update_7003() {
+  $instance = field_read_instance('field_collection_item', 'field_address', 'field_location_address');
+  if ($instance) {
+    $instance['widget']['settings']['available_countries'] = array('US' => 'US');
+    $instance['widget']['settings']['default_country'] = 'US';
+    field_update_instance($instance);
+  }
+
+  $instance = field_read_instance('node', 'field_address', 'location');
+  if ($instance) {
+    $instance['widget']['settings']['available_countries'] = array('US' => 'US');
+    $instance['widget']['settings']['default_country'] = 'US';
+    field_update_instance($instance);
+  }
+
+  return array();
+}

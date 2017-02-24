@@ -20,3 +20,10 @@ features[field_instance][] = entity_boxes-breaking_news-field_breaking_news_node
 features[field_instance][] = entity_boxes-breaking_news-field_breaking_news_title
 features[views_view][] = breaking_news
 features_exclude[dependencies][views] = views
+
+; Information added by Drupal.org packaging script on 2016-09-15
+version = "7.x-1.10"
+core = "7.x"
+project = "openpublic"
+datestamp = "1473967553"
+

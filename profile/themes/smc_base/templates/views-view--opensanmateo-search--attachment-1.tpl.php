@@ -27,18 +27,35 @@
  */
 /* draws a calendar */
 $events = array();
+$start_month_filter = date('m', $view->exposed_raw_input['start_date']);
+$start_year_filter = date('Y', $view->exposed_raw_input['start_date']);
 foreach($view->result as $event) {
   $start = $event->_entity_properties['search_api_multi_aggregation_9'][0];
   $end = $event->_entity_properties['search_api_multi_aggregation_10'][0];
   $events[date('Y-m-d', $start)] = true;
   if($end != '' and $start != $end) {
-   for($i = $start + 86400; $i< $end; $i+=86400) {
-     $events[date('Y-m-d', $i)] = true;
-   }  
+    // Each iteration is one day (86400 seconds). This results in an array with
+    // one element for every day with an event on it.
+    for($i = $start + 86400; $i < $end; $i+= 86400) {
+      $events[date('Y-m-d', $i)] = true;
+    }
   }
 }
-function draw_calendar($month,$year, $events = array()){
 
+$calendar = draw_calendar($start_month_filter, $start_year_filter, $events);
+
+/**
+ * @param int $month
+ *   Month to render, numeric with leading zero ("m" in php date).
+ * @param int $year
+ *   Year to render, four digits ("Y" in php date).
+ * @param array $events
+ *   An array with keys 'yyyy-mm-dd' and value TRUE where each row represents a
+ *   day with an event in it.
+ *
+ * @return string rendered calendar markup
+ */
+function draw_calendar($month, $year, $events = array()){
 	/* draw table */
 	$calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
 
@@ -67,13 +84,16 @@ function draw_calendar($month,$year, $events = array()){
 			/* add in the day number */
 			$calendar.= '<div class="day-number">';
 			if(isset($events["$year-$month-$list_day"])) {
-                          if($month > 10) $month = '0' . $month;
-
         $link_parameters = drupal_get_query_parameters();
+        // If on page 3 of February, clicking to go to March should not take you
+        // to page 3 of March.
+        if (isset($link_parameters['page'])) {
+          unset($link_parameters['page']);
+        }
         $link_parameters['start_date'] = array('date' => "$year-$month-$list_day");
         $link = '/events/list?' . http_build_query($link_parameters);
-
         $calendar.= '<a href="' . $link . '">' . $list_day . "</a>";
+
 			}
 			else {
 			  $calendar.=$list_day;
@@ -137,7 +157,7 @@ function draw_calendar($month,$year, $events = array()){
 
   <?php if ($rows): ?>
     <div class="view-content">
-      <?php print  draw_calendar(date('m'), date('Y'), $events); //$rows; ?>
+      <?php print  $calendar; ?>
     </div>
   <?php elseif ($empty): ?>
     <div class="view-empty">

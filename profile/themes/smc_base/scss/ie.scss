@@ -45,9 +45,8 @@
   input[type=text]:focus {
       box-shadow: none;
       background: $searchFocusBG;
-      color: white;   
-      font-family: $bold;
-      font-weight: normal;
+      color: white;
+      font-weight: 700;
   }
   
   input[type=text]:focus::-webkit-input-placeholder {color: white;}

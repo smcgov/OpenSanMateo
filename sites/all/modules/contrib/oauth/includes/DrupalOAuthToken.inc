@@ -3,6 +3,7 @@
 class DrupalOAuthToken extends OAuthToken {
   public $tid = 0;
   public $expires = 0;
+  public $callback_url = "";
   public $type = OAUTH_COMMON_TOKEN_TYPE_REQUEST;
   public $uid = 0;
 
@@ -76,13 +77,14 @@ class DrupalOAuthToken extends OAuthToken {
     }
 
     $values = array(
-      'csid'      => $this->consumer->csid,
-      'key_hash'  => sha1($this->key),
-      'token_key' => $this->key,
-      'secret'    => $this->secret,
-      'expires'   => $this->expires,
-      'type'      => $this->type,
-      'uid'       => $this->uid,
+      'csid'          => $this->consumer->csid,
+      'key_hash'      => sha1($this->key),
+      'token_key'     => $this->key,
+      'secret'        => $this->secret,
+      'expires'       => $this->expires,
+      'type'          => $this->type,
+      'uid'           => $this->uid,
+      'callback_url'  => $this->callback_url,
     );
 
     if ($update) {
@@ -202,16 +204,21 @@ class DrupalOAuthToken extends OAuthToken {
   public static function loadById($tid, $load_provider_data = TRUE) {
     $query = db_select('oauth_common_token', 't');
 
-    $query
-      ->condition('t.tid', $tid)
-      ->fields('t');
+    if (is_numeric($tid)) {
+      $query
+        ->condition('t.tid', $tid)
+        ->fields('t');
 
-    if ($load_provider_data) {
-      $query->join('oauth_common_provider_token', 'pt', 'pt.tid = t.tid');
-      $query->fields('pt', array('created', 'changed', 'services', 'authorized'));
+      if ($load_provider_data) {
+        $query->join('oauth_common_provider_token', 'pt', 'pt.tid = t.tid');
+        $query->fields('pt', array('created', 'changed', 'services', 'authorized'));
+      }
+
+      return self::fromResult($query->execute());
     }
-
-    return self::fromResult($query->execute());
+    else {
+      return FALSE;
+    }
   }
 
   /**

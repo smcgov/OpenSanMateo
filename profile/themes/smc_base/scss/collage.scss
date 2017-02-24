@@ -154,12 +154,6 @@ p.small {
 	font-size: .9em;
 }
 
-/*
-.btn, h3, h1,h2,h5,h4, .btn-bar, .button, .full {
-	font-family:'TradeGothic', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-}
-*/
-
 h1, h2, h3, h4, h5, h6 {
 	margin-top: 0;
 }
@@ -176,7 +170,6 @@ margin-top: 0;
 margin-bottom: 0;
 line-height: 1em;
 /* text-shadow: 0 2px 7px rgba(28, 104, 158, .3); */
-font-family: 'Trade Gothic W01 Light';
 font-weight: 300;
 /* visibility: hidden; */
 }
@@ -185,7 +178,6 @@ h1 span {
 	font-weight: normal; 
 	font-size: .5em; 
 	padding-right: .15em;
-	font-family: 'Trade Gothic W01 Roman';
 	font-weight: 300;
 }
 
@@ -194,7 +186,7 @@ h2 {
 	line-height: 1.2em;
 	text-transform: uppercase;
 /* 	padding-top: .86em; */
-	font-family: 'Trade Gothic W01 Roman';
+	font-family: 'Trade Gothic W01';
 	font-weight: 300;
 	margin-bottom: 0;
 }
@@ -202,8 +194,7 @@ h2 {
 h2 span {
 display: block; 
 color: #38939b; 
-font-family: 'Trade Gothic W01 Roman';
-font-weight: 300;
+font-family: 'Trade Gothic W01';
 }
 
 h2.tagline {
@@ -212,7 +203,8 @@ h2.tagline {
 	color: #38939b;
 	font-size: 3em;
 	line-height: 1em;
-	font-family: 'Trade Gothic W01 Light';
+	font-family: 'Trade Gothic W01';
+    font-weight: 100;
 /* 	visibility: hidden; */
 }
 
@@ -227,7 +219,8 @@ h2.tagline span {
 
 h3 {color: #38939b; text-transform: uppercase;
 	line-height: 1.25em;
-	font-family: 'Trade Gothic W01 Bold';
+	font-family: 'Trade Gothic W01';
+    font-weight: 700;
 
 }
 
@@ -236,8 +229,8 @@ h4 {
 	color: #036cb6;
 	display: block;
 	line-height: 1.3em;
-	font-family: 'Trade Gothic W01 Roman';
-font-weight: 300;
+	font-family: 'Trade Gothic W01';
+    font-weight: 300;
 }
 
 h5 {
@@ -245,7 +238,8 @@ h5 {
 	color: #036cb6;
 	line-height: 1.35em;
 	text-transform: uppercase;
-	font-family: 'Trade Gothic W01 Bold';
+	font-family: 'Trade Gothic W01';
+  font-weight: 700;
 
 }
 
@@ -270,8 +264,7 @@ margin-right: 3%;
 -webkit-transition: all 0.3s;
 -moz-transition: all 0.3s;
 transition: all 0.3s;
-font-family: 'Trade Gothic W01 Bold';
-font-weight: 300;
+font-weight: 700;
 /* font-size: 1.1em; */
 }
 
@@ -317,7 +310,7 @@ background-color:#38939b;
 	padding: 1em 0;
 	margin-bottom: 0;
 	color: white;
-font-family: 'Trade Gothic W01 Bold';
+  font-weight: 700;
 	text-transform: uppercase;
 	text-align: center;
 }
@@ -452,7 +445,7 @@ font-family: 'Trade Gothic W01 Bold';
 	display: inline-block;
 /* 	margin: 15px 30px; */
 	text-transform: uppercase;
-font-family: 'Trade Gothic W01 Bold';
+  font-weight: 700;
 	outline: none;
 	position: relative;
 	-webkit-transition: all 0.3s;
@@ -724,7 +717,6 @@ width: 33%;}
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
 	border-radius: 3px;
-	font-family: 'Trade Gothic W01 Roman';
 	font-weight: 300;
 }
 
@@ -732,7 +724,7 @@ width: 33%;}
 	box-shadow: none;
    	background-image: -webkit-linear-gradient(rgba(56, 147, 155, .7) 0%, rgba(56, 147, 155, .8) 100%);
    	color: white;	
-   	font-family: 'Trade Gothic W01 Bold';
+   	font-weight: 700;
 }
 
 .search input[type=search]:focus::-webkit-input-placeholder {
@@ -887,7 +879,7 @@ float: right;
 	display: block;
 	color: #036cb6;
 	font-size: 2em;
-font-family: 'Trade Gothic W01 Bold';
+  font-weight: 700;
 	padding-top: .15em;
 }
 .event .time {

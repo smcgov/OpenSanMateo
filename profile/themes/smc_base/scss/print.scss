@@ -2,43 +2,47 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
 
-body {
-  padding-top: 0 !important;
-}
-
-#toolbar {
-  display: none;
-}
 
 #header {
-  // Hide these things.
-  #block-menu-block-sanmateo-primary-menu,
   a.dept-link {
     display: none;
   }
-
-  a[href]:after {
-    content: none;
-  }
 }
 
-#messages {
+// Do not print URLs
+a[href]:after {
+  content: none;
+}
+
+#messages,
+#toolbar,
+#breadcrumb,
+nav {
   display: none;
 }
 
 #block-opensanmateo-search-header-search,
-.tabs ul.tabs {
+.tabs {
   display: none !important;
 }
 
+//Remove top body padding
+body {
+  padding-top: 0px;
+}
+
+//Hide Sidebars
+#main-wrapper .sm-three-column .panel-col-first,
+#main-wrapper .sm-three-column .panel-col-last {
+  display: none;
+}
+
+.sharethis-buttons,
 .print-link {
   display: none;
 }
 
-ul.pager {
-  display: none;
-}
-
+//Hide the footer
 #footer-wrapper {
   display: none;
 }

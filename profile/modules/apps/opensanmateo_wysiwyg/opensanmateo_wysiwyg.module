@@ -4,4 +4,10 @@
  * Code for the OpenSanMateo Wysiwyg feature.
  */
 
+include_once 'opensanmateo_wysiwyg.features.inc';
+/**
+ * @file
+ * Code for the OpenSanMateo Wysiwyg feature.
+ */
+
 include_once 'opensanmateo_wysiwyg.module.inc';

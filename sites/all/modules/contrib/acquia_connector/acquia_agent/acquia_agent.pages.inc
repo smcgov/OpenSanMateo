@@ -14,7 +14,7 @@ function _acquia_agent_hash_password_crypt($algorithm, $pass, $setting, $extra_m
     $pass = md5($pass);
   }
   // Include core's password.inc because it has _password_crypt().
-  require_once DRUPAL_ROOT . '/includes/password.inc';
+  require_once DRUPAL_ROOT . '/' . variable_get('password_inc', 'includes/password.inc');
   $hash = _password_crypt($algorithm, $pass, $setting);
   // Match the hash stored on the server which has prefix character 'U' if
   // password was first hashed with MD5.
@@ -272,7 +272,7 @@ function acquia_agent_automatic_setup_form_validate($form, &$form_state) {
     $data = array('body' => $body, 'authenticator' => $authenticator);
     // Does not use acquia_agent_call() because Network identifier and key are not available.
     $server = variable_get('acquia_network_address', 'https://rpc.acquia.com');
-    $result = xmlrpc(acquia_agent_network_address($server), array('acquia.agent.communication.settings' => array($data)));
+    $result = _acquia_agent_request(acquia_agent_network_address($server), 'acquia.agent.communication.settings', $data);
 
     if ($errno = xmlrpc_errno() !== NULL) {
       acquia_agent_report_xmlrpc_error();
@@ -328,7 +328,8 @@ function _acquia_agent_automatic_start_submit(&$form_state) {
   $data = array('body' => $body, 'authenticator' => $authenticator);
   // Does not use acquia_agent_call() because Network identifier and key are not available.
   $server = variable_get('acquia_network_address', 'https://rpc.acquia.com');
-  $result = xmlrpc(acquia_agent_network_address($server), array('acquia.agent.subscription.credentials' => array($data)));
+
+  $result = _acquia_agent_request(acquia_agent_network_address($server), 'acquia.agent.subscription.credentials', $data);
 
   if ($errno = xmlrpc_errno()) {
     acquia_agent_report_xmlrpc_error();

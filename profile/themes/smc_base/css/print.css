@@ -1,39 +1,34 @@
 /* Welcome to Compass. Use this file to define print styles.
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
-/* line 5, ../scss/print.scss */
-body {
-  padding-top: 0 !important; }
-
-/* line 9, ../scss/print.scss */
-#toolbar {
-  display: none; }
-
-/* line 15, ../scss/print.scss */
-#header #block-menu-block-sanmateo-primary-menu,
 #header a.dept-link {
   display: none; }
-/* line 20, ../scss/print.scss */
-#header a[href]:after {
+
+a[href]:after {
   content: none; }
 
-/* line 25, ../scss/print.scss */
-#messages {
+#messages,
+#toolbar,
+#breadcrumb,
+nav {
   display: none; }
 
-/* line 29, ../scss/print.scss */
 #block-opensanmateo-search-header-search,
-.tabs ul.tabs {
+.tabs {
   display: none !important; }
 
-/* line 34, ../scss/print.scss */
+body {
+  padding-top: 0px; }
+
+#main-wrapper .sm-three-column .panel-col-first,
+#main-wrapper .sm-three-column .panel-col-last {
+  display: none; }
+
+.sharethis-buttons,
 .print-link {
   display: none; }
 
-/* line 38, ../scss/print.scss */
-ul.pager {
-  display: none; }
-
-/* line 42, ../scss/print.scss */
 #footer-wrapper {
   display: none; }
+
+/*# sourceMappingURL=print.css.map */

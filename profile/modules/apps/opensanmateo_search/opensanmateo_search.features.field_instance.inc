@@ -10,7 +10,7 @@
 function opensanmateo_search_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'taxonomy_term-sub_type-field_view'
+  // Exported field_instance: 'taxonomy_term-sub_type-field_view'.
   $field_instances['taxonomy_term-sub_type-field_view'] = array(
     'bundle' => 'sub_type',
     'default_value' => NULL,
@@ -46,7 +46,7 @@ function opensanmateo_search_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-subject-field_view'
+  // Exported field_instance: 'taxonomy_term-subject-field_view'.
   $field_instances['taxonomy_term-subject-field_view'] = array(
     'bundle' => 'subject',
     'default_value' => NULL,
@@ -57,7 +57,7 @@ function opensanmateo_search_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'field_views',
         'settings' => array(
-          'view' => 'opensanmateo_search block_3',
+          'view' => 'opensanmateo_search block_5',
         ),
         'type' => 'field_views_formatter',
         'weight' => 0,
@@ -81,7 +81,7 @@ function opensanmateo_search_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-topic-field_view'
+  // Exported field_instance: 'taxonomy_term-topic-field_view'.
   $field_instances['taxonomy_term-topic-field_view'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,

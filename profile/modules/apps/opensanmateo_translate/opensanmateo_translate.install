@@ -36,3 +36,17 @@ function opensanmateo_translate_set_default_langs() {
   );
   variable_set('google_translator_active_languages', $allowed_langs);
 }
+
+/**
+ * SMCHC-133: Remove the google translate link from the utility footer menu.
+ *
+ * Implements hook_update_N().
+ */
+function opensanmateo_translate_update_7002() {
+  $menu = menu_tree_all_data('menu-footer-utility');
+  foreach ($menu as $menu_item) {
+    if ($menu_item['link']['link_path'] === '<google-translate>') {
+      menu_link_delete($menu_item['link']['mlid']);
+    }
+  }
+}

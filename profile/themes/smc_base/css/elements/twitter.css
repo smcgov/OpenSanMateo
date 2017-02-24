@@ -14,14 +14,13 @@
 }
 
 */
+/* Colors */
 /* Fonts */
 /* Media Queries */
-/* line 5, ../../scss/elements/twitter.scss */
 .pane-twitter-pull-pane ul.tweets-pulled-listing {
   margin: 0;
   padding: 0;
   padding-top: 1em; }
-  /* line 10, ../../scss/elements/twitter.scss */
   .pane-twitter-pull-pane ul.tweets-pulled-listing li {
     margin: 0;
     padding: 0;
@@ -30,19 +29,14 @@
     border-bottom: 1px solid rgba(3, 108, 182, 0.1);
     padding-bottom: 10px;
     color: #555a5a; }
-    /* line 19, ../../scss/elements/twitter.scss */
     .pane-twitter-pull-pane ul.tweets-pulled-listing li a {
       color: #036cb6; }
-      /* line 22, ../../scss/elements/twitter.scss */
       .pane-twitter-pull-pane ul.tweets-pulled-listing li a:hover {
         color: #38939b; }
-    /* line 27, ../../scss/elements/twitter.scss */
     .pane-twitter-pull-pane ul.tweets-pulled-listing li .tweet-author-wrapper {
       padding-bottom: 10px; }
-      /* line 30, ../../scss/elements/twitter.scss */
       .pane-twitter-pull-pane ul.tweets-pulled-listing li .tweet-author-wrapper .twitter-follow-button {
         display: none; }
-      /* line 34, ../../scss/elements/twitter.scss */
       .pane-twitter-pull-pane ul.tweets-pulled-listing li .tweet-author-wrapper .tweet-authorphoto {
         float: left;
         width: 36px;
@@ -50,31 +44,25 @@
         border: 5px solid rgba(3, 108, 182, 0.05);
         border-radius: 3px 3px 3px 3px;
         margin-right: 10px; }
-      /* line 43, ../../scss/elements/twitter.scss */
       .pane-twitter-pull-pane ul.tweets-pulled-listing li .tweet-author-wrapper .tweet-author {
         display: none; }
-      /* line 47, ../../scss/elements/twitter.scss */
       .pane-twitter-pull-pane ul.tweets-pulled-listing li .tweet-author-wrapper .tweet-screenname {
         float: left;
         clear: none;
         padding-top: 5px; }
-    /* line 55, ../../scss/elements/twitter.scss */
     .pane-twitter-pull-pane ul.tweets-pulled-listing li .tweet-text {
       font-size: 0.85em; }
-    /* line 59, ../../scss/elements/twitter.scss */
     .pane-twitter-pull-pane ul.tweets-pulled-listing li .tweet-footer {
       padding-top: 10px;
       font-size: 0.75em;
       text-align: right; }
-      /* line 64, ../../scss/elements/twitter.scss */
       .pane-twitter-pull-pane ul.tweets-pulled-listing li .tweet-footer a {
         color: #555a5a; }
-        /* line 67, ../../scss/elements/twitter.scss */
         .pane-twitter-pull-pane ul.tweets-pulled-listing li .tweet-footer a:hover {
           color: #38939b; }
-    /* line 73, ../../scss/elements/twitter.scss */
     .pane-twitter-pull-pane ul.tweets-pulled-listing li .tweet-divider {
       display: none; }
-    /* line 78, ../../scss/elements/twitter.scss */
     .pane-twitter-pull-pane ul.tweets-pulled-listing li .tweet-actions {
       display: none; }
+
+/*# sourceMappingURL=twitter.css.map */

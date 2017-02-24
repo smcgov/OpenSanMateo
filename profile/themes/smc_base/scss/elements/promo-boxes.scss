@@ -1,35 +1,35 @@
-// default variables
+// default variables 
 @import "../vars.scss";
 @import "buttons.scss";
 
 .pane-bundle-promo-panels-pane {
-  padding: 0; 
+  padding: 0;
   margin-bottom: 20px;
   position: relative;
   background-color:#38939b;
 	border-radius: 3px;
-	
+
   h2.pane-title {
-    padding: .5em; 
+    padding: .5em;
 		margin-bottom: 0;
-    color: #FFFFFF;  
+    color: #FFFFFF;
     font-size: 1.25em;
     line-height: 1.3em;
-    
+
     a {
       color: #FFFFFF;
-      
+
       &:hover {
         color: #EEEEEE;
       }
     }
   }
-  
+
   .field-name-field-rotator-image {
     margin-bottom: 2%;
     text-align: center;
   }
-  
+
   .field-name-field-rotator-caption {
     color: #FFFFFF;
 		padding: 0 1em .5em;
@@ -40,18 +40,18 @@
     line-height: 1.6;
     margin-bottom: 1.25em;
     text-rendering: optimizelegibility;
-    
+
     a {
       color: #FFFFFF;
-      
+
       &:hover {
         color: #EEEEEE;
       }
     }
   }
-  
+
   .field-name-field-rotator-link-url {
-    
+
     a {
       width: 100%;
     	background-color: rgba(255,255,255,.3);
@@ -59,17 +59,16 @@
     	padding: 1em 0;
     	margin-bottom: 0;
     	color: white;
-    	font-family: $bold;
-    	font-weight: normal;
+    	font-weight: 700;
     	text-transform: uppercase;
     	text-align: center;
     }
-    
+
     a:hover {
     	background-color: rgba(255,255,255,.2);
     	color: white;
     }
-    
+
     a:after {
       content: ' \00BB';
     }
@@ -77,42 +76,78 @@
 }
 
 .promo-pane-default {
-  background-color:#38939b;
+  background-color: $astralBlue;
 }
 .promo-pane-green {
-  background-color: #8dc63f;
+  background-color: $sushiGreen;
 }
 .promo-pane-purple {
-  background-color: #6b699e;
+  background-color: $kimberlyBlue;
 }
 .promo-pane-orange {
-  background-color: #e98a41;
+  background-color: $jaffaOrange;
+}
+.promo-pane-grey {
+  background-color: $lightGrey;
+  & h2.pane-title, & .field-name-field-rotator-caption {
+    color: $darkGrey;
+  }
+  & .field-name-field-rotator-link-url a {
+    width: 100%;
+    background-color: grey(0.6);
+  }
+  & .field-name-field-rotator-link-url a:hover {
+    background-color: grey(1);
+  }
+}
+.promo-pane-lightaqua {
+  background-color: $lightGrey;
+  & h2.pane-title, & .field-name-field-rotator-caption  {
+    color: $lightAqua;
+  }
+  & .field-name-field-rotator-link-url a {
+    width: 100%;
+    background-color: lightAqua(0.8);
+  }
+  & .field-name-field-rotator-link-url a:hover {
+    background-color: lightAqua(1);
+  }
+}
+.promo-pane-lightpurple {
+  background-color: $lightGrey;
+  & h2.pane-title, & .field-name-field-rotator-caption  {
+    color: $lightPurple;
+  }
+  & .field-name-field-rotator-link-url a {
+    width: 100%;
+    background-color: lightPurple(0.8);
+  }
+  & .field-name-field-rotator-link-url a:hover {
+    background-color:  lightPurple(1);
+  }
 }
 
 @media all and (min-width: $tablet) {
   // in our larger versions we'll make promo boxes in the top/bottom panels regions look like the highlighted box
-  
+
   .panel-col-top,
   .panel-col-bottom {
-    
+
     .pane-bundle-promo-panels-pane {
       padding-right: 40%;
       padding-left: 3em;
       padding-top: 1em;
       padding-bottom: 2em;
-    
-  
+
+
       h2.pane-title  {
-        
-        font-family: $bold;
-        font-weight: normal;
         font-size: 1.6875em;
-        font-weight: 100;
+        font-weight: 400;
         padding-left: 0;
         padding-right: 0;
       }
-      
-      
+
+
       .field-name-field-rotator-image {
         position: absolute;
         top: 0;
@@ -122,7 +157,7 @@
         height: 100%;
         margin-bottom: 0;
         max-width: 40%;
-        
+
         .field-items,
         .field-item {
           max-height: 100%;
@@ -135,10 +170,10 @@
           //height: 100%;
           width: auto;
           height: auto;
-          
+
           border-left: 10px solid rgba(255, 255, 255, 0.3);
           border-right: 10px solid rgba(255, 255, 255, 0.3);
-          
+
         }
       }
       .field-name-field-rotator-caption {
@@ -148,11 +183,11 @@
         padding-right: 0;
         padding-bottom: 0;
       }
-      
+
       .field-name-field-rotator-link-url {
         // must reset, then mixin for buttons
-        
-        a, 
+
+        a,
         a:hover {
           width: auto;
         	background: none;
@@ -161,55 +196,54 @@
         	padding: inherit;
         	margin-bottom: 0;
         	color: white;
-        	font-family: $bold;
-        	font-weight: normal;
+        	font-weight: 700;
         	text-transform: uppercase;
         	text-align: left;
         	//font-size: 1em;
         	//line-height: 1;
         }
-                
+
         a:after {
           content: '';
         }
-        
+
         a {
           @include button;
-          
+
           @include buttonArrow;
-          
+
           @include buttonGreen;
-          
+
           @include buttonLarge;
-          
+
           margin-bottom: 0;
         }
       }
     }
     .promo-pane-green {
       .field-name-field-rotator-link-url {
-        
+
         a {
           //@include button;
-          
+
           //@include buttonArrow;
-          
+
           @include buttonTeal;
         }
-        
+
       }
     }
     .promo-pane-orange {
       .field-name-field-rotator-link-url {
-        
+
         a {
           //@include button;
-          
+
           //@include buttonArrow;
-          
+
           @include buttonBlue;
         }
-        
+
       }
     }
   }
@@ -222,25 +256,23 @@
 .lte8 {
   .panel-col-top,
   .panel-col-bottom {
-    
+
     .pane-bundle-promo-panels-pane {
       padding-right: 40%;
       padding-left: 3em;
       padding-top: 1em;
       padding-bottom: 2em;
-    
-  
+
+
       h2.pane-title  {
-        
-        font-family: $bold;
-        font-weight: normal;
+        font-weight: 700;
         font-size: 1.6875em;
         font-weight: 100;
         padding-left: 0;
         padding-right: 0;
       }
-      
-      
+
+
       .field-name-field-rotator-image {
         position: absolute;
         top: 0;
@@ -250,7 +282,7 @@
         height: 100%;
         margin-bottom: 0;
         max-width: 40%;
-        
+
         .field-items,
         .field-item {
           max-height: 100%;
@@ -263,10 +295,10 @@
           //height: 100%;
           width: auto;
           height: auto;
-          
+
           border-left: 10px solid rgba(255, 255, 255, 0.3);
           border-right: 10px solid rgba(255, 255, 255, 0.3);
-          
+
         }
       }
       .field-name-field-rotator-caption {
@@ -276,11 +308,11 @@
         padding-right: 0;
         padding-bottom: 0;
       }
-      
+
       .field-name-field-rotator-link-url {
         // must reset, then mixin for buttons
-        
-        a, 
+
+        a,
         a:hover {
           width: auto;
         	background: none;
@@ -289,55 +321,54 @@
         	padding: inherit;
         	margin-bottom: 0;
         	color: white;
-        	font-family: $bold;
-        	font-weight: normal;
+        	font-weight: 700;
         	text-transform: uppercase;
         	text-align: left;
         	//font-size: 1em;
         	//line-height: 1;
         }
-                
+
         a:after {
           content: '';
         }
-        
+
         a {
           @include button;
-          
+
           @include buttonArrow;
-          
+
           @include buttonGreen;
-          
+
           @include buttonLarge;
-          
+
           margin-bottom: 0;
         }
       }
     }
     .promo-pane-green {
       .field-name-field-rotator-link-url {
-        
+
         a {
           //@include button;
-          
+
           //@include buttonArrow;
-          
+
           @include buttonTeal;
         }
-        
+
       }
     }
     .promo-pane-orange {
       .field-name-field-rotator-link-url {
-        
+
         a {
           //@include button;
-          
+
           //@include buttonArrow;
-          
+
           @include buttonBlue;
         }
-        
+
       }
     }
   }

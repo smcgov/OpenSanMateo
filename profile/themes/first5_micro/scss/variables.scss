@@ -29,8 +29,8 @@
 
 $primaryBlue: primaryBlue();
 $primaryTeal: primaryTeal();
+$primaryGray: primaryBlue(.5);
 
-$primaryGray: primaryBlue(0.5);
 $altBlue: #0d66a1;
 $altPurple: #6b699e;
 
@@ -44,12 +44,15 @@ $searchFocusBG: primaryBlue(0.85);
 
 $searchMobileDefaultBG: #FFFFFF;
 
+$OSMUpdateBlue: $primaryBlue; // Green.
+$OSMUpdateTeal: #9A9E6F;
+$OSMUpdatePurple: #cde2f1;
+$OSMUpdateLightOrange: #C6C59E;
+$OSMUpdateDarkOrange: $primaryBlue;
+
 
 /* Fonts */
-$light: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica;
-$reg: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
-$bold:"Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-$lightOb: "TradeGothicW01-LightObl", "Helvetica Neue", Arial, Helvetica;  
+$reg: "Trade Gothic W01", "Helvetica Neue", Arial, Helvetica;
 
 /* Media Queries */
 $mobile: 320px;

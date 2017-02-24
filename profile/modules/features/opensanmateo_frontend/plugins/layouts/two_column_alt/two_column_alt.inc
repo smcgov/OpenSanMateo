@@ -21,10 +21,11 @@ $plugin = array(
     'middle' => t('Main'),
     'lower_left' => t('Lower Left'),
     'lower_right' => t('Lower Right'),
+    'lower_middle' => t('Secondary'),
     'bottom' => t('Bottom'),
   ),
 );
-  
+
   //return $items;
 //}
 

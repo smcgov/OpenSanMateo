@@ -1,0 +1,25 @@
+From a92aab0ac1c0f2dda708697791f5a57648e7ba41 Mon Sep 17 00:00:00 2001
+From: Jesse Hofmann-Smith <jhofmann-smith@phase2technology.com>
+Date: Wed, 25 Jan 2017 13:18:16 -0500
+Subject: [PATCH] update entity
+
+---
+ drupal-org.make | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drupal-org.make b/drupal-org.make
+index 2275c1e..ab2404f 100644
+--- a/drupal-org.make
++++ b/drupal-org.make
+@@ -50,7 +50,7 @@ projects[delta][patch][1532196] = https://www.drupal.org/files/breadcrumb_empty_
+ 
+ projects[diff][version] = 3.2
+ 
+-projects[entity][version] = 1.6
++projects[entity][version] = 1.8
+ projects[entity][patch][2307807] = https://www.drupal.org/files/issues/2307807-entity-reset-insert-1.patch
+ 
+ projects[entity_autocomplete][version] = 1.0-beta3
+-- 
+2.7.0
+

@@ -14,6 +14,7 @@
 }
 
 */
+/* Colors */
 /* Fonts */
 /* Media Queries */
 /* COPY/PASTE following lines to each new scss file
@@ -32,9 +33,9 @@
 }
 
 */
+/* Colors */
 /* Fonts */
 /* Media Queries */
-/* line 173, ../../scss/elements/buttons.scss */
 a.button-blue-large {
   background: none;
   background-color: none;
@@ -50,18 +51,15 @@ a.button-blue-large {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: normal;
+  font-weight: 700;
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
   *background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: 1.1em; }
-  /* line 23, ../../scss/elements/buttons.scss */
   a.button-blue-large:hover {
     padding: .75em 1em; }
-  /* line 35, ../../scss/elements/buttons.scss */
   a.button-blue-large:after {
     content: '';
     position: absolute;
@@ -69,7 +67,6 @@ a.button-blue-large {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 68, ../../scss/elements/buttons.scss */
   a.button-blue-large:before {
     z-index: 2;
     content: '\25b6';
@@ -86,7 +83,6 @@ a.button-blue-large {
     line-height: 2.4;
     font-size: 140%;
     width: 60px; }
-  /* line 89, ../../scss/elements/buttons.scss */
   a.button-blue-large:after {
     z-index: 1;
     width: 30%;
@@ -103,25 +99,19 @@ a.button-blue-large {
     -ms-transform: rotate(-20deg);
     transform-origin: 0 0;
     transform: rotate(-20deg); }
-  /* line 108, ../../scss/elements/buttons.scss */
   a.button-blue-large:hover {
     padding: 1.1em 5.5em 1em 1.2em; }
-  /* line 112, ../../scss/elements/buttons.scss */
   a.button-blue-large:hover:after {
     width: 35%; }
-  /* line 116, ../../scss/elements/buttons.scss */
   a.button-blue-large:hover:before {
     right: 10%; }
-  /* line 126, ../../scss/elements/buttons.scss */
   a.button-blue-large:hover {
     *background-color: #036cb6;
     background-color: #036cb6; }
-  /* line 131, ../../scss/elements/buttons.scss */
   a.button-blue-large:active {
     *background-color: #036cb6;
-    background-color: rgba(3, 108, 182, 0.9); }
+    background-color: rgba(3, 108, 182, 0.95); }
 
-/* line 179, ../../scss/elements/buttons.scss */
 a.button-teal-large {
   background: none;
   background-color: none;
@@ -137,18 +127,15 @@ a.button-teal-large {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: normal;
+  font-weight: 700;
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
   *background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95);
   font-size: 1.1em; }
-  /* line 23, ../../scss/elements/buttons.scss */
   a.button-teal-large:hover {
     padding: .75em 1em; }
-  /* line 35, ../../scss/elements/buttons.scss */
   a.button-teal-large:after {
     content: '';
     position: absolute;
@@ -156,7 +143,6 @@ a.button-teal-large {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 68, ../../scss/elements/buttons.scss */
   a.button-teal-large:before {
     z-index: 2;
     content: '\25b6';
@@ -173,7 +159,6 @@ a.button-teal-large {
     line-height: 2.4;
     font-size: 140%;
     width: 60px; }
-  /* line 89, ../../scss/elements/buttons.scss */
   a.button-teal-large:after {
     z-index: 1;
     width: 30%;
@@ -190,25 +175,19 @@ a.button-teal-large {
     -ms-transform: rotate(-20deg);
     transform-origin: 0 0;
     transform: rotate(-20deg); }
-  /* line 108, ../../scss/elements/buttons.scss */
   a.button-teal-large:hover {
     padding: 1.1em 5.5em 1em 1.2em; }
-  /* line 112, ../../scss/elements/buttons.scss */
   a.button-teal-large:hover:after {
     width: 35%; }
-  /* line 116, ../../scss/elements/buttons.scss */
   a.button-teal-large:hover:before {
     right: 10%; }
-  /* line 142, ../../scss/elements/buttons.scss */
   a.button-teal-large:hover {
     *background-color: #38939b;
     background-color: #38939b; }
-  /* line 147, ../../scss/elements/buttons.scss */
   a.button-teal-large:active {
     *background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.9); }
 
-/* line 185, ../../scss/elements/buttons.scss */
 a.button-green-large {
   background: none;
   background-color: none;
@@ -224,18 +203,15 @@ a.button-green-large {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: normal;
+  font-weight: 700;
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
   *background-color: #8dc63f;
   background-color: rgba(141, 198, 63, 0.95);
   font-size: 1.1em; }
-  /* line 23, ../../scss/elements/buttons.scss */
   a.button-green-large:hover {
     padding: .75em 1em; }
-  /* line 35, ../../scss/elements/buttons.scss */
   a.button-green-large:after {
     content: '';
     position: absolute;
@@ -243,7 +219,6 @@ a.button-green-large {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 68, ../../scss/elements/buttons.scss */
   a.button-green-large:before {
     z-index: 2;
     content: '\25b6';
@@ -260,7 +235,6 @@ a.button-green-large {
     line-height: 2.4;
     font-size: 140%;
     width: 60px; }
-  /* line 89, ../../scss/elements/buttons.scss */
   a.button-green-large:after {
     z-index: 1;
     width: 30%;
@@ -277,25 +251,19 @@ a.button-green-large {
     -ms-transform: rotate(-20deg);
     transform-origin: 0 0;
     transform: rotate(-20deg); }
-  /* line 108, ../../scss/elements/buttons.scss */
   a.button-green-large:hover {
     padding: 1.1em 5.5em 1em 1.2em; }
-  /* line 112, ../../scss/elements/buttons.scss */
   a.button-green-large:hover:after {
     width: 35%; }
-  /* line 116, ../../scss/elements/buttons.scss */
   a.button-green-large:hover:before {
     right: 10%; }
-  /* line 158, ../../scss/elements/buttons.scss */
   a.button-green-large:hover {
     *background-color: #8dc63f;
     background-color: #8dc63f; }
-  /* line 163, ../../scss/elements/buttons.scss */
   a.button-green-large:active {
     *background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.9); }
 
-/* line 193, ../../scss/elements/buttons.scss */
 a.button-blue-default {
   background: none;
   background-color: none;
@@ -311,18 +279,15 @@ a.button-blue-default {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: normal;
+  font-weight: 700;
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
   *background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: 1em; }
-  /* line 23, ../../scss/elements/buttons.scss */
   a.button-blue-default:hover {
     padding: .75em 1em; }
-  /* line 35, ../../scss/elements/buttons.scss */
   a.button-blue-default:after {
     content: '';
     position: absolute;
@@ -330,7 +295,6 @@ a.button-blue-default {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 68, ../../scss/elements/buttons.scss */
   a.button-blue-default:before {
     z-index: 2;
     content: '\25b6';
@@ -347,7 +311,6 @@ a.button-blue-default {
     line-height: 2.4;
     font-size: 140%;
     width: 60px; }
-  /* line 89, ../../scss/elements/buttons.scss */
   a.button-blue-default:after {
     z-index: 1;
     width: 30%;
@@ -364,25 +327,19 @@ a.button-blue-default {
     -ms-transform: rotate(-20deg);
     transform-origin: 0 0;
     transform: rotate(-20deg); }
-  /* line 108, ../../scss/elements/buttons.scss */
   a.button-blue-default:hover {
     padding: 1.1em 5.5em 1em 1.2em; }
-  /* line 112, ../../scss/elements/buttons.scss */
   a.button-blue-default:hover:after {
     width: 35%; }
-  /* line 116, ../../scss/elements/buttons.scss */
   a.button-blue-default:hover:before {
     right: 10%; }
-  /* line 126, ../../scss/elements/buttons.scss */
   a.button-blue-default:hover {
     *background-color: #036cb6;
     background-color: #036cb6; }
-  /* line 131, ../../scss/elements/buttons.scss */
   a.button-blue-default:active {
     *background-color: #036cb6;
-    background-color: rgba(3, 108, 182, 0.9); }
+    background-color: rgba(3, 108, 182, 0.95); }
 
-/* line 199, ../../scss/elements/buttons.scss */
 a.button-teal-default {
   background: none;
   background-color: none;
@@ -398,18 +355,15 @@ a.button-teal-default {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: normal;
+  font-weight: 700;
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
   *background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95);
   font-size: 1em; }
-  /* line 23, ../../scss/elements/buttons.scss */
   a.button-teal-default:hover {
     padding: .75em 1em; }
-  /* line 35, ../../scss/elements/buttons.scss */
   a.button-teal-default:after {
     content: '';
     position: absolute;
@@ -417,7 +371,6 @@ a.button-teal-default {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 68, ../../scss/elements/buttons.scss */
   a.button-teal-default:before {
     z-index: 2;
     content: '\25b6';
@@ -434,7 +387,6 @@ a.button-teal-default {
     line-height: 2.4;
     font-size: 140%;
     width: 60px; }
-  /* line 89, ../../scss/elements/buttons.scss */
   a.button-teal-default:after {
     z-index: 1;
     width: 30%;
@@ -451,25 +403,19 @@ a.button-teal-default {
     -ms-transform: rotate(-20deg);
     transform-origin: 0 0;
     transform: rotate(-20deg); }
-  /* line 108, ../../scss/elements/buttons.scss */
   a.button-teal-default:hover {
     padding: 1.1em 5.5em 1em 1.2em; }
-  /* line 112, ../../scss/elements/buttons.scss */
   a.button-teal-default:hover:after {
     width: 35%; }
-  /* line 116, ../../scss/elements/buttons.scss */
   a.button-teal-default:hover:before {
     right: 10%; }
-  /* line 142, ../../scss/elements/buttons.scss */
   a.button-teal-default:hover {
     *background-color: #38939b;
     background-color: #38939b; }
-  /* line 147, ../../scss/elements/buttons.scss */
   a.button-teal-default:active {
     *background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.9); }
 
-/* line 205, ../../scss/elements/buttons.scss */
 a.button-green-default {
   background: none;
   background-color: none;
@@ -485,18 +431,15 @@ a.button-green-default {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: normal;
+  font-weight: 700;
   position: relative;
   padding: 1.1em 5.5em 1em 1.2em;
   overflow: hidden;
   *background-color: #8dc63f;
   background-color: rgba(141, 198, 63, 0.95);
   font-size: 1em; }
-  /* line 23, ../../scss/elements/buttons.scss */
   a.button-green-default:hover {
     padding: .75em 1em; }
-  /* line 35, ../../scss/elements/buttons.scss */
   a.button-green-default:after {
     content: '';
     position: absolute;
@@ -504,7 +447,6 @@ a.button-green-default {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 68, ../../scss/elements/buttons.scss */
   a.button-green-default:before {
     z-index: 2;
     content: '\25b6';
@@ -521,7 +463,6 @@ a.button-green-default {
     line-height: 2.4;
     font-size: 140%;
     width: 60px; }
-  /* line 89, ../../scss/elements/buttons.scss */
   a.button-green-default:after {
     z-index: 1;
     width: 30%;
@@ -538,25 +479,19 @@ a.button-green-default {
     -ms-transform: rotate(-20deg);
     transform-origin: 0 0;
     transform: rotate(-20deg); }
-  /* line 108, ../../scss/elements/buttons.scss */
   a.button-green-default:hover {
     padding: 1.1em 5.5em 1em 1.2em; }
-  /* line 112, ../../scss/elements/buttons.scss */
   a.button-green-default:hover:after {
     width: 35%; }
-  /* line 116, ../../scss/elements/buttons.scss */
   a.button-green-default:hover:before {
     right: 10%; }
-  /* line 158, ../../scss/elements/buttons.scss */
   a.button-green-default:hover {
     *background-color: #8dc63f;
     background-color: #8dc63f; }
-  /* line 163, ../../scss/elements/buttons.scss */
   a.button-green-default:active {
     *background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.9); }
 
-/* line 213, ../../scss/elements/buttons.scss */
 a.button-blue-small {
   background: none;
   background-color: none;
@@ -572,17 +507,14 @@ a.button-blue-small {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: normal;
+  font-weight: 700;
   position: relative;
   *background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
   font-size: .85em;
   padding: .75em 1em; }
-  /* line 23, ../../scss/elements/buttons.scss */
   a.button-blue-small:hover {
     padding: .75em 1em; }
-  /* line 35, ../../scss/elements/buttons.scss */
   a.button-blue-small:after {
     content: '';
     position: absolute;
@@ -590,16 +522,13 @@ a.button-blue-small {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 126, ../../scss/elements/buttons.scss */
   a.button-blue-small:hover {
     *background-color: #036cb6;
     background-color: #036cb6; }
-  /* line 131, ../../scss/elements/buttons.scss */
   a.button-blue-small:active {
     *background-color: #036cb6;
-    background-color: rgba(3, 108, 182, 0.9); }
+    background-color: rgba(3, 108, 182, 0.95); }
 
-/* line 218, ../../scss/elements/buttons.scss */
 a.button-teal-small {
   background: none;
   background-color: none;
@@ -615,17 +544,14 @@ a.button-teal-small {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: normal;
+  font-weight: 700;
   position: relative;
   *background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95);
   font-size: .85em;
   padding: .75em 1em; }
-  /* line 23, ../../scss/elements/buttons.scss */
   a.button-teal-small:hover {
     padding: .75em 1em; }
-  /* line 35, ../../scss/elements/buttons.scss */
   a.button-teal-small:after {
     content: '';
     position: absolute;
@@ -633,16 +559,13 @@ a.button-teal-small {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 142, ../../scss/elements/buttons.scss */
   a.button-teal-small:hover {
     *background-color: #38939b;
     background-color: #38939b; }
-  /* line 147, ../../scss/elements/buttons.scss */
   a.button-teal-small:active {
     *background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.9); }
 
-/* line 223, ../../scss/elements/buttons.scss */
 a.button-green-small {
   background: none;
   background-color: none;
@@ -658,17 +581,14 @@ a.button-green-small {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: normal;
+  font-weight: 700;
   position: relative;
   *background-color: #8dc63f;
   background-color: rgba(141, 198, 63, 0.95);
   font-size: .85em;
   padding: .75em 1em; }
-  /* line 23, ../../scss/elements/buttons.scss */
   a.button-green-small:hover {
     padding: .75em 1em; }
-  /* line 35, ../../scss/elements/buttons.scss */
   a.button-green-small:after {
     content: '';
     position: absolute;
@@ -676,16 +596,13 @@ a.button-green-small {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 158, ../../scss/elements/buttons.scss */
   a.button-green-small:hover {
     *background-color: #8dc63f;
     background-color: #8dc63f; }
-  /* line 163, ../../scss/elements/buttons.scss */
   a.button-green-small:active {
     *background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.9); }
 
-/* line 230, ../../scss/elements/buttons.scss */
 a.accept-terms {
   background: none;
   background-color: none;
@@ -701,18 +618,15 @@ a.accept-terms {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: normal;
+  font-weight: 700;
   position: relative;
   *background-color: #8dc63f;
   background-color: rgba(141, 198, 63, 0.95);
   font-size: .85em;
   padding: .75em 1em;
   margin-top: 10px; }
-  /* line 23, ../../scss/elements/buttons.scss */
   a.accept-terms:hover {
     padding: .75em 1em; }
-  /* line 35, ../../scss/elements/buttons.scss */
   a.accept-terms:after {
     content: '';
     position: absolute;
@@ -720,16 +634,13 @@ a.accept-terms {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 158, ../../scss/elements/buttons.scss */
   a.accept-terms:hover {
     *background-color: #8dc63f;
     background-color: #8dc63f; }
-  /* line 163, ../../scss/elements/buttons.scss */
   a.accept-terms:active {
     *background-color: #8dc63f;
     background-color: rgba(141, 198, 63, 0.9); }
 
-/* line 237, ../../scss/elements/buttons.scss */
 a.do-not-accept-terms {
   background: none;
   background-color: none;
@@ -745,18 +656,15 @@ a.do-not-accept-terms {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: normal;
+  font-weight: 700;
   position: relative;
   *background-color: #38939b;
   background-color: rgba(56, 147, 155, 0.95);
   font-size: .85em;
   padding: .75em 1em;
   margin-top: 10px; }
-  /* line 23, ../../scss/elements/buttons.scss */
   a.do-not-accept-terms:hover {
     padding: .75em 1em; }
-  /* line 35, ../../scss/elements/buttons.scss */
   a.do-not-accept-terms:after {
     content: '';
     position: absolute;
@@ -764,16 +672,13 @@ a.do-not-accept-terms {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 142, ../../scss/elements/buttons.scss */
   a.do-not-accept-terms:hover {
     *background-color: #38939b;
     background-color: #38939b; }
-  /* line 147, ../../scss/elements/buttons.scss */
   a.do-not-accept-terms:active {
     *background-color: #38939b;
     background-color: rgba(56, 147, 155, 0.9); }
 
-/* line 245, ../../scss/elements/buttons.scss */
 .addtocal {
   background: none;
   background-color: none;
@@ -789,8 +694,7 @@ a.do-not-accept-terms {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-  font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-  font-weight: normal;
+  font-weight: 700;
   position: relative;
   *background-color: #036cb6;
   background-color: rgba(3, 108, 182, 0.95);
@@ -798,10 +702,8 @@ a.do-not-accept-terms {
   padding: .75em 1em;
   margin-top: 0;
   margin-left: 0; }
-  /* line 23, ../../scss/elements/buttons.scss */
   .addtocal:hover {
     padding: .75em 1em; }
-  /* line 35, ../../scss/elements/buttons.scss */
   .addtocal:after {
     content: '';
     position: absolute;
@@ -809,30 +711,24 @@ a.do-not-accept-terms {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s; }
-  /* line 126, ../../scss/elements/buttons.scss */
   .addtocal:hover {
     *background-color: #036cb6;
     background-color: #036cb6; }
-  /* line 131, ../../scss/elements/buttons.scss */
   .addtocal:active {
     *background-color: #036cb6;
-    background-color: rgba(3, 108, 182, 0.9); }
+    background-color: rgba(3, 108, 182, 0.95); }
 
-/* line 253, ../../scss/elements/buttons.scss */
 span.date-display-single {
   display: inline-block;
   width: 50%; }
 
-/* line 259, ../../scss/elements/buttons.scss */
 ul.button-test {
   margin: 0;
   padding: 0; }
-  /* line 262, ../../scss/elements/buttons.scss */
   ul.button-test li {
     margin: 0;
     padding: 0;
     list-style-type: none; }
-    /* line 267, ../../scss/elements/buttons.scss */
     ul.button-test li a {
       background: none;
       background-color: none;
@@ -848,13 +744,10 @@ ul.button-test {
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s;
-      font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-      font-weight: normal;
+      font-weight: 700;
       position: relative; }
-      /* line 23, ../../scss/elements/buttons.scss */
       ul.button-test li a:hover {
         padding: .75em 1em; }
-      /* line 35, ../../scss/elements/buttons.scss */
       ul.button-test li a:after {
         content: '';
         position: absolute;
@@ -862,7 +755,6 @@ ul.button-test {
         -webkit-transition: all 0.3s;
         -moz-transition: all 0.3s;
         transition: all 0.3s; }
-      /* line 271, ../../scss/elements/buttons.scss */
       ul.button-test li a.blue-cta {
         float: left;
         clear: left;
@@ -871,7 +763,6 @@ ul.button-test {
         *background-color: #036cb6;
         background-color: rgba(3, 108, 182, 0.95);
         font-size: 1.1em; }
-        /* line 68, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-cta:before {
           z-index: 2;
           content: '\25b6';
@@ -888,7 +779,6 @@ ul.button-test {
           line-height: 2.4;
           font-size: 140%;
           width: 60px; }
-        /* line 89, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-cta:after {
           z-index: 1;
           width: 30%;
@@ -905,24 +795,18 @@ ul.button-test {
           -ms-transform: rotate(-20deg);
           transform-origin: 0 0;
           transform: rotate(-20deg); }
-        /* line 108, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-cta:hover {
           padding: 1.1em 5.5em 1em 1.2em; }
-        /* line 112, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-cta:hover:after {
           width: 35%; }
-        /* line 116, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-cta:hover:before {
           right: 10%; }
-        /* line 126, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-cta:hover {
           *background-color: #036cb6;
           background-color: #036cb6; }
-        /* line 131, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-cta:active {
           *background-color: #036cb6;
-          background-color: rgba(3, 108, 182, 0.9); }
-      /* line 278, ../../scss/elements/buttons.scss */
+          background-color: rgba(3, 108, 182, 0.95); }
       ul.button-test li a.teal-cta {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
@@ -930,7 +814,6 @@ ul.button-test {
         *background-color: #38939b;
         background-color: rgba(56, 147, 155, 0.95);
         font-size: 1.1em; }
-        /* line 68, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-cta:before {
           z-index: 2;
           content: '\25b6';
@@ -947,7 +830,6 @@ ul.button-test {
           line-height: 2.4;
           font-size: 140%;
           width: 60px; }
-        /* line 89, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-cta:after {
           z-index: 1;
           width: 30%;
@@ -964,24 +846,18 @@ ul.button-test {
           -ms-transform: rotate(-20deg);
           transform-origin: 0 0;
           transform: rotate(-20deg); }
-        /* line 108, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-cta:hover {
           padding: 1.1em 5.5em 1em 1.2em; }
-        /* line 112, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-cta:hover:after {
           width: 35%; }
-        /* line 116, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-cta:hover:before {
           right: 10%; }
-        /* line 142, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-cta:hover {
           *background-color: #38939b;
           background-color: #38939b; }
-        /* line 147, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-cta:active {
           *background-color: #38939b;
           background-color: rgba(56, 147, 155, 0.9); }
-      /* line 284, ../../scss/elements/buttons.scss */
       ul.button-test li a.green-cta {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
@@ -989,7 +865,6 @@ ul.button-test {
         *background-color: #8dc63f;
         background-color: rgba(141, 198, 63, 0.95);
         font-size: 1.1em; }
-        /* line 68, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-cta:before {
           z-index: 2;
           content: '\25b6';
@@ -1006,7 +881,6 @@ ul.button-test {
           line-height: 2.4;
           font-size: 140%;
           width: 60px; }
-        /* line 89, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-cta:after {
           z-index: 1;
           width: 30%;
@@ -1023,24 +897,18 @@ ul.button-test {
           -ms-transform: rotate(-20deg);
           transform-origin: 0 0;
           transform: rotate(-20deg); }
-        /* line 108, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-cta:hover {
           padding: 1.1em 5.5em 1em 1.2em; }
-        /* line 112, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-cta:hover:after {
           width: 35%; }
-        /* line 116, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-cta:hover:before {
           right: 10%; }
-        /* line 158, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-cta:hover {
           *background-color: #8dc63f;
           background-color: #8dc63f; }
-        /* line 163, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-cta:active {
           *background-color: #8dc63f;
           background-color: rgba(141, 198, 63, 0.9); }
-      /* line 292, ../../scss/elements/buttons.scss */
       ul.button-test li a.blue-default {
         float: left;
         clear: left;
@@ -1049,7 +917,6 @@ ul.button-test {
         *background-color: #036cb6;
         background-color: rgba(3, 108, 182, 0.95);
         font-size: 1em; }
-        /* line 68, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-default:before {
           z-index: 2;
           content: '\25b6';
@@ -1066,7 +933,6 @@ ul.button-test {
           line-height: 2.4;
           font-size: 140%;
           width: 60px; }
-        /* line 89, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-default:after {
           z-index: 1;
           width: 30%;
@@ -1083,24 +949,18 @@ ul.button-test {
           -ms-transform: rotate(-20deg);
           transform-origin: 0 0;
           transform: rotate(-20deg); }
-        /* line 108, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-default:hover {
           padding: 1.1em 5.5em 1em 1.2em; }
-        /* line 112, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-default:hover:after {
           width: 35%; }
-        /* line 116, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-default:hover:before {
           right: 10%; }
-        /* line 126, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-default:hover {
           *background-color: #036cb6;
           background-color: #036cb6; }
-        /* line 131, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-default:active {
           *background-color: #036cb6;
-          background-color: rgba(3, 108, 182, 0.9); }
-      /* line 299, ../../scss/elements/buttons.scss */
+          background-color: rgba(3, 108, 182, 0.95); }
       ul.button-test li a.teal-default {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
@@ -1108,7 +968,6 @@ ul.button-test {
         *background-color: #38939b;
         background-color: rgba(56, 147, 155, 0.95);
         font-size: 1em; }
-        /* line 68, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-default:before {
           z-index: 2;
           content: '\25b6';
@@ -1125,7 +984,6 @@ ul.button-test {
           line-height: 2.4;
           font-size: 140%;
           width: 60px; }
-        /* line 89, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-default:after {
           z-index: 1;
           width: 30%;
@@ -1142,24 +1000,18 @@ ul.button-test {
           -ms-transform: rotate(-20deg);
           transform-origin: 0 0;
           transform: rotate(-20deg); }
-        /* line 108, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-default:hover {
           padding: 1.1em 5.5em 1em 1.2em; }
-        /* line 112, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-default:hover:after {
           width: 35%; }
-        /* line 116, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-default:hover:before {
           right: 10%; }
-        /* line 142, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-default:hover {
           *background-color: #38939b;
           background-color: #38939b; }
-        /* line 147, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-default:active {
           *background-color: #38939b;
           background-color: rgba(56, 147, 155, 0.9); }
-      /* line 305, ../../scss/elements/buttons.scss */
       ul.button-test li a.green-default {
         float: left;
         padding: 1.1em 5.5em 1em 1.2em;
@@ -1167,7 +1019,6 @@ ul.button-test {
         *background-color: #8dc63f;
         background-color: rgba(141, 198, 63, 0.95);
         font-size: 1em; }
-        /* line 68, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-default:before {
           z-index: 2;
           content: '\25b6';
@@ -1184,7 +1035,6 @@ ul.button-test {
           line-height: 2.4;
           font-size: 140%;
           width: 60px; }
-        /* line 89, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-default:after {
           z-index: 1;
           width: 30%;
@@ -1201,24 +1051,18 @@ ul.button-test {
           -ms-transform: rotate(-20deg);
           transform-origin: 0 0;
           transform: rotate(-20deg); }
-        /* line 108, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-default:hover {
           padding: 1.1em 5.5em 1em 1.2em; }
-        /* line 112, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-default:hover:after {
           width: 35%; }
-        /* line 116, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-default:hover:before {
           right: 10%; }
-        /* line 158, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-default:hover {
           *background-color: #8dc63f;
           background-color: #8dc63f; }
-        /* line 163, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-default:active {
           *background-color: #8dc63f;
           background-color: rgba(141, 198, 63, 0.9); }
-      /* line 314, ../../scss/elements/buttons.scss */
       ul.button-test li a.blue-small {
         float: left;
         clear: left;
@@ -1226,63 +1070,52 @@ ul.button-test {
         background-color: rgba(3, 108, 182, 0.95);
         font-size: .85em;
         padding: .75em 1em; }
-        /* line 126, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-small:hover {
           *background-color: #036cb6;
           background-color: #036cb6; }
-        /* line 131, ../../scss/elements/buttons.scss */
         ul.button-test li a.blue-small:active {
           *background-color: #036cb6;
-          background-color: rgba(3, 108, 182, 0.9); }
-      /* line 320, ../../scss/elements/buttons.scss */
+          background-color: rgba(3, 108, 182, 0.95); }
       ul.button-test li a.teal-small {
         float: left;
         *background-color: #38939b;
         background-color: rgba(56, 147, 155, 0.95);
         font-size: .85em;
         padding: .75em 1em; }
-        /* line 142, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-small:hover {
           *background-color: #38939b;
           background-color: #38939b; }
-        /* line 147, ../../scss/elements/buttons.scss */
         ul.button-test li a.teal-small:active {
           *background-color: #38939b;
           background-color: rgba(56, 147, 155, 0.9); }
-      /* line 325, ../../scss/elements/buttons.scss */
       ul.button-test li a.green-small {
         float: left;
         *background-color: #8dc63f;
         background-color: rgba(141, 198, 63, 0.95);
         font-size: .85em;
         padding: .75em 1em; }
-        /* line 158, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-small:hover {
           *background-color: #8dc63f;
           background-color: #8dc63f; }
-        /* line 163, ../../scss/elements/buttons.scss */
         ul.button-test li a.green-small:active {
           *background-color: #8dc63f;
           background-color: rgba(141, 198, 63, 0.9); }
 
-/* line 11, ../../scss/elements/header.scss */
 .wrapper {
   overflow: hidden; }
 
-/* line 15, ../../scss/elements/header.scss */
-.wrapper > header {
-  background-image: url("../images/uber-texture2.png"), -webkit-linear-gradient(#faffff 0%, #fdffff 100%);
-  background-image: url("../images/uber-texture2.png"), -moz-linear-gradient(#faffff 0%, #ffffff 100%);
-  border-top: 5px solid rgba(3, 108, 182, 0.9);
-  padding: .5em 0 .75em;
-  margin-bottom: 10%;
-  box-shadow: 0 3px 6px rgba(85, 90, 90, 0.1); }
+.region-header {
+  margin: 0;
+  padding: 0 .35em;
+  width: 100%;
+  padding-bottom: 10px;
+  z-index: 590;
+  background: #fff;
+  box-shadow: 0 0px 2px rgba(75, 70, 70, 0.4); }
 
-/* line 26, ../../scss/elements/header.scss */
 #skip-link {
   position: relative;
   text-align: center; }
-  /* line 30, ../../scss/elements/header.scss */
   #skip-link a {
     background: none;
     background-color: none;
@@ -1298,8 +1131,7 @@ ul.button-test {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
-    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-    font-weight: normal;
+    font-weight: 700;
     position: relative;
     padding: 1.1em 5.5em 1em 1.2em;
     overflow: hidden;
@@ -1307,10 +1139,8 @@ ul.button-test {
     background-color: rgba(141, 198, 63, 0.95);
     font-size: 1.1em;
     margin: 10px auto; }
-    /* line 23, ../../scss/elements/buttons.scss */
     #skip-link a:hover {
       padding: .75em 1em; }
-    /* line 35, ../../scss/elements/buttons.scss */
     #skip-link a:after {
       content: '';
       position: absolute;
@@ -1318,7 +1148,6 @@ ul.button-test {
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s; }
-    /* line 68, ../../scss/elements/buttons.scss */
     #skip-link a:before {
       z-index: 2;
       content: '\25b6';
@@ -1335,7 +1164,6 @@ ul.button-test {
       line-height: 2.4;
       font-size: 140%;
       width: 60px; }
-    /* line 89, ../../scss/elements/buttons.scss */
     #skip-link a:after {
       z-index: 1;
       width: 30%;
@@ -1352,36 +1180,37 @@ ul.button-test {
       -ms-transform: rotate(-20deg);
       transform-origin: 0 0;
       transform: rotate(-20deg); }
-    /* line 108, ../../scss/elements/buttons.scss */
     #skip-link a:hover {
       padding: 1.1em 5.5em 1em 1.2em; }
-    /* line 112, ../../scss/elements/buttons.scss */
     #skip-link a:hover:after {
       width: 35%; }
-    /* line 116, ../../scss/elements/buttons.scss */
     #skip-link a:hover:before {
       right: 10%; }
-    /* line 158, ../../scss/elements/buttons.scss */
     #skip-link a:hover {
       *background-color: #8dc63f;
       background-color: #8dc63f; }
-    /* line 163, ../../scss/elements/buttons.scss */
     #skip-link a:active {
       *background-color: #8dc63f;
       background-color: rgba(141, 198, 63, 0.9); }
-    /* line 37, ../../scss/elements/header.scss */
     #skip-link a:focus {
       position: relative !important; }
 
-/* line 42, ../../scss/elements/header.scss */
 .lockup {
-  display: block; }
+  display: block;
+  padding: .5em 0 .75em;
+  box-shadow: 0 0px 2px rgba(75, 70, 70, 0.4); }
 
-/* line 45, ../../scss/elements/header.scss */
 .site-seal {
-  display: none; }
+  display: block;
+  float: left;
+  margin: 0 1em;
+  margin-top: 10px;
+  height: 49px;
+  width: 49px; }
+  .site-seal img {
+    max-width: 100%;
+    height: auto; }
 
-/* line 49, ../../scss/elements/header.scss */
 .ie-logo {
   height: 80px;
   width: 80px;
@@ -1391,152 +1220,110 @@ ul.button-test {
   top: -5px;
   position: relative; }
 
-/* line 58, ../../scss/elements/header.scss */
 .btn .icon-nav {
   font-size: 1.5em;
   float: right; }
 
-/* line 63, ../../scss/elements/header.scss */
 .county-name, .dept-name {
-  display: inline-block;
+  display: block;
+  min-width: 50%;
   padding: 0 .5em;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  font-family: "Trade Gothic W01", "Helvetica Neue", Arial, Helvetica;
+  position: relative;
+  top: 15px; }
 
-/* line 69, ../../scss/elements/header.scss */
 .county-name {
   color: #036cb6;
   font-size: 1.25em;
-  font-family: 'Trade Gothic W01 Bold'; }
+  font-weight: 600; }
 
-/* line 75, ../../scss/elements/header.scss */
-.county-name span {
-  font-size: .75em;
-  font-family: 'Trade Gothic W01 Roman';
-  padding: 0 0.15em 0 0.1em; }
-
-/* line 81, ../../scss/elements/header.scss */
 .dept-name {
   color: #38939b;
-  font-family: 'Trade Gothic W01 Light';
-  font-size: 1.25em;
+  font-size: 1em;
   margin-bottom: 0;
   line-height: 1em;
-  font-weight: 100; }
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased; }
 
-/* line 90, ../../scss/elements/header.scss */
 .dept-link {
   display: none; }
 
 @media all and (min-width: 768px) {
-  /* line 96, ../../scss/elements/header.scss */
+  .region-header {
+    box-shadow: none;
+    padding: 0; }
+
   .wrapper {
     overflow: hidden;
     width: 100%;
     margin: auto; }
-    /* line 101, ../../scss/elements/header.scss */
     .wrapper > header {
-      padding: 1em 0 0;
-      background-image: url("../images/uber-texture2.png"), -webkit-linear-gradient(#faffff 0%, #fdffff 100%);
-      background-image: url("../images/uber-texture2.png"), -moz-linear-gradient(#faffff 0%, #ffffff 100%);
-      border-top: 5px solid rgba(3, 108, 182, 0.9);
+      padding: 0;
+      margin-top: 7px;
       margin-bottom: 15px;
       box-shadow: 0 3px 6px rgba(85, 90, 90, 0.1); }
 
   /* Header Logo/Headings */
-  /* line 114, ../../scss/elements/header.scss */
   .lockup {
-    margin-bottom: 2%;
-    width: 65%;
-    padding-left: 5em;
+    box-shadow: none;
     float: none; }
 
-  /* line 121, ../../scss/elements/header.scss */
-  .site-seal {
-    display: block;
-    position: absolute;
-    top: 0.25em;
-    left: 1em;
-    height: 80px;
-    width: 80px; }
-    /* line 131, ../../scss/elements/header.scss */
-    .site-seal img {
-      max-width: 100%;
-      height: auto; }
-
-  /* line 137, ../../scss/elements/header.scss */
   .county-name, .dept-name {
     display: block;
-    text-transform: uppercase;
-    text-shadow: 0px 1px 0px #fff; }
+    text-transform: uppercase; }
 
-  /* line 143, ../../scss/elements/header.scss */
   .county-name {
     color: #036cb6;
-    font-size: 2em;
+    font-size: 1.7em;
     line-height: 1em;
-    font-family: 'Trade Gothic W01 Bold';
-    background-size: contain; }
-    /* line 150, ../../scss/elements/header.scss */
-    .county-name span {
-      font-size: .6em;
-      font-family: 'Trade Gothic W01 Roman';
-      padding: 0 0.2em 0 0.1em; }
+    background-size: contain;
+    position: relative;
+    top: 28px; }
 
-  /* line 157, ../../scss/elements/header.scss */
   .county-name:hover {
     color: #38939b; }
 
-  /* line 161, ../../scss/elements/header.scss */
   .dept-name {
-    font-size: 2em;
+    font-size: 1.65em;
     margin: 0;
-    line-height: 1.2em; }
+    line-height: 1.2em;
+    position: relative;
+    top: 27px; }
+
+  .site-seal {
+    height: 92px;
+    width: 92px; }
 
   /* View Departments Switch */
-  /* line 168, ../../scss/elements/header.scss */
   .dept-link {
-    background-color: rgba(3, 108, 182, 0.9);
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    color: white;
     display: inline-block;
-    font-size: 0.8em;
+    font-size: 1.5em;
+    font-weight: 500;
     margin-bottom: 5px;
     padding: 0.4em .9em .8em;
     position: absolute;
     right: 0;
-    top: -1.3em; }
+    top: 1px;
+    text-transform: uppercase; }
 
-  /* line 182, ../../scss/elements/header.scss */
-  .dept-link:hover {
-    color: rgba(255, 255, 255, 0.9); }
-
-  /* line 186, ../../scss/elements/header.scss */
   .btn-nav {
     display: none; } }
-/* line 195, ../../scss/elements/header.scss */
 .lte8 {
   /* Header Logo/Headings */
   /* View Departments Switch */ }
-  /* line 196, ../../scss/elements/header.scss */
   .lte8 .wrapper {
     overflow: hidden;
     width: 100%;
     margin: auto; }
-    /* line 201, ../../scss/elements/header.scss */
     .lte8 .wrapper > header {
       padding: 1em 0 0;
-      background-image: url("../images/uber-texture2.png"), -webkit-linear-gradient(#faffff 0%, #fdffff 100%);
-      background-image: url("../images/uber-texture2.png"), -moz-linear-gradient(#faffff 0%, #ffffff 100%);
-      border-top: 5px solid rgba(3, 108, 182, 0.9);
       margin-bottom: 3%;
       box-shadow: 0 3px 6px rgba(85, 90, 90, 0.1); }
-  /* line 214, ../../scss/elements/header.scss */
   .lte8 .lockup {
     margin-bottom: 2%;
     width: 65%;
     float: none; }
-  /* line 220, ../../scss/elements/header.scss */
   .lte8 .site-seal {
     display: block;
     float: left;
@@ -1547,42 +1334,35 @@ ul.button-test {
     position: relative;
     top: 0;
     left: 0; }
-    /* line 231, ../../scss/elements/header.scss */
     .lte8 .site-seal img {
       height: 80px;
       width: 80px; }
-  /* line 236, ../../scss/elements/header.scss */
   .lte8 .county-name, .lte8 .dept-name {
     display: block;
     text-transform: uppercase;
     text-shadow: 0px 1px 0px #fff; }
-  /* line 242, ../../scss/elements/header.scss */
   .lte8 .county-name {
     color: #036cb6;
     font-size: 2em;
     line-height: 1em;
-    font-family: 'Trade Gothic W01 Bold';
+    font-weight: 700;
     background-size: contain; }
-    /* line 249, ../../scss/elements/header.scss */
     .lte8 .county-name span {
       font-size: .6em;
-      font-family: 'Trade Gothic W01 Roman';
+      font-weight: 400;
       padding: 0 0.2em 0 0.1em; }
-  /* line 256, ../../scss/elements/header.scss */
   .lte8 .county-name:hover {
     color: #38939b; }
-  /* line 260, ../../scss/elements/header.scss */
   .lte8 .dept-name {
     font-size: 2em;
     margin: 0;
     line-height: 1.2em; }
-  /* line 267, ../../scss/elements/header.scss */
   .lte8 .dept-link {
     display: none; }
-  /* line 271, ../../scss/elements/header.scss */
   .lte8 .dept-link:hover {
     color: white;
     color: rgba(255, 255, 255, 0.9); }
-  /* line 276, ../../scss/elements/header.scss */
   .lte8 .btn-nav {
     display: none; }
+
+/*# sourceMappingURL=header.css.map */

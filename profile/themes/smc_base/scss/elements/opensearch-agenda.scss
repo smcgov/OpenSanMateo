@@ -1,4 +1,3 @@
-@import "vars.scss";
 @import "compass/css3/transition";
 @import "compass/css3/border-radius";
 @import "compass/css3/appearance";
@@ -15,13 +14,12 @@
     .event-page, .event-add-calendar {
       padding: 10px;
       margin: 0 10px 10px;
-      background-color: #136DB5;
+      background-color: $primaryBlue;
       text-align: center;
 
       a {
         color: white;
-        font-weight: bold;
-        font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+        font-weight: 700;
       }
     }
     .event-add-calendar {
@@ -30,8 +28,7 @@
   }
   .event-hide-more-info {
     background-color: #EEEEF7;
-    font-weight: bold;
-    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+    font-weight: 700;
     padding: 10px;
     text-align: center;
     position: absolute;
@@ -40,14 +37,12 @@
   }
 
   .views-field-search-api-multi-aggregation-9-1 {
-    /*font-weight: bold;
-    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica; */
     background-color: #F5F5F5;
     padding: 10px 0px;
 
     .time {
       margin-right: 5px;
-      color: #036cb6;
+      color: $primaryBlue;
       padding-bottom: inherit;
       line-height: inherit;
     }
@@ -95,11 +90,14 @@
     }
     .form-item {
       float: left;
-      background: #f0f5f9;
+      background: rgba($primaryTeal, .05);
       height: 37px;
       position: relative;
       margin: 0 0 10px 10px;
 
+      .form-item {
+        background: transparent;
+      }
       &:after {
         content: "";
         background-repeat: no-repeat;
@@ -110,7 +108,6 @@
         width: 16px;
         height: 20px;
         z-index: 0;
-        background-color: #f0f5f9;
         pointer-events: none;
         cursor: pointer;
       }
@@ -188,8 +185,7 @@
         text-transform: none;
         font-weight: 100;
         font-size: 1.5em;
-        font-family: 'Trade Gothic W01 Roman', 'Helvetica Neue', Arial, Helvetica;
-        color: #38939b;
+        color: $primaryTeal;
         line-height: 1.5em;
       }
     }
@@ -198,7 +194,7 @@
       float: right;
       width: 40px;
       height: 40px;
-      background: rgba(3, 108, 182, 0.95) no-repeat center;
+      background: $primaryBlue no-repeat center;
       margin: 0 1px;
       font-size: 0;
       @include border-radius(3px);
@@ -238,7 +234,7 @@
         }
 
         .calendar-day-head {
-          background: #f0f5f9;
+          background: rgba($primaryBlue, .1);
         }
 
         .day-number,
@@ -281,13 +277,15 @@
       padding-top: 0;
 
       label[for=edit-subject] {
-        display: block;
-        margin: 5px;
-        padding-top: 5px;
-        float: left;
+        display: inline-block;
+        padding: 0 5px;
+        font-weight: 100;
       }
       .form-type-select select {
-        width: 83%;
+        width: auto;
+        font-size: .875em;
+        -webkit-appearance: none;
+        appearance: none;
       }
     }
 
@@ -309,23 +307,21 @@
   .view-content > h3 {
     position: relative;
     margin-top: 24px;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1.5em;
-    font-family: 'Trade Gothic W01 Roman', 'Helvetica Neue', Arial, Helvetica;
-    color: #38939b;
+    color: $primaryTeal;
     text-transform: none;
 
     .day-of-week {
       display: inline-block;
       margin-right: 15px;
-      color: #38939b;
+      color: $primaryTeal;
       //transform: translateX(-125%);
       font-weight: bold;
     }
 
     .date {
-      display: inline-block;  
-      font-family: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica;
+      display: inline-block;
       font-weight: 100;
     }
   }
@@ -352,8 +348,8 @@
   .right-col {
     width: 58%;
     float: left;
-    border: 1px solid rgba(3, 108, 182, 0.1);
-    border-top: 1px solid rgba(3, 108, 182, 0.1);
+    border: 1px solid rgba($primaryBlue, 0.1);
+    border-top: 1px solid rgba($primaryBlue, 0.1);
     @include transition-property(all);
     @include transition-duration(0.5s);
 
@@ -383,15 +379,14 @@
       .event-page, .event-add-calendar {
         padding: 10px;
         margin: 0 10px 10px;
-        background-color: #136DB5;
+        background-color: $primaryBlue;
         text-align: center;
         width: 130px;
         float: right;
 
         a {
           color: white;
-          font-weight: bold;
-          font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
+          font-weight: 700;
         }
       }
     }
@@ -507,7 +502,6 @@
         float: left;
         margin-left: 10px;
         line-height: 1.5em;
-        font-family: $light;
         font-weight: 100;
       }
     }

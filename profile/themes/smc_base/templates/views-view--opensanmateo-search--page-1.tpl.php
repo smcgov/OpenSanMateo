@@ -39,6 +39,11 @@ $last_month = date_format($last_month, 'Y-m-d');
 $last_month_params = drupal_get_query_parameters();
 $last_month_params['start_date'] = array('date' => $last_month);
 unset($last_month_params['to_date']);
+// If on page 3 of February, clicking to go to March should not take you
+// to page 3 of March.
+if (isset($last_month_params['page'])) {
+  unset($last_month_params['page']);
+}
 $last_month_link = '/events/list?' . drupal_http_build_query($last_month_params);
 
 $next_month = new DateTime($start_day);
@@ -47,6 +52,11 @@ $next_month = date_format($next_month, 'Y-m-d');
 $next_month_params = drupal_get_query_parameters();
 $next_month_params['start_date'] = array('date' => $next_month);
 unset($next_month_params['to_date']);
+// If on page 3 of February, clicking to go to March should not take you
+// to page 3 of March.
+if (isset($next_month_params['page'])) {
+  unset($next_month_params['page']);
+}
 $next_month_link = '/events/list?' . drupal_http_build_query($next_month_params);
 
 ?>

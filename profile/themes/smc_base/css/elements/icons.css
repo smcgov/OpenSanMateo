@@ -14,6 +14,7 @@
 }
 
 */
+/* Colors */
 /* Fonts */
 /* Media Queries */
 @font-face {
@@ -23,7 +24,6 @@
   font-weight: normal;
   font-style: normal; }
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
-/* line 16, ../../scss/elements/icons.scss */
 [data-icon]:before {
   font-family: "SanMateoIcon";
   content: attr(data-icon);
@@ -39,7 +39,6 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-/* line 32, ../../scss/elements/icons.scss */
 .icon-mag-glass-02,
 .icon-menu,
 .icon-arrow-down,
@@ -62,55 +61,47 @@ you can use the generic selector below, but it's slower:
   text-transform: none;
   -webkit-font-smoothing: antialiased; }
 
-/* line 56, ../../scss/elements/icons.scss */
 .icon-mag-glass-02:before {
   content: "\e000"; }
 
-/* line 57, ../../scss/elements/icons.scss */
 .icon-menu:before, .touch-button, .menu-button {
   content: "\e001"; }
 
-/* line 58, ../../scss/elements/icons.scss */
 .icon-arrow-down:before {
   content: "\e002"; }
 
-/* line 59, ../../scss/elements/icons.scss */
 .icon-home:before {
   content: "\e003"; }
 
-/* line 60, ../../scss/elements/icons.scss */
 .icon-arrow-down-iso:before {
   content: "\e004"; }
 
-/* line 61, ../../scss/elements/icons.scss */
 .icon-close:before {
   content: "\e005"; }
 
-/* line 62, ../../scss/elements/icons.scss */
 .icon-subnav:before {
   content: "\e006"; }
 
-/* line 67, ../../scss/elements/icons.scss */
+.icon-eye:after {
+  content: "\e007";
+  padding-left: 0.5em;
+  font-family: SanMateoIcon; }
+
 .icon-filter:before {
   content: "\e008"; }
 
-/* line 68, ../../scss/elements/icons.scss */
 .icon-info:before {
   content: "\e009"; }
 
-/* line 69, ../../scss/elements/icons.scss */
 .icon-link:before {
   content: "\e00a"; }
 
-/* line 70, ../../scss/elements/icons.scss */
 .icon-phone:before {
   content: "\e00b"; }
 
-/* line 71, ../../scss/elements/icons.scss */
 .icon-location:before {
   content: "\e00c"; }
 
-/* line 73, ../../scss/elements/icons.scss */
 a.follow-link-feed,
 a.follow-link-facebook,
 a.follow-link-twitter,
@@ -126,50 +117,40 @@ a.follow-link-tumblr {
   background-repeat: no-repeat;
   background-position: center center; }
 
-/* line 89, ../../scss/elements/icons.scss */
 a.follow-link-feed {
   background-image: url("../images/share/rss_32.png"); }
 
-/* line 92, ../../scss/elements/icons.scss */
 a.follow-link-facebook {
   background-image: url("../images/share/facebook_32.png"); }
 
-/* line 95, ../../scss/elements/icons.scss */
 a.follow-link-twitter {
   background-image: url("../images/share/twitter_32.png"); }
 
-/* line 98, ../../scss/elements/icons.scss */
 a.follow-link-flickr {
   background-image: url("../images/share/flickr_32.png"); }
 
-/* line 101, ../../scss/elements/icons.scss */
 a.follow-link-vimeo {
   background-image: url("../images/share/vimeo_32.png"); }
 
-/* line 104, ../../scss/elements/icons.scss */
 a.follow-link-youtube {
   background-image: url("../images/share/youtube_32.png"); }
 
-/* line 107, ../../scss/elements/icons.scss */
 a.follow-link-this-site {
   background-image: url("../images/share/rss_32.png"); }
 
-/* line 110, ../../scss/elements/icons.scss */
 a.follow-link-pinterest {
   background-image: url("../images/share/pinterest_32.png"); }
 
-/* line 113, ../../scss/elements/icons.scss */
 a.follow-link-googleplus {
   background-image: url("../images/share/googleplus_32.png"); }
 
-/* line 116, ../../scss/elements/icons.scss */
 a.follow-link-linkedin {
   background-image: url("../images/share/linkedin_32.png"); }
 
-/* line 119, ../../scss/elements/icons.scss */
 a.follow-link-instagram {
   background-image: url("../images/share/instagram_32.png"); }
 
-/* line 122, ../../scss/elements/icons.scss */
 a.follow-link-tumblr {
   background-image: url("../images/share/tumblr_32.png"); }
+
+/*# sourceMappingURL=icons.css.map */

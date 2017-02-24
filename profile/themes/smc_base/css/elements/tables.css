@@ -14,38 +14,32 @@
 }
 
 */
+/* Colors */
 /* Fonts */
 /* Media Queries */
-/* line 4, ../../scss/elements/tables.scss */
 table {
   border: 1px solid rgba(3, 108, 182, 0.1);
   font-size: .85em;
   border-radius: 3px;
   margin-bottom: 20px; }
-  /* line 10, ../../scss/elements/tables.scss */
   table th {
     background-color: #036cb6;
     color: white !important;
-    font-family: "Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica;
-    font-weight: normal;
+    font-weight: 700;
     text-transform: uppercase;
     padding: .75em .75em 1em;
     border-bottom: 0; }
-    /* line 19, ../../scss/elements/tables.scss */
     table th a {
       color: white !important; }
-      /* line 22, ../../scss/elements/tables.scss */
       table th a:hover {
         color: white; }
-  /* line 27, ../../scss/elements/tables.scss */
   table th:first-child {
     border-top-left-radius: 3px; }
-  /* line 30, ../../scss/elements/tables.scss */
   table th:last-child {
     border-top-right-radius: 3px; }
-  /* line 33, ../../scss/elements/tables.scss */
   table td {
     padding: .75em; }
-  /* line 36, ../../scss/elements/tables.scss */
   table tr:nth-child(2n+2) {
     background-color: rgba(3, 108, 182, 0.05); }
+
+/*# sourceMappingURL=tables.css.map */

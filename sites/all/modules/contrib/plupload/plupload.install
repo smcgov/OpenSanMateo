@@ -102,5 +102,21 @@ function _plupload_requirements_version() {
     return $matches[1];
   }
 
+  // After 1.5.8 Plupload stopped adding version string to .js file. Let's check
+  // first line of changelog.txt.
+  $library_path = _plupload_library_path();
+  $clpath = $library_path . '/changelog.txt';
+
+  $configcontents = @file_get_contents($clpath);
+  if (!$configcontents) {
+    return NULL;
+  }
+
+  $lines = explode("\n", $configcontents);
+
+  if (preg_match('#^Version (\d+[\.\d+]*)#', $lines[0], $matches)) {
+    return $matches[1];
+  }
+
   return NULL;
 }

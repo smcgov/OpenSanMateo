@@ -44,11 +44,12 @@ function opensanmateo_layout_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title';
+  $display->uuid = 'e9a737a8-1723-4a49-9ecc-c8f7fbb72bbe';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-1';
+    $pane->pid = 'new-9fb29f1c-cf33-4ba1-bd8c-4d47dc17a8b6';
     $pane->panel = 'middle';
     $pane->type = 'entity_view';
     $pane->subtype = 'node';
@@ -68,10 +69,11 @@ function opensanmateo_layout_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['middle'][0] = 'new-1';
+    $pane->uuid = '9fb29f1c-cf33-4ba1-bd8c-4d47dc17a8b6';
+    $display->content['new-9fb29f1c-cf33-4ba1-bd8c-4d47dc17a8b6'] = $pane;
+    $display->panels['middle'][0] = 'new-9fb29f1c-cf33-4ba1-bd8c-4d47dc17a8b6';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-1';
+  $display->title_pane = 'new-9fb29f1c-cf33-4ba1-bd8c-4d47dc17a8b6';
   $handler->conf['display'] = $display;
   $export['node_view_panel_context'] = $handler;
 
@@ -124,11 +126,12 @@ function opensanmateo_layout_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title';
+  $display->uuid = '76394c3d-d1ed-470a-8459-09a2e3cad6fc';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-2';
+    $pane->pid = 'new-4be24654-c7fa-4b64-9d3a-089413809e1f';
     $pane->panel = 'middle';
     $pane->type = 'entity_view';
     $pane->subtype = 'node';
@@ -148,10 +151,11 @@ function opensanmateo_layout_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['middle'][0] = 'new-2';
+    $pane->uuid = '4be24654-c7fa-4b64-9d3a-089413809e1f';
+    $display->content['new-4be24654-c7fa-4b64-9d3a-089413809e1f'] = $pane;
+    $display->panels['middle'][0] = 'new-4be24654-c7fa-4b64-9d3a-089413809e1f';
     $pane = new stdClass();
-    $pane->pid = 'new-3';
+    $pane->pid = 'new-8e013b23-22c0-43e0-bc71-72c48d23d523';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'opensanmateo_search-panel_pane_3';
@@ -188,10 +192,11 @@ function opensanmateo_layout_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['middle'][1] = 'new-3';
+    $pane->uuid = '8e013b23-22c0-43e0-bc71-72c48d23d523';
+    $display->content['new-8e013b23-22c0-43e0-bc71-72c48d23d523'] = $pane;
+    $display->panels['middle'][1] = 'new-8e013b23-22c0-43e0-bc71-72c48d23d523';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-2';
+  $display->title_pane = 'new-4be24654-c7fa-4b64-9d3a-089413809e1f';
   $handler->conf['display'] = $display;
   $export['node_view_panel_context_2'] = $handler;
 
@@ -238,7 +243,10 @@ function opensanmateo_layout_default_page_manager_pages() {
   $page->admin_title = '403 Page';
   $page->admin_description = '';
   $page->path = 'access-denied';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array();
   $page->conf = array(
@@ -279,10 +287,11 @@ function opensanmateo_layout_default_page_manager_pages() {
   );
   $display->cache = array();
   $display->title = '403 Access Denied';
+  $display->uuid = 'bbd0917b-32a2-423e-8bfa-b3f61ea54f3b';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-1';
+    $pane->pid = 'new-99944fff-3852-4e66-a277-c1bd7c09e866';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -306,10 +315,11 @@ function opensanmateo_layout_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['middle'][0] = 'new-1';
+    $pane->uuid = '99944fff-3852-4e66-a277-c1bd7c09e866';
+    $display->content['new-99944fff-3852-4e66-a277-c1bd7c09e866'] = $pane;
+    $display->panels['middle'][0] = 'new-99944fff-3852-4e66-a277-c1bd7c09e866';
     $pane = new stdClass();
-    $pane->pid = 'new-2';
+    $pane->pid = 'new-8501890d-f2a0-4010-bcf1-0aa27ca93817';
     $pane->panel = 'middle';
     $pane->type = 'block';
     $pane->subtype = 'user-login';
@@ -327,10 +337,11 @@ function opensanmateo_layout_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['middle'][1] = 'new-2';
+    $pane->uuid = '8501890d-f2a0-4010-bcf1-0aa27ca93817';
+    $display->content['new-8501890d-f2a0-4010-bcf1-0aa27ca93817'] = $pane;
+    $display->panels['middle'][1] = 'new-8501890d-f2a0-4010-bcf1-0aa27ca93817';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-1';
+  $display->title_pane = 'new-99944fff-3852-4e66-a277-c1bd7c09e866';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['403_page'] = $page;
@@ -343,7 +354,10 @@ function opensanmateo_layout_default_page_manager_pages() {
   $page->admin_title = '404 Page';
   $page->admin_description = '';
   $page->path = 'not-found';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array();
   $page->conf = array(
@@ -384,10 +398,11 @@ function opensanmateo_layout_default_page_manager_pages() {
   );
   $display->cache = array();
   $display->title = '';
+  $display->uuid = '539d9099-0217-49df-80dc-465b9b03149b';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-3';
+    $pane->pid = 'new-c6c1ab4b-495b-4351-912a-b20c7eb3676d';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -411,10 +426,11 @@ function opensanmateo_layout_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['middle'][0] = 'new-3';
+    $pane->uuid = 'c6c1ab4b-495b-4351-912a-b20c7eb3676d';
+    $display->content['new-c6c1ab4b-495b-4351-912a-b20c7eb3676d'] = $pane;
+    $display->panels['middle'][0] = 'new-c6c1ab4b-495b-4351-912a-b20c7eb3676d';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-3';
+  $display->title_pane = 'new-c6c1ab4b-495b-4351-912a-b20c7eb3676d';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['404_page'] = $page;

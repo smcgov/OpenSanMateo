@@ -28,3 +28,10 @@ function opensanmateo_wysiwyg_update_7001() {
 
   return array();
 }
+
+/**
+ * SMCHC-195 configurations for IMCE profiles.
+ */
+function opensanmateo_wysiwyg_update_7002() {
+  features_revert_module('opensanmateo_wysiwyg');
+}

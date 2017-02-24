@@ -17,13 +17,8 @@ Drupal.smc = Drupal.smc || {};
         // reapply padding to body because toolbar module doesn't do this... LOL
         // the padding on the #section-header doesn't need adjusted
         $('body').css('padding-top', toolbarHeight);
-        //$('.show').css('padding-top', toolbarHeight + 80);
-        
+
         $('body.toolbar .flexnav.show').css('padding-top', toolbarHeight + 120);
-        $('body.toolbar #block-opensanmateo-search-header-search').css('top', toolbarHeight + 68);
-        $('body.toolbar .menu-button').css('top', toolbarHeight + 10);
-        //$('body.toolbar .menu-button').css('top', toolbarHeight + alertHeight + 10);
-        //$('body:not(.toolbar) .menu-button').css('top', alertHeight + 10);
       }
     });
   }
@@ -127,4 +122,37 @@ $('.show_hide').showHide({
       });
     }
   };
+  Drupal.behaviors.smcStickyHeader = {
+    attach: function (context) {
+
+      var stuck = false;
+      var move = function () {
+        var st = $(window).scrollTop();
+        var ot = $(".lockup").offset().top + 84;
+        var s = $(".region-header");
+        if (stuck == false && st > ot && ($(window).width() <= 767)) {
+          stuck = true;
+          s.css({
+            position: "fixed",
+            top: "0px"
+          });
+          $(".lockup").css({
+            "margin-bottom" : $(".region-header").height()
+          })
+        }
+        if (stuck == true && st <= ot) {
+          stuck = false;
+          s.css({
+            position: "relative",
+            top: ""
+          });
+          $(".lockup").css({
+            "margin-bottom" : 0
+          })
+        }
+      };
+      $(window).scroll(move);
+      move();
+    }
+  }
 })(jQuery);

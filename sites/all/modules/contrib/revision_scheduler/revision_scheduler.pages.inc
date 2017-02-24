@@ -3,17 +3,37 @@
 function revision_scheduler_list_page($entity_type, $entity) {
   list($entity_id) = entity_extract_ids($entity_type, $entity);
 
-  $operations = db_query("SELECT * FROM {revision_scheduler} WHERE entity_type = :entity_type AND entity_id = :entity_id ORDER BY time_executed ASC, time_scheduled DESC", array(
-    ':entity_type' => $entity_type,
-    ':entity_id' => $entity_id,
-  ))->fetchAllAssoc('id');
-
   $header = array(
     t('Revision'),
     t('Action'),
-    t('Date'),
+    array(
+      'data' => t('Scheduled Date'),
+      'sort' => 'desc',
+      'field' => 'time_scheduled',
+    ),
     t('Operations'),
   );
+
+  $query = db_select('revision_scheduler', 'r')
+    ->extend('TableSort')
+    ->extend('PagerDefault')
+    ->limit(25)
+    ->fields('r')
+    ->orderByHeader($header)
+    ->condition('entity_type', $entity_type)
+    ->condition('entity_id', $entity_id);
+
+  // For operations that have the same scheduled time, sort by executed time,
+  // and then queued time, and then ID since that is the order of execution.
+  // @todo This should probably be removed at some point.
+  $order = $query->getOrderBy();
+  if (!empty($order['time_scheduled'])) {
+    $query->orderBy('time_executed', $order['time_scheduled']);
+    $query->orderBy('time_queued', $order['time_scheduled']);
+    $query->orderBy('id', $order['time_scheduled']);
+  }
+
+  $operations = $query->execute()->fetchAll();
 
   $revision_ids = array();
   foreach ($operations as $operation) {
@@ -23,24 +43,22 @@ function revision_scheduler_list_page($entity_type, $entity) {
 
   $rows = array();
   foreach ($operations as $id => $operation) {
-    $revision = $revisions[$operation->revision_id];
+    $revision = !empty($revisions[$operation->revision_id]) ? $revisions[$operation->revision_id] : FALSE;
     $operation_info = revision_scheduler_entity_revision_operation_get_info($entity_type, $operation->operation);
 
     $row = array(
-      t('Revision @id: @label', array('@id' => $operation->revision_id, '@label' => entity_label($entity_type, $revision))),
+      t('Revision @id: @label', array('@id' => $operation->revision_id, '@label' => $revision ? entity_label($entity_type, $revision) : t('(Deleted)'))),
       check_plain($operation_info['label']),
+      format_date($operation->time_scheduled),
     );
 
     if (!empty($operation->time_executed)) {
-      $row[] = format_date($operation->time_executed);
-      $row[] = t('Completed');
+      $row[] = t('Completed on @date', array('@date' => format_date($operation->time_executed)));
     }
     elseif (!empty($operation->time_queued)) {
-      $row[] = format_date($operation->time_scheduled);
-      $row[] = t('Queued');
+      $row[] = t('Queued on @date', array('@date' => format_date($operation->time_queued)));
     }
     else {
-      $row[] = format_date($operation->time_scheduled);
       $operations = array();
       $value = implode('-', array('run', $operation->id, $operation->operation, $operation->time_scheduled));
       $operations['run'] = array(
@@ -50,12 +68,11 @@ function revision_scheduler_list_page($entity_type, $entity) {
           'token' => drupal_get_token($value),
         ) + drupal_get_destination(),
       );
-      // @todo Because of a bug in the date element, disable the edit operation until it can be fixed.
-      //$operations['edit'] = array(
-      //  'title' => t('Edit'),
-      //  'href' => 'revision-scheduler/' . $operation->id . '/edit',
-      //  'query' => drupal_get_destination(),
-      //);
+      $operations['edit'] = array(
+        'title' => t('Edit'),
+        'href' => 'revision-scheduler/' . $operation->id . '/edit',
+        'query' => drupal_get_destination(),
+      );
       $operations['delete'] = array(
         'title' => t('Cancel'),
         'href' => 'revision-scheduler/' . $operation->id . '/delete',
@@ -78,6 +95,12 @@ function revision_scheduler_list_page($entity_type, $entity) {
     '#header' => $header,
     '#rows' => $rows,
     '#empty' => t('No scheduled revisions available.'),
+  );
+
+  // Add the pager
+  $build['pager'] = array(
+    '#theme' => 'pager',
+    '#weight' => 5,
   );
 
   return $build;
@@ -104,6 +127,7 @@ function revision_scheduler_add_form($form, &$form_state, $entity_type, $entity)
   $operation->time_scheduled = 0;
   $operation->time_queued = 0;
   $operation->time_executed = 0;
+  $operation->uid = $GLOBALS['user']->uid;
   $form = revision_scheduler_edit_form($form, $form_state, $operation);
 
   $form['revision_id'] = array(
@@ -129,6 +153,7 @@ function revision_scheduler_edit_form($form, &$form_state, $operation) {
   $form['revision_id'] = array('#type' => 'value', '#value' => $operation->revision_id);
   $form['time_queued'] = array('#type' => 'value', '#value' => $operation->time_queued);
   $form['time_executed'] = array('#type' => 'value', '#value' => $operation->time_executed);
+  $form['uid'] = array('#type' => 'value', '#value' => $operation->uid);
 
   $entity = revision_scheduler_entity_revision_load($operation->entity_type, $operation->entity_id, $operation->revision_id);
 
@@ -140,20 +165,19 @@ function revision_scheduler_edit_form($form, &$form_state, $operation) {
     '#required' => TRUE,
   );
 
+  $date_format = 'Y-m-d H:i';
   $form['datetime'] = array(
     '#type' => 'textfield',
     '#title' => t('Scheduled date'),
-    '#default_value' => !empty($operation->time_scheduled) ? format_date($operation->time_scheduled, 'custom', 'm/d/Y - H:i') : '',
+    '#default_value' => !empty($operation->time_scheduled) ? format_date($operation->time_scheduled, 'custom', $date_format) : '',
     '#required' => TRUE,
-    //'#description' => t('The time will be submitted using the @timezone time zone.', array('@timezone' => drupal_get_user_timezone())),
+    '#description' => t('Format: %time. The date format is YYYY-MM-DD and the timezone is %timezone.', array('%time' => format_date(REQUEST_TIME, 'custom', $date_format), '%timezone' => drupal_get_user_timezone())),
   );
 
   if (module_exists('date_popup')) {
     $form['datetime']['#type'] = 'date_popup';
-    $form['datetime']['#date_format'] = 'm/d/Y - H:i';
+    $form['datetime']['#date_format'] = $date_format;
     $form['datetime']['#date_year_range'] = '0:+5';
-    $form['datetime']['#date_increment'] = 15;
-    unset($form['datetime']['#description']);
   }
 
   $form['actions'] = array('#type' => 'actions');
@@ -169,9 +193,17 @@ function revision_scheduler_edit_form($form, &$form_state, $operation) {
   $form['actions']['cancel'] = array(
     '#type' => 'link',
     '#title' => t('Cancel'),
-    '#href' => isset($_GET['destination']) ? $_GET['destination'] : '<front>',
+    '#href' => '<front>',
     '#weight' => 10,
   );
+
+  if (isset($_GET['destination'])) {
+    $url = drupal_parse_url(urldecode($_GET['destination']));
+    $form['actions']['cancel']['#href'] = $url['path'];
+    if (!empty($url['query'])) {
+      $form['actions']['cancel']['#options']['query'] = $url['query'];
+    }
+  }
 
   return $form;
 }
@@ -182,8 +214,8 @@ function revision_scheduler_edit_form_validate($form, &$form_state) {
     if ($date === FALSE) {
       form_set_error('datetime', t('Invalid date.'));
     }
-    elseif ($date < time()) {
-      //form_set_error('datetime', t('You must set a scheduled date in the future.'));
+    elseif ($date < REQUEST_TIME) {
+      form_set_error('datetime', t('You cannot set a scheduled date in the past.'));
     }
     $form_state['values']['time_scheduled'] = $date;
   }

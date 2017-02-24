@@ -1,6 +1,7 @@
 The following patches have been applied to this project:
+- SMCHC-193-robots-custom.patch
+- SMCHC-193-htaccess-custom.patch
 - http://drupal.org/files/issues/object_conversion_menu_router_build-972536-1.patch
-- http://drupal.org/files/1355984-timeout_on_install_with_drush_si-make.patch
 - http://drupal.org/files/1369024-theme-inc-add-messages-id-make-D7.patch
 - http://drupal.org/files/1369584-form-error-link-from-message-to-element-make-D7.patch
 - http://drupal.org/files/1356276-make-D7-17.patch

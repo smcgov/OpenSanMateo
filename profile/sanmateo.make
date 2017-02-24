@@ -1,25 +1,28 @@
 api = 2
 core = 7.x
 projects[drupal][type] = core
-projects[drupal][version] = 7.37
+projects[drupal][version] = 7.53
+projects[drupal][patch][] = ./patches/SMCHC-193-robots-custom.patch
+projects[drupal][patch][] = ./patches/SMCHC-193-htaccess-custom.patch
 projects[drupal][patch][] = http://drupal.org/files/issues/object_conversion_menu_router_build-972536-1.patch
 ;projects[drupal][patch][] = http://drupal.org/files/issues/992540-3-reset_flood_limit_on_password_reset-drush.patch
-projects[drupal][patch][] = http://drupal.org/files/1355984-timeout_on_install_with_drush_si-make.patch
 projects[drupal][patch][] = http://drupal.org/files/1369024-theme-inc-add-messages-id-make-D7.patch
 projects[drupal][patch][] = http://drupal.org/files/1369584-form-error-link-from-message-to-element-make-D7.patch
 projects[drupal][patch][] = http://drupal.org/files/1356276-make-D7-17.patch
 projects[drupal][patch][] = http://drupal.org/files/issues/autocomplete_popup_position-1218684-11.patch
 
+
 projects[openpublic][type] = profile
-projects[openpublic][download][type] = git
-projects[openpublic][download][url] = http://git.drupal.org/project/openpublic.git
-projects[openpublic][download][revision] = 7.x-1.5
-projects[openpublic][patch][] = patches/openpublic-update-views-311.patch
+projects[openpublic][version] = 1.10
+projects[openpublic][patch][] = patches/openpublic-updates.patch
 
 projects[redirect][type] = module
 projects[redirect][subdir] = contrib
-projects[redirect][version] = 1.0-beta4
-projects[redirect][patch][] = http://drupal.org/files/redirect_entity_type_disable-1263884-11.patch
+projects[redirect][version] = 1.0-rc3
+
+projects[admin_views][type] = module
+projects[admin_views][subdir] = contrib
+projects[admin_views][version] = 1.6
 
 projects[backup_migrate][type] = module
 projects[backup_migrate][subdir] = contrib
@@ -29,7 +32,13 @@ projects[backup_migrate][download][revision] = 342bce1
 
 projects[devel][type] = module
 projects[devel][subdir] = contrib
-projects[devel][version] = 1.2
+projects[devel][version] = 1.5
+
+projects[elysia_cron][type] = module
+projects[elysia_cron][subdir] = contrib
+projects[elysia_cron][download][type] = git
+projects[elysia_cron][download][url] = http://git.drupal.org/project/elysia_cron.git
+projects[elysia_cron][download][revision] = fbcb7186
 
 projects[entity_boxes][type] = module
 projects[entity_boxes][subdir] = contrib
@@ -49,17 +58,17 @@ projects[views_bulk_operations][version] = 3.3
 
 projects[filefield_sources][type] = module
 projects[filefield_sources][subdir] = contrib
-projects[filefield_sources][version] = 1.9
+projects[filefield_sources][version] = 1.10
 
 projects[libraries][type] = module
 projects[libraries][subdir] = contrib
-projects[libraries][version] = 2.1
+projects[libraries][version] = 2.3
 projects[libraries][patch][] = http://drupal.org/files/libraries-profile_inheritance-1783598-4.patch
 
 projects[addressfield][type] = module
 projects[addressfield][subdir] = contrib
-projects[addressfield][version] = 1.0-beta2
-projects[addressfield][patch][] = http://drupal.org/files/1263316%281%29.patch
+projects[addressfield][version] = 1.2
+projects[addressfield][patch][] = https://www.drupal.org/files/issues/d7_addressfield_nonempty.patch
 
 projects[workbench][type] = module
 projects[workbench][subdir] = contrib
@@ -78,16 +87,12 @@ projects[workbench_access][version] = 1.2
 
 projects[revision_scheduler][type] = module
 projects[revision_scheduler][subdir] = contrib
-projects[revision_scheduler][version] = 1.x-dev
-projects[revision_scheduler][download][type] = git
-projects[revision_scheduler][download][url] = http://git.drupal.org/project/revision_scheduler.git
-projects[revision_scheduler][download][revision] = ab04410b66e0dbdc95f8a9025431b523bf7b4480
-projects[revision_scheduler][patch][] = http://drupal.org/files/revision_scheduler-in-node-edit-form-1342824-22.patch
+projects[revision_scheduler][version] = 1.0-rc1
 projects[revision_scheduler][patch][] = http://drupal.org/files/revision_scheduler-wbm-unpublish-1364718-01.patch
 
 projects[video_embed_field][type] = module
 projects[video_embed_field][subdir] = contrib
-projects[video_embed_field][version] = 2.0-beta5
+projects[video_embed_field][version] = 2.0-beta11
 
 projects[better_exposed_filters][type] = module
 projects[better_exposed_filters][subdir] = contrib
@@ -140,6 +145,10 @@ projects[imce_mkdir][type] = module
 projects[imce_mkdir][subdir] = contrib
 projects[imce_mkdir][version] = 1.0
 
+projects[themekey][type] = module
+projects[themekey][subdir] = contrib
+projects[themekey][version] = 3.4
+
 projects[password_policy2][type] = module
 projects[password_policy2][subdir] = contrib
 projects[password_policy2][download][type] = git
@@ -152,6 +161,10 @@ projects[lock_session][download][type] = git
 projects[lock_session][download][url] = http://git.drupal.org/project/lock_session.git
 projects[lock_session][download][revision] = cc94f8c634b1d6f9a3f551c8e8b082f549b56370
 
+projects[seckit][type] = module
+projects[seckit][subdir] = contrib
+projects[seckit][version] = 1.9
+
 libraries[flexslider][download][type] = git
 libraries[flexslider][download][url] = https://github.com/woothemes/FlexSlider.git
 libraries[flexslider][download][revision] = ce5441b214a46322424a32c92d77baaadeed9688
@@ -161,7 +174,7 @@ libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEdi
 
 projects[menu_block][type] = module
 projects[menu_block][subdir] = contrib
-projects[menu_block][version] = 2.3
+projects[menu_block][version] = 2.7
 
 projects[special_menu_items][type] = module
 projects[special_menu_items][download][type] = git
@@ -188,11 +201,11 @@ projects[site_map][patch][] = http://drupal.org/files/site_map-alter_hooks-15889
 
 projects[acquia_connector][type] = module
 projects[acquia_connector][subdir] = contrib
-projects[acquia_connector][version] = 2.15
+projects[acquia_connector][version] = 2.17
 
 projects[acquia_search_multi_subs][type] = module
 projects[acquia_search_multi_subs][subdir] = contrib
-projects[acquia_search_multi_subs][version] = 1.4
+projects[acquia_search_multi_subs][version] = 1.8
 
 projects[memcache][type] = module
 projects[memcache][subdir] = contrib
@@ -204,14 +217,11 @@ projects[purge][version] = 1.6
 
 projects[acquia_purge][type] = module
 projects[acquia_purge][subdir] = contrib
-projects[acquia_purge][version] = 1.0-beta2
+projects[acquia_purge][version] = 1.3
 
 projects[expire][type] = module
 projects[expire][subdir] = contrib
-projects[expire][version] = 1.0-alpha3
-projects[expire][patch][] = http://drupal.org/files/base_url_in_expires-1471926-9.patch
-projects[expire][patch][] = http://drupal.org/files/wrong-variable-name-1452140-2.patch
-projects[expire][patch][] = http://drupal.org/files/expire-removemenuhack-1451336-1-D7.patch
+projects[expire][version] = 2.0-rc4
 
 projects[rules][type] = module
 projects[rules][subdir] = contrib
@@ -279,7 +289,7 @@ projects[navigation404][version] = 1.0
 
 projects[webform][type] = module
 projects[webform][subdir] = contrib
-projects[webform][version] = 4.5
+projects[webform][version] = 4.14
 
 projects[webform_deter][type] = module
 projects[webform_deter][subdir] = contrib
@@ -294,8 +304,8 @@ projects[content_access][patch][] = http://drupal.org/files/add_view_own_unpubli
 
 projects[search_api][type] = module
 projects[search_api][subdir] = contrib
-projects[search_api][version] = 1.7
-projects[search_api][patch][] = http://drupal.org/files/search_api-url-arg-multivalue-2040111-01.patch
+projects[search_api][version] = 1.20
+;projects[search_api][patch][] = http://drupal.org/files/search_api-url-arg-multivalue-2040111-01.patch
 
 projects[search_api_site][type] = module
 projects[search_api_site][subdir] = contrib
@@ -322,16 +332,18 @@ projects[quick_search][download][url] = http://git.drupal.org/sandbox/jec006/152
 
 projects[search_api_solr][type] = module
 projects[search_api_solr][subdir] = contrib
-projects[search_api_solr][version] = 1.0
-projects[search_api_solr][patch][] =  http://drupal.org/files/1776534.patch
+projects[search_api_solr][version] = 1.11
+;projects[search_api_solr][patch][] =  http://drupal.org/files/1776534.patch
 
 projects[search_api_acquia][type] = module
 projects[search_api_acquia][subdir] = contrib
-projects[search_api_acquia][download][type] = git
-projects[search_api_acquia][download][url] = http://git.drupal.org/project/search_api_acquia.git
-projects[search_api_acquia][download][revision] = 1967e867e0df80a476e218a120d30327034766d9
-projects[search_api_acquia][patch][1977510] = http://drupal.org/files/1977510-14--remove_SolrPhpClient.patch
-projects[search_api_acquia][patch][2087141] = http://drupal.org/files/search_api_acquia-acquia_search_host_precedence-2087141-1.patch
+projects[search_api_acquia][version] = 2.2
+
+;projects[search_api_acquia][download][type] = git
+;projects[search_api_acquia][download][url] = http://git.drupal.org/project/search_api_acquia.git
+;projects[search_api_acquia][download][revision] = 1967e867e0df80a476e218a120d30327034766d9
+;projects[search_api_acquia][patch][1977510] = http://drupal.org/files/1977510-14--remove_SolrPhpClient.patch
+;projects[search_api_acquia][patch][2087141] = http://drupal.org/files/search_api_acquia-acquia_search_host_precedence-2087141-1.patch
 
 projects[search_api_solr_overrides][type] = module
 projects[search_api_solr_overrides][subdir] = contrib
@@ -339,16 +351,15 @@ projects[search_api_solr_overrides][version] = 1.0-rc1
 
 projects[searchapimultiaggregate][type] = module
 projects[searchapimultiaggregate][subdir] = contrib
-projects[searchapimultiaggregate][version] = 1.1
+projects[searchapimultiaggregate][version] = 1.2
 
 projects[panelizer][type] = module
 projects[panelizer][subdir] = contrib
-projects[panelizer][version] = 3.1
+projects[panelizer][version] = 3.4
 
 projects[facetapi][type] = module
 projects[facetapi][subdir] = contrib
-projects[facetapi][version] = 1.3
-projects[facetapi][patch][1393928] = http://drupal.org/files/limit-active-items-1393928-48.patch
+projects[facetapi][version] = 1.5
 
 projects[facetapi_select][type] = module
 projects[facetapi_select][subdir] = contrib
@@ -358,15 +369,19 @@ projects[facetapi_select][download][url] = http://git.drupal.org/sandbox/stevetw
 
 projects[oauth][type] = module
 projects[oauth][subdir] = contrib
-projects[oauth][version] = 3.1
+projects[oauth][version] = 3.3
+
+projects[panels][type] = module
+projects[panels][subdir] = contrib
+projects[panels][version] = 3.7
 
 projects[fieldable_panels_panes][type] = module
 projects[fieldable_panels_panes][subdir] = contrib
-projects[fieldable_panels_panes][version] = 1.4
+projects[fieldable_panels_panes][version] = 1.11
 
 projects[twitter][type] = module
 projects[twitter][subdir] = contrib
-projects[twitter][version] = 5.8
+projects[twitter][version] = 5.11
 
 projects[twitter_pull][type] = module
 projects[twitter_pull][subdir] = contrib
@@ -382,19 +397,21 @@ projects[twitter_pull_pane][download][url] = http://git.drupal.org/sandbox/pontu
 
 projects[sharethis][type] = module
 projects[sharethis][subdir] = contrib
-projects[sharethis][version] = 2.5
+projects[sharethis][download][type] = git
+projects[sharethis][download][url] = https://git.drupal.org/project/sharethis.git
+projects[sharethis][download][revision] = df4a5381a24beb0a3f4b4212d551acb784d890fb
 
 projects[addtocal][type] = module
 projects[addtocal][subdir] = contrib
-projects[addtocal][version] = 1.0-beta3
+projects[addtocal][version] = 1.0
 
 projects[image_field_caption][type] = module
 projects[image_field_caption][subdir] = contrib
-projects[image_field_caption][version] = 2.0
+projects[image_field_caption][version] = 2.1
 
 projects[publishcontent][type] = module
 projects[publishcontent][subdir] = contrib
-projects[publishcontent][version] = 1.2
+projects[publishcontent][version] = 1.4
 
 projects[picture][type] = module
 projects[picture][subdir] = contrib
@@ -414,7 +431,7 @@ projects[workbench_moderation][download][revision] = a90378de5b1aea2b095ff5613ee
 
 projects[breakpoints][type] = module
 projects[breakpoints][subdir] = contrib
-projects[breakpoints][version] = 1.1
+projects[breakpoints][version] = 1.4
 
 projects[distributed_blocks][type] = module
 projects[distributed_blocks][subdir] = contrib
@@ -428,7 +445,7 @@ libraries[colorbox][download][url] = https://github.com/jackmoore/colorbox/archi
 
 projects[field_views][type] = module
 projects[field_views][subdir] = contrib
-projects[field_views][version] = 1.0-alpha1
+projects[field_views][version] = 1.0-alpha2
 
 projects[taxonomy_view_mode][type] = module
 projects[taxonomy_view_mode][subdir] = contrib
@@ -444,16 +461,15 @@ projects[openid_provider][version] = 1.0
 
 projects[remote_stream_wrapper][type] = module
 projects[remote_stream_wrapper][subdir] = contrib
-projects[remote_stream_wrapper][version] = 1.0-beta4
-projects[remote_stream_wrapper][patch][1926434] = http://drupal.org/files/broken-image-style-7.20-1926434-0.patch
+projects[remote_stream_wrapper][version] = 1.0-rc1
 
 projects[jquery_update][type] = module
 projects[jquery_update][subdir] = contrib
-projects[jquery_update][version] = 2.3
+projects[jquery_update][version] = 2.7
 
 projects[variable][type] = module
 projects[variable][subdir] = contrib
-projects[variable][version] = 1.1
+projects[variable][version] = 2.5
 
 projects[i18n][type] = module
 projects[i18n][subdir] = contrib
@@ -461,7 +477,7 @@ projects[i18n][version] = 1.7
 
 projects[menu_position][type] = module
 projects[menu_position][subdir] = contrib
-projects[menu_position][version] = 1.1
+projects[menu_position][version] = 1.2
 
 projects[openpublic_translation_content][type] = module
 projects[openpublic_translation_content][subdir] = apps
@@ -474,7 +490,7 @@ projects[timeperiod][version] = 1.0-beta1
 
 projects[defaultconfig][type] = module
 projects[defaultconfig][subdir] = contrib
-projects[defaultconfig][version] = 1.0-alpha9
+projects[defaultconfig][version] = 1.0-alpha11
 
 projects[file_entity][type] = module
 projects[file_entity][subdir] = contrib
@@ -496,7 +512,7 @@ projects[google_translator][download][revision] = c3eee44361b1a636fa0ac10799d2b4
 
 projects[plupload][type] = module
 projects[plupload][subdir] = contrib
-projects[plupload][version] = 1.3
+projects[plupload][version] = 1.7
 
 projects[filefield_sources_plupload][type] = module
 projects[filefield_sources_plupload][subdir] = contrib
@@ -510,7 +526,7 @@ libraries[plupload][destination] = libraries
 
 projects[metatag][type] = module
 projects[metatag][subdir] = contrib
-projects[metatag][version] = 1.0-beta7
+projects[metatag][version] = 1.20
 
 projects[jira_issue_collector][type] = module
 projects[jira_issue_collector][subdir] = contrib
@@ -567,4 +583,3 @@ projects[view_unpublished][download][type] = git
 projects[view_unpublished][download][url] = http://git.drupal.org/project/view_unpublished.git
 projects[view_unpublished][download][revision] = e9df1d3f33b93410bb62e65f70981286db2007bd
 projects[view_unpublished][patch][] = https://www.drupal.org/files/issues/view_unpublished-content_admin_fix-1192074-75.patch
-

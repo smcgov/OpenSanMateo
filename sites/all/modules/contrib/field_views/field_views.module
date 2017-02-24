@@ -170,10 +170,21 @@ function field_views_field_formatter_settings_form($field, $instance, $view_mode
 function field_views_field_formatter_settings_summary($field, $instance, $view_mode) {
   $display = $instance['display'][$view_mode];
   $settings = $display['settings'];
-  list($view_name, $display_name) = explode(" ", $settings['view']);
-  $view = views_get_view($view_name);
-  $display = $view->display[$display_name];
-  return "View: {$view->human_name} <BR />Display: " . $display->display_title . " ($display_name)";
+
+  $view_human_name = '';
+  $display_title = '';
+  $display_name = '';
+
+  if ($settings['view'] != '') {
+    list($view_name, $display_name) = explode(" ", $settings['view']);
+    $view = views_get_view($view_name);
+    $display = $view->display[$display_name];
+
+    $view_human_name = $view->human_name;
+    $display_title = $display->display_title;
+  }
+
+  return "View: {$view_human_name} <BR />Display: " . $display_title . " ($display_name)";
 }
 
 

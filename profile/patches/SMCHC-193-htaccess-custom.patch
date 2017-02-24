@@ -1,0 +1,122 @@
+diff --git a/.htaccess b/.htaccess
+index 440cabc..9873306 100644
+--- a/.htaccess
++++ b/.htaccess
+@@ -55,6 +55,57 @@ DirectoryIndex index.php index.html index.htm
+ # Various rewrite rules.
+ <IfModule mod_rewrite.c>
+   RewriteEngine on
++# This file is included into .htaccess at the appropriate section
++# in Drupal's .htaccess file (right after the RewriteEngine on
++# directive. It must be included there because the file not found
++# handling here must take action before the normal file not found
++# handling otherwise Drupal will try to take over the 404 handling
++# for static sites
++#
++# To add a new static site, create a sites directory just like
++# you were creating a normal Drupal site and then add lines below
++# for the domain to transform it to look in the site's files/html
++# directory. Note that each static site needs to have a 404.php
++# file to allow for correct 404 handling. Sites with multiple domain
++# names should either have code added to redirect the user to the
++# correct domain
++#
++# RewriteCond %{HTTP_HOST} ^alternate.domain$ [NC]
++# RewriteRule ^/(.*)$ http://official.domain/$1 [L,R]
++# Or, if the alternate domain is desired, set up the alternate domain
++# sites folder but symlink sites/alternate.domain/files/html to
++# sites/official.domain/files/html
++#
++# For www.domain variants, just capture the non www portion of the
++# domain below.
++#
++# Each domain match added should contain [NC,OR] except the very
++# last RewriteCond line before the RewriteRule.
++#
++
++# Catch our subdirectory cases where infinite symlink recursion can yield odd (but legit) URLs
++# that make the GSA spider lose its mind
++#RewriteCond %{REQUEST_URI} ^/dir((/dir)+)(.*)$
++#RewriteRule ^.*$ /dir%3 [R=301,L]
++
++# To get the Shield module to work properly in Acquia hosting - https://drupal.org/project/shield
++RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
++
++RewriteCond %{REQUEST_URI} =/CHANGELOG.txt [OR]
++RewriteCond %{REQUEST_URI} =/COPYRIGHT.txt [OR]
++RewriteCond %{REQUEST_URI} =/INSTALL.mysql.txt [OR]
++RewriteCond %{REQUEST_URI} =/INSTALL.pgsql.txt [OR]
++RewriteCond %{REQUEST_URI} =/INSTALL.sqlite.txt [OR]
++RewriteCond %{REQUEST_URI} =/INSTALL.txt [OR]
++RewriteCond %{REQUEST_URI} =/LICENSE.txt [OR]
++RewriteCond %{REQUEST_URI} =/MAINTAINERS.txt [OR]
++RewriteCond %{REQUEST_URI} =/PATCHES.txt [OR]
++RewriteCond %{REQUEST_URI} =/README.txt [OR]
++RewriteCond %{REQUEST_URI} =/UPGRADE.txt [OR]
++RewriteCond %{REQUEST_URI} =/sites/all/README.txt [OR]
++RewriteCond %{REQUEST_URI} =/sites/all/modules/README.txt [OR]
++RewriteCond %{REQUEST_URI} =/sites/all/themes/README.txt
++RewriteRule ^ - [F]
+ 
+   # Set "protossl" to "s" if we were accessed via https://.  This is used later
+   # if you enable "www." stripping or enforcement, in order to ensure that
+@@ -92,7 +143,12 @@ DirectoryIndex index.php index.html index.htm
+   # RewriteCond %{HTTP_HOST} .
+   # RewriteCond %{HTTP_HOST} !^www\. [NC]
+   # RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+-  #
++
++  # Redirect http://smcgov.org to http://www.smcgov.org. Don't redirect any of
++  # the other subdomains, like housing.smcgov.org, etc.
++  RewriteCond %{HTTP_HOST} ^smcgov\.org [NC]
++  RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
++
+   # To redirect all users to access the site WITHOUT the 'www.' prefix,
+   # (http://www.example.com/... will be redirected to http://example.com/...)
+   # uncomment the following:
+@@ -119,6 +175,7 @@ DirectoryIndex index.php index.html index.htm
+   # Rules to correctly serve gzip compressed CSS and JS files.
+   # Requires both mod_rewrite and mod_headers to be enabled.
+   <IfModule mod_headers.c>
++    Header append Vary Authorization env=AH_NON_PRODUCTION
+     # Serve gzip compressed CSS files if they exist and the client accepts gzip.
+     RewriteCond %{HTTP:Accept-encoding} gzip
+     RewriteCond %{REQUEST_FILENAME}\.gz -s
+@@ -140,6 +197,13 @@ DirectoryIndex index.php index.html index.htm
+       Header append Vary Accept-Encoding
+     </FilesMatch>
+   </IfModule>
++  # Redirect the sustainability site to green.smcgov.org.
++  RewriteCond %{HTTP_HOST} ^dev\.sustainability\.smcgov\.org$
++  RewriteRule ^(.*)$ http://dev.green.smcgov.org%{REQUEST_URI} [L,R=301,L]
++  RewriteCond %{HTTP_HOST} ^staging\.sustainability\.smcgov\.org$
++  RewriteRule ^(.*)$ http://staging.green.smcgov.org%{REQUEST_URI} [L,R=301,L]
++  RewriteCond %{HTTP_HOST} ^sustainability\.smcgov\.org$
++  RewriteRule ^(.*)$ http://green.smcgov.org%{REQUEST_URI} [L,R=301,L]
+ </IfModule>
+ 
+ # Add headers to all responses.
+@@ -147,3 +211,23 @@ DirectoryIndex index.php index.html index.htm
+   # Disable content sniffing, since it's an attack vector.
+   Header always set X-Content-Type-Options nosniff
+ </IfModule>
++
++# https://library.acquia.com/articles/microsoft-office-mime-type-support
++
++AddType application/vnd.ms-word.document.macroEnabled.12 .docm
++AddType application/vnd.openxmlformats-officedocument.wordprocessingml.document docx
++AddType application/vnd.openxmlformats-officedocument.wordprocessingml.template dotx
++AddType application/vnd.ms-powerpoint.template.macroEnabled.12 potm
++AddType application/vnd.openxmlformats-officedocument.presentationml.template potx
++AddType application/vnd.ms-powerpoint.addin.macroEnabled.12 ppam
++AddType application/vnd.ms-powerpoint.slideshow.macroEnabled.12 ppsm
++AddType application/vnd.openxmlformats-officedocument.presentationml.slideshow ppsx
++AddType application/vnd.ms-powerpoint.presentation.macroEnabled.12 pptm
++AddType application/vnd.openxmlformats-officedocument.presentationml.presentation pptx
++AddType application/vnd.ms-excel.addin.macroEnabled.12 xlam
++AddType application/vnd.ms-excel.sheet.binary.macroEnabled.12 xlsb
++AddType application/vnd.ms-excel.sheet.macroEnabled.12 xlsm
++AddType application/vnd.openxmlformats-officedocument.spreadsheetml.sheet xlsx
++AddType application/vnd.ms-excel.template.macroEnabled.12 xltm
++AddType application/vnd.openxmlformats-officedocument.spreadsheetml.template xltx
++

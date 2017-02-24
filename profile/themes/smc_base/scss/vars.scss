@@ -16,6 +16,7 @@
 
 */
 
+/* Colors */
 @function primaryBlue($o:1.0) {
   @return rgba(3, 108, 182, $o);
 }
@@ -28,12 +29,22 @@
   @return rgba(141, 198, 63, $o);
 }
 
+@function grey($o:1.0) {
+  @return rgba(93, 94, 94, $o);
+}
+
+@function lightAqua($o:1.0) {
+  @return rgba(102, 160, 163, $o);
+}
+
+@function lightPurple($o:1.0) {
+  @return rgba(134, 142, 168, $o);
+}
+
 $primaryBlue: primaryBlue() !default;
 $primaryTeal: primaryTeal() !default;
-
-
-
 $primaryGray: #555a5a !default;
+
 $altGray: #a1a1a1;
 
 $altBlue: #0d66a1 !default;
@@ -49,11 +60,25 @@ $searchFocusBG: #67adb3 !default;
 
 $searchMobileDefaultBG: #FFFFFF !default;
 
+$OSMUpdateBlue: #056cb6 !default;
+$OSMUpdateTeal: #38939b !default;
+$OSMUpdatePurple: #cde2f1 !default;
+$OSMUpdateLightOrange: #f9bf91 !default;
+$OSMUpdateDarkOrange: #faa634 !default;
+$OSMUpdateGray: #f1f1f2 !default;
+
+$astralBlue: #38939b !default;
+$sushiGreen: #8dc63f !default;
+$kimberlyBlue: #6b699e !default;
+$jaffaOrange: #e98a41 !default;
+$lightGrey: #f1f2f2 !default;
+$darkGrey: #5d5e5e !default;
+$lightAqua: #66a0a3 !default;
+$lightPurple: #868ea8 !default;
+
 /* Fonts */
-$light: "Trade Gothic W01 Light", "Helvetica Neue", Arial, Helvetica !default;
-$reg: "Trade Gothic W01 Roman", "Helvetica Neue", Arial, Helvetica !default;
-$bold:"Trade Gothic W01 Bold", "Helvetica Neue", Arial, Helvetica !default;
-$lightOb: "TradeGothicW01-LightObl", "Helvetica Neue", Arial, Helvetica !default;
+// Light, bold and oblique are all now a part of this family.
+$reg: "Trade Gothic W01", "Helvetica Neue", Arial, Helvetica !default;
 
 /* Media Queries */
 $mobile: 320px !default;

@@ -28,3 +28,10 @@ features[variable][] = comment_preview_services
 features[variable][] = comment_services
 features[variable][] = comment_subject_field_services
 features[views_view][] = comment_list
+
+; Information added by Drupal.org packaging script on 2016-09-15
+version = "7.x-1.10"
+core = "7.x"
+project = "openpublic"
+datestamp = "1473967553"
+

@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_schema().
+ * Implements hook_schema().
  */
 function variable_schema() {
   $schema['cache_variable'] = array(
@@ -48,4 +48,11 @@ function variable_schema() {
     'primary key' => array('cid'),
   );
   return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function variable_uninstall() {
+  variable_del('variable_module_list');
 }

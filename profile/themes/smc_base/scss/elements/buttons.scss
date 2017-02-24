@@ -16,16 +16,12 @@
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
-	font-family: $bold;
-	font-weight: normal;
+	font-weight: 700;
 	position: relative;
 	
 	&:hover {
   	
   	padding: .75em 1em;
-  	//font-size: 1em;
-  	//font-family: $bold;
-  	//font-weight: 300;
 	}
 	
 	&:before {
@@ -121,49 +117,49 @@
 // button color styles
 @mixin buttonBlue {
   *background-color: $primaryBlue;
-  background-color: primaryBlue(0.95);
-  
+  background-color: rgba($primaryBlue, .95);
+
   &:hover {
     *background-color: $primaryBlue;
-    background-color: primaryBlue(1);
+    background-color: $primaryBlue;
   }
 
   &:active {
-  	*background-color: $primaryBlue;
-  	background-color: primaryBlue(0.9);
-	}  
+    *background-color: $primaryBlue;
+    background-color: rgba($primaryBlue, .95);
+  }
 }
 
 // button color styles
 @mixin buttonTeal {
   *background-color: $primaryTeal;
-  background-color: primaryTeal(0.95);
+  background-color: rgba($primaryTeal, .95);
   
   &:hover {
     *background-color: $primaryTeal;
-    background-color: primaryTeal(1);
+    background-color: $primaryTeal;
   }
 
   &:active {
-  	*background-color: $primaryTeal;
-  	background-color: primaryTeal(0.9);
-	}  
+    *background-color: $primaryTeal;
+    background-color: rgba($primaryTeal, .90);
+  }
 }
 
 // button color styles
 @mixin buttonGreen {
   *background-color: $altGreen;
-  background-color: altGreen(0.95);
+  background-color: rgba($altGreen, .95);
   
   &:hover {
     *background-color: $altGreen;
-    background-color: altGreen(1);
+    background-color: $altGreen;
   }
 
   &:active {
-  	*background-color: $altGreen;
-  	background-color: altGreen(0.9);
-	}  
+    *background-color: $altGreen;
+    background-color: rgba($altGreen, .90);
+  }
 }
 
 

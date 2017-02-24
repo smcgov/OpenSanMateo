@@ -17,7 +17,7 @@ function variable_build_info($type, $options) {
       $info = variable_invoke_all('variable_' . $type . '_info');
       drupal_alter('variable_' . $type . '_info', $info);
       return $info;
-  }  
+  }
 }
 
 /**
@@ -37,7 +37,7 @@ function variable_build_list_info($options) {
         if (preg_match('/\[(\w+)\]/', $name, $matches)) {
           $multiple = $matches[1];
           $variable += array('type' => 'multiple');
-        }  
+        }
         $variable += array('group' => 'default', 'type' => 'default');
         $variables[$name] = $variable + variable_get_type($variable['type']);
         // Add this at the end so it doesn't override type properties
@@ -47,33 +47,10 @@ function variable_build_list_info($options) {
       }
     }
   }
-  // Last chance for modules to alter variable infoa
+  // Last chance for modules to alter variable info.
   drupal_alter('variable_info', $variables, $options);
   return $variables;
 }
-
-/**
- * Invoke hook on all modules, adding 'module' property
- */
-function variable_invoke_all() {
-  $args = func_get_args();
-  $hook = $args[0];
-  unset($args[0]);
-  $return = array();
-  foreach (module_implements($hook) as $module) {
-    $function = $module . '_' . $hook;
-    if (function_exists($function)) {
-      $result = call_user_func_array($function, $args);
-      if (isset($result) && is_array($result)) {
-        foreach ($result as $key => $value) {
-          $return[$key] = $value + array('module' => $module);
-        }
-      }
-    }
-  }
-  return $return;
-}
-
 
 /**
  * Build multiple variables
@@ -88,16 +65,20 @@ function variable_build_multiple($variable, $options) {
       $variable['multiple'] = variable_option_list($variable['multiple'], $variable, $options);
     }
     $variable += array('children' => array(), 'repeat' => array());
-    // Build chilcren variables with the name => value array 
+    // Build children variables with the name => value array
     foreach ($variable['multiple'] as $key => $title) {
       $name = preg_replace('/\[\w+\]/', $key, $variable['name']);
       // Be careful to respect previously set properties, add but do not override.
       $child = isset($variable['children'][$name]) ? $variable['children'][$name] : array();
       $child += $variable['repeat'];
       $child += array(
-        'name' => $name, 'index' => $key, 'title' => $title, 
+        'name' => $name, 'index' => $key, 'title' => $title,
         'type' => 'default', 'parent' => $variable['name'], 'module' => $variable['module'],
       );
+      // Set default value from parent
+      if (isset($variable['default']) && is_array($variable['default']) && isset($variable['default'][$key])) {
+        $child += array('default' => $variable['default'][$key]);
+      }
       $child += variable_get_type($child['type']);
       $variable['children'][$name] = $child;
     }
@@ -121,7 +102,7 @@ function variable_build_options($variable, $options) {
 
 /**
  * Build single variable
- * 
+ *
  * Some variables may spawn into multiple ones
  */
 function variable_build_variable($variable, $options = array()) {
@@ -141,7 +122,7 @@ function variable_build_variable($variable, $options = array()) {
 
 /**
  * Invoke variable callback
- * 
+ *
  * @param $callback
  *   Function name to invoke or array with module and funcion in this order
  * @param $variable
@@ -239,22 +220,39 @@ function variable_module_include($modules = NULL) {
 }
 
 /**
- * Uninstall variables for module
- * 
- * This will be called from variable_modules_uninstalled(), no need to implement it directly.
+ * Disable variables for module
+ *
+ * Store module variables so we can delete them if uninstalled
  */
-function variable_module_uninstall($module) {
-  foreach (variable_list_module($module) as $name => $variable) {
-    variable_delete($variable);
+function variable_module_disable($module) {
+}
+
+/**
+ * Disable variables for module
+ *
+ * Store module variables so we can delete them if uninstalled
+ */
+function variable_module_enable($module) {
+  if ($variables = variable_list_module($module)) {
+    $list = variable_get('variable_module_list', array());
+    $list[$module] = variable_children($variables);
+    variable_set('variable_module_list', $list);
   }
 }
 
-
 /**
- * Format multiple variable
+ * Uninstall variables for module
+ *
+ * This will be called from variable_modules_uninstalled(), no need to implement it directly.
  */
-function variable_format_multiple($value, $variable, $options = array()) {
-  return t('<Multiple>', array(), $options);
+function variable_module_uninstall($module) {
+  $list = variable_get('variable_module_list', array());
+  if (isset($list[$module])) {
+    // This is a plain list of variables so we can use raw delete.
+    array_map('variable_delete', $list[$module]);
+    unset($list[$module]);
+    variable_set('variable_module_list', $list);
+  }
 }
 
 /**
@@ -277,6 +275,6 @@ function variable_multiple_get_default($variable, $options = array()) {
   $values = array();
   foreach ($variable['children'] as $child) {
     $values[$child['index']] = variable_get_default($child, $options);
-  }  
+  }
   return $values;
 }

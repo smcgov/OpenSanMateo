@@ -1,0 +1,275 @@
+diff --git a/ShareThisForm.js b/ShareThisForm.js
+index fdc734e..ac32c07 100644
+--- a/ShareThisForm.js
++++ b/ShareThisForm.js
+@@ -6,9 +6,9 @@
+ // Create the drupal ShareThis object for clean code and namespacing:
+ (function () {
+   // Adding use strict as function encapsulation ECMA 6.
+-  'use strict';
++  // 'use strict';
+ 
+-  var drupal_st = {
++  window.drupal_st = {
+     // These are handlerd for updating the widget pic class.
+     multiW: function () {
+       jQuery('.st_widgetPic').addClass('st_multi');
+diff --git a/sharethis.admin.inc b/sharethis.admin.inc
+index 94b8adf..1e3f783 100644
+--- a/sharethis.admin.inc
++++ b/sharethis.admin.inc
+@@ -27,14 +27,10 @@ function sharethis_configuration_form($form, &$form_state) {
+   // Create the variables related to services chosen.
+   $service_string = $current_options_array['services'];
+   $service_string_markup = "";
+-  $enabled_services = array();
+-  foreach (explode(",", $service_string) as $string) {
++  foreach (explode(",", $service_string) as $name => $string) {
+     $key = explode(":", drupal_substr($string, 0, -1));
+     $key = $key[1];
+     $service_string_markup .= "\"" . $key . "\",";
+-    // Store enabled services for custom overrides.
+-    $service = explode(":", drupal_substr($string, 0, -1));
+-    $enabled_services[$service[1]] = str_replace('"', '', $service[0]);
+   }
+   $service_string_markup = drupal_substr($service_string_markup, 0, -1);
+ 
+@@ -58,18 +54,18 @@ function sharethis_configuration_form($form, &$form_state) {
+       'stbc_custom' => t('Custom Buttons via CSS'),
+     ),
+     '#default_value' => $button_choice,
+-    '#title' => t("Choose a button style:"),
++    '#title' => t('Choose a button style:'),
+     '#prefix' => '<div class="st_widgetContain"><div class="st_spriteCover"><img id="stb_sprite" class="st_buttonSelectSprite ' . $button_choice . '" src="' . $base_url . '/' . $my_path . '/img/preview_sprite.png"></img></div><div class="st_widgetPic"><img class="st_buttonSelectImage" src="' . $base_url . '/' . $my_path . '/img/preview_bg.png"></img></div>',
+     '#suffix' => '</div>',
+   );
+   $form['options']['sharethis_service_option'] = array(
+-    '#description' => t("<b>Add</b> a service by selecting it on the right and clicking the <i>left arrow</i>.  <b>Remove</b> it by clicking the <i>right arrow</i>.<br /><b>Change the order</b> of services under \'Selected Services\' by using the <i>up</i> and <i>down</i> arrows."),
++    '#description' => t('<b>Add</b> a service by selecting it on the right and clicking the <i>left arrow</i>.  <b>Remove</b> it by clicking the <i>right arrow</i>.<br /><b>Change the order</b> of services under \'Selected Services\' by using the <i>up</i> and <i>down</i> arrows.'),
+     '#required' => TRUE,
+     '#type' => 'textfield',
+     '#prefix' => '<div>',
+     '#suffix' => '</div><div id="myPicker"></div><script type="text/javascript">stlib_picker.setupPicker(jQuery("#myPicker"), [' . $service_string_markup . '], drupal_st.serviceCallback);</script>',
+-    '#title' => t("Choose Your Services."),
+-    '#default_value' => t("@service_string", array('@service_string' => $service_string)),
++    '#title' => t('Choose Your Services.'),
++    '#default_value' => $service_string,
+     '#maxlength' => 1024,
+   );
+   $form['options']['sharethis_option_extras'] = array(
+@@ -92,8 +88,8 @@ function sharethis_configuration_form($form, &$form_state) {
+     '#default_value' => variable_get('sharethis_option_extras_fbsub', array()),
+   );
+   $form['options']['sharethis_option_extras_fbsub_field'] = array(
+-    '#title' => t("Insert Facebook Subscribe Username"),
+-    '#description' => t("Note: This must be a valid profile name"),
++    '#title' => t('Insert Facebook Subscribe Username'),
++    '#description' => t('Note: This must be a valid profile name'),
+     '#type' => 'textfield',
+     '#default_value' => variable_get('sharethis_option_extras_fbsub_field', ''),
+   );
+@@ -105,7 +101,7 @@ function sharethis_configuration_form($form, &$form_state) {
+     '#default_value' => variable_get('sharethis_option_extras_pinterestfollow', array()),
+   );
+   $form['options']['sharethis_option_extras_pinterestfollow_field'] = array(
+-    '#title' => t("Insert Pinterest Follow Username"),
++    '#title' => t('Insert Pinterest Follow Username'),
+     '#type' => 'textfield',
+     '#default_value' => variable_get('sharethis_option_extras_pinterestfollow_field', ''),
+   );
+@@ -117,7 +113,7 @@ function sharethis_configuration_form($form, &$form_state) {
+     '#default_value' => variable_get('sharethis_option_extras_twitterfollow', array()),
+   );
+   $form['options']['sharethis_option_extras_twitterfollow_field'] = array(
+-    '#title' => t("Insert Twitter Follow Username"),
++    '#title' => t('Insert Twitter Follow Username'),
+     '#type' => 'textfield',
+     '#default_value' => variable_get('sharethis_option_extras_twitterfollow_field', ''),
+   );
+@@ -129,7 +125,7 @@ function sharethis_configuration_form($form, &$form_state) {
+     '#default_value' => variable_get('sharethis_option_extras_youtube', array()),
+   );
+   $form['options']['sharethis_option_extras_youtube_field'] = array(
+-    '#title' => t("Insert YouTube Username"),
++    '#title' => t('Insert YouTube Username'),
+     '#type' => 'textfield',
+     '#default_value' => variable_get('sharethis_option_extras_youtube_field', ''),
+   );
+@@ -141,12 +137,12 @@ function sharethis_configuration_form($form, &$form_state) {
+     '#default_value' => variable_get('sharethis_option_extras_foursquarefollow', array()),
+   );
+   $form['options']['sharethis_option_extras_foursquarefollow_field'] = array(
+-    '#title' => t("Insert Foursquare Follow Username"),
++    '#title' => t('Insert Foursquare Follow Username'),
+     '#type' => 'textfield',
+     '#default_value' => variable_get('sharethis_option_extras_foursquarefollow_field', ''),
+   );
+   $form['options']['sharethis_option_extras_foursquarefollow_field2'] = array(
+-    '#title' => t("Insert Foursquare Follow Id"),
++    '#title' => t('Insert Foursquare Follow Id'),
+     '#type' => 'textfield',
+     '#default_value' => variable_get('sharethis_option_extras_foursquarefollow_field2', ''),
+   );
+@@ -253,7 +249,7 @@ function sharethis_configuration_form($form, &$form_state) {
+     '#description' => t('The advanced settings can usually be ignored if you have no need for them.'),
+   );
+   $form['advanced']['sharethis_publisherID'] = array(
+-    '#title' => t("Insert a publisher key (optional)."),
++    '#title' => t('Insert a publisher key (optional).'),
+     '#description' => t("When you install the module, we create a random publisher key.  You can register the key with ShareThis by contacting customer support.  Otherwise, you can go to <a href='http://www.sharethis.com/account'>ShareThis</a> and create an account.<br />Your official publisher key can be found under 'My Account'.<br />It allows you to get detailed analytics about sharing done on your site."),
+     '#type' => 'textfield',
+     '#default_value' => $publisher,
+@@ -265,14 +261,14 @@ function sharethis_configuration_form($form, &$form_state) {
+     '#default_value' => variable_get('sharethis_late_load', FALSE),
+   );
+   $form['advanced']['sharethis_twitter_prefix'] = array(
+-    '#title' => t("Twitter Prefix"),
+-    '#description' => t("Optionally prepend a Twitter handle, or text, so that you get pinged when someone shares an article. Example: <em> @YourNameHere</em>"),
++    '#title' => t('Twitter Prefix'),
++    '#description' => t('Optionally prepend a Twitter handle, or text, so that you get pinged when someone shares an article. Example: <em> @YourNameHere</em>'),
+     '#type' => 'textfield',
+     '#default_value' => variable_get('sharethis_twitter_prefix', ''),
+   );
+   $form['advanced']['sharethis_twitter_suffix'] = array(
+-    '#title' => t("Twitter Suffix"),
+-    '#description' => t("Optionally append a Twitter handle, or text, so that you get pinged when someone shares an article. Example: <em>via @YourNameHere</em>"),
++    '#title' => t('Twitter Suffix'),
++    '#description' => t('Optionally append a Twitter handle, or text, so that you get pinged when someone shares an article. Example: <em>via @YourNameHere</em>'),
+     '#type' => 'textfield',
+     '#default_value' => variable_get('sharethis_twitter_suffix', ''),
+   );
+@@ -331,26 +327,11 @@ function sharethis_configuration_form($form, &$form_state) {
+         Please refer the <a href="http://support.sharethis.com/customer/portal/articles/517332-share-widget-faqs#copynshare" target="_blank">CopyNShare FAQ</a> for more details.
+       </p></div>',
+     '#options' => array(
+-      'donotcopy' => t("Measure copy & shares of your site\'s Content"),
+-      'hashaddress' => t("Measure copy & shares of your site\'s URLs"),
++      'donotcopy' => t("Measure copy & shares of your site's Content"),
++      'hashaddress' => t("Measure copy & shares of your site's URLs"),
+     ),
+     '#default_value' => $current_options_array['sharethis_cns'],
+   );
+-  $form['overrides'] = array(
+-    '#type' => 'fieldset',
+-    '#title' => t('Markup overrides'),
+-    '#group' => 'additional_settings',
+-    '#description' => t('Override span button markup to include SVGs or other markup.'),
+-  );
+-  foreach ($enabled_services as $key => $service) {
+-    $current_value = variable_get('sharethis_override_' . $key, '');
+-    // Add each enabled service to include markup.
+-    $form['overrides']['override_' . $key] = array(
+-      '#title' => $service,
+-      '#type' => 'textfield',
+-      '#default_value' => $current_value,
+-    );
+-  }
+ 
+   $form['#submit'][] = 'sharethis_configuration_form_submit';
+   return system_settings_form($form);
+@@ -400,14 +381,4 @@ function sharethis_configuration_form_submit($form, &$form_state) {
+   if (($current_location == 'content' || $new_location == 'content') && $current_location != $new_location) {
+     field_info_cache_clear();
+   }
+-  // Markup overrides for each enabled service.
+-  $enabled_services = array();
+-  foreach (explode(",", $form_state['values']['sharethis_service_option']) as $string) {
+-    $service = explode(":", drupal_substr($string, 0, -1));
+-    $enabled_services[$service[1]] = str_replace('"', '', $service[0]);
+-  }
+-  foreach ($enabled_services as $key => $service) {
+-    $override = $form_state['values']['override_' . $key];
+-    variable_set('sharethis_override_' . $key, $override);
+-  }
+ }
+diff --git a/sharethis.install b/sharethis.install
+index 7f90a74..1641a86 100644
+--- a/sharethis.install
++++ b/sharethis.install
+@@ -77,3 +77,12 @@ function sharethis_update_7001() {
+     return t('Switched from the custom ShareThis table to the Variables table.');
+   }
+ }
++
++/**
++ * Removes variables sharethis_override_* & sharethis_service_option.
++ */
++function sharethis_update_7002() {
++  db_delete('variable')->condition('name', db_like('sharethis_override_') . '%', 'LIKE')->execute();
++  variable_set("sharethis_service_option", str_replace('&quot;', '"', variable_get("sharethis_service_option")));
++  cache_clear_all('variables', 'cache');
++}
+diff --git a/sharethis.module b/sharethis.module
+index e9b97a5..3392aa3 100644
+--- a/sharethis.module
++++ b/sharethis.module
+@@ -367,13 +367,12 @@ function theme_sharethis($variables) {
+     if (!empty($type)) {
+       $attributes['displayText'] = check_plain($display);
+     }
+-    $markup = variable_get('sharethis_override_' . $serviceCodeName, '');
+     // Render the span tag.
+     $st_spans .= theme('html_tag', array(
+       'element' => array(
+         '#tag' => 'span',
+         '#attributes' => $attributes,
+-        '#value' => $markup,
++        '#value' => '', //It's an empty span tag.
+       ),
+     ));
+   }
+diff --git a/stlib_picker.js b/stlib_picker.js
+index 4b1cfdd..9dfacb1 100644
+--- a/stlib_picker.js
++++ b/stlib_picker.js
+@@ -12,7 +12,7 @@
+   // Adding use strict as function encapsulation ECMA 6.
+   'use strict';
+ 
+-  var stlib_picker = {};
++  window.stlib_picker = {};
+   var isSecure = document.location.protocol === 'https:' ? true : false;
+ 
+   stlib_picker.pickerList = [];
+@@ -40,10 +40,10 @@
+     // Append the three divs that are needed:
+     jQElement.append('<div class="stp_pickerLeft"><span class="stp_header">Selected Service</span><ul class="stp_ulLeft"></ul></div>');
+     jQElement.append('<div class="stp_pickerArrow">' +
+-                      '<div class="stp_arrow"><img class="stp_up" src="//www.sharethis.com/images/Direction_Icons_Sprite.png"></img></div>' +
+-                      '<div class="stp_arrow"><img class="stp_left" src="//www.sharethis.com/images/Direction_Icons_Sprite.png"></img></div>' +
+-                      '<div class="stp_arrow"><img class="stp_right" src="//www.sharethis.com/images/Direction_Icons_Sprite.png"></img></div>' +
+-                      '<div class="stp_arrow"><img class="stp_down" src="//www.sharethis.com/images/Direction_Icons_Sprite.png"></img></div>' +
++                      '<div class="stp_arrow"><img class="stp_up" src="//www.sharethis.com/images/Direction_Icons_Sprite.png"/img></div>' +
++                      '<div class="stp_arrow"><img class="stp_left" src="//www.sharethis.com/images/Direction_Icons_Sprite.png"/img></div>' +
++                      '<div class="stp_arrow"><img class="stp_right" src="//www.sharethis.com/images/Direction_Icons_Sprite.png"/img></div>' +
++                      '<div class="stp_arrow"><img class="stp_down" src="//www.sharethis.com/images/Direction_Icons_Sprite.png"/img></div>' +
+                       '</div>');
+     jQElement.append('<div class="stp_pickerRight"><span class="stp_header">Possible Services</span><ul class="stp_ulRight"></ul></div>');
+     jQElement.append('<div class="stp_clear"></div>');
+@@ -62,21 +62,21 @@
+       if (jQuery.inArray(key, pickerDefaults) === -1) {
+         var ul = jQElement.children('.stp_pickerRight').children('.stp_ulRight');
+         if (isSecure) {
+-          ul.append('<li id="st_li_"' + key + 'class="stp_li"><img src="https://ws.sharethis.com/images/"' + key + '_32.png></img><span class="stp_liText">' + value.title + '</span></li>');
++          ul.append('<li id="st_li_' + key + '"class="stp_li"><img src="https://ws.sharethis.com/images/' + key + '_32.png"></img><span class="stp_liText">' + value.title + '</span></li>');
+         }
+         else {
+-          ul.append('<li id="st_li_"' + key + 'class="stp_li"><img src="http://w.sharethis.com/images/"' + key + '_32.png></img><span class="stp_liText">' + value.title + '</span></li>');
++          ul.append('<li id="st_li_' + key + '"class="stp_li"><img src="http://w.sharethis.com/images/' + key + '_32.png"></img><span class="stp_liText">' + value.title + '</span></li>');
+         }
+ 
+       }
+     });
+-    for (i = 0; i < pickerDefaults.length; i++) {
++    for (var i = 0; i < pickerDefaults.length; i++) {
+       var ul = jQElement.children('.stp_pickerLeft').children('.stp_ulLeft');
+       if (isSecure) {
+-        ul.append('<li id="st_li_"' + pickerDefaults[i] + ' class="stp_li"><img src="https://ws.sharethis.com/images/"' + pickerDefaults[i] + '_32.png></img><span class="stp_liText">' + _all_services[pickerDefaults[i]].title + '</span></li>');
++        ul.append('<li id="st_li_' + pickerDefaults[i] + '" class="stp_li"><img src="https://ws.sharethis.com/images/' + pickerDefaults[i] + '_32.png"></img><span class="stp_liText">' + _all_services[pickerDefaults[i]].title + '</span></li>');
+       }
+       else {
+-        ul.append('<li id="st_li_"' + pickerDefaults[i] + ' class="stp_li"><img src="http://w.sharethis.com/images/"' + pickerDefaults[i] + '_32.png></img><span class="stp_liText">' + _all_services[pickerDefaults[i]].title + '</span></li>');
++        ul.append('<li id="st_li_' + pickerDefaults[i] + '" class="stp_li"><img src="http://w.sharethis.com/images/' + pickerDefaults[i] + '_32.png"></img><span class="stp_liText">' + _all_services[pickerDefaults[i]].title + '</span></li>');
+       }
+     }
+ 
