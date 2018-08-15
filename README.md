@@ -96,3 +96,11 @@ This is used in the custom Views filter to show items from all sites, or "this s
 Images are preprocessed using custom code before being indexed by Search API in order to store an absolute URL to the re-sized image.
 This is because when displaying search results, any given site only has access to the result's site hash, and not its actual URL.
 Also, when a custom Image Size is generated for an image, a unique query hash is used by Drupal to prevent DDOS attacks, and the site needs to generate this the first time an image size is used.
+
+## ContinuedCompatibility Testing
+
+As a public agency we are responsible for testing new features and development on a range of current and legacy browser environments through desktop and mobile devices. We are also responsbile for usability and accessibility testing to ensure our users and consistently served by our resouces. We employ a range of tools to keep up standards for content over 22 department/agency sites, and over 100 content managers.
+
+#### Tools
+![BrowserStack Logo](https://p14.zdusercontent.com/attachment/1015988/OuLhxwxzAlSVoSsydpEACDsCP?token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..QYHMsaMrd6pD8Ic55IjqGg.1KkBjb65xpKaG4IAjBWOgzNdSkWbZp3rblq_GdSLnnlFrPPdca76LRYvdLsbT0AM38TGUwNDXcLha4_fFxW2nKl4m5OBUS7E45Exv82ueSnVqUgDswwcUJdlU5327bQ_QJeXzDdB4pPoY2cGSL-QYGutjZsrLoLRj_vXywGdDP8JzRDSUOtqzK03DpEs2nRnzIib4JXrY5n7jhUmkzAd1_yFcCustQLg4xPERP9d4vYXLm3TpVQHj7uZs1oZQjy7Xlyvxve75iK-GseWM0p60Ry4pEZQVBqJCiCaoOHJrUA.sey2fqh67W7NfzLsA_eEaQ)
+[BrowserStack](https://www.browserstack.com/)
