@@ -1,4 +1,13 @@
-# SMCGOV Drupal platform
+# SMCGOV Drupal Platform
+
+## Table of Contents
+* Introduction 
+  - Architecture (in progress)
+  - Conventions (in progress)
+* Compatibility Testing 
+* QA (in progress)
+
+## Introduction
 
 This platform is the foundation of a number of the County of San Mateo's department web sites. This codebase is made available as an open source project without any licensing restrictions. 
 
@@ -14,53 +23,6 @@ These repos have to be manually kept in sync.
 ### origin
 Acquia hosts the website, and deployments to Dev, Stage, and Prod are done via pushes to the _origin_ remote.
 
-### bitbucket
-Set up a second remote called "bitbucket":
-
-git remote add bitbucket git@bitbucket.org:phase2tech/internal_opensanmateo.git
-
-
-## Gitflow
-
-To develop new features, branch off of the _release_ branch:
-
-`git checkout release`
-
-Ensure you are up to date:
-
-`git pull bitbucket release`
-
-Branch off of the _release_ branch:
-
-`git checkout -b my-feature-branch`
-
-Work on the code to your satisfaction. When ready, submit a PR to merge the code into the integration branch.
-
-`git push bitbucket my-feature-branch`
-
-Checkout the integration branch for the latest changes that are being tested.
-
-`git checkout integration`
-
-Sync the integration branch for testing in the staging environment:
-
-`git pull bitbucket integration`
-
-`git push origin integration`
-
-When _integration_ is ready for release, merge its contents into _release_:
-
-`git checkout release; git merge integration`
-
-Tag a release in the format YYYY-MM-DD-[letter] where [letter] corresponds to the tag you created on that day (A, B, C...):
-
-`git tag 2016-01-21-A`
-
-Push the release tag to Acquia:
-
-`git push origin release --tags`
-
-Select the tag to deploy the code to Staging using the Acquia dashboard tools.
 
 ### Hotfix
 
