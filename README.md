@@ -1,8 +1,9 @@
-# SMCGOV Drupal platform.
+# SMCGOV Drupal platform
+
+This platform is the foundation of a number of the County of San Mateo's department web sites. This codebase is made available as an open source project without any licensing restrictions. 
 
 The platform is a Multi-site, meaning that each of the sites use the same codebase, but have their own databases.
 Database config, and each site's unique settings are stored in their settings.php files.
-
 
 ## Two Remotes
 
