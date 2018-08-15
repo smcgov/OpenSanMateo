@@ -97,7 +97,7 @@ Images are preprocessed using custom code before being indexed by Search API in 
 This is because when displaying search results, any given site only has access to the result's site hash, and not its actual URL.
 Also, when a custom Image Size is generated for an image, a unique query hash is used by Drupal to prevent DDOS attacks, and the site needs to generate this the first time an image size is used.
 
-## ContinuedCompatibility Testing
+## Continued Compatibility Testing
 
 As a public agency we are responsible for testing new features and development on a range of current and legacy browser environments through desktop and mobile devices. We are also responsbile for usability and accessibility testing to ensure our users and consistently served by our resouces. We employ a range of tools to keep up standards for content over 22 department/agency sites, and over 100 content managers.
 
